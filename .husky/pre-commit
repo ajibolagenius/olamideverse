@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Run ESLint
+echo "🔍 Running ESLint..."
+npm run lint || (echo "❌ ESLint check failed. Please fix the issues and try again." && exit 1)
+
+# Run TypeScript check
+echo "🔍 Running TypeScript check..."
+npx tsc --noEmit || (echo "❌ TypeScript check failed. Please fix the issues and try again." && exit 1)
+
+echo "✅ Pre-commit checks passed!"
