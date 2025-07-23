@@ -65,7 +65,8 @@ const mockAlbums: Album[] = [
 ];
 
 export function useMusicApi() {
-    const getAlbums = () => {
+    // These functions are properly defined inside a custom hook
+    function useAlbums() {
         return useQuery({
             queryKey: ['albums'],
             queryFn: async () => {
@@ -77,9 +78,9 @@ export function useMusicApi() {
                 });
             },
         });
-    };
+    }
 
-    const getAlbum = (albumId: string) => {
+    function useAlbum(albumId: string) {
         return useQuery({
             queryKey: ['album', albumId],
             queryFn: async () => {
@@ -93,9 +94,9 @@ export function useMusicApi() {
             },
             enabled: !!albumId,
         });
-    };
+    }
 
-    const getTrack = (trackId: string) => {
+    function useTrack(trackId: string) {
         return useQuery({
             queryKey: ['track', trackId],
             queryFn: async () => {
@@ -118,8 +119,8 @@ export function useMusicApi() {
     };
 
     return {
-        getAlbums,
-        getAlbum,
-        getTrack,
+        useAlbums,
+        useAlbum,
+        useTrack,
     };
 }

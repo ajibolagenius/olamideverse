@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 interface MusicPlayerProps {
     trackUrl?: string;
@@ -8,7 +9,6 @@ interface MusicPlayerProps {
 }
 
 export default function MusicPlayer({
-    trackUrl,
     trackTitle = 'No track selected',
     artistName = 'Unknown artist',
     albumArt,
@@ -59,7 +59,14 @@ export default function MusicPlayer({
                 {/* Album Art */}
                 <div className="w-12 h-12 bg-secondary-200 dark:bg-secondary-800 rounded overflow-hidden mr-4">
                     {albumArt ? (
-                        <img src={albumArt} alt={`${trackTitle} album art`} className="w-full h-full object-cover" />
+                        <div className="relative w-full h-full">
+                            <Image
+                                src={albumArt}
+                                alt={`${trackTitle} album art`}
+                                fill
+                                className="object-cover"
+                            />
+                        </div>
                     ) : (
                         <div className="w-full h-full flex items-center justify-center text-secondary-400">
                             🎵

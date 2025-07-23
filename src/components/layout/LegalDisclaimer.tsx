@@ -21,7 +21,7 @@ export default function LegalDisclaimer() {
 
                     <div className="prose dark:prose-invert">
                         <p>
-                            Welcome to OlamideVerse, a fan-created platform dedicated to celebrating and preserving Olamide's musical legacy.
+                            Welcome to OlamideVerse, a fan-created platform dedicated to celebrating and preserving Olamide&apos;s musical legacy.
                         </p>
 
                         <h3>Content Usage Notice</h3>
@@ -50,7 +50,7 @@ export default function LegalDisclaimer() {
                             onClick={handleAccept}
                             className="px-4 py-2 bg-primary hover:bg-primary-600 text-white rounded-md transition-colors"
                         >
-                            Accept & Continue
+                            Accept &amp; Continue
                         </button>
                     </div>
                 </div>

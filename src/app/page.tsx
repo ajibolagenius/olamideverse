@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { AppProvider } from "@/context/AppContext";
 import { QueryProvider } from "@/context/QueryContext";
@@ -19,7 +18,7 @@ export default function Home() {
                                     <span className="text-primary">Olamide</span>Verse
                                 </h1>
                                 <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto mb-8">
-                                    An immersive journey through Olamide's musical legacy, celebrating his impact on Nigerian music and culture.
+                                    An immersive journey through Olamide&apos;s musical legacy, celebrating his impact on Nigerian music and culture.
                                 </p>
                                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                     <Link
@@ -50,7 +49,7 @@ export default function Home() {
                                         </div>
                                         <h3 className="text-xl font-bold mb-2">Complete Discography</h3>
                                         <p className="text-secondary-600 dark:text-secondary-300">
-                                            Browse and listen to Olamide's entire music collection with high-quality playback and synchronized lyrics.
+                                            Browse and listen to Olamide&apos;s entire music collection with high-quality playback and synchronized lyrics.
                                         </p>
                                     </div>
 
@@ -70,7 +69,7 @@ export default function Home() {
                                         </div>
                                         <h3 className="text-xl font-bold mb-2">Media Gallery</h3>
                                         <p className="text-secondary-600 dark:text-secondary-300">
-                                            Explore videos, interviews, and rare content in our curated media collection celebrating Olamide's career.
+                                            Explore videos, interviews, and rare content in our curated media collection celebrating Olamide&apos;s career.
                                         </p>
                                     </div>
                                 </div>
@@ -98,7 +97,7 @@ export default function Home() {
                                             Released: June 18, 2021
                                         </p>
                                         <p className="mb-6">
-                                            UY Scuti represents a significant evolution in Olamide's sound, blending afrobeats with elements of amapiano and R&B to create a sophisticated, globally-minded album that showcases his versatility as an artist.
+                                            UY Scuti represents a significant evolution in Olamide&apos;s sound, blending afrobeats with elements of amapiano and R&B to create a sophisticated, globally-minded album that showcases his versatility as an artist.
                                         </p>
                                         <Link
                                             href="/albums/uy-scuti"

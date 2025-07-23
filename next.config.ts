@@ -26,7 +26,6 @@ const nextConfig: NextConfig = {
         ],
     },
     experimental: {
-        turbo: true,
         serverComponentsExternalPackages: ['three'],
     },
 };

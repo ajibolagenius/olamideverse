@@ -15,7 +15,7 @@ export default function LegalDisclaimerPage() {
                 <div className="prose dark:prose-invert max-w-none">
                     <h2>Content Usage Notice</h2>
                     <p>
-                        OlamideVerse is a non-commercial fan project dedicated to celebrating and preserving Olamide's musical legacy. All music, lyrics, images, and related content are the property of Olamide, YBNL Nation, and their respective copyright holders. We do not claim ownership of any copyrighted material.
+                        OlamideVerse is a non-commercial fan project dedicated to celebrating and preserving Olamide&apos;s musical legacy. All music, lyrics, images, and related content are the property of Olamide, YBNL Nation, and their respective copyright holders. We do not claim ownership of any copyrighted material.
                     </p>
 
                     <h2>Fair Use Statement</h2>

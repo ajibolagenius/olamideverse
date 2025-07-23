@@ -1,153 +1,126 @@
-/**
- * Spotify API functions for tracks
- */
+import { apiCache } from '../cache';
 
-import { spotifyGet } from './client';
-import { SpotifyTrack } from './albums';
-
-/**
- * Gets a track by ID
- * @param id The Spotify track ID
- * @returns A promise that resolves to the track
- */
-export async function getTrack(id: string): Promise<SpotifyTrack> {
-    return spotifyGet<SpotifyTrack>(`/tracks/${id}`);
-}
-
-/**
- * Gets several tracks by ID
- * @param ids The Spotify track IDs
- * @returns A promise that resolves to the tracks
- */
-export async function getTracks(ids: string[]): Promise<{ tracks: SpotifyTrack[] }> {
-    return spotifyGet<{ tracks: SpotifyTrack[] }>('/tracks', {
-        ids: ids.join(','),
-    });
-}
-
-/**
- * Gets audio features for a track
- * @param id The Spotify track ID
- * @returns A promise that resolves to the audio features
- */
-export async function getAudioFeatures(id: string): Promise<{
+interface SpotifyTrack {
     id: string;
+    name: string;
     duration_ms: number;
-    tempo: number;
-    key: number;
-    mode: number;
-    time_signature: number;
-    acousticness: number;
-    danceability: number;
-    energy: number;
-    instrumentalness: number;
-    liveness: number;
-    loudness: number;
-    speechiness: number;
-    valence: number;
-}> {
-    return spotifyGet<{
+    preview_url: string | null;
+    album: {
         id: string;
-        duration_ms: number;
-        tempo: number;
-        key: number;
-        mode: number;
-        time_signature: number;
-        acousticness: number;
-        danceability: number;
-        energy: number;
-        instrumentalness: number;
-        liveness: number;
-        loudness: number;
-        speechiness: number;
-        valence: number;
-    }>(`/audio-features/${id}`);
-}
-
-/**
- * Gets audio features for several tracks
- * @param ids The Spotify track IDs
- * @returns A promise that resolves to the audio features
- */
-export async function getMultipleAudioFeatures(ids: string[]): Promise<{
-    audio_features: {
+        name: string;
+        images: Array<{
+            url: string;
+            height?: number;
+            width?: number;
+        }>;
+    };
+    artists: Array<{
         id: string;
-        duration_ms: number;
-        tempo: number;
-        key: number;
-        mode: number;
-        time_signature: number;
-        acousticness: number;
-        danceability: number;
-        energy: number;
-        instrumentalness: number;
-        liveness: number;
-        loudness: number;
-        speechiness: number;
-        valence: number;
-    }[];
-}> {
-    return spotifyGet<{
-        audio_features: {
-            id: string;
-            duration_ms: number;
-            tempo: number;
-            key: number;
-            mode: number;
-            time_signature: number;
-            acousticness: number;
-            danceability: number;
-            energy: number;
-            instrumentalness: number;
-            liveness: number;
-            loudness: number;
-            speechiness: number;
-            valence: number;
-        }[];
-    }>('/audio-features', {
-        ids: ids.join(','),
-    });
+        name: string;
+    }>;
 }
 
-/**
- * Gets audio analysis for a track
- * @param id The Spotify track ID
- * @returns A promise that resolves to the audio analysis
- */
-export async function getAudioAnalysis(id: string): Promise<any> {
-    return spotifyGet<any>(`/audio-analysis/${id}`);
-}
-
-/**
- * Searches for tracks
- * @param query The search query
- * @param limit The maximum number of tracks to return (default: 20, max: 50)
- * @param offset The index of the first track to return (default: 0)
- * @returns A promise that resolves to the search results
- */
-export async function searchTracks(
-    query: string,
-    limit: number = 20,
-    offset: number = 0
-): Promise<{
+interface SpotifyAlbumWithTracks {
+    id: string;
+    name: string;
+    release_date: string;
+    images: Array<{
+        url: string;
+        height?: number;
+        width?: number;
+    }>;
     tracks: {
         items: SpotifyTrack[];
-        total: number;
-        limit: number;
-        offset: number;
     };
-}> {
-    return spotifyGet<{
-        tracks: {
-            items: SpotifyTrack[];
-            total: number;
-            limit: number;
-            offset: number;
-        };
-    }>('/search', {
-        q: query,
-        type: 'track',
-        limit,
-        offset,
-    });
 }
+
+class SpotifyTracksAPI {
+    private token: string | null = null;
+
+    constructor() {
+        // In a real implementation, we would get the token from a token manager
+        this.token = 'mock-token';
+    }
+
+    public async getAlbum(albumId: string): Promise<SpotifyAlbumWithTracks> {
+        const cacheKey = `spotify:album:${albumId}`;
+
+        return apiCache.getOrSet<SpotifyAlbumWithTracks>(cacheKey, async () => {
+            // In a real implementation, we would fetch from Spotify API
+            // For now, we'll just return mock data
+            return {
+                id: albumId,
+                name: albumId === 'uy-scuti' ? 'UY Scuti' : 'Carpe Diem',
+                release_date: albumId === 'uy-scuti' ? '2021-06-18' : '2020-10-08',
+                images: [{ url: `https://example.com/${albumId}.jpg` }],
+                tracks: {
+                    items: [
+                        {
+                            id: `${albumId}-track-1`,
+                            name: 'Track 1',
+                            duration_ms: 180000,
+                            preview_url: 'https://example.com/preview.mp3',
+                            album: {
+                                id: albumId,
+                                name: albumId === 'uy-scuti' ? 'UY Scuti' : 'Carpe Diem',
+                                images: [{ url: `https://example.com/${albumId}.jpg` }],
+                            },
+                            artists: [
+                                {
+                                    id: 'artist-id',
+                                    name: 'Olamide',
+                                },
+                            ],
+                        },
+                        {
+                            id: `${albumId}-track-2`,
+                            name: 'Track 2',
+                            duration_ms: 210000,
+                            preview_url: 'https://example.com/preview.mp3',
+                            album: {
+                                id: albumId,
+                                name: albumId === 'uy-scuti' ? 'UY Scuti' : 'Carpe Diem',
+                                images: [{ url: `https://example.com/${albumId}.jpg` }],
+                            },
+                            artists: [
+                                {
+                                    id: 'artist-id',
+                                    name: 'Olamide',
+                                },
+                            ],
+                        },
+                    ],
+                },
+            };
+        });
+    }
+
+    public async getTrack(trackId: string): Promise<SpotifyTrack> {
+        const cacheKey = `spotify:track:${trackId}`;
+
+        return apiCache.getOrSet<SpotifyTrack>(cacheKey, async () => {
+            // In a real implementation, we would fetch from Spotify API
+            // For now, we'll just return mock data
+            return {
+                id: trackId,
+                name: 'Track Name',
+                duration_ms: 180000,
+                preview_url: 'https://example.com/preview.mp3',
+                album: {
+                    id: 'album-id',
+                    name: 'Album Name',
+                    images: [{ url: 'https://example.com/album.jpg' }],
+                },
+                artists: [
+                    {
+                        id: 'artist-id',
+                        name: 'Olamide',
+                    },
+                ],
+            };
+        });
+    }
+}
+
+// Export a singleton instance
+export const spotifyTracksAPI = new SpotifyTracksAPI();

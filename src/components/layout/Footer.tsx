@@ -10,7 +10,7 @@ export default function Footer() {
                     <div>
                         <h3 className="text-lg font-bold mb-4">OlamideVerse</h3>
                         <p className="text-secondary-600 dark:text-secondary-400">
-                            Celebrating Olamide's musical legacy through an immersive digital experience.
+                            Celebrating Olamide&apos;s musical legacy through an immersive digital experience.
                         </p>
                     </div>
 

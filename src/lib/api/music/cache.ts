@@ -4,7 +4,7 @@ interface CacheItem<T> {
 }
 
 class ApiCache {
-    private cache: Map<string, CacheItem<any>> = new Map();
+    private cache: Map<string, CacheItem<unknown>> = new Map();
     private defaultTTL: number = 1000 * 60 * 5; // 5 minutes
 
     /**

@@ -134,7 +134,7 @@ class HowlerPlayer {
     }
 
     public onPlay(callback: () => void) {
-        this.onPlayCallback = calack, s
+        this.onPlayCallback = callback;
     }
 
     public onPause(callback: () => void) {

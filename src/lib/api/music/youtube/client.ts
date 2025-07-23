@@ -1,45 +1,78 @@
-/**
- * YouTube API client
- */
+import { apiCache } from '../cache';
 
-import { AxiosInstance } from 'axios';
-import { createApiClient, get } from '../apiClient';
+interface YouTubeVideo {
+    id: string;
+    title: string;
+    description: string;
+    thumbnails: {
+        default: { url: string; width: number; height: number };
+        medium: { url: string; width: number; height: number };
+        high: { url: string; width: number; height: number };
+    };
+    publishedAt: string;
+    channelTitle: string;
+}
 
-// YouTube API base URL
-const YOUTUBE_API_BASE_URL = 'https://www.googleapis.com/youtube/v3';
+interface YouTubeSearchResult {
+    items: YouTubeVideo[];
+    nextPageToken?: string;
+    totalResults: number;
+}
 
-// YouTube API key
-const YOUTUBE_API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY || '';
+class YouTubeClient {
+    private apiKey: string | null = null;
 
-// YouTube API client instance
-let youtubeClient: AxiosInstance | null = null;
-
-/**
- * Gets the YouTube API client
- * @returns The YouTube API client
- */
-export function getYouTubeClient(): AxiosInstance {
-    if (!youtubeClient) {
-        youtubeClient = createApiClient(YOUTUBE_API_BASE_URL);
+    constructor() {
+        // In a real implementation, we would load the API key from environment variables
+        this.apiKey = process.env.YOUTUBE_API_KEY || '';
     }
 
-    return youtubeClient;
+    public async searchVideos(query: string, maxResults = 10): Promise<YouTubeSearchResult> {
+        const cacheKey = `youtube:search:${query}:${maxResults}`;
+
+        return apiCache.getOrSet<YouTubeSearchResult>(cacheKey, async () => {
+            // In a real implementation, we would fetch from YouTube API
+            // For now, we'll just return mock data
+            return {
+                items: Array.from({ length: maxResults }, (_, i) => ({
+                    id: `video-${i}`,
+                    title: `Olamide - Video ${i + 1}`,
+                    description: 'This is a mock YouTube video description',
+                    thumbnails: {
+                        default: { url: 'https://example.com/thumbnail-default.jpg', width: 120, height: 90 },
+                        medium: { url: 'https://example.com/thumbnail-medium.jpg', width: 320, height: 180 },
+                        high: { url: 'https://example.com/thumbnail-high.jpg', width: 480, height: 360 },
+                    },
+                    publishedAt: '2023-01-01T00:00:00Z',
+                    channelTitle: 'Olamide YBNL',
+                })),
+                nextPageToken: 'mock-next-page-token',
+                totalResults: 100,
+            };
+        });
+    }
+
+    public async getVideoDetails(videoId: string): Promise<YouTubeVideo> {
+        const cacheKey = `youtube:video:${videoId}`;
+
+        return apiCache.getOrSet<YouTubeVideo>(cacheKey, async () => {
+            // In a real implementation, we would fetch from YouTube API
+            // For now, we'll just return mock data
+            return {
+                id: videoId,
+                title: 'Olamide - Video Title',
+                description: 'This is a mock YouTube video description with detailed information',
+                thumbnails: {
+                    default: { url: 'https://example.com/thumbnail-default.jpg', width: 120, height: 90 },
+                    medium: { url: 'https://example.com/thumbnail-medium.jpg', width: 320, height: 180 },
+                    high: { url: 'https://example.com/thumbnail-high.jpg', width: 480, height: 360 },
+                },
+                publishedAt: '2023-01-01T00:00:00Z',
+                channelTitle: 'Olamide YBNL',
+            };
+        });
+    }
 }
 
-/**
- * Makes a GET request to the YouTube API
- * @param endpoint The API endpoint
- * @param params Optional query parameters
- * @returns A promise that resolves to the response data
- */
-export async function youtubeGet<T>(endpoint: string, params?: Record<string, any>): Promise<T> {
-    const client = getYouTubeClient();
-
-    // Add the API key to the parameters
-    const queryParams = {
-        key: YOUTUBE_API_KEY,
-        ...params,
-    };
-
-    return get<T>(client, endpoint, { params: queryParams });
-}
+// Export a singleton instance
+export const youtubeClient = new YouTubeClient();

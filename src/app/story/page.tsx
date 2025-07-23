@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
     title: 'Story Mode | OlamideVerse',
-    description: 'Explore the stories behind Olamide\'s albums and career.',
+    description: 'Explore the stories behind Olamide&apos;s albums and career.',
 };
 
 export default function StoryPage() {
@@ -11,7 +11,7 @@ export default function StoryPage() {
             <h1 className="text-4xl font-bold mb-8">Story Mode</h1>
             <div className="prose dark:prose-invert max-w-none">
                 <p className="text-xl">
-                    Dive deep into the stories behind Olamide's music, exploring the cultural context, artistic vision, and impact of his work.
+                    Dive deep into the stories behind Olamide&apos;s music, exploring the cultural context, artistic vision, and impact of his work.
                 </p>
 
                 <div className="my-8 bg-secondary-100 dark:bg-secondary-800 rounded-lg p-6">
