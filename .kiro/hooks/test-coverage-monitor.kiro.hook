@@ -1,0 +1,22 @@
+{
+  "enabled": true,
+  "name": "Test Coverage Monitor",
+  "description": "Monitors for new or modified files that may need test coverage, analyzes them, and suggests appropriate test scaffolding based on file type",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "src/**/*.tsx",
+      "src/**/*.ts",
+      "src/app/api/**/route.ts",
+      "src/components/**/*.tsx",
+      "src/hooks/**/*.ts",
+      "src/lib/**/*.ts",
+      "src/context/**/*.tsx"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A file has been created or modified that may need test coverage. Please analyze the file and:\n\n1. **Coverage Assessment**: Check if there's a corresponding test file in a __tests__ directory or with a .test.ts(x) naming convention. If not, flag this as needing test coverage.\n\n2. **Test Scaffolding**: Based on the file type, create a corresponding test file with:\n   - For React components (*.tsx): \n     * Import React, the component, and React Testing Library\n     * Test render functionality\n     * Test prop variations\n     * Test user interactions\n     * Test any conditional rendering\n\n   - For API routes (app/api/**/route.ts):\n     * Test request validation\n     * Test response structure\n     * Test error handling\n     * Include mock data based on TypeScript types\n\n   - For hooks (hooks/**/*.ts):\n     * Test initial state\n     * Test state changes\n     * Test side effects\n     * Test return values\n\n   - For services/utilities (lib/**/*.ts):\n     * Test input/output validation\n     * Test edge cases\n     * Test error handling\n\n3. **Mock Data Generation**: For API routes and services, analyze the TypeScript types and suggest appropriate mock data structures.\n\n4. **Coverage Standards**: Ensure tests would cover:\n   - All exported functions/components\n   - Main user flows and edge cases\n   - Error handling paths\n   - TypeScript type compliance\n\nFollow Next.js 14 + TypeScript + React Testing Library patterns used in the project."
+  }
+}
