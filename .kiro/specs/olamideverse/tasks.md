@@ -45,15 +45,15 @@
     - Ensure compliance with API terms of service
     - _Requirements: 1.3, 1.4, 6.2, 6.3, 8.2, 8.3_
 
-- [ ] 3. Album Grid and Navigation
-  - [ ] 3.1 Create responsive album grid component
+- [-] 3. Album Grid and Navigation
+  - [x] 3.1 Create responsive album grid component
     - Implement grid layout with Tailwind CSS
     - Add filtering and sorting functionality by year, genre, era, and mood
     - Create album card component with Atropos.js for parallax hover effects
     - Implement responsive design for all device sizes
     - _Requirements: 1.1, 1.7, 3.1, 3.2, 3.3_
 
-  - [ ] 3.2 Implement album detail view
+  - [x] 3.2 Implement album detail view
     - Create album header with cover art and metadata
     - Implement track listing component
     - Add navigation between album view and grid

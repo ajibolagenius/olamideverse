@@ -28,6 +28,14 @@ jest.mock('next/image', () => ({
     },
 }));
 
+// Mock Atropos
+jest.mock('atropos/react', () => ({
+    __esModule: true,
+    default: ({ children, className }) => {
+        return <div className={className}>{children}</div>;
+    },
+}));
+
 // Mock matchMedia
 Object.defineProperty(window, 'matchMedia', {
     writable: true,

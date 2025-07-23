@@ -1,4 +1,5 @@
 import { MDXProvider } from '@mdx-js/react';
+import { ComponentType } from 'react';
 import { ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,84 +11,165 @@ interface MDXContentProps {
     children: ReactNode;
 }
 
+const components: Record<string, ComponentType<any>> = {
+    // your components...
+};
+
+
 /**
  * MDXContent component for rendering MDX content with custom components
  */
 export default function MDXContent({ children }: MDXContentProps) {
-    // Define components inline to avoid TypeScript issues
-    const components = {
-        // Basic HTML elements
-        h1: (props: any) => <h1 className="text-3xl font-bold mb-4" {...props} />,
-        h2: (props: any) => <h2 className="text-2xl font-bold mb-3" {...props} />,
-        h3: (props: any) => <h3 className="text-xl font-bold mb-2" {...props} />,
-        p: (props: any) => <p className="mb-4" {...props} />,
-        a: (props: any) => {
-            // Handle links properly
-            if (props.href && !props.href.startsWith('http')) {
-                return <Link href={props.href} className="text-blue-500 hover:underline">{props.children}</Link>;
+    // Define components with proper typing for accessibility
+    const components: MDXComponents = {
+        // Basic HTML elements with improved accessibility
+        h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+  <h1 className="text-3xl font-bold mb-4" id={props.id} {...props} />
+),
+        h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+  <h2 className="text-2xl font-bold mb-3" id={props.id} {...props} />
+),
+        h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+  <h3 className="text-xl font-bold mb-2" id={props.id} {...props} />
+),
+        h4: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+  <h4 className="text-lg font-bold mb-2" id={props.id} {...props} />
+),
+        p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
+  <p className="mb-4" {...props} />
+),
+        a: (props) => {
+            const isExternal = props.href && props.href.startsWith('http');
+
+            if (isExternal) {
+                return (
+                    <a
+                        href={props.href}
+                        className="text-blue-500 hover:underline focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        {...props}
+                    >
+                        {props.children}
+                        <span className="sr-only"> (opens in new tab)</span>
+                    </a>
+                );
             }
-            return <a className="text-blue-500 hover:underline" {...props} />;
+
+            return (
+                <Link
+                    href={props.href || '#'}
+                    className="text-blue-500 hover:underline focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                    {...props}
+                >
+                    {props.children}
+                </Link>
+            );
         },
-        ul: (props: any) => <ul className="list-disc pl-5 mb-4" {...props} />,
-        ol: (props: any) => <ol className="list-decimal pl-5 mb-4" {...props} />,
-        li: (props: any) => <li className="mb-1" {...props} />,
-        blockquote: (props: any) => (
+        ul: (props) => <ul className="list-disc pl-5 mb-4" {...props} />,
+        ol: (props) => <ol className="list-decimal pl-5 mb-4" {...props} />,
+        li: (props) => <li className="mb-1" {...props} />,
+        blockquote: (props) => (
             <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4" {...props} />
         ),
-        img: (props: any) => (
-            <div className="my-4">
-                <Image
-                    src={props.src}
-                    alt={props.alt || 'Image'}
-                    width={props.width || 800}
-                    height={props.height || 450}
-                    className="rounded-lg"
-                />
-                {props.caption && <p className="text-sm text-gray-500 mt-1">{props.caption}</p>}
-            </div>
-        ),
+        img: (props) => {
+            // Warn if alt text is missing
+            if (!props.alt || props.alt === '') {
+                console.warn('Image is missing alt text for accessibility');
+            }
 
-        // Custom components for story mode
-        AlbumCard: (props: any) => (
-            <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-                <h3 className="text-xl font-bold">{props.title}</h3>
-                <p className="text-sm text-gray-500">{props.releaseDate}</p>
-                {props.coverArt && (
+            return (
+                <div className="my-4">
                     <Image
-                        src={props.coverArt}
-                        alt={`${props.title} cover art`}
-                        width={300}
-                        height={300}
-                        className="rounded-lg my-2"
+                        src={props.src}
+                        alt={props.alt || 'Image without description'}
+                        width={props.width || 800}
+                        height={props.height || 450}
+                        className="rounded-lg"
+                        loading="lazy"
                     />
-                )}
-                <p>{props.description}</p>
-            </div>
-        ),
-        TrackHighlight: (props: any) => (
-            <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg my-4 border-l-4 border-blue-500">
-                <h4 className="font-bold">{props.title}</h4>
-                <p>{props.children}</p>
-            </div>
-        ),
-        Quote: (props: any) => (
-            <blockquote className="border-l-4 border-yellow-500 pl-4 py-2 my-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-r-lg">
-                <p className="italic">{props.children}</p>
-                {props.author && <p className="text-right font-bold mt-2">— {props.author}</p>}
-            </blockquote>
-        ),
-        Timeline: (props: any) => (
-            <div className="border-l-2 border-gray-300 pl-4 my-4 space-y-4">
+                    {props.caption && (
+                        <p className="text-sm text-gray-500 mt-1" id={`caption-${props.src?.replace(/\W+/g, '-')}`}>
+                            {props.caption}
+                        </p>
+                    )}
+                </div>
+            );
+        },
+
+        // Custom components for story mode with accessibility improvements
+        AlbumCard: (props) => {
+            const albumId = `album-${props.title?.replace(/\s+/g, '-').toLowerCase()}`;
+            return (
+                <div
+                    className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4"
+                    aria-labelledby={albumId}
+                >
+                    <h3 className="text-xl font-bold" id={albumId}>{props.title}</h3>
+                    <p className="text-sm text-gray-500">{props.releaseDate}</p>
+                    {props.coverArt && (
+                        <Image
+                            src={props.coverArt}
+                            alt={`${props.title} album cover`}
+                            width={300}
+                            height={300}
+                            className="rounded-lg my-2"
+                            loading="lazy"
+                        />
+                    )}
+                    <p>{props.description}</p>
+                </div>
+            );
+        },
+        TrackHighlight: (props) => {
+            const trackId = `track-${props.title?.replace(/\s+/g, '-').toLowerCase()}`;
+            return (
+                <div
+                    className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg my-4 border-l-4 border-blue-500"
+                    aria-labelledby={trackId}
+                >
+                    <h4 className="font-bold" id={trackId}>{props.title}</h4>
+                    <p>{props.children}</p>
+                </div>
+            );
+        },
+        Quote: (props) => {
+            const quoteId = props.author ? `quote-${props.author.replace(/\s+/g, '-').toLowerCase()}` : undefined;
+            return (
+                <figure className="border-l-4 border-yellow-500 pl-4 py-2 my-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-r-lg">
+                    <blockquote>
+                        <p className="italic">{props.children}</p>
+                    </blockquote>
+                    {props.author && <figcaption className="text-right font-bold mt-2" id={quoteId}>— {props.author}</figcaption>}
+                </figure>
+            );
+        },
+        Timeline: (props) => (
+            <div
+                className="border-l-2 border-gray-300 pl-4 my-4 space-y-4"
+                role="list"
+                aria-label="Timeline of events"
+            >
                 {props.children}
             </div>
         ),
-        TimelineEvent: (props: any) => (
-            <div className="relative">
-                <div className="absolute -left-6 w-4 h-4 rounded-full bg-blue-500"></div>
-                <h4 className="font-bold">{props.date}</h4>
-                <p>{props.children}</p>
-            </div>
-        ),
+        TimelineEvent: (props) => {
+            const eventId = `event-${props.date?.replace(/\s+/g, '-').toLowerCase()}`;
+            return (
+                <div
+                    className="relative"
+                    role="listitem"
+                    aria-labelledby={eventId}
+                >
+                    <div
+                        className="absolute -left-6 w-4 h-4 rounded-full bg-blue-500"
+                        aria-hidden="true"
+                    ></div>
+                    <h4 className="font-bold" id={eventId}>{props.date}</h4>
+                    <p>{props.children}</p>
+                </div>
+            );
+        },
     };
 
     return <MDXProvider components={components}>{children}</MDXProvider>;
