@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎵 OlamideVerse
 
-## Getting Started
+An immersive web platform celebrating Olamide's musical legacy and impact on Nigerian music and culture.
 
-First, run the development server:
+## 🚀 Overview
+
+OlamideVerse is a next-gen, web-based music platform designed to preserve, showcase, and celebrate Olamide's legacy. It offers an immersive, interactive experience for fans by combining Olamide's complete discography with innovative tech like Three.js and GSAP to create dynamic, engaging user interfaces.
+
+## ✨ Key Features
+
+- **Complete Discography**: Browse and listen to Olamide's entire music collection with high-quality playback and synchronized lyrics
+- **Immersive Stories**: Dive deep into the cultural context and artistic vision behind each album with rich media storytelling
+- **Media Gallery**: Explore videos, interviews, and rare content in our curated media collection
+- **Interactive UI**: Dynamic, engaging user interfaces powered by Three.js and GSAP animations
+- **Fan Zone**: Reactions, reviews, curated playlists, polls, and comments
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React, Next.js, Tailwind CSS, GSAP, Three.js
+- **Backend**: Supabase
+- **Content**: MDX for story-mode content
+- **Testing**: Jest, React Testing Library, Axe for accessibility
+
+## 🚀 Getting Started
+
+First, install dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
+```
+
+Then, run the development server:
+
+```bash
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🧪 Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `pnpm dev` - Start the development server with Turbopack
+- `pnpm build` - Build the application for production
+- `pnpm start` - Start the production server
+- `pnpm lint` - Run ESLint to check for code issues
+- `pnpm lint:a11y` - Run accessibility-specific linting
+- `pnpm test` - Run Jest tests
+- `pnpm test:watch` - Run Jest in watch mode
+- `pnpm test:coverage` - Generate test coverage report
+- `pnpm test:a11y` - Run accessibility tests
+- `pnpm format` - Format code with Prettier
 
-## Learn More
+## 📚 Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+- `/src/app` - Next.js app router pages and layouts
+- `/src/components` - Reusable UI components
+- `/src/context` - React context providers
+- `/src/hooks` - Custom React hooks
+- `/src/lib` - Utility functions and helpers
+- `/content` - Album, artist, and story content in MDX format
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔒 Legal Notice
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is not officially affiliated with YBNL Nation or Olamide. It is a fan project created to celebrate and preserve Olamide's musical legacy.
