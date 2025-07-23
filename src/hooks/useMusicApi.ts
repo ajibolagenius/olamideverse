@@ -116,7 +116,7 @@ export function useMusicApi() {
             },
             enabled: !!trackId,
         });
-    };
+    }
 
     return {
         useAlbums,
