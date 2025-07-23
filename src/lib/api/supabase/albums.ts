@@ -3,12 +3,26 @@ import type { Album, Track } from '@/types/models';
 import { validateAlbum } from '@/lib/validation/modelValidation';
 
 /**
+ * Type for Supabase album row
+ */
+interface SupabaseAlbumRow {
+    id: string;
+    title: string;
+    release_date: string;
+    cover_art_url: string;
+    description: string;
+    metadata?: Record<string, unknown>;
+    created_at: string;
+    updated_at: string;
+}
+
+/**
  * Convert Supabase album row to Album model
  * @param albumRow Album row from Supabase
  * @param tracks Optional tracks to include with the album
  * @returns Album model
  */
-function mapAlbumRowToModel(albumRow: any, tracks: Track[] = []): Album {
+function mapAlbumRowToModel(albumRow: SupabaseAlbumRow, tracks: Track[] = []): Album {
     return {
         id: albumRow.id,
         title: albumRow.title,
@@ -83,8 +97,34 @@ export async function getAlbumById(id: string): Promise<Album | null> {
             throw handleSupabaseError(tracksError, 'Failed to fetch album tracks');
         }
 
+        // Define type for track row with lyrics
+        interface SupabaseTrackRow {
+            id: string;
+            album_id: string;
+            title: string;
+            duration: number;
+            audio_url: string;
+            position: number;
+            metadata: Record<string, unknown>;
+            created_at: string;
+            updated_at: string;
+            lyrics?: {
+                id: string;
+                track_id: string;
+                text: string;
+                synced_lyrics: Array<{
+                    text: string;
+                    start_time: number;
+                    end_time: number;
+                }>;
+                source: string;
+                created_at: string;
+                updated_at: string;
+            };
+        }
+
         // Map track rows to Track models
-        const tracks: Track[] = trackRows.map(row => ({
+        const tracks: Track[] = trackRows.map((row: SupabaseTrackRow) => ({
             id: row.id,
             albumId: row.album_id,
             title: row.title,
@@ -95,7 +135,7 @@ export async function getAlbumById(id: string): Promise<Album | null> {
                 id: row.lyrics.id,
                 trackId: row.lyrics.track_id,
                 text: row.lyrics.text,
-                synced: (row.lyrics.synced_lyrics || []).map((line: any) => ({
+                synced: (row.lyrics.synced_lyrics || []).map((line: { text: string; start_time: number; end_time: number }) => ({
                     text: line.text,
                     startTime: line.start_time,
                     endTime: line.end_time,
@@ -169,7 +209,14 @@ export async function createAlbum(album: Omit<Album, 'id' | 'createdAt' | 'updat
 export async function updateAlbum(id: string, album: Partial<Album>): Promise<Album> {
     try {
         // Prepare the album data for update
-        const albumData: any = {
+        const albumData: {
+            updated_at: string;
+            title?: string;
+            release_date?: string;
+            cover_art_url?: string;
+            description?: string;
+            metadata?: Record<string, unknown>;
+        } = {
             updated_at: new Date().toISOString(),
         };
 

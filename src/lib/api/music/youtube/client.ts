@@ -58,13 +58,39 @@ class YouTubeClient {
 
                 const data = await response.json();
 
+                // Define types for YouTube API responses
+                interface YouTubeSearchItem {
+                    id: { videoId: string };
+                    snippet: {
+                        title: string;
+                        description: string;
+                        thumbnails: {
+                            default?: { url: string };
+                            high?: { url: string };
+                        };
+                        publishedAt: string;
+                        channelId: string;
+                        channelTitle: string;
+                    };
+                }
+
+                interface YouTubeVideoDetails {
+                    contentDetails?: {
+                        duration: string;
+                    };
+                    statistics?: {
+                        viewCount: string;
+                        likeCount: string;
+                    };
+                }
+
                 // Get video details for each result
-                const videoIds = data.items.map((item: any) => item.id.videoId).join(',');
+                const videoIds = data.items.map((item: YouTubeSearchItem) => item.id.videoId).join(',');
                 const videoDetails = await this.getVideoDetails(videoIds);
 
                 // Map search results to our format
-                const videos: YouTubeVideo[] = data.items.map((item: any, index: number) => {
-                    const details = videoDetails.items[index];
+                const videos: YouTubeVideo[] = data.items.map((item: YouTubeSearchItem, index: number) => {
+                    const details = videoDetails.items[index] as YouTubeVideoDetails;
 
                     return {
                         id: item.id.videoId,
@@ -127,7 +153,13 @@ class YouTubeClient {
      * @param videoIds Comma-separated list of video IDs
      * @returns Promise resolving to video details
      */
-    public async getVideoDetails(videoIds: string): Promise<any> {
+    public async getVideoDetails(videoIds: string): Promise<{
+        items: Array<{
+            id: string;
+            contentDetails?: { duration: string };
+            statistics?: { viewCount: string; likeCount: string };
+        }>;
+    }> {
         const cacheKey = `youtube:videos:${videoIds}`;
 
         return apiCache.getOrSet(cacheKey, async () => {

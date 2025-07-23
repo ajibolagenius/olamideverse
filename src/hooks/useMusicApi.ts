@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 import { musicService, MusicSource } from '@/lib/api/music/musicService';
-import type { Album, Track, Lyrics } from '@/types/models';
 import { getMockAlbums, getMockAlbumById, getMockTrackById } from '@/lib/api/music/mockData';
 
 export function useMusicApi() {

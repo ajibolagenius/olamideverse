@@ -140,7 +140,7 @@ export interface MediaElement {
     type: 'image' | 'video' | 'audio' | 'embed';
     url: string;
     caption?: string;
-    metadata: Record<string, any>;
+    metadata: Record<string, unknown>;
     createdAt: string;
     updatedAt: string;
 }
@@ -167,7 +167,7 @@ export interface AlbumMetadata {
     youtubeId?: string;
     appleMusicId?: string;
     audiomackId?: string;
-    [key: string]: any;
+    [key: string]: unknown;
 }
 
 /**
@@ -182,7 +182,7 @@ export interface TrackMetadata {
     youtubeId?: string;
     appleMusicId?: string;
     audiomackId?: string;
-    [key: string]: any;
+    [key: string]: unknown;
 }
 
 /**

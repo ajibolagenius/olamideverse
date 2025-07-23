@@ -28,7 +28,7 @@ export function isSupabaseConfigured(): boolean {
  * @param customMessage Custom error message
  * @returns Formatted error object
  */
-export function handleSupabaseError(error: any, customMessage?: string): Error {
+export function handleSupabaseError(error: Error | { message?: string }, customMessage?: string): Error {
     console.error('Supabase error:', error);
 
     // Create a user-friendly error message

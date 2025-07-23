@@ -12,7 +12,7 @@ export type Database = {
                     release_date: string;
                     cover_art_url: string;
                     description: string;
-                    metadata: Record<string, any>;
+                    metadata: Record<string, unknown>;
                     created_at: string;
                     updated_at: string;
                 };
@@ -22,7 +22,7 @@ export type Database = {
                     release_date: string;
                     cover_art_url: string;
                     description: string;
-                    metadata?: Record<string, any>;
+                    metadata?: Record<string, unknown>;
                     created_at?: string;
                     updated_at?: string;
                 };
@@ -32,7 +32,7 @@ export type Database = {
                     release_date?: string;
                     cover_art_url?: string;
                     description?: string;
-                    metadata?: Record<string, any>;
+                    metadata?: Record<string, unknown>;
                     created_at?: string;
                     updated_at?: string;
                 };
@@ -46,19 +46,19 @@ export type Database = {
                     audio_url: string;
                     lyrics_id: string | null;
                     position: number;
-                    metadata: Record<string, any>;
+                    metadata: Record<string, unknown>;
                     created_at: string;
                     updated_at: string;
                 };
                 Insert: {
                     id?: string;
-                    album_id:
+                    album_id: string;
                     title: string;
                     duration: number;
                     audio_url: string;
                     lyrics_id?: string | null;
                     position: number;
-                    metadata?: Record<string, any>;
+                    metadata?: Record<string, unknown>;
                     created_at?: string;
                     updated_at?: string;
                 };
@@ -70,7 +70,7 @@ export type Database = {
                     audio_url?: string;
                     lyrics_id?: string | null;
                     position?: number;
-                    metadata?: Record<string, any>;
+                    metadata?: Record<string, unknown>;
                     created_at?: string;
                     updated_at?: string;
                 };
@@ -292,7 +292,7 @@ export type Database = {
                     type: 'image' | 'video' | 'audio' | 'embed';
                     url: string;
                     caption: string | null;
-                    metadata: Record<string, any>;
+                    metadata: Record<string, unknown>;
                     created_at: string;
                     updated_at: string;
                 };
@@ -301,7 +301,7 @@ export type Database = {
                     type: 'image' | 'video' | 'audio' | 'embed';
                     url: string;
                     caption?: string | null;
-                    metadata?: Record<string, any>;
+                    metadata?: Record<string, unknown>;
                     created_at?: string;
                     updated_at?: string;
                 };
@@ -310,7 +310,7 @@ export type Database = {
                     type?: 'image' | 'video' | 'audio' | 'embed';
                     url?: string;
                     caption?: string | null;
-                    metadata?: Record<string, any>;
+                    metadata?: Record<string, unknown>;
                     created_at?: string;
                     updated_at?: string;
                 };
@@ -337,7 +337,7 @@ export type Database = {
                     id: string;
                     user_id: string | null;
                     event_type: string;
-                    event_data: Record<string, any>;
+                    event_data: Record<string, unknown>;
                     created_at: string;
                     session_id: string;
                     page_url: string;
@@ -346,7 +346,7 @@ export type Database = {
                     id?: string;
                     user_id?: string | null;
                     event_type: string;
-                    event_data?: Record<string, any>;
+                    event_data?: Record<string, unknown>;
                     created_at?: string;
                     session_id: string;
                     page_url: string;
@@ -355,7 +355,7 @@ export type Database = {
                     id?: string;
                     user_id?: string | null;
                     event_type?: string;
-                    event_data?: Record<string, any>;
+                    event_data?: Record<string, unknown>;
                     created_at?: string;
                     session_id?: string;
                     page_url?: string;

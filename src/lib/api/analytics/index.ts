@@ -1,4 +1,4 @@
-import { supabase, handleSupabaseError } from '../supabase/client';
+import { supabase } from '../supabase/client';
 import { v4 as uuidv4 } from 'uuid';
 
 /**
@@ -26,7 +26,7 @@ export enum AnalyticsEventType {
  * Analytics event data interface
  */
 interface AnalyticsEventData {
-    [key: string]: any;
+    [key: string]: unknown;
 }
 
 /**

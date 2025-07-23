@@ -14,13 +14,13 @@ import type {
  * Zod schema for Album validation
  */
 export const albumSchema = z.object({
-    id: z.string().uuid(),
+    id: z.string(),
     title: z.string().min(1, 'Title is required'),
     releaseDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Invalid date format (YYYY-MM-DD)'),
-    coverArtUrl: z.string().url('Invalid cover art URL'),
+    coverArtUrl: z.string(),
     description: z.string(),
     tracks: z.array(z.lazy(() => trackSchema)),
-    metadata: z.record(z.any()),
+    metadata: z.record(z.string(), z.unknown()),
     createdAt: z.string(),
     updatedAt: z.string(),
 });
@@ -29,15 +29,15 @@ export const albumSchema = z.object({
  * Zod schema for Track validation
  */
 export const trackSchema = z.object({
-    id: z.string().uuid(),
-    albumId: z.string().uuid(),
+    id: z.string(),
+    albumId: z.string(),
     title: z.string().min(1, 'Title is required'),
     duration: z.number().positive('Duration must be positive'),
-    audioUrl: z.string().url('Invalid audio URL'),
+    audioUrl: z.string(),
     position: z.number().int().nonnegative('Position must be non-negative'),
     lyrics: z.lazy(() => lyricsSchema).optional(),
     features: z.array(z.lazy(() => artistSchema)).optional(),
-    metadata: z.record(z.any()),
+    metadata: z.record(z.string(), z.unknown()),
     createdAt: z.string(),
     updatedAt: z.string(),
 });
@@ -46,9 +46,9 @@ export const trackSchema = z.object({
  * Zod schema for Artist validation
  */
 export const artistSchema = z.object({
-    id: z.string().uuid(),
+    id: z.string(),
     name: z.string().min(1, 'Name is required'),
-    imageUrl: z.string().url('Invalid image URL').optional(),
+    imageUrl: z.string().optional(),
     bio: z.string().optional(),
     createdAt: z.string(),
     updatedAt: z.string(),
@@ -58,8 +58,8 @@ export const artistSchema = z.object({
  * Zod schema for Lyrics validation
  */
 export const lyricsSchema = z.object({
-    id: z.string().uuid(),
-    trackId: z.string().uuid(),
+    id: z.string(),
+    trackId: z.string(),
     text: z.string(),
     synced: z.array(z.object({
         text: z.string(),
@@ -75,11 +75,11 @@ export const lyricsSchema = z.object({
  * Zod schema for User validation
  */
 export const userSchema = z.object({
-    id: z.string().uuid(),
+    id: z.string(),
     username: z.string().min(3, 'Username must be at least 3 characters'),
     email: z.string().email('Invalid email address'),
     preferences: z.object({
-        userId: z.string().uuid(),
+        userId: z.string(),
         theme: z.enum(['light', 'dark', 'system']),
         language: z.string(),
         playbackQuality: z.enum(['low', 'medium', 'high', 'auto']),
@@ -96,14 +96,14 @@ export const userSchema = z.object({
  * Zod schema for Playlist validation
  */
 export const playlistSchema = z.object({
-    id: z.string().uuid(),
-    userId: z.string().uuid(),
+    id: z.string(),
+    userId: z.string(),
     name: z.string().min(1, 'Playlist name is required'),
     description: z.string().optional(),
     isPublic: z.boolean(),
     tracks: z.array(z.object({
-        playlistId: z.string().uuid(),
-        trackId: z.string().uuid(),
+        playlistId: z.string(),
+        trackId: z.string(),
         position: z.number().int().nonnegative(),
     })),
     createdAt: z.string(),
@@ -114,10 +114,10 @@ export const playlistSchema = z.object({
  * Zod schema for StoryChapter validation
  */
 export const storyChapterSchema = z.object({
-    id: z.string().uuid(),
+    id: z.string(),
     title: z.string().min(1, 'Title is required'),
     content: z.string(),
-    relatedAlbumId: z.string().uuid().optional(),
+    relatedAlbumId: z.string().optional(),
     position: z.number().int().nonnegative(),
     media: z.array(z.lazy(() => mediaElementSchema)),
     createdAt: z.string(),
@@ -128,11 +128,11 @@ export const storyChapterSchema = z.object({
  * Zod schema for MediaElement validation
  */
 export const mediaElementSchema = z.object({
-    id: z.string().uuid(),
+    id: z.string(),
     type: z.enum(['image', 'video', 'audio', 'embed']),
-    url: z.string().url('Invalid media URL'),
+    url: z.string(),
     caption: z.string().optional(),
-    metadata: z.record(z.any()),
+    metadata: z.record(z.string(), z.unknown()),
     createdAt: z.string(),
     updatedAt: z.string(),
 });

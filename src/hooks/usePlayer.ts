@@ -50,11 +50,12 @@ export function usePlayer() {
 
         // Clean up event handlers
         return () => {
-            howlerPlayer.onPlay(null);
-            howlerPlayer.onPause(null);
-            howlerPlayer.onStop(null);
-            howlerPlayer.onEnd(null);
-            howlerPlayer.onProgress(null);
+            // Set empty callbacks instead of null
+            howlerPlayer.onPlay(() => { });
+            howlerPlayer.onPause(() => { });
+            howlerPlayer.onStop(() => { });
+            howlerPlayer.onEnd(() => { });
+            howlerPlayer.onProgress(() => { });
         };
     }, [state.volume]);
 
@@ -112,7 +113,7 @@ export function usePlayer() {
      * @returns Promise resolving to YouTube video ID or null if not found
      */
     const getYouTubeVideo = useCallback(async (track: Track): Promise<string | null> => {
-        const artist = track.metadata?.artist || '';
+        const artist = track.metadata?.artist?.toString() || '';
         return musicService.getTrackVideo(track.title, artist);
     }, []);
 
@@ -120,9 +121,9 @@ export function usePlayer() {
      * Get lyrics for the current track
      * @returns Promise resolving to lyrics or null if not found
      */
-    const getLyrics = useCallback(async (): Promise<any> => {
+    const getLyrics = useCallback(async () => {
         if (!state.currentTrack) return null;
-        const artist = state.currentTrack.metadata?.artist || '';
+        const artist = state.currentTrack.metadata?.artist?.toString() || '';
         return musicService.getLyrics(state.currentTrack.title, artist);
     }, [state.currentTrack]);
 

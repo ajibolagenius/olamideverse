@@ -3,7 +3,7 @@ import { geniusClient } from './genius';
 import { youtubeClient } from './youtube';
 import { audiomackClient } from './audiomack';
 import { apiCache } from './cache';
-import type { Album, Track, Lyrics, Artist } from '@/types/models';
+import type { Album, Track, Lyrics } from '@/types/models';
 
 /**
  * Music source types
