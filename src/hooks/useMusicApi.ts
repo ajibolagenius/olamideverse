@@ -1,120 +1,117 @@
 import { useQuery } from '@tanstack/react-query';
-
-interface Album {
-    id: string;
-    title: string;
-    artist: string;
-    releaseDate: string;
-    coverArt: string;
-    tracks: Track[];
-}
-
-interface Track {
-    id: string;
-    title: string;
-    artist: string;
-    duration: number;
-    audioUrl?: string;
-}
-
-// This is a placeholder for actual API implementation
-// In a real implementation, we would fetch data from Spotify, YouTube, etc.
-const mockAlbums: Album[] = [
-    {
-        id: 'uy-scuti',
-        title: 'UY Scuti',
-        artist: 'Olamide',
-        releaseDate: '2021-06-18',
-        coverArt: '',
-        tracks: [
-            {
-                id: 'uy-scuti-1',
-                title: 'Need For Speed',
-                artist: 'Olamide',
-                duration: 180,
-            },
-            {
-                id: 'uy-scuti-2',
-                title: 'Jailer',
-                artist: 'Olamide',
-                duration: 210,
-            },
-        ],
-    },
-    {
-        id: 'carpe-diem',
-        title: 'Carpe Diem',
-        artist: 'Olamide',
-        releaseDate: '2020-10-08',
-        coverArt: '',
-        tracks: [
-            {
-                id: 'carpe-diem-1',
-                title: 'Triumphant',
-                artist: 'Olamide feat. Bella Shmurda',
-                duration: 195,
-            },
-            {
-                id: 'carpe-diem-2',
-                title: 'Infinity',
-                artist: 'Olamide feat. Omah Lay',
-                duration: 225,
-            },
-        ],
-    },
-];
+import { musicService, MusicSource } from '@/lib/api/music/musicService';
+import type { Album, Track, Lyrics } from '@/types/models';
+import { getMockAlbums, getMockAlbumById, getMockTrackById } from '@/lib/api/music/mockData';
 
 export function useMusicApi() {
-    // These functions are properly defined inside a custom hook
-    function useAlbums() {
+    /**
+     * Hook for fetching all albums
+     * @param source Music source to fetch from
+     * @returns Query result with albums
+     */
+    function useAlbums(source?: MusicSource) {
         return useQuery({
-            queryKey: ['albums'],
+            queryKey: ['albums', source],
             queryFn: async () => {
-                // Simulate API call
-                return new Promise<Album[]>((resolve) => {
-                    setTimeout(() => {
-                        resolve(mockAlbums);
-                    }, 500);
-                });
+                try {
+                    // Try to fetch from the music service
+                    return await musicService.getAlbums(source);
+                } catch (error) {
+                    console.error('Error fetching albums from API, falling back to mock data:', error);
+                    // Fall back to mock data
+                    return getMockAlbums();
+                }
             },
         });
     }
 
-    function useAlbum(albumId: string) {
+    /**
+     * Hook for fetching a specific album
+     * @param albumId Album ID
+     * @param source Music source to fetch from
+     * @returns Query result with album
+     */
+    function useAlbum(albumId: string, source?: MusicSource) {
         return useQuery({
-            queryKey: ['album', albumId],
+            queryKey: ['album', albumId, source],
             queryFn: async () => {
-                // Simulate API call
-                return new Promise<Album | undefined>((resolve) => {
-                    setTimeout(() => {
-                        const album = mockAlbums.find((a) => a.id === albumId);
-                        resolve(album);
-                    }, 500);
-                });
+                try {
+                    // Try to fetch from the music service
+                    const album = await musicService.getAlbum(albumId, source);
+                    return album;
+                } catch (error) {
+                    console.error(`Error fetching album ${albumId} from API, falling back to mock data:`, error);
+                    // Fall back to mock data
+                    return getMockAlbumById(albumId);
+                }
             },
             enabled: !!albumId,
         });
     }
 
-    function useTrack(trackId: string) {
+    /**
+     * Hook for fetching a specific track
+     * @param trackId Track ID
+     * @param source Music source to fetch from
+     * @returns Query result with track
+     */
+    function useTrack(trackId: string, source?: MusicSource) {
         return useQuery({
-            queryKey: ['track', trackId],
+            queryKey: ['track', trackId, source],
             queryFn: async () => {
-                // Simulate API call
-                return new Promise<Track | undefined>((resolve) => {
-                    setTimeout(() => {
-                        for (const album of mockAlbums) {
-                            const track = album.tracks.find((t) => t.id === trackId);
-                            if (track) {
-                                resolve(track);
-                                return;
-                            }
-                        }
-                        resolve(undefined);
-                    }, 500);
-                });
+                try {
+                    // Try to fetch from the music service
+                    const track = await musicService.getTrack(trackId, source);
+                    return track;
+                } catch (error) {
+                    console.error(`Error fetching track ${trackId} from API, falling back to mock data:`, error);
+                    // Fall back to mock data
+                    return getMockTrackById(trackId);
+                }
             },
             enabled: !!trackId,
+        });
+    }
+
+    /**
+     * Hook for searching tracks
+     * @param query Search query
+     * @param source Music source to search in
+     * @returns Query result with tracks
+     */
+    function useTrackSearch(query: string, source?: MusicSource) {
+        return useQuery({
+            queryKey: ['search', 'tracks', query, source],
+            queryFn: async () => {
+                try {
+                    return await musicService.searchTracks(query, source);
+                } catch (error) {
+                    console.error(`Error searching tracks for "${query}":`, error);
+                    return [];
+                }
+            },
+            enabled: !!query,
+        });
+    }
+
+    /**
+     * Hook for fetching lyrics for a track
+     * @param trackTitle Track title
+     * @param artistName Artist name
+     * @returns Query result with lyrics
+     */
+    function useLyrics(trackTitle: string, artistName: string) {
+        return useQuery({
+            queryKey: ['lyrics', trackTitle, artistName],
+            queryFn: async () => {
+                try {
+                    return await musicService.getLyrics(trackTitle, artistName);
+                } catch (error) {
+                    console.error(`Error fetching lyrics for "${trackTitle}" by ${artistName}:`, error);
+                    return null;
+                }
+            },
+            enabled: !!(trackTitle && artistName),
         });
     }
 
@@ -122,5 +119,8 @@ export function useMusicApi() {
         useAlbums,
         useAlbum,
         useTrack,
+        useTrackSearch,
+        useLyrics,
+        MusicSource,
     };
 }

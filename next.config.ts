@@ -1,4 +1,14 @@
 import type { NextConfig } from "next";
+import createMDX from '@next/mdx';
+
+const withMDX = createMDX({
+    extension: /\.mdx?$/,
+    options: {
+        remarkPlugins: [],
+        rehypePlugins: [],
+        providerImportSource: '@mdx-js/react',
+    },
+});
 
 const nextConfig: NextConfig = {
     images: {
@@ -28,6 +38,9 @@ const nextConfig: NextConfig = {
     experimental: {
         serverComponentsExternalPackages: ['three'],
     },
+    // Configure pageExtensions to include md and mdx
+    pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
 };
 
-export default nextConfig;
+// Apply MDX configuration
+export default withMDX(nextConfig);

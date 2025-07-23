@@ -1,11 +1,5 @@
 import { Howl } from 'howler';
-
-interface Track {
-    id: string;
-    title: string;
-    artist: string;
-    audioUrl?: string;
-}
+import type { Track } from '@/types/models';
 
 class HowlerPlayer {
     private howl: Howl | null = null;
@@ -78,10 +72,26 @@ class HowlerPlayer {
             src: [track.audioUrl],
             html5: true,
             preload: true,
+            format: this.getAudioFormat(track.audioUrl),
         });
 
         this.setupHowlEvents(this.howl);
         this.currentTrack = track;
+    }
+
+    /**
+     * Get audio format from URL
+     * @param url Audio URL
+     * @returns Audio format string
+     */
+    private getAudioFormat(url: string): string[] {
+        const extension = url.split('.').pop()?.toLowerCase();
+        if (extension === 'mp3') return ['mp3'];
+        if (extension === 'wav') return ['wav'];
+        if (extension === 'ogg') return ['ogg'];
+        if (extension === 'aac') return ['aac'];
+        if (extension === 'm4a') return ['m4a'];
+        return [];
     }
 
     public play() {

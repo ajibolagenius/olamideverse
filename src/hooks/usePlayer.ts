@@ -1,13 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
-
-interface Track {
-    id: string;
-    title: string;
-    artist: string;
-    albumArt?: string;
-    audioUrl?: string;
-    duration: number;
-}
+import { howlerPlayer } from '@/lib/player/howlerPlayer';
+import type { Track } from '@/types/models';
+import { MusicSource, musicService } from '@/lib/api/music/musicService';
 
 interface PlayerState {
     currentTrack: Track | null;
@@ -15,6 +9,7 @@ interface PlayerState {
     volume: number;
     progress: number;
     duration: number;
+    source: MusicSource;
 }
 
 export function usePlayer() {
@@ -24,86 +19,112 @@ export function usePlayer() {
         volume: 0.8,
         progress: 0,
         duration: 0,
+        source: MusicSource.SPOTIFY,
     });
 
-    // This is a placeholder for Howler.js implementation
-    // In a real implementation, we would use Howler.js to handle audio playback
+    // Set up event listeners for the Howler player
+    useEffect(() => {
+        // Set up event handlers
+        howlerPlayer.onPlay(() => {
+            setState(prev => ({ ...prev, isPlaying: true }));
+        });
 
-    const play = useCallback((track: Track) => {
-        setState((prev) => ({
+        howlerPlayer.onPause(() => {
+            setState(prev => ({ ...prev, isPlaying: false }));
+        });
+
+        howlerPlayer.onStop(() => {
+            setState(prev => ({ ...prev, isPlaying: false, progress: 0 }));
+        });
+
+        howlerPlayer.onEnd(() => {
+            setState(prev => ({ ...prev, isPlaying: false, progress: 0 }));
+        });
+
+        howlerPlayer.onProgress((progress) => {
+            setState(prev => ({ ...prev, progress }));
+        });
+
+        // Set initial volume
+        howlerPlayer.setVolume(state.volume);
+
+        // Clean up event handlers
+        return () => {
+            howlerPlayer.onPlay(null);
+            howlerPlayer.onPause(null);
+            howlerPlayer.onStop(null);
+            howlerPlayer.onEnd(null);
+            howlerPlayer.onProgress(null);
+        };
+    }, [state.volume]);
+
+    const play = useCallback((track: Track, source: MusicSource = MusicSource.SPOTIFY) => {
+        // Load and play the track
+        howlerPlayer.load(track);
+        howlerPlayer.play();
+
+        // Update state
+        setState(prev => ({
             ...prev,
             currentTrack: track,
             isPlaying: true,
             progress: 0,
             duration: track.duration,
+            source,
         }));
     }, []);
 
     const pause = useCallback(() => {
-        setState((prev) => ({
-            ...prev,
-            isPlaying: false,
-        }));
+        howlerPlayer.pause();
     }, []);
 
     const resume = useCallback(() => {
-        setState((prev) => ({
-            ...prev,
-            isPlaying: true,
-        }));
+        howlerPlayer.play();
     }, []);
 
     const stop = useCallback(() => {
-        setState((prev) => ({
-            ...prev,
-            isPlaying: false,
-            progress: 0,
-        }));
+        howlerPlayer.stop();
     }, []);
 
     const setVolume = useCallback((volume: number) => {
-        setState((prev) => ({
-            ...prev,
-            volume: Math.max(0, Math.min(1, volume)),
-        }));
+        const normalizedVolume = Math.max(0, Math.min(1, volume));
+        howlerPlayer.setVolume(normalizedVolume);
+        setState(prev => ({ ...prev, volume: normalizedVolume }));
     }, []);
 
     const seek = useCallback((progress: number) => {
-        setState((prev) => ({
-            ...prev,
-            progress: Math.max(0, Math.min(prev.duration, progress)),
-        }));
+        howlerPlayer.seek(progress);
+        setState(prev => ({ ...prev, progress }));
     }, []);
 
-    // Simulate progress updates
-    useEffect(() => {
-        let interval: NodeJS.Timeout;
+    /**
+     * Get the embed URL for the current track
+     * @returns Embed URL for the current track
+     */
+    const getEmbedUrl = useCallback(() => {
+        if (!state.currentTrack) return '';
+        return musicService.getTrackEmbedUrl(state.currentTrack.id, state.source);
+    }, [state.currentTrack, state.source]);
 
-        if (state.isPlaying) {
-            interval = setInterval(() => {
-                setState((prev) => {
-                    const newProgress = prev.progress + 1;
+    /**
+     * Get the YouTube video ID for a track
+     * @param track Track to get video for
+     * @returns Promise resolving to YouTube video ID or null if not found
+     */
+    const getYouTubeVideo = useCallback(async (track: Track): Promise<string | null> => {
+        const artist = track.metadata?.artist || '';
+        return musicService.getTrackVideo(track.title, artist);
+    }, []);
 
-                    if (newProgress >= prev.duration) {
-                        return {
-                            ...prev,
-                            isPlaying: false,
-                            progress: 0,
-                        };
-                    }
-
-                    return {
-                        ...prev,
-                        progress: newProgress,
-                    };
-                });
-            }, 1000);
-        }
-
-        return () => {
-            if (interval) clearInterval(interval);
-        };
-    }, [state.isPlaying]);
+    /**
+     * Get lyrics for the current track
+     * @returns Promise resolving to lyrics or null if not found
+     */
+    const getLyrics = useCallback(async (): Promise<any> => {
+        if (!state.currentTrack) return null;
+        const artist = state.currentTrack.metadata?.artist || '';
+        return musicService.getLyrics(state.currentTrack.title, artist);
+    }, [state.currentTrack]);
 
     return {
         ...state,
@@ -113,6 +134,9 @@ export function usePlayer() {
         stop,
         setVolume,
         seek,
+        getEmbedUrl,
+        getYouTubeVideo,
+        getLyrics,
         togglePlayback: () => {
             if (state.isPlaying) {
                 pause();
