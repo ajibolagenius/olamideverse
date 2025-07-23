@@ -1,6 +1,5 @@
 import { MDXProvider } from '@mdx-js/react';
-import { ComponentType } from 'react';
-import { ReactNode } from 'react';
+import { ComponentType, ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -11,35 +10,49 @@ interface MDXContentProps {
     children: ReactNode;
 }
 
-const components: Record<string, ComponentType<any>> = {
-    // your components...
-};
+// ✅ Custom prop types for non-standard MDX components
+interface AlbumCardProps {
+    title: string;
+    releaseDate: string;
+    coverArt?: string;
+    description?: string;
+}
 
+interface QuoteProps {
+    author?: string;
+    children: ReactNode;
+}
+
+interface TimelineEventProps {
+    date: string;
+    children: ReactNode;
+}
 
 /**
  * MDXContent component for rendering MDX content with custom components
  */
 export default function MDXContent({ children }: MDXContentProps) {
-    // Define components with proper typing for accessibility
-    const components: MDXComponents = {
-        // Basic HTML elements with improved accessibility
+    // ✅ Replaced `MDXComponents` with a valid type
+    const components: Record<string, ComponentType<any>> = {
+        // ✅ Explicitly typed props for all elements
+
         h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-  <h1 className="text-3xl font-bold mb-4" id={props.id} {...props} />
-),
+            <h1 className="text-3xl font-bold mb-4" id={props.id} {...props} />
+        ),
         h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-  <h2 className="text-2xl font-bold mb-3" id={props.id} {...props} />
-),
+            <h2 className="text-2xl font-bold mb-3" id={props.id} {...props} />
+        ),
         h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-  <h3 className="text-xl font-bold mb-2" id={props.id} {...props} />
-),
+            <h3 className="text-xl font-bold mb-2" id={props.id} {...props} />
+        ),
         h4: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-  <h4 className="text-lg font-bold mb-2" id={props.id} {...props} />
-),
+            <h4 className="text-lg font-bold mb-2" id={props.id} {...props} />
+        ),
         p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-  <p className="mb-4" {...props} />
-),
-        a: (props) => {
-            const isExternal = props.href && props.href.startsWith('http');
+            <p className="mb-4" {...props} />
+        ),
+        a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+            const isExternal = props.href?.startsWith('http');
 
             if (isExternal) {
                 return (
@@ -66,14 +79,22 @@ export default function MDXContent({ children }: MDXContentProps) {
                 </Link>
             );
         },
-        ul: (props) => <ul className="list-disc pl-5 mb-4" {...props} />,
-        ol: (props) => <ol className="list-decimal pl-5 mb-4" {...props} />,
-        li: (props) => <li className="mb-1" {...props} />,
-        blockquote: (props) => (
-            <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4" {...props} />
+        ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
+            <ul className="list-disc pl-5 mb-4" {...props} />
         ),
-        img: (props) => {
-            // Warn if alt text is missing
+        ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
+            <ol className="list-decimal pl-5 mb-4" {...props} />
+        ),
+        li: (props: React.HTMLAttributes<HTMLLIElement>) => (
+            <li className="mb-1" {...props} />
+        ),
+        blockquote: (props: React.BlockquoteHTMLAttributes<HTMLElement>) => (
+            <blockquote
+                className="border-l-4 border-gray-300 pl-4 italic my-4"
+                {...props}
+            />
+        ),
+        img: (props: any) => {
             if (!props.alt || props.alt === '') {
                 console.warn('Image is missing alt text for accessibility');
             }
@@ -89,7 +110,10 @@ export default function MDXContent({ children }: MDXContentProps) {
                         loading="lazy"
                     />
                     {props.caption && (
-                        <p className="text-sm text-gray-500 mt-1" id={`caption-${props.src?.replace(/\W+/g, '-')}`}>
+                        <p
+                            className="text-sm text-gray-500 mt-1"
+                            id={`caption-${props.src?.replace(/\W+/g, '-')}`}
+                        >
                             {props.caption}
                         </p>
                     )}
@@ -97,15 +121,16 @@ export default function MDXContent({ children }: MDXContentProps) {
             );
         },
 
-        // Custom components for story mode with accessibility improvements
-        AlbumCard: (props) => {
+        AlbumCard: (props: AlbumCardProps) => {
             const albumId = `album-${props.title?.replace(/\s+/g, '-').toLowerCase()}`;
             return (
                 <div
                     className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4"
                     aria-labelledby={albumId}
                 >
-                    <h3 className="text-xl font-bold" id={albumId}>{props.title}</h3>
+                    <h3 className="text-xl font-bold" id={albumId}>
+                        {props.title}
+                    </h3>
                     <p className="text-sm text-gray-500">{props.releaseDate}</p>
                     {props.coverArt && (
                         <Image
@@ -121,30 +146,41 @@ export default function MDXContent({ children }: MDXContentProps) {
                 </div>
             );
         },
-        TrackHighlight: (props) => {
+
+        TrackHighlight: (props: { title: string; children: ReactNode }) => {
             const trackId = `track-${props.title?.replace(/\s+/g, '-').toLowerCase()}`;
             return (
                 <div
                     className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg my-4 border-l-4 border-blue-500"
                     aria-labelledby={trackId}
                 >
-                    <h4 className="font-bold" id={trackId}>{props.title}</h4>
+                    <h4 className="font-bold" id={trackId}>
+                        {props.title}
+                    </h4>
                     <p>{props.children}</p>
                 </div>
             );
         },
-        Quote: (props) => {
-            const quoteId = props.author ? `quote-${props.author.replace(/\s+/g, '-').toLowerCase()}` : undefined;
+
+        Quote: (props: QuoteProps) => {
+            const quoteId = props.author
+                ? `quote-${props.author.replace(/\s+/g, '-').toLowerCase()}`
+                : undefined;
             return (
                 <figure className="border-l-4 border-yellow-500 pl-4 py-2 my-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-r-lg">
                     <blockquote>
                         <p className="italic">{props.children}</p>
                     </blockquote>
-                    {props.author && <figcaption className="text-right font-bold mt-2" id={quoteId}>— {props.author}</figcaption>}
+                    {props.author && (
+                        <figcaption className="text-right font-bold mt-2" id={quoteId}>
+                            — {props.author}
+                        </figcaption>
+                    )}
                 </figure>
             );
         },
-        Timeline: (props) => (
+
+        Timeline: (props: { children: ReactNode }) => (
             <div
                 className="border-l-2 border-gray-300 pl-4 my-4 space-y-4"
                 role="list"
@@ -153,19 +189,20 @@ export default function MDXContent({ children }: MDXContentProps) {
                 {props.children}
             </div>
         ),
-        TimelineEvent: (props) => {
-            const eventId = `event-${props.date?.replace(/\s+/g, '-').toLowerCase()}`;
+
+        TimelineEvent: (props: TimelineEventProps) => {
+            const eventId = `event-${props.date
+                ?.replace(/\s+/g, '-')
+                .toLowerCase()}`;
             return (
-                <div
-                    className="relative"
-                    role="listitem"
-                    aria-labelledby={eventId}
-                >
+                <div className="relative" role="listitem" aria-labelledby={eventId}>
                     <div
                         className="absolute -left-6 w-4 h-4 rounded-full bg-blue-500"
                         aria-hidden="true"
                     ></div>
-                    <h4 className="font-bold" id={eventId}>{props.date}</h4>
+                    <h4 className="font-bold" id={eventId}>
+                        {props.date}
+                    </h4>
                     <p>{props.children}</p>
                 </div>
             );
