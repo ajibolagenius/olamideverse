@@ -138,7 +138,7 @@
     - Implement share tracking with in-house analytics
     - _Requirements: 4.1, 4.2_
 
-  - [ ] 7.2 Create audiogram generator
+  - [x] 7.2 Create audiogram generator
     - Implement audio snippet selection with howler.js
     - Add visualization generation for snippets using Remotion
     - Create download and share functionality for social media platforms
@@ -146,7 +146,7 @@
     - Ensure proper attribution in shared content
     - _Requirements: 4.2, 3.1, 6.4_
 
-  - [ ] 7.3 Add community features
+  - [x] 7.3 Add community features
     - Implement comment/chat system (if enabled)
     - Create community polls functionality
     - Add moderation tools for user content
