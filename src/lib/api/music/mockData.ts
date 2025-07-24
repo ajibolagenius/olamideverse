@@ -10,7 +10,7 @@ export const mockArtists: Artist[] = [
     {
         id: '1',
         name: 'Olamide',
-        imageUrl: 'https://example.com/olamide.jpg',
+        imageUrl: '/images/placeholders/olamide.jpg',
         bio: 'Olamide Adedeji, known mononymously as Olamide, is a Nigerian hip hop recording artist and record label owner.',
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
@@ -18,7 +18,7 @@ export const mockArtists: Artist[] = [
     {
         id: '2',
         name: 'Phyno',
-        imageUrl: 'https://example.com/phyno.jpg',
+        imageUrl: '/images/placeholders/phyno.jpg',
         bio: 'Chibuzor Nelson Azubuike, better known by his stage name Phyno, is a Nigerian rapper, singer, songwriter and record producer.',
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
@@ -26,7 +26,7 @@ export const mockArtists: Artist[] = [
     {
         id: '3',
         name: 'Wizkid',
-        imageUrl: 'https://example.com/wizkid.jpg',
+        imageUrl: '/images/placeholders/wizkid.jpg',
         bio: 'Ayodeji Ibrahim Balogun, known professionally as Wizkid, is a Nigerian singer and songwriter.',
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
@@ -34,7 +34,7 @@ export const mockArtists: Artist[] = [
     {
         id: '4',
         name: 'Fireboy DML',
-        imageUrl: 'https://example.com/fireboy.jpg',
+        imageUrl: '/images/placeholders/fireboy.jpg',
         bio: 'Adedamola Adefolahan, known professionally as Fireboy DML, is a Nigerian singer and songwriter.',
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
@@ -80,7 +80,7 @@ export const mockTracks: Track[] = [
         albumId: '1',
         title: 'Science Student',
         duration: 231,
-        audioUrl: 'https://example.com/science-student.mp3',
+        audioUrl: '/audio/placeholders/science-student.mp3',
         position: 1,
         lyrics: mockLyrics[0],
         features: [],
@@ -99,7 +99,7 @@ export const mockTracks: Track[] = [
         albumId: '1',
         title: 'Wo!!',
         duration: 219,
-        audioUrl: 'https://example.com/wo.mp3',
+        audioUrl: '/audio/placeholders/wo.mp3',
         position: 2,
         lyrics: mockLyrics[1],
         features: [],
@@ -118,7 +118,7 @@ export const mockTracks: Track[] = [
         albumId: '1',
         title: 'Lagos Nawa',
         duration: 198,
-        audioUrl: 'https://example.com/lagos-nawa.mp3',
+        audioUrl: '/audio/placeholders/lagos-nawa.mp3',
         position: 3,
         features: [],
         metadata: {
@@ -136,7 +136,7 @@ export const mockTracks: Track[] = [
         albumId: '2',
         title: 'Motigbana',
         duration: 224,
-        audioUrl: 'https://example.com/motigbana.mp3',
+        audioUrl: '/audio/placeholders/motigbana.mp3',
         position: 1,
         features: [],
         metadata: {
@@ -154,7 +154,7 @@ export const mockTracks: Track[] = [
         albumId: '2',
         title: 'Bugle',
         duration: 212,
-        audioUrl: 'https://example.com/bugle.mp3',
+        audioUrl: '/audio/placeholders/bugle.mp3',
         position: 2,
         features: [mockArtists[1]],
         metadata: {
@@ -175,7 +175,7 @@ export const mockAlbums: Album[] = [
         id: '1',
         title: 'Lagos Nawa',
         releaseDate: '2017-11-17',
-        coverArtUrl: 'https://example.com/lagos-nawa.jpg',
+        coverArtUrl: '/images/placeholders/lagos-nawa.jpg',
         description: 'Lagos Nawa is the seventh studio album by Nigerian rapper Olamide. It was released on November 17, 2017.',
         tracks: mockTracks.filter(track => track.albumId === '1'),
         metadata: {
@@ -194,7 +194,7 @@ export const mockAlbums: Album[] = [
         id: '2',
         title: 'YBNL',
         releaseDate: '2012-11-12',
-        coverArtUrl: 'https://example.com/ybnl.jpg',
+        coverArtUrl: '/images/placeholders/ybnl.jpg',
         description: 'YBNL is the second studio album by Nigerian rapper Olamide. It was released on November 12, 2012.',
         tracks: mockTracks.filter(track => track.albumId === '2'),
         metadata: {
@@ -213,7 +213,7 @@ export const mockAlbums: Album[] = [
         id: '3',
         title: 'Carpe Diem',
         releaseDate: '2020-10-08',
-        coverArtUrl: 'https://example.com/carpe-diem.jpg',
+        coverArtUrl: '/images/placeholders/carpe-diem.jpg',
         description: 'Carpe Diem is the eleventh studio album by Nigerian rapper Olamide. It was released on October 8, 2020.',
         tracks: [],
         metadata: {

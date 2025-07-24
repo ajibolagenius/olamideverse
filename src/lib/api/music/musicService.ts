@@ -371,7 +371,7 @@ class MusicService {
                             albumId: 'spotify-album-id-1',
                             title: 'WO!!',
                             duration: 225,
-                            audioUrl: 'https://example.com/wo-preview.mp3',
+                            audioUrl: '/audio/placeholders/wo-preview.mp3',
                             position: 1,
                             metadata: {
                                 spotifyId: 'spotify-track-id-1',
@@ -386,7 +386,7 @@ class MusicService {
                             albumId: 'spotify-album-id-1',
                             title: 'Science Student',
                             duration: 252,
-                            audioUrl: 'https://example.com/science-student-preview.mp3',
+                            audioUrl: '/audio/placeholders/science-student-preview.mp3',
                             position: 2,
                             metadata: {
                                 spotifyId: 'spotify-track-id-2',

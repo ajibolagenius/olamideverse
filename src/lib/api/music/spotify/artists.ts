@@ -45,7 +45,7 @@ class SpotifyArtistsAPI {
             return {
                 name: 'Olamide',
                 id: 'spotify-artist-id',
-                images: [{ url: 'https://example.com/artist.jpg' }],
+                images: [{ url: '/images/placeholders/artist.jpg' }],
                 genres: ['afrobeats', 'nigerian hip hop'],
                 popularity: 75,
                 followers: {
@@ -66,7 +66,7 @@ class SpotifyArtistsAPI {
                     id: 'uy-scuti',
                     name: 'UY Scuti',
                     release_date: '2021-06-18',
-                    images: [{ url: 'https://example.com/uy-scuti.jpg' }],
+                    images: [{ url: '/images/albums/uy-scuti.jpg' }],
                     album_type: 'album',
                     total_tracks: 10
                 },
@@ -74,7 +74,7 @@ class SpotifyArtistsAPI {
                     id: 'carpe-diem',
                     name: 'Carpe Diem',
                     release_date: '2020-10-08',
-                    images: [{ url: 'https://example.com/carpe-diem.jpg' }],
+                    images: [{ url: '/images/placeholders/carpe-diem.jpg' }],
                     album_type: 'album',
                     total_tracks: 12
                 },

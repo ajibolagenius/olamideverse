@@ -142,7 +142,7 @@
     - Implement audio snippet selection with howler.js
     - Add visualization generation for snippets using Remotion
     - Create download and share functionality for social media platforms
-    - Implement "Share-a-snippet" feature for generating short audiograms
+    - Implement "Share-a-snippet" feature for generating short audiogram
     - Ensure proper attribution in shared content
     - _Requirements: 4.2, 3.1, 6.4_
 

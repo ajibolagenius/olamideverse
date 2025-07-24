@@ -33,6 +33,7 @@ const nextConfig: NextConfig = {
                 hostname: '**.ytimg.com',
                 pathname: '/**',
             },
+
         ],
     },
     webpack: (config, { isServer }) => {

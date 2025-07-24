@@ -59,7 +59,7 @@ class SpotifyClient {
             return {
                 name: 'Olamide',
                 id: 'spotify-artist-id',
-                images: [{ url: 'https://example.com/artist.jpg' }],
+                images: [{ url: '/images/placeholders/artist.jpg' }],
             };
         });
     }
@@ -75,13 +75,13 @@ class SpotifyClient {
                     id: 'uy-scuti',
                     name: 'UY Scuti',
                     release_date: '2021-06-18',
-                    images: [{ url: 'https://example.com/uy-scuti.jpg' }],
+                    images: [{ url: '/images/albums/uy-scuti.jpg' }],
                 },
                 {
                     id: 'carpe-diem',
                     name: 'Carpe Diem',
                     release_date: '2020-10-08',
-                    images: [{ url: 'https://example.com/carpe-diem.jpg' }],
+                    images: [{ url: '/images/placeholders/carpe-diem.jpg' }],
                 },
             ];
         });
@@ -97,7 +97,7 @@ class SpotifyClient {
                 id: albumId,
                 name: albumId === 'uy-scuti' ? 'UY Scuti' : 'Carpe Diem',
                 release_date: albumId === 'uy-scuti' ? '2021-06-18' : '2020-10-08',
-                images: [{ url: `https://example.com/${albumId}.jpg` }],
+                images: [{ url: `/images/placeholders/${albumId}.jpg` }],
                 artists: [{ id: 'artist-id', name: 'Olamide' }],
                 tracks: {
                     items: [
@@ -105,7 +105,7 @@ class SpotifyClient {
                             id: `${albumId}-track-1`,
                             name: 'Track 1',
                             duration_ms: 180000,
-                            preview_url: 'https://example.com/preview.mp3',
+                            preview_url: '/audio/placeholders/preview.mp3',
                             track_number: 1,
                             artists: [{ id: 'artist-id', name: 'Olamide' }],
                         },
@@ -113,7 +113,7 @@ class SpotifyClient {
                             id: `${albumId}-track-2`,
                             name: 'Track 2',
                             duration_ms: 210000,
-                            preview_url: 'https://example.com/preview.mp3',
+                            preview_url: '/audio/placeholders/preview.mp3',
                             track_number: 2,
                             artists: [{ id: 'artist-id', name: 'Olamide' }],
                         },
@@ -133,12 +133,12 @@ class SpotifyClient {
                 id: trackId,
                 name: 'Track Name',
                 duration_ms: 180000,
-                preview_url: 'https://example.com/preview.mp3',
+                preview_url: '/audio/placeholders/preview.mp3',
                 track_number: 1,
                 album: {
                     id: 'album-id',
                     name: 'Album Name',
-                    images: [{ url: 'https://example.com/album.jpg' }],
+                    images: [{ url: '/images/placeholders/album.jpg' }],
                 },
                 artists: [
                     {

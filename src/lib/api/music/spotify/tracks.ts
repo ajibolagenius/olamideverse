@@ -52,18 +52,18 @@ class SpotifyTracksAPI {
                 id: albumId,
                 name: albumId === 'uy-scuti' ? 'UY Scuti' : 'Carpe Diem',
                 release_date: albumId === 'uy-scuti' ? '2021-06-18' : '2020-10-08',
-                images: [{ url: `https://example.com/${albumId}.jpg` }],
+                images: [{ url: `/images/placeholders/${albumId}.jpg` }],
                 tracks: {
                     items: [
                         {
                             id: `${albumId}-track-1`,
                             name: 'Track 1',
                             duration_ms: 180000,
-                            preview_url: 'https://example.com/preview.mp3',
+                            preview_url: '/audio/placeholders/preview.mp3',
                             album: {
                                 id: albumId,
                                 name: albumId === 'uy-scuti' ? 'UY Scuti' : 'Carpe Diem',
-                                images: [{ url: `https://example.com/${albumId}.jpg` }],
+                                images: [{ url: `/images/placeholders/${albumId}.jpg` }],
                             },
                             artists: [
                                 {
@@ -76,11 +76,11 @@ class SpotifyTracksAPI {
                             id: `${albumId}-track-2`,
                             name: 'Track 2',
                             duration_ms: 210000,
-                            preview_url: 'https://example.com/preview.mp3',
+                            preview_url: '/audio/placeholders/preview.mp3',
                             album: {
                                 id: albumId,
                                 name: albumId === 'uy-scuti' ? 'UY Scuti' : 'Carpe Diem',
-                                images: [{ url: `https://example.com/${albumId}.jpg` }],
+                                images: [{ url: `/images/placeholders/${albumId}.jpg` }],
                             },
                             artists: [
                                 {
@@ -105,11 +105,11 @@ class SpotifyTracksAPI {
                 id: trackId,
                 name: 'Track Name',
                 duration_ms: 180000,
-                preview_url: 'https://example.com/preview.mp3',
+                preview_url: '/audio/placeholders/preview.mp3',
                 album: {
                     id: 'album-id',
                     name: 'Album Name',
-                    images: [{ url: 'https://example.com/album.jpg' }],
+                    images: [{ url: '/images/placeholders/album.jpg' }],
                 },
                 artists: [
                     {

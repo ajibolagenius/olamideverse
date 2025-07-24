@@ -17,7 +17,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export function AppProvider({ children }: { children: ReactNode }) {
     const [theme, setTheme] = useState<Theme>('system');
-    const [showLegalDisclaimer, setShowLegalDisclaimer] = useState(true);
+    const [showLegalDisclaimer, setShowLegalDisclaimer] = useState(false);
     const [acceptedLegalTerms, setAcceptedLegalTerms] = useState(false);
 
     return (
