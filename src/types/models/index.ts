@@ -163,6 +163,15 @@ export interface AlbumMetadata {
     era?: string;
     producer?: string[];
     recordLabel?: string;
+    totalTracks?: number;
+    totalDuration?: number;
+    language?: string;
+    credits?: {
+        producer?: string[];
+        executiveProducer?: string[];
+        mixedBy?: string[];
+        masteredBy?: string[];
+    };
     spotifyId?: string;
     youtubeId?: string;
     appleMusicId?: string;
