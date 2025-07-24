@@ -1,17 +1,46 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useMusicApi } from '@/hooks/useMusicApi';
+import { usePlayer } from '@/hooks/usePlayer';
+import type { Track } from '@/types/models';
 
 export default function AlbumDetailPage() {
     const params = useParams();
     const albumId = params.id as string;
     const { useAlbum } = useMusicApi();
     const { data: album, isLoading, error } = useAlbum(albumId);
+    const { play } = usePlayer();
+    const [_currentTrackIndex, _setCurrentTrackIndex] = useState<number>(0);
+
+    const _handlePlayTrack = (track: Track, index: number) => {
+        play(track);
+        _setCurrentTrackIndex(index);
+    };
+
+    const _handleNext = () => {
+        if (album && album.tracks.length > 0) {
+            const nextIndex = (_currentTrackIndex + 1) % album.tracks.length;
+            const nextTrack = album.tracks.find(t => t.position === nextIndex + 1);
+            if (nextTrack) {
+                _handlePlayTrack(nextTrack, nextIndex);
+            }
+        }
+    };
+
+    const _handlePrevious = () => {
+        if (album && album.tracks.length > 0) {
+            const prevIndex = _currentTrackIndex === 0 ? album.tracks.length - 1 : _currentTrackIndex - 1;
+            const prevTrack = album.tracks.find(t => t.position === prevIndex + 1);
+            if (prevTrack) {
+                _handlePlayTrack(prevTrack, prevIndex);
+            }
+        }
+    };
 
     if (isLoading) {
         return (

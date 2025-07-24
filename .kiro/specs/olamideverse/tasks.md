@@ -45,7 +45,7 @@
     - Ensure compliance with API terms of service
     - _Requirements: 1.3, 1.4, 6.2, 6.3, 8.2, 8.3_
 
-- [-] 3. Album Grid and Navigation
+- [x] 3. Album Grid and Navigation
   - [x] 3.1 Create responsive album grid component
     - Implement grid layout with Tailwind CSS
     - Add filtering and sorting functionality by year, genre, era, and mood
@@ -66,8 +66,8 @@
     - Ensure animations are performant on all devices
     - _Requirements: 3.1, 3.4, 8.2_
 
-- [ ] 4. Music Player Implementation
-  - [ ] 4.1 Create core music player component
+- [-] 4. Music Player Implementation
+  - [x] 4.1 Create core music player component
     - Implement playback controls (play, pause, skip) with howler.js
     - Add progress bar and volume controls
     - Create player state management

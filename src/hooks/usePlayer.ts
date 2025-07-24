@@ -10,6 +10,9 @@ interface PlayerState {
     progress: number;
     duration: number;
     source: MusicSource;
+    isLoading: boolean;
+    isBuffering: boolean;
+    error: string | null;
 }
 
 export function usePlayer() {
@@ -20,6 +23,9 @@ export function usePlayer() {
         progress: 0,
         duration: 0,
         source: MusicSource.SPOTIFY,
+        isLoading: false,
+        isBuffering: false,
+        error: null,
     });
 
     // Set up event listeners for the Howler player
@@ -45,6 +51,23 @@ export function usePlayer() {
             setState(prev => ({ ...prev, progress }));
         });
 
+        howlerPlayer.onLoad(() => {
+            setState(prev => ({ ...prev, isLoading: false, error: null }));
+        });
+
+        howlerPlayer.onLoadError((error) => {
+            setState(prev => ({
+                ...prev,
+                isLoading: false,
+                isBuffering: false,
+                error: error.message
+            }));
+        });
+
+        howlerPlayer.onBuffering((isBuffering) => {
+            setState(prev => ({ ...prev, isBuffering }));
+        });
+
         // Set initial volume
         howlerPlayer.setVolume(state.volume);
 
@@ -57,9 +80,24 @@ export function usePlayer() {
             howlerPlayer.onEnd(() => { });
             howlerPlayer.onProgress(() => { });
         };
+    }, []); // Remove state.volume dependency to avoid infinite re-renders
+
+    // Handle volume changes separately
+    useEffect(() => {
+        howlerPlayer.setVolume(state.volume);
     }, [state.volume]);
 
     const play = useCallback((track: Track, source: MusicSource = MusicSource.SPOTIFY) => {
+        // Clear any previous errors
+        setState(prev => ({
+            ...prev,
+            error: null,
+            isLoading: true,
+            currentTrack: track,
+            source,
+            duration: track.duration,
+        }));
+
         // Load and play the track
         howlerPlayer.load(track);
         howlerPlayer.play();
@@ -67,11 +105,8 @@ export function usePlayer() {
         // Update state
         setState(prev => ({
             ...prev,
-            currentTrack: track,
             isPlaying: true,
             progress: 0,
-            duration: track.duration,
-            source,
         }));
     }, []);
 
@@ -127,6 +162,41 @@ export function usePlayer() {
         return musicService.getLyrics(state.currentTrack.title, artist);
     }, [state.currentTrack]);
 
+    /**
+     * Crossfade to a new track
+     * @param track New track to play
+     * @param source Music source
+     * @param fadeDuration Crossfade duration in milliseconds
+     */
+    const crossfade = useCallback((track: Track, source: MusicSource = MusicSource.SPOTIFY, fadeDuration: number = 2000) => {
+        setState(prev => ({
+            ...prev,
+            error: null,
+            isLoading: true,
+            currentTrack: track,
+            source,
+            duration: track.duration,
+        }));
+
+        howlerPlayer.crossfade(track, fadeDuration);
+    }, []);
+
+    /**
+     * Skip forward or backward by a specific amount
+     * @param seconds Number of seconds to skip (positive for forward, negative for backward)
+     */
+    const skip = useCallback((seconds: number) => {
+        const newProgress = Math.max(0, Math.min(state.duration, state.progress + seconds));
+        seek(newProgress);
+    }, [state.progress, state.duration, seek]);
+
+    /**
+     * Clear any playback errors
+     */
+    const clearError = useCallback(() => {
+        setState(prev => ({ ...prev, error: null }));
+    }, []);
+
     return {
         ...state,
         play,
@@ -135,6 +205,9 @@ export function usePlayer() {
         stop,
         setVolume,
         seek,
+        skip,
+        crossfade,
+        clearError,
         getEmbedUrl,
         getYouTubeVideo,
         getLyrics,
@@ -145,5 +218,9 @@ export function usePlayer() {
                 resume();
             }
         },
+        // Convenience getters
+        isLoaded: howlerPlayer.isLoaded(),
+        canPlay: !state.isLoading && !state.error,
+        hasError: !!state.error,
     };
 }
