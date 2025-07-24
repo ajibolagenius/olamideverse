@@ -60,7 +60,7 @@
     - Use Framer Motion for smooth transitions between views
     - _Requirements: 1.2, 3.2, 3.3_
 
-  - [ ] 3.3 Add animations and transitions
+  - [x] 3.3 Add animations and transitions
     - Implement GSAP animations for page transitions
     - Add subtle hover and interaction animations using anime.js
     - Ensure animations are performant on all devices

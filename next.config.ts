@@ -36,7 +36,7 @@ const nextConfig: NextConfig = {
         ],
     },
     experimental: {
-        serverComponentsExternalPackages: ['three'],
+        // serverExternalPackages: ['three'], // Removed as it's not supported in this Next.js version
     },
     // Configure pageExtensions to include md and mdx
     pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],

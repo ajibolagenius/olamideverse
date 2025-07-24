@@ -1,14 +1,16 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useMusicApi } from '@/hooks/useMusicApi';
 import { useAlbumFilters } from '@/hooks/useAlbumFilters';
+import { pageTransitions, performanceUtils } from '@/lib/animations';
 import AlbumCard from './AlbumCard';
 import AlbumFilters from './AlbumFilters';
 
 export const AlbumGrid: React.FC = () => {
     const { useAlbums } = useMusicApi();
     const { data: albums = [], isLoading, error } = useAlbums();
+    const gridRef = useRef<HTMLDivElement>(null);
 
     const {
         years,
@@ -25,6 +27,22 @@ export const AlbumGrid: React.FC = () => {
         setSelectedMood,
         filteredAlbums,
     } = useAlbumFilters(albums);
+
+    // Animate grid items when they load or filter changes
+    useEffect(() => {
+        const grid = gridRef.current;
+        if (!grid || isLoading || filteredAlbums.length === 0) return;
+
+        const albumCards = grid.querySelectorAll('.album-card-container');
+
+        performanceUtils.conditionalAnimate(() => {
+            pageTransitions.staggerIn(
+                Array.from(albumCards) as HTMLElement[],
+                performanceUtils.getOptimalDuration(0.6),
+                0.1
+            );
+        });
+    }, [filteredAlbums, isLoading]);
 
     if (isLoading) {
         return (
@@ -79,9 +97,16 @@ export const AlbumGrid: React.FC = () => {
                     </button>
                 </div>
             ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div
+                    ref={gridRef}
+                    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+                >
                     {filteredAlbums.map((album) => (
-                        <div key={album.id} className="album-card-container">
+                        <div
+                            key={album.id}
+                            className="album-card-container"
+                            style={{ opacity: 0, transform: 'translateY(30px)' }}
+                        >
                             <AlbumCard album={album} />
                         </div>
                     ))}

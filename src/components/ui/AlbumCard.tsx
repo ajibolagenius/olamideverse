@@ -1,10 +1,11 @@
 'use client';
 
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Atropos from 'atropos/react';
 import 'atropos/css';
+import { hoverAnimations, interactionAnimations, performanceUtils } from '@/lib/animations';
 import type { Album } from '@/types/models';
 
 interface AlbumCardProps {
@@ -12,6 +13,52 @@ interface AlbumCardProps {
 }
 
 export const AlbumCard: React.FC<AlbumCardProps> = ({ album }) => {
+    const cardRef = useRef<HTMLDivElement>(null);
+    const overlayRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const card = cardRef.current;
+        const overlay = overlayRef.current;
+
+        if (!card || !overlay) return;
+
+        const handleMouseEnter = () => {
+            performanceUtils.conditionalAnimate(() => {
+                hoverAnimations.liftHover(card);
+                // Use CSS transition for overlay fade
+                if (overlay) {
+                    overlay.style.opacity = '1';
+                }
+            });
+        };
+
+        const handleMouseLeave = () => {
+            performanceUtils.conditionalAnimate(() => {
+                hoverAnimations.liftReset(card);
+                // Use CSS transition for overlay fade
+                if (overlay) {
+                    overlay.style.opacity = '0';
+                }
+            });
+        };
+
+        const handleClick = (_e: MouseEvent) => {
+            performanceUtils.conditionalAnimate(() => {
+                interactionAnimations.buttonPress(card);
+            });
+        };
+
+        card.addEventListener('mouseenter', handleMouseEnter);
+        card.addEventListener('mouseleave', handleMouseLeave);
+        card.addEventListener('click', handleClick);
+
+        return () => {
+            card.removeEventListener('mouseenter', handleMouseEnter);
+            card.removeEventListener('mouseleave', handleMouseLeave);
+            card.removeEventListener('click', handleClick);
+        };
+    }, []);
+
     return (
         <Link href={`/albums/${album.id}`} className="block">
             <Atropos
@@ -20,7 +67,10 @@ export const AlbumCard: React.FC<AlbumCardProps> = ({ album }) => {
                 shadow={false}
                 rotateTouch={false}
             >
-                <div className="bg-secondary-100 dark:bg-secondary-800 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
+                <div
+                    ref={cardRef}
+                    className="bg-secondary-100 dark:bg-secondary-800 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl album-card"
+                >
                     <div className="relative aspect-square">
                         <Image
                             src={album.coverArtUrl}
@@ -32,7 +82,8 @@ export const AlbumCard: React.FC<AlbumCardProps> = ({ album }) => {
                             priority={false}
                         />
                         <div
-                            className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4"
+                            ref={overlayRef}
+                            className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 flex flex-col justify-end p-4 album-overlay"
                             data-atropos-offset="3"
                         >
                             <span className="text-xs text-white/80">{new Date(album.releaseDate).getFullYear()}</span>

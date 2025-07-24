@@ -1,16 +1,57 @@
+'use client';
+
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 import { AppProvider } from "@/context/AppContext";
 import { QueryProvider } from "@/context/QueryContext";
 import MainLayout from "@/components/layout/MainLayout";
+import { layoutAnimations, pageTransitions, performanceUtils } from "@/lib/animations";
 
 export default function Home() {
+    const heroRef = useRef<HTMLElement>(null);
+    const featuresRef = useRef<HTMLElement>(null);
+    const featuredAlbumRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        const hero = heroRef.current;
+        const features = featuresRef.current;
+        const featuredAlbum = featuredAlbumRef.current;
+
+        if (hero) {
+            performanceUtils.conditionalAnimate(() => {
+                layoutAnimations.heroAnimation(hero);
+            });
+        }
+
+        if (features) {
+            const featureCards = features.querySelectorAll('.feature-card');
+            performanceUtils.conditionalAnimate(() => {
+                pageTransitions.staggerIn(
+                    Array.from(featureCards) as HTMLElement[],
+                    performanceUtils.getOptimalDuration(0.8),
+                    0.2
+                );
+            });
+        }
+
+        if (featuredAlbum) {
+            performanceUtils.conditionalAnimate(() => {
+                pageTransitions.fadeIn(featuredAlbum, performanceUtils.getOptimalDuration(1.0));
+            });
+        }
+    }, []);
+
     return (
         <QueryProvider>
             <AppProvider>
                 <MainLayout>
                     <div className="relative">
                         {/* Hero Section */}
-                        <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-secondary-900 via-secondary-800 to-primary-900 overflow-hidden">
+                        <section
+                            ref={heroRef}
+                            className="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-secondary-900 via-secondary-800 to-primary-900 overflow-hidden"
+                            style={{ opacity: 0, transform: 'scale(1.1)' }}
+                        >
                             <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary-500 to-transparent"></div>
 
                             <div className="container mx-auto px-4 py-16 relative z-10 text-center">
@@ -23,13 +64,13 @@ export default function Home() {
                                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                     <Link
                                         href="/albums"
-                                        className="px-8 py-3 bg-primary hover:bg-primary-600 text-white rounded-full transition-colors font-medium text-lg"
+                                        className="px-8 py-3 bg-primary hover:bg-primary-600 text-white rounded-full transition-colors font-medium text-lg hero-button"
                                     >
                                         Explore Albums
                                     </Link>
                                     <Link
                                         href="/story"
-                                        className="px-8 py-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors font-medium text-lg backdrop-blur-sm"
+                                        className="px-8 py-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors font-medium text-lg backdrop-blur-sm hero-button"
                                     >
                                         Enter Story Mode
                                     </Link>
@@ -38,12 +79,12 @@ export default function Home() {
                         </section>
 
                         {/* Features Section */}
-                        <section className="py-16 bg-background">
+                        <section ref={featuresRef} className="py-16 bg-background">
                             <div className="container mx-auto px-4">
                                 <h2 className="text-3xl font-bold mb-12 text-center">Experience the Legacy</h2>
 
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                                    <div className="bg-secondary-50 dark:bg-secondary-800 p-6 rounded-lg">
+                                    <div className="bg-secondary-50 dark:bg-secondary-800 p-6 rounded-lg feature-card" style={{ opacity: 0, transform: 'translateY(30px)' }}>
                                         <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mb-4">
                                             <span className="text-2xl text-primary">🎵</span>
                                         </div>
@@ -53,7 +94,7 @@ export default function Home() {
                                         </p>
                                     </div>
 
-                                    <div className="bg-secondary-50 dark:bg-secondary-800 p-6 rounded-lg">
+                                    <div className="bg-secondary-50 dark:bg-secondary-800 p-6 rounded-lg feature-card" style={{ opacity: 0, transform: 'translateY(30px)' }}>
                                         <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mb-4">
                                             <span className="text-2xl text-primary">📖</span>
                                         </div>
@@ -63,7 +104,7 @@ export default function Home() {
                                         </p>
                                     </div>
 
-                                    <div className="bg-secondary-50 dark:bg-secondary-800 p-6 rounded-lg">
+                                    <div className="bg-secondary-50 dark:bg-secondary-800 p-6 rounded-lg feature-card" style={{ opacity: 0, transform: 'translateY(30px)' }}>
                                         <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mb-4">
                                             <span className="text-2xl text-primary">🎬</span>
                                         </div>
@@ -77,7 +118,11 @@ export default function Home() {
                         </section>
 
                         {/* Featured Album Section */}
-                        <section className="py-16 bg-secondary-50 dark:bg-secondary-900">
+                        <section
+                            ref={featuredAlbumRef}
+                            className="py-16 bg-secondary-50 dark:bg-secondary-900"
+                            style={{ opacity: 0, transform: 'translateY(20px)' }}
+                        >
                             <div className="container mx-auto px-4">
                                 <h2 className="text-3xl font-bold mb-12 text-center">Featured Album</h2>
 
@@ -101,7 +146,7 @@ export default function Home() {
                                         </p>
                                         <Link
                                             href="/albums/uy-scuti"
-                                            className="px-6 py-2 bg-primary hover:bg-primary-600 text-white rounded-full transition-colors inline-block"
+                                            className="px-6 py-2 bg-primary hover:bg-primary-600 text-white rounded-full transition-colors inline-block featured-album-button"
                                         >
                                             Explore Album
                                         </Link>

@@ -1,13 +1,15 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
 
   /* Custom theme colors */
-  --color-primary: #FF5500;
-  --color-secondary: #1A1A1A;
-  --color-accent: #00CC99;
+  --color-primary: #ff5500;
+  --color-secondary: #1a1a1a;
+  --color-accent: #00cc99;
 }
 
 @theme inline {
@@ -25,9 +27,21 @@
 }
 
 @layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #171717;
+  }
+
+  .dark {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+
   body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    @apply bg-white text-black dark:bg-black dark:text-white;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
   }
 }
 
@@ -37,7 +51,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-secondary-50 dark:bg-secondary-900;
+  @apply bg-gray-100 dark:bg-gray-900;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -46,4 +60,63 @@
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-primary;
+}
+
+/* Animation styles */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  transform: scale(0);
+  pointer-events: none;
+  width: 20px;
+  height: 20px;
+  margin-left: -10px;
+  margin-top: -10px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Performance optimizations for animations */
+.album-card,
+.album-overlay,
+.feature-card,
+.hero-button,
+.featured-album-button {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Smooth transitions for interactive elements */
+.hero-button,
+.featured-album-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-button:hover,
+.featured-album-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Album card hover effects */
+.album-card {
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.album-overlay {
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
