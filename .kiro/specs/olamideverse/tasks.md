@@ -74,7 +74,7 @@
     - Use Motion for React animation abstractions
     - _Requirements: 1.3, 1.5, 8.3_
 
-  - [ ] 4.2 Implement lyrics display
+  - [x] 4.2 Implement lyrics display
     - Create synchronized lyrics component
     - Add lyrics fetching and parsing from Genius/MusixMatch API
     - Implement highlighting for current lyric line using anime.js
@@ -82,7 +82,7 @@
     - Ensure proper attribution for lyrics content
     - _Requirements: 1.4, 3.2, 6.4_
 
-  - [ ] 4.3 Add audio visualizations
+  - [x] 4.3 Add audio visualizations
     - Implement basic waveform visualization with Konva.js
     - Create Three.js visualization component for 3D album discs
     - Add audio analysis for visualization data

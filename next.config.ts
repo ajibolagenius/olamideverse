@@ -35,6 +35,23 @@ const nextConfig: NextConfig = {
             },
         ],
     },
+    webpack: (config, { isServer }) => {
+        // Handle Konva.js for client-side only
+        if (!isServer) {
+            config.resolve.fallback = {
+                ...config.resolve.fallback,
+                canvas: false,
+                fs: false,
+            };
+        }
+
+        // Exclude Konva from server-side bundle
+        if (isServer) {
+            config.externals = [...(config.externals || []), 'konva', 'react-konva'];
+        }
+
+        return config;
+    },
     experimental: {
         // serverExternalPackages: ['three'], // Removed as it's not supported in this Next.js version
     },
