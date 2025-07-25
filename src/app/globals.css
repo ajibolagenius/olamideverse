@@ -1,41 +1,71 @@
 @import "tailwindcss";
+@import "../styles/immersive-theme.css";
 
 @theme {
-  --color-primary-50: #fff2e5;
-  --color-primary-100: #ffe5cc;
-  --color-primary-200: #ffcc99;
-  --color-primary-300: #ffb266;
-  --color-primary-400: #ff9933;
-  --color-primary-500: #ff8000;
-  --color-primary-600: #cc6600;
-  --color-primary-700: #994c00;
-  --color-primary-800: #663300;
-  --color-primary-900: #331900;
-  --color-primary: #ff5500;
+  /* Updated Web3/NFT Color Palette */
+  --color-primary-50: #f0f3ff;
+  --color-primary-100: #e0e7ff;
+  --color-primary-200: #c7d2fe;
+  --color-primary-300: #a5b4fc;
+  --color-primary-400: #818cf8;
+  --color-primary-500: #6366f1;
+  --color-primary-600: #4f46e5;
+  --color-primary-700: #4338ca;
+  --color-primary-800: #3730a3;
+  --color-primary-900: #312e81;
+  --color-primary: #6366f1;
 
-  --color-secondary-50: #f2f2f2;
-  --color-secondary-100: #e6e6e6;
-  --color-secondary-200: #cccccc;
-  --color-secondary-300: #b3b3b3;
-  --color-secondary-400: #999999;
-  --color-secondary-500: #808080;
-  --color-secondary-600: #666666;
-  --color-secondary-700: #4d4d4d;
-  --color-secondary-800: #333333;
-  --color-secondary-900: #1a1a1a;
-  --color-secondary: #1a1a1a;
+  /* Cyber Secondary Colors */
+  --color-secondary-50: #f8fafc;
+  --color-secondary-100: #f1f5f9;
+  --color-secondary-200: #e2e8f0;
+  --color-secondary-300: #cbd5e1;
+  --color-secondary-400: #94a3b8;
+  --color-secondary-500: #64748b;
+  --color-secondary-600: #475569;
+  --color-secondary-700: #334155;
+  --color-secondary-800: #1e293b;
+  --color-secondary-900: #0f172a;
+  --color-secondary-950: #020617;
+  --color-secondary: #0f172a;
 
-  --color-accent-50: #e5fff7;
-  --color-accent-100: #ccffef;
-  --color-accent-200: #99ffdf;
-  --color-accent-300: #66ffcf;
-  --color-accent-400: #33ffbf;
-  --color-accent-500: #00ffaf;
-  --color-accent-600: #00cc8c;
-  --color-accent-700: #009969;
-  --color-accent-800: #006646;
-  --color-accent-900: #003323;
-  --color-accent: #00cc99;
+  /* Neon Accent Colors */
+  --color-accent-50: #ecfeff;
+  --color-accent-100: #cffafe;
+  --color-accent-200: #a5f3fc;
+  --color-accent-300: #67e8f9;
+  --color-accent-400: #22d3ee;
+  --color-accent-500: #06b6d4;
+  --color-accent-600: #0891b2;
+  --color-accent-700: #0e7490;
+  --color-accent-800: #155e75;
+  --color-accent-900: #164e63;
+  --color-accent: #06b6d4;
+
+  /* Additional Web3 Colors */
+  --color-neon-pink-50: #fdf2f8;
+  --color-neon-pink-100: #fce7f3;
+  --color-neon-pink-200: #fbcfe8;
+  --color-neon-pink-300: #f9a8d4;
+  --color-neon-pink-400: #f472b6;
+  --color-neon-pink-500: #ec4899;
+  --color-neon-pink-600: #db2777;
+  --color-neon-pink-700: #be185d;
+  --color-neon-pink-800: #9d174d;
+  --color-neon-pink-900: #831843;
+  --color-neon-pink: #ec4899;
+
+  --color-cyber-green-50: #ecfdf5;
+  --color-cyber-green-100: #d1fae5;
+  --color-cyber-green-200: #a7f3d0;
+  --color-cyber-green-300: #6ee7b7;
+  --color-cyber-green-400: #34d399;
+  --color-cyber-green-500: #10b981;
+  --color-cyber-green-600: #059669;
+  --color-cyber-green-700: #047857;
+  --color-cyber-green-800: #065f46;
+  --color-cyber-green-900: #064e3b;
+  --color-cyber-green: #10b981;
 
   --font-family-sans: var(--font-geist-sans), system-ui, sans-serif;
   --font-family-mono: var(--font-geist-mono), monospace;

@@ -6,6 +6,18 @@ import { AppProvider } from "@/context/AppContext";
 import { QueryProvider } from "@/context/QueryContext";
 import MainLayout from "@/components/layout/MainLayout";
 import { layoutAnimations, pageTransitions, performanceUtils } from "@/lib/animations";
+import ImmersiveCard from "@/components/ui/ImmersiveCard";
+import CyberButton from "@/components/ui/CyberButton";
+import GlitchText from "@/components/ui/GlitchText";
+import StatsCard from "@/components/ui/StatsCard";
+import { 
+  MusicNote, 
+  Play, 
+  Headphones,
+  Waveform,
+  Crown,
+  Lightning
+} from "@phosphor-icons/react/dist/ssr";
 
 export default function Home() {
     const heroRef = useRef<HTMLElement>(null);
@@ -71,7 +83,26 @@ export default function Home() {
         <QueryProvider>
             <AppProvider>
                 <MainLayout>
-                    <div className="relative overflow-hidden">
+                    <div className="relative overflow-hidden immersive-theme">
+                        {/* Cyber Grid Background */}
+                        <div className="cyber-grid" />
+                        
+                        {/* Floating Particles */}
+                        <div className="particles fixed inset-0 pointer-events-none">
+                            {[...Array(20)].map((_, i) => (
+                                <div
+                                    key={i}
+                                    className="particle"
+                                    style={{
+                                        left: `${Math.random() * 100}%`,
+                                        animationDelay: `${Math.random() * 8}s`,
+                                        backgroundColor: i % 4 === 0 ? '#6366f1' : 
+                                                       i % 4 === 1 ? '#06b6d4' : 
+                                                       i % 4 === 2 ? '#ec4899' : '#10b981'
+                                    }}
+                                />
+                            ))}
+                        </div>
                         {/* Hero Section - Redesigned with Bold Typography */}
                         <section
                             ref={heroRef}
@@ -109,8 +140,15 @@ export default function Home() {
                                         <h1 className="text-7xl md:text-9xl lg:text-[12rem] font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-primary to-accent leading-none tracking-tighter mb-4">
                                             Discover
                                         </h1>
-                                        <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-black text-transparent bg-clip-text bg-gradient-to-r from-accent via-white to-primary leading-none tracking-tighter">
-                                            OLAMIDE
+                                        <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-black leading-none tracking-tighter">
+                                            <GlitchText 
+                                                color="primary"
+                                                intensity="medium"
+                                                trigger="auto"
+                                                className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-white to-primary"
+                                            >
+                                                OLAMIDE
+                                            </GlitchText>
                                         </h1>
                                     </div>
 
@@ -125,99 +163,130 @@ export default function Home() {
 
                                     {/* Enhanced Action Buttons */}
                                     <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                                        <Link
+                                        <CyberButton
                                             href="/albums"
-                                            className="group relative px-12 py-4 bg-primary hover:bg-primary-600 text-white rounded-full transition-all duration-300 font-semibold text-lg hero-button transform hover:scale-105 hover:shadow-xl hover:shadow-primary/25"
+                                            variant="primary"
+                                            size="lg"
+                                            glowColor="purple"
+                                            icon={<Play weight="duotone" />}
+                                            iconPosition="left"
                                         >
-                                            <span className="relative z-10">Explore Albums</span>
-                                            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary-400 to-primary-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                        </Link>
-                                        <Link
+                                            Explore Albums
+                                        </CyberButton>
+                                        <CyberButton
                                             href="/story"
-                                            className="group px-12 py-4 bg-white/5 hover:bg-white/10 text-white rounded-full transition-all duration-300 font-semibold text-lg backdrop-blur-md border border-white/20 hover:border-white/40 hero-button transform hover:scale-105"
+                                            variant="ghost"
+                                            size="lg"
+                                            glowColor="cyan"
+                                            icon={<Lightning weight="duotone" />}
+                                            iconPosition="right"
                                         >
                                             Enter Story Mode
-                                        </Link>
+                                        </CyberButton>
                                     </div>
                                 </div>
                             </div>
                         </section>
 
-                        {/* Stats Section - New Addition */}
-                        <section ref={statsRef} className="py-20 bg-gradient-to-r from-secondary-950 via-black to-secondary-950">
-                            <div className="container mx-auto px-6">
-                                <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                                    <div className="stat-item text-center" style={{ opacity: 1, transform: 'translateY(0px)' }}>
-                                        <div className="text-4xl md:text-5xl font-black text-primary mb-2">15+</div>
-                                        <div className="text-white/70 font-medium">Studio Albums</div>
-                                    </div>
-                                    <div className="stat-item text-center" style={{ opacity: 1, transform: 'translateY(0px)' }}>
-                                        <div className="text-4xl md:text-5xl font-black text-accent mb-2">100M+</div>
-                                        <div className="text-white/70 font-medium">Streams</div>
-                                    </div>
-                                    <div className="stat-item text-center" style={{ opacity: 1, transform: 'translateY(0px)' }}>
-                                        <div className="text-4xl md:text-5xl font-black text-primary mb-2">2010</div>
-                                        <div className="text-white/70 font-medium">Career Start</div>
-                                    </div>
-                                    <div className="stat-item text-center" style={{ opacity: 1, transform: 'translateY(0px)' }}>
-                                        <div className="text-4xl md:text-5xl font-black text-accent mb-2">YBNL</div>
-                                        <div className="text-white/70 font-medium">Label Founder</div>
-                                    </div>
+                        {/* Stats Section - Enhanced with Immersive Cards */}
+                        <section ref={statsRef} className="py-20 bg-gradient-to-r from-secondary-950 via-secondary-900 to-secondary-950 relative">
+                            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
+                            <div className="container mx-auto px-6 relative z-10">
+                                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                                    <StatsCard
+                                        title="Studio Albums"
+                                        value="15+"
+                                        icon={<MusicNote weight="duotone" />}
+                                        color="primary"
+                                        trend="up"
+                                        trendValue="+3"
+                                        animated
+                                        glitch
+                                    />
+                                    <StatsCard
+                                        title="Total Streams"
+                                        value="100M+"
+                                        icon={<Headphones weight="duotone" />}
+                                        color="accent"
+                                        trend="up"
+                                        trendValue="+25M"
+                                        animated
+                                    />
+                                    <StatsCard
+                                        title="Career Start"
+                                        value="2010"
+                                        icon={<Waveform weight="duotone" />}
+                                        color="neon-pink"
+                                        trend="neutral"
+                                        animated
+                                    />
+                                    <StatsCard
+                                        title="Label"
+                                        value="YBNL"
+                                        icon={<Crown weight="duotone" />}
+                                        color="cyber-green"
+                                        trend="up"
+                                        trendValue="Growing"
+                                        animated
+                                        glitch
+                                    />
                                 </div>
                             </div>
                         </section>
 
                         {/* Features Section - Enhanced Cards */}
-                        <section ref={featuresRef} className="py-24 bg-gradient-to-br from-background via-secondary-50/50 to-background">
-                            <div className="container mx-auto px-6">
+                        <section ref={featuresRef} className="py-24 bg-gradient-to-br from-secondary-950 via-secondary-900 to-secondary-950 relative">
+                            <div className="absolute inset-0">
+                                <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 blur-3xl" />
+                                <div className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-gradient-to-r from-neon-pink/5 to-cyber-green/5 blur-3xl" />
+                            </div>
+                            
+                            <div className="container mx-auto px-6 relative z-10">
                                 <div className="text-center mb-16">
-                                    <h2 className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-secondary-800 to-primary mb-4">
+                                    <h2 className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-primary mb-4">
                                         Experience the Legacy
                                     </h2>
-                                    <p className="text-xl text-secondary-600 max-w-2xl mx-auto">
+                                    <p className="text-xl text-white/70 max-w-2xl mx-auto">
                                         Discover Olamide&apos;s artistic journey through multiple immersive mediums
                                     </p>
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                                    <div className="feature-card group relative p-8 bg-white/80 dark:bg-secondary-800/80 backdrop-blur-sm rounded-2xl border border-secondary-200/50 dark:border-secondary-700/50 hover:border-primary/30 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 transform hover:-translate-y-2" style={{ opacity: 1, transform: 'translateY(0px)' }}>
-                                        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                        <div className="relative z-10">
-                                            <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary-600 rounded-2xl flex items-center justify-center mb-6 transform group-hover:scale-110 transition-transform duration-300">
-                                                <span className="text-3xl">🎵</span>
+                                    <ImmersiveCard variant="cyber" glowColor="purple" className="feature-card">
+                                        <div className="text-center">
+                                            <div className="w-16 h-16 bg-gradient-to-br from-primary-600 to-primary-400 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                                                <MusicNote weight="duotone" size={32} className="text-white" />
                                             </div>
-                                            <h3 className="text-2xl font-bold mb-4 text-secondary-900 dark:text-white">Complete Discography</h3>
-                                            <p className="text-secondary-600 dark:text-secondary-300 leading-relaxed">
+                                            <h3 className="text-2xl font-bold mb-4 text-white">Complete Discography</h3>
+                                            <p className="text-white/70 leading-relaxed">
                                                 Browse and listen to Olamide&apos;s entire music collection with high-quality playback and synchronized lyrics.
                                             </p>
                                         </div>
-                                    </div>
+                                    </ImmersiveCard>
 
-                                    <div className="feature-card group relative p-8 bg-white/80 dark:bg-secondary-800/80 backdrop-blur-sm rounded-2xl border border-secondary-200/50 dark:border-secondary-700/50 hover:border-accent/30 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 transform hover:-translate-y-2" style={{ opacity: 1, transform: 'translateY(0px)' }}>
-                                        <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                        <div className="relative z-10">
-                                            <div className="w-16 h-16 bg-gradient-to-br from-accent to-accent-600 rounded-2xl flex items-center justify-center mb-6 transform group-hover:scale-110 transition-transform duration-300">
-                                                <span className="text-3xl">📖</span>
+                                    <ImmersiveCard variant="cyber" glowColor="cyan" className="feature-card">
+                                        <div className="text-center">
+                                            <div className="w-16 h-16 bg-gradient-to-br from-accent-600 to-accent-400 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                                                <Lightning weight="duotone" size={32} className="text-white" />
                                             </div>
-                                            <h3 className="text-2xl font-bold mb-4 text-secondary-900 dark:text-white">Immersive Stories</h3>
-                                            <p className="text-secondary-600 dark:text-secondary-300 leading-relaxed">
+                                            <h3 className="text-2xl font-bold mb-4 text-white">Immersive Stories</h3>
+                                            <p className="text-white/70 leading-relaxed">
                                                 Dive deep into the cultural context and artistic vision behind each album with rich media storytelling.
                                             </p>
                                         </div>
-                                    </div>
+                                    </ImmersiveCard>
 
-                                    <div className="feature-card group relative p-8 bg-white/80 dark:bg-secondary-800/80 backdrop-blur-sm rounded-2xl border border-secondary-200/50 dark:border-secondary-700/50 hover:border-primary/30 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 transform hover:-translate-y-2" style={{ opacity: 1, transform: 'translateY(0px)' }}>
-                                        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                        <div className="relative z-10">
-                                            <div className="w-16 h-16 bg-gradient-to-br from-secondary-700 to-secondary-800 rounded-2xl flex items-center justify-center mb-6 transform group-hover:scale-110 transition-transform duration-300">
-                                                <span className="text-3xl">🎬</span>
+                                    <ImmersiveCard variant="cyber" glowColor="pink" className="feature-card">
+                                        <div className="text-center">
+                                            <div className="w-16 h-16 bg-gradient-to-br from-neon-pink-600 to-neon-pink-400 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                                                <Crown weight="duotone" size={32} className="text-white" />
                                             </div>
-                                            <h3 className="text-2xl font-bold mb-4 text-secondary-900 dark:text-white">Media Gallery</h3>
-                                            <p className="text-secondary-600 dark:text-secondary-300 leading-relaxed">
+                                            <h3 className="text-2xl font-bold mb-4 text-white">Media Gallery</h3>
+                                            <p className="text-white/70 leading-relaxed">
                                                 Explore videos, interviews, and rare content in our curated media collection celebrating Olamide&apos;s career.
                                             </p>
                                         </div>
-                                    </div>
+                                    </ImmersiveCard>
                                 </div>
                             </div>
                         </section>
