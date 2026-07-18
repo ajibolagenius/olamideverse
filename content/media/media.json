@@ -1,0 +1,56 @@
+[
+  {
+    "id": "eni-duro-video",
+    "title": "Eni Duro",
+    "era": "the-upstart",
+    "year": 2011,
+    "type": "music-video",
+    "youtubeId": null,
+    "note": "DRAFT — the breakout single's video; embed ID to be verified in the content pass."
+  },
+  {
+    "id": "first-of-all-video",
+    "title": "First of All",
+    "era": "first-of-all",
+    "year": 2012,
+    "type": "music-video",
+    "youtubeId": null,
+    "note": "DRAFT — the YBNL-era anthem; embed ID to be verified in the content pass."
+  },
+  {
+    "id": "wo-video",
+    "title": "Wo!!",
+    "era": "street-king-run",
+    "year": 2017,
+    "type": "music-video",
+    "youtubeId": null,
+    "note": "DRAFT — Lagos Nawa era street anthem; embed ID to be verified in the content pass."
+  },
+  {
+    "id": "olic-live",
+    "title": "OLIC — Olamide Live In Concert",
+    "era": "street-king-run",
+    "year": 2015,
+    "type": "live",
+    "youtubeId": null,
+    "note": "DRAFT — a December OLIC moment; clip to be selected in the content pass."
+  },
+  {
+    "id": "reinvention-interview",
+    "title": "On changing the sound",
+    "era": "reinvention",
+    "year": 2020,
+    "type": "interview",
+    "youtubeId": null,
+    "note": "DRAFT — interview covering the Carpe Diem-era shift; source to be selected in the content pass."
+  },
+  {
+    "id": "elder-statesman-interview",
+    "title": "Building YBNL's second generation",
+    "era": "elder-statesman",
+    "year": 2022,
+    "type": "interview",
+    "youtubeId": null,
+    "note": "DRAFT — on signing and raising Fireboy DML and Asake; source to be selected in the content pass."
+  }
+]
