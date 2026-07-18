@@ -1,0 +1,27 @@
+<!-- @dsCard group="Colors" name="Palette" subtitle="Danfo / Adire / Ink / Paper / Oxide / Palm" width="820" height="560" -->
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap');
+  :root{--danfo:#F5B301;--adire:#1F2A63;--ink:#181410;--paper:#F4EFE6;--oxide:#C8451B;--palm:#2F5233;--paper-dim:#E9E2D3;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);padding:32px}
+  h1{font-family:'Anton',Impact,sans-serif;font-size:2rem;text-transform:uppercase;letter-spacing:.01em;margin-bottom:6px}
+  .note{font-size:.85rem;color:#4A423A;margin-bottom:24px;max-width:60ch}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .swatch{border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink)}
+  .chip{height:96px}
+  .meta{background:#fff;border-top:3px solid var(--ink);padding:10px 12px}
+  .meta b{display:block;font-size:.95rem;text-transform:uppercase;letter-spacing:.04em}
+  .meta span{font-size:.8rem;color:#4A423A;font-variant-numeric:tabular-nums}
+  .meta i{display:block;font-style:normal;font-size:.75rem;color:#4A423A;margin-top:2px}
+</style>
+<h1>Color</h1>
+<p class="note">Paper &amp; ink are the base. Danfo yellow is the signature — one dominant yellow element per viewport. Yellow is a ground/graphic color, never text-on-paper.</p>
+<div class="grid">
+  <div class="swatch"><div class="chip" style="background:#F5B301"></div><div class="meta"><b>Danfo</b><span>#F5B301</span><i>Signature accent — CTAs, era markers</i></div></div>
+  <div class="swatch"><div class="chip" style="background:#1F2A63"></div><div class="meta"><b>Adire</b><span>#1F2A63</span><i>Indigo depth — dark sections, links</i></div></div>
+  <div class="swatch"><div class="chip" style="background:#181410"></div><div class="meta"><b>Ink</b><span>#181410</span><i>Warm near-black — text, dark grounds</i></div></div>
+  <div class="swatch"><div class="chip" style="background:#F4EFE6"></div><div class="meta"><b>Paper</b><span>#F4EFE6</span><i>Warm off-white — default ground</i></div></div>
+  <div class="swatch"><div class="chip" style="background:#C8451B"></div><div class="meta"><b>Oxide</b><span>#C8451B</span><i>Burnt rust — emphasis, hover states</i></div></div>
+  <div class="swatch"><div class="chip" style="background:#2F5233"></div><div class="meta"><b>Palm</b><span>#2F5233</span><i>Deep green — sparing, one era accent</i></div></div>
+</div>

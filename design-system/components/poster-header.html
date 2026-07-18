@@ -1,0 +1,27 @@
+<!-- @dsCard group="Components" name="Poster header" subtitle="Full-bleed era chapter opener" width="900" height="520" -->
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap');
+  :root{--danfo:#F5B301;--adire:#1F2A63;--ink:#181410;--paper:#F4EFE6;--oxide:#C8451B;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Archivo',system-ui,sans-serif;background:var(--ink);color:var(--paper);min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+  body::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .top{display:flex;justify-content:space-between;padding:22px 32px;font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:#B8AFA2;border-bottom:1px solid #3A332B}
+  .middle{padding:20px 32px}
+  .kicker{display:inline-block;background:var(--danfo);color:var(--ink);font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.1em;padding:6px 12px;transform:rotate(-1deg);margin-bottom:18px}
+  h1{font-family:'Anton',Impact,sans-serif;font-size:clamp(3.5rem,9vw,7.5rem);line-height:.9;text-transform:uppercase}
+  h1 .accent{color:var(--danfo)}
+  .bottom{display:flex;justify-content:space-between;align-items:flex-end;padding:22px 32px;border-top:6px solid var(--danfo)}
+  .thesis{max-width:44ch;font-size:1rem;line-height:1.55;color:#CFC7BB}
+  .years{font-family:'Anton',Impact,sans-serif;font-size:2.2rem;color:var(--paper);font-variant-numeric:tabular-nums}
+</style>
+<div class="top"><span>OlamideVerse — Era 03</span><span>Fan archive · Not affiliated with YBNL</span></div>
+<div class="middle">
+  <span class="kicker">An album every year</span>
+  <h1>The Street<br><span class="accent">King</span> Run</h1>
+</div>
+<div class="bottom">
+  <p class="thesis">Street OT. Eyan Mayweather. The Glory. Lagos Nawa. Four years, four albums, and OLIC selling out — the run that made street-hop the sound of the country.</p>
+  <span class="years">2014–17</span>
+</div>

@@ -1,0 +1,29 @@
+<!-- @dsCard group="Components" name="Album card" subtitle="Cover-forward, paste-up — /albums grid" width="700" height="560" -->
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap');
+  :root{--danfo:#F5B301;--adire:#1F2A63;--ink:#181410;--paper:#F4EFE6;--oxide:#C8451B;--palm:#2F5233;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);padding:32px;display:flex;gap:28px;color:var(--ink)}
+  .album{width:250px;cursor:pointer}
+  .cover{position:relative;aspect-ratio:1;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);display:flex;align-items:flex-end;overflow:hidden;transition:transform .15s ease}
+  .album:hover .cover{transform:translate(-2px,-2px)}
+  .album:nth-child(1) .cover{transform:rotate(-.8deg);background:linear-gradient(160deg,var(--adire),#0E1638)}
+  .album:nth-child(1):hover .cover{transform:rotate(0)}
+  .album:nth-child(2) .cover{transform:rotate(.7deg);background:linear-gradient(160deg,var(--oxide),#7A2508)}
+  .album:nth-child(2):hover .cover{transform:rotate(0)}
+  .cover .art{font-family:'Anton',Impact,sans-serif;color:var(--paper);font-size:2.2rem;line-height:.95;text-transform:uppercase;padding:14px;opacity:.9}
+  .tape{position:absolute;top:-8px;left:34%;width:80px;height:22px;background:rgba(244,239,230,.75);transform:rotate(-3deg);border:1px solid rgba(24,20,16,.2)}
+  .meta{background:#fff;border:3px solid var(--ink);border-top:0;padding:12px 14px}
+  .meta h3{font-family:'Anton',Impact,sans-serif;font-size:1.25rem;text-transform:uppercase}
+  .meta .sub{display:flex;justify-content:space-between;font-size:.78rem;color:#4A423A;margin-top:4px;text-transform:uppercase;letter-spacing:.05em}
+  .era-tag{font-weight:700;color:var(--adire)}
+</style>
+<div class="album">
+  <div class="cover"><span class="tape"></span><span class="art">Baddest Guy Ever Liveth</span></div>
+  <div class="meta"><h3>Baddest Guy Ever Liveth</h3><div class="sub"><span>2013 · Album</span><span class="era-tag">First of All</span></div></div>
+</div>
+<div class="album">
+  <div class="cover"><span class="tape"></span><span class="art">Street OT</span></div>
+  <div class="meta"><h3>Street OT</h3><div class="sub"><span>2014 · Album</span><span class="era-tag">Street King</span></div></div>
+</div>

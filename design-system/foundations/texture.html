@@ -1,0 +1,36 @@
+<!-- @dsCard group="Texture" name="Texture & edges" subtitle="Grain / paste-up tilt / hard shadows / thick rules" width="820" height="540" -->
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap');
+  :root{--danfo:#F5B301;--adire:#1F2A63;--ink:#181410;--paper:#F4EFE6;--oxide:#C8451B;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);padding:32px}
+  h1{font-family:'Anton',Impact,sans-serif;font-size:2rem;text-transform:uppercase;margin-bottom:20px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+  .demo{border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);background:#fff;padding:18px}
+  .demo h2{font-family:'Anton',Impact,sans-serif;font-size:1.1rem;text-transform:uppercase;margin-bottom:8px}
+  .demo p{font-size:.85rem;color:#4A423A;line-height:1.5}
+  .tilt{transform:rotate(-1deg)}
+  .grain{position:relative;background:var(--ink);color:var(--paper)}
+  .grain p{color:#CFC7BB}
+  .grain::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:.06;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .rules{border-top:6px solid var(--ink);border-bottom:2px solid var(--ink);padding:12px 0;margin-top:28px;display:flex;justify-content:space-between;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em}
+  .no{color:var(--oxide);font-weight:700}
+</style>
+<h1>Texture &amp; Edges</h1>
+<div class="row">
+  <div class="demo tilt">
+    <h2>Paste-up</h2>
+    <p>Cards tilt ±0.5–1.5° with hard offset shadows — posters glued to a wall. The grid stays rational underneath; the tilt is the accent.</p>
+  </div>
+  <div class="demo grain">
+    <h2>Grain</h2>
+    <p>Dark sections carry 3–6% static SVG noise. Film grain, not glitter — it should read as print, never as an effect.</p>
+  </div>
+</div>
+<div class="rules">
+  <span>Thick rules: 6px ink</span>
+  <span>Sharp corners, radius 0</span>
+  <span class="no">No glass · No neon · No glitch</span>
+</div>

@@ -1,0 +1,29 @@
+<!-- @dsCard group="Components" name="Era card" subtitle="Timeline card for /eras index" width="760" height="500" -->
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap');
+  :root{--danfo:#F5B301;--adire:#1F2A63;--ink:#181410;--paper:#F4EFE6;--oxide:#C8451B;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);padding:32px;color:var(--ink)}
+  .era{max-width:620px;border:3px solid var(--ink);background:#fff;box-shadow:7px 7px 0 var(--ink);transform:rotate(-.6deg);cursor:pointer;transition:transform .15s ease}
+  .era:hover{transform:rotate(0) translate(-2px,-2px)}
+  .band{display:flex;justify-content:space-between;align-items:center;background:var(--danfo);border-bottom:3px solid var(--ink);padding:10px 18px}
+  .band .years{font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:.05em}
+  .band .num{font-family:'Anton',Impact,sans-serif;font-size:1.6rem}
+  .body{padding:22px 18px}
+  h2{font-family:'Anton',Impact,sans-serif;font-size:2.6rem;line-height:.95;text-transform:uppercase;margin-bottom:10px}
+  .thesis{font-size:1rem;line-height:1.55;color:#4A423A;max-width:52ch;margin-bottom:16px}
+  .albums{display:flex;gap:8px;flex-wrap:wrap}
+  .albums span{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;border:2px solid var(--ink);padding:4px 10px;background:var(--paper)}
+  .cta{display:block;border-top:3px solid var(--ink);padding:12px 18px;font-weight:700;text-transform:uppercase;font-size:.85rem;letter-spacing:.08em;color:var(--adire)}
+  .era:hover .cta{background:var(--ink);color:var(--paper)}
+</style>
+<div class="era">
+  <div class="band"><span class="num">02</span><span class="years">2012 — 2013</span></div>
+  <div class="body">
+    <h2>First of All</h2>
+    <p class="thesis">YBNL Nation is founded. Two albums in two years, and the street stops being a scene — it becomes the mainstream's center of gravity.</p>
+    <div class="albums"><span>YBNL · 2012</span><span>Baddest Guy Ever Liveth · 2013</span></div>
+  </div>
+  <span class="cta">Enter the era →</span>
+</div>

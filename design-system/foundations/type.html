@@ -1,0 +1,25 @@
+<!-- @dsCard group="Type" name="Typography" subtitle="Anton display / Archivo text — Yoruba diacritics required" width="820" height="640" -->
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap');
+  :root{--danfo:#F5B301;--adire:#1F2A63;--ink:#181410;--paper:#F4EFE6;--oxide:#C8451B;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);padding:32px}
+  .label{font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:#4A423A;margin:26px 0 6px;border-top:3px solid var(--ink);padding-top:8px}
+  .label:first-child{margin-top:0;border-top:0;padding-top:0}
+  .d1{font-family:'Anton',Impact,sans-serif;font-size:4.5rem;line-height:.95;text-transform:uppercase}
+  .d2{font-family:'Anton',Impact,sans-serif;font-size:2.5rem;line-height:1;text-transform:uppercase}
+  .d1 .hl{background:var(--danfo);padding:0 .12em}
+  body p.body{font-size:1.125rem;line-height:1.6;max-width:65ch}
+  .diacritics{font-family:'Anton',Impact,sans-serif;font-size:2rem;text-transform:none;color:var(--adire)}
+  .rule-note{font-size:.85rem;color:#4A423A;max-width:60ch;margin-top:4px}
+</style>
+<div class="label">Display — poster scale or not at all</div>
+<div class="d1">Street <span class="hl">King</span></div>
+<div class="label">Display md — era &amp; section titles</div>
+<div class="d2">First of All · 2012–2013</div>
+<div class="label">Yoruba diacritics — non-negotiable</div>
+<div class="diacritics">Olamidé · Àdìsá · Ọmọ Bariga · ṣẹ́</div>
+<p class="rule-note">Any candidate font must render underdots and tone marks correctly (Ọ ọ Ẹ ẹ Ṣ ṣ, á à é è). Write it correctly or not at all.</p>
+<div class="label">Body — editorial discipline</div>
+<p class="body">Before the empire, there was a kid from Bariga rapping in Yoruba when the industry insisted on English. <strong>Rapsodi</strong> (2011) didn't ask for permission — it announced a voice the mainstream would spend the next decade catching up to. Body text runs 1.125rem at 1.6 leading, in a 65–75ch measure.</p>
