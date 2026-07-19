@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import MotionRoot from "@/components/MotionRoot";
+import PWARegister from "@/components/PWARegister";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
 const DEFAULT_TITLE = "OlamideVerse — the living archive of Olamide's legacy";
@@ -25,6 +26,11 @@ export const metadata: Metadata = {
     title: DEFAULT_TITLE,
     description: SITE_DESCRIPTION,
   },
+  appleWebApp: {
+    capable: true,
+    title: SITE_NAME,
+    statusBarStyle: "black-translucent",
+  },
 };
 
 export const viewport: Viewport = {
@@ -43,6 +49,7 @@ export default function RootLayout({
       <body className="flex min-h-screen flex-col antialiased">
         {children}
         <MotionRoot />
+        <PWARegister />
       </body>
     </html>
   );
