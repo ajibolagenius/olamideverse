@@ -1,20 +1,23 @@
 /**
  * Styled wrapper so third-party players sit inside the identity
  * (docs/VISUAL-IDENTITY.md §7). Embeds only — never hosted audio.
+ * Pass `removed` when an admin kill-switch blocked the embed ID.
  */
 export default function EmbedFrame({
   title,
   youtubeId,
   spotifyId,
   spotifyType = "track",
+  removed = false,
 }: {
   title: string;
   youtubeId?: string;
   spotifyId?: string;
   spotifyType?: "track" | "album";
+  removed?: boolean;
 }) {
   let player: React.ReactNode = null;
-  if (spotifyId) {
+  if (!removed && spotifyId) {
     player = (
       <iframe
         title={`${title} — Spotify player`}
@@ -24,7 +27,7 @@ export default function EmbedFrame({
         allow="encrypted-media"
       />
     );
-  } else if (youtubeId) {
+  } else if (!removed && youtubeId) {
     player = (
       <iframe
         title={`${title} — YouTube player`}
@@ -45,7 +48,9 @@ export default function EmbedFrame({
       </div>
       {player ?? (
         <div className="border-t border-[#3A332B] px-3 py-6 text-center text-sm text-ink-muted">
-          Embed coming in the content pass — no audio is hosted here.
+          {removed
+            ? "This embed was removed at the rights holder's request."
+            : "Embed coming in the content pass — no audio is hosted here."}
         </div>
       )}
     </div>

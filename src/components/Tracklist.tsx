@@ -20,11 +20,15 @@ export default function Tracklist({
   albumSlug,
   albumTitle,
   albumYear,
+  blockedYoutube = [],
+  blockedSpotify = [],
 }: {
   tracks: Track[];
   albumSlug: string;
   albumTitle: string;
   albumYear: number;
+  blockedYoutube?: string[];
+  blockedSpotify?: string[];
 }) {
   const [nowPlaying, setNowPlaying] = useState<Track | null>(null);
 
@@ -83,6 +87,12 @@ export default function Tracklist({
             title={nowPlaying.title}
             youtubeId={nowPlaying.youtubeId}
             spotifyId={nowPlaying.spotifyTrackId}
+            removed={
+              (!!nowPlaying.spotifyTrackId &&
+                blockedSpotify.includes(nowPlaying.spotifyTrackId)) ||
+              (!!nowPlaying.youtubeId &&
+                blockedYoutube.includes(nowPlaying.youtubeId))
+            }
           />
         ) : (
           <div className="border-2 border-dashed border-ink-soft p-6 text-center text-sm text-ink-soft">
