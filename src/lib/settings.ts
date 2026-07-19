@@ -86,6 +86,11 @@ export async function getFeatureFlags(): Promise<FeatureFlags> {
 
 export async function getGeneralSettings() {
     const envEmail = (process.env.TAKEDOWN_EMAIL || "").trim();
+    const envAnalytics = (
+        process.env.NEXT_PUBLIC_ANALYTICS_ID ||
+        process.env.ANALYTICS_ID ||
+        ""
+    ).trim();
     const settings = await getSetting("general", {
         siteName: "OlamideVerse",
         takedownEmail: "",
@@ -95,6 +100,7 @@ export async function getGeneralSettings() {
         ...settings,
         // CMS wins when set; otherwise fall back to env for deploys without a seed.
         takedownEmail: (settings.takedownEmail || envEmail).trim(),
+        analyticsId: (settings.analyticsId || envAnalytics).trim(),
     };
 }
 

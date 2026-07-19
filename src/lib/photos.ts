@@ -69,13 +69,32 @@ export async function getHomePhoto(): Promise<EraPhoto> {
 }
 
 /**
- * Album cover art — sourced from Deezer's public CDN (see manifest.json).
- * This is rights-holder copyright, not a licensed asset like the photos
- * above. Treat as a visual placeholder for internal review only; the
- * project's own Legal page commits to "no copyrighted image ... without
- * the right to do so," so confirm the licensing posture before shipping
- * these to production.
+ * Album cover art — files under public/media/albums/, with provenance in
+ * content/media/manifest.json (`sourceUrl` → Deezer album page). Cover art
+ * remains copyright of the rights holders; used only for archival
+ * identification in this non-commercial fan archive.
  */
-export const ALBUM_COVERS: Record<string, string> = Object.fromEntries(
-    manifest.albums.map((a) => [a.slug, `/media/${a.file}`]),
+export type AlbumCover = {
+    src: string;
+    sourceUrl: string;
+    title: string;
+};
+
+export const ALBUM_COVER_META: Record<string, AlbumCover> = Object.fromEntries(
+    manifest.albums.map((a) => [
+        a.slug,
+        {
+            src: `/media/${a.file}`,
+            sourceUrl: a.sourceUrl,
+            title: a.title,
+        },
+    ]),
 );
+
+export const ALBUM_COVERS: Record<string, string> = Object.fromEntries(
+    Object.entries(ALBUM_COVER_META).map(([slug, c]) => [slug, c.src]),
+);
+
+export function getAlbumCover(slug: string): AlbumCover | undefined {
+    return ALBUM_COVER_META[slug];
+}

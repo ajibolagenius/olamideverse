@@ -50,8 +50,8 @@ async function ensureAdmin() {
         user = data.user;
         console.log("Created auth user", adminEmail);
     } else {
-        await supabase.auth.admin.updateUserById(user.id, { password: adminPassword });
-        console.log("Reset password for", adminEmail);
+        // Never overwrite an existing password — admins change it in the dashboard.
+        console.log("Admin auth user already exists; leaving password unchanged");
     }
 
     const { error } = await supabase.from("admin_users").upsert({
@@ -185,7 +185,11 @@ async function seedPagesAndSettings() {
         general: {
             siteName: "OlamideVerse",
             takedownEmail: (process.env.TAKEDOWN_EMAIL || "").trim(),
-            analyticsId: "",
+            analyticsId: (
+                process.env.NEXT_PUBLIC_ANALYTICS_ID ||
+                process.env.ANALYTICS_ID ||
+                ""
+            ).trim(),
         },
         brand: {
             accents: ["danfo", "adire", "oxide", "palm", "ink", "clay", "navy"],
