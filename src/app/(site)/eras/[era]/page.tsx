@@ -13,10 +13,11 @@ import Ticker from "@/components/chrome/Ticker";
 import { ACCENTS } from "@/lib/accents";
 import { getAlbumsByEra, getEra, getEras, getMediaItems } from "@/lib/content";
 import { getComments } from "@/lib/fanzone/queries";
-import { ERA_PHOTOS } from "@/lib/photos";
+import { getEraPhoto } from "@/lib/photos";
+import { resolvePageMetadata } from "@/lib/site";
 
-export function generateStaticParams() {
-  return getEras().map((era) => ({ era: era.slug }));
+export async function generateStaticParams() {
+  return (await getEras()).map((era) => ({ era: era.slug }));
 }
 
 export async function generateMetadata({
@@ -24,27 +25,40 @@ export async function generateMetadata({
 }: {
   params: Promise<{ era: string }>;
 }): Promise<Metadata> {
-  const era = getEra((await params).era);
+  const { era: eraSlug } = await params;
+  const era = await getEra(eraSlug);
   if (!era) return {};
-  return { title: `${era.title} (${era.years})`, description: era.thesis };
+  return resolvePageMetadata({
+    title: `${era.title} (${era.years})`,
+    description: era.thesis,
+    path: `/eras/${eraSlug}`,
+  });
 }
 
 export default async function EraPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ era: string }>;
+  searchParams: Promise<{ preview?: string }>;
 }) {
-  const era = getEra((await params).era);
+  const { era: eraSlug } = await params;
+  const { preview } = await searchParams;
+  const era = await getEra(eraSlug, { previewToken: preview });
   if (!era) notFound();
 
-  const eras = getEras();
+  const [eras, albums, allMedia, comments, eraPhoto] = await Promise.all([
+    getEras(),
+    getAlbumsByEra(era.slug),
+    getMediaItems(),
+    getComments(`era-${era.slug}`),
+    getEraPhoto(era.slug),
+  ]);
   const accent = ACCENTS[era.accent];
-  const albums = getAlbumsByEra(era.slug);
-  const media = getMediaItems().filter((item) => item.era === era.slug);
+  const media = allMedia.filter((item) => item.era === era.slug);
   const nextEra = era.open
     ? undefined
     : eras.find((e) => e.order === era.order + 1);
-  const comments = await getComments(`era-${era.slug}`);
 
   return (
     <>
@@ -96,7 +110,7 @@ export default async function EraPage({
             <PhotoPlaceholder
               accent={era.accent}
               label={`Archival photo — ${era.title}, ${era.years}`}
-              photo={ERA_PHOTOS[era.slug]}
+              photo={eraPhoto}
             />
           </div>
         </section>

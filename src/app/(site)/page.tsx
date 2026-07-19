@@ -4,7 +4,7 @@ import PhotoPlaceholder from "@/components/PhotoPlaceholder";
 import PosterHero from "@/components/PosterHero";
 import Ticker from "@/components/chrome/Ticker";
 import { getAlbumsByEra, getEra, getEras } from "@/lib/content";
-import { HOME_PHOTO } from "@/lib/photos";
+import { getHomePhoto } from "@/lib/photos";
 
 // The home ticker is a curated highlight reel, not the full catalog.
 const HOME_TICKER = [
@@ -38,10 +38,13 @@ const DOORS = [
   },
 ] as const;
 
-export default function Home() {
-  const eras = getEras();
-  const upstart = getEra("the-upstart")!;
-  const upstartAlbums = getAlbumsByEra(upstart.slug);
+export default async function Home() {
+  const eras = await getEras();
+  const upstart = (await getEra("the-upstart"))!;
+  const [upstartAlbums, homePhoto] = await Promise.all([
+    getAlbumsByEra(upstart.slug),
+    getHomePhoto(),
+  ]);
 
   return (
     <>
@@ -81,7 +84,7 @@ export default function Home() {
           data-tilt="-0.6"
           style={{ rotate: "-0.6deg" }}
         >
-          <div className="flex items-center justify-between border-b-[3px] border-ink bg-oxide px-5 py-2.5 text-paper">
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-b-[3px] border-ink bg-oxide px-5 py-2.5 text-paper">
             <span className="text-sm font-bold tracking-[0.06em] uppercase">
               Chapter One — live now
             </span>
@@ -101,7 +104,7 @@ export default function Home() {
             <PhotoPlaceholder
               accent={upstart.accent}
               label="Archival photo — Bariga, early days"
-              photo={HOME_PHOTO}
+              photo={homePhoto}
               className="min-h-[280px] border-t-[3px] border-ink sm:border-t-0 sm:border-l-[3px]"
             />
           </div>

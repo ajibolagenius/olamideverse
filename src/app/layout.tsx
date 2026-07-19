@@ -1,18 +1,36 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import DisclaimerStrip from "@/components/chrome/DisclaimerStrip";
-import SiteFooter from "@/components/chrome/SiteFooter";
-import SiteHeader from "@/components/chrome/SiteHeader";
 import MotionRoot from "@/components/MotionRoot";
-import { FanProvider } from "@/lib/fanzone/useFan";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
+
+const DEFAULT_TITLE = "OlamideVerse — the living archive of Olamide's legacy";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "OlamideVerse — the living archive of Olamide's legacy",
-    template: "%s · OlamideVerse",
+    default: DEFAULT_TITLE,
+    template: `%s · ${SITE_NAME}`,
   },
-  description:
-    "A fan-made cultural archive telling the story of how a kid from Bariga built Nigerian street-hop into an empire — era by era, album by album. Not affiliated with Olamide or YBNL Nation.",
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    title: DEFAULT_TITLE,
+    description: SITE_DESCRIPTION,
+    url: "/",
+    siteName: SITE_NAME,
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: DEFAULT_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#181410",
 };
 
 export default function RootLayout({
@@ -23,12 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex min-h-screen flex-col antialiased">
-        <FanProvider>
-          <DisclaimerStrip />
-          <SiteHeader />
-          <main className="flex-1">{children}</main>
-          <SiteFooter />
-        </FanProvider>
+        {children}
         <MotionRoot />
       </body>
     </html>
