@@ -6,7 +6,7 @@
     "year": 2010,
     "type": "music-video",
     "source": "YouTube",
-    "youtubeId": null,
+    "youtubeId": "tHhvptX5cQ0",
     "note": "The debut single's video — the first time Bariga rap got a screen."
   },
   {
@@ -15,9 +15,9 @@
     "era": "the-upstart",
     "year": 2011,
     "type": "music-video",
-    "source": "YouTube",
-    "youtubeId": null,
-    "note": "Two rising Lagos voices, one hook radio couldn't drop."
+    "source": "YouTube / DJ Tee films",
+    "youtubeId": "XjBf-ONufyc",
+    "note": "Two rising Lagos voices, one hook radio couldn't drop. Directed by DJ Tee."
   },
   {
     "id": "the-juice-interview-2013",
@@ -26,7 +26,7 @@
     "year": 2013,
     "type": "interview",
     "source": "NdaniTV",
-    "youtubeId": null,
+    "youtubeId": "rCUaMC0Ll_8",
     "note": "On the record, denying rumors of a rival label deal — \"too late for anyone to sign him.\""
   },
   {
@@ -36,8 +36,8 @@
     "year": 2013,
     "type": "music-video",
     "source": "YouTube",
-    "youtubeId": null,
-    "note": "Won Best Afro Hip-Hop Video at the 2014 Nigeria Music Video Awards."
+    "youtubeId": "-DFs0MuPo_w",
+    "note": "Won Best Afro Hip-Hop Video at the 2014 Nigeria Music Video Awards. Directed by Clarence Peters."
   },
   {
     "id": "olic-live-2016",
@@ -46,8 +46,8 @@
     "year": 2016,
     "type": "live",
     "source": "YouTube",
-    "youtubeId": null,
-    "note": "The concert series that proved street-hop could sell out a room."
+    "youtubeId": "qcVIt0htv-M",
+    "note": "OLIC 3: Beast Mode — the concert series that proved street-hop could sell out a room."
   },
   {
     "id": "wo-video",
@@ -55,8 +55,8 @@
     "era": "street-king-run",
     "year": 2017,
     "type": "music-video",
-    "source": "YouTube",
-    "youtubeId": null,
+    "source": "OlamideVEVO",
+    "youtubeId": "j2u5Gbadn7o",
     "note": "Shot in Bariga; sparked the #WoChallenge and pushed shaku shaku into the mainstream."
   },
   {
@@ -67,7 +67,7 @@
     "type": "interview",
     "source": "The Guardian",
     "youtubeId": null,
-    "note": "On Bariga, class, and what the streets actually taught him."
+    "note": "Print/web interview (no video embed) — on Bariga, class, and what the streets actually taught him."
   },
   {
     "id": "amapiano-video",
@@ -75,8 +75,8 @@
     "era": "elder-statesman",
     "year": 2022,
     "type": "music-video",
-    "source": "YouTube",
-    "youtubeId": null,
-    "note": "Helped introduce amapiano to a global audience."
+    "source": "AsakeVEVO",
+    "youtubeId": "l_-v1fNdSHs",
+    "note": "Helped introduce amapiano to a global audience. Official video via AsakeVEVO."
   }
 ]
