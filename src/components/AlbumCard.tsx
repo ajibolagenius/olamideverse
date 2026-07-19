@@ -8,10 +8,12 @@ export default function AlbumCard({
   album,
   era,
   index = 0,
+  showFavorite = false,
 }: {
   album: Album;
   era: Era;
   index?: number;
+  showFavorite?: boolean;
 }) {
   const tilt = ((index % 3) - 1) * 0.5;
   // danfo fails AA as text-on-white; use its darkened gradient stop instead
@@ -23,14 +25,16 @@ export default function AlbumCard({
       data-tilt={tilt}
       style={{ rotate: `${tilt}deg` }}
     >
-      <div className="absolute top-1.5 right-1.5 z-10">
-        <FavoriteButton
-          id={`album:${album.slug}`}
-          label={album.title}
-          kind="album"
-          href={`/albums/${album.slug}`}
-        />
-      </div>
+      {showFavorite ? (
+        <div className="absolute top-1.5 right-1.5 z-10">
+          <FavoriteButton
+            id={`album:${album.slug}`}
+            label={album.title}
+            kind="album"
+            href={`/albums/${album.slug}`}
+          />
+        </div>
+      ) : null}
       <Link
         href={`/albums/${album.slug}`}
         className="block border-[3px] border-ink bg-white shadow-paste transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"

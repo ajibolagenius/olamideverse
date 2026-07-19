@@ -10,7 +10,7 @@ import Tracklist from "@/components/Tracklist";
 import { ACCENTS } from "@/lib/accents";
 import { ALBUM_TYPE_LABEL, getAlbum, getAlbums, getEra } from "@/lib/content";
 import { getComments } from "@/lib/fanzone/queries";
-import { getBlockedEmbeds } from "@/lib/settings";
+import { getBlockedEmbeds, getFeatureFlags } from "@/lib/settings";
 import { resolvePageMetadata } from "@/lib/site";
 
 export async function generateStaticParams() {
@@ -47,11 +47,14 @@ export default async function AlbumPage({
   const era = (await getEra(album.era))!;
   const accent = ACCENTS[era.accent];
   const heroAccent = accent.solid === ACCENTS.ink.solid ? ACCENTS.danfo.solid : accent.solid;
-  const [comments, blocks, albums] = await Promise.all([
-    getComments(`album-${album.slug}`),
+  const [flags, blocks, albums] = await Promise.all([
+    getFeatureFlags(),
     getBlockedEmbeds(),
     getAlbums(),
   ]);
+  const comments = flags.comments
+    ? await getComments(`album-${album.slug}`)
+    : [];
   const blockedYoutube = blocks
     .filter((b) => b.provider === "youtube" || b.provider === "any")
     .map((b) => b.embed_id);
@@ -98,12 +101,20 @@ export default async function AlbumPage({
       />
 
       <section className="mx-auto grid max-w-6xl items-start gap-11 px-5 pt-9 pb-5 sm:px-8 lg:grid-cols-[min(340px,100%)_1fr]">
-        <div
-          className="ov-paste-up w-full border-[3px] border-ink shadow-paste"
-          data-tilt="-0.7"
-          style={{ rotate: "-0.7deg" }}
-        >
-          <CoverArt title={album.title} slug={album.slug} accent={era.accent} className="aspect-square" />
+        <div>
+          <div
+            className="ov-paste-up w-full border-[3px] border-ink shadow-paste"
+            data-tilt="-0.7"
+            style={{ rotate: "-0.7deg" }}
+          >
+            <CoverArt title={album.title} slug={album.slug} accent={era.accent} className="aspect-square" />
+          </div>
+          <p className="mt-2.5 text-[0.7rem] tracking-[0.06em] uppercase text-ink-soft">
+            Cover art · editorial placeholder ·{" "}
+            <Link href="/legal" className="underline hover:text-oxide">
+              Legal
+            </Link>
+          </p>
         </div>
         <div>
           <Link
@@ -138,6 +149,7 @@ export default async function AlbumPage({
               albumTitle={album.title}
               albumYear={album.year}
               spotifyAlbumId={album.embeds.spotifyAlbumId}
+              showPlaylist={flags.fanzone}
               blockedYoutube={blockedYoutube}
               blockedSpotify={blockedSpotify}
             />
@@ -172,16 +184,18 @@ export default async function AlbumPage({
         )}
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 pb-20 sm:px-8">
-        <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
-          Talk about it
-        </p>
-        <CommentBox
-          threadId={`album-${album.slug}`}
-          threadLabel={album.title}
-          initialComments={comments}
-        />
-      </section>
+      {flags.comments ? (
+        <section className="mx-auto max-w-6xl px-5 pb-20 sm:px-8">
+          <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
+            Talk about it
+          </p>
+          <CommentBox
+            threadId={`album-${album.slug}`}
+            threadLabel={album.title}
+            initialComments={comments}
+          />
+        </section>
+      ) : null}
     </>
   );
 }

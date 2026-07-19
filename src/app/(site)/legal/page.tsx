@@ -60,10 +60,18 @@ export default async function LegalPage() {
         </p>
 
         <h2 className="font-display mb-3 text-2xl">Images</h2>
+        <p className="mb-4 text-lg leading-relaxed">
+          Era and home photography are drawn from Wikimedia Commons under
+          their stated Creative Commons licenses, with credit retained in the
+          media registry.
+        </p>
         <p className="mb-8 text-lg leading-relaxed">
-          Photography and cover art placeholders on this site are marked as
-          such until real, properly licensed or credited imagery is added.
-          No copyrighted image is used without the right to do so.
+          Album cover thumbnails are <b>editorial placeholders</b> sourced for
+          archival identification of releases (originally via Deezer&apos;s public
+          CDN). Cover art remains copyright of the respective rights holders.
+          They are used here solely to identify records in a non-commercial fan
+          archive and will be replaced or removed on request — see Takedown
+          below. They are not presented as owned, licensed merch assets.
         </p>
 
         <h2 className="font-display mb-3 text-2xl">Sources</h2>

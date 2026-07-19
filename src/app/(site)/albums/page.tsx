@@ -3,6 +3,7 @@ import AlbumGrid from "@/components/AlbumGrid";
 import PosterHero from "@/components/PosterHero";
 import Ticker from "@/components/chrome/Ticker";
 import { getAlbums, getEras } from "@/lib/content";
+import { getFeatureFlags } from "@/lib/settings";
 import { resolvePageMetadata } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -22,7 +23,11 @@ const TICKER = [
 ];
 
 export default async function AlbumsPage() {
-  const [albums, eras] = await Promise.all([getAlbums(), getEras()]);
+  const [albums, eras, flags] = await Promise.all([
+    getAlbums(),
+    getEras(),
+    getFeatureFlags(),
+  ]);
   return (
     <>
       <PosterHero
@@ -36,7 +41,7 @@ export default async function AlbumsPage() {
       />
       <Ticker items={TICKER} />
       <section className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
-        <AlbumGrid albums={albums} eras={eras} />
+        <AlbumGrid albums={albums} eras={eras} showFavorites={flags.fanzone} />
       </section>
     </>
   );

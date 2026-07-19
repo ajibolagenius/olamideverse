@@ -5,6 +5,7 @@ import PosterHero from "@/components/PosterHero";
 import Ticker from "@/components/chrome/Ticker";
 import { getAlbumsByEra, getEra, getEras } from "@/lib/content";
 import { getHomePhoto } from "@/lib/photos";
+import { getFeatureFlags } from "@/lib/settings";
 
 // The home ticker is a curated highlight reel, not the full catalog.
 const HOME_TICKER = [
@@ -41,9 +42,10 @@ const DOORS = [
 export default async function Home() {
   const eras = await getEras();
   const upstart = (await getEra("the-upstart"))!;
-  const [upstartAlbums, homePhoto] = await Promise.all([
+  const [upstartAlbums, homePhoto, flags] = await Promise.all([
     getAlbumsByEra(upstart.slug),
     getHomePhoto(),
+    getFeatureFlags(),
   ]);
 
   return (
@@ -118,7 +120,13 @@ export default async function Home() {
           </p>
           <div className="max-w-xs">
             {upstartAlbums.map((album, i) => (
-              <AlbumCard key={album.slug} album={album} era={upstart} index={i} />
+              <AlbumCard
+                key={album.slug}
+                album={album}
+                era={upstart}
+                index={i}
+                showFavorite={flags.fanzone}
+              />
             ))}
           </div>
         </section>
