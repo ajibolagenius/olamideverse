@@ -4,6 +4,7 @@ import PhotoPlaceholder from "@/components/PhotoPlaceholder";
 import PosterHero from "@/components/PosterHero";
 import Ticker from "@/components/chrome/Ticker";
 import { getAlbumsByEra, getEra, getEras } from "@/lib/content";
+import { HOME_PHOTO } from "@/lib/photos";
 
 // The home ticker is a curated highlight reel, not the full catalog.
 const HOME_TICKER = [
@@ -100,6 +101,7 @@ export default function Home() {
             <PhotoPlaceholder
               accent={upstart.accent}
               label="Archival photo — Bariga, early days"
+              photo={HOME_PHOTO}
               className="min-h-[280px] border-t-[3px] border-ink sm:border-t-0 sm:border-l-[3px]"
             />
           </div>
