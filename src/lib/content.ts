@@ -122,14 +122,15 @@ async function validPreview(
     if (!token) return false;
     try {
         const supabase = createPublicClient();
-        const { data } = await supabase
-            .from("preview_tokens")
-            .select("token")
-            .eq("token", token)
-            .eq("entity_type", entityType)
-            .eq("entity_id", entityId)
-            .gt("expires_at", new Date().toISOString())
-            .maybeSingle();
+        // preview_tokens is not directly selectable by anon/authenticated
+        // (see supabase/migrations/20260719040000_security_hardening.sql) —
+        // this RPC only returns a boolean, and only matches a token the
+        // caller already supplies, so the token set can't be enumerated.
+        const { data } = await supabase.rpc("is_valid_preview_token", {
+            p_token: token,
+            p_entity_type: entityType,
+            p_entity_id: entityId,
+        });
         return Boolean(data);
     } catch {
         return false;

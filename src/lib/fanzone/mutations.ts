@@ -79,7 +79,8 @@ export async function postComment(threadId: string, body: string): Promise<void>
 
 export async function deleteComment(id: string): Promise<void> {
     const supabase = createClient();
-    await supabase.from("comments").delete().eq("id", id);
+    const fanId = await requireFanId();
+    await supabase.from("comments").delete().eq("id", id).eq("fan_id", fanId);
 }
 
 export async function reportComment(commentId: string, reason: string): Promise<void> {
