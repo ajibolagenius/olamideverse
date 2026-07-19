@@ -37,6 +37,19 @@ export const ACCENTS = {
     onSolid: "#F4EFE6",
     gradient: ["#3A332B", "#181410"],
   },
+
+  clay: {
+    solid: "#8C4A1E",
+    tint: "#EEE0D3",
+    onSolid: "#F4EFE6",
+    gradient: ["#8C4A1E", "#5C2F12"],
+  },
+  navy: {
+    solid: "#12193F",
+    tint: "#D9DEF2",
+    onSolid: "#F4EFE6",
+    gradient: ["#12193F", "#090D24"],
+  },
 } as const;
 
 export type AccentName = keyof typeof ACCENTS;

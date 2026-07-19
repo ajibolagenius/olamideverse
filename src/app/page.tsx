@@ -1,81 +1,139 @@
 import Link from "next/link";
+import AlbumCard from "@/components/AlbumCard";
+import PhotoPlaceholder from "@/components/PhotoPlaceholder";
 import PosterHero from "@/components/PosterHero";
 import Ticker from "@/components/chrome/Ticker";
-import EraCard from "@/components/EraCard";
-import { getAlbums, getAlbumsByEra, getEras } from "@/lib/content";
+import { getAlbumsByEra, getEra, getEras } from "@/lib/content";
+
+// The home ticker is a curated highlight reel, not the full catalog.
+const HOME_TICKER = [
+  "Rapsodi · 2011",
+  "YBNL · 2012",
+  "Baddest Guy Ever Liveth · 2013",
+  "Street OT · 2014",
+  "Eyan Mayweather · 2015",
+  "The Glory · 2016",
+  "Lagos Nawa · 2017",
+  "Carpe Diem · 2020",
+  "UY Scuti · 2021",
+  "Unruly · 2023",
+];
 
 const DOORS = [
   {
     href: "/eras",
     title: "Explore the Eras",
-    copy: "The whole career as six scrollytelling chapters — from Bariga to the empire.",
+    copy: "Six chapters, one career — start with The Upstart",
   },
   {
     href: "/albums",
     title: "Browse the Discography",
-    copy: "Every album and mixtape, cover-forward, filterable by era.",
+    copy: "Fourteen releases, filterable by era",
   },
   {
     href: "/media",
     title: "Watch",
-    copy: "Curated videos, freestyles, interviews and live moments.",
+    copy: "Music videos, interviews & live moments",
   },
 ] as const;
 
 export default function Home() {
   const eras = getEras();
-  const albums = getAlbums();
-  const featured = eras.find((era) => era.open) ?? eras[eras.length - 1];
+  const upstart = getEra("the-upstart")!;
+  const upstartAlbums = getAlbumsByEra(upstart.slug);
 
   return (
     <>
+      <Ticker items={HOME_TICKER} />
+
       <PosterHero
         size="xl"
-        eyebrow="The living archive of Olamide's legacy"
+        kickerLeft="OlamideVerse — The Archive"
+        kickerRight="Six Eras · One Legacy"
+        eyebrow="A fan-made living archive"
         title={
           <>
-            From Bariga to the empire, era by era
+            Bariga to
+            <br />
+            the <span className="text-danfo">Empire</span>
           </>
         }
-        intro="Streaming platforms have the songs. Blogs have the news. This is the story — the cultural context, the eras, the lineage from Coded Tunes to YBNL and the artists he raised."
-      />
-      <Ticker items={albums.map((album) => `${album.title} · ${album.year}`)} />
+        intro="Streaming platforms have the songs. Blogs have the news. Nobody has the story — the cultural context, the era-defining moments, the lineage from Coded Tunes to YBNL to the artists he raised. This is the archive, told era by era, album by album."
+      >
+        <div className="mt-9 flex flex-wrap items-end justify-between gap-4 border-t-[6px] border-danfo pt-5">
+          <p className="max-w-[44ch] text-[#CFC7BB]">
+            Not a streaming service. Not a fan forum. An editorial archive
+            with the music running through it.
+          </p>
+          <span className="font-display text-2xl text-paper">
+            {String(eras.length).padStart(2, "0")} / {String(eras.length).padStart(2, "0")} live
+          </span>
+        </div>
+      </PosterHero>
 
-      <section className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
-        <p className="mb-1.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
-          Three doors in
+      <section className="mx-auto max-w-6xl px-5 pt-20 pb-5 sm:px-8">
+        <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
+          Start at the beginning
         </p>
-        <h2 className="font-display text-display-md mb-8">Start anywhere</h2>
-        <div className="grid gap-6 sm:grid-cols-3">
-          {DOORS.map((door, i) => (
-            <Link
-              key={door.href}
-              href={door.href}
-              className="ov-paste-up group border-[3px] border-ink bg-white p-5 shadow-paste transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
-              data-tilt={(i - 1) * 0.6}
-              style={{ rotate: `${(i - 1) * 0.6}deg` }}
-            >
-              <h3 className="font-display text-2xl">{door.title}</h3>
-              <p className="mt-2 text-sm text-ink-soft">{door.copy}</p>
-              <span className="mt-4 inline-block text-sm font-bold tracking-[0.08em] uppercase text-adire group-hover:text-oxide">
-                Go →
-              </span>
-            </Link>
-          ))}
+        <div
+          className="ov-paste-up max-w-3xl border-[3px] border-ink bg-white shadow-paste"
+          data-tilt="-0.6"
+          style={{ rotate: "-0.6deg" }}
+        >
+          <div className="flex items-center justify-between border-b-[3px] border-ink bg-oxide px-5 py-2.5 text-paper">
+            <span className="text-sm font-bold tracking-[0.06em] uppercase">
+              Chapter One — live now
+            </span>
+            <span className="font-display text-2xl">{upstart.years}</span>
+          </div>
+          <div className="grid sm:grid-cols-2">
+            <div className="p-6">
+              <h2 className="font-display text-4xl mb-3">{upstart.title}</h2>
+              <p className="mb-5 max-w-[46ch] text-ink-soft">{upstart.thesis}</p>
+              <Link
+                href={`/eras/${upstart.slug}`}
+                className="inline-block border-[3px] border-ink bg-danfo px-6 py-3.5 text-sm font-bold tracking-[0.06em] uppercase text-ink shadow-paste-sm transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
+              >
+                Read the chapter →
+              </Link>
+            </div>
+            <PhotoPlaceholder
+              accent={upstart.accent}
+              label="Archival photo — Bariga, early days"
+              className="min-h-[280px] border-t-[3px] border-ink sm:border-t-0 sm:border-l-[3px]"
+            />
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 pb-16 sm:px-8">
-        <p className="mb-1.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
-          The current chapter
+      {upstartAlbums.length > 0 ? (
+        <section className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
+          <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
+            The album of the era
+          </p>
+          <div className="max-w-xs">
+            {upstartAlbums.map((album, i) => (
+              <AlbumCard key={album.slug} album={album} era={upstart} index={i} />
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      <section className="mx-auto max-w-6xl px-5 pt-10 pb-20 sm:px-8">
+        <p className="mb-[18px] text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
+          Or go straight to
         </p>
-        <h2 className="font-display text-display-md mb-8">Still being written</h2>
-        <div className="max-w-2xl">
-          <EraCard
-            era={featured}
-            albums={getAlbumsByEra(featured.slug)}
-            index={0}
-          />
+        <div className="grid gap-6 sm:grid-cols-3">
+          {DOORS.map((door) => (
+            <Link
+              key={door.href}
+              href={door.href}
+              className="block border-[3px] border-ink bg-white p-6 shadow-paste-sm transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
+            >
+              <span className="font-display mb-1.5 block text-2xl">{door.title}</span>
+              <span className="text-sm text-ink-soft">{door.copy}</span>
+            </Link>
+          ))}
         </div>
       </section>
     </>

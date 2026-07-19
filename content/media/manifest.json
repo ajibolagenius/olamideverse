@@ -1,0 +1,269 @@
+{
+  "generatedAt": "2026-07-18T22:30:26.954Z",
+  "note": "Album covers sourced from Deezer public CDN for editorial/archival placeholders in the UI design. Era/home photos from Wikimedia Commons under their stated Creative Commons licenses. Cover art remains copyright of the rights holders — the site Legal page marks these as placeholders until properly licensed imagery is confirmed.",
+  "directories": {
+    "albums": "Discography + album detail covers (14 releases from the UI Discography page)",
+    "eras": "Era chapter context photos (image-slot placeholders on each Era page)",
+    "home": "Home page chapter card photo (home-upstart-photo slot)"
+  },
+  "albums": [
+    {
+      "slug": "rapsodi",
+      "year": 2011,
+      "title": "Rapsodi",
+      "era": "the-upstart",
+      "type": "album",
+      "file": "albums/rapsodi.jpg",
+      "bytes": 136446,
+      "sourceUrl": "https://www.deezer.com/album/708131721"
+    },
+    {
+      "slug": "ybnl",
+      "year": 2012,
+      "title": "YBNL",
+      "era": "first-of-all",
+      "type": "album",
+      "file": "albums/ybnl.jpg",
+      "bytes": 65305,
+      "sourceUrl": "https://www.deezer.com/album/60614792"
+    },
+    {
+      "slug": "baddest-guy-ever-liveth",
+      "year": 2013,
+      "title": "Baddest Guy Ever Liveth",
+      "era": "first-of-all",
+      "type": "album",
+      "file": "albums/baddest-guy-ever-liveth.jpg",
+      "bytes": 107011,
+      "sourceUrl": "https://www.deezer.com/album/60674342"
+    },
+    {
+      "slug": "street-ot",
+      "year": 2014,
+      "title": "Street OT",
+      "era": "street-king-run",
+      "type": "album",
+      "file": "albums/street-ot.jpg",
+      "bytes": 122849,
+      "sourceUrl": "https://www.deezer.com/album/60674322"
+    },
+    {
+      "slug": "2-kings",
+      "year": 2015,
+      "title": "2 Kings",
+      "era": "street-king-run",
+      "type": "joint",
+      "file": "albums/2-kings.jpg",
+      "bytes": 122879,
+      "sourceUrl": "https://www.deezer.com/album/248917322"
+    },
+    {
+      "slug": "eyan-mayweather",
+      "year": 2015,
+      "title": "Eyan Mayweather",
+      "era": "street-king-run",
+      "type": "album",
+      "file": "albums/eyan-mayweather.jpg",
+      "bytes": 188923,
+      "sourceUrl": "https://www.deezer.com/album/60674292"
+    },
+    {
+      "slug": "the-glory",
+      "year": 2016,
+      "title": "The Glory",
+      "era": "street-king-run",
+      "type": "album",
+      "file": "albums/the-glory.jpg",
+      "bytes": 156358,
+      "sourceUrl": "https://www.deezer.com/album/60613902"
+    },
+    {
+      "slug": "lagos-nawa",
+      "year": 2017,
+      "title": "Lagos Nawa",
+      "era": "street-king-run",
+      "type": "album",
+      "file": "albums/lagos-nawa.jpg",
+      "bytes": 90637,
+      "sourceUrl": "https://www.deezer.com/album/61745052"
+    },
+    {
+      "slug": "999",
+      "year": 2020,
+      "title": "999",
+      "era": "reinvention",
+      "type": "ep",
+      "file": "albums/999.jpg",
+      "bytes": 284424,
+      "sourceUrl": "https://www.deezer.com/album/130995642"
+    },
+    {
+      "slug": "carpe-diem",
+      "year": 2020,
+      "title": "Carpe Diem",
+      "era": "reinvention",
+      "type": "album",
+      "file": "albums/carpe-diem.jpg",
+      "bytes": 287714,
+      "sourceUrl": "https://www.deezer.com/album/170802052"
+    },
+    {
+      "slug": "uy-scuti",
+      "year": 2021,
+      "title": "UY Scuti",
+      "era": "elder-statesman",
+      "type": "album",
+      "file": "albums/uy-scuti.jpg",
+      "bytes": 125375,
+      "sourceUrl": "https://www.deezer.com/album/226158622"
+    },
+    {
+      "slug": "unruly",
+      "year": 2023,
+      "title": "Unruly",
+      "era": "elder-statesman",
+      "type": "album",
+      "file": "albums/unruly.jpg",
+      "bytes": 97450,
+      "sourceUrl": "https://www.deezer.com/album/470863955"
+    },
+    {
+      "slug": "ikigai",
+      "year": 2024,
+      "title": "Ikigai",
+      "era": "legacy",
+      "type": "ep",
+      "file": "albums/ikigai.jpg",
+      "bytes": 153543,
+      "sourceUrl": "https://www.deezer.com/album/606786352"
+    },
+    {
+      "slug": "olamide",
+      "year": 2025,
+      "title": "Olamidé",
+      "era": "legacy",
+      "type": "album",
+      "file": "albums/olamide.jpg",
+      "bytes": 261815,
+      "sourceUrl": "https://www.deezer.com/album/774851381"
+    }
+  ],
+  "photos": [
+    {
+      "id": "home-upstart-photo",
+      "file": "home/bariga-early-days.jpg",
+      "slot": "home-upstart-photo",
+      "page": "Home",
+      "description": "Bariga / early days — Third Mainland Bridge over Bariga",
+      "wikiFile": "2014-04-02 09-51-41 Nigeria Lagos State - Bariga.jpg",
+      "credit": "Hansueli Krapf",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "wikiPage": "https://commons.wikimedia.org/wiki/File:2014-04-02_09-51-41_Nigeria_Lagos_State_-_Bariga.jpg",
+      "fetchedFrom": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/2014-04-02_09-51-41_Nigeria_Lagos_State_-_Bariga.jpg/1920px-2014-04-02_09-51-41_Nigeria_Lagos_State_-_Bariga.jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/48/2014-04-02_09-51-41_Nigeria_Lagos_State_-_Bariga.jpg",
+      "bytes": 480337
+    },
+    {
+      "id": "era1-context-photo",
+      "file": "eras/the-upstart-bariga.jpg",
+      "slot": "era1-context-photo",
+      "page": "Era - The Upstart",
+      "description": "Fishermen in Makoko, Bariga — Upstart-era context",
+      "wikiFile": "Fishermen in Makoko,Bariga, Lagos State-Nigeria.jpg",
+      "credit": "Omoeko Media",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "wikiPage": "https://commons.wikimedia.org/wiki/File:Fishermen_in_Makoko%2CBariga%2C_Lagos_State-Nigeria.jpg",
+      "fetchedFrom": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Fishermen_in_Makoko%2CBariga%2C_Lagos_State-Nigeria.jpg/1920px-Fishermen_in_Makoko%2CBariga%2C_Lagos_State-Nigeria.jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Fishermen_in_Makoko%2CBariga%2C_Lagos_State-Nigeria.jpg",
+      "bytes": 389389
+    },
+    {
+      "id": "era2-context-photo",
+      "file": "eras/first-of-all-lagos.jpg",
+      "slot": "era2-context-photo",
+      "page": "Era - First of All",
+      "description": "Lagos Broad Street — YBNL Nation founding-era atmosphere",
+      "wikiFile": "Broad Street, Lagos Island, Lagos.jpg",
+      "credit": "Yellowcrunchy",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "wikiPage": "https://commons.wikimedia.org/wiki/File:Broad_Street%2C_Lagos_Island%2C_Lagos.jpg",
+      "fetchedFrom": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Broad_Street%2C_Lagos_Island%2C_Lagos.jpg/1920px-Broad_Street%2C_Lagos_Island%2C_Lagos.jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/33/Broad_Street%2C_Lagos_Island%2C_Lagos.jpg",
+      "bytes": 933281
+    },
+    {
+      "id": "era3-context-photo",
+      "file": "eras/street-king-run-bariga.jpg",
+      "slot": "era3-context-photo",
+      "page": "Era - The Street King Run",
+      "description": "Makoko / Bariga waterfront — Street King Run atmosphere",
+      "wikiFile": "Mobile Trader on water in Makoko area of Bariga, Lagos State-Nigeria.jpg",
+      "credit": "Omoeko Media",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "wikiPage": "https://commons.wikimedia.org/wiki/File:Mobile_Trader_on_water_in_Makoko_area_of_Bariga%2C_Lagos_State-Nigeria.jpg",
+      "fetchedFrom": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Mobile_Trader_on_water_in_Makoko_area_of_Bariga%2C_Lagos_State-Nigeria.jpg/1920px-Mobile_Trader_on_water_in_Makoko_area_of_Bariga%2C_Lagos_State-Nigeria.jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/6/60/Mobile_Trader_on_water_in_Makoko_area_of_Bariga%2C_Lagos_State-Nigeria.jpg",
+      "bytes": 573227
+    },
+    {
+      "id": "era4-context-photo",
+      "file": "eras/reinvention-lagos-skyline.jpg",
+      "slot": "era4-context-photo",
+      "page": "Era - Reinvention",
+      "description": "Lagos Island cityscape — Empire / reinvention era",
+      "wikiFile": "Lagos Island City Scape.jpg",
+      "credit": "Jamie Tubers",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "wikiPage": "https://commons.wikimedia.org/wiki/File:Lagos_Island_City_Scape.jpg",
+      "fetchedFrom": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Lagos_Island_City_Scape.jpg/1920px-Lagos_Island_City_Scape.jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/25/Lagos_Island_City_Scape.jpg",
+      "bytes": 350861
+    },
+    {
+      "id": "era5-context-photo",
+      "file": "eras/elder-statesman-lagos.jpg",
+      "slot": "era5-context-photo",
+      "page": "Era - Elder Statesman",
+      "description": "Lagos skyline — elder-statesman chapter",
+      "wikiFile": "Lagos skyline.jpg",
+      "credit": "Clara Sanchiz",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "wikiPage": "https://commons.wikimedia.org/wiki/File:Lagos_skyline.jpg",
+      "fetchedFrom": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Lagos_skyline.jpg/1920px-Lagos_skyline.jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/1/12/Lagos_skyline.jpg",
+      "bytes": 375193
+    },
+    {
+      "id": "era6-context-photo",
+      "file": "eras/legacy-present-day.jpg",
+      "slot": "era6-context-photo",
+      "page": "Era - Legacy",
+      "description": "Third Mainland Bridge / present-day Lagos — Legacy era",
+      "wikiFile": "Dan Flore Lagos-Nigeria-3rd-Mainland-Bridge-2006.jpg",
+      "credit": "Dan Flore",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "wikiPage": "https://commons.wikimedia.org/wiki/File:Dan_Flore_Lagos-Nigeria-3rd-Mainland-Bridge-2006.jpg",
+      "fetchedFrom": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Dan_Flore_Lagos-Nigeria-3rd-Mainland-Bridge-2006.jpg/1920px-Dan_Flore_Lagos-Nigeria-3rd-Mainland-Bridge-2006.jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Dan_Flore_Lagos-Nigeria-3rd-Mainland-Bridge-2006.jpg",
+      "bytes": 358745
+    }
+  ],
+  "failed": [],
+  "slots": {
+    "home-upstart-photo": "home/bariga-early-days.jpg",
+    "era1-context-photo": "eras/the-upstart-bariga.jpg",
+    "era1-rapsodi-cover": "albums/rapsodi.jpg",
+    "era2-context-photo": "eras/first-of-all-lagos.jpg",
+    "era3-context-photo": "eras/street-king-run-bariga.jpg",
+    "era4-context-photo": "eras/reinvention-lagos-skyline.jpg",
+    "era5-context-photo": "eras/elder-statesman-lagos.jpg",
+    "era6-context-photo": "eras/legacy-present-day.jpg"
+  }
+}

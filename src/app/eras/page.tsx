@@ -15,11 +15,15 @@ export default function ErasPage() {
   return (
     <>
       <PosterHero
-        eyebrow="The career timeline"
-        title="Six eras, one story"
-        intro="The whole career at a glance — each era with its years, its defining albums, and its one-line thesis. Pick a chapter and go deep."
+        eyebrow="The elevator pitch of the whole site"
+        title={
+          <>
+            Six Eras. <span className="text-danfo">One Legacy.</span>
+          </>
+        }
+        intro="From a Bariga upstart to a label boss raising the next generation — the whole career, one scrollable timeline. All six chapters are live."
       />
-      <section className="mx-auto flex max-w-3xl flex-col gap-10 px-5 py-14 sm:px-8">
+      <section className="mx-auto flex max-w-3xl flex-col gap-14 px-5 py-16 sm:px-8">
         {eras.map((era, i) => (
           <EraCard
             key={era.slug}

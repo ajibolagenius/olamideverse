@@ -1,14 +1,7 @@
 import Link from "next/link";
 import CoverArt from "./CoverArt";
 import { ACCENTS } from "@/lib/accents";
-import type { Album, Era } from "@/lib/content";
-
-const TYPE_LABEL: Record<Album["type"], string> = {
-  album: "Album",
-  mixtape: "Mixtape",
-  ep: "EP",
-  joint: "Joint album",
-};
+import { ALBUM_TYPE_LABEL, type Album, type Era } from "@/lib/content-schema";
 
 export default function AlbumCard({
   album,
@@ -33,7 +26,7 @@ export default function AlbumCard({
       <CoverArt title={album.title} accent={era.accent} />
       <div className="flex items-center justify-between border-t-[3px] border-ink px-3 py-2 text-sm">
         <span className="text-ink-soft">
-          {album.year} · {TYPE_LABEL[album.type]}
+          {album.year} · {ALBUM_TYPE_LABEL[album.type]}
         </span>
         <span className="font-bold" style={{ color: eraLabelColor }}>
           {era.title}

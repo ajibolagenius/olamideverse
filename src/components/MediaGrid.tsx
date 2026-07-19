@@ -5,7 +5,7 @@ import type { CSSProperties } from "react";
 import EmptyState from "./EmptyState";
 import FilterChips from "./FilterChips";
 import { ACCENTS } from "@/lib/accents";
-import type { Era, MediaItem } from "@/lib/content";
+import type { Era, MediaItem } from "@/lib/content-schema";
 
 const TYPE_LABEL: Record<MediaItem["type"], string> = {
   "music-video": "Music video",
@@ -56,7 +56,7 @@ function MediaCard({ item, era }: { item: MediaItem; era: Era }) {
         <h3 className="font-display text-lg">{item.title}</h3>
         <p className="mt-1 text-sm text-ink-soft">{item.note}</p>
         <p className="mt-2 text-xs tracking-[0.05em] uppercase text-ink-soft">
-          {item.year} · {TYPE_LABEL[item.type]}
+          {item.year} · via {item.source}
         </p>
       </div>
     </article>
@@ -107,7 +107,7 @@ export default function MediaGrid({
         />
       </div>
       {shown.length === 0 ? (
-        <EmptyState />
+        <EmptyState message="No curated clips in this category yet — check back as the archive grows." />
       ) : (
         <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
           {shown.map((item) => (
