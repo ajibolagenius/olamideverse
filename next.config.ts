@@ -37,6 +37,15 @@ const nextConfig: NextConfig = {
           { key: "Content-Security-Policy", value: csp },
         ],
       },
+      {
+        // Never let the SW itself go stale in a browser cache — a cached
+        // old sw.js would keep serving an outdated offline strategy.
+        source: "/sw.js",
+        headers: [
+          { key: "Cache-Control", value: "no-cache, no-store, must-revalidate" },
+          { key: "Service-Worker-Allowed", value: "/" },
+        ],
+      },
     ];
   },
 };

@@ -30,6 +30,10 @@ const COLOPHON = [
     heading: "Visual system",
     body: "Afro-street editorial — danfo yellow, adire indigo, paper and ink. Paste-up tilt, hard shadows, thick rules. No glass, no neon, no glitch.",
   },
+  {
+    heading: "The mark",
+    body: "The site icon is a danfo-yellow ring on ink — read it as a vinyl record or as the O in Olamide, whichever comes first. Same three colors as everything else here, nothing borrowed from a template.",
+  },
 ];
 
 export default function AboutPage() {
