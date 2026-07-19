@@ -190,11 +190,20 @@ export async function saveSlot(formData: FormData) {
     redirect("/admin/assets?tab=slots&saved=1");
 }
 
+const ALLOWED_ASSET_MIME_TYPES = ["image/png", "image/jpeg", "image/webp", "image/gif"];
+const MAX_ASSET_BYTES = 8 * 1024 * 1024; // matches the site-media bucket's file_size_limit
+
 export async function uploadAsset(formData: FormData) {
     const session = await assertEditor();
     const file = formData.get("file");
     if (!(file instanceof File) || file.size === 0) {
         redirect("/admin/assets?error=nofile");
+    }
+    if (!ALLOWED_ASSET_MIME_TYPES.includes(file.type)) {
+        redirect("/admin/assets?error=filetype");
+    }
+    if (file.size > MAX_ASSET_BYTES) {
+        redirect("/admin/assets?error=filesize");
     }
     const kind = String(formData.get("kind") ?? "other");
     const folder =

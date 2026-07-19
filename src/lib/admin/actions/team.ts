@@ -66,6 +66,19 @@ export async function updateAdminRole(formData: FormData) {
     }
 
     const supabase = await createClient();
+
+    if (user_id === session.userId && session.admin.role === "owner" && role !== "owner") {
+        const { count } = await supabase
+            .from("admin_users")
+            .select("user_id", { count: "exact", head: true })
+            .eq("role", "owner")
+            .eq("disabled", false)
+            .neq("user_id", session.userId);
+        if (!count) {
+            redirect("/admin/team?error=lastowner");
+        }
+    }
+
     await supabase
         .from("admin_users")
         .update({ role, disabled })
