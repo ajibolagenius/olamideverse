@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Breadcrumb from "@/components/Breadcrumb";
 import CommentBox from "@/components/fanzone/CommentBox";
 import CoverArt from "@/components/CoverArt";
 import EmptyState from "@/components/EmptyState";
@@ -46,9 +47,10 @@ export default async function AlbumPage({
   const era = (await getEra(album.era))!;
   const accent = ACCENTS[era.accent];
   const heroAccent = accent.solid === ACCENTS.ink.solid ? ACCENTS.danfo.solid : accent.solid;
-  const [comments, blocks] = await Promise.all([
+  const [comments, blocks, albums] = await Promise.all([
     getComments(`album-${album.slug}`),
     getBlockedEmbeds(),
+    getAlbums(),
   ]);
   const blockedYoutube = blocks
     .filter((b) => b.provider === "youtube" || b.provider === "any")
@@ -56,6 +58,11 @@ export default async function AlbumPage({
   const blockedSpotify = blocks
     .filter((b) => b.provider === "spotify" || b.provider === "any")
     .map((b) => b.embed_id);
+
+  const albumIndex = albums.findIndex((a) => a.slug === album.slug);
+  const prevAlbum = albumIndex > 0 ? albums[albumIndex - 1] : undefined;
+  const nextAlbum =
+    albumIndex >= 0 && albumIndex < albums.length - 1 ? albums[albumIndex + 1] : undefined;
 
   const metaFacts = [
     album.released ? { label: "Released", value: album.released } : null,
@@ -72,12 +79,23 @@ export default async function AlbumPage({
 
   return (
     <>
-      <div className="mx-auto max-w-6xl px-5 pt-4 text-sm uppercase tracking-[0.06em] text-ink-soft sm:px-8">
-        <Link href="/albums" className="hover:text-oxide">
-          Discography
-        </Link>{" "}
-        / {album.title}
-      </div>
+      <Breadcrumb
+        items={[
+          { label: "Discography", href: "/albums" },
+          { label: era.title, href: `/eras/${era.slug}` },
+          { label: album.title },
+        ]}
+        previous={
+          prevAlbum
+            ? { label: prevAlbum.title, href: `/albums/${prevAlbum.slug}` }
+            : null
+        }
+        next={
+          nextAlbum
+            ? { label: nextAlbum.title, href: `/albums/${nextAlbum.slug}` }
+            : null
+        }
+      />
 
       <section className="mx-auto grid max-w-6xl gap-11 px-5 pt-9 pb-5 sm:px-8 lg:grid-cols-[340px_1fr]">
         <div

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AlbumCard from "@/components/AlbumCard";
+import Breadcrumb from "@/components/Breadcrumb";
 import CommentBox from "@/components/fanzone/CommentBox";
 import EraMoments from "@/components/EraMoments";
 import InlineMarkdown from "@/components/InlineMarkdown";
@@ -56,12 +57,30 @@ export default async function EraPage({
   ]);
   const accent = ACCENTS[era.accent];
   const media = allMedia.filter((item) => item.era === era.slug);
+  const prevEra = eras.find((e) => e.order === era.order - 1);
   const nextEra = era.open
     ? undefined
     : eras.find((e) => e.order === era.order + 1);
 
   return (
     <>
+      <Breadcrumb
+        items={[
+          { label: "Eras", href: "/eras" },
+          { label: era.title },
+        ]}
+        previous={
+          prevEra
+            ? { label: prevEra.title, href: `/eras/${prevEra.slug}` }
+            : null
+        }
+        next={
+          nextEra
+            ? { label: nextEra.title, href: `/eras/${nextEra.slug}` }
+            : null
+        }
+      />
+
       <PosterHero
         size="xl"
         kickerLeft={`OlamideVerse — Era ${String(era.order).padStart(2, "0")}`}
