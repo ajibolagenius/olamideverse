@@ -13,6 +13,10 @@
 /albums                 Discography — grid of albums & mixtapes
 /albums/[slug]          Album detail — tracklist, embeds, story, credits
 /media                  Media gallery — videos, freestyles, interviews (embeds)
+/snippets               Audiogram-style share cards (visual + embed links)
+/snippets/[id]          Snippet detail — card, embed, share
+/influence              Influence graph — mentors, peers, mentees, collabs
+/impact                 Impact map — curated places (Lagos / Nigeria / world)
 /about                  What OlamideVerse is, who made it, colophon
 /legal                  Disclaimer, terms, copyright policy
 /fanzone                [P3] Favorites, polls, comments, playlists
@@ -38,6 +42,15 @@ Cover, year, era link, credits, tracklist with per-track embeds (Spotify primary
 ### Media `/media`
 Curated, era-tagged gallery of embedded videos: music videos, freestyles, interviews, live moments. Curation notes over completeness.
 
+### Snippets `/snippets` · `/snippets/[id]`
+Shareable audiogram-style cards — decorative waveforms, key-bar context, era accent, and a link to the Spotify/YouTube embed. No hosted audio. Surfaced on matching album pages and the home “Deeper cuts” strip.
+
+### Influence `/influence`
+Curated node graph (not AI similarity): Olamide at the center, mentors/peers/mentees/collaborators around him. Selecting a node opens a blurb and links into eras/albums.
+
+### Impact `/impact`
+Stylized geography of the career — Lagos / Nigeria / world planes with editorial pins (origin, venue, concert, cultural, international). Not a live tour tracker.
+
 ### About `/about` · Legal `/legal`
 Fan-project statement, non-affiliation disclaimer, takedown contact, credits for sources.
 
@@ -48,6 +61,9 @@ content/
   eras/[era].mdx          # chapter prose + frontmatter (slug, title, years, thesis, accent, order)
   albums/[slug].mdx       # album story + frontmatter (title, year, era, type, cover, tracklist[], embeds{})
   media/media.json        # curated list: { id, title, era, year, type, youtubeId|embedUrl, note }
+  snippets/snippets.json  # audiogram cards: { id, quote, note, track, albumSlug, era, embeds… }
+  influence/graph.json    # { nodes[], edges[] } for the influence graph
+  impact/places.json      # curated places with map plane + pin coordinates
 ```
 
 - All content is MDX/JSON in the repo → fully static site, no CMS, no backend.
@@ -57,8 +73,8 @@ content/
 ## Navigation
 
 - **Header:** wordmark · Eras · Discography · Media · About — plus persistent "fan project" micro-disclaimer.
-- **Footer:** legal, source credits, takedown contact, social links.
-- **Cross-linking rule:** every album links to its era; every era lists its albums; media items link both ways. The archive should feel like one continuous fabric, not siloed sections.
+- **Footer:** snippets, influence, impact, legal, source credits, takedown contact, Fan Zone when enabled.
+- **Cross-linking rule:** every album links to its era; every era lists its albums; media items link both ways; snippets link to album + era; influence/impact nodes link back into chapters. The archive should feel like one continuous fabric, not siloed sections.
 
 ## Fan Zone [Phase 3 — sketch only]
 

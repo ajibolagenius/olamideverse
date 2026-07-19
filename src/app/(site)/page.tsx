@@ -39,6 +39,24 @@ const DOORS = [
   },
 ] as const;
 
+const DEEPER = [
+  {
+    href: "/snippets",
+    title: "Audiogram snippets",
+    copy: "Shareable cards for the bars that define eras",
+  },
+  {
+    href: "/influence",
+    title: "Influence graph",
+    copy: "Mentors, peers, and the artists he raised",
+  },
+  {
+    href: "/impact",
+    title: "Impact map",
+    copy: "Bariga to the diaspora — where the story landed",
+  },
+] as const;
+
 export default async function Home() {
   const eras = await getEras();
   const upstart = (await getEra("the-upstart"))!;
@@ -132,7 +150,7 @@ export default async function Home() {
         </section>
       ) : null}
 
-      <section className="mx-auto max-w-6xl px-5 pt-10 pb-20 sm:px-8">
+      <section className="mx-auto max-w-6xl px-5 pt-10 pb-12 sm:px-8">
         <p className="mb-[18px] text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
           Or go straight to
         </p>
@@ -145,6 +163,26 @@ export default async function Home() {
             >
               <span className="font-display mb-1.5 block text-2xl">{door.title}</span>
               <span className="text-sm text-ink-soft">{door.copy}</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-5 pb-20 sm:px-8">
+        <p className="mb-[18px] text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
+          Deeper cuts
+        </p>
+        <div className="grid gap-6 sm:grid-cols-3">
+          {DEEPER.map((door) => (
+            <Link
+              key={door.href}
+              href={door.href}
+              className="block border-[3px] border-ink bg-ink p-6 text-paper shadow-paste-sm transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
+            >
+              <span className="font-display mb-1.5 block text-2xl text-danfo">
+                {door.title}
+              </span>
+              <span className="text-sm text-ink-muted">{door.copy}</span>
             </Link>
           ))}
         </div>

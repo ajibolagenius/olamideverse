@@ -1,0 +1,110 @@
+[
+  {
+    "id": "eni-duro",
+    "quote": "Patience and grind, delivered entirely in Yoruba — when that was still a commercial risk.",
+    "note": "The breakout that booked the first festival stage and announced a different language for Nigerian street-hop.",
+    "track": "Eni Duro",
+    "albumSlug": "rapsodi",
+    "albumTitle": "Rapsodi",
+    "year": 2011,
+    "era": "the-upstart",
+    "spotifyTrackId": "7KhrNUSPwhxBsuOXVAKgg4",
+    "waveformSeed": 11
+  },
+  {
+    "id": "first-of-all",
+    "quote": "It doesn't ask for a seat at the table. It builds a new one.",
+    "note": "The mission statement of a label that had just been born — infrastructure carrying his name from now on.",
+    "track": "First of All",
+    "albumSlug": "ybnl",
+    "albumTitle": "YBNL",
+    "year": 2012,
+    "era": "first-of-all",
+    "spotifyTrackId": "6aWJGYvtifenSm5hYVYqii",
+    "waveformSeed": 22
+  },
+  {
+    "id": "durosoke",
+    "quote": "Confidence as choreography — a street chant turned national muscle memory.",
+    "note": "The clip that swept the 2014 Nigeria Music Video Awards and made Durosoke a movement, not just a single.",
+    "track": "Durosoke",
+    "albumSlug": "baddest-guy-ever-liveth",
+    "albumTitle": "Baddest Guy Ever Liveth",
+    "year": 2013,
+    "era": "first-of-all",
+    "spotifyTrackId": "1yNbGvJ3Z0haQG2oRRbq5R",
+    "waveformSeed": 33
+  },
+  {
+    "id": "story-for-the-gods",
+    "quote": "Street testimony delivered like folklore — the song that made OLIC feel inevitable.",
+    "note": "The preceding single that framed Street OT before the album arrived, and the Street King run with it.",
+    "track": "Story For The Gods",
+    "albumSlug": "street-ot",
+    "albumTitle": "Street OT",
+    "year": 2014,
+    "era": "street-king-run",
+    "spotifyTrackId": "6Ku8XFjSyYXQGyBeUG4yZe",
+    "waveformSeed": 44
+  },
+  {
+    "id": "bobo",
+    "quote": "Punch after punch, never on the canvas — the Mayweather metaphor made literal.",
+    "note": "Young Jonn's beat, undefeated energy: Best Street-Hop Artiste at the Headies 2015.",
+    "track": "Bobo",
+    "albumSlug": "eyan-mayweather",
+    "albumTitle": "Eyan Mayweather",
+    "year": 2015,
+    "era": "street-king-run",
+    "spotifyTrackId": "0N6lUfSwuOWlmP2YUGtIZb",
+    "waveformSeed": 55
+  },
+  {
+    "id": "wo",
+    "quote": "Shaku shaku left Agege and entered the national bloodstream.",
+    "note": "Shot in Bariga, built around the #WoChallenge — Wizkid called it the biggest Nigerian song of the year.",
+    "track": "Wo",
+    "albumSlug": "lagos-nawa",
+    "albumTitle": "Lagos Nawa",
+    "year": 2017,
+    "era": "street-king-run",
+    "spotifyTrackId": "0PdcsG2O7LVqYgeg3knbHx",
+    "waveformSeed": 66
+  },
+  {
+    "id": "infinity",
+    "quote": "Melody-first, unhurried — built for a streaming era the Street King albums never had to court.",
+    "note": "The song that made the reinvention undeniable, and one of the catalog's most-streamed chapters.",
+    "track": "Infinity",
+    "albumSlug": "carpe-diem",
+    "albumTitle": "Carpe Diem",
+    "year": 2020,
+    "era": "reinvention",
+    "spotifyTrackId": "5DS9LiyEdw2zY8bM6kjjgM",
+    "waveformSeed": 77
+  },
+  {
+    "id": "rock",
+    "quote": "Reggae and Afro-pop textures where street-hop density used to live.",
+    "note": "The lead single that announced a shorter, more pop-facing Olamide — still unmistakably Baddo in the pocket.",
+    "track": "Rock",
+    "albumSlug": "uy-scuti",
+    "albumTitle": "UY Scuti",
+    "year": 2021,
+    "era": "elder-statesman",
+    "spotifyTrackId": "3N3PWNgtiqsdLY5PQTKw6w",
+    "waveformSeed": 88
+  },
+  {
+    "id": "kai",
+    "quote": "Fourteen years after Omo To Shan — two established names meeting as peers.",
+    "note": "The reunion that names the Legacy era: no longer an upstart borrowing a rising star's shine.",
+    "track": "Kai!",
+    "albumSlug": "olamide",
+    "albumTitle": "Olamide",
+    "year": 2024,
+    "era": "legacy",
+    "spotifyTrackId": "0C3zMmE4yo1qBq6MGfkwX0",
+    "waveformSeed": 99
+  }
+]

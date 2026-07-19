@@ -24,6 +24,9 @@ const DEFAULT_NAV: NavLink[] = [
 
 const DEFAULT_FOOTER = {
     links: [
+        { href: "/snippets", label: "Snippets" },
+        { href: "/influence", label: "Influence" },
+        { href: "/impact", label: "Impact" },
         { href: "/legal", label: "Legal" },
         { href: "/about", label: "Source credits" },
         { href: "/legal#takedown", label: "Takedown" },
