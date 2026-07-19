@@ -5,21 +5,26 @@ import FavoritesList from "@/components/fanzone/FavoritesList";
 import PlaylistPanel from "@/components/fanzone/PlaylistPanel";
 import PollCard from "@/components/fanzone/PollCard";
 import PosterHero from "@/components/PosterHero";
-import { POLL_DEFS } from "@/lib/fanzone/polls";
+import { getPollDefs } from "@/lib/fanzone/polls";
 import { getComments, getFavorites, getPlaylist, getPollResults } from "@/lib/fanzone/queries";
+import { resolvePageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Fan Zone",
-  description:
-    "Favorite eras and albums, vote in polls, argue in the comments, and build a playlist to share.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return resolvePageMetadata({
+    title: "Fan Zone",
+    description:
+      "Favorite eras and albums, vote in polls, argue in the comments, and build a playlist to share.",
+    path: "/fanzone",
+  });
+}
 
 export default async function FanZonePage() {
+  const polls = await getPollDefs();
   const [favorites, playlist, comments, ...pollResults] = await Promise.all([
     getFavorites(),
     getPlaylist(),
     getComments("general"),
-    ...POLL_DEFS.map((p) => getPollResults(p.id)),
+    ...polls.map((p) => getPollResults(p.id)),
   ]);
 
   return (
@@ -39,11 +44,11 @@ export default async function FanZonePage() {
         <FavoritesList initialFavorites={favorites} />
       </section>
 
-      {POLL_DEFS.length > 0 ? (
+      {polls.length > 0 ? (
         <section className="mx-auto max-w-4xl px-5 py-12 sm:px-8">
           <h2 className="font-display text-display-md mb-5">Polls</h2>
           <div className="grid gap-5 sm:grid-cols-2">
-            {POLL_DEFS.map((poll, i) => (
+            {polls.map((poll, i) => (
               <PollCard
                 key={poll.id}
                 poll={poll}

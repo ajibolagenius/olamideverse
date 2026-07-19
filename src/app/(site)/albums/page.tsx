@@ -3,12 +3,16 @@ import AlbumGrid from "@/components/AlbumGrid";
 import PosterHero from "@/components/PosterHero";
 import Ticker from "@/components/chrome/Ticker";
 import { getAlbums, getEras } from "@/lib/content";
+import { resolvePageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Discography",
-  description:
-    "Every Olamide album and mixtape, cover-forward — filterable by era, sortable by release date.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return resolvePageMetadata({
+    title: "Discography",
+    description:
+      "Every Olamide album and mixtape, cover-forward — filterable by era, sortable by release date.",
+    path: "/albums",
+  });
+}
 
 const TICKER = [
   "14 releases · 2011 — 2025",
@@ -17,7 +21,8 @@ const TICKER = [
   "Embeds only — no hosted audio",
 ];
 
-export default function AlbumsPage() {
+export default async function AlbumsPage() {
+  const [albums, eras] = await Promise.all([getAlbums(), getEras()]);
   return (
     <>
       <PosterHero
@@ -31,7 +36,7 @@ export default function AlbumsPage() {
       />
       <Ticker items={TICKER} />
       <section className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
-        <AlbumGrid albums={getAlbums()} eras={getEras()} />
+        <AlbumGrid albums={albums} eras={eras} />
       </section>
     </>
   );

@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
+import { resolvePageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Legal",
-  description:
-    "Disclaimer, copyright posture and takedown contact for OlamideVerse, a non-affiliated fan archive.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return resolvePageMetadata({
+    title: "Legal",
+    description:
+      "Disclaimer, copyright posture and takedown contact for OlamideVerse, a non-affiliated fan archive.",
+    path: "/legal",
+  });
+}
 
 export default function LegalPage() {
   return (

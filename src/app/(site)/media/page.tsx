@@ -3,12 +3,16 @@ import MediaGrid from "@/components/MediaGrid";
 import PosterHero from "@/components/PosterHero";
 import Ticker from "@/components/chrome/Ticker";
 import { getEras, getMediaItems } from "@/lib/content";
+import { resolvePageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Media",
-  description:
-    "A curated, era-tagged gallery of Olamide videos, freestyles, interviews and live moments — all embedded, nothing hosted.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return resolvePageMetadata({
+    title: "Media",
+    description:
+      "A curated, era-tagged gallery of Olamide videos, freestyles, interviews and live moments — all embedded, nothing hosted.",
+    path: "/media",
+  });
+}
 
 const TICKER = [
   "Curation notes over completeness",
@@ -16,7 +20,8 @@ const TICKER = [
   "Every clip links to its era",
 ];
 
-export default function MediaPage() {
+export default async function MediaPage() {
+  const [items, eras] = await Promise.all([getMediaItems(), getEras()]);
   return (
     <>
       <PosterHero
@@ -26,7 +31,7 @@ export default function MediaPage() {
       />
       <Ticker items={TICKER} />
       <section className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
-        <MediaGrid items={getMediaItems()} eras={getEras()} />
+        <MediaGrid items={items} eras={eras} />
       </section>
     </>
   );

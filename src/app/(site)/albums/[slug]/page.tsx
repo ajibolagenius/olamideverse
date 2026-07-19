@@ -9,9 +9,11 @@ import Tracklist from "@/components/Tracklist";
 import { ACCENTS } from "@/lib/accents";
 import { ALBUM_TYPE_LABEL, getAlbum, getAlbums, getEra } from "@/lib/content";
 import { getComments } from "@/lib/fanzone/queries";
+import { getBlockedEmbeds } from "@/lib/settings";
+import { resolvePageMetadata } from "@/lib/site";
 
-export function generateStaticParams() {
-  return getAlbums().map((album) => ({ slug: album.slug }));
+export async function generateStaticParams() {
+  return (await getAlbums()).map((album) => ({ slug: album.slug }));
 }
 
 export async function generateMetadata({
@@ -19,26 +21,41 @@ export async function generateMetadata({
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const album = getAlbum((await params).slug);
+  const { slug } = await params;
+  const album = await getAlbum(slug);
   if (!album) return {};
-  return {
+  return resolvePageMetadata({
     title: `${album.title} (${album.year})`,
     description: `${album.title} — ${album.year} ${ALBUM_TYPE_LABEL[album.type]}. Tracklist, embeds and the story of where it landed.`,
-  };
+    path: `/albums/${slug}`,
+  });
 }
 
 export default async function AlbumPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ preview?: string }>;
 }) {
-  const album = getAlbum((await params).slug);
+  const { slug } = await params;
+  const { preview } = await searchParams;
+  const album = await getAlbum(slug, { previewToken: preview });
   if (!album) notFound();
 
-  const era = getEra(album.era)!;
+  const era = (await getEra(album.era))!;
   const accent = ACCENTS[era.accent];
   const heroAccent = accent.solid === ACCENTS.ink.solid ? ACCENTS.danfo.solid : accent.solid;
-  const comments = await getComments(`album-${album.slug}`);
+  const [comments, blocks] = await Promise.all([
+    getComments(`album-${album.slug}`),
+    getBlockedEmbeds(),
+  ]);
+  const blockedYoutube = blocks
+    .filter((b) => b.provider === "youtube" || b.provider === "any")
+    .map((b) => b.embed_id);
+  const blockedSpotify = blocks
+    .filter((b) => b.provider === "spotify" || b.provider === "any")
+    .map((b) => b.embed_id);
 
   const metaFacts = [
     album.released ? { label: "Released", value: album.released } : null,
@@ -102,6 +119,8 @@ export default async function AlbumPage({
               albumSlug={album.slug}
               albumTitle={album.title}
               albumYear={album.year}
+              blockedYoutube={blockedYoutube}
+              blockedSpotify={blockedSpotify}
             />
             {(album.keyBars.length > 0 || album.credits) && (
               <div className="flex flex-col gap-5">

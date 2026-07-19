@@ -2,15 +2,25 @@ import type { Metadata } from "next";
 import PosterHero from "@/components/PosterHero";
 import EraCard from "@/components/EraCard";
 import { getAlbumsByEra, getEras } from "@/lib/content";
+import { resolvePageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Eras",
-  description:
-    "Olamide's whole career on one timeline — six eras, from The Upstart to Legacy.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return resolvePageMetadata({
+    title: "Eras",
+    description:
+      "Olamide's whole career on one timeline — six eras, from The Upstart to Legacy.",
+    path: "/eras",
+  });
+}
 
-export default function ErasPage() {
-  const eras = getEras();
+export default async function ErasPage() {
+  const eras = await getEras();
+  const albumsByEra = await Promise.all(
+    eras.map(async (era) => ({
+      era,
+      albums: await getAlbumsByEra(era.slug),
+    })),
+  );
 
   return (
     <>
@@ -24,13 +34,8 @@ export default function ErasPage() {
         intro="From a Bariga upstart to a label boss raising the next generation — the whole career, one scrollable timeline. All six chapters are live."
       />
       <section className="mx-auto flex max-w-3xl flex-col gap-14 px-5 py-16 sm:px-8">
-        {eras.map((era, i) => (
-          <EraCard
-            key={era.slug}
-            era={era}
-            albums={getAlbumsByEra(era.slug)}
-            index={i}
-          />
+        {albumsByEra.map(({ era, albums }, i) => (
+          <EraCard key={era.slug} era={era} albums={albums} index={i} />
         ))}
       </section>
     </>

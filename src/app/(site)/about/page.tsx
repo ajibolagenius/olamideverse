@@ -2,12 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PosterHero from "@/components/PosterHero";
 import PullQuote from "@/components/PullQuote";
+import { resolvePageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "About",
-  description:
-    "What OlamideVerse is, who made it, and the rules it lives by. A fan project — not affiliated with Olamide or YBNL Nation.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return resolvePageMetadata({
+    title: "About",
+    description:
+      "What OlamideVerse is, who made it, and the rules it lives by. A fan project — not affiliated with Olamide or YBNL Nation.",
+    path: "/about",
+  });
+}
 
 const COLOPHON = [
   {
