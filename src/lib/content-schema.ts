@@ -79,6 +79,78 @@ export const mediaItemSchema = z.object({
   note: z.string(),
 });
 
+/** Shareable audiogram-style cards — visual + embed link, never hosted audio. */
+export const snippetSchema = z.object({
+  id: z.string(),
+  quote: z.string(),
+  note: z.string(),
+  track: z.string(),
+  albumSlug: z.string(),
+  albumTitle: z.string(),
+  year: z.number().int(),
+  era: z.string(),
+  spotifyTrackId: z.string().optional(),
+  youtubeId: z.string().optional(),
+  /** Deterministic seed for the decorative waveform bars. */
+  waveformSeed: z.number().int().default(1),
+});
+
+export const INFLUENCE_ROLES = [
+  "center",
+  "mentor",
+  "peer",
+  "mentee",
+  "collaborator",
+  "influence",
+] as const;
+
+export const influenceNodeSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  role: z.enum(INFLUENCE_ROLES),
+  blurb: z.string(),
+  eraSlug: z.string().optional(),
+  albumSlug: z.string().optional(),
+  /** Position in the graph canvas, 0–100. */
+  x: z.number().min(0).max(100),
+  y: z.number().min(0).max(100),
+});
+
+export const influenceEdgeSchema = z.object({
+  from: z.string(),
+  to: z.string(),
+  label: z.string().optional(),
+});
+
+export const influenceGraphSchema = z.object({
+  nodes: z.array(influenceNodeSchema).min(1),
+  edges: z.array(influenceEdgeSchema).default([]),
+});
+
+export const IMPACT_KINDS = [
+  "origin",
+  "venue",
+  "concert",
+  "cultural",
+  "international",
+] as const;
+
+export const impactPlaceSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  city: z.string(),
+  region: z.string(),
+  kind: z.enum(IMPACT_KINDS),
+  year: z.number().int().optional(),
+  blurb: z.string(),
+  eraSlug: z.string().optional(),
+  albumSlug: z.string().optional(),
+  /** Pin position on the active map plane, 0–100. */
+  x: z.number().min(0).max(100),
+  y: z.number().min(0).max(100),
+  map: z.enum(["lagos", "nigeria", "world"]).default("nigeria"),
+});
+
 export const ALBUM_TYPE_LABEL: Record<z.infer<typeof albumSchema>["type"], string> = {
   album: "Album",
   mixtape: "Mixtape",
@@ -86,7 +158,35 @@ export const ALBUM_TYPE_LABEL: Record<z.infer<typeof albumSchema>["type"], strin
   joint: "Collab Album",
 };
 
+export const INFLUENCE_ROLE_LABEL: Record<
+  z.infer<typeof influenceNodeSchema>["role"],
+  string
+> = {
+  center: "The archive's subject",
+  mentor: "Mentor / early guide",
+  peer: "Peer",
+  mentee: "Signed / raised",
+  collaborator: "Collaborator",
+  influence: "Influence",
+};
+
+export const IMPACT_KIND_LABEL: Record<
+  z.infer<typeof impactPlaceSchema>["kind"],
+  string
+> = {
+  origin: "Origin",
+  venue: "Venue",
+  concert: "Concert",
+  cultural: "Cultural",
+  international: "International",
+};
+
 export type Era = z.infer<typeof eraSchema> & { slug: string; body: string };
 export type Album = z.infer<typeof albumSchema> & { slug: string; body: string };
 export type Track = z.infer<typeof trackSchema>;
 export type MediaItem = z.infer<typeof mediaItemSchema>;
+export type Snippet = z.infer<typeof snippetSchema>;
+export type InfluenceNode = z.infer<typeof influenceNodeSchema>;
+export type InfluenceEdge = z.infer<typeof influenceEdgeSchema>;
+export type InfluenceGraph = z.infer<typeof influenceGraphSchema>;
+export type ImpactPlace = z.infer<typeof impactPlaceSchema>;

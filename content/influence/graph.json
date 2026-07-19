@@ -1,0 +1,134 @@
+{
+  "nodes": [
+    {
+      "id": "olamide",
+      "name": "Olamide",
+      "role": "center",
+      "blurb": "The spine of the archive — Bariga upstart, YBNL founder, street-hop architect, label boss raising the next wave.",
+      "eraSlug": "the-upstart",
+      "x": 50,
+      "y": 48
+    },
+    {
+      "id": "id-cabasa",
+      "name": "ID Cabasa",
+      "role": "mentor",
+      "blurb": "Coded Tunes founder and early producer — signed a Yoruba-rapping teenager when the industry still said English.",
+      "eraSlug": "the-upstart",
+      "albumSlug": "rapsodi",
+      "x": 18,
+      "y": 28
+    },
+    {
+      "id": "pheelz",
+      "name": "Pheelz",
+      "role": "collaborator",
+      "blurb": "Long-time in-house producer and YBNL alumnus — from early Rapsodi sessions to later reunion cuts.",
+      "eraSlug": "the-upstart",
+      "albumSlug": "rapsodi",
+      "x": 22,
+      "y": 68
+    },
+    {
+      "id": "phyno",
+      "name": "Phyno",
+      "role": "peer",
+      "blurb": "The Igbo-language counterpart across eras — from 2 Kings through UY Scuti, the constant booth partner.",
+      "eraSlug": "street-king-run",
+      "albumSlug": "2-kings",
+      "x": 50,
+      "y": 14
+    },
+    {
+      "id": "wizkid",
+      "name": "Wizkid",
+      "role": "peer",
+      "blurb": "From Omo To Shan on Rapsodi to Kai! on the self-titled — two Lagos careers orbiting each other for over a decade.",
+      "eraSlug": "the-upstart",
+      "albumSlug": "rapsodi",
+      "x": 78,
+      "y": 22
+    },
+    {
+      "id": "lil-kesh",
+      "name": "Lil Kesh",
+      "role": "mentee",
+      "blurb": "Early YBNL signee — Shoki-era breakout and proof the label could mint stars beyond its founder.",
+      "eraSlug": "street-king-run",
+      "x": 82,
+      "y": 42
+    },
+    {
+      "id": "fireboy",
+      "name": "Fireboy DML",
+      "role": "mentee",
+      "blurb": "YBNL's melodic second generation — Empire-era reach, Carpe Diem closer, and the label's international face.",
+      "eraSlug": "reinvention",
+      "albumSlug": "carpe-diem",
+      "x": 82,
+      "y": 62
+    },
+    {
+      "id": "asake",
+      "name": "Asake",
+      "role": "mentee",
+      "blurb": "The log-drum breakout Olamide signed and then traded bars with — Unruly and Ikigai as living proof of the pipeline.",
+      "eraSlug": "elder-statesman",
+      "albumSlug": "unruly",
+      "x": 68,
+      "y": 82
+    },
+    {
+      "id": "young-jonn",
+      "name": "Young Jonn",
+      "role": "collaborator",
+      "blurb": "Producer behind Bobo and later alumni reunions — the beatmaker who soundtracked the Street King peak.",
+      "eraSlug": "street-king-run",
+      "albumSlug": "eyan-mayweather",
+      "x": 32,
+      "y": 86
+    },
+    {
+      "id": "burna",
+      "name": "Burna Boy",
+      "role": "collaborator",
+      "blurb": "Guest on Omo Wobe Anthem (2016) — two futures of Nigerian music sharing a YBNL beat before either went global.",
+      "eraSlug": "street-king-run",
+      "albumSlug": "the-glory",
+      "x": 18,
+      "y": 48
+    },
+    {
+      "id": "omah-lay",
+      "name": "Omah Lay",
+      "role": "collaborator",
+      "blurb": "Infinity — the reinvention-era co-star who helped prove street-hop's founder could lead with melody.",
+      "eraSlug": "reinvention",
+      "albumSlug": "carpe-diem",
+      "x": 50,
+      "y": 88
+    },
+    {
+      "id": "yoruba-street",
+      "name": "Yoruba street rap",
+      "role": "influence",
+      "blurb": "The linguistic and cultural current Cabasa's scene rode — indigenous bars as commercial risk, then blueprint.",
+      "eraSlug": "the-upstart",
+      "x": 32,
+      "y": 18
+    }
+  ],
+  "edges": [
+    { "from": "id-cabasa", "to": "olamide", "label": "signed" },
+    { "from": "yoruba-street", "to": "olamide", "label": "shaped" },
+    { "from": "olamide", "to": "pheelz", "label": "sessions" },
+    { "from": "olamide", "to": "phyno", "label": "peer" },
+    { "from": "olamide", "to": "wizkid", "label": "collab" },
+    { "from": "olamide", "to": "lil-kesh", "label": "signed" },
+    { "from": "olamide", "to": "fireboy", "label": "signed" },
+    { "from": "olamide", "to": "asake", "label": "signed" },
+    { "from": "olamide", "to": "young-jonn", "label": "beats" },
+    { "from": "olamide", "to": "burna", "label": "collab" },
+    { "from": "olamide", "to": "omah-lay", "label": "collab" }
+  ]
+}

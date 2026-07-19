@@ -50,7 +50,7 @@ Every other section hangs off this spine: albums belong to eras, media belongs t
 - **Phase 1 — Foundation**: fresh Next.js codebase, design system implemented from the identity spec, deployed skeleton on Vercel.
 - **Phase 2 — The Archive (first public milestone)**: Home, Eras scrollytelling, Discography (grid + album detail with embeds), Media gallery, Legal. Real written content. This is the public PoC and the artifact for any future YBNL pitch.
 - **Phase 3 — Fan Zone**: favorites, polls, comments, playlists. First backend need (likely Supabase). Only after the archive is live.
-- **Later / ambient ideas** (from v1, still good, still deferred): audiogram snippets, influence graph, impact map.
+- **Archive extras** (shipped as static editorial features): audiogram snippets (`/snippets`), influence graph (`/influence`), impact map (`/impact`). Visual/shareable and curated — still embeds-only, no hosted audio.
 
 ## 6. Principles
 

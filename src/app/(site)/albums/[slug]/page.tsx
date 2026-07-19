@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import AudiogramCard from "@/components/AudiogramCard";
 import Breadcrumb from "@/components/Breadcrumb";
 import CommentBox from "@/components/fanzone/CommentBox";
 import CoverArt from "@/components/CoverArt";
@@ -8,7 +9,13 @@ import EmptyState from "@/components/EmptyState";
 import Prose from "@/components/Prose";
 import Tracklist from "@/components/Tracklist";
 import { ACCENTS } from "@/lib/accents";
-import { ALBUM_TYPE_LABEL, getAlbum, getAlbums, getEra } from "@/lib/content";
+import {
+  ALBUM_TYPE_LABEL,
+  getAlbum,
+  getAlbums,
+  getEra,
+  getSnippetsByAlbum,
+} from "@/lib/content";
 import { getComments } from "@/lib/fanzone/queries";
 import { getAlbumCover } from "@/lib/photos";
 import { getBlockedEmbeds, getFeatureFlags } from "@/lib/settings";
@@ -56,10 +63,11 @@ export default async function AlbumPage({
     heroAccent.solid === ACCENTS.clay.solid
       ? ACCENTS.ink.solid
       : heroAccent.onSolid;
-  const [flags, blocks, albums] = await Promise.all([
+  const [flags, blocks, albums, snippets] = await Promise.all([
     getFeatureFlags(),
     getBlockedEmbeds(),
     getAlbums(),
+    getSnippetsByAlbum(album.slug),
   ]);
   const comments = flags.comments
     ? await getComments(`album-${album.slug}`)
@@ -207,6 +215,31 @@ export default async function AlbumPage({
           <EmptyState message="Tracklist coming with the content pass — check back as the archive grows." />
         )}
       </section>
+
+      {snippets.length > 0 ? (
+        <section className="mx-auto max-w-6xl px-5 pb-16 sm:px-8">
+          <div className="mb-3.5 flex flex-wrap items-baseline justify-between gap-3">
+            <p className="text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
+              Share a snippet
+            </p>
+            <Link
+              href="/snippets"
+              className="text-sm font-semibold underline decoration-2 underline-offset-2 hover:text-oxide"
+            >
+              All snippets →
+            </Link>
+          </div>
+          <div className="grid gap-8 md:grid-cols-2">
+            {snippets.map((snippet) => (
+              <AudiogramCard
+                key={snippet.id}
+                snippet={snippet}
+                accent={era.accent}
+              />
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       {flags.comments ? (
         <section className="mx-auto max-w-6xl px-5 pb-20 sm:px-8">

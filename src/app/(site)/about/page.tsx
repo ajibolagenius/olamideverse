@@ -106,6 +106,43 @@ export default function AboutPage() {
         </p>
       </section>
 
+      <section className="mx-auto max-w-3xl px-5 pt-12 sm:px-8">
+        <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
+          Deeper in the archive
+        </p>
+        <h2 className="font-display mb-5 text-3xl">Lineage & geography</h2>
+        <p className="mb-6 text-lg leading-relaxed text-ink-soft">
+          Beyond eras and albums — shareable snippet cards, a curated influence
+          graph, and a stylized impact map of places the music touched.
+        </p>
+        <ul className="flex flex-col gap-3 text-sm font-semibold sm:flex-row sm:flex-wrap sm:gap-x-6">
+          <li>
+            <Link
+              href="/snippets"
+              className="underline decoration-2 underline-offset-2 hover:text-oxide"
+            >
+              Audiogram snippets →
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/influence"
+              className="underline decoration-2 underline-offset-2 hover:text-oxide"
+            >
+              Influence graph →
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/impact"
+              className="underline decoration-2 underline-offset-2 hover:text-oxide"
+            >
+              Impact map →
+            </Link>
+          </li>
+        </ul>
+      </section>
+
       <section className="mx-auto max-w-3xl px-5 py-16 sm:px-8">
         <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
           Colophon

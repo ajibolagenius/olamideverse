@@ -5,10 +5,16 @@ import { z } from "zod";
 import {
     albumSchema,
     eraSchema,
+    impactPlaceSchema,
+    influenceGraphSchema,
     mediaItemSchema,
+    snippetSchema,
     type Album,
     type Era,
+    type ImpactPlace,
+    type InfluenceGraph,
     type MediaItem,
+    type Snippet,
 } from "./content-schema";
 import { createPublicClient } from "@/lib/supabase/public";
 
@@ -253,4 +259,92 @@ export async function getMediaItems(): Promise<MediaItem[]> {
     }
 
     return fileMedia(eraSlugs);
+}
+
+function fileSnippets(eraSlugs: Set<string>, albumSlugs: Set<string>): Snippet[] {
+    const file = path.join(CONTENT_DIR, "snippets", "snippets.json");
+    if (!fs.existsSync(file)) return [];
+    const raw = JSON.parse(fs.readFileSync(file, "utf8"));
+    const items = z.array(snippetSchema).parse(raw);
+    for (const item of items) {
+        if (!eraSlugs.has(item.era)) {
+            throw new Error(`snippets.json "${item.id}" references unknown era "${item.era}"`);
+        }
+        if (!albumSlugs.has(item.albumSlug)) {
+            throw new Error(
+                `snippets.json "${item.id}" references unknown album "${item.albumSlug}"`,
+            );
+        }
+    }
+    return items;
+}
+
+function fileInfluenceGraph(eraSlugs: Set<string>): InfluenceGraph {
+    const file = path.join(CONTENT_DIR, "influence", "graph.json");
+    if (!fs.existsSync(file)) return { nodes: [], edges: [] };
+    const graph = influenceGraphSchema.parse(
+        JSON.parse(fs.readFileSync(file, "utf8")),
+    );
+    for (const node of graph.nodes) {
+        if (node.eraSlug && !eraSlugs.has(node.eraSlug)) {
+            throw new Error(
+                `influence graph node "${node.id}" references unknown era "${node.eraSlug}"`,
+            );
+        }
+    }
+    const nodeIds = new Set(graph.nodes.map((n) => n.id));
+    for (const edge of graph.edges) {
+        if (!nodeIds.has(edge.from) || !nodeIds.has(edge.to)) {
+            throw new Error(
+                `influence graph edge ${edge.from}→${edge.to} references a missing node`,
+            );
+        }
+    }
+    return graph;
+}
+
+function fileImpactPlaces(eraSlugs: Set<string>): ImpactPlace[] {
+    const file = path.join(CONTENT_DIR, "impact", "places.json");
+    if (!fs.existsSync(file)) return [];
+    const places = z.array(impactPlaceSchema).parse(
+        JSON.parse(fs.readFileSync(file, "utf8")),
+    );
+    for (const place of places) {
+        if (place.eraSlug && !eraSlugs.has(place.eraSlug)) {
+            throw new Error(
+                `impact place "${place.id}" references unknown era "${place.eraSlug}"`,
+            );
+        }
+    }
+    return places;
+}
+
+export async function getSnippets(): Promise<Snippet[]> {
+    const [eras, albums] = await Promise.all([getEras(), getAlbums()]);
+    return fileSnippets(
+        new Set(eras.map((e) => e.slug)),
+        new Set(albums.map((a) => a.slug)),
+    );
+}
+
+export async function getSnippet(id: string): Promise<Snippet | undefined> {
+    return (await getSnippets()).find((s) => s.id === id);
+}
+
+export async function getSnippetsByAlbum(albumSlug: string): Promise<Snippet[]> {
+    return (await getSnippets()).filter((s) => s.albumSlug === albumSlug);
+}
+
+export async function getSnippetsByEra(eraSlug: string): Promise<Snippet[]> {
+    return (await getSnippets()).filter((s) => s.era === eraSlug);
+}
+
+export async function getInfluenceGraph(): Promise<InfluenceGraph> {
+    const eras = await getEras();
+    return fileInfluenceGraph(new Set(eras.map((e) => e.slug)));
+}
+
+export async function getImpactPlaces(): Promise<ImpactPlace[]> {
+    const eras = await getEras();
+    return fileImpactPlaces(new Set(eras.map((e) => e.slug)));
 }
