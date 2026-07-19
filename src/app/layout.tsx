@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import Analytics from "@/components/Analytics";
 import MotionRoot from "@/components/MotionRoot";
 import PWARegister from "@/components/PWARegister";
+import { getGeneralSettings } from "@/lib/settings";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
 const DEFAULT_TITLE = "OlamideVerse — the living archive of Olamide's legacy";
@@ -39,17 +41,20 @@ export const viewport: Viewport = {
   themeColor: "#181410",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { analyticsId } = await getGeneralSettings();
+
   return (
     <html lang="en">
       <body className="flex min-h-screen flex-col antialiased">
         {children}
         <MotionRoot />
         <PWARegister />
+        <Analytics id={analyticsId} />
       </body>
     </html>
   );

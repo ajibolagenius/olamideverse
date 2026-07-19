@@ -10,6 +10,7 @@ import Tracklist from "@/components/Tracklist";
 import { ACCENTS } from "@/lib/accents";
 import { ALBUM_TYPE_LABEL, getAlbum, getAlbums, getEra } from "@/lib/content";
 import { getComments } from "@/lib/fanzone/queries";
+import { getAlbumCover } from "@/lib/photos";
 import { getBlockedEmbeds, getFeatureFlags } from "@/lib/settings";
 import { resolvePageMetadata } from "@/lib/site";
 
@@ -46,7 +47,15 @@ export default async function AlbumPage({
 
   const era = (await getEra(album.era))!;
   const accent = ACCENTS[era.accent];
-  const heroAccent = accent.solid === ACCENTS.ink.solid ? ACCENTS.danfo.solid : accent.solid;
+  const heroAccent =
+    accent.solid === ACCENTS.ink.solid ? ACCENTS.danfo : accent;
+  // Mid-tone accents fail WCAG with light type — use ink on those chips.
+  const badgeBg = heroAccent.solid;
+  const badgeFg =
+    heroAccent.solid === ACCENTS.oxide.solid ||
+    heroAccent.solid === ACCENTS.clay.solid
+      ? ACCENTS.ink.solid
+      : heroAccent.onSolid;
   const [flags, blocks, albums] = await Promise.all([
     getFeatureFlags(),
     getBlockedEmbeds(),
@@ -66,6 +75,7 @@ export default async function AlbumPage({
   const prevAlbum = albumIndex > 0 ? albums[albumIndex - 1] : undefined;
   const nextAlbum =
     albumIndex >= 0 && albumIndex < albums.length - 1 ? albums[albumIndex + 1] : undefined;
+  const cover = getAlbumCover(album.slug);
 
   const metaFacts = [
     album.released ? { label: "Released", value: album.released } : null,
@@ -110,7 +120,21 @@ export default async function AlbumPage({
             <CoverArt title={album.title} slug={album.slug} accent={era.accent} className="aspect-square" />
           </div>
           <p className="mt-2.5 text-[0.7rem] tracking-[0.06em] uppercase text-ink-soft">
-            Cover art · editorial placeholder ·{" "}
+            Cover art
+            {cover?.sourceUrl ? (
+              <>
+                {" · "}
+                <a
+                  href={cover.sourceUrl}
+                  className="underline hover:text-oxide"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  via Deezer
+                </a>
+              </>
+            ) : null}
+            {" · "}
             <Link href="/legal" className="underline hover:text-oxide">
               Legal
             </Link>
@@ -119,8 +143,8 @@ export default async function AlbumPage({
         <div>
           <Link
             href={`/eras/${era.slug}`}
-            className="mb-4 inline-block -rotate-1 px-3 py-1.5 text-xs font-bold tracking-[0.08em] uppercase text-paper"
-            style={{ background: heroAccent }}
+            className="mb-4 inline-block -rotate-1 px-3 py-1.5 text-xs font-bold tracking-[0.08em] uppercase"
+            style={{ background: badgeBg, color: badgeFg }}
           >
             Part of Era {String(era.order).padStart(2, "0")} — {era.title} →
           </Link>
@@ -162,17 +186,17 @@ export default async function AlbumPage({
                 ) : null}
                 {album.keyBars.map((kb) => (
                   <div key={kb.title} className="border-l-[6px] border-oxide pl-4">
-                    <h4 className="mb-1.5 text-sm font-bold tracking-[0.04em] uppercase">
+                    <h3 className="mb-1.5 text-sm font-bold tracking-[0.04em] uppercase">
                       {kb.title}
-                    </h4>
+                    </h3>
                     <p className="text-[0.95rem] leading-relaxed text-ink-soft">{kb.body}</p>
                   </div>
                 ))}
                 {album.credits ? (
                   <div className="border-[3px] border-ink bg-white p-[18px] shadow-paste-sm">
-                    <h4 className="mb-2.5 text-xs font-bold tracking-[0.06em] uppercase">
+                    <h3 className="mb-2.5 text-xs font-bold tracking-[0.06em] uppercase">
                       Credits
-                    </h4>
+                    </h3>
                     <p className="text-[0.9rem] leading-relaxed text-ink-soft">{album.credits}</p>
                   </div>
                 ) : null}

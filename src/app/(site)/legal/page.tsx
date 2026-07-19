@@ -66,12 +66,14 @@ export default async function LegalPage() {
           media registry.
         </p>
         <p className="mb-8 text-lg leading-relaxed">
-          Album cover thumbnails are <b>editorial placeholders</b> sourced for
-          archival identification of releases (originally via Deezer&apos;s public
-          CDN). Cover art remains copyright of the respective rights holders.
-          They are used here solely to identify records in a non-commercial fan
-          archive and will be replaced or removed on request — see Takedown
-          below. They are not presented as owned, licensed merch assets.
+          Album covers are sourced from Deezer album pages listed in the
+          project&apos;s media registry (<code>content/media/manifest.json</code>{" "}
+          <b>sourceUrl</b> fields) and stored locally for archival
+          identification of each release. Cover art remains copyright of the
+          respective rights holders. They are used solely to identify records in
+          this non-commercial fan archive and will be replaced or removed on
+          request — see Takedown below. They are not presented as owned or
+          licensed merch assets.
         </p>
 
         <h2 className="font-display mb-3 text-2xl">Sources</h2>
