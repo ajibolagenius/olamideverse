@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getGeneralSettings } from "@/lib/settings";
 import { resolvePageMetadata } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -10,7 +11,9 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function LegalPage() {
+export default async function LegalPage() {
+  const { takedownEmail } = await getGeneralSettings();
+
   return (
     <>
       <div className="border-b-[6px] border-danfo bg-ink px-5 sm:px-8">
@@ -83,9 +86,21 @@ export default function LegalPage() {
           <span className="mb-1 block text-[0.85rem] font-bold tracking-[0.06em] uppercase">
             Contact
           </span>
-          <span className="text-ink-soft">
-            takedown@ [project contact — to be added at launch]
-          </span>
+          {takedownEmail ? (
+            <a
+              href={`mailto:${takedownEmail}`}
+              className="text-adire underline hover:text-oxide"
+            >
+              {takedownEmail}
+            </a>
+          ) : (
+            <span className="text-ink-soft">
+              Set <code className="text-ink">TAKEDOWN_EMAIL</code> in the
+              environment, or{" "}
+              <code className="text-ink">general.takedownEmail</code> in Admin
+              → Settings.
+            </span>
+          )}
         </div>
       </section>
     </>

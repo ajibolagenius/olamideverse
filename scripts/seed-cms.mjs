@@ -144,7 +144,7 @@ async function seedPagesAndSettings() {
             key: "legal",
             title: "Legal",
             data: {
-                takedownEmail: "",
+                takedownEmail: (process.env.TAKEDOWN_EMAIL || "").trim(),
                 note: "Embeds only. Cover art placeholders until licensed.",
             },
         },
@@ -182,7 +182,11 @@ async function seedPagesAndSettings() {
             blurb:
                 "Fan project · Not affiliated with Olamide or YBNL Nation · Built for archival & educational purposes",
         },
-        general: { siteName: "OlamideVerse", takedownEmail: "", analyticsId: "" },
+        general: {
+            siteName: "OlamideVerse",
+            takedownEmail: (process.env.TAKEDOWN_EMAIL || "").trim(),
+            analyticsId: "",
+        },
         brand: {
             accents: ["danfo", "adire", "oxide", "palm", "ink", "clay", "navy"],
             eraAccentMap: {
