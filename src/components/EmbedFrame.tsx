@@ -22,7 +22,9 @@ export default function EmbedFrame({
       <iframe
         title={`${title} — Spotify player`}
         src={`https://open.spotify.com/embed/${spotifyType}/${spotifyId}`}
-        className="h-[152px] w-full"
+        className={
+          spotifyType === "album" ? "h-[352px] w-full" : "h-[152px] w-full"
+        }
         loading="lazy"
         allow="encrypted-media"
       />

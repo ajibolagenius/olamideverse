@@ -9,17 +9,21 @@ function slugifyTrack(title: string): string {
   return title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
+function trackHasEmbed(track: Track): boolean {
+  return Boolean(track.spotifyTrackId || track.youtubeId);
+}
+
 /**
- * Track rows + a shared "now playing" embed frame. Selecting a row loads
- * its embed; the active row reads white against the paper page. The
- * playlist-add button is a sibling of the row's select-button, not nested
- * inside it — a <button> can't validly contain another <button>.
+ * Track rows + a shared "now playing" embed frame. Defaults to the album
+ * Spotify player when present; selecting a track with its own embed ID
+ * switches to that track. Tracks without IDs keep the album player loaded.
  */
 export default function Tracklist({
   tracks,
   albumSlug,
   albumTitle,
   albumYear,
+  spotifyAlbumId,
   blockedYoutube = [],
   blockedSpotify = [],
 }: {
@@ -27,10 +31,14 @@ export default function Tracklist({
   albumSlug: string;
   albumTitle: string;
   albumYear: number;
+  spotifyAlbumId?: string;
   blockedYoutube?: string[];
   blockedSpotify?: string[];
 }) {
   const [nowPlaying, setNowPlaying] = useState<Track | null>(null);
+  const albumBlocked =
+    !!spotifyAlbumId && blockedSpotify.includes(spotifyAlbumId);
+  const activeTrackEmbed = nowPlaying && trackHasEmbed(nowPlaying);
 
   return (
     <div>
@@ -70,7 +78,11 @@ export default function Tracklist({
               <button
                 type="button"
                 onClick={() => setNowPlaying(track)}
-                aria-label={`Play ${track.title}`}
+                aria-label={
+                  trackHasEmbed(track) || spotifyAlbumId
+                    ? `Play ${track.title}`
+                    : `${track.title} — player not available yet`
+                }
                 className="grid size-8 flex-shrink-0 place-items-center border-2 border-ink bg-danfo"
               >
                 <svg viewBox="0 0 16 16" className="size-2.5 fill-ink">
@@ -82,7 +94,7 @@ export default function Tracklist({
         })}
       </ol>
       <div className="mt-5">
-        {nowPlaying ? (
+        {activeTrackEmbed && nowPlaying ? (
           <EmbedFrame
             title={nowPlaying.title}
             youtubeId={nowPlaying.youtubeId}
@@ -94,9 +106,22 @@ export default function Tracklist({
                 blockedYoutube.includes(nowPlaying.youtubeId))
             }
           />
+        ) : spotifyAlbumId ? (
+          <EmbedFrame
+            title={
+              nowPlaying
+                ? `${albumTitle} · ${nowPlaying.title}`
+                : albumTitle
+            }
+            spotifyId={spotifyAlbumId}
+            spotifyType="album"
+            removed={albumBlocked}
+          />
         ) : (
           <div className="border-2 border-dashed border-ink-soft p-6 text-center text-sm text-ink-soft">
-            Select a track to load its player.
+            {nowPlaying
+              ? "Embed coming in the content pass — no audio is hosted here."
+              : "Select a track to load its player."}
           </div>
         )}
       </div>
