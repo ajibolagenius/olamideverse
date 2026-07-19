@@ -71,14 +71,29 @@ export async function getNavigation() {
     return links.filter((l) => flags.fanzone || l.href !== "/fanzone") as NavLink[];
 }
 
+/** Archive extras that must remain even when CMS overrides footer.links. */
+const ARCHIVE_FOOTER_LINKS: NavLink[] = [
+    { href: "/snippets", label: "Snippets" },
+    { href: "/influence", label: "Influence" },
+    { href: "/impact", label: "Impact" },
+];
+
+function mergeFooterLinks(cmsLinks: NavLink[]): NavLink[] {
+    const seen = new Set(cmsLinks.map((l) => l.href));
+    const missing = ARCHIVE_FOOTER_LINKS.filter((l) => !seen.has(l.href));
+    // Keep archive extras at the front (before Legal / About / …).
+    return [...missing, ...cmsLinks];
+}
+
 export async function getFooter() {
     const value = await getSetting("footer", DEFAULT_FOOTER);
     const flags = await getFeatureFlags();
-    const links = (Array.isArray(value.links) ? value.links : DEFAULT_FOOTER.links).filter(
+    const raw = Array.isArray(value.links) ? (value.links as NavLink[]) : DEFAULT_FOOTER.links;
+    const links = mergeFooterLinks(raw).filter(
         (l) => flags.fanzone || l.href !== "/fanzone",
     );
     return {
-        links: links as NavLink[],
+        links,
         blurb: value.blurb || DEFAULT_FOOTER.blurb,
     };
 }

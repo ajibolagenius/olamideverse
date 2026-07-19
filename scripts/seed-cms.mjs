@@ -183,13 +183,16 @@ async function seedPagesAndSettings() {
         },
         footer: {
             links: [
+                { href: "/snippets", label: "Snippets" },
+                { href: "/influence", label: "Influence" },
+                { href: "/impact", label: "Impact" },
                 { href: "/legal", label: "Legal" },
                 { href: "/about", label: "Source credits" },
-                { href: "/legal#takedown", label: "Takedown contact" },
+                { href: "/legal#takedown", label: "Takedown" },
                 { href: "/fanzone", label: "Fan Zone" },
             ],
             blurb:
-                "Fan project · Not affiliated with Olamide or YBNL Nation · Built for archival & educational purposes",
+                "Fan project · Not affiliated with Olamide or YBNL Nation · Archival & educational",
         },
         general: {
             siteName: "OlamideVerse",
