@@ -8,6 +8,7 @@ const NAV = [
   { href: "/albums", label: "Discography" },
   { href: "/media", label: "Media" },
   { href: "/about", label: "About" },
+  { href: "/fanzone", label: "Fan Zone" },
 ] as const;
 
 export default function SiteHeader() {
