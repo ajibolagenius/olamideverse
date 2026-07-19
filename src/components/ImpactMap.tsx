@@ -2,8 +2,9 @@
 
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import FilterChips from "@/components/FilterChips";
+import { eraMomentHref } from "@/lib/anchors";
 import {
   IMPACT_KIND_LABEL,
   type ImpactPlace,
@@ -14,7 +15,7 @@ const ImpactMapCanvas = dynamic(() => import("@/components/ImpactMapCanvas"), {
   ssr: false,
   loading: () => (
     <div
-      className="grid h-[min(62vh,560px)] w-full place-items-center bg-paper-dim text-sm tracking-[0.06em] uppercase text-ink-soft"
+      className="grid h-[min(58vh,520px)] w-full place-items-center bg-paper-dim text-sm tracking-[0.06em] uppercase text-ink-soft sm:h-[min(62vh,560px)]"
       role="status"
     >
       Loading map…
@@ -40,6 +41,29 @@ export default function ImpactMap({ places }: { places: ImpactPlace[] }) {
   const [map, setMap] = useState<ImpactMapKey>("lagos");
   const [kind, setKind] = useState<string>("all");
   const [activeId, setActiveId] = useState<string | null>(null);
+  // Defer Leaflet until the map shell is near the viewport.
+  const [mapReady, setMapReady] = useState(false);
+  const mapShellRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = mapShellRef.current;
+    if (!el || mapReady) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setMapReady(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setMapReady(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "240px 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [mapReady]);
 
   const filtered = useMemo(() => {
     return places.filter((p) => {
@@ -89,19 +113,30 @@ export default function ImpactMap({ places }: { places: ImpactPlace[] }) {
         </div>
 
         <div
+          ref={mapShellRef}
           className="ov-paste-up overflow-hidden border-[3px] border-ink bg-paper shadow-paste"
           data-tilt="0.5"
           style={{ rotate: "0.5deg" }}
         >
-          <ImpactMapCanvas
-            mapKey={map}
-            places={filtered}
-            activeId={active?.id ?? null}
-            onSelect={setActiveId}
-          />
+          {mapReady ? (
+            <ImpactMapCanvas
+              mapKey={map}
+              places={filtered}
+              activeId={active?.id ?? null}
+              onSelect={setActiveId}
+            />
+          ) : (
+            <div
+              className="grid h-[min(58vh,520px)] w-full place-items-center bg-paper-dim text-sm tracking-[0.06em] uppercase text-ink-soft sm:h-[min(62vh,560px)]"
+              role="status"
+            >
+              Map loads when you scroll here…
+            </div>
+          )}
         </div>
         <p className="mt-2 text-[0.7rem] tracking-[0.04em] uppercase text-ink-soft">
-          Real geography · pan & zoom · pins are editorial, not a live tour feed
+          Real geography · pinch / scroll to zoom · pins are editorial, not a
+          live tour feed
         </p>
       </div>
 
@@ -129,7 +164,14 @@ export default function ImpactMap({ places }: { places: ImpactPlace[] }) {
               {active.blurb}
             </p>
             <div className="flex flex-wrap gap-3 text-sm font-semibold">
-              {active.eraSlug ? (
+              {active.eraSlug && active.momentAnchor ? (
+                <Link
+                  href={eraMomentHref(active.eraSlug, active.momentAnchor)}
+                  className="underline decoration-2 underline-offset-2 hover:text-oxide"
+                >
+                  Era moment →
+                </Link>
+              ) : active.eraSlug ? (
                 <Link
                   href={`/eras/${active.eraSlug}`}
                   className="underline decoration-2 underline-offset-2 hover:text-oxide"

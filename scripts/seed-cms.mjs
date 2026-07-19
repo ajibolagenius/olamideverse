@@ -2,6 +2,11 @@
  * Seed admin CMS tables from content/*.mdx + media.json + manifest.json,
  * and bootstrap the first owner admin from ADMIN_EMAIL / ADMIN_PASSWORD.
  *
+ * Idempotent: rows are inserted only if their primary key doesn't already
+ * exist (ON CONFLICT DO NOTHING), so re-running never overwrites content
+ * that's since been edited in the admin dashboard — it only adds rows for
+ * new content/*.mdx files, media items, etc.
+ *
  * Usage: node --env-file=.env.local scripts/seed-cms.mjs
  */
 import fs from "node:fs";
@@ -36,6 +41,25 @@ function readMdxDir(dir) {
         });
 }
 
+/**
+ * Insert rows that don't already exist (by `conflictKey`); existing rows
+ * are left untouched. Returns how many were actually inserted.
+ */
+async function seedIfMissing(table, rows, conflictKey, label) {
+    if (rows.length === 0) {
+        console.log(`Seeded 0 ${label}`);
+        return;
+    }
+    const { data, error } = await supabase
+        .from(table)
+        .upsert(rows, { onConflict: conflictKey, ignoreDuplicates: true })
+        .select(conflictKey);
+    if (error) throw error;
+    const inserted = data?.length ?? 0;
+    const skipped = rows.length - inserted;
+    console.log(`Seeded ${inserted} ${label}${skipped ? ` (${skipped} already existed, skipped)` : ""}`);
+}
+
 async function ensureAdmin() {
     const { data: list } = await supabase.auth.admin.listUsers({ perPage: 1000 });
     let user = list?.users?.find((u) => u.email?.toLowerCase() === adminEmail);
@@ -54,30 +78,24 @@ async function ensureAdmin() {
         console.log("Admin auth user already exists; leaving password unchanged");
     }
 
-    const { error } = await supabase.from("admin_users").upsert({
-        user_id: user.id,
-        email: adminEmail,
-        display_name: "Owner",
-        role: "owner",
-        disabled: false,
-    });
-    if (error) throw error;
-    console.log("Upserted admin_users owner row");
+    await seedIfMissing(
+        "admin_users",
+        [{ user_id: user.id, email: adminEmail, display_name: "Owner", role: "owner", disabled: false }],
+        "user_id",
+        "admin_users rows",
+    );
 }
 
 async function seedEras() {
     const eras = readMdxDir("eras");
-    for (const era of eras) {
-        const { error } = await supabase.from("cms_eras").upsert({
-            slug: era.slug,
-            data: era.data,
-            body: era.body,
-            status: "published",
-            updated_at: new Date().toISOString(),
-        });
-        if (error) throw error;
-    }
-    console.log(`Seeded ${eras.length} eras`);
+    const rows = eras.map((era) => ({
+        slug: era.slug,
+        data: era.data,
+        body: era.body,
+        status: "published",
+        updated_at: new Date().toISOString(),
+    }));
+    await seedIfMissing("cms_eras", rows, "slug", "eras");
 }
 
 async function seedAlbums() {
@@ -89,36 +107,29 @@ async function seedAlbums() {
         (manifest.albums || []).map((a) => [a.slug, `/media/${a.file}`]),
     );
 
-    for (const album of albums) {
-        const { error } = await supabase.from("cms_albums").upsert({
-            slug: album.slug,
-            data: { ...album.data, draft: false },
-            body: album.body,
-            status: "published",
-            cover_path: coverBySlug[album.slug] ?? null,
-            updated_at: new Date().toISOString(),
-        });
-        if (error) throw error;
-    }
-    console.log(`Seeded ${albums.length} albums`);
+    const rows = albums.map((album) => ({
+        slug: album.slug,
+        data: { ...album.data, draft: false },
+        body: album.body,
+        status: "published",
+        cover_path: coverBySlug[album.slug] ?? null,
+        updated_at: new Date().toISOString(),
+    }));
+    await seedIfMissing("cms_albums", rows, "slug", "albums");
 }
 
 async function seedMedia() {
     const items = JSON.parse(
         fs.readFileSync(path.join(root, "content/media/media.json"), "utf8"),
     );
-    let i = 0;
-    for (const item of items) {
-        const { error } = await supabase.from("cms_media_items").upsert({
-            id: item.id,
-            data: item,
-            status: "published",
-            sort_order: i++,
-            updated_at: new Date().toISOString(),
-        });
-        if (error) throw error;
-    }
-    console.log(`Seeded ${items.length} media items`);
+    const rows = items.map((item, i) => ({
+        id: item.id,
+        data: item,
+        status: "published",
+        sort_order: i,
+        updated_at: new Date().toISOString(),
+    }));
+    await seedIfMissing("cms_media_items", rows, "id", "media items");
 }
 
 async function seedPagesAndSettings() {
@@ -149,14 +160,12 @@ async function seedPagesAndSettings() {
             },
         },
     ];
-    for (const page of pages) {
-        const { error } = await supabase.from("cms_pages").upsert({
-            ...page,
-            status: "published",
-            updated_at: new Date().toISOString(),
-        });
-        if (error) throw error;
-    }
+    await seedIfMissing(
+        "cms_pages",
+        pages.map((page) => ({ ...page, status: "published", updated_at: new Date().toISOString() })),
+        "key",
+        "pages",
+    );
 
     const settings = {
         disclaimer: {
@@ -217,32 +226,30 @@ async function seedPagesAndSettings() {
         },
     };
 
-    for (const [key, value] of Object.entries(settings)) {
-        const { error } = await supabase.from("site_settings").upsert({
-            key,
-            value,
-            updated_at: new Date().toISOString(),
-        });
-        if (error) throw error;
-    }
-    console.log("Seeded pages + settings");
+    const settingsRows = Object.entries(settings).map(([key, value]) => ({
+        key,
+        value,
+        updated_at: new Date().toISOString(),
+    }));
+    await seedIfMissing("site_settings", settingsRows, "key", "settings");
 }
 
 async function seedPolls() {
-    const { error } = await supabase.from("cms_polls").upsert({
-        id: "poll-elder-statesman",
-        question: "Elder Statesman highlight?",
-        options: [
-            { id: "uy-scuti", label: "UY Scuti (2021)" },
-            { id: "unruly", label: "Unruly (2023)" },
-        ],
-        base_votes: { "uy-scuti": 166, unruly: 195 },
-        active: true,
-        sort_order: 0,
-        updated_at: new Date().toISOString(),
-    });
-    if (error) throw error;
-    console.log("Seeded polls");
+    const rows = [
+        {
+            id: "poll-elder-statesman",
+            question: "Elder Statesman highlight?",
+            options: [
+                { id: "uy-scuti", label: "UY Scuti (2021)" },
+                { id: "unruly", label: "Unruly (2023)" },
+            ],
+            base_votes: { "uy-scuti": 166, unruly: 195 },
+            active: true,
+            sort_order: 0,
+            updated_at: new Date().toISOString(),
+        },
+    ];
+    await seedIfMissing("cms_polls", rows, "id", "polls");
 }
 
 async function seedAssets() {
@@ -272,13 +279,7 @@ async function seedAssets() {
         })),
     ];
 
-    for (const row of rows) {
-        const { error } = await supabase.from("media_assets").upsert(row, {
-            onConflict: "path",
-        });
-        if (error) throw error;
-    }
-    console.log(`Seeded ${rows.length} media_assets`);
+    await seedIfMissing("media_assets", rows, "path", "media_assets");
 
     const slots = Object.entries(manifest.slots || {}).map(([slot_id, file]) => ({
         slot_id,
@@ -286,11 +287,7 @@ async function seedAssets() {
         label: slot_id,
         updated_at: new Date().toISOString(),
     }));
-    for (const row of slots) {
-        const { error } = await supabase.from("media_slots").upsert(row);
-        if (error) throw error;
-    }
-    console.log(`Seeded ${slots.length} media_slots`);
+    await seedIfMissing("media_slots", slots, "slot_id", "media_slots");
 }
 
 async function main() {

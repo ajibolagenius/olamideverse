@@ -60,6 +60,26 @@
     "note": "Shot in Bariga; sparked the #WoChallenge and pushed shaku shaku into the mainstream."
   },
   {
+    "id": "infinity-video",
+    "title": "Infinity (ft. Omah Lay)",
+    "era": "reinvention",
+    "year": 2020,
+    "type": "music-video",
+    "source": "OlamideVEVO",
+    "youtubeId": "Pu69SyqwPGg",
+    "note": "Carpe Diem's defining streamer — Clarence Peters directs the melody-first reinvention for the camera."
+  },
+  {
+    "id": "rock-video",
+    "title": "Rock",
+    "era": "elder-statesman",
+    "year": 2021,
+    "type": "music-video",
+    "source": "OlamideVEVO",
+    "youtubeId": "6WkxiF7nnjY",
+    "note": "Lead single for UY Scuti — reggae and Afro-pop textures announcing a shorter, pop-facing chapter."
+  },
+  {
     "id": "guardian-interview-2021",
     "title": "\"People have a very limited understanding of the ghetto\"",
     "era": "elder-statesman",
@@ -78,5 +98,15 @@
     "source": "AsakeVEVO",
     "youtubeId": "l_-v1fNdSHs",
     "note": "Asake lead with Olamide's guest verse — helped carry amapiano to a global audience. Official video via AsakeVEVO."
+  },
+  {
+    "id": "kai-video",
+    "title": "Kai! (with Wizkid)",
+    "era": "legacy",
+    "year": 2025,
+    "type": "music-video",
+    "source": "OlamideVEVO",
+    "youtubeId": "7tChMHOrQJM",
+    "note": "Fourteen years after Omo To Shan — the peer reunion that opens the self-titled chapter. Directed by Jyde Ajala."
   }
 ]

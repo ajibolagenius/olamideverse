@@ -6,10 +6,22 @@
     "track": "Eni Duro",
     "albumSlug": "rapsodi",
     "albumTitle": "Rapsodi",
-    "year": 2011,
+    "year": 2010,
     "era": "the-upstart",
     "spotifyTrackId": "7KhrNUSPwhxBsuOXVAKgg4",
     "waveformSeed": 11
+  },
+  {
+    "id": "omo-to-shan",
+    "quote": "Two rising Lagos voices trading a hook — the first Wizkid handshake on a YBNL-bound career.",
+    "note": "A victory lap dressed as a single on Rapsodi. Fourteen years later, Kai! would replay the meeting as peers.",
+    "track": "Omo To Shan",
+    "albumSlug": "rapsodi",
+    "albumTitle": "Rapsodi",
+    "year": 2011,
+    "era": "the-upstart",
+    "spotifyTrackId": "7H7zhbiLRY9E8dDTieD1VW",
+    "waveformSeed": 15
   },
   {
     "id": "first-of-all",
@@ -22,6 +34,18 @@
     "era": "first-of-all",
     "spotifyTrackId": "6aWJGYvtifenSm5hYVYqii",
     "waveformSeed": 22
+  },
+  {
+    "id": "voice-of-the-street",
+    "quote": "The song that made the label's acronym sound like a constituency.",
+    "note": "Less a single than a roll call — YBNL as place, people, and politics on one beat.",
+    "track": "Voice of the Street",
+    "albumSlug": "ybnl",
+    "albumTitle": "YBNL",
+    "year": 2012,
+    "era": "first-of-all",
+    "spotifyTrackId": "56CX3U5uYL5FbEA6NAkvVN",
+    "waveformSeed": 26
   },
   {
     "id": "durosoke",
@@ -48,6 +72,18 @@
     "waveformSeed": 44
   },
   {
+    "id": "confam-ni",
+    "quote": "Yoruba street-hop meets Starboy melody — a collab that felt like a national event.",
+    "note": "The Olamide-led single from 2 Kings with Phyno — east-meets-west as negotiation, not a guest list.",
+    "track": "Confam Ni",
+    "albumSlug": "2-kings",
+    "albumTitle": "2 Kings",
+    "year": 2015,
+    "era": "street-king-run",
+    "spotifyTrackId": "2NFYEy1kpFHUM6A7wn9bI2",
+    "waveformSeed": 48
+  },
+  {
     "id": "bobo",
     "quote": "Punch after punch, never on the canvas — the Mayweather metaphor made literal.",
     "note": "Young Jonn's beat, undefeated energy: Best Street-Hop Artiste at the Headies 2015.",
@@ -58,6 +94,18 @@
     "era": "street-king-run",
     "spotifyTrackId": "0N6lUfSwuOWlmP2YUGtIZb",
     "waveformSeed": 55
+  },
+  {
+    "id": "who-you-epp",
+    "quote": "Street-hop, Afrobeats melody and Igbo fire on one beat — the year's question made literal.",
+    "note": "The Who You Epp? Refix with Wande Coal and Phyno — a victory-lap single before The Glory even dropped.",
+    "track": "Who You Epp? (Refix)",
+    "albumSlug": "the-glory",
+    "albumTitle": "The Glory",
+    "year": 2016,
+    "era": "street-king-run",
+    "spotifyTrackId": "2zNnAhKK2RGJ3PF9cHF2Zh",
+    "waveformSeed": 60
   },
   {
     "id": "wo",
@@ -72,6 +120,18 @@
     "waveformSeed": 66
   },
   {
+    "id": "warlords",
+    "quote": "A posse cut that announced the trap turn — less victory lap, more laboratory.",
+    "note": "999's opening statement: Snow, Phyno, Cheque and Rhatti on a YBNL experiment that hadn't lived on a full street-hop album before.",
+    "track": "Warlords",
+    "albumSlug": "999",
+    "albumTitle": "999",
+    "year": 2020,
+    "era": "reinvention",
+    "spotifyTrackId": "6g8YeLHfdH7waTwgKwqyLF",
+    "waveformSeed": 72
+  },
+  {
     "id": "infinity",
     "quote": "Melody-first, unhurried — built for a streaming era the Street King albums never had to court.",
     "note": "The song that made the reinvention undeniable, and one of the catalog's most-streamed chapters.",
@@ -84,6 +144,18 @@
     "waveformSeed": 77
   },
   {
+    "id": "plenty",
+    "quote": "Label boss and label star on the same closer — YBNL's second generation in the frame.",
+    "note": "Fireboy DML on Carpe Diem's landing — Empire-era reach with the founder's name still on the spine.",
+    "track": "Plenty",
+    "albumSlug": "carpe-diem",
+    "albumTitle": "Carpe Diem",
+    "year": 2020,
+    "era": "reinvention",
+    "spotifyTrackId": "4RUvEWyN9nVRGTmhItZWP0",
+    "waveformSeed": 80
+  },
+  {
     "id": "rock",
     "quote": "Reggae and Afro-pop textures where street-hop density used to live.",
     "note": "The lead single that announced a shorter, more pop-facing Olamide — still unmistakably Baddo in the pocket.",
@@ -94,6 +166,30 @@
     "era": "elder-statesman",
     "spotifyTrackId": "3N3PWNgtiqsdLY5PQTKw6w",
     "waveformSeed": 88
+  },
+  {
+    "id": "new-religion",
+    "quote": "Label boss and breakout star sharing a doctrine — the ear that signed Asake now trading bars with him.",
+    "note": "The preceding single that set Unruly's mood: melodic, international, still street in the pocket.",
+    "track": "New Religion",
+    "albumSlug": "unruly",
+    "albumTitle": "Unruly",
+    "year": 2023,
+    "era": "elder-statesman",
+    "spotifyTrackId": "0U6EtYtNKv8t3o9cjniLn2",
+    "waveformSeed": 92
+  },
+  {
+    "id": "uptown-disco",
+    "quote": "YBNL's present tense on one track — Fireboy and Asake flanking the founder over log drums.",
+    "note": "Ikigai's most immediate argument for why the reason-for-living still includes the label.",
+    "track": "Uptown Disco",
+    "albumSlug": "ikigai",
+    "albumTitle": "Ikigai",
+    "year": 2024,
+    "era": "legacy",
+    "spotifyTrackId": "7vdGiPrjK0gJBoZE8UhDMJ",
+    "waveformSeed": 96
   },
   {
     "id": "kai",

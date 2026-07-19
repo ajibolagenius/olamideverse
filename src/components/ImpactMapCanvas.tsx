@@ -1,7 +1,7 @@
 "use client";
 
 import L from "leaflet";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import {
   MapContainer,
   Marker,
@@ -42,13 +42,20 @@ function markerIcon(kind: ImpactPlace["kind"], selected: boolean) {
 
 function MapViewSync({
   mapKey,
+  places,
   active,
 }: {
   mapKey: ImpactMapKey;
+  places: ImpactPlace[];
   active?: ImpactPlace;
 }) {
   const map = useMap();
+  const lastKey = useRef<ImpactMapKey | null>(null);
+  const lastActive = useRef<string | null>(null);
 
+  const placeKey = places.map((p) => p.id).join("|");
+
+  // Region / filter change: reset bounds and fit to markers (or default center).
   useEffect(() => {
     const view = IMPACT_MAP_VIEWS[mapKey];
     map.setMinZoom(view.minZoom);
@@ -59,15 +66,33 @@ function MapViewSync({
         [85, 180],
       ],
     );
-    // Leaflet has no setter for viscosity post-construction — this is the
-    // library's own documented way to change it after the map exists.
+    // Leaflet has no setter for viscosity post-construction.
     // eslint-disable-next-line react-hooks/immutability
     map.options.maxBoundsViscosity = view.maxBounds ? 0.85 : 0;
-    map.setView(view.center, view.zoom, { animate: false });
-  }, [map, mapKey]);
 
+    if (places.length > 0) {
+      const bounds = L.latLngBounds(places.map((p) => [p.lat, p.lng]));
+      map.fitBounds(bounds, {
+        padding: view.fitPadding,
+        maxZoom: Math.min(view.zoom + 1, view.maxZoom),
+        animate: false,
+      });
+    } else {
+      map.setView(view.center, view.zoom, { animate: false });
+    }
+    lastKey.current = mapKey;
+    lastActive.current = null;
+    // placeKey stands in for places identity (filter changes).
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- intentional
+  }, [map, mapKey, placeKey]);
+
+  // Selection change: fly to pin (skip the first paint after a region switch).
   useEffect(() => {
     if (!active) return;
+    if (lastKey.current !== mapKey) return;
+    if (lastActive.current === active.id) return;
+    lastActive.current = active.id;
+
     const view = IMPACT_MAP_VIEWS[mapKey];
     const targetZoom = Math.min(
       Math.max(map.getZoom(), view.zoom + (mapKey === "world" ? 2 : 1)),
@@ -115,14 +140,17 @@ export default function ImpactMapCanvas({
       maxBounds={view.maxBounds}
       maxBoundsViscosity={0.85}
       scrollWheelZoom
-      className="ov-impact-leaflet h-[min(62vh,560px)] w-full"
+      dragging
+      touchZoom
+      doubleClickZoom
+      className="ov-impact-leaflet h-[min(58vh,520px)] w-full sm:h-[min(62vh,560px)]"
       aria-label={`Impact map — ${mapKey} view with ${places.length} places`}
     >
       <TileLayer
         attribution={IMPACT_TILE_ATTRIBUTION}
         url={IMPACT_TILE_URL}
       />
-      <MapViewSync mapKey={mapKey} active={active} />
+      <MapViewSync mapKey={mapKey} places={places} active={active} />
       {places.map((place) => {
         const selected = place.id === activeId;
         const icon =

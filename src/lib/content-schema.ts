@@ -111,6 +111,8 @@ export const influenceNodeSchema = z.object({
     blurb: z.string(),
     eraSlug: z.string().optional(),
     albumSlug: z.string().optional(),
+    /** Deep-link into an era moment — must match `momentAnchor(year, title)`. */
+    momentAnchor: z.string().optional(),
     /** Position in the graph canvas, 0–100. */
     x: z.number().min(0).max(100),
     y: z.number().min(0).max(100),
@@ -145,6 +147,8 @@ export const impactPlaceSchema = z.object({
     blurb: z.string(),
     eraSlug: z.string().optional(),
     albumSlug: z.string().optional(),
+    /** Deep-link into an era moment — must match `momentAnchor(year, title)`. */
+    momentAnchor: z.string().optional(),
     /** WGS84 coordinates for the Leaflet map. */
     lat: z.number().min(-90).max(90),
     lng: z.number().min(-180).max(180),

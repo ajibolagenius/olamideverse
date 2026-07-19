@@ -6,8 +6,9 @@
     "region": "Lagos",
     "kind": "origin",
     "blurb": "The neighborhood that names the origin story — Wo was shot here; every era still points back to these streets.",
-    "eraSlug": "the-upstart",
+    "eraSlug": "street-king-run",
     "albumSlug": "lagos-nawa",
+    "momentAnchor": "moment-wo-lagos-nawa",
     "lat": 6.5361,
     "lng": 3.3903,
     "map": "lagos"
@@ -22,6 +23,7 @@
     "blurb": "Where shaku shaku lived before Wo pushed it into national choreography.",
     "eraSlug": "street-king-run",
     "albumSlug": "lagos-nawa",
+    "momentAnchor": "moment-wo-lagos-nawa",
     "lat": 6.618,
     "lng": 3.3224,
     "map": "lagos"
@@ -36,20 +38,34 @@
     "blurb": "The small Yoruba-rap label orbit that signed him — before YBNL, before the empire.",
     "eraSlug": "the-upstart",
     "albumSlug": "rapsodi",
+    "momentAnchor": "moment-debut-single-eni-duro",
     "lat": 6.5095,
     "lng": 3.3711,
     "map": "lagos"
   },
   {
+    "id": "ikeja",
+    "name": "Ikeja",
+    "city": "Lagos",
+    "region": "Lagos",
+    "kind": "venue",
+    "blurb": "Radio, TV, and industry rooms on the mainland corridor — where street records had to clear before they could go national.",
+    "eraSlug": "first-of-all",
+    "lat": 6.6018,
+    "lng": 3.3515,
+    "map": "lagos"
+  },
+  {
     "id": "olic-lagos",
-    "name": "OLIC Lagos",
+    "name": "OLIC / National Stadium",
     "city": "Lagos",
     "region": "Lagos",
     "kind": "concert",
     "year": 2014,
-    "blurb": "Olamide Live in Concert — the series that made the Street King run flesh (editions through the mid-2010s, including OLIC 3 in 2016). Proof street-hop could headline.",
+    "blurb": "Olamide Live in Concert — the series that made the Street King run flesh (editions through the mid-2010s, including OLIC 3 in 2016). Surulere-scale proof street-hop could headline.",
     "eraSlug": "street-king-run",
     "albumSlug": "street-ot",
+    "momentAnchor": "moment-street-ot-wins-album-of-the-year",
     "lat": 6.4965,
     "lng": 3.3634,
     "map": "lagos"
@@ -79,6 +95,18 @@
     "map": "nigeria"
   },
   {
+    "id": "ibadan",
+    "name": "Ibadan",
+    "city": "Ibadan",
+    "region": "Nigeria",
+    "kind": "concert",
+    "blurb": "Yoruba heartland stops on the touring calendar — the language of the records meeting the language of the crowd.",
+    "eraSlug": "street-king-run",
+    "lat": 7.3775,
+    "lng": 3.947,
+    "map": "nigeria"
+  },
+  {
     "id": "abuja",
     "name": "Abuja",
     "city": "Abuja",
@@ -91,29 +119,44 @@
     "map": "nigeria"
   },
   {
+    "id": "enugu",
+    "name": "Enugu",
+    "city": "Enugu",
+    "region": "Nigeria",
+    "kind": "cultural",
+    "blurb": "Eastern circuit city in the peer map with Phyno — 2 Kings as east-meets-west, not a Lagos-only guest list.",
+    "eraSlug": "street-king-run",
+    "albumSlug": "2-kings",
+    "momentAnchor": "moment-2-kings-eyan-mayweather",
+    "lat": 6.4584,
+    "lng": 7.5464,
+    "map": "nigeria"
+  },
+  {
     "id": "port-harcourt",
     "name": "Port Harcourt",
     "city": "Port Harcourt",
     "region": "Nigeria",
     "kind": "cultural",
-    "blurb": "Phyno's city in the peer map — 2 Kings as east-meets-west negotiation, not a Lagos guest list.",
+    "blurb": "Phyno's city — the other pole of the 2 Kings negotiation and a standing stop on the national route.",
     "eraSlug": "street-king-run",
     "albumSlug": "2-kings",
+    "momentAnchor": "moment-2-kings-eyan-mayweather",
     "lat": 4.8156,
     "lng": 7.0498,
     "map": "nigeria"
   },
   {
-    "id": "ibadan",
-    "name": "Ibadan",
-    "city": "Ibadan",
-    "region": "Nigeria",
-    "kind": "concert",
-    "blurb": "Yoruba heartland stops on the touring calendar — the language of the records meeting the language of the crowd.",
+    "id": "accra",
+    "name": "Accra",
+    "city": "Accra",
+    "region": "Ghana",
+    "kind": "international",
+    "blurb": "West African circuit stop — street-hop and Afrobeats trading stages across the coast.",
     "eraSlug": "street-king-run",
-    "lat": 7.3775,
-    "lng": 3.947,
-    "map": "nigeria"
+    "lat": 5.6037,
+    "lng": -0.187,
+    "map": "world"
   },
   {
     "id": "london",
@@ -129,6 +172,18 @@
     "map": "world"
   },
   {
+    "id": "paris",
+    "name": "Paris",
+    "city": "Paris",
+    "region": "France",
+    "kind": "international",
+    "blurb": "European Afrobeats corridor — festival and club bills that carried the catalog beyond Anglophone rooms.",
+    "eraSlug": "reinvention",
+    "lat": 48.8566,
+    "lng": 2.3522,
+    "map": "world"
+  },
+  {
     "id": "new-york",
     "name": "New York",
     "city": "New York",
@@ -136,20 +191,21 @@
     "kind": "international",
     "blurb": "Empire-era and US showcase rooms — the joint-venture years pushing the catalog beyond West Africa.",
     "eraSlug": "reinvention",
+    "momentAnchor": "moment-ybnl-empire",
     "lat": 40.7128,
     "lng": -74.006,
     "map": "world"
   },
   {
-    "id": "accra",
-    "name": "Accra",
-    "city": "Accra",
-    "region": "Ghana",
+    "id": "toronto",
+    "name": "Toronto",
+    "city": "Toronto",
+    "region": "Canada",
     "kind": "international",
-    "blurb": "West African circuit stops — street-hop and Afrobeats trading stages across the coast.",
-    "eraSlug": "street-king-run",
-    "lat": 5.6037,
-    "lng": -0.187,
+    "blurb": "North American diaspora stop — Afrobeats rooms where YBNL's second generation and the founder's catalog overlapped.",
+    "eraSlug": "elder-statesman",
+    "lat": 43.6532,
+    "lng": -79.3832,
     "map": "world"
   },
   {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AlbumCard from "@/components/AlbumCard";
+import AudiogramCard from "@/components/AudiogramCard";
 import Breadcrumb from "@/components/Breadcrumb";
 import CommentBox from "@/components/fanzone/CommentBox";
 import EraMoments from "@/components/EraMoments";
@@ -10,9 +11,16 @@ import NextChapterCta from "@/components/NextChapterCta";
 import PhotoPlaceholder from "@/components/PhotoPlaceholder";
 import PosterHero from "@/components/PosterHero";
 import PullQuote from "@/components/PullQuote";
+import RelatedArchive from "@/components/RelatedArchive";
 import Ticker from "@/components/chrome/Ticker";
 import { ACCENTS, accentChrome } from "@/lib/accents";
-import { getAlbumsByEra, getEra, getEras, getMediaItems } from "@/lib/content";
+import {
+  getAlbumsByEra,
+  getEra,
+  getEras,
+  getMediaItems,
+  getSnippetsByEra,
+} from "@/lib/content";
 import { getComments } from "@/lib/fanzone/queries";
 import { getEraPhoto } from "@/lib/photos";
 import { getFeatureFlags } from "@/lib/settings";
@@ -49,10 +57,11 @@ export default async function EraPage({
   const era = await getEra(eraSlug, { previewToken: preview });
   if (!era) notFound();
 
-  const [eras, albums, allMedia, flags, eraPhoto] = await Promise.all([
+  const [eras, albums, allMedia, snippets, flags, eraPhoto] = await Promise.all([
     getEras(),
     getAlbumsByEra(era.slug),
     getMediaItems(),
+    getSnippetsByEra(era.slug),
     getFeatureFlags(),
     getEraPhoto(era.slug),
   ]);
@@ -163,6 +172,34 @@ export default async function EraPage({
 
       <EraMoments era={era} />
 
+      {snippets.length > 0 ? (
+        <section className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
+          <div className="mb-6 flex flex-wrap items-baseline justify-between gap-3">
+            <div>
+              <p className="mb-1.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
+                Share a snippet
+              </p>
+              <h2 className="font-display text-display-md">Bars from this era</h2>
+            </div>
+            <Link
+              href="/snippets"
+              className="text-sm font-semibold underline decoration-2 underline-offset-2 hover:text-oxide"
+            >
+              All snippets →
+            </Link>
+          </div>
+          <div className="grid gap-8 md:grid-cols-2">
+            {snippets.slice(0, 4).map((snippet) => (
+              <AudiogramCard
+                key={snippet.id}
+                snippet={snippet}
+                accent={era.accent}
+              />
+            ))}
+          </div>
+        </section>
+      ) : null}
+
       {media.length > 0 ? (
         <section className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
           <p className="mb-1.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
@@ -186,6 +223,8 @@ export default async function EraPage({
           </ul>
         </section>
       ) : null}
+
+      <RelatedArchive eraTitle={era.title} />
 
       {nextEra ? (
         <NextChapterCta nextEra={nextEra} />

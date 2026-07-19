@@ -113,7 +113,7 @@ export default function AboutPage() {
         <h2 className="font-display mb-5 text-3xl">Lineage & geography</h2>
         <p className="mb-6 text-lg leading-relaxed text-ink-soft">
           Beyond eras and albums — shareable snippet cards, a curated influence
-          graph, and a stylized impact map of places the music touched.
+          graph, and a real-geography impact map of places the music touched.
         </p>
         <ul className="flex flex-col gap-3 text-sm font-semibold sm:flex-row sm:flex-wrap sm:gap-x-6">
           <li>

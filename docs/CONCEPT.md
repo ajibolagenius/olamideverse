@@ -46,11 +46,11 @@ Every other section hangs off this spine: albums belong to eras, media belongs t
 
 ## 5. Feature roadmap (phased, each shippable)
 
-- **Phase 0 — Concept & Design** *(now)*: this document, `INFORMATION-ARCHITECTURE.md`, `VISUAL-IDENTITY.md`. Optional Figma exploration before locking the identity.
-- **Phase 1 — Foundation**: fresh Next.js codebase, design system implemented from the identity spec, deployed skeleton on Vercel.
-- **Phase 2 — The Archive (first public milestone)**: Home, Eras scrollytelling, Discography (grid + album detail with embeds), Media gallery, Legal. Real written content. This is the public PoC and the artifact for any future YBNL pitch.
-- **Phase 3 — Fan Zone**: favorites, polls, comments, playlists. First backend need (likely Supabase). Only after the archive is live.
-- **Archive extras** (shipped as static editorial features): audiogram snippets (`/snippets`), influence graph (`/influence`), impact map (`/impact`). Visual/shareable and curated — still embeds-only, no hosted audio.
+- **Phase 0 — Concept & Design** ✓ this document, `INFORMATION-ARCHITECTURE.md`, `VISUAL-IDENTITY.md`.
+- **Phase 1 — Foundation** ✓ Next.js codebase, design system, motion vocabulary, Vercel-ready skeleton.
+- **Phase 2 — The Archive (first public milestone)** ✓ Home, Eras, Discography, Media, Legal, plus archive extras below. Public PoC / future YBNL pitch artifact — see §7 for remaining launch checks.
+- **Phase 3 — Fan Zone** ✓ built behind feature flags (Supabase): favorites, polls, comments, playlists, admin. Mounts onto archive pages; does not reshape them.
+- **Archive extras** ✓ audiogram snippets (`/snippets`), influence graph (`/influence`), impact map (`/impact`). Visual/shareable and curated — still embeds-only, no hosted audio.
 
 ## 6. Principles
 

@@ -63,17 +63,24 @@ export default async function LegalPage() {
         <p className="mb-4 text-lg leading-relaxed">
           Era and home photography are drawn from Wikimedia Commons under
           their stated Creative Commons licenses, with credit retained in the
-          media registry.
+          media registry (<code>content/media/manifest.json</code>). On-page
+          photo credits surface the license name and link where the UI shows
+          those images.
         </p>
-        <p className="mb-8 text-lg leading-relaxed">
-          Album covers are sourced from Deezer album pages listed in the
-          project&apos;s media registry (<code>content/media/manifest.json</code>{" "}
-          <b>sourceUrl</b> fields) and stored locally for archival
+        <p className="mb-4 text-lg leading-relaxed">
+          Album covers are sourced from Deezer album pages listed in that same
+          registry (<b>sourceUrl</b> fields) and stored locally for archival
           identification of each release. Cover art remains copyright of the
           respective rights holders. They are used solely to identify records in
           this non-commercial fan archive and will be replaced or removed on
           request — see Takedown below. They are not presented as owned or
           licensed merch assets.
+        </p>
+        <p className="mb-8 text-lg leading-relaxed">
+          <b>Open item before any rights-holder pitch:</b> treat Deezer-sourced
+          covers as editorial placeholders until a clearer license or
+          rights-holder-approved set replaces them. Album detail pages already
+          link each cover back to its Deezer source and to this page.
         </p>
 
         <h2 className="font-display mb-3 text-2xl">Sources</h2>

@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-07-18T22:30:26.954Z",
-  "note": "Album covers sourced from Deezer public CDN for editorial/archival placeholders in the UI design. Era/home photos from Wikimedia Commons under their stated Creative Commons licenses. Cover art remains copyright of the rights holders — the site Legal page marks these as placeholders until properly licensed imagery is confirmed.",
+  "note": "Album covers sourced from Deezer public CDN for editorial/archival placeholders in the UI design — OPEN ITEM before any rights-holder pitch (see Legal → Images). Era/home photos from Wikimedia Commons under their stated Creative Commons licenses, credited on-page. Cover art remains copyright of the rights holders and will be replaced or removed on request.",
   "directories": {
     "albums": "Discography + album detail covers (14 releases from the UI Discography page)",
     "eras": "Era chapter context photos (image-slot placeholders on each Era page)",

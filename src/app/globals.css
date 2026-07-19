@@ -294,3 +294,26 @@
     transition: none !important;
   }
 }
+
+/* Influence graph — node labels only from sm up (chips navigate on mobile) */
+.ov-influence-label {
+  display: none;
+}
+@media (min-width: 640px) {
+  .ov-influence-label {
+    display: block;
+  }
+}
+
+/* Visually hidden but available to assistive tech */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

@@ -1,10 +1,13 @@
 import { ACCENTS, type AccentName } from "@/lib/accents";
+import { momentAnchor } from "@/lib/anchors";
 import type { Era } from "@/lib/content";
 
 /**
  * "The moments" timeline. Live eras get the pin-scroll treatment (intro
  * panel pins while beats scroll past); the open-ended Legacy era gets a
  * plain stacked list under "The moments so far" instead.
+ *
+ * Each beat exposes `id={momentAnchor(...)}` so influence/impact can deep-link in.
  */
 export default function EraMoments({ era }: { era: Era }) {
   if (era.moments.length === 0) return null;
@@ -20,7 +23,8 @@ export default function EraMoments({ era }: { era: Era }) {
           {era.moments.map((m, i) => (
             <div
               key={m.year + i}
-              className="ov-paste-up flex items-baseline gap-5 border-[3px] border-ink bg-white p-5 shadow-paste-sm"
+              id={momentAnchor(m.year, m.title)}
+              className="ov-paste-up flex scroll-mt-28 items-baseline gap-5 border-[3px] border-ink bg-white p-5 shadow-paste-sm"
               data-tilt={(i % 2 === 0 ? -1 : 1) * 0.45}
               style={{ rotate: `${(i % 2 === 0 ? -1 : 1) * 0.45}deg` }}
             >
@@ -56,7 +60,8 @@ export default function EraMoments({ era }: { era: Era }) {
           return (
             <div
               key={m.year + i}
-              className="ov-paste-up border-[3px] border-ink bg-white p-6 shadow-paste-sm"
+              id={momentAnchor(m.year, m.title)}
+              className="ov-paste-up scroll-mt-28 border-[3px] border-ink bg-white p-6 shadow-paste-sm"
               data-tilt={tilt}
               style={{ rotate: `${tilt}deg` }}
             >

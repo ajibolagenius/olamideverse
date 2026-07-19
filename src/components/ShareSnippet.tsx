@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 
 /**
  * Copy / native-share for audiogram snippet URLs.
@@ -15,9 +15,26 @@ export default function ShareSnippet({
   title: string;
   compact?: boolean;
 }) {
-  const [status, setStatus] = useState<"idle" | "copied" | "shared">("idle");
+  const liveId = useId();
+  const [status, setStatus] = useState<"idle" | "copied" | "shared" | "failed">(
+    "idle",
+  );
 
-  async function share() {
+  function flash(next: typeof status) {
+    setStatus(next);
+    window.setTimeout(() => setStatus("idle"), 2200);
+  }
+
+  async function copyLink() {
+    try {
+      await navigator.clipboard.writeText(url);
+      flash("copied");
+    } catch {
+      flash("failed");
+    }
+  }
+
+  async function shareNative() {
     if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
       try {
         await navigator.share({
@@ -25,37 +42,47 @@ export default function ShareSnippet({
           text: "A snippet from the OlamideVerse archive",
           url,
         });
-        setStatus("shared");
-        window.setTimeout(() => setStatus("idle"), 2000);
+        flash("shared");
         return;
       } catch (err) {
-        // User cancelled — fall through to copy only if not AbortError.
         if (err instanceof DOMException && err.name === "AbortError") return;
       }
     }
-    try {
-      await navigator.clipboard.writeText(url);
-      setStatus("copied");
-      window.setTimeout(() => setStatus("idle"), 2000);
-    } catch {
-      // Clipboard blocked — leave idle.
-    }
+    await copyLink();
   }
 
-  const label =
-    status === "copied" ? "Copied" : status === "shared" ? "Shared" : "Share";
+  const statusText =
+    status === "copied"
+      ? "Link copied"
+      : status === "shared"
+        ? "Shared"
+        : status === "failed"
+          ? "Couldn't copy — try again"
+          : "";
+
+  const btn = compact
+    ? "border-2 border-ink px-2.5 py-1 text-[0.68rem] font-bold tracking-[0.05em] uppercase text-ink transition-transform hover:-translate-x-px hover:-translate-y-px"
+    : "border-[3px] border-ink px-4 py-2.5 text-xs font-bold tracking-[0.06em] uppercase text-ink shadow-paste-sm transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5";
 
   return (
-    <button
-      type="button"
-      onClick={share}
-      className={
-        compact
-          ? "border-2 border-ink bg-danfo px-2.5 py-1 text-[0.68rem] font-bold tracking-[0.05em] uppercase text-ink transition-transform hover:-translate-x-px hover:-translate-y-px"
-          : "border-[3px] border-ink bg-danfo px-4 py-2.5 text-xs font-bold tracking-[0.06em] uppercase text-ink shadow-paste-sm transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
-      }
-    >
-      {label}
-    </button>
+    <div className={compact ? "flex flex-wrap items-center gap-1.5" : "flex flex-wrap items-center gap-2"}>
+      <button
+        type="button"
+        onClick={shareNative}
+        className={`${btn} bg-danfo`}
+      >
+        Share
+      </button>
+      <button
+        type="button"
+        onClick={copyLink}
+        className={`${btn} bg-paper`}
+      >
+        {status === "copied" ? "Copied" : "Copy link"}
+      </button>
+      <span id={liveId} className="sr-only" aria-live="polite">
+        {statusText}
+      </span>
+    </div>
   );
 }
