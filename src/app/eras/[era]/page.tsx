@@ -2,10 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AlbumCard from "@/components/AlbumCard";
+import EraMoments from "@/components/EraMoments";
+import InlineMarkdown from "@/components/InlineMarkdown";
 import NextChapterCta from "@/components/NextChapterCta";
+import PhotoPlaceholder from "@/components/PhotoPlaceholder";
 import PosterHero from "@/components/PosterHero";
-import Prose from "@/components/Prose";
 import PullQuote from "@/components/PullQuote";
+import Ticker from "@/components/chrome/Ticker";
 import { ACCENTS } from "@/lib/accents";
 import { getAlbumsByEra, getEra, getEras, getMediaItems } from "@/lib/content";
 
@@ -43,47 +46,75 @@ export default async function EraPage({
     <>
       <PosterHero
         size="xl"
-        eyebrow={`Era ${String(era.order).padStart(2, "0")} · ${era.years}`}
+        kickerLeft={`OlamideVerse — Era ${String(era.order).padStart(2, "0")}`}
+        kickerRight="Fan archive · Not affiliated with YBNL"
+        eyebrow={era.heroBadge}
         title={era.title}
-        intro={era.thesis}
-        accent={accent.solid === ACCENTS.ink.solid ? ACCENTS.danfo.solid : accent.solid}
-      />
+        intro={era.heroIntro}
+        accent={accent.solid}
+        onAccent={accent.onSolid}
+      >
+        <div
+          className="mt-8 flex items-end justify-between gap-4 border-t-4 pt-4"
+          style={{ borderColor: accent.solid }}
+        >
+          <span />
+          <span className="font-display text-3xl tabular-nums text-paper">
+            {era.years}
+          </span>
+        </div>
+      </PosterHero>
 
-      <section className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
-        <Prose source={era.body} accent={era.accent} />
-        {era.motto ? (
-          <PullQuote accent={era.accent} cite="Editorial voice">
-            {era.motto}
-          </PullQuote>
-        ) : null}
-      </section>
+      {era.ticker.length > 0 ? <Ticker items={era.ticker} /> : null}
 
-      {albums.length > 0 ? (
-        <section className="ov-pin-section border-t-[6px] border-ink bg-paper-dim">
-          <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[1fr_1.4fr]">
-            <div>
-              <div className="ov-pin-panel lg:pt-2">
-                <p className="mb-1.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
-                  {albums.length === 1 ? "The album" : "The albums"} of the era
+      {era.contextBody.length > 0 ? (
+        <section className="mx-auto grid max-w-6xl gap-11 px-5 py-20 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+          <div>
+            <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
+              The context
+            </p>
+            <h2 className="font-display text-display-lg mb-5 max-w-[16ch]">
+              {era.contextHeading}
+            </h2>
+            <div className="max-w-[65ch]">
+              {era.contextBody.map((p, i) => (
+                <p key={i} className="mb-4 text-lg leading-relaxed">
+                  <InlineMarkdown text={p} />
                 </p>
-                <h2 className="font-display text-display-lg max-w-[10ch]">
-                  {albums.length} {albums.length === 1 ? "release" : "releases"},{" "}
-                  {era.years.trim().replace(/\s*—\s*/, "–")}
-                </h2>
-                <p className="mt-4 max-w-[44ch] text-ink-soft">
-                  Every release links to its own page — tracklist, embeds, and
-                  the story of where it landed.
-                </p>
-              </div>
-            </div>
-            <div className="flex flex-col gap-8">
-              {albums.map((album, i) => (
-                <AlbumCard key={album.slug} album={album} era={era} index={i} />
               ))}
             </div>
           </div>
+          <div
+            className="ov-paste-up shadow-paste"
+            data-tilt="0.7"
+            style={{ rotate: "0.7deg" }}
+          >
+            <PhotoPlaceholder
+              accent={era.accent}
+              label={`Archival photo — ${era.title}, ${era.years}`}
+            />
+          </div>
         </section>
       ) : null}
+
+      {albums.length > 0 ? (
+        <section className="mx-auto max-w-6xl px-5 pb-14 sm:px-8">
+          <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
+            The {albums.length === 1 ? "album" : "albums"} of the era
+          </p>
+          <div className="grid max-w-4xl grid-cols-2 gap-6 sm:grid-cols-3">
+            {albums.map((album, i) => (
+              <AlbumCard key={album.slug} album={album} era={era} index={i} />
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      <section className="mx-auto max-w-6xl px-5 pb-14 sm:px-8">
+        <PullQuote accent={era.accent} text={era.pullQuote} highlight={era.pullQuoteHighlight} />
+      </section>
+
+      <EraMoments era={era} />
 
       {media.length > 0 ? (
         <section className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
@@ -109,7 +140,26 @@ export default async function EraPage({
         </section>
       ) : null}
 
-      {nextEra ? <NextChapterCta nextEra={nextEra} /> : null}
+      {nextEra ? (
+        <NextChapterCta nextEra={nextEra} />
+      ) : era.open ? (
+        <section className="mx-auto max-w-6xl px-5 pb-20 sm:px-8">
+          <div className="border-2 border-dashed border-ink-soft p-9 text-center">
+            <h3 className="font-display mb-2.5 text-2xl">This era stays open</h3>
+            <p className="mx-auto mb-[18px] max-w-[52ch] text-ink-soft">
+              There&apos;s no next chapter to hand off to yet — just whatever comes
+              next. Check back as the archive grows, or revisit where it all
+              started.
+            </p>
+            <Link
+              href="/eras"
+              className="inline-block border-[3px] border-ink bg-danfo px-5 py-3 text-sm font-bold tracking-[0.06em] uppercase text-ink shadow-paste-sm"
+            >
+              Back to all eras
+            </Link>
+          </div>
+        </section>
+      ) : null}
     </>
   );
 }

@@ -3,19 +3,51 @@
     "id": "eni-duro-video",
     "title": "Eni Duro",
     "era": "the-upstart",
-    "year": 2011,
+    "year": 2010,
     "type": "music-video",
+    "source": "YouTube",
     "youtubeId": null,
-    "note": "DRAFT — the breakout single's video; embed ID to be verified in the content pass."
+    "note": "The debut single's video — the first time Bariga rap got a screen."
   },
   {
-    "id": "first-of-all-video",
-    "title": "First of All",
-    "era": "first-of-all",
-    "year": 2012,
+    "id": "omo-to-shan-video",
+    "title": "Omo To Shan (ft. Wizkid)",
+    "era": "the-upstart",
+    "year": 2011,
     "type": "music-video",
+    "source": "YouTube",
     "youtubeId": null,
-    "note": "DRAFT — the YBNL-era anthem; embed ID to be verified in the content pass."
+    "note": "Two rising Lagos voices, one hook radio couldn't drop."
+  },
+  {
+    "id": "the-juice-interview-2013",
+    "title": "\"The Juice\" interview with Toolz",
+    "era": "first-of-all",
+    "year": 2013,
+    "type": "interview",
+    "source": "NdaniTV",
+    "youtubeId": null,
+    "note": "On the record, denying rumors of a rival label deal — \"too late for anyone to sign him.\""
+  },
+  {
+    "id": "durosoke-video",
+    "title": "Durosoke",
+    "era": "first-of-all",
+    "year": 2013,
+    "type": "music-video",
+    "source": "YouTube",
+    "youtubeId": null,
+    "note": "Won Best Afro Hip-Hop Video at the 2014 Nigeria Music Video Awards."
+  },
+  {
+    "id": "olic-live-2016",
+    "title": "OLIC — Olamide Live in Concert",
+    "era": "street-king-run",
+    "year": 2016,
+    "type": "live",
+    "source": "YouTube",
+    "youtubeId": null,
+    "note": "The concert series that proved street-hop could sell out a room."
   },
   {
     "id": "wo-video",
@@ -23,34 +55,28 @@
     "era": "street-king-run",
     "year": 2017,
     "type": "music-video",
+    "source": "YouTube",
     "youtubeId": null,
-    "note": "DRAFT — Lagos Nawa era street anthem; embed ID to be verified in the content pass."
+    "note": "Shot in Bariga; sparked the #WoChallenge and pushed shaku shaku into the mainstream."
   },
   {
-    "id": "olic-live",
-    "title": "OLIC — Olamide Live In Concert",
-    "era": "street-king-run",
-    "year": 2015,
-    "type": "live",
-    "youtubeId": null,
-    "note": "DRAFT — a December OLIC moment; clip to be selected in the content pass."
-  },
-  {
-    "id": "reinvention-interview",
-    "title": "On changing the sound",
-    "era": "reinvention",
-    "year": 2020,
+    "id": "guardian-interview-2021",
+    "title": "\"People have a very limited understanding of the ghetto\"",
+    "era": "elder-statesman",
+    "year": 2021,
     "type": "interview",
+    "source": "The Guardian",
     "youtubeId": null,
-    "note": "DRAFT — interview covering the Carpe Diem-era shift; source to be selected in the content pass."
+    "note": "On Bariga, class, and what the streets actually taught him."
   },
   {
-    "id": "elder-statesman-interview",
-    "title": "Building YBNL's second generation",
+    "id": "amapiano-video",
+    "title": "Amapiano (ft. Asake)",
     "era": "elder-statesman",
     "year": 2022,
-    "type": "interview",
+    "type": "music-video",
+    "source": "YouTube",
     "youtubeId": null,
-    "note": "DRAFT — on signing and raising Fireboy DML and Asake; source to be selected in the content pass."
+    "note": "Helped introduce amapiano to a global audience."
   }
 ]

@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import AlbumCard from "./AlbumCard";
 import EmptyState from "./EmptyState";
 import FilterChips from "./FilterChips";
-import type { Album, Era } from "@/lib/content";
+import type { Album, Era } from "@/lib/content-schema";
 
 export default function AlbumGrid({
   albums,
@@ -63,6 +63,9 @@ export default function AlbumGrid({
           ))}
         </div>
       </div>
+      <p className="mb-5 text-[0.8rem] tracking-[0.1em] uppercase text-ink-soft">
+        {shown.length} {shown.length === 1 ? "release" : "releases"}
+      </p>
       {shown.length === 0 ? (
         <EmptyState />
       ) : (

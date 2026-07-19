@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import EmbedFrame from "./EmbedFrame";
-import type { Track } from "@/lib/content";
+import type { Track } from "@/lib/content-schema";
 
 /**
  * Track rows + a shared "now playing" embed frame. Selecting a row loads
@@ -12,7 +12,7 @@ export default function Tracklist({ tracks }: { tracks: Track[] }) {
   const [nowPlaying, setNowPlaying] = useState<Track | null>(null);
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-start">
+    <div>
       <ol className="border-t-2 border-ink">
         {tracks.map((track) => {
           const active = nowPlaying?.num === track.num;
@@ -50,7 +50,7 @@ export default function Tracklist({ tracks }: { tracks: Track[] }) {
           );
         })}
       </ol>
-      <div className="lg:sticky lg:top-24">
+      <div className="mt-5">
         {nowPlaying ? (
           <EmbedFrame
             title={nowPlaying.title}
