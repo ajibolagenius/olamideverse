@@ -26,6 +26,13 @@ export const SITE_DESCRIPTION =
  * a segment defines its own), so every page sets these explicitly to get a
  * correct social-share title instead of falling back to the root's.
  */
+function absoluteOgUrl(ogImage: string): string {
+    if (/^https?:\/\//i.test(ogImage)) return ogImage;
+    // Stable unhashed fallback route — see src/app/og/route.tsx
+    const path = ogImage.startsWith("/") ? ogImage : `/${ogImage}`;
+    return new URL(path, SITE_URL).toString();
+}
+
 export function pageMetadata({
     title,
     description,
@@ -40,6 +47,12 @@ export function pageMetadata({
     ogImage?: string;
 }): Metadata {
     const socialTitle = `${title} · ${SITE_NAME}`;
+    // Prefer an explicit CMS/override image. When omitted, leave `images`
+    // unset so the route's `opengraph-image.tsx` file convention can attach
+    // (setting `images: []` or a default here would wipe album/era cards).
+    const images = ogImage
+        ? [{ url: absoluteOgUrl(ogImage), width: 1200, height: 630 }]
+        : undefined;
     return {
         title,
         description,
@@ -49,7 +62,7 @@ export function pageMetadata({
             title: socialTitle,
             description,
             url: path,
-            ...(ogImage ? { images: [{ url: ogImage }] } : {}),
+            ...(images ? { images } : {}),
         },
         // `twitter` is a nested object like `openGraph` — a page-level value
         // replaces the root's wholesale, so `card` has to be repeated here or
@@ -58,7 +71,7 @@ export function pageMetadata({
             card: "summary_large_image",
             title: socialTitle,
             description,
-            ...(ogImage ? { images: [ogImage] } : {}),
+            ...(images ? { images: images.map((i) => i.url) } : {}),
         },
     };
 }

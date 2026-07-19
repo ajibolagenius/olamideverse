@@ -20,8 +20,11 @@ const INK = "#181410";
 async function coverDataUri(slug: string) {
   const relPath = ALBUM_COVERS[slug];
   if (!relPath) return undefined;
-  const bytes = await readFile(join(process.cwd(), "public", relPath));
-  const ext = relPath.split(".").pop() === "png" ? "png" : "jpeg";
+  // Strip leading slash — path.join treats "/media/..." as absolute and
+  // would drop the `public/` prefix on Unix.
+  const file = relPath.replace(/^\//, "");
+  const bytes = await readFile(join(process.cwd(), "public", file));
+  const ext = file.split(".").pop() === "png" ? "png" : "jpeg";
   return `data:image/${ext};base64,${bytes.toString("base64")}`;
 }
 
