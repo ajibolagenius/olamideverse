@@ -1,6 +1,6 @@
 import Link from "next/link";
+import { AdminMobileNav, AdminSidebarNav } from "@/components/admin/AdminNav";
 import { adminLogout } from "@/lib/admin/actions/auth";
-import { ADMIN_NAV } from "@/lib/admin/nav";
 import type { AdminUser } from "@/lib/admin/types";
 
 export default function AdminShell({
@@ -42,47 +42,11 @@ export default function AdminShell({
 
       <div className="mx-auto flex min-h-0 w-full max-w-[1400px] flex-1 gap-0 md:gap-6">
         <aside className="hidden min-h-0 w-56 shrink-0 overflow-y-auto overscroll-contain border-r-2 border-ink/15 p-4 md:block">
-          <nav className="space-y-6">
-            {ADMIN_NAV.map((section) => (
-              <div key={section.title}>
-                <p className="mb-2 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-ink-soft">
-                  {section.title}
-                </p>
-                <ul className="space-y-1">
-                  {section.items
-                    .filter(
-                      (item) => !item.roles || item.roles.includes(admin.role),
-                    )
-                    .map((item) => (
-                      <li key={item.href}>
-                        <Link
-                          href={item.href}
-                          className="block border-l-2 border-transparent px-2 py-1.5 text-sm font-medium text-ink hover:border-danfo hover:bg-white"
-                        >
-                          {item.label}
-                        </Link>
-                      </li>
-                    ))}
-                </ul>
-              </div>
-            ))}
-          </nav>
+          <AdminSidebarNav role={admin.role} />
         </aside>
 
         <div className="min-h-0 min-w-0 flex-1 overflow-y-auto overscroll-contain px-4 py-6 sm:px-6">
-          <nav className="mb-6 flex gap-2 overflow-x-auto md:hidden">
-            {ADMIN_NAV.flatMap((s) => s.items)
-              .filter((item) => !item.roles || item.roles.includes(admin.role))
-              .map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="shrink-0 border-2 border-ink bg-white px-2 py-1 text-[0.65rem] font-semibold uppercase"
-                >
-                  {item.label}
-                </Link>
-              ))}
-          </nav>
+          <AdminMobileNav role={admin.role} />
           {children}
         </div>
       </div>
