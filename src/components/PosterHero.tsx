@@ -31,7 +31,7 @@ export default function PosterHero({
     <section className="grain bg-ink px-5 py-14 text-paper sm:px-8 sm:py-20">
       <div className="relative mx-auto max-w-6xl">
         {kickerLeft || kickerRight ? (
-          <div className="mb-9 flex justify-between border-b border-[#3A332B] pb-4 text-[0.8rem] tracking-[0.12em] uppercase text-ink-muted">
+          <div className="mb-9 flex flex-col gap-1 border-b border-[#3A332B] pb-4 text-[0.8rem] tracking-[0.12em] uppercase text-ink-muted sm:flex-row sm:justify-between sm:gap-4">
             <span>{kickerLeft}</span>
             <span>{kickerRight}</span>
           </div>

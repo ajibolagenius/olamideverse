@@ -126,6 +126,13 @@
 }
 
 @layer base {
+  html {
+    /* .ov-paste-up cards carry a slight inline `rotate()` — at edge-to-edge
+       mobile widths that can poke a few px past the viewport and force an
+       unwanted horizontal scrollbar. */
+    overflow-x: hidden;
+  }
+
   body {
     background: var(--color-paper);
     color: var(--color-ink);
