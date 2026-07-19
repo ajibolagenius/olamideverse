@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AlbumCard from "@/components/AlbumCard";
+import CommentBox from "@/components/fanzone/CommentBox";
 import EraMoments from "@/components/EraMoments";
 import InlineMarkdown from "@/components/InlineMarkdown";
 import NextChapterCta from "@/components/NextChapterCta";
@@ -11,6 +12,7 @@ import PullQuote from "@/components/PullQuote";
 import Ticker from "@/components/chrome/Ticker";
 import { ACCENTS } from "@/lib/accents";
 import { getAlbumsByEra, getEra, getEras, getMediaItems } from "@/lib/content";
+import { getComments } from "@/lib/fanzone/queries";
 import { ERA_PHOTOS } from "@/lib/photos";
 
 export function generateStaticParams() {
@@ -42,6 +44,7 @@ export default async function EraPage({
   const nextEra = era.open
     ? undefined
     : eras.find((e) => e.order === era.order + 1);
+  const comments = await getComments(`era-${era.slug}`);
 
   return (
     <>
@@ -162,6 +165,17 @@ export default async function EraPage({
           </div>
         </section>
       ) : null}
+
+      <section className="mx-auto max-w-6xl px-5 pb-20 sm:px-8">
+        <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
+          Talk about it
+        </p>
+        <CommentBox
+          threadId={`era-${era.slug}`}
+          threadLabel={era.title}
+          initialComments={comments}
+        />
+      </section>
     </>
   );
 }

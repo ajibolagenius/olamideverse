@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ACCENTS } from "@/lib/accents";
 import type { Album, Era } from "@/lib/content";
+import FavoriteButton from "@/components/fanzone/FavoriteButton";
 
 export default function EraCard({
   era,
@@ -15,9 +16,8 @@ export default function EraCard({
   const tilt = index % 2 === 0 ? -0.6 : 0.5;
 
   return (
-    <Link
-      href={`/eras/${era.slug}`}
-      className="ov-paste-up group block border-[3px] border-ink bg-white shadow-[7px_7px_0_var(--color-ink)] transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
+    <div
+      className="ov-paste-up group border-[3px] border-ink bg-white shadow-[7px_7px_0_var(--color-ink)]"
       data-tilt={tilt}
       style={{ rotate: `${tilt}deg` }}
     >
@@ -33,7 +33,7 @@ export default function EraCard({
       <div className="px-4 py-5 sm:px-5">
         <h3 className="font-display text-display-md">{era.title}</h3>
         <p className="mt-2.5 mb-4 max-w-[52ch] text-base text-ink-soft">{era.thesis}</p>
-        <div className="flex flex-wrap gap-2">
+        <div className="mb-4 flex flex-wrap gap-2">
           {albums.map((album) => (
             <span
               key={album.slug}
@@ -43,10 +43,19 @@ export default function EraCard({
             </span>
           ))}
         </div>
+        <FavoriteButton
+          id={`era:${era.slug}`}
+          label={era.title}
+          kind="era"
+          href={`/eras/${era.slug}`}
+        />
       </div>
-      <span className="block border-t-[3px] border-ink px-4 py-3 text-sm font-bold tracking-[0.08em] uppercase text-adire group-hover:bg-ink group-hover:text-paper">
+      <Link
+        href={`/eras/${era.slug}`}
+        className="block border-t-[3px] border-ink px-4 py-3 text-sm font-bold tracking-[0.08em] uppercase text-adire transition-colors hover:bg-ink hover:text-paper"
+      >
         Enter the era →
-      </span>
-    </Link>
+      </Link>
+    </div>
   );
 }

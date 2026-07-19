@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import CommentBox from "@/components/fanzone/CommentBox";
 import CoverArt from "@/components/CoverArt";
 import EmptyState from "@/components/EmptyState";
 import Prose from "@/components/Prose";
 import Tracklist from "@/components/Tracklist";
 import { ACCENTS } from "@/lib/accents";
 import { ALBUM_TYPE_LABEL, getAlbum, getAlbums, getEra } from "@/lib/content";
+import { getComments } from "@/lib/fanzone/queries";
 
 export function generateStaticParams() {
   return getAlbums().map((album) => ({ slug: album.slug }));
@@ -36,6 +38,7 @@ export default async function AlbumPage({
   const era = getEra(album.era)!;
   const accent = ACCENTS[era.accent];
   const heroAccent = accent.solid === ACCENTS.ink.solid ? ACCENTS.danfo.solid : accent.solid;
+  const comments = await getComments(`album-${album.slug}`);
 
   const metaFacts = [
     album.released ? { label: "Released", value: album.released } : null,
@@ -94,7 +97,12 @@ export default async function AlbumPage({
         <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">Tracklist</p>
         {album.tracklist.length > 0 ? (
           <div className="grid gap-11 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
-            <Tracklist tracks={album.tracklist} />
+            <Tracklist
+              tracks={album.tracklist}
+              albumSlug={album.slug}
+              albumTitle={album.title}
+              albumYear={album.year}
+            />
             {(album.keyBars.length > 0 || album.credits) && (
               <div className="flex flex-col gap-5">
                 {album.keyBars.length > 0 ? (
@@ -124,6 +132,17 @@ export default async function AlbumPage({
         ) : (
           <EmptyState message="Tracklist coming with the content pass — check back as the archive grows." />
         )}
+      </section>
+
+      <section className="mx-auto max-w-6xl px-5 pb-20 sm:px-8">
+        <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
+          Talk about it
+        </p>
+        <CommentBox
+          threadId={`album-${album.slug}`}
+          threadLabel={album.title}
+          initialComments={comments}
+        />
       </section>
     </>
   );

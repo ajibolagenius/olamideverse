@@ -2,13 +2,30 @@
 
 import { useState } from "react";
 import EmbedFrame from "./EmbedFrame";
+import PlaylistButton from "@/components/fanzone/PlaylistButton";
 import type { Track } from "@/lib/content-schema";
+
+function slugifyTrack(title: string): string {
+  return title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
 
 /**
  * Track rows + a shared "now playing" embed frame. Selecting a row loads
- * its embed; the active row reads white against the paper page.
+ * its embed; the active row reads white against the paper page. The
+ * playlist-add button is a sibling of the row's select-button, not nested
+ * inside it — a <button> can't validly contain another <button>.
  */
-export default function Tracklist({ tracks }: { tracks: Track[] }) {
+export default function Tracklist({
+  tracks,
+  albumSlug,
+  albumTitle,
+  albumYear,
+}: {
+  tracks: Track[];
+  albumSlug: string;
+  albumTitle: string;
+  albumYear: number;
+}) {
   const [nowPlaying, setNowPlaying] = useState<Track | null>(null);
 
   return (
@@ -17,14 +34,17 @@ export default function Tracklist({ tracks }: { tracks: Track[] }) {
         {tracks.map((track) => {
           const active = nowPlaying?.num === track.num;
           return (
-            <li key={track.num}>
+            <li
+              key={track.num}
+              className={`flex items-center gap-3 border-b-2 border-ink px-2 py-2 transition-colors ${
+                active ? "bg-white" : "hover:bg-paper-dim"
+              }`}
+            >
               <button
                 type="button"
                 onClick={() => setNowPlaying(track)}
                 aria-pressed={active}
-                className={`flex w-full items-center gap-4 border-b-2 border-ink px-2 py-3 text-left transition-colors ${
-                  active ? "bg-white" : "hover:bg-paper-dim"
-                }`}
+                className="flex flex-1 items-center gap-4 py-1 text-left"
               >
                 <span className="font-display w-7 text-lg text-ink-soft">
                   {String(track.num).padStart(2, "0")}
@@ -37,14 +57,21 @@ export default function Tracklist({ tracks }: { tracks: Track[] }) {
                     </small>
                   ) : null}
                 </span>
-                <span
-                  aria-hidden
-                  className="grid size-8 place-items-center border-2 border-ink bg-danfo"
-                >
-                  <svg viewBox="0 0 16 16" className="size-2.5 fill-ink">
-                    <path d="M3 1l11 7-11 7z" />
-                  </svg>
-                </span>
+              </button>
+              <PlaylistButton
+                trackId={`track:${albumSlug}:${slugifyTrack(track.title)}`}
+                title={track.title}
+                subtitle={`${albumTitle} · ${albumYear}`}
+              />
+              <button
+                type="button"
+                onClick={() => setNowPlaying(track)}
+                aria-label={`Play ${track.title}`}
+                className="grid size-8 flex-shrink-0 place-items-center border-2 border-ink bg-danfo"
+              >
+                <svg viewBox="0 0 16 16" className="size-2.5 fill-ink">
+                  <path d="M3 1l11 7-11 7z" />
+                </svg>
               </button>
             </li>
           );

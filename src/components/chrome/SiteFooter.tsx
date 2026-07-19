@@ -20,6 +20,9 @@ export default function SiteFooter() {
           <Link href="/legal#takedown" className="hover:text-danfo">
             Takedown
           </Link>
+          <Link href="/fanzone" className="hover:text-danfo">
+            Fan Zone
+          </Link>
         </nav>
       </div>
       <div className="mx-auto max-w-6xl border-t border-[#3A332B] pt-4 text-center tracking-[0.04em] uppercase">
