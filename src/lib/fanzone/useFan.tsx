@@ -43,10 +43,16 @@ export function FanProvider({ children }: { children: ReactNode }) {
     }
     const { data } = await supabase
       .from("fans")
-      .select("id, handle")
+      .select("id, handle, banned")
       .eq("id", user.id)
       .maybeSingle();
-    setFan(data);
+    if (data?.banned) {
+      setFan(null);
+      setError("This handle has been suspended.");
+    } else {
+      setFan(data ? { id: data.id, handle: data.handle } : null);
+      setError(null);
+    }
     setLoading(false);
   }, []);
 
