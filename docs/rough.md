@@ -1,4 +1,4 @@
 - dynamic open graph meta data and images across all pages and dynamic pages
-- admin panel
 - mobile responsive
+- admin panel
 - check old docs at `docs/data`
