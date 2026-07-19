@@ -11,6 +11,7 @@ import PullQuote from "@/components/PullQuote";
 import Ticker from "@/components/chrome/Ticker";
 import { ACCENTS } from "@/lib/accents";
 import { getAlbumsByEra, getEra, getEras, getMediaItems } from "@/lib/content";
+import { ERA_PHOTOS } from "@/lib/photos";
 
 export function generateStaticParams() {
   return getEras().map((era) => ({ era: era.slug }));
@@ -92,6 +93,7 @@ export default async function EraPage({
             <PhotoPlaceholder
               accent={era.accent}
               label={`Archival photo — ${era.title}, ${era.years}`}
+              photo={ERA_PHOTOS[era.slug]}
             />
           </div>
         </section>
