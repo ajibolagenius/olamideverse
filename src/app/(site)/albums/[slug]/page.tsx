@@ -97,9 +97,9 @@ export default async function AlbumPage({
         }
       />
 
-      <section className="mx-auto grid max-w-6xl gap-11 px-5 pt-9 pb-5 sm:px-8 lg:grid-cols-[340px_1fr]">
+      <section className="mx-auto grid max-w-6xl items-start gap-11 px-5 pt-9 pb-5 sm:px-8 lg:grid-cols-[min(340px,100%)_1fr]">
         <div
-          className="ov-paste-up border-[3px] border-ink shadow-paste"
+          className="ov-paste-up w-full border-[3px] border-ink shadow-paste"
           data-tilt="-0.7"
           style={{ rotate: "-0.7deg" }}
         >
