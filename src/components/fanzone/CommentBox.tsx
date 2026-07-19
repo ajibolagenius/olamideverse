@@ -2,7 +2,11 @@
 
 import { useState } from "react";
 import { useFan } from "@/lib/fanzone/useFan";
-import { postComment, deleteComment } from "@/lib/fanzone/mutations";
+import {
+  postComment,
+  deleteComment,
+  reportComment,
+} from "@/lib/fanzone/mutations";
 import type { CommentRow } from "@/lib/fanzone/queries";
 import HandlePicker from "./HandlePicker";
 
@@ -29,28 +33,46 @@ export default function CommentBox({
   const [comments, setComments] = useState(initialComments);
   const [draft, setDraft] = useState("");
   const [posting, setPosting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [reported, setReported] = useState<Record<string, boolean>>({});
 
   const submit = async () => {
     const body = draft.trim();
     if (!body || !fanState.fan) return;
     setPosting(true);
-    await postComment(threadId, body);
-    setComments((c) => [
-      {
-        id: crypto.randomUUID(),
-        body,
-        created_at: new Date().toISOString(),
-        fan: { handle: fanState.fan!.handle },
-      },
-      ...c,
-    ]);
-    setDraft("");
+    setError(null);
+    try {
+      await postComment(threadId, body);
+      setComments((c) => [
+        {
+          id: crypto.randomUUID(),
+          body,
+          created_at: new Date().toISOString(),
+          fan: { handle: fanState.fan!.handle },
+        },
+        ...c,
+      ]);
+      setDraft("");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Couldn't post.");
+    }
     setPosting(false);
   };
 
   const remove = async (id: string) => {
     setComments((c) => c.filter((comment) => comment.id !== id));
     await deleteComment(id);
+  };
+
+  const report = async (id: string) => {
+    if (!fanState.fan || reported[id]) return;
+    setError(null);
+    try {
+      await reportComment(id, "Flagged from comment thread");
+      setReported((r) => ({ ...r, [id]: true }));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Couldn't report.");
+    }
   };
 
   return (
@@ -63,6 +85,8 @@ export default function CommentBox({
       </div>
 
       <div className="p-5">
+        {error ? <p className="mb-3 text-sm text-oxide">{error}</p> : null}
+
         {fanState.fan ? (
           <div className="mb-5 flex gap-2.5">
             <input
@@ -103,15 +127,26 @@ export default function CommentBox({
                   <span className="text-xs text-ink-soft">{timeAgo(comment.created_at)}</span>
                 </div>
                 <p className="mt-1 text-sm leading-relaxed">{comment.body}</p>
-                {fanState.fan?.handle === comment.fan?.handle ? (
-                  <button
-                    type="button"
-                    onClick={() => remove(comment.id)}
-                    className="mt-1 text-xs font-bold uppercase text-ink-soft hover:text-oxide"
-                  >
-                    Delete
-                  </button>
-                ) : null}
+                <div className="mt-1 flex gap-3">
+                  {fanState.fan?.handle === comment.fan?.handle ? (
+                    <button
+                      type="button"
+                      onClick={() => remove(comment.id)}
+                      className="text-xs font-bold uppercase text-ink-soft hover:text-oxide"
+                    >
+                      Delete
+                    </button>
+                  ) : fanState.fan ? (
+                    <button
+                      type="button"
+                      onClick={() => report(comment.id)}
+                      disabled={reported[comment.id]}
+                      className="text-xs font-bold uppercase text-ink-soft hover:text-oxide disabled:opacity-50"
+                    >
+                      {reported[comment.id] ? "Reported" : "Report"}
+                    </button>
+                  ) : null}
+                </div>
               </li>
             ))}
           </ul>
