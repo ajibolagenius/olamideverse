@@ -36,16 +36,42 @@ export default async function SnippetPage({
   const snippet = await getSnippet(id);
   if (!snippet) notFound();
 
-  const era = (await getEra(snippet.era))!;
+  const [era, snippets] = await Promise.all([
+    getEra(snippet.era),
+    getSnippets(),
+  ]);
+  if (!era) notFound();
+
   const absoluteUrl = `${SITE_URL}/snippets/${snippet.id}`;
+  const index = snippets.findIndex((s) => s.id === snippet.id);
+  const prevSnippet = index > 0 ? snippets[index - 1] : undefined;
+  const nextSnippet =
+    index >= 0 && index < snippets.length - 1 ? snippets[index + 1] : undefined;
 
   return (
     <>
       <Breadcrumb
         items={[
           { label: "Snippets", href: "/snippets" },
+          { label: snippet.albumTitle, href: `/albums/${snippet.albumSlug}` },
           { label: snippet.track },
         ]}
+        previous={
+          prevSnippet
+            ? {
+                label: prevSnippet.track,
+                href: `/snippets/${prevSnippet.id}`,
+              }
+            : null
+        }
+        next={
+          nextSnippet
+            ? {
+                label: nextSnippet.track,
+                href: `/snippets/${nextSnippet.id}`,
+              }
+            : null
+        }
       />
 
       <section className="mx-auto grid max-w-6xl gap-10 px-5 py-10 sm:px-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-start">

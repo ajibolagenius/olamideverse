@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import AudiogramCard from "@/components/AudiogramCard";
+import Breadcrumb from "@/components/Breadcrumb";
 import PosterHero from "@/components/PosterHero";
 import Ticker from "@/components/chrome/Ticker";
 import { getEras, getSnippets } from "@/lib/content";
@@ -26,6 +27,10 @@ export default async function SnippetsPage() {
 
   return (
     <>
+      <Breadcrumb
+        items={[{ label: "Snippets" }]}
+        next={{ label: "Influence", href: "/influence" }}
+      />
       <PosterHero
         eyebrow="Share a snippet"
         title={

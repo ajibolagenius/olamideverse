@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Breadcrumb from "@/components/Breadcrumb";
 import InfluenceGraph from "@/components/InfluenceGraph";
 import PosterHero from "@/components/PosterHero";
 import Ticker from "@/components/chrome/Ticker";
@@ -26,6 +27,11 @@ export default async function InfluencePage() {
 
   return (
     <>
+      <Breadcrumb
+        items={[{ label: "Influence" }]}
+        previous={{ label: "Snippets", href: "/snippets" }}
+        next={{ label: "Impact", href: "/impact" }}
+      />
       <PosterHero
         eyebrow="Lineage, not a feed"
         title={

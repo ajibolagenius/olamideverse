@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Breadcrumb from "@/components/Breadcrumb";
 import ImpactMap from "@/components/ImpactMap";
 import PosterHero from "@/components/PosterHero";
 import Ticker from "@/components/chrome/Ticker";
@@ -26,6 +27,11 @@ export default async function ImpactPage() {
 
   return (
     <>
+      <Breadcrumb
+        items={[{ label: "Impact" }]}
+        previous={{ label: "Influence", href: "/influence" }}
+        next={{ label: "Snippets", href: "/snippets" }}
+      />
       <PosterHero
         eyebrow="Where the archive touches ground"
         title={
