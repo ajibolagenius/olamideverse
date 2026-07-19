@@ -43,6 +43,7 @@ export function pageMetadata({
     return {
         title,
         description,
+        alternates: { canonical: path },
         robots: noindex ? { index: false, follow: false } : undefined,
         openGraph: {
             title: socialTitle,
