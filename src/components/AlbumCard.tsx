@@ -23,7 +23,7 @@ export default function AlbumCard({
       data-tilt={tilt}
       style={{ rotate: `${tilt}deg` }}
     >
-      <CoverArt title={album.title} accent={era.accent} />
+      <CoverArt title={album.title} slug={album.slug} accent={era.accent} />
       <div className="flex items-center justify-between border-t-[3px] border-ink px-3 py-2 text-sm">
         <span className="text-ink-soft">
           {album.year} · {ALBUM_TYPE_LABEL[album.type]}
