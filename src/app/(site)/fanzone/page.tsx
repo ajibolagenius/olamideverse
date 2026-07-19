@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import CommentBox from "@/components/fanzone/CommentBox";
 import FanZoneSignIn from "@/components/fanzone/FanZoneSignIn";
 import FavoritesList from "@/components/fanzone/FavoritesList";
@@ -7,6 +8,7 @@ import PollCard from "@/components/fanzone/PollCard";
 import PosterHero from "@/components/PosterHero";
 import { getPollDefs } from "@/lib/fanzone/polls";
 import { getComments, getFavorites, getPlaylist, getPollResults } from "@/lib/fanzone/queries";
+import { getFeatureFlags } from "@/lib/settings";
 import { resolvePageMetadata } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -19,11 +21,14 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function FanZonePage() {
-  const polls = await getPollDefs();
+  const flags = await getFeatureFlags();
+  if (!flags.fanzone) notFound();
+
+  const polls = flags.polls ? await getPollDefs() : [];
   const [favorites, playlist, comments, ...pollResults] = await Promise.all([
     getFavorites(),
     getPlaylist(),
-    getComments("general"),
+    flags.comments ? getComments("general") : Promise.resolve([]),
     ...polls.map((p) => getPollResults(p.id)),
   ]);
 
@@ -65,10 +70,12 @@ export default async function FanZonePage() {
         <PlaylistPanel initialPlaylist={playlist} />
       </section>
 
-      <section className="mx-auto max-w-4xl px-5 pt-12 pb-20 sm:px-8">
-        <h2 className="font-display text-display-md mb-5">General discussion</h2>
-        <CommentBox threadId="general" threadLabel="General" initialComments={comments} />
-      </section>
+      {flags.comments ? (
+        <section className="mx-auto max-w-4xl px-5 pt-12 pb-20 sm:px-8">
+          <h2 className="font-display text-display-md mb-5">General discussion</h2>
+          <CommentBox threadId="general" threadLabel="General" initialComments={comments} />
+        </section>
+      ) : null}
     </>
   );
 }

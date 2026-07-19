@@ -9,9 +9,11 @@ import type { Album, Era } from "@/lib/content-schema";
 export default function AlbumGrid({
   albums,
   eras,
+  showFavorites = false,
 }: {
   albums: Album[];
   eras: Era[];
+  showFavorites?: boolean;
 }) {
   const [eraFilter, setEraFilter] = useState("all");
   const [sort, setSort] = useState<"newest" | "oldest">("newest");
@@ -76,6 +78,7 @@ export default function AlbumGrid({
               album={album}
               era={erasBySlug.get(album.era)!}
               index={i}
+              showFavorite={showFavorites}
             />
           ))}
         </div>

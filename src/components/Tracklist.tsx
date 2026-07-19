@@ -24,6 +24,7 @@ export default function Tracklist({
   albumTitle,
   albumYear,
   spotifyAlbumId,
+  showPlaylist = false,
   blockedYoutube = [],
   blockedSpotify = [],
 }: {
@@ -32,6 +33,7 @@ export default function Tracklist({
   albumTitle: string;
   albumYear: number;
   spotifyAlbumId?: string;
+  showPlaylist?: boolean;
   blockedYoutube?: string[];
   blockedSpotify?: string[];
 }) {
@@ -70,11 +72,13 @@ export default function Tracklist({
                   ) : null}
                 </span>
               </button>
-              <PlaylistButton
-                trackId={`track:${albumSlug}:${slugifyTrack(track.title)}`}
-                title={track.title}
-                subtitle={`${albumTitle} · ${albumYear}`}
-              />
+              {showPlaylist ? (
+                <PlaylistButton
+                  trackId={`track:${albumSlug}:${slugifyTrack(track.title)}`}
+                  title={track.title}
+                  subtitle={`${albumTitle} · ${albumYear}`}
+                />
+              ) : null}
               <button
                 type="button"
                 onClick={() => setNowPlaying(track)}

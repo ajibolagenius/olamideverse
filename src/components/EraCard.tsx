@@ -7,10 +7,12 @@ export default function EraCard({
   era,
   albums,
   index,
+  showFavorite = false,
 }: {
   era: Era;
   albums: Album[];
   index: number;
+  showFavorite?: boolean;
 }) {
   const accent = ACCENTS[era.accent];
   const tilt = index % 2 === 0 ? -0.6 : 0.5;
@@ -33,7 +35,7 @@ export default function EraCard({
       <div className="px-4 py-5 sm:px-5">
         <h3 className="font-display text-display-md">{era.title}</h3>
         <p className="mt-2.5 mb-4 max-w-[52ch] text-base text-ink-soft">{era.thesis}</p>
-        <div className="mb-4 flex flex-wrap gap-2">
+        <div className={`flex flex-wrap gap-2 ${showFavorite ? "mb-4" : ""}`}>
           {albums.map((album) => (
             <span
               key={album.slug}
@@ -43,12 +45,14 @@ export default function EraCard({
             </span>
           ))}
         </div>
-        <FavoriteButton
-          id={`era:${era.slug}`}
-          label={era.title}
-          kind="era"
-          href={`/eras/${era.slug}`}
-        />
+        {showFavorite ? (
+          <FavoriteButton
+            id={`era:${era.slug}`}
+            label={era.title}
+            kind="era"
+            href={`/eras/${era.slug}`}
+          />
+        ) : null}
       </div>
       <Link
         href={`/eras/${era.slug}`}

@@ -123,9 +123,9 @@ function defaultFor(key: string) {
       };
     case "feature_flags":
       return {
-        fanzone: true,
-        comments: true,
-        polls: true,
+        fanzone: false,
+        comments: false,
+        polls: false,
         useCmsContent: true,
         maintenance: false,
       };

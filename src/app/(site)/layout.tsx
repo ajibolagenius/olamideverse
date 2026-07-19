@@ -34,12 +34,15 @@ export default async function SiteLayout({
     );
   }
 
-  return (
-    <FanProvider>
+  const needsFanSession = flags.fanzone || flags.comments || flags.polls;
+  const shell = (
+    <>
       <DisclaimerStrip text={disclaimer.text} highlight={disclaimer.highlight} />
       <SiteHeader links={nav} />
       <main className="flex-1">{children}</main>
       <SiteFooter links={footer.links} blurb={footer.blurb} />
-    </FanProvider>
+    </>
   );
+
+  return needsFanSession ? <FanProvider>{shell}</FanProvider> : shell;
 }

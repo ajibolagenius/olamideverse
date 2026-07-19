@@ -15,6 +15,7 @@ import { ACCENTS } from "@/lib/accents";
 import { getAlbumsByEra, getEra, getEras, getMediaItems } from "@/lib/content";
 import { getComments } from "@/lib/fanzone/queries";
 import { getEraPhoto } from "@/lib/photos";
+import { getFeatureFlags } from "@/lib/settings";
 import { resolvePageMetadata } from "@/lib/site";
 
 export async function generateStaticParams() {
@@ -48,13 +49,14 @@ export default async function EraPage({
   const era = await getEra(eraSlug, { previewToken: preview });
   if (!era) notFound();
 
-  const [eras, albums, allMedia, comments, eraPhoto] = await Promise.all([
+  const [eras, albums, allMedia, flags, eraPhoto] = await Promise.all([
     getEras(),
     getAlbumsByEra(era.slug),
     getMediaItems(),
-    getComments(`era-${era.slug}`),
+    getFeatureFlags(),
     getEraPhoto(era.slug),
   ]);
+  const comments = flags.comments ? await getComments(`era-${era.slug}`) : [];
   const accent = ACCENTS[era.accent];
   const media = allMedia.filter((item) => item.era === era.slug);
   const prevEra = eras.find((e) => e.order === era.order - 1);
@@ -142,7 +144,13 @@ export default async function EraPage({
           </p>
           <div className="grid max-w-4xl grid-cols-2 gap-6 sm:grid-cols-3">
             {albums.map((album, i) => (
-              <AlbumCard key={album.slug} album={album} era={era} index={i} />
+              <AlbumCard
+                key={album.slug}
+                album={album}
+                era={era}
+                index={i}
+                showFavorite={flags.fanzone}
+              />
             ))}
           </div>
         </section>
@@ -199,16 +207,18 @@ export default async function EraPage({
         </section>
       ) : null}
 
-      <section className="mx-auto max-w-6xl px-5 pb-20 sm:px-8">
-        <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
-          Talk about it
-        </p>
-        <CommentBox
-          threadId={`era-${era.slug}`}
-          threadLabel={era.title}
-          initialComments={comments}
-        />
-      </section>
+      {flags.comments ? (
+        <section className="mx-auto max-w-6xl px-5 pb-20 sm:px-8">
+          <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
+            Talk about it
+          </p>
+          <CommentBox
+            threadId={`era-${era.slug}`}
+            threadLabel={era.title}
+            initialComments={comments}
+          />
+        </section>
+      ) : null}
     </>
   );
 }

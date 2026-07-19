@@ -204,9 +204,10 @@ async function seedPagesAndSettings() {
             priority: ["spotify", "youtube", "audiomack"],
         },
         feature_flags: {
-            fanzone: true,
-            comments: true,
-            polls: true,
+            // Archive soft-launch: enable Fan Zone from Admin → Settings when ready.
+            fanzone: false,
+            comments: false,
+            polls: false,
             useCmsContent: true,
             maintenance: false,
         },

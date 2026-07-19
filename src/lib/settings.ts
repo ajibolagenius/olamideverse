@@ -33,10 +33,11 @@ const DEFAULT_FOOTER = {
         "Fan project · Not affiliated with Olamide or YBNL Nation · Archival & educational",
 };
 
+/** Archive-first defaults — Fan Zone stays off until explicitly enabled in CMS. */
 const DEFAULT_FLAGS: FeatureFlags = {
-    fanzone: true,
-    comments: true,
-    polls: true,
+    fanzone: false,
+    comments: false,
+    polls: false,
     useCmsContent: true,
     maintenance: false,
 };
