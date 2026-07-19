@@ -162,7 +162,7 @@ export async function resolveReport(formData: FormData) {
 }
 
 export async function banFan(formData: FormData) {
-    const session = await assertModerator();
+    await assertModerator();
     const id = String(formData.get("id") ?? "");
     const banned = formData.get("banned") === "on" || formData.get("banned") === "true";
     const ban_reason = banned ? String(formData.get("ban_reason") ?? "") : "";

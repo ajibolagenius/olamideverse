@@ -27,10 +27,17 @@ Tailwind v4 + MDX). Phase docs are the source of truth: `docs/CONCEPT.md`,
 ## Layout
 
 - `content/` — MDX/JSON content, Zod-validated at build by `src/lib/content.ts`.
-  Seed content is draft (`draft: true`); the Phase 2 content pass verifies facts
-  and fills tracklists/embed IDs.
+  The Phase 2 content pass (verified facts, tracklists, embed IDs) is done;
+  `content/media/manifest.json` still flags cover art as placeholder pending
+  licensing — that's the one open content item, disclosed on the Legal page.
 - `src/lib/accents.ts` — per-era accent colors/gradients.
 - `design-system/` — Phase 0 design reference (tokens, component specs,
   `OlamideVerse_UI_design/` Claude Design export). Reference only, not app code,
   excluded from ESLint. `src/app/globals.css` is the live copy of the tokens.
-- Fan Zone is Phase 3: nothing may depend on it; it mounts onto existing pages.
+- Fan Zone (`src/lib/fanzone/`, `src/components/fanzone/`) and the admin
+  dashboard (`src/app/admin/`, `src/lib/admin/`) are built and Supabase-backed.
+  Core pages (`src/app/(site)/layout.tsx`, `albums/[slug]`, `eras/[era]`) import
+  Fan Zone modules directly — the isolation is at the feature-flag level
+  (`flags.fanzone` / `flags.comments` / `flags.polls` from `src/lib/settings.ts`),
+  not the import graph. Keep new Fan Zone/admin work behind those flags rather
+  than assuming the modules are optional to import.

@@ -50,5 +50,10 @@ npm run fill:spotify-tracks   # backfill Spotify track IDs in album content
 ## Roadmap
 
 - **Phase 1 — Foundation** ✓ scaffold, design system, motion vocabulary, page skeletons
-- **Phase 2 — The Archive**: real written content, verified facts, embed IDs
-- **Phase 3 — Fan Zone**: favorites, polls, comments, playlists, admin dashboard (Supabase-backed, in progress)
+- **Phase 2 — The Archive** ✓ written content, verified facts, embed IDs filled
+  for all albums/eras. Remaining: cover art is still editorial/archival
+  placeholder pending licensing (see `content/media/manifest.json` and the
+  Legal page)
+- **Phase 3 — Fan Zone** ✓ favorites, polls, comments, playlists, and a
+  Supabase-backed admin dashboard are built and wired into core pages behind
+  feature flags (`src/lib/settings.ts`)

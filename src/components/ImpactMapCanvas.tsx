@@ -59,6 +59,9 @@ function MapViewSync({
         [85, 180],
       ],
     );
+    // Leaflet has no setter for viscosity post-construction — this is the
+    // library's own documented way to change it after the map exists.
+    // eslint-disable-next-line react-hooks/immutability
     map.options.maxBoundsViscosity = view.maxBounds ? 0.85 : 0;
     map.setView(view.center, view.zoom, { animate: false });
   }, [map, mapKey]);
