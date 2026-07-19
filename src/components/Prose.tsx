@@ -18,15 +18,21 @@ export default function Prose({
       <MDXRemote
         source={source}
         components={{
-          h2: (props) => (
-            <h2 className="font-display text-display-md mt-12 mb-4" {...props} />
+          h2: ({ children, ...props }) => (
+            <h2 className="font-display text-display-md mt-12 mb-4" {...props}>
+              {children}
+            </h2>
           ),
-          h3: (props) => (
-            <h3 className="font-display mt-8 mb-3 text-xl" {...props} />
+          h3: ({ children, ...props }) => (
+            <h3 className="font-display mt-8 mb-3 text-xl" {...props}>
+              {children}
+            </h3>
           ),
           p: (props) => <p className="mb-5" {...props} />,
-          a: (props) => (
-            <a className="font-semibold text-adire underline hover:text-oxide" {...props} />
+          a: ({ children, ...props }) => (
+            <a className="font-semibold text-adire underline hover:text-oxide" {...props}>
+              {children}
+            </a>
           ),
           ul: (props) => <ul className="mb-5 list-disc pl-6" {...props} />,
           ol: (props) => <ol className="mb-5 list-decimal pl-6" {...props} />,
