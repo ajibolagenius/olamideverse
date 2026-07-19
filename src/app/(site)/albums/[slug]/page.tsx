@@ -137,6 +137,7 @@ export default async function AlbumPage({
               albumSlug={album.slug}
               albumTitle={album.title}
               albumYear={album.year}
+              spotifyAlbumId={album.embeds.spotifyAlbumId}
               blockedYoutube={blockedYoutube}
               blockedSpotify={blockedSpotify}
             />
