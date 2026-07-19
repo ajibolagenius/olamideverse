@@ -1,19 +1,32 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+  type ReactNode,
+} from "react";
 import { createClient } from "@/lib/supabase/client";
 
 export type Fan = { id: string; handle: string };
+export type FanState = {
+  fan: Fan | null;
+  loading: boolean;
+  error: string | null;
+  setHandle: (handle: string) => Promise<boolean>;
+};
+
+const FanContext = createContext<FanState | null>(null);
 
 /**
- * Fan identity for the browser. Mirrors the design's `ovfz_handle` flow —
- * pick a handle, you're "signed in" — but backed by a real (anonymous)
- * Supabase session instead of a bare localStorage string, so writes carry
- * a real auth.uid() for RLS. Anonymous sign-in only happens the moment a
- * fan actually submits a handle, not on page load, so casual visitors
- * don't mint a throwaway auth user for nothing.
+ * One shared fan session for the whole page — every FavoriteButton,
+ * PlaylistButton, PollCard and CommentBox reads the same context instead
+ * of running its own independent auth subscription, so signing in from
+ * any one of them is instantly visible to all the others.
  */
-export function useFan() {
+export function FanProvider({ children }: { children: ReactNode }) {
   const [fan, setFan] = useState<Fan | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -81,5 +94,15 @@ export function useFan() {
     return true;
   }, []);
 
-  return { fan, loading, error, setHandle };
+  return (
+    <FanContext.Provider value={{ fan, loading, error, setHandle }}>
+      {children}
+    </FanContext.Provider>
+  );
+}
+
+export function useFan(): FanState {
+  const ctx = useContext(FanContext);
+  if (!ctx) throw new Error("useFan() must be used within <FanProvider>");
+  return ctx;
 }
