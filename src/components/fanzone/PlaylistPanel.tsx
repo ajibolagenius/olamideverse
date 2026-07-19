@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { addToPlaylist, removeFromPlaylist } from "@/lib/fanzone/mutations";
 import type { PlaylistRow } from "@/lib/fanzone/queries";
 import EmptyState from "@/components/EmptyState";
@@ -9,7 +9,6 @@ type SharedTrack = { track_id: string; title: string; subtitle?: string };
 
 /** Parses a shared-playlist link's ?playlist= param, dropping tracks already owned. */
 function readSharedTracks(known: Set<string>): SharedTrack[] | null {
-  if (typeof window === "undefined") return null;
   const param = new URLSearchParams(window.location.search).get("playlist");
   if (!param) return null;
   try {
@@ -24,10 +23,17 @@ function readSharedTracks(known: Set<string>): SharedTrack[] | null {
 export default function PlaylistPanel({ initialPlaylist }: { initialPlaylist: PlaylistRow[] }) {
   const [playlist, setPlaylist] = useState(initialPlaylist);
   const [copied, setCopied] = useState(false);
-  const [shared, setShared] = useState<SharedTrack[] | null>(() =>
-    readSharedTracks(new Set(initialPlaylist.map((p) => p.track_id))),
-  );
+  const [shared, setShared] = useState<SharedTrack[] | null>(null);
   const [importing, setImporting] = useState(false);
+
+  useEffect(() => {
+    // window.location is only available post-mount — SSR and the client's
+    // first paint both render `shared: null` (no mismatch), and this
+    // reveals the import banner right after if a ?playlist= link was opened.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setShared(readSharedTracks(new Set(initialPlaylist.map((p) => p.track_id))));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const copyShareLink = async () => {
     const payload: SharedTrack[] = playlist.map((p) => ({
