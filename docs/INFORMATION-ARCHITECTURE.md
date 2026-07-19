@@ -49,7 +49,7 @@ Shareable audiogram-style cards — decorative waveforms, key-bar context, era a
 Curated node graph (not AI similarity): Olamide at the center, mentors/peers/mentees/collaborators around him. Selecting a node opens a blurb and links into eras/albums.
 
 ### Impact `/impact`
-Stylized geography of the career — Lagos / Nigeria / world planes with editorial pins (origin, venue, concert, cultural, international). Not a live tour tracker.
+Real geography (Leaflet + lat/lng) — Lagos / Nigeria / world views with editorial pins (origin, venue, concert, cultural, international). Not a live tour tracker.
 
 ### About `/about` · Legal `/legal`
 Fan-project statement, non-affiliation disclaimer, takedown contact, credits for sources.
@@ -63,7 +63,7 @@ content/
   media/media.json        # curated list: { id, title, era, year, type, youtubeId|embedUrl, note }
   snippets/snippets.json  # audiogram cards: { id, quote, note, track, albumSlug, era, embeds… }
   influence/graph.json    # { nodes[], edges[] } for the influence graph
-  impact/places.json      # curated places with map plane + pin coordinates
+  impact/places.json      # curated places with map plane + lat/lng (Leaflet)
 ```
 
 - All content is MDX/JSON in the repo → fully static site, no CMS, no backend.

@@ -8,8 +8,8 @@
     "blurb": "The neighborhood that names the origin story — Wo was shot here; every era still points back to these streets.",
     "eraSlug": "the-upstart",
     "albumSlug": "lagos-nawa",
-    "x": 62,
-    "y": 48,
+    "lat": 6.5361,
+    "lng": 3.3903,
     "map": "lagos"
   },
   {
@@ -22,8 +22,8 @@
     "blurb": "Where shaku shaku lived before Wo pushed it into national choreography.",
     "eraSlug": "street-king-run",
     "albumSlug": "lagos-nawa",
-    "x": 48,
-    "y": 32,
+    "lat": 6.618,
+    "lng": 3.3224,
     "map": "lagos"
   },
   {
@@ -36,8 +36,8 @@
     "blurb": "The small Yoruba-rap label orbit that signed him — before YBNL, before the empire.",
     "eraSlug": "the-upstart",
     "albumSlug": "rapsodi",
-    "x": 58,
-    "y": 58,
+    "lat": 6.5095,
+    "lng": 3.3711,
     "map": "lagos"
   },
   {
@@ -50,8 +50,8 @@
     "blurb": "Olamide Live in Concert — the Street King run made flesh. Stadium-scale proof street-hop was the mainstream.",
     "eraSlug": "street-king-run",
     "albumSlug": "street-ot",
-    "x": 55,
-    "y": 70,
+    "lat": 6.4965,
+    "lng": 3.3634,
     "map": "lagos"
   },
   {
@@ -62,8 +62,8 @@
     "kind": "venue",
     "blurb": "Award shows, TV freestyles, and the industry rooms that first had to make space for Yoruba street bars.",
     "eraSlug": "the-upstart",
-    "x": 70,
-    "y": 72,
+    "lat": 6.4541,
+    "lng": 3.3947,
     "map": "lagos"
   },
   {
@@ -74,8 +74,8 @@
     "kind": "origin",
     "blurb": "The city that is the soundtrack — from Bariga corners to national charts, every chapter is a Lagos chapter.",
     "eraSlug": "the-upstart",
-    "x": 22,
-    "y": 72,
+    "lat": 6.5244,
+    "lng": 3.3792,
     "map": "nigeria"
   },
   {
@@ -86,8 +86,8 @@
     "kind": "concert",
     "blurb": "Capital-city stages on the Street King and label-boss tours — the archive's national reach, not just coastal.",
     "eraSlug": "street-king-run",
-    "x": 48,
-    "y": 42,
+    "lat": 9.0765,
+    "lng": 7.3986,
     "map": "nigeria"
   },
   {
@@ -99,8 +99,8 @@
     "blurb": "Phyno's city in the peer map — 2 Kings as east-meets-west negotiation, not a Lagos guest list.",
     "eraSlug": "street-king-run",
     "albumSlug": "2-kings",
-    "x": 58,
-    "y": 68,
+    "lat": 4.8156,
+    "lng": 7.0498,
     "map": "nigeria"
   },
   {
@@ -111,8 +111,8 @@
     "kind": "concert",
     "blurb": "Yoruba heartland stops on the touring calendar — the language of the records meeting the language of the crowd.",
     "eraSlug": "street-king-run",
-    "x": 28,
-    "y": 62,
+    "lat": 7.3775,
+    "lng": 3.947,
     "map": "nigeria"
   },
   {
@@ -124,8 +124,8 @@
     "year": 2018,
     "blurb": "Diaspora stages where YBNL's second generation and Olamide's own bills met UK Afrobeats crowds.",
     "eraSlug": "reinvention",
-    "x": 48,
-    "y": 28,
+    "lat": 51.5074,
+    "lng": -0.1278,
     "map": "world"
   },
   {
@@ -136,8 +136,8 @@
     "kind": "international",
     "blurb": "Empire-era and US showcase rooms — the joint-venture years pushing the catalog beyond West Africa.",
     "eraSlug": "reinvention",
-    "x": 28,
-    "y": 36,
+    "lat": 40.7128,
+    "lng": -74.006,
     "map": "world"
   },
   {
@@ -148,8 +148,8 @@
     "kind": "international",
     "blurb": "West African circuit stops — street-hop and Afrobeats trading stages across the coast.",
     "eraSlug": "street-king-run",
-    "x": 48,
-    "y": 58,
+    "lat": 5.6037,
+    "lng": -0.187,
     "map": "world"
   },
   {
@@ -160,8 +160,8 @@
     "kind": "international",
     "blurb": "Southern African festival and promo stops — the catalog traveling with the continent's streaming boom.",
     "eraSlug": "elder-statesman",
-    "x": 58,
-    "y": 78,
+    "lat": -26.2041,
+    "lng": 28.0473,
     "map": "world"
   }
 ]
