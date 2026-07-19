@@ -11,7 +11,7 @@ import PhotoPlaceholder from "@/components/PhotoPlaceholder";
 import PosterHero from "@/components/PosterHero";
 import PullQuote from "@/components/PullQuote";
 import Ticker from "@/components/chrome/Ticker";
-import { ACCENTS } from "@/lib/accents";
+import { ACCENTS, accentChrome } from "@/lib/accents";
 import { getAlbumsByEra, getEra, getEras, getMediaItems } from "@/lib/content";
 import { getComments } from "@/lib/fanzone/queries";
 import { getEraPhoto } from "@/lib/photos";
@@ -58,6 +58,7 @@ export default async function EraPage({
   ]);
   const comments = flags.comments ? await getComments(`era-${era.slug}`) : [];
   const accent = ACCENTS[era.accent];
+  const chrome = accentChrome(era.accent);
   const media = allMedia.filter((item) => item.era === era.slug);
   const prevEra = eras.find((e) => e.order === era.order - 1);
   const nextEra = era.open
@@ -90,8 +91,8 @@ export default async function EraPage({
         eyebrow={era.heroBadge}
         title={era.title}
         intro={era.heroIntro}
-        accent={accent.solid}
-        onAccent={accent.onSolid}
+        accent={chrome.bg}
+        onAccent={chrome.fg}
       >
         <div
           className="mt-8 flex items-end justify-between gap-4 border-t-4 pt-4"

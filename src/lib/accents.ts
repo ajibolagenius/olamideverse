@@ -54,3 +54,17 @@ export const ACCENTS = {
 
 export type AccentName = keyof typeof ACCENTS;
 export const ACCENT_NAMES = Object.keys(ACCENTS) as AccentName[];
+
+/**
+ * Background + foreground for accent chrome bars (era cards, badges).
+ * Oxide's brand solid fails WCAG AA with both paper and ink type — darken
+ * the bar to the gradient stop so labels stay readable without changing the
+ * brand color used for fills elsewhere.
+ */
+export function accentChrome(name: AccentName): { bg: string; fg: string } {
+  const a = ACCENTS[name];
+  if (name === "oxide") {
+    return { bg: a.gradient[1], fg: a.onSolid };
+  }
+  return { bg: a.solid, fg: a.onSolid };
+}

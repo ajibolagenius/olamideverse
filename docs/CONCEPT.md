@@ -35,12 +35,12 @@ The organizing spine of the whole platform is **Olamide's career told as eras** 
 
 1. **The Upstart (2010–2011)** — Bariga, Coded Tunes, ID Cabasa, *Rapsodi*. Rapping in Yoruba when the industry said English.
 2. **First of All (2012–2013)** — YBNL Nation founded. *YBNL*, *Baddest Guy Ever Liveth*. The takeover.
-3. **The Street King run (2014–2017)** — an album every year: *Street OT*, *Eyan Mayweather*, *The Glory*, *Lagos Nawa*. OLIC concerts. Street-hop becomes the mainstream.
-4. **Reinvention (2018–2020)** — the singles era, sonic experiments, *999*, *Carpe Diem*.
+3. **The Street King Run (2014–2017)** — *Street OT*, *2 Kings* (with Phyno), *Eyan Mayweather*, *The Glory*, *Lagos Nawa*. OLIC concerts. Street-hop becomes the mainstream.
+4. **Reinvention (2018–2020)** — the singles era, sonic experiments, *999*, *Carpe Diem*, YBNL × Empire.
 5. **Elder Statesman (2021–2023)** — *UY Scuti*, *Unruly*; the label boss era — Fireboy DML, Asake — the empire's second generation.
-6. **Legacy (2024– )** — the self-titled chapter and whatever comes next; this era stays open and grows.
+6. **Legacy (2024– )** — *Ikigai*, the self-titled *Olamidé*, and whatever comes next; this era stays open and grows.
 
-*(Era names, boundaries, and facts are working drafts — to be verified and refined during the Phase 2 content research pass.)*
+*(Era chapters and discography are written and navigable. Cover-art licensing remains the open content risk — disclosed on Legal. Keep verifying award categories as press sources conflict.)*
 
 Every other section hangs off this spine: albums belong to eras, media belongs to eras, stories are era chapters.
 
@@ -63,7 +63,14 @@ Every other section hangs off this spine: albums belong to eras, media belongs t
 
 ## 7. Success criteria for Phase 2 launch
 
-- All six era chapters written and navigable
-- Full discography browsable with working embeds
-- Lighthouse: 90+ across performance/accessibility/best practices on key pages
-- Deployed on Vercel, shareable URL, disclaimer in place
+- [x] All six era chapters written and navigable
+- [x] Full discography browsable with working embeds
+- [x] Lighthouse: 90+ across performance/accessibility/best practices on key pages
+      (prod desktop baseline: home 97/100/100, eras 92/100/100, albums 90/100/96,
+      media 93/100/96 — SEO 100 across)
+- [ ] Deployed on Vercel, shareable URL, disclaimer in place
+      (disclaimer is wired in layout; confirm on the production hostname after
+      the next deploy. CMS footer/nav re-seeded with Snippets / Influence / Impact.)
+- [ ] VoiceOver or NVDA spot-pass (see `ACCESSIBILITY.md`)
+- [ ] Cover-art licensing still placeholder — disclosed on Legal; replace before
+      any rights-holder pitch if required

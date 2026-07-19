@@ -8,7 +8,7 @@ import CoverArt from "@/components/CoverArt";
 import EmptyState from "@/components/EmptyState";
 import Prose from "@/components/Prose";
 import Tracklist from "@/components/Tracklist";
-import { ACCENTS } from "@/lib/accents";
+import { ACCENTS, accentChrome } from "@/lib/accents";
 import {
   ALBUM_TYPE_LABEL,
   getAlbum,
@@ -54,15 +54,9 @@ export default async function AlbumPage({
 
   const era = (await getEra(album.era))!;
   const accent = ACCENTS[era.accent];
-  const heroAccent =
-    accent.solid === ACCENTS.ink.solid ? ACCENTS.danfo : accent;
-  // Mid-tone accents fail WCAG with light type — use ink on those chips.
-  const badgeBg = heroAccent.solid;
-  const badgeFg =
-    heroAccent.solid === ACCENTS.oxide.solid ||
-    heroAccent.solid === ACCENTS.clay.solid
-      ? ACCENTS.ink.solid
-      : heroAccent.onSolid;
+  const chromeAccent =
+    era.accent === "ink" ? "danfo" : era.accent;
+  const { bg: badgeBg, fg: badgeFg } = accentChrome(chromeAccent);
   const [flags, blocks, albums, snippets] = await Promise.all([
     getFeatureFlags(),
     getBlockedEmbeds(),

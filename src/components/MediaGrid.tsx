@@ -53,7 +53,7 @@ function MediaCard({ item, era }: { item: MediaItem; era: Era }) {
         </div>
       )}
       <div className="px-3 py-3">
-        <h3 className="font-display text-lg">{item.title}</h3>
+        <h2 className="font-display text-lg">{item.title}</h2>
         <p className="mt-1 text-sm text-ink-soft">{item.note}</p>
         <p className="mt-2 text-xs tracking-[0.05em] uppercase text-ink-soft">
           {item.year} · via {item.source}

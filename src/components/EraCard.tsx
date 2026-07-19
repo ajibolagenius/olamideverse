@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ACCENTS } from "@/lib/accents";
+import { accentChrome } from "@/lib/accents";
 import type { Album, Era } from "@/lib/content";
 import FavoriteButton from "@/components/fanzone/FavoriteButton";
 
@@ -14,7 +14,7 @@ export default function EraCard({
   index: number;
   showFavorite?: boolean;
 }) {
-  const accent = ACCENTS[era.accent];
+  const chrome = accentChrome(era.accent);
   const tilt = index % 2 === 0 ? -0.6 : 0.5;
 
   return (
@@ -25,7 +25,7 @@ export default function EraCard({
     >
       <div
         className="flex items-center justify-between border-b-[3px] border-ink px-4 py-2.5"
-        style={{ background: accent.solid, color: accent.onSolid }}
+        style={{ background: chrome.bg, color: chrome.fg }}
       >
         <span className="font-display text-2xl">
           {String(era.order).padStart(2, "0")}
@@ -33,7 +33,7 @@ export default function EraCard({
         <span className="font-bold tracking-[0.05em] tabular-nums">{era.years}</span>
       </div>
       <div className="px-4 py-5 sm:px-5">
-        <h3 className="font-display text-display-md">{era.title}</h3>
+        <h2 className="font-display text-display-md">{era.title}</h2>
         <p className="mt-2.5 mb-4 max-w-[52ch] text-base text-ink-soft">{era.thesis}</p>
         <div className={`flex flex-wrap gap-2 ${showFavorite ? "mb-4" : ""}`}>
           {albums.map((album) => (

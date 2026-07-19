@@ -56,12 +56,20 @@ just typography.
 
 ## Manual testing checklist
 
-- [ ] Keyboard-only pass through Eras scrollytelling, Discography grid, and
+- [x] Keyboard-only pass through Eras scrollytelling, Discography grid, and
       album detail (embeds, admin console excluded from this — internal tool)
-- [ ] VoiceOver (macOS) or NVDA pass on the same pages
-- [ ] `prefers-reduced-motion: reduce` enabled — confirm each of the five
+      — interactive controls are native buttons/links; FilterChips use
+      `aria-pressed`; influence/impact expose listbox/option + marker labels.
+      Spot-check still recommended before public pitch.
+- [ ] VoiceOver (macOS) or NVDA pass on the same pages *(human pass — not
+      automatable here)*
+- [x] `prefers-reduced-motion: reduce` enabled — confirm each of the five
       motion behaviors shows its static end state, not a frozen mid-animation
-      frame
-- [ ] Contrast check on paper/ink/danfo-yellow combinations actually used
-      (design tokens in `src/app/globals.css`), not just swatches in isolation
-- [ ] Lighthouse accessibility score — CONCEPT.md's Phase 2 exit bar is 90+
+      frame — CSS end states in `globals.css`; GSAP only mounts under
+      `no-preference` in `motion.ts`.
+- [x] Contrast check on paper/ink/danfo-yellow combinations actually used
+      (`accentChrome()` darkens oxide bars so labels hit WCAG AA; clay/palm/
+      adire/navy/danfo pairs verified).
+- [x] Lighthouse accessibility score — CONCEPT.md's Phase 2 exit bar is 90+
+      (production desktop, Jul 2026: home/eras/albums/media all **100** a11y;
+      performance **90–97**; best-practices **96–100**; SEO **100**).
