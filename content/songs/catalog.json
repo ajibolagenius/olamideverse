@@ -26,6 +26,9 @@
       "id": "eyan-mayweather--bobo"
     },
     {
+      "id": "eyan-mayweather--don-t-stop"
+    },
+    {
       "id": "eyan-mayweather--lagos-boys"
     },
     {
@@ -53,6 +56,12 @@
     {
       "id": "rapsodi--omo-to-shan",
       "singleYear": 2010
+    },
+    {
+      "id": "street-ot--falila-ketan"
+    },
+    {
+      "id": "street-ot--skelemba"
     },
     {
       "id": "street-ot--story-for-the-gods"
@@ -3735,6 +3744,18 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
     },
     {
+      "id": "feature--vision-2020-2019",
+      "title": "Vision 2020",
+      "year": 2019,
+      "type": "feature",
+      "status": "documented",
+      "artists": "Bella Shmurda",
+      "note": "Original Vision 2020 (Bella) that led to the Olamide remix already catalogued — Waptrick lists the Olamide collab under this title",
+      "source": "Waptrick listing / press cross-check",
+      "sourceUrl": "https://waptrick.com/en/free/mp3/Olamide/",
+      "era": "reinvention"
+    },
+    {
       "id": "feature--vision-2020-remix-2019",
       "title": "Vision 2020 (Remix)",
       "year": 2019,
@@ -4510,6 +4531,18 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
     },
     {
+      "id": "feature--ara-600m-2025",
+      "title": "Ara (600M)",
+      "year": 2025,
+      "type": "feature",
+      "status": "documented",
+      "artists": "Bella Shmurda",
+      "note": "Bella Shmurda lead with Olamide — listed on Waptrick Olamide mp3 index as Ara 600 M",
+      "source": "Waptrick listing / press cross-check",
+      "sourceUrl": "https://waptrick.com/en/free/mp3/Olamide/",
+      "era": "legacy"
+    },
+    {
       "id": "feature--belinda-2025",
       "title": "Belinda",
       "year": 2025,
@@ -4520,6 +4553,30 @@
       "note": "L.A.X featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+    },
+    {
+      "id": "feature--come-on-2025",
+      "title": "Come On",
+      "year": 2025,
+      "type": "feature",
+      "status": "documented",
+      "artists": "Larry Gaaga, Mavo, Kidd Carder",
+      "note": "Larry Gaaga lead featuring Olamide — indexed beside Waptrick/Waploaded Olamide pages",
+      "source": "Waploaded / press",
+      "sourceUrl": "https://audios.waploaded.com/music/artiste/Olamide/",
+      "era": "legacy"
+    },
+    {
+      "id": "feature--fuji-party-2025",
+      "title": "Fuji Party",
+      "year": 2025,
+      "type": "feature",
+      "status": "documented",
+      "artists": "Seyi Vibez",
+      "note": "From Seyi Vibez Fuji Moto (Nov 2025) — on Waptrick Olamide listing",
+      "source": "Waptrick listing / press cross-check",
+      "sourceUrl": "https://naijatunez.com/seyi-vibez-and-olamide-link-up-for-new-single-fuji-party/",
+      "era": "legacy"
     },
     {
       "id": "feature--girl-on-fya-2025",
@@ -4605,6 +4662,18 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
     },
     {
+      "id": "feature--come-kulosa-2026",
+      "title": "Come Kulosa",
+      "year": 2026,
+      "type": "feature",
+      "status": "documented",
+      "artists": "Shoday, Billionboi",
+      "note": "Feature on Shoday × Billionboi single — on Waptrick Olamide listing",
+      "source": "Waptrick listing / press cross-check",
+      "sourceUrl": "https://open.spotify.com/track/2OJtdCzSnQ1G9rMJ6eD1Wt",
+      "era": "legacy"
+    },
+    {
       "id": "feature--formation-2026",
       "title": "Formation",
       "year": 2026,
@@ -4627,6 +4696,28 @@
       "note": "KCee featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+    },
+    {
+      "id": "single--omo-naija-2026",
+      "title": "Omo Naija",
+      "year": 2026,
+      "type": "single",
+      "status": "documented",
+      "note": "2026 single credited on AllMusic / contemporary indexes",
+      "source": "AllMusic / Waploaded indexes",
+      "sourceUrl": "https://www.allmusic.com/artist/olamide-mn0002993434",
+      "era": "legacy"
+    },
+    {
+      "id": "single--rock-me-gentle-2026",
+      "title": "Rock Me Gentle",
+      "year": 2026,
+      "type": "single",
+      "status": "documented",
+      "note": "2026 YBNL Nation / Empire single — surfaced on Waptrick/Waploaded artist indexes",
+      "source": "Waptrick listing / press cross-check",
+      "sourceUrl": "https://open.spotify.com/track/6E55BUeTgdzkQqXsPD5LGh",
+      "era": "legacy"
     },
     {
       "id": "feature--zion-2026",
