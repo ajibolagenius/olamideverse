@@ -16,6 +16,7 @@ export type FanState = {
   loading: boolean;
   error: string | null;
   setHandle: (handle: string) => Promise<boolean>;
+  signOut: () => Promise<void>;
 };
 
 const FanContext = createContext<FanState | null>(null);
@@ -100,8 +101,15 @@ export function FanProvider({ children }: { children: ReactNode }) {
     return true;
   }, []);
 
+  const signOut = useCallback(async () => {
+    const supabase = createClient();
+    await supabase.auth.signOut();
+    setFan(null);
+    setError(null);
+  }, []);
+
   return (
-    <FanContext.Provider value={{ fan, loading, error, setHandle }}>
+    <FanContext.Provider value={{ fan, loading, error, setHandle, signOut }}>
       {children}
     </FanContext.Provider>
   );

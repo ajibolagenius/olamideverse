@@ -1,7 +1,9 @@
+import { ArrowSquareOut, SignOut } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 import { AdminMobileNav, AdminSidebarNav } from "@/components/admin/AdminNav";
 import { adminLogout } from "@/lib/admin/actions/auth";
 import type { AdminUser } from "@/lib/admin/types";
+import { OV_ICON_WEIGHT } from "@/lib/icons";
 
 export default function AdminShell({
   admin,
@@ -23,11 +25,16 @@ export default function AdminShell({
         </div>
         <div className="flex items-center gap-3 text-sm">
           <span className="hidden text-ink-soft sm:inline">{admin.email}</span>
-          <Link href="/" className="ov-btn ov-btn-ghost px-2 py-1 text-[0.7rem]">
+          <Link href="/" className="ov-btn ov-btn-ghost ov-icon-inline px-2 py-1 text-[0.7rem]">
+            <ArrowSquareOut className="ov-icon" size={12} weight={OV_ICON_WEIGHT} aria-hidden />
             View site
           </Link>
           <form action={adminLogout}>
-            <button type="submit" className="ov-btn ov-btn-ink px-2 py-1 text-[0.7rem]">
+            <button
+              type="submit"
+              className="ov-btn ov-btn-ink ov-icon-inline px-2 py-1 text-[0.7rem]"
+            >
+              <SignOut className="ov-icon" size={12} weight={OV_ICON_WEIGHT} aria-hidden />
               Sign out
             </button>
           </form>

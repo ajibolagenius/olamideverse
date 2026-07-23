@@ -1,5 +1,6 @@
 "use client";
 
+import { Flag, PaperPlaneTilt, Trash } from "@phosphor-icons/react";
 import { useState } from "react";
 import { useFan } from "@/lib/fanzone/useFan";
 import {
@@ -8,6 +9,7 @@ import {
   reportComment,
 } from "@/lib/fanzone/mutations";
 import type { CommentRow } from "@/lib/fanzone/queries";
+import { OV_ICON_WEIGHT } from "@/lib/icons";
 import HandlePicker from "./HandlePicker";
 
 function timeAgo(iso: string): string {
@@ -42,12 +44,13 @@ export default function CommentBox({
     setPosting(true);
     setError(null);
     try {
-      await postComment(threadId, body);
+      const row = await postComment(threadId, body);
       setComments((c) => [
         {
-          id: crypto.randomUUID(),
+          id: row.id,
           body,
-          created_at: new Date().toISOString(),
+          created_at: row.created_at,
+          fan_id: fanState.fan!.id,
           fan: { handle: fanState.fan!.handle },
         },
         ...c,
@@ -60,8 +63,15 @@ export default function CommentBox({
   };
 
   const remove = async (id: string) => {
+    const previous = comments;
     setComments((c) => c.filter((comment) => comment.id !== id));
-    await deleteComment(id);
+    setError(null);
+    try {
+      await deleteComment(id);
+    } catch (err) {
+      setComments(previous);
+      setError(err instanceof Error ? err.message : "Couldn't delete.");
+    }
   };
 
   const report = async (id: string) => {
@@ -103,8 +113,9 @@ export default function CommentBox({
               type="button"
               onClick={submit}
               disabled={posting || !draft.trim()}
-              className="ov-btn ov-btn-danfo px-4 py-2 text-sm disabled:opacity-50"
+              className="ov-btn ov-btn-danfo ov-icon-inline px-4 py-2 text-sm disabled:opacity-50"
             >
+              <PaperPlaneTilt className="ov-icon" size={14} weight={OV_ICON_WEIGHT} aria-hidden />
               Post
             </button>
           </div>
@@ -128,12 +139,13 @@ export default function CommentBox({
                 </div>
                 <p className="mt-1 text-sm leading-relaxed">{comment.body}</p>
                 <div className="mt-1 flex gap-3">
-                  {fanState.fan?.handle === comment.fan?.handle ? (
+                  {fanState.fan?.id === comment.fan_id ? (
                     <button
                       type="button"
                       onClick={() => remove(comment.id)}
-                      className="text-xs font-bold uppercase text-ink-soft hover:text-oxide"
+                      className="ov-icon-inline text-xs font-bold uppercase text-ink-soft hover:text-oxide"
                     >
+                      <Trash className="ov-icon" size={12} weight={OV_ICON_WEIGHT} aria-hidden />
                       Delete
                     </button>
                   ) : fanState.fan ? (
@@ -141,8 +153,9 @@ export default function CommentBox({
                       type="button"
                       onClick={() => report(comment.id)}
                       disabled={reported[comment.id]}
-                      className="text-xs font-bold uppercase text-ink-soft hover:text-oxide disabled:opacity-50"
+                      className="ov-icon-inline text-xs font-bold uppercase text-ink-soft hover:text-oxide disabled:opacity-50"
                     >
+                      <Flag className="ov-icon" size={12} weight={OV_ICON_WEIGHT} aria-hidden />
                       {reported[comment.id] ? "Reported" : "Report"}
                     </button>
                   ) : null}

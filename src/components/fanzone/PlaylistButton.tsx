@@ -1,8 +1,11 @@
 "use client";
 
+import { Check, Plus } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
+import Modal from "@/components/ui/Modal";
 import { useFan } from "@/lib/fanzone/useFan";
 import { addToPlaylist, removeFromPlaylist } from "@/lib/fanzone/mutations";
+import { OV_ICON_WEIGHT } from "@/lib/icons";
 import { createClient } from "@/lib/supabase/client";
 import HandlePicker from "./HandlePicker";
 
@@ -23,7 +26,14 @@ export default function PlaylistButton({
   const fanState = useFan();
   const [added, setAdded] = useState(false);
   const [pending, setPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [showPicker, setShowPicker] = useState(false);
+  const [trackedFanId, setTrackedFanId] = useState<string | null>(fanState.fan?.id ?? null);
+
+  if ((fanState.fan?.id ?? null) !== trackedFanId) {
+    setTrackedFanId(fanState.fan?.id ?? null);
+    if (!fanState.fan) setAdded(false);
+  }
 
   useEffect(() => {
     if (!fanState.fan) return;
@@ -44,12 +54,17 @@ export default function PlaylistButton({
 
   const doToggle = async () => {
     setPending(true);
-    if (added) {
-      await removeFromPlaylist(trackId);
-      setAdded(false);
-    } else {
-      await addToPlaylist(trackId, title, subtitle);
-      setAdded(true);
+    setError(null);
+    try {
+      if (added) {
+        await removeFromPlaylist(trackId);
+        setAdded(false);
+      } else {
+        await addToPlaylist(trackId, title, subtitle);
+        setAdded(true);
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Couldn't update playlist.");
     }
     setPending(false);
   };
@@ -62,23 +77,31 @@ export default function PlaylistButton({
         disabled={pending}
         aria-pressed={added}
         aria-label={added ? `Remove ${title} from playlist` : `Add ${title} to playlist`}
+        title={error ?? undefined}
         className={`grid size-9 place-items-center border-[3px] border-ink shadow-paste-sm disabled:opacity-60 ${
           added ? "bg-palm text-paper" : "bg-danfo text-ink"
         }`}
       >
-        {added ? "✓" : "+"}
+        {added ? (
+          <Check size={18} weight={OV_ICON_WEIGHT} aria-hidden />
+        ) : (
+          <Plus size={18} weight={OV_ICON_WEIGHT} aria-hidden />
+        )}
       </button>
-      {showPicker && !fanState.fan ? (
-        <div className="absolute top-full right-0 z-20 mt-2 w-72">
-          <HandlePicker
-            fanState={fanState}
-            onSaved={() => {
-              setShowPicker(false);
-              doToggle();
-            }}
-          />
-        </div>
-      ) : null}
+      <Modal
+        open={showPicker && !fanState.fan}
+        onClose={() => setShowPicker(false)}
+        title="Pick a handle"
+      >
+        <HandlePicker
+          fanState={fanState}
+          prompt="Save a fan handle to build a playlist."
+          onSaved={() => {
+            setShowPicker(false);
+            doToggle();
+          }}
+        />
+      </Modal>
     </span>
   );
 }

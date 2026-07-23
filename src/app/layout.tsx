@@ -3,6 +3,7 @@ import "./globals.css";
 import Analytics from "@/components/Analytics";
 import MotionRoot from "@/components/MotionRoot";
 import PWARegister from "@/components/PWARegister";
+import PhosphorProvider from "@/components/ui/PhosphorProvider";
 import { getGeneralSettings } from "@/lib/settings";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
@@ -51,7 +52,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className="flex min-h-screen flex-col antialiased">
-        {children}
+        <PhosphorProvider>{children}</PhosphorProvider>
         <MotionRoot />
         <PWARegister />
         <Analytics id={analyticsId} />

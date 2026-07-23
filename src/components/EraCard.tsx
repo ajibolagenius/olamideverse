@@ -1,7 +1,9 @@
+import { ArrowRight } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
+import FavoriteButton from "@/components/fanzone/FavoriteButton";
 import { accentChrome } from "@/lib/accents";
 import type { Album, Era } from "@/lib/content";
-import FavoriteButton from "@/components/fanzone/FavoriteButton";
+import { OV_ICON_WEIGHT } from "@/lib/icons";
 
 export default function EraCard({
   era,
@@ -56,9 +58,10 @@ export default function EraCard({
       </div>
       <Link
         href={`/eras/${era.slug}`}
-        className="block border-t-[3px] border-ink px-4 py-3 text-sm font-bold tracking-[0.08em] uppercase text-adire transition-colors hover:bg-ink hover:text-paper"
+        className="ov-icon-inline block border-t-[3px] border-ink px-4 py-3 text-sm font-bold tracking-[0.08em] uppercase text-adire transition-colors hover:bg-ink hover:text-paper"
       >
-        Enter the era →
+        Enter the era
+        <ArrowRight className="ov-icon" size={14} weight={OV_ICON_WEIGHT} aria-hidden />
       </Link>
     </div>
   );

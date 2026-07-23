@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { renderNavIcon } from "@/lib/icons";
 import { buildFooterColumns } from "@/lib/nav";
 
 function FooterColumn({
@@ -18,8 +19,9 @@ function FooterColumn({
           <li key={`${link.href}-${link.label}`}>
             <Link
               href={link.href}
-              className="font-semibold tracking-[0.05em] uppercase text-paper transition-colors hover:text-danfo"
+              className="ov-icon-inline font-semibold tracking-[0.05em] uppercase text-paper transition-colors hover:text-danfo"
             >
+              {renderNavIcon(link.href, { className: "ov-icon", size: 14 })}
               {link.label}
             </Link>
           </li>

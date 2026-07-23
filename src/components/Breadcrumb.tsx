@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { ArrowLeft, ArrowRight, CaretRight } from "@phosphor-icons/react/ssr";
+import { OV_ICON_WEIGHT } from "@/lib/icons";
 
 export type BreadcrumbItem = {
   label: string;
@@ -33,9 +35,12 @@ export default function Breadcrumb({
             return (
               <li key={`${item.label}-${index}`} className="flex items-center gap-x-2">
                 {index > 0 ? (
-                  <span aria-hidden="true" className="text-ink/35">
-                    /
-                  </span>
+                  <CaretRight
+                    className="ov-icon text-ink/35"
+                    size={12}
+                    weight={OV_ICON_WEIGHT}
+                    aria-hidden
+                  />
                 ) : null}
                 {item.href && !isLast ? (
                   <Link href={item.href} className="ov-link-underline hover:text-oxide">
@@ -61,8 +66,12 @@ export default function Breadcrumb({
           className="mt-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-xs uppercase tracking-[0.06em]"
         >
           {previous ? (
-            <Link href={previous.href} className="ov-link-underline text-ink-soft hover:text-oxide">
-              ← {previous.label}
+            <Link
+              href={previous.href}
+              className="ov-icon-inline ov-link-underline text-ink-soft hover:text-oxide"
+            >
+              <ArrowLeft className="ov-icon" size={14} weight={OV_ICON_WEIGHT} aria-hidden />
+              {previous.label}
             </Link>
           ) : (
             <span />
@@ -70,9 +79,10 @@ export default function Breadcrumb({
           {next ? (
             <Link
               href={next.href}
-              className="ov-link-underline ml-auto text-ink-soft hover:text-oxide"
+              className="ov-icon-inline ov-link-underline ml-auto text-ink-soft hover:text-oxide"
             >
-              {next.label} →
+              {next.label}
+              <ArrowRight className="ov-icon" size={14} weight={OV_ICON_WEIGHT} aria-hidden />
             </Link>
           ) : null}
         </nav>

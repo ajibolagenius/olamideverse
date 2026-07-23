@@ -6,6 +6,7 @@ import AlbumCard from "@/components/AlbumCard";
 import AudiogramCard from "@/components/AudiogramCard";
 import Breadcrumb from "@/components/Breadcrumb";
 import CommentBox from "@/components/fanzone/CommentBox";
+import FavoriteButton from "@/components/fanzone/FavoriteButton";
 import EraMoments from "@/components/EraMoments";
 import InlineMarkdown from "@/components/InlineMarkdown";
 import NextChapterCta from "@/components/NextChapterCta";
@@ -106,10 +107,20 @@ export default async function EraPage({
         onAccent={chrome.fg}
       >
         <div
-          className="mt-8 flex items-end justify-between gap-4 border-t-4 pt-4"
+          className="mt-8 flex flex-wrap items-end justify-between gap-4 border-t-4 pt-4"
           style={{ borderColor: accent.solid }}
         >
-          <span />
+          {flags.fanzone ? (
+            <FavoriteButton
+              id={`era:${era.slug}`}
+              label={era.title}
+              kind="era"
+              href={`/eras/${era.slug}`}
+              tone="ink"
+            />
+          ) : (
+            <span />
+          )}
           <span className="font-display text-3xl tabular-nums text-paper">
             {era.years}
           </span>

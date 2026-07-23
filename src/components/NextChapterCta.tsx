@@ -1,8 +1,10 @@
+import { ArrowRight } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { ACCENTS } from "@/lib/accents";
 import type { Era } from "@/lib/content";
+import { OV_ICON_WEIGHT } from "@/lib/icons";
 
 export default function NextChapterCta({ nextEra }: { nextEra: Era }) {
   const accent = ACCENTS[nextEra.accent];
@@ -23,8 +25,9 @@ export default function NextChapterCta({ nextEra }: { nextEra: Era }) {
           <span className="block text-xs font-bold tracking-[0.08em] uppercase">
             Era {String(nextEra.order).padStart(2, "0")} · Live now
           </span>
-          <span className="font-display text-display-md">
-            {nextEra.title} ({nextEra.years}) →
+          <span className="ov-icon-inline font-display text-display-md">
+            {nextEra.title} ({nextEra.years})
+            <ArrowRight className="ov-icon" size={28} weight={OV_ICON_WEIGHT} aria-hidden />
           </span>
         </span>
         <span className="max-w-[36ch] text-sm">{nextEra.heroBadge}</span>

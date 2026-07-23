@@ -480,6 +480,18 @@
   backdrop-filter: none;
 }
 
+/* Phosphor icons — sit on the text baseline; duotone inherits currentColor */
+.ov-icon {
+  display: inline-block;
+  flex-shrink: 0;
+  vertical-align: -0.15em;
+}
+.ov-icon-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
 /* Focus-visible — ink/danfo, never browser default blue alone */
 :focus-visible {
   outline: 3px solid var(--color-danfo);

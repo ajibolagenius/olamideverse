@@ -1,8 +1,16 @@
 "use client";
 
+import {
+  CaretDown,
+  CaretUp,
+  List,
+  UsersThree,
+  X,
+} from "@phosphor-icons/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
+import { OV_ICON_WEIGHT, renderNavIcon } from "@/lib/icons";
 import {
   FANZONE_LINK,
   MORE_GROUPS,
@@ -29,10 +37,11 @@ function NavItem({
       <Link
         href={href}
         aria-current={active ? "page" : undefined}
-        className={`ov-btn ov-btn-danfo px-3 py-1.5 text-[0.8rem] ${
+        className={`ov-btn ov-btn-danfo ov-icon-inline px-3 py-1.5 text-[0.8rem] ${
           active ? "ring-2 ring-ink ring-offset-2 ring-offset-paper" : ""
         }`}
       >
+        <UsersThree className="ov-icon" size={16} weight={OV_ICON_WEIGHT} aria-hidden />
         {label}
       </Link>
     );
@@ -41,10 +50,11 @@ function NavItem({
     <Link
       href={href}
       aria-current={active ? "page" : undefined}
-      className={`border-b-[3px] pb-0.5 text-[0.9rem] font-semibold tracking-[0.07em] uppercase transition-colors ${
+      className={`ov-icon-inline border-b-[3px] pb-0.5 text-[0.9rem] font-semibold tracking-[0.07em] uppercase transition-colors ${
         active ? "border-ink" : "border-transparent hover:border-danfo"
       }`}
     >
+      {renderNavIcon(href, { className: "ov-icon", size: 16 })}
       {label}
     </Link>
   );
@@ -80,12 +90,13 @@ function MoreMenuPanel({
                       role="menuitem"
                       href={link.href}
                       aria-current={active ? "page" : undefined}
-                      className={`block border-l-[3px] py-1 pl-2.5 text-sm font-semibold tracking-[0.05em] uppercase transition-colors ${
+                      className={`ov-icon-inline border-l-[3px] py-1 pl-2.5 text-sm font-semibold tracking-[0.05em] uppercase transition-colors ${
                         active
                           ? "border-oxide text-oxide"
                           : "border-transparent hover:border-danfo hover:text-ink"
                       }`}
                     >
+                      {renderNavIcon(link.href, { className: "ov-icon", size: 15 })}
                       {link.label}
                     </Link>
                   </li>
@@ -124,10 +135,11 @@ function DrawerGroups({
                     href={link.href}
                     aria-current={active ? "page" : undefined}
                     onClick={onNavigate}
-                    className={`block bg-paper px-1 py-3.5 font-display text-2xl uppercase tracking-wide ${
+                    className={`ov-icon-inline block bg-paper px-1 py-3.5 font-display text-2xl uppercase tracking-wide ${
                       active ? "text-oxide" : "hover:bg-danfo-tint"
                     }`}
                   >
+                    {renderNavIcon(link.href, { className: "ov-icon", size: 22 })}
                     {link.label}
                   </Link>
                 </li>
@@ -235,16 +247,18 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
               aria-haspopup="menu"
               aria-controls={moreMenuId}
               onClick={() => setMoreOpen((o) => !o)}
-              className={`border-b-[3px] pb-0.5 text-[0.9rem] font-semibold tracking-[0.07em] uppercase transition-colors ${
+              className={`ov-icon-inline border-b-[3px] pb-0.5 text-[0.9rem] font-semibold tracking-[0.07em] uppercase transition-colors ${
                 moreOpen || moreActive
                   ? "border-ink"
                   : "border-transparent hover:border-danfo"
               }`}
             >
               More
-              <span aria-hidden className="ml-1 inline-block text-[0.65em]">
-                {moreOpen ? "▴" : "▾"}
-              </span>
+              {moreOpen ? (
+                <CaretUp className="ov-icon" size={14} weight={OV_ICON_WEIGHT} aria-hidden />
+              ) : (
+                <CaretDown className="ov-icon" size={14} weight={OV_ICON_WEIGHT} aria-hidden />
+              )}
             </button>
             {moreOpen ? (
               <MoreMenuPanel pathname={pathname} groups={MORE_GROUPS} id={moreMenuId} />
@@ -269,18 +283,11 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           className="grid size-10 flex-shrink-0 place-items-center border-[3px] border-ink bg-paper lg:hidden"
         >
-          <span className="relative block h-3 w-5" aria-hidden>
-            <span
-              className={`absolute inset-x-0 top-0 h-[3px] bg-ink transition-transform ${
-                menuOpen ? "translate-y-[5px] rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`absolute inset-x-0 bottom-0 h-[3px] bg-ink transition-transform ${
-                menuOpen ? "-translate-y-[5px] -rotate-45" : ""
-              }`}
-            />
-          </span>
+          {menuOpen ? (
+            <X size={22} weight={OV_ICON_WEIGHT} aria-hidden />
+          ) : (
+            <List size={22} weight={OV_ICON_WEIGHT} aria-hidden />
+          )}
         </button>
       </div>
 
@@ -299,9 +306,10 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
             <button
               type="button"
               onClick={() => setMenuOpen(false)}
-              className="ov-btn ov-btn-ghost px-3 py-2 text-xs"
+              className="ov-btn ov-btn-ghost ov-icon-inline px-3 py-2 text-xs"
               aria-label="Close menu"
             >
+              <X className="ov-icon" size={14} weight={OV_ICON_WEIGHT} aria-hidden />
               Close
             </button>
           </div>
@@ -318,10 +326,11 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
                       href={link.href}
                       aria-current={active ? "page" : undefined}
                       onClick={() => setMenuOpen(false)}
-                      className={`block px-1 py-3.5 font-display text-3xl uppercase tracking-wide ${
+                      className={`ov-icon-inline block px-1 py-3.5 font-display text-3xl uppercase tracking-wide ${
                         active ? "bg-danfo text-ink" : "hover:bg-danfo-tint"
                       }`}
                     >
+                      {renderNavIcon(link.href, { className: "ov-icon", size: 26 })}
                       {link.label}
                     </Link>
                   </li>
@@ -337,8 +346,9 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
               <Link
                 href={FANZONE_LINK.href}
                 onClick={() => setMenuOpen(false)}
-                className="ov-btn ov-btn-danfo mt-8 block w-full py-4 text-center text-sm"
+                className="ov-btn ov-btn-danfo ov-icon-inline mt-8 w-full justify-center py-4 text-sm"
               >
+                <UsersThree className="ov-icon" size={18} weight={OV_ICON_WEIGHT} aria-hidden />
                 {FANZONE_LINK.label}
               </Link>
             ) : null}

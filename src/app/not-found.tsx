@@ -1,3 +1,4 @@
+import { CaretRight, House } from "@phosphor-icons/react/ssr";
 import type { Metadata } from "next";
 import Link from "next/link";
 import PosterHero from "@/components/PosterHero";
@@ -6,16 +7,14 @@ import DisclaimerStrip from "@/components/chrome/DisclaimerStrip";
 import SiteFooter from "@/components/chrome/SiteFooter";
 import SiteHeader from "@/components/chrome/SiteHeader";
 import SectionLabel from "@/components/ui/SectionLabel";
+import { OV_ICON_WEIGHT, renderIcon, renderNavIcon } from "@/lib/icons";
 import { getDisclaimer, getFeatureFlags, getFooter } from "@/lib/settings";
 
 // Lives at the app root (not inside the `(site)` route group) because
 // that's what Next.js actually renders for a fully unmatched URL. It
 // doesn't inherit `(site)/layout.tsx`, so the header/nav/disclaimer/footer
 // chrome is fetched and rendered here directly instead — the disclaimer
-// stays on every page, 404 included (AGENTS.md). This is also the nearest
-// not-found.js boundary for notFound() calls thrown inside `(site)/**`
-// pages (era/album slug lookups), since that route group has no
-// not-found.tsx of its own.
+// stays on every page, 404 included (AGENTS.md).
 
 export const metadata: Metadata = {
   title: "Page not found",
@@ -84,19 +83,27 @@ export default async function NotFound() {
                     <span className="font-display w-8 flex-shrink-0 text-lg text-ink-soft">
                       {d.num}
                     </span>
+                    {d.href === "/"
+                      ? renderIcon(House, {
+                          className: "ov-icon text-oxide",
+                          size: 22,
+                        })
+                      : renderNavIcon(d.href, {
+                          className: "ov-icon text-oxide",
+                          size: 22,
+                        })}
                     <span className="flex-1">
                       <span className="block font-semibold">{d.label}</span>
                       <small className="block text-xs tracking-[0.04em] uppercase text-ink-soft">
                         {d.note}
                       </small>
                     </span>
-                    <svg
-                      viewBox="0 0 16 16"
-                      aria-hidden="true"
-                      className="size-3 flex-shrink-0 fill-ink-soft"
-                    >
-                      <path d="M3 1l11 7-11 7z" />
-                    </svg>
+                    <CaretRight
+                      className="ov-icon text-ink-soft"
+                      size={14}
+                      weight={OV_ICON_WEIGHT}
+                      aria-hidden
+                    />
                   </Link>
                 </li>
               ))}

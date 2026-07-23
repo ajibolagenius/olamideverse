@@ -30,8 +30,8 @@ export default async function AdminReportsPage({
 
       {!data?.length ? (
         <EmptyState>
-          No reports yet. Wire a Report control on comments later, or insert into
-          fan_reports manually.
+          No reports yet. Fans can flag comments from any Comment thread on albums,
+          eras, or the Fan Zone hub.
         </EmptyState>
       ) : (
         <AdminTable headers={["When", "Type", "Target", "Reason", "Status", ""]}>

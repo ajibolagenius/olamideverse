@@ -1,5 +1,6 @@
 "use client";
 
+import { X } from "@phosphor-icons/react";
 import {
   useCallback,
   useEffect,
@@ -9,6 +10,7 @@ import {
   type ReactNode,
 } from "react";
 import { createPortal } from "react-dom";
+import { OV_ICON_WEIGHT } from "@/lib/icons";
 
 const emptySubscribe = () => () => {};
 
@@ -103,9 +105,10 @@ export default function Modal({
           <button
             type="button"
             onClick={onClose}
-            className="ov-btn ov-btn-ghost shrink-0 px-2.5 py-1.5 text-xs"
+            className="ov-btn ov-btn-ghost ov-icon-inline shrink-0 px-2.5 py-1.5 text-xs"
             aria-label="Close"
           >
+            <X className="ov-icon" size={14} weight={OV_ICON_WEIGHT} aria-hidden />
             Close
           </button>
         </div>

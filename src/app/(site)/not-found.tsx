@@ -1,12 +1,11 @@
+import { CaretRight, House } from "@phosphor-icons/react/ssr";
 import type { Metadata } from "next";
 import Link from "next/link";
 import PosterHero from "@/components/PosterHero";
 import Ticker from "@/components/chrome/Ticker";
 import SectionLabel from "@/components/ui/SectionLabel";
+import { OV_ICON_WEIGHT, renderIcon, renderNavIcon } from "@/lib/icons";
 
-// Next.js auto-injects `<meta name="robots" content="noindex">` for any
-// response that resolves to a 404 status, so there's no `robots` field (and
-// no real path to declare `canonical` for) here — just title/description.
 export const metadata: Metadata = {
   title: "Page not found",
   description:
@@ -41,7 +40,7 @@ export default function NotFound() {
 
       <Ticker items={TICKER} />
 
-        <section className="mx-auto max-w-3xl px-5 py-14 sm:px-8">
+      <section className="mx-auto max-w-3xl px-5 py-14 sm:px-8">
         <SectionLabel>Skip to</SectionLabel>
         <div
           className="ov-paste-up border-[3px] border-ink bg-white shadow-paste"
@@ -61,19 +60,27 @@ export default function NotFound() {
                   <span className="font-display w-8 flex-shrink-0 text-lg text-ink-soft">
                     {d.num}
                   </span>
+                  {d.href === "/"
+                    ? renderIcon(House, {
+                        className: "ov-icon text-oxide",
+                        size: 22,
+                      })
+                    : renderNavIcon(d.href, {
+                        className: "ov-icon text-oxide",
+                        size: 22,
+                      })}
                   <span className="flex-1">
                     <span className="block font-semibold">{d.label}</span>
                     <small className="block text-xs tracking-[0.04em] uppercase text-ink-soft">
                       {d.note}
                     </small>
                   </span>
-                  <svg
-                    viewBox="0 0 16 16"
-                    aria-hidden="true"
-                    className="size-3 flex-shrink-0 fill-ink-soft"
-                  >
-                    <path d="M3 1l11 7-11 7z" />
-                  </svg>
+                  <CaretRight
+                    className="ov-icon text-ink-soft"
+                    size={14}
+                    weight={OV_ICON_WEIGHT}
+                    aria-hidden
+                  />
                 </Link>
               </li>
             ))}

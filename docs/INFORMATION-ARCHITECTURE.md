@@ -81,6 +81,11 @@ content/
 - **Footer:** three columns — Archive (Songs, Snippets) · Explore (Eras, Discography, Media, Influence, Impact) · Meta (About, Legal, Source credits, Takedown, Fan Zone when enabled) — plus wordmark and archival blurb.
 - **Cross-linking rule:** every album links to its era; every era lists its albums; media items link both ways; snippets link to album + era; song catalogue rows link to albums when known; influence/impact nodes link back into chapters. The archive should feel like one continuous fabric, not siloed sections.
 
-## Fan Zone [Phase 3 — sketch only]
+## Fan Zone [Phase 3]
 
-`/fanzone` with favorites, polls ("best album of the Street King run?"), comments on albums/eras, shareable playlists. Requires auth + database (likely Supabase). Nothing in Phase 1–2 may depend on it; it mounts onto existing pages (e.g. a favorite button on album cards) rather than reshaping them.
+`/fanzone` with favorites, polls, comments, and shareable playlists. Requires
+Supabase anonymous auth + the Fan Zone tables. Feature-flagged
+(`fanzone` / `comments` / `polls` in site settings — default off). Mounts onto
+archive pages (favorite on cards and album/era detail, playlist on tracklists,
+comments on album/era threads) rather than reshaping them. Recommended combo
+for a full hub: enable `fanzone` with `polls`; `comments` can ship alone.

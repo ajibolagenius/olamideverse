@@ -57,14 +57,28 @@ export async function getPollResults(
   pollId: string,
 ): Promise<{ counts: Record<string, number>; total: number; userVote: string | null }> {
   const supabase = await createClient();
-  const [{ data: results }, { data: userData }] = await Promise.all([
-    supabase.from("poll_results").select("option_id, votes").eq("poll_id", pollId),
+  const [{ data: results, error: resultsError }, { data: userData }] = await Promise.all([
+    // Prefer the security-definer RPC; fall back to the view for older DBs.
+    supabase.rpc("get_poll_results", { p_poll_id: pollId }),
     supabase.auth.getUser(),
   ]);
 
+  let rows = results ?? [];
+  if (resultsError) {
+    const { data: viewRows } = await supabase
+      .from("poll_results")
+      .select("option_id, votes")
+      .eq("poll_id", pollId);
+    rows = (viewRows ?? []).map((r) => ({
+      poll_id: pollId,
+      option_id: r.option_id,
+      votes: r.votes,
+    }));
+  }
+
   const counts: Record<string, number> = {};
   let total = 0;
-  for (const row of results ?? []) {
+  for (const row of rows) {
     counts[row.option_id] = row.votes;
     total += row.votes;
   }
@@ -87,6 +101,7 @@ export type CommentRow = {
   id: string;
   body: string;
   created_at: string;
+  fan_id: string;
   fan: { handle: string } | null;
 };
 
@@ -94,7 +109,7 @@ export async function getComments(threadId: string): Promise<CommentRow[]> {
   const supabase = await createClient();
   const { data } = await supabase
     .from("comments")
-    .select("id, body, created_at, fan:fans(handle)")
+    .select("id, body, created_at, fan_id, fan:fans(handle)")
     .eq("thread_id", threadId)
     .order("created_at", { ascending: false });
   return (data ?? []) as unknown as CommentRow[];

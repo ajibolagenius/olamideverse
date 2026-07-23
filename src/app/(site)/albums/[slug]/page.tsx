@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import AudiogramCard from "@/components/AudiogramCard";
 import Breadcrumb from "@/components/Breadcrumb";
 import CommentBox from "@/components/fanzone/CommentBox";
+import FavoriteButton from "@/components/fanzone/FavoriteButton";
 import CoverArt from "@/components/CoverArt";
 import EmptyState from "@/components/EmptyState";
 import Prose from "@/components/Prose";
@@ -151,7 +152,17 @@ export default async function AlbumPage({
           >
             Part of Era {String(era.order).padStart(2, "0")} — {era.title} →
           </Link>
-          <h1 className="ov-ink-wipe font-display text-display-lg mb-5">{album.title}</h1>
+          <div className="mb-4 flex flex-wrap items-center gap-3">
+            <h1 className="ov-ink-wipe font-display text-display-lg">{album.title}</h1>
+            {flags.fanzone ? (
+              <FavoriteButton
+                id={`album:${album.slug}`}
+                label={album.title}
+                kind="album"
+                href={`/albums/${album.slug}`}
+              />
+            ) : null}
+          </div>
           {metaFacts.length > 0 ? (
             <div className="mb-6 flex flex-wrap gap-7 border-y-[6px] border-ink bg-paper-dim/40 py-3.5 text-sm text-ink-soft">
               {metaFacts.map((fact) => (

@@ -1,3 +1,4 @@
+import { ArrowRight, Books, Disc } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 import AlbumCard from "@/components/AlbumCard";
 import PhotoPlaceholder from "@/components/PhotoPlaceholder";
@@ -6,6 +7,7 @@ import Ticker from "@/components/chrome/Ticker";
 import DoorCard from "@/components/ui/DoorCard";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { getAlbumsByEra, getEra, getEras } from "@/lib/content";
+import { OV_ICON_WEIGHT } from "@/lib/icons";
 import { getHomePhoto } from "@/lib/photos";
 import { getFeatureFlags } from "@/lib/settings";
 
@@ -70,13 +72,16 @@ export default async function Home() {
       >
         <div className="mt-9 flex flex-wrap items-end justify-between gap-4 border-t-[6px] border-danfo pt-5">
           <div className="flex flex-wrap gap-3">
-            <Link href="/eras" className="ov-btn ov-btn-danfo px-5 py-3 text-sm">
-              Start with the eras →
+            <Link href="/eras" className="ov-btn ov-btn-danfo ov-icon-inline px-5 py-3 text-sm">
+              <Books className="ov-icon" size={18} weight={OV_ICON_WEIGHT} aria-hidden />
+              Start with the eras
+              <ArrowRight className="ov-icon" size={16} weight={OV_ICON_WEIGHT} aria-hidden />
             </Link>
             <Link
               href="/albums"
-              className="ov-btn border-paper/50 bg-transparent px-5 py-3 text-sm text-paper hover:border-danfo hover:bg-danfo hover:text-ink"
+              className="ov-btn ov-icon-inline border-paper/50 bg-transparent px-5 py-3 text-sm text-paper hover:border-danfo hover:bg-danfo hover:text-ink"
             >
+              <Disc className="ov-icon" size={18} weight={OV_ICON_WEIGHT} aria-hidden />
               Discography
             </Link>
           </div>
@@ -105,9 +110,10 @@ export default async function Home() {
               <p className="mb-5 max-w-[46ch] text-ink-soft">{upstart.thesis}</p>
               <Link
                 href={`/eras/${upstart.slug}`}
-                className="ov-btn ov-btn-danfo inline-block px-6 py-3.5 text-sm"
+                className="ov-btn ov-btn-danfo ov-icon-inline px-6 py-3.5 text-sm"
               >
-                Read the chapter →
+                Read the chapter
+                <ArrowRight className="ov-icon" size={16} weight={OV_ICON_WEIGHT} aria-hidden />
               </Link>
             </div>
             <PhotoPlaceholder
