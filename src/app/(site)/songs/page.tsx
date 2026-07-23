@@ -40,7 +40,7 @@ export default async function SongsPage() {
         intro="Every documented cut we can stand behind — album tracks flattened from the discography, plus singles, features, freestyles, lives and snippets researched from 2010 to today. Titles, years and credits. No lyrics dump. Not a claim of absolute completeness."
       />
       <Ticker items={TICKER} />
-      <section className="mx-auto max-w-6xl px-5 py-10 sm:px-8">
+      <section className="mx-auto max-w-7xl px-5 py-10 sm:px-8">
         <p className="mb-8 max-w-3xl text-sm leading-relaxed text-ink-soft">
           {songs.length} entries right now ({albumTrackCount} album tracks ·{" "}
           {catalogCount} researched). Status badges mark confidence:{" "}

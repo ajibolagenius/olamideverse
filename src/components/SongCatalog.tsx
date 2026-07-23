@@ -24,6 +24,9 @@ const TYPE_FILTER_OPTIONS = [
   })),
 ];
 
+/** Matches the right column width in the catalogue grid. */
+const PLAYER_COL = "w-[min(22rem,calc(100vw-2.5rem))]";
+
 function songHasEmbed(song: Song): boolean {
   return Boolean(song.spotifyTrackId || song.youtubeId);
 }
@@ -32,6 +35,61 @@ function statusClass(status: SongStatus): string {
   if (status === "verified") return "border-ink bg-danfo text-ink";
   if (status === "documented") return "border-ink bg-white text-ink";
   return "border-ink-soft bg-paper-dim text-ink-soft";
+}
+
+function PlayerBody({
+  active,
+  compact = false,
+}: {
+  active: Song | null;
+  compact?: boolean;
+}) {
+  if (active && songHasEmbed(active)) {
+    return (
+      <div>
+        {!compact ? (
+          <>
+            <p className="mb-2 text-[0.72rem] font-bold tracking-[0.06em] uppercase text-ink-soft">
+              Now playing
+            </p>
+            <p className="mb-3 font-display text-xl leading-tight">
+              {active.title}
+            </p>
+          </>
+        ) : (
+          <p className="mb-2 truncate font-display text-lg leading-tight">
+            {active.title}
+          </p>
+        )}
+        <EmbedFrame
+          title={active.title}
+          spotifyId={active.spotifyTrackId}
+          youtubeId={active.youtubeId}
+        />
+      </div>
+    );
+  }
+
+  if (active) {
+    return (
+      <div
+        className={`border-[3px] border-dashed border-ink-soft bg-paper-dim text-sm leading-relaxed text-ink-soft ${
+          compact ? "p-3" : "p-5"
+        }`}
+      >
+        <p className="mb-1 font-display text-lg text-ink">{active.title}</p>
+        Documented in the catalogue — no stable embed ID yet. Nothing is hosted
+        here.
+      </div>
+    );
+  }
+
+  return (
+    <div className="border-[3px] border-dashed border-ink-soft bg-paper-dim p-5 text-sm leading-relaxed text-ink-soft">
+      Select a track with a play button to load its Spotify or YouTube embed
+      here. This pane stays fixed while you scroll.
+    </div>
+  );
 }
 
 export default function SongCatalog({
@@ -47,6 +105,7 @@ export default function SongCatalog({
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query);
   const [activeId, setActiveId] = useState<string | null>(null);
+  const [mobileDismissed, setMobileDismissed] = useState(false);
 
   const erasBySlug = useMemo(
     () => new Map(eras.map((era) => [era.slug, era])),
@@ -79,8 +138,28 @@ export default function SongCatalog({
       null)
     : null;
 
+  const showMobileDock = Boolean(active) && !mobileDismissed;
+
+  function selectSong(id: string) {
+    setActiveId(id);
+    setMobileDismissed(false);
+  }
+
+  function toggleSong(id: string) {
+    if (activeId === id) {
+      setActiveId(null);
+      return;
+    }
+    setActiveId(id);
+    setMobileDismissed(false);
+  }
+
+  function dismissMobile() {
+    setMobileDismissed(true);
+  }
+
   return (
-    <div>
+    <div className={showMobileDock ? "pb-[min(50vh,22rem)] lg:pb-0" : undefined}>
       <div className="mb-6 flex flex-col gap-5">
         <FilterChips
           label="Filter by type"
@@ -138,110 +217,138 @@ export default function SongCatalog({
         {shown.length} {shown.length === 1 ? "entry" : "entries"}
       </p>
 
-      {shown.length === 0 ? (
-        <EmptyState message="Nothing matches those filters — try another era or clear search." />
-      ) : (
-        <ol className="border-t-[3px] border-ink">
-          {shown.map((song) => {
-            const era = erasBySlug.get(song.era);
-            const activeRow = active?.id === song.id;
-            const typeLabel = SONG_TYPE_LABEL[song.type as SongType];
-            return (
-              <li
-                key={song.id}
-                className={`border-b-2 border-ink px-2 py-2.5 transition-colors sm:px-3 ${
-                  activeRow ? "bg-white" : "hover:bg-paper-dim"
-                }`}
-              >
-                <div className="flex flex-wrap items-start gap-3 sm:flex-nowrap sm:items-center">
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setActiveId((id) => (id === song.id ? null : song.id))
-                    }
-                    aria-pressed={activeRow}
-                    className="flex min-w-0 flex-1 flex-col gap-1 py-0.5 text-left sm:flex-row sm:items-baseline sm:gap-4"
+      {/* Spacer column on desktop so the list never runs under the fixed player */}
+      <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(17.5rem,22rem)] lg:gap-8">
+        <div className="min-w-0">
+          {shown.length === 0 ? (
+            <EmptyState message="Nothing matches those filters — try another era or clear search." />
+          ) : (
+            <ol className="border-t-[3px] border-ink">
+              {shown.map((song) => {
+                const era = erasBySlug.get(song.era);
+                const activeRow = active?.id === song.id;
+                const typeLabel = SONG_TYPE_LABEL[song.type as SongType];
+                return (
+                  <li
+                    key={song.id}
+                    className={`border-b-2 border-ink px-2 py-2.5 transition-colors sm:px-3 ${
+                      activeRow ? "bg-white" : "hover:bg-paper-dim"
+                    }`}
                   >
-                    <span className="w-12 shrink-0 font-display text-lg text-ink-soft tabular-nums">
-                      {song.year}
-                    </span>
-                    <span className="min-w-0 flex-1">
-                      <span className="block font-semibold leading-snug">
-                        {song.title}
-                        {song.alsoSingle ? (
-                          <span className="ml-2 text-[0.65rem] font-bold tracking-[0.06em] uppercase text-danfo">
-                            also single
+                    <div className="flex flex-wrap items-start gap-3 sm:flex-nowrap sm:items-center">
+                      <button
+                        type="button"
+                        onClick={() => toggleSong(song.id)}
+                        aria-pressed={activeRow}
+                        className="flex min-w-0 flex-1 flex-col gap-1 py-0.5 text-left sm:flex-row sm:items-baseline sm:gap-4"
+                      >
+                        <span className="w-12 shrink-0 font-display text-lg text-ink-soft tabular-nums">
+                          {song.year}
+                        </span>
+                        <span className="min-w-0 flex-1">
+                          <span className="block font-semibold leading-snug">
+                            {song.title}
+                            {song.alsoSingle ? (
+                              <span className="ml-2 text-[0.65rem] font-bold tracking-[0.06em] uppercase text-danfo">
+                                also single
+                              </span>
+                            ) : null}
                           </span>
-                        ) : null}
+                          <span className="mt-0.5 block text-xs tracking-[0.04em] uppercase text-ink-soft">
+                            {[
+                              typeLabel,
+                              song.artists,
+                              song.note,
+                              era?.title,
+                              song.albumSlug ? `→ ${song.albumSlug}` : null,
+                            ]
+                              .filter(Boolean)
+                              .join(" · ")}
+                          </span>
+                        </span>
+                      </button>
+
+                      <span
+                        className={`shrink-0 border-2 px-1.5 py-0.5 text-[0.65rem] font-bold tracking-[0.05em] uppercase ${statusClass(song.status)}`}
+                      >
+                        {SONG_STATUS_LABEL[song.status]}
                       </span>
-                      <span className="mt-0.5 block text-xs tracking-[0.04em] uppercase text-ink-soft">
-                        {[
-                          typeLabel,
-                          song.artists,
-                          song.note,
-                          era?.title,
-                          song.albumSlug ? `→ ${song.albumSlug}` : null,
-                        ]
-                          .filter(Boolean)
-                          .join(" · ")}
-                      </span>
-                    </span>
-                  </button>
 
-                  <span
-                    className={`shrink-0 border-2 px-1.5 py-0.5 text-[0.65rem] font-bold tracking-[0.05em] uppercase ${statusClass(song.status)}`}
-                  >
-                    {SONG_STATUS_LABEL[song.status]}
-                  </span>
+                      {song.albumSlug ? (
+                        <Link
+                          href={`/albums/${song.albumSlug}`}
+                          className="shrink-0 text-[0.7rem] font-bold tracking-[0.04em] uppercase underline decoration-2 underline-offset-2 hover:text-oxide"
+                        >
+                          Album
+                        </Link>
+                      ) : null}
 
-                  {song.albumSlug ? (
-                    <Link
-                      href={`/albums/${song.albumSlug}`}
-                      className="shrink-0 text-[0.7rem] font-bold tracking-[0.04em] uppercase underline decoration-2 underline-offset-2 hover:text-oxide"
-                    >
-                      Album
-                    </Link>
-                  ) : null}
-
-                  {songHasEmbed(song) ? (
-                    <button
-                      type="button"
-                      onClick={() => setActiveId(song.id)}
-                      aria-label={`Play embed for ${song.title}`}
-                      className="grid size-8 shrink-0 place-items-center border-2 border-ink bg-danfo"
-                    >
-                      <svg viewBox="0 0 16 16" className="size-2.5 fill-ink">
-                        <path d="M3 1l11 7-11 7z" />
-                      </svg>
-                    </button>
-                  ) : (
-                    <span
-                      aria-hidden
-                      className="grid size-8 shrink-0 place-items-center border-2 border-dashed border-ink-soft text-[0.6rem] font-bold uppercase text-ink-soft"
-                      title="No embed yet"
-                    >
-                      —
-                    </span>
-                  )}
-                </div>
-              </li>
-            );
-          })}
-        </ol>
-      )}
-
-      {active && songHasEmbed(active) ? (
-        <div className="mt-6">
-          <EmbedFrame
-            title={active.title}
-            spotifyId={active.spotifyTrackId}
-            youtubeId={active.youtubeId}
-          />
+                      {songHasEmbed(song) ? (
+                        <button
+                          type="button"
+                          onClick={() => selectSong(song.id)}
+                          aria-label={`Play embed for ${song.title}`}
+                          className="grid size-8 shrink-0 place-items-center border-2 border-ink bg-danfo"
+                        >
+                          <svg
+                            viewBox="0 0 16 16"
+                            className="size-2.5 fill-ink"
+                          >
+                            <path d="M3 1l11 7-11 7z" />
+                          </svg>
+                        </button>
+                      ) : (
+                        <span
+                          aria-hidden
+                          className="grid size-8 shrink-0 place-items-center border-2 border-dashed border-ink-soft text-[0.6rem] font-bold uppercase text-ink-soft"
+                          title="No embed yet"
+                        >
+                          —
+                        </span>
+                      )}
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+          )}
         </div>
-      ) : active ? (
-        <div className="mt-6 border-2 border-dashed border-ink-soft p-6 text-center text-sm text-ink-soft">
-          Documented in the catalogue — no stable embed ID yet. Nothing is
-          hosted here.
+
+        <div className="hidden lg:block" aria-hidden />
+      </div>
+
+      {/*
+        Fixed to the viewport — sticky fails under html { overflow-x: hidden }.
+        Aligned to the max-w-7xl content column’s right edge.
+      */}
+      <div className="pointer-events-none fixed inset-x-0 top-24 z-30 hidden lg:block">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <div className={`pointer-events-auto ml-auto ${PLAYER_COL}`}>
+            <PlayerBody active={active} />
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile: fixed bottom dock, dismissible */}
+      {showMobileDock ? (
+        <div
+          role="region"
+          aria-label="Now playing"
+          className="fixed inset-x-0 bottom-0 z-30 border-t-[3px] border-ink bg-paper p-3 shadow-[0_-8px_0_0_rgba(24,20,16,0.08)] lg:hidden"
+        >
+          <div className="mb-2 flex items-center justify-between gap-3">
+            <p className="text-[0.72rem] font-bold tracking-[0.06em] uppercase text-ink-soft">
+              Now playing
+            </p>
+            <button
+              type="button"
+              onClick={dismissMobile}
+              className="border-2 border-ink bg-white px-2.5 py-1 text-[0.7rem] font-bold tracking-[0.04em] uppercase hover:bg-danfo"
+            >
+              Dismiss
+            </button>
+          </div>
+          <PlayerBody active={active} compact />
         </div>
       ) : null}
     </div>
