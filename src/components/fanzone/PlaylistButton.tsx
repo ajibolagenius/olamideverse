@@ -91,11 +91,11 @@ export default function PlaylistButton({
       <Modal
         open={showPicker && !fanState.fan}
         onClose={() => setShowPicker(false)}
-        title="Pick a handle"
+        title="Fan account"
       >
         <HandlePicker
           fanState={fanState}
-          prompt="Save a fan handle to build a playlist."
+          prompt="Sign in to build a playlist."
           onSaved={() => {
             setShowPicker(false);
             doToggle();

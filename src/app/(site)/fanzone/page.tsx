@@ -50,14 +50,14 @@ export default async function FanZonePage() {
             Fan <span className="text-danfo">Zone</span>
           </>
         }
-        intro="Favorite eras and albums, vote in polls, argue in the comments, and build a playlist to share. Pick a handle and it's yours — no email, no password."
+        intro="Favorite eras and albums, vote in polls, argue in the comments, and build a playlist to share. Create a handle + password — no email required — and it follows you across devices."
       />
 
       <section className="mx-auto max-w-4xl px-5 pt-12 sm:px-8">
-        <SectionLabel>Your handle</SectionLabel>
+        <SectionLabel>Your account</SectionLabel>
         <h2 className="ov-icon-inline font-display text-display-md mb-5">
           <UserCircle className="ov-icon" size={32} weight={OV_ICON_WEIGHT} aria-hidden />
-          Sign in
+          Handle + password
         </h2>
         <FanZoneSignIn />
       </section>

@@ -110,11 +110,11 @@ export default function PollCard({
           setShowPicker(false);
           setPendingOption(null);
         }}
-        title="Pick a handle"
+        title="Fan account"
       >
         <HandlePicker
           fanState={fanState}
-          prompt="Save a fan handle to cast your vote."
+          prompt="Sign in to cast your vote."
           onSaved={() => {
             setShowPicker(false);
             if (pendingOption) castVote(pendingOption);

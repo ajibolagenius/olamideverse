@@ -13,7 +13,7 @@ export async function adminLogin(formData: FormData) {
 
     const supabase = await createClient();
 
-    // Drop any Fan Zone anonymous session before elevating.
+    // Drop any Fan Zone session before elevating to staff.
     await supabase.auth.signOut();
 
     const { error } = await supabase.auth.signInWithPassword({ email, password });

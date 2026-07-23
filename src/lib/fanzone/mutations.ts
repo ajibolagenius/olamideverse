@@ -15,7 +15,7 @@ async function requireFanId(): Promise<string> {
     const {
         data: { user },
     } = await supabase.auth.getUser();
-    if (!user) throw new Error("Pick a handle first.");
+    if (!user) throw new Error("Sign in with your handle first.");
 
     const { data: fan } = await supabase
         .from("fans")

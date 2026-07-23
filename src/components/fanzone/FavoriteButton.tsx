@@ -100,11 +100,11 @@ export default function FavoriteButton({
       <Modal
         open={showPicker && !fanState.fan}
         onClose={() => setShowPicker(false)}
-        title="Pick a handle"
+        title="Fan account"
       >
         <HandlePicker
           fanState={fanState}
-          prompt="Save a fan handle to favorite eras and albums."
+          prompt="Sign in to favorite eras and albums."
           onSaved={() => {
             setShowPicker(false);
             doToggle();

@@ -84,7 +84,10 @@ content/
 ## Fan Zone [Phase 3]
 
 `/fanzone` with favorites, polls, comments, and shareable playlists. Requires
-Supabase anonymous auth + the Fan Zone tables. Feature-flagged
+Supabase Auth (handle + password — no email in the UI; a synthetic
+`@fan.olamideverse.app` address is derived from the handle; accounts are
+created confirmed via the service role so Auth never sends mail) + the Fan Zone
+tables. Feature-flagged
 (`fanzone` / `comments` / `polls` in site settings — default off). Mounts onto
 archive pages (favorite on cards and album/era detail, playlist on tracklists,
 comments on album/era threads) rather than reshaping them. Recommended combo

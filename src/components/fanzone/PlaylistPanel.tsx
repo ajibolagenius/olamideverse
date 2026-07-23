@@ -95,7 +95,7 @@ export default function PlaylistPanel({ initialPlaylist }: { initialPlaylist: Pl
           <span className="text-sm">
             A shared playlist has {shared.length} track{shared.length === 1 ? "" : "s"} you don&apos;t
             have yet.
-            {!fanState.fan ? " Pick a handle to import." : ""}
+            {!fanState.fan ? " Sign in to import." : ""}
           </span>
           <div className="flex gap-2">
             <button
@@ -182,11 +182,11 @@ export default function PlaylistPanel({ initialPlaylist }: { initialPlaylist: Pl
       <Modal
         open={showPicker && !fanState.fan}
         onClose={() => setShowPicker(false)}
-        title="Pick a handle"
+        title="Fan account"
       >
         <HandlePicker
           fanState={fanState}
-          prompt="Save a fan handle to import this shared playlist."
+          prompt="Sign in to import this shared playlist."
           onSaved={() => {
             setShowPicker(false);
             void runImport();
