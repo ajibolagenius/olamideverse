@@ -22,7 +22,9 @@ no public routes. When one fires, update the named content surfaces and
       and add a Legacy (or current-era) moment if the exit is career-defining
       (pattern: Asake → Giran Republic, early 2025).
 - [ ] Confirm the **YBNL roster** filter on `/influence` still lists every
-      node that carries `signedYear`.
+      node that carries `signedYear`. Prefer verified announce/exit dates;
+      use `alumni: true` (no invented `departedYear`) when the exit year is soft.
+      Do not add co-signs (Zlatan, Naira Marley, CDQ, Portable) as roster nodes.
 
 ## Awards & honours
 

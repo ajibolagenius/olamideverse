@@ -115,6 +115,11 @@ export const influenceNodeSchema = z.object({
     signedYear: z.number().int().optional(),
     /** Year departed from YBNL (alumni); omit while still on the roster. */
     departedYear: z.number().int().optional(),
+    /**
+     * True when the act is no longer signed but the exact departure year is
+     * unverified — shows as alumni without inventing a year.
+     */
+    alumni: z.boolean().optional(),
     /** Deep-link into an era moment — must match `momentAnchor(year, title)`. */
     momentAnchor: z.string().optional(),
     /** Position in the graph canvas, 0–100. */

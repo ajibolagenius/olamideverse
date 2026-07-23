@@ -17,8 +17,8 @@
       "eraSlug": "the-upstart",
       "albumSlug": "rapsodi",
       "momentAnchor": "moment-debut-single-eni-duro",
-      "x": 16,
-      "y": 22
+      "x": 12,
+      "y": 18
     },
     {
       "id": "yoruba-street",
@@ -27,8 +27,8 @@
       "blurb": "The linguistic and cultural current Cabasa's scene rode — indigenous bars as commercial risk, then blueprint.",
       "eraSlug": "the-upstart",
       "momentAnchor": "moment-debut-single-eni-duro",
-      "x": 34,
-      "y": 12
+      "x": 28,
+      "y": 8
     },
     {
       "id": "empire",
@@ -38,8 +38,8 @@
       "eraSlug": "reinvention",
       "albumSlug": "carpe-diem",
       "momentAnchor": "moment-ybnl-empire",
-      "x": 66,
-      "y": 12
+      "x": 72,
+      "y": 8
     },
     {
       "id": "phyno",
@@ -50,7 +50,7 @@
       "albumSlug": "2-kings",
       "momentAnchor": "moment-2-kings-eyan-mayweather",
       "x": 50,
-      "y": 14
+      "y": 8
     },
     {
       "id": "wizkid",
@@ -60,8 +60,8 @@
       "eraSlug": "the-upstart",
       "albumSlug": "rapsodi",
       "momentAnchor": "moment-rapsodi-released",
-      "x": 84,
-      "y": 28
+      "x": 88,
+      "y": 14
     },
     {
       "id": "reminisce",
@@ -69,18 +69,18 @@
       "role": "peer",
       "blurb": "Fellow street-hop architect of the 2010s Lagos circuit — shared stages and the same mainland-to-mainstream fight.",
       "eraSlug": "street-king-run",
-      "x": 16,
-      "y": 48
+      "x": 8,
+      "y": 42
     },
     {
       "id": "pheelz",
       "name": "Pheelz",
       "role": "collaborator",
-      "blurb": "Long-time in-house producer and YBNL alumnus — from early Rapsodi sessions to later reunion cuts.",
+      "blurb": "Long-time in-house producer and YBNL co-architect — from early Rapsodi sessions to later reunion cuts. Crew, not a signed recording act.",
       "eraSlug": "the-upstart",
       "albumSlug": "rapsodi",
-      "x": 20,
-      "y": 72
+      "x": 10,
+      "y": 68
     },
     {
       "id": "young-jonn",
@@ -89,7 +89,7 @@
       "blurb": "Producer behind Bobo and later alumni reunions — the beatmaker who soundtracked the Street King peak.",
       "eraSlug": "street-king-run",
       "albumSlug": "eyan-mayweather",
-      "x": 34,
+      "x": 22,
       "y": 88
     },
     {
@@ -99,8 +99,8 @@
       "blurb": "Guest on Omo Wobe Anthem (2016) — two futures of Nigerian music sharing a YBNL beat in the Street King years.",
       "eraSlug": "street-king-run",
       "albumSlug": "the-glory",
-      "x": 66,
-      "y": 88
+      "x": 78,
+      "y": 92
     },
     {
       "id": "omah-lay",
@@ -110,8 +110,8 @@
       "eraSlug": "reinvention",
       "albumSlug": "carpe-diem",
       "momentAnchor": "moment-carpe-diem",
-      "x": 84,
-      "y": 72
+      "x": 92,
+      "y": 78
     },
     {
       "id": "wande-coal",
@@ -120,67 +120,172 @@
       "blurb": "Afrobeats melody on the Who You Epp? Refix and The Glory sessions — street-hop borrowing pop's shine.",
       "eraSlug": "street-king-run",
       "albumSlug": "the-glory",
-      "x": 84,
-      "y": 52
-    },
-    {
-      "id": "lil-kesh",
-      "name": "Lil Kesh",
-      "role": "mentee",
-      "blurb": "Early YBNL signee — Shoki-era breakout and proof the label could mint stars beyond its founder.",
-      "eraSlug": "first-of-all",
-      "signedYear": 2014,
-      "departedYear": 2016,
-      "momentAnchor": "moment-ybnl-wins-big",
-      "x": 78,
-      "y": 40
-    },
-    {
-      "id": "adekunle-gold",
-      "name": "Adekunle Gold",
-      "role": "mentee",
-      "blurb": "Designed YBNL's logo before Olamide signed him in 2015 — debut album Gold reached the Billboard World Albums chart before he left to go solo in 2016.",
-      "eraSlug": "first-of-all",
-      "signedYear": 2015,
-      "departedYear": 2016,
-      "momentAnchor": "moment-ybnl-wins-big",
-      "x": 92,
-      "y": 32
-    },
-    {
-      "id": "fireboy",
-      "name": "Fireboy DML",
-      "role": "mentee",
-      "blurb": "YBNL's melodic second generation — Empire-era reach, Carpe Diem closer, and the label's international face.",
-      "eraSlug": "reinvention",
-      "albumSlug": "carpe-diem",
-      "signedYear": 2018,
-      "momentAnchor": "moment-ybnl-empire",
-      "x": 62,
-      "y": 70
-    },
-    {
-      "id": "asake",
-      "name": "Asake",
-      "role": "mentee",
-      "blurb": "The log-drum breakout Olamide signed and then traded bars with — Unruly and Ikigai as living proof of the pipeline, before launching his own imprint, Giran Republic, in 2025.",
-      "eraSlug": "elder-statesman",
-      "albumSlug": "unruly",
-      "signedYear": 2022,
-      "departedYear": 2025,
-      "momentAnchor": "moment-amapiano-goes-global",
-      "x": 50,
-      "y": 82
+      "x": 94,
+      "y": 58
     },
     {
       "id": "bnxn",
       "name": "Bnxn",
       "role": "collaborator",
-      "blurb": "On Unruly with the label's second generation — another ear Olamide backed as the founder stepped into elder mode.",
+      "blurb": "On Unruly with the label's second generation — another ear Olamide backed as the founder stepped into elder mode. Co-sign energy, not a YBNL recording contract.",
       "eraSlug": "elder-statesman",
       "albumSlug": "unruly",
-      "x": 38,
-      "y": 70
+      "x": 28,
+      "y": 78
+    },
+    {
+      "id": "lil-kesh",
+      "name": "Lil Kesh",
+      "role": "mentee",
+      "blurb": "First major YBNL unveil (April 2014, with Viktoh) — Shoki-era breakout, then left in April 2016 to form YAGI after a two-year deal.",
+      "eraSlug": "first-of-all",
+      "signedYear": 2014,
+      "departedYear": 2016,
+      "momentAnchor": "moment-ybnl-wins-big",
+      "x": 74,
+      "y": 28
+    },
+    {
+      "id": "viktoh",
+      "name": "Viktoh",
+      "role": "mentee",
+      "blurb": "Signed alongside Lil Kesh in April 2014 — first-wave YBNL street act; left around late 2016 with Adekunle Gold and Chinko Ekun as Gen-1 contracts wound down.",
+      "eraSlug": "street-king-run",
+      "signedYear": 2014,
+      "departedYear": 2016,
+      "momentAnchor": "moment-street-ot-wins-album-of-the-year",
+      "x": 86,
+      "y": 24
+    },
+    {
+      "id": "chinko-ekun",
+      "name": "Chinko Ekun",
+      "role": "mentee",
+      "blurb": "Joined in 2015; first YBNL singles that February. Exited late 2016 with the Gen-1 cohort, later moving to Dek-Niyor Entertainment.",
+      "eraSlug": "street-king-run",
+      "signedYear": 2015,
+      "departedYear": 2016,
+      "momentAnchor": "moment-2-kings-eyan-mayweather",
+      "x": 96,
+      "y": 36
+    },
+    {
+      "id": "adekunle-gold",
+      "name": "Adekunle Gold",
+      "role": "mentee",
+      "blurb": "Designed YBNL's logo before signing on 5 March 2015 — debut album Gold reached Billboard World Albums before his contract-era exit in 2016.",
+      "eraSlug": "first-of-all",
+      "signedYear": 2015,
+      "departedYear": 2016,
+      "momentAnchor": "moment-ybnl-wins-big",
+      "x": 82,
+      "y": 42
+    },
+    {
+      "id": "xino",
+      "name": "Xino",
+      "role": "mentee",
+      "blurb": "Mid-2010s YBNL signee from the Gen-1 wave. Public exit friction surfaced in early 2017 when he apologised to Olamide and the YBNL team.",
+      "eraSlug": "street-king-run",
+      "signedYear": 2015,
+      "departedYear": 2017,
+      "x": 68,
+      "y": 18
+    },
+    {
+      "id": "temmie-ovwasa",
+      "name": "Temmie Ovwasa",
+      "role": "mentee",
+      "blurb": "YBNL's first female signing (April 2016), days after Lil Kesh's exit — discovered via Instagram covers. Exact departure year is soft; listed among former acts.",
+      "eraSlug": "street-king-run",
+      "signedYear": 2016,
+      "alumni": true,
+      "x": 58,
+      "y": 30
+    },
+    {
+      "id": "davolee",
+      "name": "Davolee",
+      "role": "mentee",
+      "blurb": "Street-hop signing in late 2016 during the post–Gen-1 rebuild. Tenure was quiet commercially; later linked (unconfirmed in places) with other imprints.",
+      "eraSlug": "street-king-run",
+      "signedYear": 2016,
+      "alumni": true,
+      "x": 44,
+      "y": 26
+    },
+    {
+      "id": "lyta",
+      "name": "Lyta",
+      "role": "mentee",
+      "blurb": "Signed February 2018 with Limerick; breakthrough Time featuring Olamide. Left in May 2019 after a public calendar dispute — said he never had a written YBNL contract.",
+      "eraSlug": "reinvention",
+      "signedYear": 2018,
+      "departedYear": 2019,
+      "momentAnchor": "moment-ybnl-empire",
+      "x": 32,
+      "y": 36
+    },
+    {
+      "id": "limerick",
+      "name": "Limerick",
+      "role": "mentee",
+      "blurb": "Instagram DM signing in February 2018 with Lyta — Pesin featuring Olamide. Later departed; exact exit month is softer than the announce date.",
+      "eraSlug": "reinvention",
+      "signedYear": 2018,
+      "alumni": true,
+      "momentAnchor": "moment-ybnl-empire",
+      "x": 20,
+      "y": 52
+    },
+    {
+      "id": "picazo",
+      "name": "Picazo Rhap",
+      "role": "mentee",
+      "blurb": "Viral freestyle signing in October 2018 — Olamide posted Signed the same week he brought in Yomi Blaze and, hours later, Fireboy.",
+      "eraSlug": "reinvention",
+      "signedYear": 2018,
+      "departedYear": 2019,
+      "momentAnchor": "moment-ybnl-empire",
+      "x": 34,
+      "y": 58
+    },
+    {
+      "id": "yomi-blaze",
+      "name": "Yomi Blaze",
+      "role": "mentee",
+      "blurb": "Signed October 2018 off the same viral freestyle wave as Picazo — Yoruba bars from Surulere into the pre–Empire roster rebuild.",
+      "eraSlug": "reinvention",
+      "signedYear": 2018,
+      "alumni": true,
+      "momentAnchor": "moment-ybnl-empire",
+      "x": 42,
+      "y": 48
+    },
+    {
+      "id": "fireboy",
+      "name": "Fireboy DML",
+      "role": "mentee",
+      "blurb": "Signed October 2018 — still current. Jealous on YBNL Mafia Family, then Empire-era global reach; the label's longest-running breakout after the founder.",
+      "eraSlug": "reinvention",
+      "albumSlug": "carpe-diem",
+      "signedYear": 2018,
+      "momentAnchor": "moment-ybnl-empire",
+      "x": 64,
+      "y": 68
+    },
+    {
+      "id": "asake",
+      "name": "Asake",
+      "role": "mentee",
+      "blurb": "Signed February 2022 after Omo Ope with Olamide — Mr. Money with the Vibe remade the pipeline. Confirmed exit February 2025 via his imprint Giran Republic.",
+      "eraSlug": "elder-statesman",
+      "albumSlug": "unruly",
+      "signedYear": 2022,
+      "departedYear": 2025,
+      "momentAnchor": "moment-amapiano-goes-global",
+      "x": 52,
+      "y": 86
     }
   ],
   "edges": [
@@ -195,11 +300,20 @@
     { "from": "olamide", "to": "burna", "label": "collab" },
     { "from": "olamide", "to": "omah-lay", "label": "collab" },
     { "from": "olamide", "to": "wande-coal", "label": "collab" },
+    { "from": "olamide", "to": "bnxn", "label": "collab" },
     { "from": "olamide", "to": "lil-kesh", "label": "signed" },
+    { "from": "olamide", "to": "viktoh", "label": "signed" },
+    { "from": "olamide", "to": "chinko-ekun", "label": "signed" },
     { "from": "olamide", "to": "adekunle-gold", "label": "signed" },
+    { "from": "olamide", "to": "xino", "label": "signed" },
+    { "from": "olamide", "to": "temmie-ovwasa", "label": "signed" },
+    { "from": "olamide", "to": "davolee", "label": "signed" },
+    { "from": "olamide", "to": "lyta", "label": "signed" },
+    { "from": "olamide", "to": "limerick", "label": "signed" },
+    { "from": "olamide", "to": "picazo", "label": "signed" },
+    { "from": "olamide", "to": "yomi-blaze", "label": "signed" },
     { "from": "olamide", "to": "fireboy", "label": "signed" },
     { "from": "olamide", "to": "asake", "label": "signed" },
-    { "from": "olamide", "to": "bnxn", "label": "collab" },
     { "from": "empire", "to": "fireboy", "label": "reach" }
   ]
 }

@@ -31,9 +31,15 @@ const ROLE_TEXT: Record<InfluenceNode["role"], string> = {
 /** Special filter: nodes with YBNL signing years (kingmaker roster). */
 const ROSTER_FILTER = "ybnl-roster";
 
+function isAlumni(node: InfluenceNode): boolean {
+  return node.departedYear != null || node.alumni === true;
+}
+
 function rosterSpan(node: InfluenceNode): string | null {
   if (!node.signedYear) return null;
-  return `${node.signedYear}–${node.departedYear ?? "present"}`;
+  if (node.departedYear) return `${node.signedYear}–${node.departedYear}`;
+  if (node.alumni) return `from ${node.signedYear}`;
+  return `${node.signedYear}–present`;
 }
 
 function isRosterNode(node: InfluenceNode): boolean {
@@ -145,7 +151,7 @@ export default function InfluenceGraph({ graph }: { graph: InfluenceGraphData })
               {active.signedYear ? (
                 <span className="inline-block border border-ink bg-paper-dim px-2 py-0.5 text-[0.68rem] font-bold tracking-[0.05em] uppercase text-ink">
                   YBNL · {rosterSpan(active)}
-                  {active.departedYear ? " · alumni" : " · current"}
+                  {isAlumni(active) ? " · alumni" : " · current"}
                 </span>
               ) : null}
             </div>
@@ -214,7 +220,7 @@ export default function InfluenceGraph({ graph }: { graph: InfluenceGraphData })
                     <span className="text-[0.85rem] font-bold">{node.name}</span>
                     <span className="shrink-0 text-[0.68rem] font-bold tracking-[0.04em] uppercase">
                       {rosterSpan(node)}
-                      {node.departedYear ? "" : " · now"}
+                      {isAlumni(node) ? "" : " · now"}
                     </span>
                   </button>
                 </li>
