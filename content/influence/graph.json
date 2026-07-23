@@ -134,6 +134,16 @@
       "y": 40
     },
     {
+      "id": "adekunle-gold",
+      "name": "Adekunle Gold",
+      "role": "mentee",
+      "blurb": "Designed YBNL's logo before Olamide signed him in 2015 — debut album Gold reached the Billboard World Albums chart before he left to go solo in 2016.",
+      "eraSlug": "first-of-all",
+      "momentAnchor": "moment-ybnl-wins-big",
+      "x": 92,
+      "y": 32
+    },
+    {
       "id": "fireboy",
       "name": "Fireboy DML",
       "role": "mentee",
@@ -148,7 +158,7 @@
       "id": "asake",
       "name": "Asake",
       "role": "mentee",
-      "blurb": "The log-drum breakout Olamide signed and then traded bars with — Unruly and Ikigai as living proof of the pipeline.",
+      "blurb": "The log-drum breakout Olamide signed and then traded bars with — Unruly and Ikigai as living proof of the pipeline, before launching his own imprint, Giran Republic, in 2025.",
       "eraSlug": "elder-statesman",
       "albumSlug": "unruly",
       "momentAnchor": "moment-amapiano-goes-global",
@@ -179,6 +189,7 @@
     { "from": "olamide", "to": "omah-lay", "label": "collab" },
     { "from": "olamide", "to": "wande-coal", "label": "collab" },
     { "from": "olamide", "to": "lil-kesh", "label": "signed" },
+    { "from": "olamide", "to": "adekunle-gold", "label": "signed" },
     { "from": "olamide", "to": "fireboy", "label": "signed" },
     { "from": "olamide", "to": "asake", "label": "signed" },
     { "from": "olamide", "to": "bnxn", "label": "signed" },

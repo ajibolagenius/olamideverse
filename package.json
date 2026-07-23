@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "seed:cms": "node --env-file=.env.local scripts/seed-cms.mjs",
+    "sync:research-cms": "node --env-file=.env.local scripts/sync-research-content-cms.mjs",
     "fill:spotify-tracks": "node scripts/fill-spotify-track-ids.mjs"
   },
   "dependencies": {
