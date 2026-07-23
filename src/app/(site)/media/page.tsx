@@ -9,15 +9,15 @@ export async function generateMetadata(): Promise<Metadata> {
   return resolvePageMetadata({
     title: "Media",
     description:
-      "A curated, era-tagged gallery of Olamide videos, freestyles, interviews and live moments — all embedded, nothing hosted.",
+      "Music videos, freestyles, interviews and live moments — YouTube embeds only, tagged by era.",
     path: "/media",
   });
 }
 
 const TICKER = [
-  "Curation notes over completeness",
+  "Click a poster to screen it",
   "Embeds only — no ripped video",
-  "Every clip links to its era",
+  "Search titles, eras & notes",
 ];
 
 export default async function MediaPage() {
@@ -25,12 +25,12 @@ export default async function MediaPage() {
   return (
     <>
       <PosterHero
-        eyebrow="Curated, not comprehensive"
+        eyebrow="Screening wall"
         title="Watch"
-        intro="Music videos, interviews and live moments that mark the eras — every embed sits inside the identity, never hosted or ripped. Curation notes, not a complete video archive."
+        intro="A paste-up wall of music videos, interviews and live moments — search and filter, then tap a poster to load the YouTube embed. Nothing hosted or ripped."
       />
       <Ticker items={TICKER} />
-      <section className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
+      <section className="mx-auto max-w-7xl px-5 py-14 sm:px-8">
         <MediaGrid items={items} eras={eras} />
       </section>
     </>

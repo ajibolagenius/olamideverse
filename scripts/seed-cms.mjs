@@ -2,12 +2,15 @@
  * Seed admin CMS tables from content/*.mdx + media.json + manifest.json,
  * and bootstrap the first owner admin from ADMIN_EMAIL / ADMIN_PASSWORD.
  *
- * Idempotent: rows are inserted only if their primary key doesn't already
- * exist (ON CONFLICT DO NOTHING), so re-running never overwrites content
- * that's since been edited in the admin dashboard — it only adds rows for
- * new content/*.mdx files, media items, etc.
+ * Idempotent for most tables: rows are inserted only if their primary key
+ * doesn't already exist (ON CONFLICT DO NOTHING), so re-running never
+ * overwrites eras/albums/pages/settings edited in the admin dashboard.
+ *
+ * Exception: cms_media_items is upserted from content/media/media.json so the
+ * archive checklist stays in sync (status/sort_order preserved when present).
  *
  * Usage: node --env-file=.env.local scripts/seed-cms.mjs
+ *    or: npm run seed:cms
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -119,17 +122,45 @@ async function seedAlbums() {
 }
 
 async function seedMedia() {
+    // Media archive is file-authoritative (content/media/media.json). Unlike
+    // eras/albums — where admin edits should win — we upsert so new YouTube
+    // embeds and Waptrick checklist rows reach the live /media page when
+    // useCmsContent is on. Existing status + sort_order are preserved.
     const items = JSON.parse(
         fs.readFileSync(path.join(root, "content/media/media.json"), "utf8"),
     );
+    const ids = items.map((item) => item.id);
+    const { data: existingRows, error: readErr } = await supabase
+        .from("cms_media_items")
+        .select("id, status, sort_order")
+        .in("id", ids);
+    if (readErr) throw readErr;
+    const existing = Object.fromEntries(
+        (existingRows ?? []).map((row) => [row.id, row]),
+    );
+
     const rows = items.map((item, i) => ({
         id: item.id,
         data: item,
-        status: "published",
-        sort_order: i,
+        status: existing[item.id]?.status ?? "published",
+        sort_order: existing[item.id]?.sort_order ?? i,
         updated_at: new Date().toISOString(),
     }));
-    await seedIfMissing("cms_media_items", rows, "id", "media items");
+
+    // Supabase caps URL / payload size — batch upserts.
+    const chunkSize = 50;
+    let upserted = 0;
+    for (let i = 0; i < rows.length; i += chunkSize) {
+        const chunk = rows.slice(i, i + chunkSize);
+        const { error } = await supabase.from("cms_media_items").upsert(chunk, {
+            onConflict: "id",
+        });
+        if (error) throw error;
+        upserted += chunk.length;
+    }
+    console.log(
+        `Upserted ${upserted} media items from media.json (${Object.keys(existing).length} already existed)`,
+    );
 }
 
 async function seedPagesAndSettings() {

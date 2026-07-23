@@ -7,7 +7,7 @@
     "type": "music-video",
     "source": "YouTube",
     "youtubeId": "tHhvptX5cQ0",
-    "note": "The debut single's video — the first time Bariga rap got a screen."
+    "note": "The debut single's video \u2014 the first time Bariga rap got a screen."
   },
   {
     "id": "omo-to-shan-video",
@@ -20,6 +20,116 @@
     "note": "Two rising Lagos voices, one hook radio couldn't drop. Directed by DJ Tee."
   },
   {
+    "id": "young-erikina-video",
+    "title": "Young Erikina",
+    "era": "the-upstart",
+    "year": 2011,
+    "type": "music-video",
+    "source": "ID CABASA",
+    "youtubeId": "3Lvm-7MUc8g",
+    "note": "YouTube: Young Erikina (mini video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "calabar-loni-shan-remix-video",
+    "title": "Calabar Lo'Nishan Remix (XP ft. Reminisce, Olamide & Skales)",
+    "era": "first-of-all",
+    "year": 2012,
+    "type": "music-video",
+    "source": "latest naija",
+    "youtubeId": "48zVPJxv80E",
+    "note": "YouTube: XP Ft Reminisce, Olamide, Skales - Calabar LoNishan Remix. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "e-wo-won-video",
+    "title": "E Wo Won (Konga ft. Olamide)",
+    "era": "first-of-all",
+    "year": 2012,
+    "type": "music-video",
+    "source": "Official Konga",
+    "youtubeId": "DaGpSVBR8ls",
+    "note": "YouTube: Konga Ft. Olamide - E Wo Won  [Official video]. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "fine-sound-video",
+    "title": "Fine Sound",
+    "era": "first-of-all",
+    "year": 2012,
+    "type": "music-video",
+    "source": "Iniju",
+    "youtubeId": "q0SeSu0LgK8",
+    "note": "YouTube: Olamide - Fine Sound (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "first-of-all-video",
+    "title": "First of All",
+    "era": "first-of-all",
+    "year": 2012,
+    "type": "music-video",
+    "source": "Olamide",
+    "youtubeId": "5gvgDWmTFKA",
+    "note": "YouTube: First of All. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "iyin-video",
+    "title": "Iyin",
+    "era": "first-of-all",
+    "year": 2012,
+    "type": "music-video",
+    "source": "YouTube",
+    "youtubeId": null,
+    "note": "Listed on Waptrick music clips \u2014 no reliable YouTube embed located yet."
+  },
+  {
+    "id": "local-rappers-video",
+    "title": "Local Rappers (Reminisce ft. Olamide & Phyno)",
+    "era": "first-of-all",
+    "year": 2012,
+    "type": "music-video",
+    "source": "Reminisce",
+    "youtubeId": "y64Ezeruyk0",
+    "note": "YouTube: Reminisce - Local Rappers feat. Olamide & Phyno (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "mawomi-video",
+    "title": "Mawomi (Oluwacoded ft. Olamide)",
+    "era": "first-of-all",
+    "year": 2012,
+    "type": "music-video",
+    "source": "360nobs.com",
+    "youtubeId": "v3bpQlBtgD0",
+    "note": "YouTube: Oluwacoded ft Olamide - Mawomi. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "tuale-video",
+    "title": "No More Tuale (2Kriss ft. Olamide)",
+    "era": "first-of-all",
+    "year": 2012,
+    "type": "music-video",
+    "source": "2Krissofficial",
+    "youtubeId": "-W-B5ZlDR_s",
+    "note": "YouTube: 2KRISS FT OLAMIDE- NO MORE TUALE OFFICIAL VIDEO. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "unite-video",
+    "title": "Unite (Olamide ft. HCode)",
+    "era": "first-of-all",
+    "year": 2012,
+    "type": "music-video",
+    "source": "MacSheffield TV",
+    "youtubeId": "EjSQNEk6CU8",
+    "note": "YouTube: Olamide - Unite ft HCode (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "voice-of-the-street-video",
+    "title": "Voice of the Street",
+    "era": "first-of-all",
+    "year": 2012,
+    "type": "music-video",
+    "source": "Olamide",
+    "youtubeId": "vRsamZeBpgU",
+    "note": "YouTube: Voice of the Street (V.O.T.S). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
     "id": "the-juice-interview-2013",
     "title": "\"The Juice\" interview with Toolz",
     "era": "first-of-all",
@@ -27,7 +137,17 @@
     "type": "interview",
     "source": "NdaniTV",
     "youtubeId": "rCUaMC0Ll_8",
-    "note": "On the record, denying rumors of a rival label deal — \"too late for anyone to sign him.\""
+    "note": "On the record, denying rumors of a rival label deal \u2014 \"too late for anyone to sign him.\""
+  },
+  {
+    "id": "anifowose-video",
+    "title": "Anifowose",
+    "era": "first-of-all",
+    "year": 2013,
+    "type": "music-video",
+    "source": "Olamide",
+    "youtubeId": "XoayYeEcqO0",
+    "note": "YouTube: Olamide - Anifowose [Official Video]. Sourced via the Waptrick music-clips checklist \u2014 embed only."
   },
   {
     "id": "durosoke-video",
@@ -40,14 +160,504 @@
     "note": "Won Best Afro Hip-Hop Video at the 2013 Nigeria Music Video Awards. Directed by Clarence Peters."
   },
   {
+    "id": "eleda-mi-video",
+    "title": "Eleda Mi",
+    "era": "first-of-all",
+    "year": 2013,
+    "type": "music-video",
+    "source": "Olamide",
+    "youtubeId": "6hXDhpsVycA",
+    "note": "YouTube: Olamide - Eleda Mi. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "ibebe-video",
+    "title": "Ibebe (DJ Xclusive ft. Olamide)",
+    "era": "first-of-all",
+    "year": 2013,
+    "type": "music-video",
+    "source": "Superstar DJ Xclusive",
+    "youtubeId": "VsFqZ6wmcdE",
+    "note": "YouTube: DJ Xclusive featuring Olamide - Ibebe. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "stringz-video",
+    "title": "Konji (Stringz ft. Olamide)",
+    "era": "first-of-all",
+    "year": 2013,
+    "type": "music-video",
+    "source": "officialStringZ",
+    "youtubeId": "sNyx8ZN5nC8",
+    "note": "YouTube: Stringz - Konji Ft. Olamide [Official Video]. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "mr-icey-video",
+    "title": "Mr Icey (Sina Rambo ft. Olamide)",
+    "era": "first-of-all",
+    "year": 2013,
+    "type": "music-video",
+    "source": "DMW HQ",
+    "youtubeId": "jqoOO_MwPtQ",
+    "note": "YouTube: Sina Rambo Ft. Olamide - Mr Icey (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "nawo-nawo-video",
+    "title": "Nawo Nawo (YQ ft. Olamide)",
+    "era": "first-of-all",
+    "year": 2013,
+    "type": "music-video",
+    "source": "Officially Yq",
+    "youtubeId": "k6UsC-_NUM8",
+    "note": "YouTube: YQ Feat. Olamide - Nawo Nawo (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "omo-lepa-video",
+    "title": "Omo Lepa (Danny Young ft. Olamide)",
+    "era": "first-of-all",
+    "year": 2013,
+    "type": "music-video",
+    "source": "Danny Young",
+    "youtubeId": "bwg2baedoxg",
+    "note": "YouTube: Danny Young - Omo Lepa feat Olamide Official Video. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "sitting-on-the-throne-video",
+    "title": "Sitting on the Throne",
+    "era": "first-of-all",
+    "year": 2013,
+    "type": "music-video",
+    "source": "Total Entertainment Music Videos",
+    "youtubeId": "9ZJNC9TVbQo",
+    "note": "YouTube: Olamide - Sitting On the Throne (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "stupid-love-video",
+    "title": "Stupid Love",
+    "era": "first-of-all",
+    "year": 2013,
+    "type": "music-video",
+    "source": "Olamide",
+    "youtubeId": "d4dB8maBBEs",
+    "note": "YouTube: Stupid Love. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "tinini-video",
+    "title": "Tinini (OzzyBosco ft. Olamide)",
+    "era": "first-of-all",
+    "year": 2013,
+    "type": "music-video",
+    "source": "Ozzybee",
+    "youtubeId": "6I9QlZACbNE",
+    "note": "YouTube: OzzyBosco WonderKid ft. Olamide Badoo - TININI (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "wagbayi-video",
+    "title": "Wagbayi",
+    "era": "first-of-all",
+    "year": 2013,
+    "type": "music-video",
+    "source": "YouTube",
+    "youtubeId": null,
+    "note": "Listed on Waptrick music clips \u2014 no reliable YouTube embed located yet."
+  },
+  {
+    "id": "wanbii-video",
+    "title": "Wanbi (Dotstar ft. Olamide)",
+    "era": "first-of-all",
+    "year": 2013,
+    "type": "music-video",
+    "source": "dotstar",
+    "youtubeId": "YZu7IY2y29Q",
+    "note": "YouTube: Dotstar ft. Olamide - #Wanbi (Audio). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "atewo-video",
+    "title": "Atewo (Zeez ft. Olamide)",
+    "era": "street-king-run",
+    "year": 2014,
+    "type": "music-video",
+    "source": "HF Music",
+    "youtubeId": "TUwQegIztGM",
+    "note": "YouTube: Zeez ft. Olamide - Atewo [Official Music Video]. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "baba-oyoyo-video",
+    "title": "Baba Oyoyo (Flyboy ft. Olamide)",
+    "era": "street-king-run",
+    "year": 2014,
+    "type": "music-video",
+    "source": "FlyBoyVEVO",
+    "youtubeId": "0-Gg0msRrF4",
+    "note": "YouTube: Flyboy - Baba Oyoyo [Official Video] ft. Olamide. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "boshenjo-video",
+    "title": "Boshenjo (Malaika ft. Olamide)",
+    "era": "street-king-run",
+    "year": 2014,
+    "type": "music-video",
+    "source": "OfficialKS1MalaikaTv",
+    "youtubeId": "SkpV8BUicpM",
+    "note": "YouTube: Malaika Ft. Olamide - Boshenjo [Official Video]. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "falila-ketan-video",
+    "title": "Falila Ketan",
+    "era": "street-king-run",
+    "year": 2014,
+    "type": "music-video",
+    "source": "Olamide",
+    "youtubeId": "653H9spN3KI",
+    "note": "YouTube: Olamide - Falila Ketan [Official Video]. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "for-body-video",
+    "title": "For Body (Sunkanmi ft. Olamide)",
+    "era": "street-king-run",
+    "year": 2014,
+    "type": "music-video",
+    "source": "OfficialSunkanmi",
+    "youtubeId": "naXJvz1CBto",
+    "note": "YouTube: Sunkanmi - For Body ft. Olamide [Official Video]. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "indomie-video",
+    "title": "Indomie (Masterkraft ft. CDQ & Olamide)",
+    "era": "street-king-run",
+    "year": 2014,
+    "type": "music-video",
+    "source": "Masterkraft",
+    "youtubeId": "pnIHRALC2xg",
+    "note": "YouTube: Masterkraft - Indomie ft. CDQ & Olamide [Official Video]. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "mandatin-video",
+    "title": "Mandatin Remix (Jaywon ft. Phyno, May D & Olamide)",
+    "era": "street-king-run",
+    "year": 2014,
+    "type": "music-video",
+    "source": "Jaywon",
+    "youtubeId": "YAYoRq1-vD8",
+    "note": "YouTube: Jaywon - Mandatin (Remix) ft. Phyno, May D, Olamide. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "peteru-video",
+    "title": "Peteru (Skuki ft. Olamide)",
+    "era": "street-king-run",
+    "year": 2014,
+    "type": "music-video",
+    "source": "SkukiTV",
+    "youtubeId": "UQCaIemhjpk",
+    "note": "YouTube: Skuki Ft. Olamide - PETERU [Official Video]. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "shoki-remix-video",
+    "title": "Shoki Remix (Lil Kesh ft. Davido & Olamide)",
+    "era": "street-king-run",
+    "year": 2014,
+    "type": "music-video",
+    "source": "Lil Kesh",
+    "youtubeId": "ctCcb48gYS4",
+    "note": "YouTube: Lil Kesh - Shoki Rmx [Official Video] ft. Davido, Olamide. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "story-for-the-gods-video",
+    "title": "Story for the Gods",
+    "era": "street-king-run",
+    "year": 2014,
+    "type": "music-video",
+    "source": "Olamide",
+    "youtubeId": "lPS3DDOWcgg",
+    "note": "YouTube: Olamide - Story For The Gods (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "warri-video",
+    "title": "Warri (Efe Money ft. Olamide)",
+    "era": "street-king-run",
+    "year": 2014,
+    "type": "music-video",
+    "source": "Efe Money",
+    "youtubeId": "4N21gSxuAJE",
+    "note": "YouTube: Efe Money - Warri ft. Olamide (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "adura-video",
+    "title": "Adura Remix (Oyinkanade ft. Olamide)",
+    "era": "street-king-run",
+    "year": 2015,
+    "type": "music-video",
+    "source": "VivaceVEVO",
+    "youtubeId": "zrayLiAFs_I",
+    "note": "YouTube: Oyinkanade - Adura [Remix] (Music Video) ft. Olamide. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "bobo-video",
+    "title": "Bobo",
+    "era": "street-king-run",
+    "year": 2015,
+    "type": "music-video",
+    "source": "Olamide",
+    "youtubeId": "SFmZKO35SfQ",
+    "note": "YouTube: Olamide - Bobo (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "carry-go-video",
+    "title": "Carry Go (Chief Obi ft. Olamide)",
+    "era": "street-king-run",
+    "year": 2015,
+    "type": "music-video",
+    "source": "ChiefObi",
+    "youtubeId": "q9MOodPMRaE",
+    "note": "YouTube: Chief Obi - Carry Go ft. Olamide (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "dont-stop-video",
+    "title": "Don't Stop",
+    "era": "street-king-run",
+    "year": 2015,
+    "type": "music-video",
+    "source": "Olamide",
+    "youtubeId": "Pkm3UUFz_I4",
+    "note": "YouTube: Olamide - Dont Stop [Official Video]. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "ibadan-video",
+    "title": "Ibadan (Qdot ft. Olamide)",
+    "era": "street-king-run",
+    "year": 2015,
+    "type": "music-video",
+    "source": "QdotOfficialVEVO",
+    "youtubeId": "-AxLU-Ak-eI",
+    "note": "YouTube: Qdot - Ibadan ft. Olamide. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "ijo-ayo-video",
+    "title": "Ijo Ayo (Skales ft. Olamide)",
+    "era": "street-king-run",
+    "year": 2015,
+    "type": "music-video",
+    "source": "Skales",
+    "youtubeId": "ZdLADxXKFD4",
+    "note": "YouTube: SKALES - IJO AYO FT OLAMIDE (OFFICIAL VIDEO). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "illegal-video",
+    "title": "Illegal (Pepenazi ft. Olamide)",
+    "era": "street-king-run",
+    "year": 2015,
+    "type": "music-video",
+    "source": "Pepenazi",
+    "youtubeId": "s6J_rnIO5Pg",
+    "note": "YouTube: Pepenazi | Illegal [Official Video] ft. Olamide. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "kolewerk-video",
+    "title": "Kolewerk Remix (Koker ft. Olamide)",
+    "era": "street-king-run",
+    "year": 2015,
+    "type": "music-video",
+    "source": "Koker",
+    "youtubeId": "NCq6zl90lnE",
+    "note": "YouTube: KOKER - KOLEWERK (REMIX) ft. OLAMIDE | OFFICIAL VIDEO. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "lagos-boys-video",
+    "title": "Lagos Boys",
+    "era": "street-king-run",
+    "year": 2015,
+    "type": "music-video",
+    "source": "Olamide",
+    "youtubeId": "ie8DU7P1rY0",
+    "note": "YouTube: Olamide - Lagos Boys [Official Video]. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "mama-oyoyo-video",
+    "title": "Mama Oyoyo (multi-artist; Olamide feature)",
+    "era": "street-king-run",
+    "year": 2015,
+    "type": "music-video",
+    "source": "AY Comedian",
+    "youtubeId": "P8M0wNgmLio",
+    "note": "YouTube: YEMI ALADE, OLAMIDE, IYANYA, TEKNO, SELEBOBO - MAMA OYOYO (OFFICIAL VIDEO). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "melo-melo-video",
+    "title": "Melo Melo",
+    "era": "street-king-run",
+    "year": 2015,
+    "type": "music-video",
+    "source": "Olamide",
+    "youtubeId": "SiQpc5dWsjg",
+    "note": "YouTube: Olamide - Melo Melo [Official Video]. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "reggae-blues-video",
+    "title": "Reggae Blues (Harrysong ft. Olamide)",
+    "era": "street-king-run",
+    "year": 2015,
+    "type": "music-video",
+    "source": "HarrySongVEVO",
+    "youtubeId": "C4nT3Od5cxI",
+    "note": "YouTube: Harrysong - Reggae Blues (Official Video) ft. Olamide, Iyanya, Kcee, Orezi. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "standing-ovation-video",
+    "title": "Standing Ovation (Tiwa Savage ft. Olamide)",
+    "era": "street-king-run",
+    "year": 2015,
+    "type": "music-video",
+    "source": "Tiwa Savage",
+    "youtubeId": "rPhG29ZRIn0",
+    "note": "YouTube: Tiwa Savage ft.  Olamide - Standing Ovation ( Official Music Video ). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "telli-person-video",
+    "title": "Telli Person (Timaya ft. Phyno & Olamide)",
+    "era": "street-king-run",
+    "year": 2015,
+    "type": "music-video",
+    "source": "Timaya",
+    "youtubeId": "kOTT9vZ8liA",
+    "note": "YouTube: Timaya - Telli Person Feat. Phyno & Olamide (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "69-missed-calls-video",
+    "title": "69 Missed Calls (Jahbless ft. Olamide & others)",
+    "era": "street-king-run",
+    "year": 2016,
+    "type": "music-video",
+    "source": "GoldMyneTV",
+    "youtubeId": "kArcpxlRGVE",
+    "note": "YouTube: Jahbless - 69 Missed Calls ft. Olamide, Reminisce, Lil Kesh, CDQ. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "abule-sowo-video",
+    "title": "Abule Sowo",
+    "era": "street-king-run",
+    "year": 2016,
+    "type": "music-video",
+    "source": "Olamide",
+    "youtubeId": "_FIGjTF7yKw",
+    "note": "YouTube: Olamide - Abule Sowo [Official Video]. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "baddest-video",
+    "title": "Baddest (DJ Neptune ft. Olamide, Stonebwoy & BOJ)",
+    "era": "street-king-run",
+    "year": 2016,
+    "type": "music-video",
+    "source": "DJ Neptune",
+    "youtubeId": "fmcMs7U_Z94",
+    "note": "YouTube: DJ Neptune Ft. Olamide, Stonebwoy, Boj - Baddest (Official Music Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "bahd-baddo-baddest-video",
+    "title": "Bahd, Baddo, Baddest (Falz ft. Olamide & Davido)",
+    "era": "street-king-run",
+    "year": 2016,
+    "type": "music-video",
+    "source": "Falz",
+    "youtubeId": "n-AvAxGji6c",
+    "note": "YouTube: Falz - Bahd Baddo Baddest (Official Video) ft. Olamide, Davido. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "boys-are-not-smilling-video",
+    "title": "Boys Are Not Smiling",
+    "era": "street-king-run",
+    "year": 2016,
+    "type": "music-video",
+    "source": "Olamide",
+    "youtubeId": "fW-BYPCytyA",
+    "note": "YouTube: Boys Are Not Smiling (B.A.N.S). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "fada-fada-video",
+    "title": "Fada Fada (Phyno ft. Olamide)",
+    "era": "street-king-run",
+    "year": 2016,
+    "type": "music-video",
+    "source": "PhynoFino",
+    "youtubeId": "9F53UQ_2L_I",
+    "note": "YouTube: Phyno - Fada Fada [Official Video] ft. Olamide. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "formation-video",
+    "title": "Formation (Adekunle Gold ft. Olamide)",
+    "era": "street-king-run",
+    "year": 2016,
+    "type": "music-video",
+    "source": "Adekunle Gold",
+    "youtubeId": "cLkk7Qn3QS0",
+    "note": "YouTube: Adekunle Gold ft Olamide - Formation (Official Music Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "i-love-lagos-video",
+    "title": "I Love Lagos",
+    "era": "street-king-run",
+    "year": 2016,
+    "type": "music-video",
+    "source": "Olamide",
+    "youtubeId": "C2uyZVhWP8A",
+    "note": "YouTube: Olamide - I Love Lagos [Official Video]. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "jagaban-remix-video",
+    "title": "Jagaban Remix (Ycee ft. Olamide)",
+    "era": "street-king-run",
+    "year": 2016,
+    "type": "music-video",
+    "source": "TINNY ENTERTAINMENT",
+    "youtubeId": "qVLziml8jZ8",
+    "note": "YouTube: YCEE ft OLAMIDE - JAGABAN REMIX (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
     "id": "olic-live-2016",
-    "title": "OLIC — Olamide Live in Concert",
+    "title": "OLIC \u2014 Olamide Live in Concert",
     "era": "street-king-run",
     "year": 2016,
     "type": "live",
     "source": "YouTube",
     "youtubeId": "qcVIt0htv-M",
-    "note": "OLIC 3: Beast Mode — the concert series that proved street-hop could sell out a room."
+    "note": "OLIC 3: Beast Mode \u2014 the concert series that proved street-hop could sell out a room."
+  },
+  {
+    "id": "oya-dab-video",
+    "title": "Oya Dab (DJ Enimoney ft. Olamide)",
+    "era": "street-king-run",
+    "year": 2016,
+    "type": "music-video",
+    "source": "YBNL NATION",
+    "youtubeId": "2Z528LefbA0",
+    "note": "YouTube: Dj Enimoney   Oya Dab Ft Olamide. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "science-student-video",
+    "title": "Science Student",
+    "era": "street-king-run",
+    "year": 2016,
+    "type": "music-video",
+    "source": "Hushpuppi TV",
+    "youtubeId": "R5MfpCY3jUU",
+    "note": "YouTube: Olamide - Science Student Feat. Lagos Nawa (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "the-money-video",
+    "title": "The Money (Davido ft. Olamide)",
+    "era": "street-king-run",
+    "year": 2016,
+    "type": "music-video",
+    "source": "DMW HQ",
+    "youtubeId": "RF1k7CAzNtQ",
+    "note": "YouTube: The Money - Davido ft. Olamide (Official Music Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "fine-girl-video",
+    "title": "Fine Girl (Wale ft. Davido & Olamide)",
+    "era": "street-king-run",
+    "year": 2017,
+    "type": "music-video",
+    "source": "Wale",
+    "youtubeId": "442MVVbLTAA",
+    "note": "YouTube: Wale - Fine Girl (feat. Davido and Olamide) [OFFICIAL MUSIC VIDEO]. Sourced via the Waptrick music-clips checklist \u2014 embed only."
   },
   {
     "id": "wo-video",
@@ -60,6 +670,86 @@
     "note": "Shot in Bariga; sparked the #WoChallenge and pushed shaku shaku into the mainstream."
   },
   {
+    "id": "augment-video",
+    "title": "Augment (Phyno ft. Olamide)",
+    "era": "reinvention",
+    "year": 2018,
+    "type": "music-video",
+    "source": "PhynoFino",
+    "youtubeId": "sRjk2mBi24k",
+    "note": "YouTube: Phyno - Augment ft. Olamide (Official Music Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "hate-me-video",
+    "title": "Hate Me (ft. Wande Coal)",
+    "era": "reinvention",
+    "year": 2018,
+    "type": "music-video",
+    "source": "Olamide",
+    "youtubeId": "s4Ghxkl1oXQ",
+    "note": "YouTube: Olamide - Hate Me (Official Video) ft. Wande Coal. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "kana-video",
+    "title": "Kana (ft. Wizkid)",
+    "era": "reinvention",
+    "year": 2018,
+    "type": "music-video",
+    "source": "Olamide",
+    "youtubeId": "SIJ4vkDa5rI",
+    "note": "YouTube: Olamide, Wizkid - Kana (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "motigbana-video",
+    "title": "Motigbana",
+    "era": "reinvention",
+    "year": 2018,
+    "type": "music-video",
+    "source": "Olamide",
+    "youtubeId": "DR5dPcoIjOQ",
+    "note": "YouTube: Olamide - Motigbana (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "onyeoma-video",
+    "title": "Onyeoma (Phyno ft. Olamide)",
+    "era": "reinvention",
+    "year": 2018,
+    "type": "music-video",
+    "source": "PhynoFino",
+    "youtubeId": "_9JGNXLyJ4M",
+    "note": "YouTube: Phyno - Onyeoma (Official Video) ft. Olamide. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "summer-body-video",
+    "title": "Summer Body (ft. Davido)",
+    "era": "reinvention",
+    "year": 2018,
+    "type": "music-video",
+    "source": "Olamide",
+    "youtubeId": "Q0ijjIuGEaw",
+    "note": "YouTube: Olamide - Summer Body ft. Davido (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "wonma-video",
+    "title": "Wonma",
+    "era": "reinvention",
+    "year": 2019,
+    "type": "music-video",
+    "source": "VISUALS BY ARRY",
+    "youtubeId": "McegWoPp_Nw",
+    "note": "YouTube: Olamide - Wonma (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "bunda-video",
+    "title": "Bunda (Spinall ft. Olamide & Kemuel)",
+    "era": "reinvention",
+    "year": 2020,
+    "type": "music-video",
+    "source": "SPINALL",
+    "youtubeId": "C15c69SnnKg",
+    "note": "YouTube: SPINALL - Bunda (feat. Olamide and Kemuel) (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
     "id": "infinity-video",
     "title": "Infinity (ft. Omah Lay)",
     "era": "reinvention",
@@ -67,27 +757,17 @@
     "type": "music-video",
     "source": "OlamideVEVO",
     "youtubeId": "Pu69SyqwPGg",
-    "note": "Carpe Diem's defining streamer — Clarence Peters directs the melody-first reinvention for the camera."
+    "note": "Carpe Diem's defining streamer \u2014 Clarence Peters directs the melody-first reinvention for the camera."
   },
   {
-    "id": "rock-video",
-    "title": "Rock",
-    "era": "elder-statesman",
-    "year": 2021,
+    "id": "totori-video",
+    "title": "Totori (ft. Wizkid & Id Cabasa)",
+    "era": "reinvention",
+    "year": 2020,
     "type": "music-video",
-    "source": "OlamideVEVO",
-    "youtubeId": "6WkxiF7nnjY",
-    "note": "Lead single for UY Scuti — reggae and Afro-pop textures announcing a shorter, pop-facing chapter."
-  },
-  {
-    "id": "guardian-interview-2021",
-    "title": "\"People have a very limited understanding of the ghetto\"",
-    "era": "elder-statesman",
-    "year": 2021,
-    "type": "interview",
-    "source": "The Guardian",
-    "youtubeId": null,
-    "note": "Print/web interview (no video embed) — on Bariga, class, and what the streets actually taught him."
+    "source": "Olamide",
+    "youtubeId": "YgzrVs2eilU",
+    "note": "YouTube: Olamide, Wizkid, Id Cabasa - Totori (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
   },
   {
     "id": "apple-music-uy-scuti-2021",
@@ -97,7 +777,17 @@
     "type": "interview",
     "source": "Apple Music",
     "youtubeId": null,
-    "note": "On UY Scuti's turn toward pop — his sound now drawing from everything he's absorbed, not just the street-hop that built him."
+    "note": "On UY Scuti's turn toward pop \u2014 his sound now drawing from everything he's absorbed, not just the street-hop that built him."
+  },
+  {
+    "id": "guardian-interview-2021",
+    "title": "\"People have a very limited understanding of the ghetto\"",
+    "era": "elder-statesman",
+    "year": 2021,
+    "type": "interview",
+    "source": "The Guardian",
+    "youtubeId": null,
+    "note": "Print/web interview (no video embed) \u2014 on Bariga, class, and what the streets actually taught him."
   },
   {
     "id": "cnn-interview-2021",
@@ -107,7 +797,97 @@
     "type": "interview",
     "source": "CNN",
     "youtubeId": null,
-    "note": "On the 2020 Empire deal — a joint venture, not an acquisition — and staying low-key while YBNL's reach kept growing."
+    "note": "On the 2020 Empire deal \u2014 a joint venture, not an acquisition \u2014 and staying low-key while YBNL's reach kept growing."
+  },
+  {
+    "id": "free-of-charge-video",
+    "title": "Free of Charge (Joeboy ft. Olamide)",
+    "era": "elder-statesman",
+    "year": 2021,
+    "type": "music-video",
+    "source": "Joeboy",
+    "youtubeId": "7fq68vBE048",
+    "note": "YouTube: Joeboy X Olamide - Free Of Charge (Official Music Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "jinja-video",
+    "title": "Jinja",
+    "era": "elder-statesman",
+    "year": 2021,
+    "type": "music-video",
+    "source": "Olamide",
+    "youtubeId": "5FYvvWl1Frw",
+    "note": "YouTube: Olamide - Jinja (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "ojemba-video",
+    "title": "Ojemba (Phyno ft. Olamide)",
+    "era": "elder-statesman",
+    "year": 2021,
+    "type": "music-video",
+    "source": "PhynoFino",
+    "youtubeId": "zaNH0wNJkf4",
+    "note": "YouTube: Phyno & Olamide - Ojemba (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "rock-video",
+    "title": "Rock",
+    "era": "elder-statesman",
+    "year": 2021,
+    "type": "music-video",
+    "source": "OlamideVEVO",
+    "youtubeId": "6WkxiF7nnjY",
+    "note": "Lead single for UY Scuti \u2014 reggae and Afro-pop textures announcing a shorter, pop-facing chapter."
+  },
+  {
+    "id": "trumpet-video",
+    "title": "Trumpet (ft. CKay)",
+    "era": "elder-statesman",
+    "year": 2021,
+    "type": "music-video",
+    "source": "Olamide",
+    "youtubeId": "FcjOlcWaaU8",
+    "note": "YouTube: Olamide, CKay - Trumpet (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "zazoo-zehh-video",
+    "title": "ZaZoo Zehh (Portable & Poco Lee ft. Olamide)",
+    "era": "elder-statesman",
+    "year": 2021,
+    "type": "music-video",
+    "source": "Portable",
+    "youtubeId": "xuaLkwaTMEc",
+    "note": "YouTube: Portable x Poco Lee Ft. Olamide - ZaZoo Zehh [Official Video]. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "joy-video",
+    "title": "Joy (Pheelz ft. Olamide)",
+    "era": "elder-statesman",
+    "year": 2022,
+    "type": "music-video",
+    "source": "Pheelz",
+    "youtubeId": "hATYoXwunIQ",
+    "note": "YouTube: Pheelz ft Olamide - Joy (Official Music Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "kpe-paso-video",
+    "title": "Kpe Paso (Wande Coal ft. Olamide)",
+    "era": "elder-statesman",
+    "year": 2022,
+    "type": "music-video",
+    "source": "Wande Coal",
+    "youtubeId": "_nZtf-digb8",
+    "note": "YouTube: Wande Coal & Olamide - Kpe Paso (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "wahala-video",
+    "title": "Wahala (CKay ft. Olamide)",
+    "era": "elder-statesman",
+    "year": 2022,
+    "type": "music-video",
+    "source": "CKay",
+    "youtubeId": "s_VxUDKsTfc",
+    "note": "YouTube: CKay ft. Olamide - WAHALA [Official Music Video]. Sourced via the Waptrick music-clips checklist \u2014 embed only."
   },
   {
     "id": "amapiano-video",
@@ -117,7 +897,47 @@
     "type": "music-video",
     "source": "AsakeVEVO",
     "youtubeId": "l_-v1fNdSHs",
-    "note": "Asake lead with Olamide's guest verse — helped carry amapiano to a global audience, then earned a 2024 Grammy nomination for Best African Music Performance. Official video via AsakeVEVO."
+    "note": "Asake lead with Olamide's guest verse \u2014 helped carry amapiano to a global audience, then earned a 2024 Grammy nomination for Best African Music Performance. Official video via AsakeVEVO."
+  },
+  {
+    "id": "free-video",
+    "title": "Free (Olamide, Seyi Vibez & Muyeez)",
+    "era": "elder-statesman",
+    "year": 2023,
+    "type": "music-video",
+    "source": "Olamide",
+    "youtubeId": "7BguURFnSn8",
+    "note": "YouTube: Olamide, Seyi Vibez, Muyeez - Free (Official Visualizer). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "new-religion-video",
+    "title": "New Religion (with Asake)",
+    "era": "elder-statesman",
+    "year": 2023,
+    "type": "music-video",
+    "source": "Olamide",
+    "youtubeId": "KCep7O2YcOc",
+    "note": "YouTube: Olamide, Asake - New Religion (Official Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "skido-video",
+    "title": "Skido (Victony with Olamide)",
+    "era": "elder-statesman",
+    "year": 2023,
+    "type": "music-video",
+    "source": "Victony",
+    "youtubeId": "KEVgGbIKP38",
+    "note": "YouTube: Victony - Skido (with Olamide) [Official Music Video]. Sourced via the Waptrick music-clips checklist \u2014 embed only."
+  },
+  {
+    "id": "wave-video",
+    "title": "Wave",
+    "era": "elder-statesman",
+    "year": 2023,
+    "type": "music-video",
+    "source": "VibeNest",
+    "youtubeId": "8_5qmCCyEe4",
+    "note": "YouTube: OLAMIDE \u2013 WAVE (Official Music Video). Sourced via the Waptrick music-clips checklist \u2014 embed only."
   },
   {
     "id": "kai-video",
@@ -127,6 +947,6 @@
     "type": "music-video",
     "source": "OlamideVEVO",
     "youtubeId": "7tChMHOrQJM",
-    "note": "Fourteen years after Omo To Shan — the peer reunion that opens the self-titled chapter. Directed by Jyde Ajala."
+    "note": "Fourteen years after Omo To Shan \u2014 the peer reunion that opens the self-titled chapter. Directed by Jyde Ajala."
   }
 ]
