@@ -46,7 +46,7 @@ Curated, era-tagged gallery of embedded videos: music videos, freestyles, interv
 Shareable audiogram-style cards — decorative waveforms, key-bar context, era accent, and a link to the Spotify/YouTube embed. No hosted audio. Surfaced on matching album pages and the home “Deeper cuts” strip.
 
 ### Influence `/influence`
-Curated node graph (not AI similarity): Olamide at the center, mentors/peers/mentees/collaborators around him. Selecting a node opens a blurb and links into eras/albums. YBNL signees carry `signedYear` / `departedYear`; a **YBNL roster** filter shows the kingmaker timeline without a separate label route.
+Split magazine layout: compact hub (mentors/peers/collaborators/influences) beside an always-visible **YBNL roster timeline**. Selecting either side opens a shared detail blurb with era/album links. Filters dim/highlight; they never hide the roster. YBNL signees carry `signedYear` / `departedYear` (or `alumni` when the exit year is soft).
 
 ### Impact `/impact`
 Real geography (Leaflet + lat/lng) — Lagos / Nigeria / world views with editorial pins (origin, venue, concert, cultural, international). Not a live tour tracker.

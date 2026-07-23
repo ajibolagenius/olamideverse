@@ -17,10 +17,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const TICKER = [
-  "Mentors · peers · mentees",
-  "YBNL roster · signed & alumni",
+  "YBNL roster · always on",
+  "Mentors & peers · the orbit",
   "Curated, not algorithmic",
-  "Every node links back to the archive",
+  "Every name links back to the archive",
 ];
 
 export default async function InfluencePage() {
@@ -40,17 +40,17 @@ export default async function InfluencePage() {
             Influence <span className="text-danfo">graph</span>
           </>
         }
-        intro="Who shaped him, who he raised, who he traded bars with — a curated map of the people and currents around the career. The YBNL roster filter walks every documented signee from Lil Kesh to Asake; select a node to jump into the related era or album."
+        intro="Two compositions, one archive: the YBNL roster timeline (who he signed) beside a compact orbit of mentors, peers, and collaborators. Select a name to read the note and jump into the related era or album."
       />
       <Ticker items={TICKER} />
       <section className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
         <InfluenceGraph graph={graph} />
         <p className="mt-10 max-w-2xl text-sm leading-relaxed text-ink-soft">
-          This is editorial curation, not an AI similarity model. The YBNL roster
-          filter lists documented signees with signing years — high-confidence
-          exits carry end years; softer alumni tenures are marked without inventing
-          dates. Co-signs (Zlatan, Naira Marley, and the like) stay off the roster.
-          For the places the music moved through, see the{" "}
+          This is editorial curation, not an AI similarity model. The roster is
+          always visible — filters only dim or highlight. High-confidence exits
+          carry end years; softer alumni tenures are marked without inventing
+          dates. Co-signs stay off the roster. For the places the music moved
+          through, see the{" "}
           <Link href="/impact" className="font-semibold text-ink underline hover:text-oxide">
             Impact map
           </Link>
