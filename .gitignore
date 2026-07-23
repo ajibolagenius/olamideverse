@@ -40,6 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# script reports
+/scripts/out/
+
 
 # IDE
 design-system/OlamideVerse_UI_design
