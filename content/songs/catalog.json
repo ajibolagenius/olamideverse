@@ -20,6 +20,9 @@
       "id": "carpe-diem--eru"
     },
     {
+      "id": "carpe-diem--loading"
+    },
+    {
       "id": "eyan-mayweather--bobo"
     },
     {
@@ -59,6 +62,10 @@
     },
     {
       "id": "the-glory--owo-blow"
+    },
+    {
+      "id": "the-glory--pepper-dem-gang",
+      "singleYear": 2017
     },
     {
       "id": "unruly--new-religion"
@@ -134,6 +141,17 @@
       "note": "Early feature credited in Toni Payne Concepts / Linda Ikeji intro",
       "source": "Linda Ikeji",
       "sourceUrl": "http://lindaikeji.blogspot.com/2010/09/introducing-hottest-new-kid-on-da-block.html"
+    },
+    {
+      "id": "single--tribute-to-dagrin-2010",
+      "title": "Tribute to Dagrin",
+      "year": 2010,
+      "era": "the-upstart",
+      "type": "single",
+      "status": "documented",
+      "note": "Coded Tunes–era tribute after DaGrin's passing (April 2010); circulated in contemporary blog press before / alongside the Eni Duro rollout. Distinct from the later 2012 collab with Seriki & Tupengo.",
+      "source": "Contemporary blogs / Illuminaija",
+      "sourceUrl": "https://www.illuminaija.com/mp3-download-audio/download-olamide-tribute-to-dagrin-mp3/"
     },
     {
       "id": "feature--apa-ti-jabo-2011",
@@ -512,6 +530,18 @@
       "note": "Pele Pele featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+    },
+    {
+      "id": "feature--tribute-to-dagrin-2012",
+      "title": "Tribute to Dagrin",
+      "year": 2012,
+      "era": "first-of-all",
+      "type": "feature",
+      "status": "documented",
+      "artists": "Olamide, Seriki, Tupengo",
+      "note": "April 2012 collaborative tribute (second anniversary of DaGrin's death) — separate from the 2010 Coded Tunes solo cut.",
+      "source": "Tooxclusive",
+      "sourceUrl": "https://tooxclusive.com/songs/olamideseriki-n-tupengo-tribute-to-dagrin/"
     },
     {
       "id": "feature--unite-2012",
