@@ -9,12 +9,14 @@ import {
     influenceGraphSchema,
     mediaItemSchema,
     snippetSchema,
+    songCatalogFileSchema,
     type Album,
     type Era,
     type ImpactPlace,
     type InfluenceGraph,
     type MediaItem,
     type Snippet,
+    type Song,
 } from "./content-schema";
 import { createPublicClient } from "@/lib/supabase/public";
 
@@ -360,4 +362,110 @@ export async function getInfluenceGraph(): Promise<InfluenceGraph> {
 export async function getImpactPlaces(): Promise<ImpactPlace[]> {
     const eras = await getEras();
     return fileImpactPlaces(new Set(eras.map((e) => e.slug)));
+}
+
+/** Stable slug for song catalogue IDs. */
+export function slugifySongPart(value: string): string {
+    return value
+        .toLowerCase()
+        .normalize("NFKD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)/g, "");
+}
+
+/**
+ * Map a release year onto the era spine (docs/CONCEPT.md §4).
+ * Used for catalog entries that aren't tied to an album row.
+ */
+export function eraSlugForYear(year: number): string {
+    if (year <= 2011) return "the-upstart";
+    if (year <= 2013) return "first-of-all";
+    if (year <= 2017) return "street-king-run";
+    if (year <= 2020) return "reinvention";
+    if (year <= 2023) return "elder-statesman";
+    return "legacy";
+}
+
+export function albumTrackSongId(albumSlug: string, title: string): string {
+    return `${albumSlug}--${slugifySongPart(title)}`;
+}
+
+function deriveAlbumTracks(
+    albums: Album[],
+    alsoSingles: Map<string, number | undefined>,
+): Song[] {
+    const songs: Song[] = [];
+    for (const album of albums) {
+        for (const track of album.tracklist) {
+            const id = albumTrackSongId(album.slug, track.title);
+            const singleYear = alsoSingles.get(id);
+            const alsoSingle = alsoSingles.has(id);
+            songs.push({
+                id,
+                title: track.title,
+                year: singleYear ?? album.year,
+                era: album.era,
+                type: "album-track",
+                status: track.spotifyTrackId || track.youtubeId ? "verified" : "documented",
+                note: track.note,
+                albumSlug: album.slug,
+                trackNum: track.num,
+                alsoSingle: alsoSingle || undefined,
+                singleYear,
+                spotifyTrackId: track.spotifyTrackId,
+                youtubeId: track.youtubeId,
+                source: "OlamideVerse discography",
+            });
+        }
+    }
+    return songs;
+}
+
+function fileSongCatalog(eraSlugs: Set<string>, albumSlugs: Set<string>) {
+    const file = path.join(CONTENT_DIR, "songs", "catalog.json");
+    if (!fs.existsSync(file)) {
+        return { alsoSingles: [], entries: [] as Song[] };
+    }
+    const raw = JSON.parse(fs.readFileSync(file, "utf8"));
+    const parsed = songCatalogFileSchema.parse(raw);
+    for (const entry of parsed.entries) {
+        if (!eraSlugs.has(entry.era)) {
+            throw new Error(
+                `songs/catalog.json "${entry.id}" references unknown era "${entry.era}"`,
+            );
+        }
+        if (entry.albumSlug && !albumSlugs.has(entry.albumSlug)) {
+            throw new Error(
+                `songs/catalog.json "${entry.id}" references unknown album "${entry.albumSlug}"`,
+            );
+        }
+    }
+    return parsed;
+}
+
+export async function getSongs(): Promise<Song[]> {
+    const [eras, albums] = await Promise.all([getEras(), getAlbums()]);
+    const eraSlugs = new Set(eras.map((e) => e.slug));
+    const albumSlugs = new Set(albums.map((a) => a.slug));
+    const catalog = fileSongCatalog(eraSlugs, albumSlugs);
+
+    const alsoSingles = new Map(
+        catalog.alsoSingles.map((row) => [row.id, row.singleYear] as const),
+    );
+    const derived = deriveAlbumTracks(albums, alsoSingles);
+    const songs: Song[] = [...derived, ...catalog.entries];
+
+    const seen = new Set<string>();
+    for (const song of songs) {
+        if (seen.has(song.id)) {
+            throw new Error(`Duplicate song catalogue id "${song.id}"`);
+        }
+        seen.add(song.id);
+    }
+
+    return songs.sort((a, b) => {
+        if (a.year !== b.year) return a.year - b.year;
+        return a.title.localeCompare(b.title);
+    });
 }

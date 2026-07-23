@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import AlbumGrid from "@/components/AlbumGrid";
 import PosterHero from "@/components/PosterHero";
 import Ticker from "@/components/chrome/Ticker";
@@ -41,6 +42,15 @@ export default async function AlbumsPage() {
       />
       <Ticker items={TICKER} />
       <section className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
+        <p className="mb-8 max-w-2xl text-sm leading-relaxed text-ink-soft">
+          Looking for a single cut, feature or freestyle across the whole run?{" "}
+          <Link
+            href="/songs"
+            className="font-semibold text-ink underline decoration-2 underline-offset-2 hover:text-oxide"
+          >
+            Open the Songs catalogue →
+          </Link>
+        </p>
         <AlbumGrid albums={albums} eras={eras} showFavorites={flags.fanzone} />
       </section>
     </>

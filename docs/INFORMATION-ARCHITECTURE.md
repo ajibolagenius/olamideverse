@@ -12,6 +12,7 @@
 /eras/[era]             Era chapter — scrollytelling deep dive
 /albums                 Discography — grid of albums & mixtapes
 /albums/[slug]          Album detail — tracklist, embeds, story, credits
+/songs                  Song catalogue — album tracks, singles, features, freestyles, lives, snippets
 /media                  Media gallery — videos, freestyles, interviews (embeds)
 /snippets               Audiogram-style share cards (visual + embed links)
 /snippets/[id]          Snippet detail — card, embed, share
@@ -39,6 +40,9 @@ Grid of all albums and mixtapes, filterable by era and year, sortable by release
 ### Album detail `/albums/[slug]`
 Cover, year, era link, credits, tracklist with per-track embeds (Spotify primary, YouTube/Audiomack fallback), and a short written story of the album — where it landed, what it changed. Lyrics *context* (commentary on key bars), not full lyric reproduction (licensing).
 
+### Songs catalogue `/songs`
+Living index of documented songs from ~2010 to today: album tracks (derived from discography MDX), plus researched singles, features, freestyles, lives, snippets and other. Titles, years, credits, optional embeds — no full lyrics. Filter by type / era, search, sort by year. Verification tiers: verified · documented · lore. Not a claim of absolute completeness.
+
 ### Media `/media`
 Curated, era-tagged gallery of embedded videos: music videos, freestyles, interviews, live moments. Curation notes over completeness.
 
@@ -60,6 +64,7 @@ Fan-project statement, non-affiliation disclaimer, takedown contact, credits for
 content/
   eras/[era].mdx          # chapter prose + frontmatter (slug, title, years, thesis, accent, order)
   albums/[slug].mdx       # album story + frontmatter (title, year, era, type, cover, tracklist[], embeds{})
+  songs/catalog.json      # non–album-track catalogue + alsoSingles overlays; album cuts derived at load
   media/media.json        # curated list: { id, title, era, year, type, youtubeId|embedUrl, note }
   snippets/snippets.json  # audiogram cards: { id, quote, note, track, albumSlug, era, embeds… }
   influence/graph.json    # { nodes[], edges[] } for the influence graph
@@ -72,9 +77,9 @@ content/
 
 ## Navigation
 
-- **Header:** wordmark · Eras · Discography · Media · About — plus persistent "fan project" micro-disclaimer.
-- **Footer:** snippets, influence, impact, legal, source credits, takedown contact, Fan Zone when enabled.
-- **Cross-linking rule:** every album links to its era; every era lists its albums; media items link both ways; snippets link to album + era; influence/impact nodes link back into chapters. The archive should feel like one continuous fabric, not siloed sections.
+- **Header:** wordmark · Eras · Discography · Songs · Media · About — plus persistent "fan project" micro-disclaimer.
+- **Footer:** songs, snippets, influence, impact, legal, source credits, takedown contact, Fan Zone when enabled.
+- **Cross-linking rule:** every album links to its era; every era lists its albums; media items link both ways; snippets link to album + era; song catalogue rows link to albums when known; influence/impact nodes link back into chapters. The archive should feel like one continuous fabric, not siloed sections.
 
 ## Fan Zone [Phase 3 — sketch only]
 

@@ -15,6 +15,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         { url: SITE_URL, changeFrequency: "weekly", priority: 1 },
         { url: `${SITE_URL}/eras`, changeFrequency: "weekly", priority: 0.9 },
         { url: `${SITE_URL}/albums`, changeFrequency: "weekly", priority: 0.9 },
+        { url: `${SITE_URL}/songs`, changeFrequency: "weekly", priority: 0.85 },
         { url: `${SITE_URL}/media`, changeFrequency: "monthly", priority: 0.8 },
         { url: `${SITE_URL}/snippets`, changeFrequency: "monthly", priority: 0.75 },
         { url: `${SITE_URL}/influence`, changeFrequency: "monthly", priority: 0.7 },

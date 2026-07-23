@@ -14,6 +14,18 @@ no public routes. When one fires, update the named content surfaces and
       Charts and platform first-party figures; put numbers on the album page
       and the matching era moments (not a standalone charts page).
 
+## Songs catalogue (`/songs`)
+
+- [ ] **New album / EP** — album tracks derive automatically from MDX tracklists;
+      add lead singles that also appear on the album to `alsoSingles` in
+      `content/songs/catalog.json` (do not duplicate as `type: "single"`).
+- [ ] **Non-album single** — add a `single` row to `catalog.json` with year, era,
+      status, and embed IDs when stable.
+- [ ] **Feature / freestyle / live / snippet** — same file; prefer
+      `documented` until an embed ID exists, then promote to `verified`.
+- [ ] Keep IDs stable (`album-slug--track-title`, `feature--slug-year`, …).
+      Duplicate IDs fail the build.
+
 ## YBNL Nation roster
 
 - [ ] **New signing** — add an Influence node with `signedYear`, mentee role,

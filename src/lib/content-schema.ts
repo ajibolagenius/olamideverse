@@ -164,11 +164,86 @@ export const impactPlaceSchema = z.object({
     map: z.enum(["lagos", "nigeria", "world"]).default("nigeria"),
 });
 
+export const SONG_TYPES = [
+    "album-track",
+    "single",
+    "feature",
+    "freestyle",
+    "live",
+    "snippet",
+    "other",
+] as const;
+
+export const SONG_STATUSES = ["verified", "documented", "lore"] as const;
+
+/** Catalogue types that live in content/songs/catalog.json (not derived from albums). */
+export const CATALOG_SONG_TYPES = [
+    "single",
+    "feature",
+    "freestyle",
+    "live",
+    "snippet",
+    "other",
+] as const;
+
+export const songSchema = z.object({
+    id: z.string().min(1),
+    title: z.string().min(1),
+    year: z.number().int(),
+    era: z.string(),
+    type: z.enum(SONG_TYPES),
+    status: z.enum(SONG_STATUSES),
+    /** Primary/host artist for features, or collab credit line. */
+    artists: z.string().optional(),
+    /** Short credit / context — never full lyrics. */
+    note: z.string().optional(),
+    albumSlug: z.string().optional(),
+    trackNum: z.number().int().min(1).optional(),
+    alsoSingle: z.boolean().optional(),
+    /** Promo year when it differs from the album year. */
+    singleYear: z.number().int().optional(),
+    spotifyTrackId: z.string().optional(),
+    youtubeId: z.string().optional(),
+    source: z.string().optional(),
+    sourceUrl: z.string().url().optional(),
+});
+
+/** Non–album-track rows only — album cuts are derived from MDX. */
+export const catalogSongSchema = songSchema.extend({
+    type: z.enum(CATALOG_SONG_TYPES),
+});
+
+export const alsoSingleOverlaySchema = z.object({
+    id: z.string().min(1),
+    singleYear: z.number().int().optional(),
+});
+
+export const songCatalogFileSchema = z.object({
+    alsoSingles: z.array(alsoSingleOverlaySchema).default([]),
+    entries: z.array(catalogSongSchema).default([]),
+});
+
 export const ALBUM_TYPE_LABEL: Record<z.infer<typeof albumSchema>["type"], string> = {
     album: "Album",
     mixtape: "Mixtape",
     ep: "EP",
     joint: "Collab Album",
+};
+
+export const SONG_TYPE_LABEL: Record<(typeof SONG_TYPES)[number], string> = {
+    "album-track": "Album track",
+    single: "Single",
+    feature: "Feature",
+    freestyle: "Freestyle",
+    live: "Live",
+    snippet: "Snippet",
+    other: "Other",
+};
+
+export const SONG_STATUS_LABEL: Record<(typeof SONG_STATUSES)[number], string> = {
+    verified: "Verified",
+    documented: "Documented",
+    lore: "Lore",
 };
 
 export const INFLUENCE_ROLE_LABEL: Record<
@@ -203,3 +278,8 @@ export type InfluenceNode = z.infer<typeof influenceNodeSchema>;
 export type InfluenceEdge = z.infer<typeof influenceEdgeSchema>;
 export type InfluenceGraph = z.infer<typeof influenceGraphSchema>;
 export type ImpactPlace = z.infer<typeof impactPlaceSchema>;
+export type Song = z.infer<typeof songSchema>;
+export type CatalogSong = z.infer<typeof catalogSongSchema>;
+export type SongCatalogFile = z.infer<typeof songCatalogFileSchema>;
+export type SongType = (typeof SONG_TYPES)[number];
+export type SongStatus = (typeof SONG_STATUSES)[number];

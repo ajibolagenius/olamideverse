@@ -24,7 +24,7 @@ const COLOPHON = [
   },
   {
     heading: "Sourcing",
-    body: "Career facts and dates cross-checked against public sources — Wikipedia, AllMusic, contemporary music press and the artist's own interviews.",
+    body: "Career facts and dates cross-checked against public sources — Wikipedia, AllMusic, contemporary music press and the artist's own interviews. The Songs catalogue draws lead/feature/freestyle tables from the Wikipedia discography plus early-2010 blog credits, with verification tiers on every row.",
   },
   {
     heading: "Visual system",
@@ -63,8 +63,13 @@ export default function AboutPage() {
         <p className="mb-4 text-lg leading-relaxed">
           This is not a music player with extra pages. It&apos;s a cultural
           archive with the music running through it — every track lives here
-          as an embed, never hosted, because the point is context, not
-          catalog. It is not a fan forum, and it is not a tech demo: motion
+          as an embed, never hosted, because the point is context, not a
+          streaming library. The{" "}
+          <Link href="/songs" className="font-semibold text-ink underline decoration-2 underline-offset-2 hover:text-oxide">
+            Songs catalogue
+          </Link>{" "}
+          indexes titles and credits across the run; eras and albums carry the
+          story. It is not a fan forum, and it is not a tech demo: motion
           and interactivity exist to serve the story, never to show off.
         </p>
         <p className="text-lg leading-relaxed">
@@ -116,6 +121,14 @@ export default function AboutPage() {
           graph, and a real-geography impact map of places the music touched.
         </p>
         <ul className="flex flex-col gap-3 text-sm font-semibold sm:flex-row sm:flex-wrap sm:gap-x-6">
+          <li>
+            <Link
+              href="/songs"
+              className="underline decoration-2 underline-offset-2 hover:text-oxide"
+            >
+              Songs catalogue →
+            </Link>
+          </li>
           <li>
             <Link
               href="/snippets"

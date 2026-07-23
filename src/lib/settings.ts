@@ -17,6 +17,7 @@ const DEFAULT_DISCLAIMER = {
 const DEFAULT_NAV: NavLink[] = [
     { href: "/eras", label: "Eras" },
     { href: "/albums", label: "Discography" },
+    { href: "/songs", label: "Songs" },
     { href: "/media", label: "Media" },
     { href: "/about", label: "About" },
     { href: "/fanzone", label: "Fan Zone" },
@@ -73,6 +74,7 @@ export async function getNavigation() {
 
 /** Archive extras that must remain even when CMS overrides footer.links. */
 const ARCHIVE_FOOTER_LINKS: NavLink[] = [
+    { href: "/songs", label: "Songs" },
     { href: "/snippets", label: "Snippets" },
     { href: "/influence", label: "Influence" },
     { href: "/impact", label: "Impact" },
