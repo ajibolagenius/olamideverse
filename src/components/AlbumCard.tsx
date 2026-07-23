@@ -21,7 +21,7 @@ export default function AlbumCard({
     era.accent === "danfo" ? ACCENTS.danfo.gradient[1] : ACCENTS[era.accent].solid;
   return (
     <div
-      className="ov-paste-up relative"
+      className="ov-paste-up ov-tape relative"
       data-tilt={tilt}
       style={{ rotate: `${tilt}deg` }}
     >

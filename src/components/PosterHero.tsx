@@ -36,12 +36,17 @@ export default function PosterHero({
             <span>{kickerRight}</span>
           </div>
         ) : null}
-        <span
-          className="mb-5 inline-block -rotate-1 px-3 py-1.5 text-[0.8rem] font-bold tracking-[0.1em] uppercase"
-          style={{ background: accent, color: onAccent }}
-        >
-          {eyebrow}
-        </span>
+        <div className="mb-5 flex flex-wrap items-center gap-3">
+          <span
+            className="inline-block -rotate-1 px-3 py-1.5 text-[0.8rem] font-bold tracking-[0.1em] uppercase"
+            style={{ background: accent, color: onAccent }}
+          >
+            {eyebrow}
+          </span>
+          <span className="ov-stamp text-danfo border-danfo/60">
+            Editorial Dossier
+          </span>
+        </div>
         <h1
           className={`ov-ink-wipe font-display ${
             size === "xl" ? "text-display-xl" : "text-display-lg"

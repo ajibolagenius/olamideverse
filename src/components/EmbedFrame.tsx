@@ -43,10 +43,13 @@ export default function EmbedFrame({
   }
 
   return (
-    <div className="border-[3px] border-ink bg-ink shadow-paste-sm">
-      <div className="flex items-center justify-between px-3 py-1.5 text-[0.68rem] tracking-[0.06em] uppercase text-ink-muted">
-        <span>Now playing</span>
-        <span className="text-danfo">{title}</span>
+    <div className="ov-tape border-[3px] border-ink bg-ink shadow-paste-sm">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-ink-soft/40 px-3.5 py-2 text-[0.7rem] font-bold tracking-[0.06em] uppercase text-ink-muted">
+        <div className="flex items-center gap-2">
+          <span className="inline-block size-2 rounded-full bg-danfo animate-pulse" aria-hidden />
+          <span>Archive Embed</span>
+        </div>
+        <span className="truncate font-semibold text-danfo">{title}</span>
       </div>
       {player ?? (
         <div className="border-t border-[#3A332B] px-3 py-6 text-center text-sm text-ink-muted">

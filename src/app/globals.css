@@ -212,7 +212,7 @@
   }
 }
 
-/* duotone-shift: era-accent overlay over every photo, scrubbed out by GSAP */
+/* duotone-shift: era-accent overlay over every photo, scrubbed out by GSAP or hovered */
 .ov-duotone {
   position: relative;
   overflow: hidden;
@@ -223,6 +223,72 @@
   pointer-events: none;
   mix-blend-mode: color;
   background: var(--ov-duotone-color, var(--color-adire));
+  transition: opacity 0.4s ease;
+}
+.ov-duotone:hover .ov-duotone-overlay {
+  opacity: 0.15;
+}
+
+/* Corner masking tape styling — gives cards and photos a paste-up pinned look */
+.ov-tape {
+  position: relative;
+}
+.ov-tape::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: 18px;
+  width: 52px;
+  height: 18px;
+  background: rgba(244, 239, 230, 0.85);
+  border: 1px dashed rgba(24, 20, 16, 0.3);
+  transform: rotate(2.5deg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+  z-index: 10;
+}
+.ov-tape-left::after {
+  right: auto;
+  left: 18px;
+  transform: rotate(-3deg);
+}
+
+/* Rubber stamp badge — vintage editorial archive stamp */
+.ov-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  border: 2px dashed currentColor;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: rotate(-1.5deg);
+  user-select: none;
+}
+
+/* Marker highlight effect — marker swipe for key phrases */
+.ov-marker-highlight {
+  position: relative;
+  display: inline;
+  background-image: linear-gradient(
+    120deg,
+    color-mix(in srgb, var(--color-danfo) 65%, transparent) 0%,
+    color-mix(in srgb, var(--color-danfo) 85%, transparent) 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 40%;
+  background-position: 0 88%;
+}
+
+/* Enhanced paste-up interactive hover states */
+.ov-paste-up {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ov-paste-up:hover {
+  transform: translateY(-3px) rotate(var(--hover-tilt, -0.2deg));
+  box-shadow: var(--shadow-paste);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -234,6 +300,9 @@
   }
   .ov-duotone-overlay {
     opacity: 0.35; /* keep the duotone treatment, skip the scrub */
+  }
+  .ov-paste-up:hover {
+    transform: none;
   }
 }
 
