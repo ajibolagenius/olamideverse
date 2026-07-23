@@ -28,6 +28,18 @@ const ROLE_TEXT: Record<InfluenceNode["role"], string> = {
   influence: "#F4EFE6",
 };
 
+/** Special filter: nodes with YBNL signing years (kingmaker roster). */
+const ROSTER_FILTER = "ybnl-roster";
+
+function rosterSpan(node: InfluenceNode): string | null {
+  if (!node.signedYear) return null;
+  return `${node.signedYear}–${node.departedYear ?? "present"}`;
+}
+
+function isRosterNode(node: InfluenceNode): boolean {
+  return typeof node.signedYear === "number";
+}
+
 export default function InfluenceGraph({ graph }: { graph: InfluenceGraphData }) {
   const reactId = useId();
   const [activeId, setActiveId] = useState(
@@ -40,25 +52,41 @@ export default function InfluenceGraph({ graph }: { graph: InfluenceGraphData })
     [graph.nodes],
   );
   const active = activeId ? byId.get(activeId) : undefined;
+  const rosterActive = roleFilter === ROSTER_FILTER;
+
+  const rosterNodes = useMemo(
+    () =>
+      graph.nodes
+        .filter(isRosterNode)
+        .sort((a, b) => (a.signedYear ?? 0) - (b.signedYear ?? 0)),
+    [graph.nodes],
+  );
 
   const roleOptions = useMemo(() => {
     const present = new Set(graph.nodes.map((n) => n.role));
     return [
       { value: "all", label: "All" },
+      ...(rosterNodes.length > 0
+        ? [{ value: ROSTER_FILTER, label: "YBNL roster" }]
+        : []),
       ...([...present] as InfluenceNode["role"][])
         .filter((r) => r !== "center")
         .map((r) => ({ value: r, label: INFLUENCE_ROLE_LABEL[r] })),
     ];
-  }, [graph.nodes]);
+  }, [graph.nodes, rosterNodes.length]);
 
   const visibleIds = useMemo(() => {
     if (roleFilter === "all") return new Set(graph.nodes.map((n) => n.id));
     const ids = new Set<string>(["olamide"]);
+    if (rosterActive) {
+      for (const node of rosterNodes) ids.add(node.id);
+      return ids;
+    }
     for (const node of graph.nodes) {
       if (node.role === roleFilter) ids.add(node.id);
     }
     return ids;
-  }, [graph.nodes, roleFilter]);
+  }, [graph.nodes, roleFilter, rosterActive, rosterNodes]);
 
   const linked = useMemo(() => {
     if (!activeId) return new Set<string>();
@@ -72,10 +100,31 @@ export default function InfluenceGraph({ graph }: { graph: InfluenceGraphData })
 
   const chipNodes = useMemo(() => {
     if (roleFilter === "all") return graph.nodes;
+    if (rosterActive) {
+      return [
+        graph.nodes.find((n) => n.role === "center"),
+        ...rosterNodes,
+      ].filter((n): n is InfluenceNode => Boolean(n));
+    }
     return graph.nodes.filter(
       (n) => n.role === "center" || n.role === roleFilter,
     );
-  }, [graph.nodes, roleFilter]);
+  }, [graph.nodes, roleFilter, rosterActive, rosterNodes]);
+
+  function applyFilter(next: string) {
+    setRoleFilter(next);
+    if (next === "all") return;
+    if (next === ROSTER_FILTER) {
+      if (active && !isRosterNode(active) && active.role !== "center") {
+        setActiveId(rosterNodes[0]?.id ?? activeId);
+      }
+      return;
+    }
+    if (active && active.role !== next && active.role !== "center") {
+      const first = graph.nodes.find((n) => n.role === next);
+      if (first) setActiveId(first.id);
+    }
+  }
 
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(280px,0.85fr)] lg:items-start">
@@ -95,7 +144,8 @@ export default function InfluenceGraph({ graph }: { graph: InfluenceGraphData })
               </p>
               {active.signedYear ? (
                 <span className="inline-block border border-ink bg-paper-dim px-2 py-0.5 text-[0.68rem] font-bold tracking-[0.05em] uppercase text-ink">
-                  YBNL Roster: {active.signedYear} — {active.departedYear ?? "Present"}
+                  YBNL · {rosterSpan(active)}
+                  {active.departedYear ? " · alumni" : " · current"}
                 </span>
               ) : null}
             </div>
@@ -135,43 +185,73 @@ export default function InfluenceGraph({ graph }: { graph: InfluenceGraphData })
 
         <div className="mt-6 border-t-2 border-ink pt-5">
           <p className="mb-2.5 text-[0.7rem] font-bold tracking-[0.08em] uppercase text-ink-soft">
-            Filter by role
+            Filter
           </p>
           <FilterChips
-            label="Influence roles"
+            label="Influence roles and YBNL roster"
             options={roleOptions}
             value={roleFilter}
-            onChange={(v) => {
-              setRoleFilter(v);
-              if (v !== "all" && active && active.role !== v && active.role !== "center") {
-                const first = graph.nodes.find((n) => n.role === v);
-                if (first) setActiveId(first.id);
-              }
-            }}
+            onChange={applyFilter}
           />
         </div>
+
+        {rosterActive ? (
+          <ol className="mt-5 border-t border-ink/20 pt-4">
+            <li className="mb-2.5 text-[0.7rem] font-bold tracking-[0.08em] uppercase text-ink-soft">
+              Roster timeline
+            </li>
+            {rosterNodes.map((node) => {
+              const selected = node.id === activeId;
+              return (
+                <li key={node.id}>
+                  <button
+                    type="button"
+                    onClick={() => setActiveId(node.id)}
+                    className={`flex w-full items-baseline justify-between gap-3 border-b border-ink/15 py-2 text-left ${
+                      selected ? "text-ink" : "text-ink-soft hover:text-ink"
+                    }`}
+                  >
+                    <span className="text-[0.85rem] font-bold">{node.name}</span>
+                    <span className="shrink-0 text-[0.68rem] font-bold tracking-[0.04em] uppercase">
+                      {rosterSpan(node)}
+                      {node.departedYear ? "" : " · now"}
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
+          </ol>
+        ) : null}
 
         <div
           role="listbox"
           aria-label="People in the graph"
           className="mt-5 flex flex-wrap gap-1.5"
         >
-          {chipNodes.map((node) => (
-            <button
-              key={node.id}
-              type="button"
-              role="option"
-              aria-selected={node.id === activeId}
-              onClick={() => setActiveId(node.id)}
-              className={`min-h-9 border-2 border-ink px-2.5 py-1.5 text-[0.68rem] font-bold tracking-[0.04em] uppercase ${
-                node.id === activeId
-                  ? "bg-ink text-paper"
-                  : "bg-paper-dim text-ink hover:bg-white"
-              }`}
-            >
-              {node.name}
-            </button>
-          ))}
+          {chipNodes.map((node) => {
+            const span = rosterSpan(node);
+            return (
+              <button
+                key={node.id}
+                type="button"
+                role="option"
+                aria-selected={node.id === activeId}
+                onClick={() => setActiveId(node.id)}
+                className={`min-h-9 border-2 border-ink px-2.5 py-1.5 text-[0.68rem] font-bold tracking-[0.04em] uppercase ${
+                  node.id === activeId
+                    ? "bg-ink text-paper"
+                    : "bg-paper-dim text-ink hover:bg-white"
+                }`}
+              >
+                {node.name}
+                {span ? (
+                  <span className="ml-1.5 opacity-70 normal-case tracking-normal">
+                    {span}
+                  </span>
+                ) : null}
+              </button>
+            );
+          })}
         </div>
 
         <ul className="mt-5 flex flex-wrap gap-2 border-t border-ink/20 pt-4">
@@ -256,7 +336,9 @@ export default function InfluenceGraph({ graph }: { graph: InfluenceGraphData })
                   tabIndex={0}
                   role="button"
                   aria-pressed={selected}
-                  aria-label={`${node.name}, ${INFLUENCE_ROLE_LABEL[node.role]}`}
+                  aria-label={`${node.name}, ${INFLUENCE_ROLE_LABEL[node.role]}${
+                    rosterSpan(node) ? `, YBNL ${rosterSpan(node)}` : ""
+                  }`}
                   onKeyDown={(e) => {
                     if (e.key === "Enter" || e.key === " ") {
                       e.preventDefault();

@@ -291,6 +291,19 @@ function fileInfluenceGraph(eraSlugs: Set<string>): InfluenceGraph {
                 `influence graph node "${node.id}" references unknown era "${node.eraSlug}"`,
             );
         }
+        if (
+            node.departedYear != null &&
+            (node.signedYear == null || node.departedYear < node.signedYear)
+        ) {
+            throw new Error(
+                `influence graph node "${node.id}" has invalid YBNL roster years (signedYear/departedYear)`,
+            );
+        }
+        if (node.role === "mentee" && node.signedYear == null) {
+            throw new Error(
+                `influence graph mentee "${node.id}" requires signedYear for the YBNL roster filter`,
+            );
+        }
     }
     const nodeIds = new Set(graph.nodes.map((n) => n.id));
     for (const edge of graph.edges) {

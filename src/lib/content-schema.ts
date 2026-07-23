@@ -111,9 +111,9 @@ export const influenceNodeSchema = z.object({
     blurb: z.string(),
     eraSlug: z.string().optional(),
     albumSlug: z.string().optional(),
-    /** Year signed to YBNL (if mentee/alumnus). */
+    /** Year signed to YBNL — presence opts the node into the YBNL roster filter. */
     signedYear: z.number().int().optional(),
-    /** Year departed from YBNL (if alumnus). */
+    /** Year departed from YBNL (alumni); omit while still on the roster. */
     departedYear: z.number().int().optional(),
     /** Deep-link into an era moment — must match `momentAnchor(year, title)`. */
     momentAnchor: z.string().optional(),

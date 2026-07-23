@@ -40,7 +40,7 @@ The organizing spine of the whole platform is **Olamide's career told as eras** 
 5. **Elder Statesman (2021–2023)** — *UY Scuti*, *Unruly*; the label boss era — Fireboy DML, Asake — the empire's second generation.
 6. **Legacy (2024– )** — *Ikigai*, the self-titled *Olamidé*, and whatever comes next; this era stays open and grows.
 
-*(Era chapters and discography are written and navigable. Cover-art licensing remains the open content risk — disclosed on Legal. Keep verifying award categories as press sources conflict.)*
+*(Era chapters and discography are written and navigable. Cover-art licensing remains the open content risk — disclosed on Legal. Keep verifying award categories as press sources conflict. Editorial update triggers live in `CONTENT-TRIGGERS.md`.)*
 
 Every other section hangs off this spine: albums belong to eras, media belongs to eras, stories are era chapters.
 

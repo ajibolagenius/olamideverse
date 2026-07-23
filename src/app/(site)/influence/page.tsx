@@ -18,6 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const TICKER = [
   "Mentors · peers · mentees",
+  "YBNL roster · signed & alumni",
   "Curated, not algorithmic",
   "Every node links back to the archive",
 ];
@@ -39,14 +40,16 @@ export default async function InfluencePage() {
             Influence <span className="text-danfo">graph</span>
           </>
         }
-        intro="Who shaped him, who he raised, who he traded bars with — a curated map of the people and currents around the career. Select a node to read the note and jump into the related era or album."
+        intro="Who shaped him, who he raised, who he traded bars with — a curated map of the people and currents around the career. Use the YBNL roster filter for the kingmaker timeline; select a node to jump into the related era or album."
       />
       <Ticker items={TICKER} />
       <section className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
         <InfluenceGraph graph={graph} />
         <p className="mt-10 max-w-2xl text-sm leading-relaxed text-ink-soft">
-          This is editorial curation, not an AI similarity model. For the places
-          the music moved through, see the{" "}
+          This is editorial curation, not an AI similarity model. The YBNL roster
+          filter surfaces signees with signing and departure years — the
+          kingmaker lineage without a separate label page. For the places the
+          music moved through, see the{" "}
           <Link href="/impact" className="font-semibold text-ink underline hover:text-oxide">
             Impact map
           </Link>
