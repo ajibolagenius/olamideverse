@@ -111,6 +111,10 @@ export const influenceNodeSchema = z.object({
     blurb: z.string(),
     eraSlug: z.string().optional(),
     albumSlug: z.string().optional(),
+    /** Year signed to YBNL (if mentee/alumnus). */
+    signedYear: z.number().int().optional(),
+    /** Year departed from YBNL (if alumnus). */
+    departedYear: z.number().int().optional(),
     /** Deep-link into an era moment — must match `momentAnchor(year, title)`. */
     momentAnchor: z.string().optional(),
     /** Position in the graph canvas, 0–100. */

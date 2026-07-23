@@ -83,15 +83,22 @@ export default function InfluenceGraph({ graph }: { graph: InfluenceGraphData })
       <aside className="order-1 border-[3px] border-ink bg-white p-5 shadow-paste-sm sm:p-6 lg:order-2">
         {active ? (
           <>
-            <p
-              className="mb-3 inline-block px-2.5 py-1 text-[0.7rem] font-bold tracking-[0.08em] uppercase"
-              style={{
-                background: ROLE_FILL[active.role],
-                color: ROLE_TEXT[active.role],
-              }}
-            >
-              {INFLUENCE_ROLE_LABEL[active.role]}
-            </p>
+            <div className="mb-3 flex flex-wrap items-center gap-2">
+              <p
+                className="inline-block px-2.5 py-1 text-[0.7rem] font-bold tracking-[0.08em] uppercase"
+                style={{
+                  background: ROLE_FILL[active.role],
+                  color: ROLE_TEXT[active.role],
+                }}
+              >
+                {INFLUENCE_ROLE_LABEL[active.role]}
+              </p>
+              {active.signedYear ? (
+                <span className="inline-block border border-ink bg-paper-dim px-2 py-0.5 text-[0.68rem] font-bold tracking-[0.05em] uppercase text-ink">
+                  YBNL Roster: {active.signedYear} — {active.departedYear ?? "Present"}
+                </span>
+              ) : null}
+            </div>
             <h2 className="font-display mb-3 text-3xl">{active.name}</h2>
             <p className="mb-5 text-[0.98rem] leading-relaxed text-ink-soft">
               {active.blurb}

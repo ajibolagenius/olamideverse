@@ -129,6 +129,8 @@
       "role": "mentee",
       "blurb": "Early YBNL signee — Shoki-era breakout and proof the label could mint stars beyond its founder.",
       "eraSlug": "first-of-all",
+      "signedYear": 2014,
+      "departedYear": 2016,
       "momentAnchor": "moment-ybnl-wins-big",
       "x": 78,
       "y": 40
@@ -139,6 +141,8 @@
       "role": "mentee",
       "blurb": "Designed YBNL's logo before Olamide signed him in 2015 — debut album Gold reached the Billboard World Albums chart before he left to go solo in 2016.",
       "eraSlug": "first-of-all",
+      "signedYear": 2015,
+      "departedYear": 2016,
       "momentAnchor": "moment-ybnl-wins-big",
       "x": 92,
       "y": 32
@@ -150,6 +154,7 @@
       "blurb": "YBNL's melodic second generation — Empire-era reach, Carpe Diem closer, and the label's international face.",
       "eraSlug": "reinvention",
       "albumSlug": "carpe-diem",
+      "signedYear": 2018,
       "momentAnchor": "moment-ybnl-empire",
       "x": 62,
       "y": 70
@@ -161,6 +166,8 @@
       "blurb": "The log-drum breakout Olamide signed and then traded bars with — Unruly and Ikigai as living proof of the pipeline, before launching his own imprint, Giran Republic, in 2025.",
       "eraSlug": "elder-statesman",
       "albumSlug": "unruly",
+      "signedYear": 2022,
+      "departedYear": 2025,
       "momentAnchor": "moment-amapiano-goes-global",
       "x": 50,
       "y": 82
@@ -172,6 +179,7 @@
       "blurb": "On Unruly with the label's second generation — another ear Olamide backed as the founder stepped into elder mode.",
       "eraSlug": "elder-statesman",
       "albumSlug": "unruly",
+      "signedYear": 2023,
       "x": 38,
       "y": 70
     }
