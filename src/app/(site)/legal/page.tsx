@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PageHeader from "@/components/ui/PageHeader";
 import { getGeneralSettings } from "@/lib/settings";
 import { resolvePageMetadata } from "@/lib/site";
 
@@ -16,13 +17,16 @@ export default async function LegalPage() {
 
   return (
     <>
-      <div className="border-b-[6px] border-danfo bg-ink px-5 sm:px-8">
-        <div className="mx-auto max-w-3xl py-11">
-          <h1 className="font-display text-4xl text-paper sm:text-5xl">
-            Legal &amp; Disclaimer
-          </h1>
-        </div>
-      </div>
+      <PageHeader
+        dark
+        kicker="Disclaimer · copyright · takedown"
+        title={
+          <>
+            Legal &amp; <span className="text-danfo">Disclaimer</span>
+          </>
+        }
+        intro="Fan archive rules of the road — affiliation, embeds, images, and how to request a correction or removal."
+      />
 
       <section className="mx-auto max-w-3xl px-5 py-14 sm:px-8">
         <div className="ov-paste-up mb-10 border-[3px] border-ink bg-danfo-tint p-6 shadow-paste-sm">
@@ -91,7 +95,7 @@ export default async function LegalPage() {
           Corrections are welcome — see the contact below.
         </p>
 
-        <h2 id="takedown" className="font-display mb-3 scroll-mt-24 text-2xl">
+        <h2 id="takedown" className="font-display mb-3 scroll-mt-28 text-2xl">
           Takedown requests
         </h2>
         <p className="mb-4 text-lg leading-relaxed">
@@ -99,14 +103,14 @@ export default async function LegalPage() {
           and want content corrected, credited, or removed, this project
           will comply promptly with any reasonable request.
         </p>
-        <div className="inline-block border-[3px] border-ink bg-white px-6 py-5 shadow-paste-sm">
+        <div className="ov-paste-up inline-block border-[3px] border-ink bg-white px-6 py-5 shadow-paste-sm">
           <span className="mb-1 block text-[0.85rem] font-bold tracking-[0.06em] uppercase">
             Contact
           </span>
           {takedownEmail ? (
             <a
               href={`mailto:${takedownEmail}`}
-              className="text-adire underline hover:text-oxide"
+              className="ov-link-underline text-adire hover:text-oxide"
             >
               {takedownEmail}
             </a>

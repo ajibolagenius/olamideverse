@@ -1,4 +1,6 @@
 import Link from "next/link";
+import type { CSSProperties } from "react";
+import SectionLabel from "@/components/ui/SectionLabel";
 import { ACCENTS } from "@/lib/accents";
 import type { Era } from "@/lib/content";
 
@@ -6,17 +8,15 @@ export default function NextChapterCta({ nextEra }: { nextEra: Era }) {
   const accent = ACCENTS[nextEra.accent];
   return (
     <section className="mx-auto max-w-6xl px-5 pb-20 sm:px-8">
-      <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
-        Next chapter
-      </p>
+      <SectionLabel>Next chapter</SectionLabel>
       <Link
         href={`/eras/${nextEra.slug}`}
-        className="group flex flex-wrap items-center justify-between gap-4 border-[3px] border-ink bg-(--tint) px-7 py-6 transition-colors hover:bg-(--solid) hover:text-paper"
+        className="ov-paste-up group flex flex-wrap items-center justify-between gap-4 border-[3px] border-ink bg-(--tint) px-7 py-6 shadow-paste-sm transition-colors hover:bg-(--solid) hover:text-paper"
         style={
           {
             "--tint": accent.tint,
             "--solid": accent.solid,
-          } as React.CSSProperties
+          } as CSSProperties
         }
       >
         <span>

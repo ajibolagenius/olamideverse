@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PosterHero from "@/components/PosterHero";
 import Ticker from "@/components/chrome/Ticker";
+import SectionLabel from "@/components/ui/SectionLabel";
 
 // Next.js auto-injects `<meta name="robots" content="noindex">` for any
 // response that resolves to a 404 status, so there's no `robots` field (and
@@ -40,10 +41,8 @@ export default function NotFound() {
 
       <Ticker items={TICKER} />
 
-      <section className="mx-auto max-w-3xl px-5 py-14 sm:px-8">
-        <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
-          Skip to
-        </p>
+        <section className="mx-auto max-w-3xl px-5 py-14 sm:px-8">
+        <SectionLabel>Skip to</SectionLabel>
         <div
           className="ov-paste-up border-[3px] border-ink bg-white shadow-paste"
           data-tilt="-0.5"
@@ -83,7 +82,7 @@ export default function NotFound() {
 
         <p className="mt-8 text-sm text-ink-soft">
           Think this is a broken link on our end? See{" "}
-          <Link href="/legal" className="font-semibold text-adire underline hover:text-oxide">
+          <Link href="/legal" className="ov-link-underline font-semibold text-adire hover:text-oxide">
             Legal
           </Link>{" "}
           for a contact.

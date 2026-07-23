@@ -77,8 +77,8 @@ content/
 
 ## Navigation
 
-- **Header:** wordmark · Eras · Discography · Songs · Media · About — plus persistent "fan project" micro-disclaimer.
-- **Footer:** songs, snippets, influence, impact, legal, source credits, takedown contact, Fan Zone when enabled.
+- **Header (lean sticky):** wordmark · Eras · Discography · Media · **More** (Songs, Snippets, Influence, Impact, About, Legal) · Fan Zone CTA when enabled — plus persistent "fan project" micro-disclaimer. Mobile uses a full-viewport paste-up drawer with the same groups.
+- **Footer:** three columns — Archive (Songs, Snippets) · Explore (Eras, Discography, Media, Influence, Impact) · Meta (About, Legal, Source credits, Takedown, Fan Zone when enabled) — plus wordmark and archival blurb.
 - **Cross-linking rule:** every album links to its era; every era lists its albums; media items link both ways; snippets link to album + era; song catalogue rows link to albums when known; influence/impact nodes link back into chapters. The archive should feel like one continuous fabric, not siloed sections.
 
 ## Fan Zone [Phase 3 — sketch only]

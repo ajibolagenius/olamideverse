@@ -2,21 +2,15 @@ import DisclaimerStrip from "@/components/chrome/DisclaimerStrip";
 import SiteFooter from "@/components/chrome/SiteFooter";
 import SiteHeader from "@/components/chrome/SiteHeader";
 import { FanProvider } from "@/lib/fanzone/useFan";
-import {
-  getDisclaimer,
-  getFeatureFlags,
-  getFooter,
-  getNavigation,
-} from "@/lib/settings";
+import { getDisclaimer, getFeatureFlags, getFooter } from "@/lib/settings";
 
 export default async function SiteLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [disclaimer, nav, footer, flags] = await Promise.all([
+  const [disclaimer, footer, flags] = await Promise.all([
     getDisclaimer(),
-    getNavigation(),
     getFooter(),
     getFeatureFlags(),
   ]);
@@ -37,10 +31,15 @@ export default async function SiteLayout({
   const needsFanSession = flags.fanzone || flags.comments || flags.polls;
   const shell = (
     <>
+      <a href="#main-content" className="ov-skip-link">
+        Skip to content
+      </a>
       <DisclaimerStrip text={disclaimer.text} highlight={disclaimer.highlight} />
-      <SiteHeader links={nav} />
-      <main className="flex-1">{children}</main>
-      <SiteFooter links={footer.links} blurb={footer.blurb} />
+      <SiteHeader showFanZone={flags.fanzone} />
+      <main id="main-content" className="flex-1" tabIndex={-1}>
+        {children}
+      </main>
+      <SiteFooter blurb={footer.blurb} showFanZone={flags.fanzone} />
     </>
   );
 

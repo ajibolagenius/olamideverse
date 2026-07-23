@@ -41,21 +41,23 @@ export default async function SongsPage() {
       />
       <Ticker items={TICKER} />
       <section className="mx-auto max-w-7xl px-5 py-10 sm:px-8">
-        <p className="mb-8 max-w-3xl text-sm leading-relaxed text-ink-soft">
-          {songs.length} entries right now ({albumTrackCount} album tracks ·{" "}
-          {catalogCount} researched). Status badges mark confidence:{" "}
-          <b className="text-ink">Verified</b> has a working embed,{" "}
-          <b className="text-ink">Documented</b> has a cited release,{" "}
-          <b className="text-ink">Lore</b> is fan-memory / soft evidence. Album
-          cuts stay linked to the{" "}
-          <Link
-            href="/albums"
-            className="font-semibold text-ink underline decoration-2 underline-offset-2 hover:text-oxide"
-          >
-            Discography
-          </Link>
-          .
-        </p>
+        <div className="mb-8 border-l-[6px] border-danfo bg-paper-dim/50 px-5 py-4">
+          <p className="max-w-3xl text-sm leading-relaxed text-ink-soft">
+            {songs.length} entries right now ({albumTrackCount} album tracks ·{" "}
+            {catalogCount} researched). Status badges mark confidence:{" "}
+            <b className="text-ink">Verified</b> has a working embed,{" "}
+            <b className="text-ink">Documented</b> has a cited release,{" "}
+            <b className="text-ink">Lore</b> is fan-memory / soft evidence. Album
+            cuts stay linked to the{" "}
+            <Link
+              href="/albums"
+              className="ov-link-underline font-semibold text-ink hover:text-oxide"
+            >
+              Discography
+            </Link>
+            .
+          </p>
+        </div>
         <SongCatalog songs={songs} eras={eras} />
       </section>
     </>

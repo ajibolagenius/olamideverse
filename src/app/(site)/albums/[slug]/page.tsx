@@ -8,6 +8,7 @@ import CoverArt from "@/components/CoverArt";
 import EmptyState from "@/components/EmptyState";
 import Prose from "@/components/Prose";
 import Tracklist from "@/components/Tracklist";
+import SectionLabel from "@/components/ui/SectionLabel";
 import { ACCENTS, accentChrome } from "@/lib/accents";
 import {
   ALBUM_TYPE_LABEL,
@@ -150,12 +151,14 @@ export default async function AlbumPage({
           >
             Part of Era {String(era.order).padStart(2, "0")} — {era.title} →
           </Link>
-          <h1 className="font-display text-display-lg mb-5">{album.title}</h1>
+          <h1 className="ov-ink-wipe font-display text-display-lg mb-5">{album.title}</h1>
           {metaFacts.length > 0 ? (
-            <div className="mb-6 flex flex-wrap gap-7 border-y-4 border-ink py-3.5 text-sm text-ink-soft">
+            <div className="mb-6 flex flex-wrap gap-7 border-y-[6px] border-ink bg-paper-dim/40 py-3.5 text-sm text-ink-soft">
               {metaFacts.map((fact) => (
                 <span key={fact.label}>
-                  <b className="block text-ink">{fact.label}</b>
+                  <b className="block text-[0.7rem] tracking-[0.1em] uppercase text-ink">
+                    {fact.label}
+                  </b>
                   {fact.value}
                 </span>
               ))}
@@ -166,7 +169,7 @@ export default async function AlbumPage({
       </section>
 
       <section className="mx-auto max-w-6xl px-5 pt-8 pb-16 sm:px-8">
-        <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">Tracklist</p>
+        <SectionLabel>Tracklist</SectionLabel>
         {album.tracklist.length > 0 ? (
           <div className="grid gap-11 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
             <Tracklist
@@ -195,7 +198,7 @@ export default async function AlbumPage({
                   </div>
                 ))}
                 {album.credits ? (
-                  <div className="border-[3px] border-ink bg-white p-[18px] shadow-paste-sm">
+                  <div className="ov-paste-up border-[3px] border-ink bg-white p-[18px] shadow-paste-sm">
                     <h3 className="mb-2.5 text-xs font-bold tracking-[0.06em] uppercase">
                       Credits
                     </h3>
@@ -216,10 +219,7 @@ export default async function AlbumPage({
             <p className="text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
               Share a snippet
             </p>
-            <Link
-              href="/snippets"
-              className="text-sm font-semibold underline decoration-2 underline-offset-2 hover:text-oxide"
-            >
+            <Link href="/snippets" className="ov-btn ov-btn-ghost px-3 py-1.5 text-xs">
               All snippets →
             </Link>
           </div>
@@ -237,9 +237,7 @@ export default async function AlbumPage({
 
       {flags.comments ? (
         <section className="mx-auto max-w-6xl px-5 pb-20 sm:px-8">
-          <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
-            Talk about it
-          </p>
+          <SectionLabel>Talk about it</SectionLabel>
           <CommentBox
             threadId={`album-${album.slug}`}
             threadLabel={album.title}

@@ -5,7 +5,8 @@ import Ticker from "@/components/chrome/Ticker";
 import DisclaimerStrip from "@/components/chrome/DisclaimerStrip";
 import SiteFooter from "@/components/chrome/SiteFooter";
 import SiteHeader from "@/components/chrome/SiteHeader";
-import { getDisclaimer, getFooter, getNavigation } from "@/lib/settings";
+import SectionLabel from "@/components/ui/SectionLabel";
+import { getDisclaimer, getFeatureFlags, getFooter } from "@/lib/settings";
 
 // Lives at the app root (not inside the `(site)` route group) because
 // that's what Next.js actually renders for a fully unmatched URL. It
@@ -16,9 +17,6 @@ import { getDisclaimer, getFooter, getNavigation } from "@/lib/settings";
 // pages (era/album slug lookups), since that route group has no
 // not-found.tsx of its own.
 
-// Next.js auto-injects `<meta name="robots" content="noindex">` for any
-// response that resolves to a 404 status, so there's no `robots` field (and
-// no real path to declare `canonical` for) here — just title/description.
 export const metadata: Metadata = {
   title: "Page not found",
   description:
@@ -39,18 +37,21 @@ const DESTINATIONS = [
 ];
 
 export default async function NotFound() {
-  const [disclaimer, nav, footer] = await Promise.all([
+  const [disclaimer, footer, flags] = await Promise.all([
     getDisclaimer(),
-    getNavigation(),
     getFooter(),
+    getFeatureFlags(),
   ]);
 
   return (
     <>
+      <a href="#main-content" className="ov-skip-link">
+        Skip to content
+      </a>
       <DisclaimerStrip text={disclaimer.text} highlight={disclaimer.highlight} />
-      <SiteHeader links={nav} />
+      <SiteHeader showFanZone={flags.fanzone} />
 
-      <main className="flex-1">
+      <main id="main-content" className="flex-1" tabIndex={-1}>
         <PosterHero
           eyebrow="404 — Off the Record"
           title={
@@ -64,9 +65,7 @@ export default async function NotFound() {
         <Ticker items={TICKER} />
 
         <section className="mx-auto max-w-3xl px-5 py-14 sm:px-8">
-          <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
-            Skip to
-          </p>
+          <SectionLabel>Skip to</SectionLabel>
           <div
             className="ov-paste-up border-[3px] border-ink bg-white shadow-paste"
             data-tilt="-0.5"
@@ -106,7 +105,7 @@ export default async function NotFound() {
 
           <p className="mt-8 text-sm text-ink-soft">
             Think this is a broken link on our end? See{" "}
-            <Link href="/legal" className="font-semibold text-adire underline hover:text-oxide">
+            <Link href="/legal" className="ov-link-underline font-semibold text-adire hover:text-oxide">
               Legal
             </Link>{" "}
             for a contact.
@@ -114,7 +113,7 @@ export default async function NotFound() {
         </section>
       </main>
 
-      <SiteFooter links={footer.links} blurb={footer.blurb} />
+      <SiteFooter blurb={footer.blurb} showFanZone={flags.fanzone} />
     </>
   );
 }

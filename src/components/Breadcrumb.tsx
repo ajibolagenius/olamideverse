@@ -22,10 +22,10 @@ export default function Breadcrumb({
   if (items.length === 0) return null;
 
   return (
-    <div className="mx-auto max-w-6xl px-5 pt-4 sm:px-8">
+    <div className="mx-auto max-w-6xl px-5 pt-5 sm:px-8">
       <nav
         aria-label="Breadcrumb"
-        className="text-sm uppercase tracking-[0.06em] text-ink-soft"
+        className="border-b border-ink/15 pb-3 text-sm uppercase tracking-[0.06em] text-ink-soft"
       >
         <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
           {items.map((item, index) => {
@@ -33,17 +33,17 @@ export default function Breadcrumb({
             return (
               <li key={`${item.label}-${index}`} className="flex items-center gap-x-2">
                 {index > 0 ? (
-                  <span aria-hidden="true" className="text-ink-soft/70">
+                  <span aria-hidden="true" className="text-ink/35">
                     /
                   </span>
                 ) : null}
                 {item.href && !isLast ? (
-                  <Link href={item.href} className="hover:text-oxide">
+                  <Link href={item.href} className="ov-link-underline hover:text-oxide">
                     {item.label}
                   </Link>
                 ) : (
                   <span
-                    className={isLast ? "text-ink" : undefined}
+                    className={isLast ? "font-semibold text-ink" : undefined}
                     aria-current={isLast ? "page" : undefined}
                   >
                     {item.label}
@@ -58,17 +58,20 @@ export default function Breadcrumb({
       {previous || next ? (
         <nav
           aria-label="Adjacent pages"
-          className="mt-2.5 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-t border-ink/15 pt-2.5 text-xs uppercase tracking-[0.06em]"
+          className="mt-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-xs uppercase tracking-[0.06em]"
         >
           {previous ? (
-            <Link href={previous.href} className="text-ink-soft hover:text-oxide">
+            <Link href={previous.href} className="ov-link-underline text-ink-soft hover:text-oxide">
               ← {previous.label}
             </Link>
           ) : (
             <span />
           )}
           {next ? (
-            <Link href={next.href} className="ml-auto text-ink-soft hover:text-oxide">
+            <Link
+              href={next.href}
+              className="ov-link-underline ml-auto text-ink-soft hover:text-oxide"
+            >
               {next.label} →
             </Link>
           ) : null}

@@ -18,7 +18,7 @@ export default function FavoritesList({ initialFavorites }: { initialFavorites: 
       {favorites.map((fav) => (
         <div
           key={fav.id}
-          className="flex items-center justify-between gap-3 border-[3px] border-ink bg-white px-3.5 py-3 shadow-paste-sm"
+          className="ov-paste-up flex items-center justify-between gap-3 border-[3px] border-ink bg-white px-3.5 py-3 shadow-paste-sm"
         >
           <Link href={fav.href} className="font-bold">
             {fav.label}

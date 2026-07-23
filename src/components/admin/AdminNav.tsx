@@ -35,8 +35,8 @@ export function AdminSidebarNav({ role }: { role: AdminRole }) {
                       aria-current={active ? "page" : undefined}
                       className={
                         active
-                          ? "block border-l-2 border-danfo bg-white px-2 py-1.5 text-sm font-bold text-ink"
-                          : "block border-l-2 border-transparent px-2 py-1.5 text-sm font-medium text-ink hover:border-danfo hover:bg-white"
+                          ? "block border-l-[3px] border-danfo bg-white px-2 py-1.5 text-sm font-bold text-ink shadow-paste-sm"
+                          : "block border-l-[3px] border-transparent px-2 py-1.5 text-sm font-medium text-ink hover:border-danfo hover:bg-white"
                       }
                     >
                       {item.label}
@@ -68,8 +68,8 @@ export function AdminMobileNav({ role }: { role: AdminRole }) {
               aria-current={active ? "page" : undefined}
               className={
                 active
-                  ? "shrink-0 border-2 border-ink bg-danfo px-2 py-1 text-[0.65rem] font-bold uppercase"
-                  : "shrink-0 border-2 border-ink bg-white px-2 py-1 text-[0.65rem] font-semibold uppercase"
+                  ? "ov-btn ov-btn-danfo shrink-0 px-2 py-1 text-[0.65rem]"
+                  : "ov-btn ov-btn-ghost shrink-0 px-2 py-1 text-[0.65rem]"
               }
             >
               {item.label}

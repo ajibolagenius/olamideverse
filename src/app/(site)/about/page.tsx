@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PosterHero from "@/components/PosterHero";
 import PullQuote from "@/components/PullQuote";
+import SectionLabel from "@/components/ui/SectionLabel";
 import { resolvePageMetadata } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -49,10 +50,8 @@ export default function AboutPage() {
       />
 
       <section className="mx-auto max-w-3xl px-5 pt-16 sm:px-8">
-        <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
-          What this is
-        </p>
-        <h2 className="font-display mb-5 text-4xl">Archive. Editorial. Street.</h2>
+        <SectionLabel>What this is</SectionLabel>
+        <h2 className="ov-ink-wipe font-display mb-5 text-4xl">Archive. Editorial. Street.</h2>
         <p className="mb-4 text-lg leading-relaxed">
           Streaming platforms have the songs. Blogs have the news.
           OlamideVerse exists because nobody had put the <b>story</b> in one
@@ -65,7 +64,7 @@ export default function AboutPage() {
           archive with the music running through it — every track lives here
           as an embed, never hosted, because the point is context, not a
           streaming library. The{" "}
-          <Link href="/songs" className="font-semibold text-ink underline decoration-2 underline-offset-2 hover:text-oxide">
+          <Link href="/songs" className="ov-link-underline font-semibold text-ink hover:text-oxide">
             Songs catalogue
           </Link>{" "}
           indexes titles and credits across the run; eras and albums carry the
@@ -90,9 +89,7 @@ export default function AboutPage() {
       </section>
 
       <section className="mx-auto max-w-3xl px-5 pt-12 sm:px-8">
-        <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
-          Who made it
-        </p>
+        <SectionLabel>Who made it</SectionLabel>
         <h2 className="font-display mb-5 text-3xl">A fan project, built in the open</h2>
         <p className="mb-4 text-lg leading-relaxed">
           OlamideVerse is an independent, unofficial archive made by a fan of
@@ -104,7 +101,7 @@ export default function AboutPage() {
         <p className="text-lg leading-relaxed text-ink-soft">
           If anything here is inaccurate, out of date, or should be removed
           at the rights holder&apos;s request, see the{" "}
-          <Link href="/legal" className="font-semibold text-adire underline hover:text-oxide">
+          <Link href="/legal" className="ov-link-underline font-semibold text-adire hover:text-oxide">
             Legal
           </Link>{" "}
           page for a takedown contact.
@@ -112,54 +109,31 @@ export default function AboutPage() {
       </section>
 
       <section className="mx-auto max-w-3xl px-5 pt-12 sm:px-8">
-        <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
-          Deeper in the archive
-        </p>
+        <SectionLabel>Deeper in the archive</SectionLabel>
         <h2 className="font-display mb-5 text-3xl">Lineage & geography</h2>
         <p className="mb-6 text-lg leading-relaxed text-ink-soft">
           Beyond eras and albums — shareable snippet cards, a curated influence
           graph, and a real-geography impact map of places the music touched.
+          Find them under More in the header, or here:
         </p>
-        <ul className="flex flex-col gap-3 text-sm font-semibold sm:flex-row sm:flex-wrap sm:gap-x-6">
-          <li>
-            <Link
-              href="/songs"
-              className="underline decoration-2 underline-offset-2 hover:text-oxide"
-            >
-              Songs catalogue →
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/snippets"
-              className="underline decoration-2 underline-offset-2 hover:text-oxide"
-            >
-              Audiogram snippets →
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/influence"
-              className="underline decoration-2 underline-offset-2 hover:text-oxide"
-            >
-              Influence graph →
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/impact"
-              className="underline decoration-2 underline-offset-2 hover:text-oxide"
-            >
-              Impact map →
-            </Link>
-          </li>
-        </ul>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/songs" className="ov-btn ov-btn-ghost px-4 py-2 text-xs">
+            Songs catalogue →
+          </Link>
+          <Link href="/snippets" className="ov-btn ov-btn-ghost px-4 py-2 text-xs">
+            Audiogram snippets →
+          </Link>
+          <Link href="/influence" className="ov-btn ov-btn-ghost px-4 py-2 text-xs">
+            Influence graph →
+          </Link>
+          <Link href="/impact" className="ov-btn ov-btn-ghost px-4 py-2 text-xs">
+            Impact map →
+          </Link>
+        </div>
       </section>
 
       <section className="mx-auto max-w-3xl px-5 py-16 sm:px-8">
-        <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
-          Colophon
-        </p>
+        <SectionLabel>Colophon</SectionLabel>
         <div
           className="ov-paste-up grid gap-6 border-[3px] border-ink bg-white p-7 shadow-paste-sm sm:grid-cols-2"
           data-tilt="-0.4"

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Modal from "@/components/ui/Modal";
 import { useFan } from "@/lib/fanzone/useFan";
 import { votePoll } from "@/lib/fanzone/mutations";
 import type { PollDef } from "@/lib/fanzone/polls";
@@ -25,6 +26,7 @@ export default function PollCard({
   );
   const [pending, setPending] = useState(false);
   const [showPicker, setShowPicker] = useState(false);
+  const [pendingOption, setPendingOption] = useState<string | null>(null);
 
   const voted = Boolean(userVote);
   const total = Object.values(voteCounts).reduce((a, b) => a + b, 0);
@@ -40,6 +42,7 @@ export default function PollCard({
   const handleVote = (optionId: string) => {
     if (voted || pending) return;
     if (!fanState.fan) {
+      setPendingOption(optionId);
       setShowPicker(true);
       return;
     }
@@ -47,7 +50,7 @@ export default function PollCard({
   };
 
   return (
-    <div className="border-2 border-ink bg-white p-4">
+    <div className="ov-paste-up border-[3px] border-ink bg-white p-4 shadow-paste-sm">
       <h3 className="font-display mb-2.5 text-lg">{poll.question}</h3>
       <div className="flex flex-col gap-1.5">
         {poll.options.map((option) => {
@@ -58,7 +61,7 @@ export default function PollCard({
               type="button"
               disabled={voted || pending}
               onClick={() => handleVote(option.id)}
-              className="relative overflow-hidden border-2 border-ink px-2.5 py-2 text-left text-sm font-semibold disabled:cursor-default"
+              className="relative overflow-hidden border-2 border-ink px-2.5 py-2 text-left text-sm font-semibold transition-colors hover:bg-danfo-tint disabled:cursor-default disabled:hover:bg-transparent"
             >
               {voted ? (
                 <span
@@ -83,11 +86,24 @@ export default function PollCard({
       <p className="mt-2 text-[0.62rem] tracking-[0.04em] uppercase text-ink-soft">
         {voted ? `${total} votes total` : "Vote to see the results"}
       </p>
-      {showPicker && !fanState.fan ? (
-        <div className="mt-3">
-          <HandlePicker fanState={fanState} onSaved={() => setShowPicker(false)} />
-        </div>
-      ) : null}
+      <Modal
+        open={showPicker && !fanState.fan}
+        onClose={() => {
+          setShowPicker(false);
+          setPendingOption(null);
+        }}
+        title="Pick a handle"
+      >
+        <HandlePicker
+          fanState={fanState}
+          prompt="Save a fan handle to cast your vote."
+          onSaved={() => {
+            setShowPicker(false);
+            if (pendingOption) castVote(pendingOption);
+            setPendingOption(null);
+          }}
+        />
+      </Modal>
     </div>
   );
 }

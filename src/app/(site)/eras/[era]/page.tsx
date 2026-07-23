@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { CSSProperties } from "react";
 import AlbumCard from "@/components/AlbumCard";
 import AudiogramCard from "@/components/AudiogramCard";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -13,6 +14,7 @@ import PosterHero from "@/components/PosterHero";
 import PullQuote from "@/components/PullQuote";
 import RelatedArchive from "@/components/RelatedArchive";
 import Ticker from "@/components/chrome/Ticker";
+import SectionLabel from "@/components/ui/SectionLabel";
 import { ACCENTS, accentChrome } from "@/lib/accents";
 import {
   getAlbumsByEra,
@@ -75,7 +77,7 @@ export default async function EraPage({
     : eras.find((e) => e.order === era.order + 1);
 
   return (
-    <>
+    <div style={{ "--ov-era-accent": accent.solid } as CSSProperties}>
       <Breadcrumb
         items={[
           { label: "Eras", href: "/eras" },
@@ -119,10 +121,8 @@ export default async function EraPage({
       {era.contextBody.length > 0 ? (
         <section className="mx-auto grid max-w-6xl gap-11 px-5 py-20 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <div>
-            <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
-              The context
-            </p>
-            <h2 className="font-display text-display-lg mb-5 max-w-[16ch]">
+            <SectionLabel>The context</SectionLabel>
+            <h2 className="ov-ink-wipe font-display text-display-lg mb-5 max-w-[16ch]">
               {era.contextHeading}
             </h2>
             <div className="max-w-[65ch]">
@@ -149,9 +149,9 @@ export default async function EraPage({
 
       {albums.length > 0 ? (
         <section className="mx-auto max-w-6xl px-5 pb-14 sm:px-8">
-          <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
+          <SectionLabel>
             The {albums.length === 1 ? "album" : "albums"} of the era
-          </p>
+          </SectionLabel>
           <div className="grid max-w-4xl grid-cols-2 gap-6 sm:grid-cols-3">
             {albums.map((album, i) => (
               <AlbumCard
@@ -181,10 +181,7 @@ export default async function EraPage({
               </p>
               <h2 className="font-display text-display-md">Bars from this era</h2>
             </div>
-            <Link
-              href="/snippets"
-              className="text-sm font-semibold underline decoration-2 underline-offset-2 hover:text-oxide"
-            >
+            <Link href="/snippets" className="ov-btn ov-btn-ghost px-3 py-1.5 text-xs">
               All snippets →
             </Link>
           </div>
@@ -237,10 +234,7 @@ export default async function EraPage({
               next. Check back as the archive grows, or revisit where it all
               started.
             </p>
-            <Link
-              href="/eras"
-              className="inline-block border-[3px] border-ink bg-danfo px-5 py-3 text-sm font-bold tracking-[0.06em] uppercase text-ink shadow-paste-sm"
-            >
+            <Link href="/eras" className="ov-btn ov-btn-danfo inline-block px-5 py-3 text-sm">
               Back to all eras
             </Link>
           </div>
@@ -249,9 +243,7 @@ export default async function EraPage({
 
       {flags.comments ? (
         <section className="mx-auto max-w-6xl px-5 pb-20 sm:px-8">
-          <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
-            Talk about it
-          </p>
+          <SectionLabel>Talk about it</SectionLabel>
           <CommentBox
             threadId={`era-${era.slug}`}
             threadLabel={era.title}
@@ -259,6 +251,6 @@ export default async function EraPage({
           />
         </section>
       ) : null}
-    </>
+    </div>
   );
 }

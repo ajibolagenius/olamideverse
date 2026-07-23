@@ -48,7 +48,7 @@ export default async function ImpactPage() {
           For the people around the music, open the{" "}
           <Link
             href="/influence"
-            className="font-semibold text-ink underline hover:text-oxide"
+            className="ov-link-underline font-semibold text-ink hover:text-oxide"
           >
             Influence graph
           </Link>

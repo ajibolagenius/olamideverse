@@ -14,17 +14,17 @@ const DEFAULT_DISCLAIMER = {
     highlight: "Not affiliated",
 };
 
+/** Lean primary + Fan Zone CTA. Secondary destinations live in More / footer groups (see src/lib/nav.ts). */
 const DEFAULT_NAV: NavLink[] = [
     { href: "/eras", label: "Eras" },
     { href: "/albums", label: "Discography" },
-    { href: "/songs", label: "Songs" },
     { href: "/media", label: "Media" },
-    { href: "/about", label: "About" },
     { href: "/fanzone", label: "Fan Zone" },
 ];
 
 const DEFAULT_FOOTER = {
     links: [
+        { href: "/songs", label: "Songs" },
         { href: "/snippets", label: "Snippets" },
         { href: "/influence", label: "Influence" },
         { href: "/impact", label: "Impact" },

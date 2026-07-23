@@ -42,15 +42,14 @@ export default async function AlbumsPage() {
       />
       <Ticker items={TICKER} />
       <section className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
-        <p className="mb-8 max-w-2xl text-sm leading-relaxed text-ink-soft">
-          Looking for a single cut, feature or freestyle across the whole run?{" "}
-          <Link
-            href="/songs"
-            className="font-semibold text-ink underline decoration-2 underline-offset-2 hover:text-oxide"
-          >
-            Open the Songs catalogue →
+        <div className="mb-10 flex flex-wrap items-center justify-between gap-4 border-b-[3px] border-ink pb-5">
+          <p className="max-w-2xl text-sm leading-relaxed text-ink-soft">
+            Looking for a single cut, feature or freestyle across the whole run?
+          </p>
+          <Link href="/songs" className="ov-btn ov-btn-ghost shrink-0 px-4 py-2 text-xs">
+            Songs catalogue →
           </Link>
-        </p>
+        </div>
         <AlbumGrid albums={albums} eras={eras} showFavorites={flags.fanzone} />
       </section>
     </>

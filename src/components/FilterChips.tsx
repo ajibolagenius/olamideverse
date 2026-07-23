@@ -24,7 +24,9 @@ export default function FilterChips({
             aria-pressed={active}
             onClick={() => onChange(option.value)}
             className={`border-2 border-ink px-2.5 py-1.5 text-[0.72rem] font-bold tracking-[0.04em] uppercase transition-colors ${
-              active ? "bg-ink text-paper" : "bg-white text-ink hover:bg-paper-dim"
+              active
+                ? "bg-ink text-paper shadow-paste-sm"
+                : "bg-white text-ink hover:bg-danfo-tint"
             }`}
           >
             {option.label}

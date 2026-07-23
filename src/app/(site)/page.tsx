@@ -3,6 +3,8 @@ import AlbumCard from "@/components/AlbumCard";
 import PhotoPlaceholder from "@/components/PhotoPlaceholder";
 import PosterHero from "@/components/PosterHero";
 import Ticker from "@/components/chrome/Ticker";
+import DoorCard from "@/components/ui/DoorCard";
+import SectionLabel from "@/components/ui/SectionLabel";
 import { getAlbumsByEra, getEra, getEras } from "@/lib/content";
 import { getHomePhoto } from "@/lib/photos";
 import { getFeatureFlags } from "@/lib/settings";
@@ -39,24 +41,6 @@ const DOORS = [
   },
 ] as const;
 
-const DEEPER = [
-  {
-    href: "/snippets",
-    title: "Audiogram snippets",
-    copy: "Shareable cards for the bars that define eras",
-  },
-  {
-    href: "/influence",
-    title: "Influence graph",
-    copy: "Mentors, peers, and the artists he raised",
-  },
-  {
-    href: "/impact",
-    title: "Impact map",
-    copy: "Bariga to the diaspora — where the story landed",
-  },
-] as const;
-
 export default async function Home() {
   const eras = await getEras();
   const upstart = (await getEra("the-upstart"))!;
@@ -82,23 +66,28 @@ export default async function Home() {
             the <span className="text-danfo">Empire</span>
           </>
         }
-        intro="Streaming platforms have the songs. Blogs have the news. Nobody has the story — the cultural context, the era-defining moments, the lineage from Coded Tunes to YBNL to the artists he raised. This is the archive, told era by era, album by album."
+        intro="The cultural context, the era-defining moments, the lineage from Coded Tunes to YBNL — told era by era, album by album."
       >
         <div className="mt-9 flex flex-wrap items-end justify-between gap-4 border-t-[6px] border-danfo pt-5">
-          <p className="max-w-[44ch] text-[#CFC7BB]">
-            Not a streaming service. Not a fan forum. An editorial archive
-            with the music running through it.
-          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/eras" className="ov-btn ov-btn-danfo px-5 py-3 text-sm">
+              Start with the eras →
+            </Link>
+            <Link
+              href="/albums"
+              className="ov-btn border-paper/50 bg-transparent px-5 py-3 text-sm text-paper hover:border-danfo hover:bg-danfo hover:text-ink"
+            >
+              Discography
+            </Link>
+          </div>
           <span className="font-display text-2xl text-paper">
-            {String(eras.length).padStart(2, "0")} / {String(eras.length).padStart(2, "0")} live
+            {String(eras.length).padStart(2, "0")} chapters live
           </span>
         </div>
       </PosterHero>
 
       <section className="mx-auto max-w-6xl px-5 pt-20 pb-5 sm:px-8">
-        <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
-          Start at the beginning
-        </p>
+        <SectionLabel>Start at the beginning</SectionLabel>
         <div
           className="ov-paste-up max-w-3xl border-[3px] border-ink bg-white shadow-paste"
           data-tilt="-0.6"
@@ -112,11 +101,11 @@ export default async function Home() {
           </div>
           <div className="grid sm:grid-cols-2">
             <div className="p-6">
-              <h2 className="font-display text-4xl mb-3">{upstart.title}</h2>
+              <h2 className="mb-3 font-display text-4xl">{upstart.title}</h2>
               <p className="mb-5 max-w-[46ch] text-ink-soft">{upstart.thesis}</p>
               <Link
                 href={`/eras/${upstart.slug}`}
-                className="inline-block border-[3px] border-ink bg-danfo px-6 py-3.5 text-sm font-bold tracking-[0.06em] uppercase text-ink shadow-paste-sm transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
+                className="ov-btn ov-btn-danfo inline-block px-6 py-3.5 text-sm"
               >
                 Read the chapter →
               </Link>
@@ -133,9 +122,7 @@ export default async function Home() {
 
       {upstartAlbums.length > 0 ? (
         <section className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
-          <p className="mb-3.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
-            The album of the era
-          </p>
+          <SectionLabel>The album of the era</SectionLabel>
           <div className="max-w-xs">
             {upstartAlbums.map((album, i) => (
               <AlbumCard
@@ -150,40 +137,11 @@ export default async function Home() {
         </section>
       ) : null}
 
-      <section className="mx-auto max-w-6xl px-5 pt-10 pb-12 sm:px-8">
-        <p className="mb-[18px] text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
-          Or go straight to
-        </p>
+      <section className="mx-auto max-w-6xl px-5 pt-6 pb-20 sm:px-8">
+        <SectionLabel>Or go straight to</SectionLabel>
         <div className="grid gap-6 sm:grid-cols-3">
           {DOORS.map((door) => (
-            <Link
-              key={door.href}
-              href={door.href}
-              className="block border-[3px] border-ink bg-white p-6 shadow-paste-sm transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
-            >
-              <span className="font-display mb-1.5 block text-2xl">{door.title}</span>
-              <span className="text-sm text-ink-soft">{door.copy}</span>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-5 pb-20 sm:px-8">
-        <p className="mb-[18px] text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
-          Deeper cuts
-        </p>
-        <div className="grid gap-6 sm:grid-cols-3">
-          {DEEPER.map((door) => (
-            <Link
-              key={door.href}
-              href={door.href}
-              className="block border-[3px] border-ink bg-ink p-6 text-paper shadow-paste-sm transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
-            >
-              <span className="font-display mb-1.5 block text-2xl text-danfo">
-                {door.title}
-              </span>
-              <span className="text-sm text-ink-muted">{door.copy}</span>
-            </Link>
+            <DoorCard key={door.href} {...door} />
           ))}
         </div>
       </section>

@@ -11,7 +11,7 @@ export function AdminPageHeader({
   actions?: React.ReactNode;
 }) {
   return (
-    <div className="mb-6 flex flex-wrap items-end justify-between gap-3 border-b-4 border-ink pb-4">
+    <div className="mb-6 flex flex-wrap items-end justify-between gap-3 border-b-[6px] border-ink pb-4">
       <div>
         <h1 className="font-display text-3xl uppercase leading-none">{title}</h1>
         {description ? (
@@ -49,11 +49,11 @@ export function AdminButton({
 }) {
   const cls =
     variant === "primary"
-      ? "border-2 border-ink bg-danfo text-ink"
+      ? "ov-btn ov-btn-danfo"
       : variant === "danger"
-        ? "border-2 border-ink bg-oxide text-paper"
-        : "border-2 border-ink bg-white text-ink";
-  const className = `inline-flex items-center px-3 py-2 text-[0.75rem] font-bold uppercase tracking-wide ${cls}`;
+        ? "ov-btn border-ink bg-oxide text-paper"
+        : "ov-btn ov-btn-ghost";
+  const className = `inline-flex items-center px-3 py-2 text-[0.75rem] ${cls}`;
   if (href) return <Link href={href} className={className}>{children}</Link>;
   return <span className={className}>{children}</span>;
 }
@@ -66,9 +66,9 @@ export function AdminTable({
   children: React.ReactNode;
 }) {
   return (
-    <div className="overflow-x-auto border-2 border-ink bg-white">
+    <div className="overflow-x-auto border-[3px] border-ink bg-white shadow-paste-sm">
       <table className="w-full min-w-[640px] text-left text-sm">
-        <thead className="border-b-2 border-ink bg-ink text-paper">
+        <thead className="border-b-[3px] border-ink bg-ink text-paper">
           <tr>
             {headers.map((h) => (
               <th

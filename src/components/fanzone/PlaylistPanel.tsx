@@ -74,14 +74,14 @@ export default function PlaylistPanel({ initialPlaylist }: { initialPlaylist: Pl
               type="button"
               onClick={importShared}
               disabled={importing}
-              className="border-2 border-ink bg-danfo px-3 py-1.5 text-xs font-bold uppercase disabled:opacity-50"
+              className="ov-btn ov-btn-danfo px-3 py-1.5 text-xs disabled:opacity-50"
             >
               Add to my playlist
             </button>
             <button
               type="button"
               onClick={() => setShared(null)}
-              className="border-2 border-ink bg-white px-3 py-1.5 text-xs font-bold uppercase"
+              className="ov-btn ov-btn-ghost px-3 py-1.5 text-xs"
             >
               Dismiss
             </button>
@@ -92,7 +92,7 @@ export default function PlaylistPanel({ initialPlaylist }: { initialPlaylist: Pl
       {playlist.length === 0 ? (
         <EmptyState message="No playlist yet — add tracks from an album's tracklist to see them here." />
       ) : (
-        <div className="border-[3px] border-ink bg-white shadow-paste">
+        <div className="ov-paste-up border-[3px] border-ink bg-white shadow-paste">
           {playlist.map((item) => (
             <div
               key={item.id}
@@ -112,7 +112,7 @@ export default function PlaylistPanel({ initialPlaylist }: { initialPlaylist: Pl
                   setPlaylist((p) => p.filter((x) => x.id !== item.id));
                   await removeFromPlaylist(item.track_id);
                 }}
-                className="border-2 border-ink bg-paper px-2.5 py-1 text-[0.62rem] font-bold uppercase"
+                className="ov-btn ov-btn-ghost px-2.5 py-1 text-[0.62rem]"
               >
                 Remove
               </button>
@@ -125,7 +125,7 @@ export default function PlaylistPanel({ initialPlaylist }: { initialPlaylist: Pl
         <button
           type="button"
           onClick={copyShareLink}
-          className="mt-3 border-2 border-ink bg-white px-3.5 py-2 text-xs font-bold tracking-[0.05em] uppercase hover:bg-paper-dim"
+          className="ov-btn ov-btn-ghost mt-3 px-3.5 py-2 text-xs"
         >
           {copied ? "Link copied!" : "Copy share link"}
         </button>

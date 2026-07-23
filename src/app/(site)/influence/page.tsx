@@ -51,7 +51,7 @@ export default async function InfluencePage() {
           carry end years; softer alumni tenures are marked without inventing
           dates. Co-signs stay off the roster. For the places the music moved
           through, see the{" "}
-          <Link href="/impact" className="font-semibold text-ink underline hover:text-oxide">
+          <Link href="/impact" className="ov-link-underline font-semibold text-ink hover:text-oxide">
             Impact map
           </Link>
           .
