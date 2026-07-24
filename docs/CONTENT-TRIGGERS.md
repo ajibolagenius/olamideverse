@@ -23,10 +23,11 @@ no public routes. When one fires, update the named content surfaces and
       status, and embed IDs when stable.
 - [ ] **Feature / freestyle / live / snippet** — same file; prefer
       `documented` until an embed ID exists, then promote to `verified`.
-- [ ] **Spotify catalogue fill** — `npm run fill:spotify-catalog` (dry-run +
-      report at `scripts/out/spotify-catalog-candidates.json`), then
-      `npm run fill:spotify-catalog -- --apply`. High-confidence hits:
-      `documented` → `verified`, `lore` → `documented` (never lore → verified).
+- [ ] **Catalogue embed fill** — prefer Spotify when the Search API is available
+      (`npm run fill:spotify-catalog`); if rate-limited, use YouTube instead
+      (`npm run fill:youtube-catalog`). Both dry-run first, then `-- --apply`.
+      High-confidence hits: `documented` → `verified`, `lore` → `documented`
+      (never lore → verified). Reports under `scripts/out/`.
 - [ ] Keep IDs stable (`album-slug--track-title`, `feature--slug-year`, …).
       Duplicate IDs fail the build.
 
