@@ -24,7 +24,17 @@ const reportPath = path.join(outDir, "youtube-catalog-candidates.json");
 const progressPath = path.join(outDir, "youtube-catalog-progress.json");
 const apply = process.argv.includes("--apply");
 const reset = process.argv.includes("--reset");
-const REQUEST_GAP_MS = 1100;
+/** Generous gap — YouTube HTML search rate-limits aggressively. */
+const REQUEST_GAP_MS = 3000;
+const MAX_429_RETRIES = 3;
+const MAX_429_WAIT_S = 60;
+
+class RateLimitError extends Error {
+  constructor(retryAfterS) {
+    super(`YouTube rate limited${retryAfterS ? ` (Retry-After: ${retryAfterS}s)` : ""}`);
+    this.retryAfterS = retryAfterS ?? null;
+  }
+}
 
 function normalizeTitle(s) {
   return String(s || "")
@@ -89,7 +99,7 @@ function videoMentionsOlamide(video) {
   return blob.includes("olamide");
 }
 
-async function searchYouTube(query) {
+async function searchYouTube(query, attempt = 0) {
   const url =
     "https://www.youtube.com/results?search_query=" + encodeURIComponent(query);
   const res = await fetch(url, {
@@ -97,12 +107,28 @@ async function searchYouTube(query) {
       "User-Agent":
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
       "Accept-Language": "en-US,en;q=0.9",
+      Accept: "text/html,application/xhtml+xml",
     },
   });
+  if (res.status === 429) {
+    const retry = Number(res.headers.get("retry-after") || "15");
+    if (attempt >= MAX_429_RETRIES || retry > MAX_429_WAIT_S) {
+      throw new RateLimitError(retry);
+    }
+    console.warn(`\n  429 — waiting ${retry}s (retry ${attempt + 1}/${MAX_429_RETRIES})…`);
+    await sleep((retry + 0.5) * 1000);
+    return searchYouTube(query, attempt + 1);
+  }
   if (!res.ok) throw new Error(`YouTube search ${res.status}`);
   const html = await res.text();
+  // Consent / bot walls often return 200 without ytInitialData
   const m = html.match(/ytInitialData\s*=\s*(\{[\s\S]*?\});/);
-  if (!m) return [];
+  if (!m) {
+    if (html.includes("consent.youtube.com") || html.includes("captcha")) {
+      throw new RateLimitError(null);
+    }
+    return [];
+  }
   let data;
   try {
     data = JSON.parse(m[1]);
@@ -258,69 +284,76 @@ const todo = entries.filter((e) => {
 console.log(
   `${apply ? "APPLY" : "DRY-RUN"} — ${todo.length} remaining (${done.size} already processed)`,
 );
+console.log(`Gap ${REQUEST_GAP_MS}ms between searches; progress saved every entry.`);
 
-for (let i = 0; i < todo.length; i++) {
-  const entry = todo[i];
-  const n = i + 1;
-  process.stdout.write(`[${n}/${todo.length}] ${entry.id} … `);
+let aborted = null;
 
-  const host = hostArtistHint(entry.artists);
-  const queries = [`${entry.title} Olamide`];
-  if (entry.type === "feature" && host) {
-    queries.unshift(`${host} ${entry.title} Olamide`);
-  }
+try {
+  for (let i = 0; i < todo.length; i++) {
+    const entry = todo[i];
+    const n = i + 1;
+    process.stdout.write(`[${n}/${todo.length}] ${entry.id} … `);
 
-  let decision = null;
-  let usedQuery = null;
-  for (const q of queries) {
-    const videos = await searchYouTube(q);
+    // One query per song to stay under YouTube's scrape limits.
+    const host = hostArtistHint(entry.artists);
+    const query =
+      entry.type === "feature" && host
+        ? `${host} ${entry.title} Olamide`
+        : `${entry.title} Olamide`;
+
+    const videos = await searchYouTube(query);
     await sleep(REQUEST_GAP_MS);
-    const pick = pickMatch(entry, videos);
-    if (pick.accept) {
-      decision = pick;
-      usedQuery = q;
-      break;
+    const decision = pickMatch(entry, videos);
+
+    if (decision?.accept) {
+      const statusTo = nextStatus(entry.status);
+      progress.accepted.push({
+        id: entry.id,
+        title: entry.title,
+        type: entry.type,
+        statusFrom: entry.status,
+        statusTo,
+        confidence: decision.confidence,
+        query,
+        youtubeId: decision.video.id,
+        youtube: {
+          id: decision.video.id,
+          title: decision.video.title,
+          owner: decision.video.owner,
+          url: `https://www.youtube.com/watch?v=${decision.video.id}`,
+        },
+      });
+      console.log(`OK → ${statusTo} (${decision.confidence}) ${decision.video.owner}`);
+    } else {
+      progress.rejected.push({
+        id: entry.id,
+        title: entry.title,
+        type: entry.type,
+        status: entry.status,
+        artists: entry.artists,
+        reason: decision?.reason ?? "no_results",
+        query,
+        candidates: (decision?.candidates || []).slice(0, 5),
+      });
+      console.log(`skip (${decision?.reason ?? "no_results"})`);
     }
-    decision = pick;
-    usedQuery = q;
-  }
 
-  if (decision?.accept) {
-    const statusTo = nextStatus(entry.status);
-    progress.accepted.push({
-      id: entry.id,
-      title: entry.title,
-      type: entry.type,
-      statusFrom: entry.status,
-      statusTo,
-      confidence: decision.confidence,
-      query: usedQuery,
-      youtubeId: decision.video.id,
-      youtube: {
-        id: decision.video.id,
-        title: decision.video.title,
-        owner: decision.video.owner,
-        url: `https://www.youtube.com/watch?v=${decision.video.id}`,
-      },
-    });
-    console.log(`OK → ${statusTo} (${decision.confidence}) ${decision.video.owner}`);
-  } else {
-    progress.rejected.push({
-      id: entry.id,
-      title: entry.title,
-      type: entry.type,
-      status: entry.status,
-      artists: entry.artists,
-      reason: decision?.reason ?? "no_results",
-      query: usedQuery,
-      candidates: (decision?.candidates || []).slice(0, 5),
-    });
-    console.log(`skip (${decision?.reason ?? "no_results"})`);
+    done.add(entry.id);
+    progress.doneIds = [...done];
+    saveProgress(progress);
   }
-
-  done.add(entry.id);
+} catch (err) {
   progress.doneIds = [...done];
-  if (n % 5 === 0 || n === todo.length) saveProgress(progress);
+  saveProgress(progress);
+  writeReport(progress);
+  if (err instanceof RateLimitError) {
+    aborted = err;
+    console.error(
+      `\n${err.message}. Progress saved — wait a bit, then re-run to resume.`,
+    );
+  } else {
+    throw err;
+  }
 }
 
 progress.doneIds = [...done];
@@ -333,6 +366,10 @@ console.log(
 console.log(`  documented→verified: ${report.counts.documentedToVerified}`);
 console.log(`  lore→documented: ${report.counts.loreToDocumented}`);
 console.log(`Report: ${path.relative(root, reportPath)}`);
+
+if (aborted) {
+  process.exit(2);
+}
 
 if (apply && progress.accepted.length > 0) {
   const byId = new Map(progress.accepted.map((a) => [a.id, a]));
