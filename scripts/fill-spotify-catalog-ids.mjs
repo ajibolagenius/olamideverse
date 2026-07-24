@@ -6,22 +6,31 @@
  *   lore       → documented  (never jump lore straight to verified)
  *
  * Default is dry-run. Pass --apply to write content/songs/catalog.json.
+ * Resumes from scripts/out/spotify-catalog-progress.json if present.
  *
  * Env: SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET
  * Usage:
  *   npm run fill:spotify-catalog
  *   npm run fill:spotify-catalog -- --apply
+ *   npm run fill:spotify-catalog -- --reset   # clear progress and start fresh
  */
 import fs from "node:fs";
 import path from "node:path";
 
 const root = process.cwd();
 const catalogPath = path.join(root, "content", "songs", "catalog.json");
-const reportPath = path.join(root, "scripts", "out", "spotify-catalog-candidates.json");
+const outDir = path.join(root, "scripts", "out");
+const reportPath = path.join(outDir, "spotify-catalog-candidates.json");
+const progressPath = path.join(outDir, "spotify-catalog-progress.json");
 const apply = process.argv.includes("--apply");
+const reset = process.argv.includes("--reset");
 
 const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
+/** Delay between Search calls — stay under Spotify rate limits. */
+const REQUEST_GAP_MS = 800;
+/** Soft 429 waits only; longer Retry-After aborts so we can resume later. */
+const MAX_RETRY_WAIT_S = 30;
 
 if (!CLIENT_ID || !CLIENT_SECRET) {
   console.error(
@@ -45,7 +54,6 @@ function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
-/** Host / credited artist from a catalogue `artists` string, for search bias. */
 function hostArtistHint(artists) {
   if (!artists) return null;
   const raw = String(artists)
@@ -67,7 +75,6 @@ function titleConfidence(localTitle, spotifyTitle) {
   const got = normalizeTitle(spotifyTitle);
   if (!want || !got) return "none";
   if (want === got) return "exact";
-  // Near-exact: one contains the other and shorter side is substantial.
   const shorter = want.length <= got.length ? want : got;
   const longer = want.length <= got.length ? got : want;
   if (shorter.length >= 4 && longer.includes(shorter)) {
@@ -96,6 +103,13 @@ async function getAccessToken() {
   return json.access_token;
 }
 
+class RateLimitError extends Error {
+  constructor(retryAfterS) {
+    super(`Spotify rate limited (Retry-After: ${retryAfterS}s)`);
+    this.retryAfterS = retryAfterS;
+  }
+}
+
 async function searchTracks(token, query) {
   const url = new URL("https://api.spotify.com/v1/search");
   url.searchParams.set("q", query);
@@ -108,6 +122,10 @@ async function searchTracks(token, query) {
   });
   if (res.status === 429) {
     const retry = Number(res.headers.get("retry-after") || "2");
+    if (retry > MAX_RETRY_WAIT_S) {
+      throw new RateLimitError(retry);
+    }
+    console.warn(`  429 — waiting ${retry}s…`);
     await sleep((retry + 0.5) * 1000);
     return searchTracks(token, query);
   }
@@ -119,9 +137,6 @@ async function searchTracks(token, query) {
   return json.tracks?.items ?? [];
 }
 
-/**
- * Pick a single high-confidence track, or null with a reason for the report.
- */
 function pickMatch(entry, tracks) {
   const withOlamide = tracks.filter(artistsIncludeOlamide);
   if (withOlamide.length === 0) {
@@ -143,7 +158,6 @@ function pickMatch(entry, tracks) {
     };
   }
 
-  // Prefer exact over near; if multiple exact with different IDs → ambiguous.
   const exact = scored.filter((x) => x.conf === "exact");
   const pool = exact.length > 0 ? exact : scored;
   const uniqueIds = new Set(pool.map((x) => x.track.id));
@@ -179,121 +193,186 @@ function nextStatus(current) {
   return current;
 }
 
+function loadProgress() {
+  if (reset && fs.existsSync(progressPath)) {
+    fs.unlinkSync(progressPath);
+    console.log("Cleared progress (--reset).");
+  }
+  if (!fs.existsSync(progressPath)) {
+    return { accepted: [], rejected: [], skipped: [], doneIds: [] };
+  }
+  const p = JSON.parse(fs.readFileSync(progressPath, "utf8"));
+  return {
+    accepted: p.accepted ?? [],
+    rejected: p.rejected ?? [],
+    skipped: p.skipped ?? [],
+    doneIds: p.doneIds ?? [],
+  };
+}
+
+function saveProgress(progress) {
+  fs.mkdirSync(outDir, { recursive: true });
+  fs.writeFileSync(
+    progressPath,
+    `${JSON.stringify({ ...progress, updatedAt: new Date().toISOString() }, null, 2)}\n`,
+  );
+}
+
+function writeReport(progress, extra = {}) {
+  fs.mkdirSync(outDir, { recursive: true });
+  const report = {
+    generatedAt: new Date().toISOString(),
+    apply,
+    ...extra,
+    counts: {
+      accepted: progress.accepted.length,
+      rejected: progress.rejected.length,
+      skipped: progress.skipped.length,
+      documentedToVerified: progress.accepted.filter(
+        (a) => a.statusFrom === "documented" && a.statusTo === "verified",
+      ).length,
+      loreToDocumented: progress.accepted.filter(
+        (a) => a.statusFrom === "lore" && a.statusTo === "documented",
+      ).length,
+    },
+    accepted: progress.accepted,
+    rejected: progress.rejected,
+  };
+  fs.writeFileSync(reportPath, `${JSON.stringify(report, null, 2)}\n`);
+  return report;
+}
+
 const catalog = JSON.parse(fs.readFileSync(catalogPath, "utf8"));
 const entries = catalog.entries ?? [];
+const progress = loadProgress();
+const done = new Set(progress.doneIds);
 
-const token = await getAccessToken();
-
-const accepted = [];
-const rejected = [];
-const skipped = [];
-
-for (const entry of entries) {
-  if (entry.spotifyTrackId) {
-    skipped.push({ id: entry.id, reason: "already_has_id" });
-    continue;
+const todo = entries.filter((e) => {
+  if (done.has(e.id)) return false;
+  if (e.spotifyTrackId) {
+    progress.skipped.push({ id: e.id, reason: "already_has_id" });
+    done.add(e.id);
+    return false;
   }
-  if (entry.status !== "documented" && entry.status !== "lore") {
-    skipped.push({ id: entry.id, reason: `status_${entry.status}` });
-    continue;
+  if (e.status !== "documented" && e.status !== "lore") {
+    progress.skipped.push({ id: e.id, reason: `status_${e.status}` });
+    done.add(e.id);
+    return false;
   }
+  return true;
+});
 
-  const host = hostArtistHint(entry.artists);
-  const queries = [];
-  // Primary: title + Olamide
-  queries.push(`track:"${entry.title}" artist:Olamide`);
-  // Features: also try host artist
-  if (entry.type === "feature" && host) {
-    queries.push(`track:"${entry.title}" artist:${host} Olamide`);
-  }
-  // Broader fallback without track: quote if the quoted search returns nothing useful
-  queries.push(`${entry.title} Olamide`);
+console.log(
+  `${apply ? "APPLY" : "DRY-RUN"} — ${todo.length} remaining (${done.size} already processed)`,
+);
 
-  let decision = null;
-  let usedQuery = null;
-  for (const q of queries) {
-    const tracks = await searchTracks(token, q);
-    await sleep(350);
-    const pick = pickMatch(entry, tracks);
-    if (pick.accept) {
+let token = await getAccessToken();
+let aborted = null;
+
+try {
+  for (let i = 0; i < todo.length; i++) {
+    const entry = todo[i];
+    const n = i + 1;
+    process.stdout.write(`[${n}/${todo.length}] ${entry.id} … `);
+
+    const host = hostArtistHint(entry.artists);
+    const queries = [`track:"${entry.title}" artist:Olamide`];
+    if (entry.type === "feature" && host) {
+      queries.push(`track:"${entry.title}" artist:"${host}" Olamide`);
+    }
+    // One broader fallback only
+    queries.push(`${entry.title} Olamide`);
+
+    let decision = null;
+    let usedQuery = null;
+    for (const q of queries) {
+      const tracks = await searchTracks(token, q);
+      await sleep(REQUEST_GAP_MS);
+      const pick = pickMatch(entry, tracks);
+      if (pick.accept) {
+        decision = pick;
+        usedQuery = q;
+        break;
+      }
       decision = pick;
       usedQuery = q;
-      break;
     }
-    // Keep the most informative rejection from the last query.
-    decision = pick;
-    usedQuery = q;
-  }
 
-  if (decision?.accept) {
-    const statusTo = nextStatus(entry.status);
-    accepted.push({
-      id: entry.id,
-      title: entry.title,
-      type: entry.type,
-      statusFrom: entry.status,
-      statusTo,
-      confidence: decision.confidence,
-      query: usedQuery,
-      spotifyTrackId: decision.track.id,
-      spotify: summarizeCandidate(decision.track),
-    });
+    if (decision?.accept) {
+      const statusTo = nextStatus(entry.status);
+      progress.accepted.push({
+        id: entry.id,
+        title: entry.title,
+        type: entry.type,
+        statusFrom: entry.status,
+        statusTo,
+        confidence: decision.confidence,
+        query: usedQuery,
+        spotifyTrackId: decision.track.id,
+        spotify: summarizeCandidate(decision.track),
+      });
+      console.log(`OK → ${statusTo} (${decision.confidence})`);
+    } else {
+      progress.rejected.push({
+        id: entry.id,
+        title: entry.title,
+        type: entry.type,
+        status: entry.status,
+        artists: entry.artists,
+        reason: decision?.reason ?? "no_results",
+        query: usedQuery,
+        candidates: (decision?.candidates || []).map(summarizeCandidate),
+      });
+      console.log(`skip (${decision?.reason ?? "no_results"})`);
+    }
+
+    done.add(entry.id);
+    progress.doneIds = [...done];
+    // Checkpoint every entry so a rate-limit abort keeps work.
+    if (n % 5 === 0 || n === todo.length) saveProgress(progress);
+  }
+} catch (err) {
+  if (err instanceof RateLimitError) {
+    aborted = err;
+    saveProgress(progress);
+    const hours = (err.retryAfterS / 3600).toFixed(1);
+    console.error(
+      `\nRate limited by Spotify (Retry-After ~${hours}h). Progress saved — re-run later to resume.`,
+    );
   } else {
-    rejected.push({
-      id: entry.id,
-      title: entry.title,
-      type: entry.type,
-      status: entry.status,
-      artists: entry.artists,
-      reason: decision?.reason ?? "no_results",
-      query: usedQuery,
-      candidates: (decision?.candidates || []).map(summarizeCandidate),
-    });
+    saveProgress(progress);
+    throw err;
   }
 }
 
-fs.mkdirSync(path.dirname(reportPath), { recursive: true });
-const report = {
-  generatedAt: new Date().toISOString(),
-  apply,
-  counts: {
-    accepted: accepted.length,
-    rejected: rejected.length,
-    skipped: skipped.length,
-    documentedToVerified: accepted.filter(
-      (a) => a.statusFrom === "documented" && a.statusTo === "verified",
-    ).length,
-    loreToDocumented: accepted.filter(
-      (a) => a.statusFrom === "lore" && a.statusTo === "documented",
-    ).length,
-  },
-  accepted,
-  rejected,
-};
-fs.writeFileSync(reportPath, `${JSON.stringify(report, null, 2)}\n`);
+progress.doneIds = [...done];
+saveProgress(progress);
+const report = writeReport(progress, aborted ? { aborted: aborted.message } : {});
 
 console.log(
-  `${apply ? "APPLY" : "DRY-RUN"} — accepted ${accepted.length}, rejected ${rejected.length}, skipped ${skipped.length}`,
+  `\nAccepted ${report.counts.accepted}, rejected ${report.counts.rejected}, skipped ${report.counts.skipped}`,
 );
-console.log(
-  `  documented→verified: ${report.counts.documentedToVerified}`,
-);
+console.log(`  documented→verified: ${report.counts.documentedToVerified}`);
 console.log(`  lore→documented: ${report.counts.loreToDocumented}`);
 console.log(`Report: ${path.relative(root, reportPath)}`);
 
-if (apply && accepted.length > 0) {
-  const byId = new Map(accepted.map((a) => [a.id, a]));
+if (aborted) {
+  process.exit(2);
+}
+
+if (apply && progress.accepted.length > 0) {
+  const byId = new Map(progress.accepted.map((a) => [a.id, a]));
   for (const entry of entries) {
     const hit = byId.get(entry.id);
-    if (!hit) continue;
+    if (!hit || entry.spotifyTrackId) continue;
     entry.spotifyTrackId = hit.spotifyTrackId;
     entry.status = hit.statusTo;
   }
   catalog.entries = entries;
   fs.writeFileSync(catalogPath, `${JSON.stringify(catalog, null, 2)}\n`);
-  console.log(`Wrote ${accepted.length} updates to content/songs/catalog.json`);
+  console.log(`Wrote accepted matches to content/songs/catalog.json`);
 } else if (apply) {
   console.log("Nothing to apply.");
-} else {
+} else if (!aborted) {
   console.log("Re-run with --apply to write accepted matches.");
 }
