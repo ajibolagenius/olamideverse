@@ -35,6 +35,7 @@ export const MORE_GROUPS: NavGroup[] = [
     label: "Meta",
     links: [
       { href: "/about", label: "About" },
+      { href: "/changelog", label: "What’s new" },
       { href: "/legal", label: "Legal" },
     ],
   },

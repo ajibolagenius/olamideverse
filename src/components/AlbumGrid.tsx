@@ -78,6 +78,7 @@ export default function AlbumGrid({
               album={album}
               era={erasBySlug.get(album.era)!}
               index={i}
+              priority={i === 0}
               showFavorite={showFavorites}
             />
           ))}

@@ -19,6 +19,7 @@
 /influence              Influence graph — mentors, peers, mentees, collabs
 /impact                 Impact map — curated places (Lagos / Nigeria / world)
 /about                  What OlamideVerse is, who made it, colophon
+/changelog              What’s new — curated ship notes from recent work
 /legal                  Disclaimer, terms, copyright policy
 /fanzone                [P3] Favorites, polls, comments, playlists
 ```

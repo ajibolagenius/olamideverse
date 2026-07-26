@@ -13,11 +13,14 @@ export default function CoverArt({
   slug,
   accent,
   className = "aspect-video",
+  /** Above-the-fold covers — eager load + high fetch priority for LCP. */
+  priority = false,
 }: {
   title: string;
   slug?: string;
   accent: AccentName;
   className?: string;
+  priority?: boolean;
 }) {
   const a = ACCENTS[accent];
   const cover = slug ? ALBUM_COVERS[slug] : undefined;
@@ -41,6 +44,8 @@ export default function CoverArt({
           fill
           sizes="(min-width: 1024px) 33vw, 50vw"
           className="object-cover"
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : "auto"}
         />
       ) : null}
       <span

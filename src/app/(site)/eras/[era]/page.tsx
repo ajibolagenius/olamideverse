@@ -170,6 +170,7 @@ export default async function EraPage({
                 album={album}
                 era={era}
                 index={i}
+                priority={i === 0}
                 showFavorite={flags.fanzone}
               />
             ))}

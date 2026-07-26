@@ -136,6 +136,7 @@ export default async function Home() {
                 album={album}
                 era={upstart}
                 index={i}
+                priority={i === 0}
                 showFavorite={flags.fanzone}
               />
             ))}

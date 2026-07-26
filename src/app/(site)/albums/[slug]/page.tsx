@@ -121,7 +121,13 @@ export default async function AlbumPage({
             data-tilt="-0.7"
             style={{ rotate: "-0.7deg" }}
           >
-            <CoverArt title={album.title} slug={album.slug} accent={era.accent} className="aspect-square" />
+            <CoverArt
+              title={album.title}
+              slug={album.slug}
+              accent={era.accent}
+              className="aspect-square"
+              priority
+            />
           </div>
           <p className="mt-2.5 text-[0.7rem] tracking-[0.06em] uppercase text-ink-soft">
             Cover art

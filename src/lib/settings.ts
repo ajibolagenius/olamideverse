@@ -30,6 +30,7 @@ const DEFAULT_FOOTER = {
         { href: "/impact", label: "Impact" },
         { href: "/legal", label: "Legal" },
         { href: "/about", label: "Source credits" },
+        { href: "/changelog", label: "What’s new" },
         { href: "/legal#takedown", label: "Takedown" },
         { href: "/fanzone", label: "Fan Zone" },
     ] as NavLink[],

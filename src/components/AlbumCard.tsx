@@ -9,11 +9,14 @@ export default function AlbumCard({
   era,
   index = 0,
   showFavorite = false,
+  priority = false,
 }: {
   album: Album;
   era: Era;
   index?: number;
   showFavorite?: boolean;
+  /** Eager-load cover when this card is likely LCP (first above-the-fold). */
+  priority?: boolean;
 }) {
   const tilt = ((index % 3) - 1) * 0.5;
   // danfo fails AA as text-on-white; use its darkened gradient stop instead
@@ -39,7 +42,12 @@ export default function AlbumCard({
         href={`/albums/${album.slug}`}
         className="block border-[3px] border-ink bg-white shadow-paste transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
       >
-        <CoverArt title={album.title} slug={album.slug} accent={era.accent} />
+        <CoverArt
+          title={album.title}
+          slug={album.slug}
+          accent={era.accent}
+          priority={priority}
+        />
         <div className="flex items-center justify-between border-t-[3px] border-ink px-3 py-2 text-sm">
           <span className="text-ink-soft">
             {album.year} · {ALBUM_TYPE_LABEL[album.type]}
