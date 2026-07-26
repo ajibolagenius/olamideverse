@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+import PageViewTracker from "@/components/analytics/PageViewTracker";
 import DisclaimerStrip from "@/components/chrome/DisclaimerStrip";
 import SiteFooter from "@/components/chrome/SiteFooter";
 import SiteHeader from "@/components/chrome/SiteHeader";
@@ -40,6 +42,9 @@ export default async function SiteLayout({
         {children}
       </main>
       <SiteFooter blurb={footer.blurb} showFanZone={flags.fanzone} />
+      <Suspense fallback={null}>
+        <PageViewTracker />
+      </Suspense>
     </>
   );
 

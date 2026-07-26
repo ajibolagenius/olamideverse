@@ -95,6 +95,17 @@ export default async function LegalPage() {
           Corrections are welcome — see the contact below.
         </p>
 
+        <h2 className="font-display mb-3 text-2xl">Analytics</h2>
+        <p className="mb-8 text-lg leading-relaxed">
+          This site uses a first-party visitor counter for the footer badge and
+          a private admin analytics view: anonymous cookie IDs, page path,
+          coarse device class, optional country from the CDN, and referrer host.
+          No IP addresses or personal profiles are stored for that log. If a
+          Google Analytics or Tag Manager ID is configured in site settings,
+          that third-party tool may set its own cookies under Google&apos;s
+          policies.
+        </p>
+
         <h2 id="takedown" className="font-display mb-3 scroll-mt-28 text-2xl">
           Takedown requests
         </h2>

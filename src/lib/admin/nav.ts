@@ -19,6 +19,7 @@ export const ADMIN_NAV: AdminNavSection[] = [
             { href: "/admin/schedule", label: "Schedule", roles: ["owner", "editor"] },
             { href: "/admin/versions", label: "Versions", roles: ["owner", "editor", "viewer"] },
             { href: "/admin/activity", label: "Activity" },
+            { href: "/admin/analytics", label: "Analytics" },
             { href: "/admin/insights", label: "Insights" },
         ],
     },

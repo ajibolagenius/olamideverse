@@ -68,6 +68,9 @@ export default async function AdminDashboardPage() {
             <AdminButton href="/admin/assets" variant="secondary">
               Upload asset
             </AdminButton>
+            <AdminButton href="/admin/analytics" variant="secondary">
+              Analytics
+            </AdminButton>
             <AdminButton href="/" variant="secondary">
               Preview site
             </AdminButton>

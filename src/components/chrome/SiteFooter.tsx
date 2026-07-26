@@ -1,4 +1,5 @@
 import Link from "next/link";
+import VisitorBadge from "@/components/analytics/VisitorBadge";
 import { renderNavIcon } from "@/lib/icons";
 import { buildFooterColumns } from "@/lib/nav";
 
@@ -56,8 +57,11 @@ export default function SiteFooter({
         <FooterColumn title="Explore" links={columns.explore} />
         <FooterColumn title="Meta" links={columns.meta} />
       </div>
-      <div className="mx-auto max-w-6xl pt-5 text-center tracking-[0.04em] uppercase">
-        {blurb}
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 pt-5 sm:flex-row sm:justify-between">
+        <div className="text-center tracking-[0.04em] uppercase sm:text-left">
+          {blurb}
+        </div>
+        <VisitorBadge />
       </div>
     </footer>
   );
