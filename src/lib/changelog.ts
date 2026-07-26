@@ -22,13 +22,19 @@ export const CHANGELOG: ChangelogDay[] = [
     label: "26 July 2026",
     items: [
       {
+        title: "Security hardening pass",
+        body: "Rate limits on analytics collect and Fan Zone sign-up, safer favorite links, stronger fan passwords, scrubbed public settings (takedown email no longer anon-readable), validated GA/GTM IDs, HSTS in production, and a hard split so Fan Zone accounts can’t reach the admin console.",
+        href: "/legal",
+      },
+      {
         title: "First-party analytics & visitor badge",
         body: "Anonymous pageview tracking (no IP, no personal profiles), an admin Analytics console with 30-day charts and top pages, and a danfo visitor counter in the footer. Privacy notes live on Legal.",
         href: "/legal",
       },
       {
         title: "What’s new page",
-        body: "This changelog — a public record of what shipped recently, linked from the footer Meta column.",
+        body: "This changelog — a public record of what shipped recently, linked from the footer Meta column and the More menu.",
+        href: "/changelog",
       },
       {
         title: "Cover art LCP polish",
