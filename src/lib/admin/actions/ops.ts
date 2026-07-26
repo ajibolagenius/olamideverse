@@ -190,7 +190,12 @@ export async function saveSlot(formData: FormData) {
     redirect("/admin/assets?tab=slots&saved=1");
 }
 
-const ALLOWED_ASSET_MIME_TYPES = ["image/png", "image/jpeg", "image/webp", "image/gif"];
+const ASSET_FORMAT_MIME: Record<string, string> = {
+    png: "image/png",
+    jpeg: "image/jpeg",
+    webp: "image/webp",
+    gif: "image/gif",
+};
 const MAX_ASSET_BYTES = 8 * 1024 * 1024; // matches the site-media bucket's file_size_limit
 
 export async function uploadAsset(formData: FormData) {
@@ -199,12 +204,32 @@ export async function uploadAsset(formData: FormData) {
     if (!(file instanceof File) || file.size === 0) {
         redirect("/admin/assets?error=nofile");
     }
-    if (!ALLOWED_ASSET_MIME_TYPES.includes(file.type)) {
-        redirect("/admin/assets?error=filetype");
-    }
     if (file.size > MAX_ASSET_BYTES) {
         redirect("/admin/assets?error=filesize");
     }
+
+    // Detect + re-encode from the actual bytes rather than trusting the
+    // client-declared Content-Type — a renamed/mislabeled file can't slip a
+    // non-image payload past this the way it could past a `file.type` check.
+    const { default: sharp } = await import("sharp");
+    const rawBytes = Buffer.from(await file.arrayBuffer());
+    let format: string | undefined;
+    try {
+        format = (await sharp(rawBytes, { animated: true }).metadata()).format;
+    } catch {
+        redirect("/admin/assets?error=filetype");
+    }
+    const mimeType = format ? ASSET_FORMAT_MIME[format] : undefined;
+    if (!mimeType) {
+        redirect("/admin/assets?error=filetype");
+    }
+    const bytes = await sharp(rawBytes, { animated: true })
+        .toFormat(format as keyof import("sharp").FormatEnum)
+        .toBuffer();
+    if (bytes.length > MAX_ASSET_BYTES) {
+        redirect("/admin/assets?error=filesize");
+    }
+
     const kind = String(formData.get("kind") ?? "other");
     const folder =
         kind === "album-cover" ? "albums" : kind === "era-photo" ? "eras" : kind === "home" ? "home" : "other";
@@ -212,11 +237,10 @@ export async function uploadAsset(formData: FormData) {
     const storagePath = `${folder}/${Date.now()}-${safeName}`;
 
     const supabase = await createClient();
-    const bytes = Buffer.from(await file.arrayBuffer());
     const { error: upErr } = await supabase.storage
         .from("site-media")
         .upload(storagePath, bytes, {
-            contentType: file.type || "application/octet-stream",
+            contentType: mimeType,
             upsert: true,
         });
     if (upErr) redirect(`/admin/assets?error=${encodeURIComponent(upErr.message)}`);
@@ -233,8 +257,8 @@ export async function uploadAsset(formData: FormData) {
             credit: String(formData.get("credit") ?? ""),
             license: String(formData.get("license") ?? ""),
             license_url: String(formData.get("license_url") ?? ""),
-            bytes: file.size,
-            mime: file.type,
+            bytes: bytes.length,
+            mime: mimeType,
             updated_at: new Date().toISOString(),
             updated_by: session.userId,
         },

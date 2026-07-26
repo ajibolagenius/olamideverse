@@ -9,7 +9,7 @@ import {
   type ReactNode,
 } from "react";
 import { createClient } from "@/lib/supabase/client";
-import { registerFan, renameFan } from "@/lib/fanzone/actions";
+import { checkSignInRateLimit, registerFan, renameFan } from "@/lib/fanzone/actions";
 import {
   fanAuthEmail,
   mapAuthError,
@@ -121,6 +121,12 @@ export function FanProvider({ children }: { children: ReactNode }) {
     }
     if (!password) {
       setError("Enter your password.");
+      return false;
+    }
+
+    const gate = await checkSignInRateLimit(handle);
+    if (!gate.ok) {
+      setError(gate.error);
       return false;
     }
 

@@ -21,6 +21,31 @@ export type FanAuthResult =
   | { ok: false; error: string };
 
 /**
+ * Gate a sign-in attempt before it ever reaches Supabase Auth. Handles are
+ * public ("Signed in as X"), so the login email is guessable from a handle
+ * alone — this caps guesses per attacking IP *and* per targeted handle, on
+ * top of (not instead of) Supabase's own IP-based auth rate limit.
+ */
+export async function checkSignInRateLimit(
+  handle: string,
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  const headerStore = await headers();
+  const ipKey = hashClientKey(clientIpFromHeaders(headerStore), "fanzone-signin-ip");
+  const handleKey = hashClientKey(normalizeHandle(handle), "fanzone-signin-handle");
+
+  const allowedByIp = await checkRateLimit(`fanzone:signin:ip:${ipKey}`, 20, 300);
+  const allowedByHandle = await checkRateLimit(`fanzone:signin:handle:${handleKey}`, 8, 300);
+
+  if (!allowedByIp || !allowedByHandle) {
+    return {
+      ok: false,
+      error: "Too many sign-in attempts — wait a moment and try again.",
+    };
+  }
+  return { ok: true };
+}
+
+/**
  * Create a confirmed fan account without sending Auth mail.
  * Client signs in afterward with the same handle + password.
  */
