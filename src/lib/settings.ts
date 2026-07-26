@@ -1,3 +1,5 @@
+import { normalizeAnalyticsId } from "@/lib/security/analytics-id";
+import { createServiceClient } from "@/lib/supabase/admin";
 import { createPublicClient } from "@/lib/supabase/public";
 
 export type NavLink = { href: string; label: string };
@@ -105,24 +107,69 @@ export async function getFeatureFlags(): Promise<FeatureFlags> {
     return getSetting("feature_flags", DEFAULT_FLAGS);
 }
 
-export async function getGeneralSettings() {
-    const envEmail = (process.env.TAKEDOWN_EMAIL || "").trim();
-    const envAnalytics = (
-        process.env.NEXT_PUBLIC_ANALYTICS_ID ||
-        process.env.ANALYTICS_ID ||
-        ""
-    ).trim();
-    const settings = await getSetting("general", {
-        siteName: "OlamideVerse",
-        takedownEmail: "",
-        analyticsId: "",
-    });
+type PublicGeneral = {
+    siteName: string;
+    analyticsId: string;
+};
+
+async function getPublicGeneral(): Promise<PublicGeneral> {
+    const envAnalytics = normalizeAnalyticsId(
+        process.env.NEXT_PUBLIC_ANALYTICS_ID || process.env.ANALYTICS_ID || "",
+    );
+    let siteName = "OlamideVerse";
+    let analyticsId = "";
+    try {
+        const supabase = createPublicClient();
+        const { data } = await supabase.rpc("get_public_general");
+        if (data && typeof data === "object") {
+            const row = data as { siteName?: string; analyticsId?: string };
+            if (typeof row.siteName === "string" && row.siteName.trim()) {
+                siteName = row.siteName.trim();
+            }
+            analyticsId = normalizeAnalyticsId(row.analyticsId);
+        }
+    } catch {
+        // RPC missing (pre-migration) — fall through to env defaults.
+    }
     return {
-        ...settings,
-        // CMS wins when set; otherwise fall back to env for deploys without a seed.
-        takedownEmail: (settings.takedownEmail || envEmail).trim(),
-        analyticsId: (settings.analyticsId || envAnalytics).trim(),
+        siteName,
+        analyticsId: analyticsId || envAnalytics,
     };
+}
+
+/** Takedown inbox — service-role / env only (never anon-readable). */
+export async function getTakedownEmail(): Promise<string> {
+    const envEmail = (process.env.TAKEDOWN_EMAIL || "").trim();
+    try {
+        const service = createServiceClient();
+        const { data } = await service
+            .from("site_settings")
+            .select("value")
+            .eq("key", "general")
+            .maybeSingle();
+        const value = data?.value as { takedownEmail?: string } | null;
+        const cmsEmail = (value?.takedownEmail || "").trim();
+        if (cmsEmail) return cmsEmail;
+    } catch {
+        // Service role unavailable at build time — env email is enough.
+    }
+    return envEmail;
+}
+
+/**
+ * Public-safe general settings plus server-only takedown email.
+ * Prefer `getPublicGeneral` / `getTakedownEmail` when you only need one field.
+ */
+export async function getGeneralSettings() {
+    const [pub, takedownEmail] = await Promise.all([
+        getPublicGeneral(),
+        getTakedownEmail(),
+    ]);
+    return { ...pub, takedownEmail };
+}
+
+export async function getAnalyticsId(): Promise<string> {
+    return (await getPublicGeneral()).analyticsId;
 }
 
 export async function getEmbedsPolicy() {

@@ -29,8 +29,30 @@ const supabase = createClient(url, service, {
     auth: { persistSession: false, autoRefreshToken: false },
 });
 
-const adminEmail = (process.env.ADMIN_EMAIL || "admin@olamideverse.local").toLowerCase();
-const adminPassword = process.env.ADMIN_PASSWORD || "olamideverse-admin";
+const DEFAULT_ADMIN_PASSWORD = "olamideverse-admin";
+const adminEmail = (process.env.ADMIN_EMAIL || "").trim().toLowerCase();
+const adminPassword = process.env.ADMIN_PASSWORD || "";
+
+if (!adminEmail) {
+    console.error("Refusing to seed: set ADMIN_EMAIL to a real staff mailbox.");
+    process.exit(1);
+}
+if (adminEmail.endsWith("@fan.olamideverse.app")) {
+    console.error(
+        "Refusing to seed: ADMIN_EMAIL must not use the Fan Zone domain (fan.olamideverse.app).",
+    );
+    process.exit(1);
+}
+if (!adminPassword || adminPassword === DEFAULT_ADMIN_PASSWORD) {
+    console.error(
+        "Refusing to seed: set ADMIN_PASSWORD to a strong unique secret (not the example default).",
+    );
+    process.exit(1);
+}
+if (adminPassword.length < 12) {
+    console.error("Refusing to seed: ADMIN_PASSWORD must be at least 12 characters.");
+    process.exit(1);
+}
 
 function readMdxDir(dir) {
     const full = path.join(root, "content", dir);

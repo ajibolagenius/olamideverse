@@ -336,7 +336,16 @@ export async function savePage(formData: FormData) {
 export async function saveSettings(formData: FormData) {
     const session = await assertEditor();
     const key = String(formData.get("key") ?? "");
-    const value = parseJsonField(formData.get("value"), {}) as Record<string, unknown>;
+    let value = parseJsonField(formData.get("value"), {}) as Record<string, unknown>;
+    if (key === "general") {
+        const { normalizeAnalyticsId } = await import("@/lib/security/analytics-id");
+        const rawId = String(value.analyticsId ?? "");
+        const normalized = normalizeAnalyticsId(rawId);
+        if (rawId.trim() && !normalized) {
+            redirect("/admin/settings?tab=general&error=analytics");
+        }
+        value = { ...value, analyticsId: normalized };
+    }
     const supabase = await createClient();
     await supabase.from("site_settings").upsert({
         key,

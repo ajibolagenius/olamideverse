@@ -1,6 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
+import { isFanAuthEmail } from "@/lib/fanzone/auth";
 import { createClient } from "@/lib/supabase/server";
 
 export async function adminLogin(formData: FormData) {
@@ -9,6 +10,11 @@ export async function adminLogin(formData: FormData) {
 
     if (!email || !password) {
         redirect("/admin/login?error=missing");
+    }
+
+    // Fan Zone synthetic mailboxes must never elevate to the console.
+    if (isFanAuthEmail(email)) {
+        redirect("/admin/login?error=unauthorized");
     }
 
     const supabase = await createClient();

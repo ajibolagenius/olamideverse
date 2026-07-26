@@ -1,12 +1,18 @@
 import { NextResponse, type NextRequest } from "next/server";
 import {
   cookieOptions,
+  parseUuidCookie,
   recordPageview,
   SESSION_COOKIE,
   SESSION_COOKIE_MAX_AGE,
   VISITOR_COOKIE,
   VISITOR_COOKIE_MAX_AGE,
 } from "@/lib/analytics/collect";
+import {
+  checkRateLimit,
+  clientIpFromHeaders,
+  hashClientKey,
+} from "@/lib/security/rate-limit";
 
 export const runtime = "nodejs";
 
@@ -26,6 +32,30 @@ export async function POST(request: NextRequest) {
   const path = typeof body.path === "string" ? body.path : "";
   if (!path) {
     return NextResponse.json({ ok: false, error: "path_required" }, { status: 400 });
+  }
+
+  const ip = clientIpFromHeaders(request.headers);
+  const ipKey = hashClientKey(ip, "analytics");
+  const hasVisitorCookie = Boolean(
+    parseUuidCookie(request.cookies.get(VISITOR_COOKIE)?.value),
+  );
+
+  // Burst cap — all hits from one IP.
+  const allowedBurst = await checkRateLimit(`analytics:burst:${ipKey}`, 60, 60, {
+    failOpen: true,
+  });
+  if (!allowedBurst) {
+    return NextResponse.json({ ok: true, ignored: true }, { status: 202 });
+  }
+
+  // New-visitor minting is stricter (cookie-less callers).
+  if (!hasVisitorCookie) {
+    const allowedNew = await checkRateLimit(`analytics:new:${ipKey}`, 10, 3600, {
+      failOpen: true,
+    });
+    if (!allowedNew) {
+      return NextResponse.json({ ok: true, ignored: true }, { status: 202 });
+    }
   }
 
   const result = await recordPageview({

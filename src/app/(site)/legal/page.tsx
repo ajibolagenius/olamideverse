@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import PageHeader from "@/components/ui/PageHeader";
-import { getGeneralSettings } from "@/lib/settings";
+import { getTakedownEmail } from "@/lib/settings";
 import { resolvePageMetadata } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function LegalPage() {
-  const { takedownEmail } = await getGeneralSettings();
+  const takedownEmail = await getTakedownEmail();
 
   return (
     <>

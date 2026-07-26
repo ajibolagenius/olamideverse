@@ -4,6 +4,8 @@
  * Supabase Auth is email+password under the hood. Fans never see an email —
  * we derive a stable synthetic address from the normalized handle so login
  * stays "handle + password" in the UI.
+ *
+ * Staff accounts must never use this domain (see inviteAdmin / adminLogin).
  */
 
 /** Must be a real-looking TLD — GoTrue rejects `.local` / `.test` / `.example`. */
@@ -19,6 +21,10 @@ export function fanAuthEmail(handle: string): string {
   return `${key}@${FAN_AUTH_EMAIL_DOMAIN}`;
 }
 
+export function isFanAuthEmail(email: string): boolean {
+  return email.trim().toLowerCase().endsWith(`@${FAN_AUTH_EMAIL_DOMAIN}`);
+}
+
 export function validateHandle(handle: string): string | null {
   const trimmed = handle.trim();
   if (trimmed.length < 2 || trimmed.length > 24) {
@@ -30,9 +36,19 @@ export function validateHandle(handle: string): string | null {
   return null;
 }
 
+/**
+ * Fan passwords: 10–72 chars, at least one letter and one number.
+ * (Supabase/GoTrue also caps at 72 for bcrypt.)
+ */
 export function validatePassword(password: string): string | null {
-  if (password.length < 8) return "Password must be at least 8 characters.";
+  if (password.length < 10) return "Password must be at least 10 characters.";
   if (password.length > 72) return "Password is too long.";
+  if (!/[A-Za-z]/.test(password) || !/[0-9]/.test(password)) {
+    return "Password needs at least one letter and one number.";
+  }
+  if (/^\s|\s$/.test(password)) {
+    return "Password can't start or end with a space.";
+  }
   return null;
 }
 

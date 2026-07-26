@@ -189,7 +189,7 @@ export default function HandlePicker({
         </label>
         <button
           type="button"
-          disabled={saving || password.length < 8}
+          disabled={saving || password.length < 10}
           onClick={async () => {
             if (password !== password2) {
               setLocalError("Passwords don't match.");
@@ -279,7 +279,9 @@ export default function HandlePicker({
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder={mode === "signup" ? "At least 8 characters" : "Your password"}
+            placeholder={
+              mode === "signup" ? "10+ chars, letter + number" : "Your password"
+            }
             autoComplete={mode === "signup" ? "new-password" : "current-password"}
             className="border-2 border-ink bg-white px-3 py-2 text-sm font-normal normal-case tracking-normal"
           />
@@ -302,7 +304,7 @@ export default function HandlePicker({
           disabled={
             saving ||
             handle.trim().length < 2 ||
-            password.length < (mode === "signup" ? 8 : 1)
+            password.length < (mode === "signup" ? 10 : 1)
           }
           onClick={async () => {
             if (mode === "signup" && password !== password2) {

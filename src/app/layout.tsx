@@ -4,7 +4,7 @@ import Analytics from "@/components/Analytics";
 import MotionRoot from "@/components/MotionRoot";
 import PWARegister from "@/components/PWARegister";
 import PhosphorProvider from "@/components/ui/PhosphorProvider";
-import { getGeneralSettings } from "@/lib/settings";
+import { getAnalyticsId } from "@/lib/settings";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
 const DEFAULT_TITLE = "OlamideVerse — the living archive of Olamide's legacy";
@@ -47,7 +47,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { analyticsId } = await getGeneralSettings();
+  const analyticsId = await getAnalyticsId();
 
   return (
     <html lang="en">

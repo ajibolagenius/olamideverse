@@ -1,11 +1,13 @@
 import Script from "next/script";
+import { normalizeAnalyticsId } from "@/lib/security/analytics-id";
 
 /**
- * Injects GA4 / GTM when a measurement ID is configured in CMS or env.
- * Supports G-… (GA4) and GTM-… container IDs.
+ * Injects GA4 / GTM when a validated measurement ID is configured in CMS or env.
+ * Supports G-… (GA4) and GTM-… container IDs only — rejects free-form values
+ * so a compromised CMS field can't break out of the inline script.
  */
 export default function Analytics({ id }: { id: string }) {
-  const analyticsId = id.trim();
+  const analyticsId = normalizeAnalyticsId(id);
   if (!analyticsId) return null;
 
   if (analyticsId.startsWith("GTM-")) {
@@ -31,7 +33,7 @@ export default function Analytics({ id }: { id: string }) {
     );
   }
 
-  // GA4 (G-…) and legacy UA-…
+  // GA4 (G-…)
   return (
     <>
       <Script

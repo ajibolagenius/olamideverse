@@ -1,6 +1,11 @@
 "use client";
 
 import { createClient } from "@/lib/supabase/client";
+import {
+  safeFavoriteLabel,
+  safeFavoriteTargetId,
+  safeInternalHref,
+} from "@/lib/security/urls";
 
 /**
  * Client-side mutations — one function per fanzone-store.js signature
@@ -42,11 +47,24 @@ export async function toggleFavorite(
     const supabase = createClient();
     const fanId = await requireFanId();
 
+    const safeId = safeFavoriteTargetId(id, kind);
+    const safeLabel = safeFavoriteLabel(label);
+    const safeHref = safeInternalHref(href);
+    if (!safeId || !safeLabel || !safeHref) {
+        throw new Error("Couldn't save favorite — invalid target.");
+    }
+    // Href must match the canonical archive path for this target.
+    const expected =
+        kind === "era" ? `/eras/${safeId.slice(4)}` : `/albums/${safeId.slice(6)}`;
+    if (safeHref !== expected) {
+        throw new Error("Couldn't save favorite — invalid target.");
+    }
+
     const { data: existing, error: lookupError } = await supabase
         .from("favorites")
         .select("id")
         .eq("fan_id", fanId)
-        .eq("target_id", id)
+        .eq("target_id", safeId)
         .maybeSingle();
     if (lookupError) throw mutationError(lookupError, "Couldn't update favorite.");
 
@@ -55,9 +73,13 @@ export async function toggleFavorite(
         if (error) throw mutationError(error, "Couldn't remove favorite.");
         return false;
     }
-    const { error } = await supabase
-        .from("favorites")
-        .insert({ fan_id: fanId, target_id: id, label, kind, href });
+    const { error } = await supabase.from("favorites").insert({
+        fan_id: fanId,
+        target_id: safeId,
+        label: safeLabel,
+        kind,
+        href: expected,
+    });
     if (error) throw mutationError(error, "Couldn't save favorite.");
     return true;
 }

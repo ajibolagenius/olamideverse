@@ -1,5 +1,6 @@
 "use server";
 
+import { headers } from "next/headers";
 import {
   fanAuthEmail,
   mapAuthError,
@@ -7,6 +8,11 @@ import {
   validateHandle,
   validatePassword,
 } from "@/lib/fanzone/auth";
+import {
+  checkRateLimit,
+  clientIpFromHeaders,
+  hashClientKey,
+} from "@/lib/security/rate-limit";
 import { createServiceClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 
@@ -26,6 +32,16 @@ export async function registerFan(
   if (handleErr) return { ok: false, error: handleErr };
   const passErr = validatePassword(password);
   if (passErr) return { ok: false, error: passErr };
+
+  const headerStore = await headers();
+  const ipKey = hashClientKey(clientIpFromHeaders(headerStore), "fanzone-register");
+  const allowed = await checkRateLimit(`fanzone:register:${ipKey}`, 5, 3600);
+  if (!allowed) {
+    return {
+      ok: false,
+      error: "Too many sign-ups from this network — try again later.",
+    };
+  }
 
   const display = handle.trim();
   const email = fanAuthEmail(display);

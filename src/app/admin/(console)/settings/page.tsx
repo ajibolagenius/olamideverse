@@ -51,6 +51,13 @@ export default async function AdminSettingsPage({
 
       <form action={saveSettings} className="space-y-4 border-2 border-ink bg-white p-4 sm:p-6">
         <input type="hidden" name="key" value={tab} />
+        {tab === "general" ? (
+          <p className="text-xs leading-relaxed text-ink-soft">
+            <code>analyticsId</code> must be a GA4 (<code>G-…</code>) or GTM (
+            <code>GTM-…</code>) ID. <code>takedownEmail</code> is admin/service-role
+            only — not exposed to anonymous API clients.
+          </p>
+        ) : null}
         <Field
           label={`${tab} (JSON)`}
           name="value"

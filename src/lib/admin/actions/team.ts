@@ -2,11 +2,14 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { isFanAuthEmail } from "@/lib/fanzone/auth";
 import { createServiceClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 import { writeAudit } from "@/lib/admin/audit";
 import { canManageTeam, requireAdmin } from "@/lib/admin/auth";
 import type { AdminRole } from "@/lib/admin/types";
+
+const ADMIN_ROLES: AdminRole[] = ["owner", "editor", "moderator", "viewer"];
 
 export async function inviteAdmin(formData: FormData) {
     const session = await requireAdmin();
@@ -17,8 +20,13 @@ export async function inviteAdmin(formData: FormData) {
     const role = String(formData.get("role") ?? "editor") as AdminRole;
     const display_name = String(formData.get("display_name") ?? "").trim() || null;
 
-    if (!email || password.length < 8) {
+    if (!email || password.length < 8 || !ADMIN_ROLES.includes(role)) {
         redirect("/admin/team?error=invalid");
+    }
+
+    // Keep staff Auth identities off the Fan Zone synthetic domain.
+    if (isFanAuthEmail(email)) {
+        redirect("/admin/team?error=fan-domain");
     }
 
     const service = createServiceClient();
@@ -60,6 +68,10 @@ export async function updateAdminRole(formData: FormData) {
     const user_id = String(formData.get("user_id") ?? "");
     const role = String(formData.get("role") ?? "editor") as AdminRole;
     const disabled = formData.get("disabled") === "on";
+
+    if (!ADMIN_ROLES.includes(role)) {
+        redirect("/admin/team?error=invalid");
+    }
 
     if (user_id === session.userId && disabled) {
         redirect("/admin/team?error=self");
