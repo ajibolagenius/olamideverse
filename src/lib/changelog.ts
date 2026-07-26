@@ -22,8 +22,12 @@ export const CHANGELOG: ChangelogDay[] = [
     label: "26 July 2026",
     items: [
       {
+        title: "Next.js 16.2.12 & image tooling",
+        body: "Framework bump to Next 16.2.12 (with matching eslint-config-next), plus an explicit sharp dependency for admin asset uploads and image optimization.",
+      },
+      {
         title: "Security hardening pass",
-        body: "Rate limits on analytics collect and Fan Zone sign-up, safer favorite links, stronger fan passwords, scrubbed public settings (takedown email no longer anon-readable), validated GA/GTM IDs, HSTS in production, and a hard split so Fan Zone accounts can’t reach the admin console.",
+        body: "Rate limits on analytics collect and Fan Zone sign-up/sign-in, safer favorite links, stronger fan passwords, scrubbed public settings (takedown email no longer anon-readable), validated GA/GTM IDs, HSTS in production, and a hard split so Fan Zone accounts can’t reach the admin console.",
         href: "/legal",
       },
       {

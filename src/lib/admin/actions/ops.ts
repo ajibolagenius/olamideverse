@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import sharp, { type FormatEnum } from "sharp";
 import { writeAudit } from "@/lib/admin/audit";
 import {
     canEditContent,
@@ -211,21 +212,18 @@ export async function uploadAsset(formData: FormData) {
     // Detect + re-encode from the actual bytes rather than trusting the
     // client-declared Content-Type — a renamed/mislabeled file can't slip a
     // non-image payload past this the way it could past a `file.type` check.
-    const { default: sharp } = await import("sharp");
     const rawBytes = Buffer.from(await file.arrayBuffer());
-    let format: string | undefined;
+    let format: keyof FormatEnum | undefined;
     try {
         format = (await sharp(rawBytes, { animated: true }).metadata()).format;
     } catch {
         redirect("/admin/assets?error=filetype");
     }
     const mimeType = format ? ASSET_FORMAT_MIME[format] : undefined;
-    if (!mimeType) {
+    if (!format || !mimeType) {
         redirect("/admin/assets?error=filetype");
     }
-    const bytes = await sharp(rawBytes, { animated: true })
-        .toFormat(format as keyof import("sharp").FormatEnum)
-        .toBuffer();
+    const bytes = await sharp(rawBytes, { animated: true }).toFormat(format).toBuffer();
     if (bytes.length > MAX_ASSET_BYTES) {
         redirect("/admin/assets?error=filesize");
     }
