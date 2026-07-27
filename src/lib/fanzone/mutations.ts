@@ -133,12 +133,13 @@ export async function votePoll(
 export async function postComment(
     threadId: string,
     body: string,
+    parentId?: string | null,
 ): Promise<{ id: string; created_at: string }> {
     const supabase = createClient();
     const fanId = await requireFanId();
     const { data, error } = await supabase
         .from("comments")
-        .insert({ thread_id: threadId, fan_id: fanId, body })
+        .insert({ thread_id: threadId, fan_id: fanId, body, parent_id: parentId ?? null })
         .select("id, created_at")
         .single();
     if (error || !data) throw mutationError(error, "Couldn't post comment.");

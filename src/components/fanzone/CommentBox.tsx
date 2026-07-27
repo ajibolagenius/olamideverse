@@ -1,6 +1,11 @@
 "use client";
 
-import { Flag, PaperPlaneTilt, Trash } from "@phosphor-icons/react";
+import {
+  ArrowBendUpLeft,
+  Flag,
+  PaperPlaneTilt,
+  Trash,
+} from "@phosphor-icons/react";
 import { useState } from "react";
 import { useFan } from "@/lib/fanzone/useFan";
 import {
@@ -22,6 +27,20 @@ function timeAgo(iso: string): string {
   return `${Math.floor(hours / 24)}d ago`;
 }
 
+function countAll(comments: CommentRow[]): number {
+  return comments.reduce((total, c) => total + 1 + c.replies.length, 0);
+}
+
+function removeFromTree(comments: CommentRow[], id: string): CommentRow[] {
+  return comments
+    .filter((c) => c.id !== id)
+    .map((c) =>
+      c.replies.some((r) => r.id === id)
+        ? { ...c, replies: c.replies.filter((r) => r.id !== id) }
+        : c,
+    );
+}
+
 export default function CommentBox({
   threadId,
   threadLabel,
@@ -37,6 +56,9 @@ export default function CommentBox({
   const [posting, setPosting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [reported, setReported] = useState<Record<string, boolean>>({});
+  const [replyingTo, setReplyingTo] = useState<string | null>(null);
+  const [replyDraft, setReplyDraft] = useState("");
+  const [replyPosting, setReplyPosting] = useState(false);
 
   const submit = async () => {
     const body = draft.trim();
@@ -51,7 +73,9 @@ export default function CommentBox({
           body,
           created_at: row.created_at,
           fan_id: fanState.fan!.id,
+          parent_id: null,
           fan: { handle: fanState.fan!.handle },
+          replies: [],
         },
         ...c,
       ]);
@@ -62,9 +86,45 @@ export default function CommentBox({
     setPosting(false);
   };
 
+  const submitReply = async (parentId: string) => {
+    const body = replyDraft.trim();
+    if (!body || !fanState.fan) return;
+    setReplyPosting(true);
+    setError(null);
+    try {
+      const row = await postComment(threadId, body, parentId);
+      setComments((c) =>
+        c.map((comment) =>
+          comment.id === parentId
+            ? {
+                ...comment,
+                replies: [
+                  ...comment.replies,
+                  {
+                    id: row.id,
+                    body,
+                    created_at: row.created_at,
+                    fan_id: fanState.fan!.id,
+                    parent_id: parentId,
+                    fan: { handle: fanState.fan!.handle },
+                    replies: [],
+                  },
+                ],
+              }
+            : comment,
+        ),
+      );
+      setReplyDraft("");
+      setReplyingTo(null);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Couldn't post reply.");
+    }
+    setReplyPosting(false);
+  };
+
   const remove = async (id: string) => {
     const previous = comments;
-    setComments((c) => c.filter((comment) => comment.id !== id));
+    setComments((c) => removeFromTree(c, id));
     setError(null);
     try {
       await deleteComment(id);
@@ -85,12 +145,49 @@ export default function CommentBox({
     }
   };
 
+  const renderActions = (comment: CommentRow, canReply: boolean) => (
+    <div className="mt-1 flex gap-3">
+      {canReply && fanState.fan ? (
+        <button
+          type="button"
+          onClick={() =>
+            setReplyingTo(replyingTo === comment.id ? null : comment.id)
+          }
+          className="ov-icon-inline text-xs font-bold uppercase text-ink-soft hover:text-danfo"
+        >
+          <ArrowBendUpLeft className="ov-icon" size={12} weight={OV_ICON_WEIGHT} aria-hidden />
+          Reply
+        </button>
+      ) : null}
+      {fanState.fan?.id === comment.fan_id ? (
+        <button
+          type="button"
+          onClick={() => remove(comment.id)}
+          className="ov-icon-inline text-xs font-bold uppercase text-ink-soft hover:text-oxide"
+        >
+          <Trash className="ov-icon" size={12} weight={OV_ICON_WEIGHT} aria-hidden />
+          Delete
+        </button>
+      ) : fanState.fan ? (
+        <button
+          type="button"
+          onClick={() => report(comment.id)}
+          disabled={reported[comment.id]}
+          className="ov-icon-inline text-xs font-bold uppercase text-ink-soft hover:text-oxide disabled:opacity-50"
+        >
+          <Flag className="ov-icon" size={12} weight={OV_ICON_WEIGHT} aria-hidden />
+          {reported[comment.id] ? "Reported" : "Report"}
+        </button>
+      ) : null}
+    </div>
+  );
+
   return (
     <div className="ov-paste-up border-3 border-ink bg-white shadow-paste">
       <div className="flex items-center justify-between border-b-3 border-ink bg-ink px-5 py-2.5 text-paper">
         <h3 className="font-display text-lg">{threadLabel}</h3>
         <span className="text-xs tracking-[0.05em] uppercase text-ink-muted">
-          {comments.length} {comments.length === 1 ? "comment" : "comments"}
+          {countAll(comments)} {countAll(comments) === 1 ? "comment" : "comments"}
         </span>
       </div>
 
@@ -138,28 +235,49 @@ export default function CommentBox({
                   <span className="text-xs text-ink-soft">{timeAgo(comment.created_at)}</span>
                 </div>
                 <p className="mt-1 text-sm leading-relaxed">{comment.body}</p>
-                <div className="mt-1 flex gap-3">
-                  {fanState.fan?.id === comment.fan_id ? (
+                {renderActions(comment, true)}
+
+                {replyingTo === comment.id ? (
+                  <div className="mt-3 ml-4 flex gap-2 border-l-2 border-ink/20 pl-4">
+                    <input
+                      value={replyDraft}
+                      onChange={(e) => setReplyDraft(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") submitReply(comment.id);
+                      }}
+                      placeholder={`Reply as ${fanState.fan?.handle ?? ""}…`}
+                      maxLength={2000}
+                      className="flex-1 border-2 border-ink px-3 py-1.5 text-sm"
+                    />
                     <button
                       type="button"
-                      onClick={() => remove(comment.id)}
-                      className="ov-icon-inline text-xs font-bold uppercase text-ink-soft hover:text-oxide"
+                      onClick={() => submitReply(comment.id)}
+                      disabled={replyPosting || !replyDraft.trim()}
+                      className="ov-btn ov-btn-danfo px-3 py-1.5 text-xs disabled:opacity-50"
                     >
-                      <Trash className="ov-icon" size={12} weight={OV_ICON_WEIGHT} aria-hidden />
-                      Delete
+                      Reply
                     </button>
-                  ) : fanState.fan ? (
-                    <button
-                      type="button"
-                      onClick={() => report(comment.id)}
-                      disabled={reported[comment.id]}
-                      className="ov-icon-inline text-xs font-bold uppercase text-ink-soft hover:text-oxide disabled:opacity-50"
-                    >
-                      <Flag className="ov-icon" size={12} weight={OV_ICON_WEIGHT} aria-hidden />
-                      {reported[comment.id] ? "Reported" : "Report"}
-                    </button>
-                  ) : null}
-                </div>
+                  </div>
+                ) : null}
+
+                {comment.replies.length > 0 ? (
+                  <ul className="mt-3 ml-4 flex flex-col gap-3 border-l-2 border-ink/20 pl-4">
+                    {comment.replies.map((reply) => (
+                      <li key={reply.id}>
+                        <div className="flex items-baseline justify-between gap-3">
+                          <span className="text-sm font-bold">
+                            {reply.fan?.handle ?? "A fan"}
+                          </span>
+                          <span className="text-xs text-ink-soft">
+                            {timeAgo(reply.created_at)}
+                          </span>
+                        </div>
+                        <p className="mt-1 text-sm leading-relaxed">{reply.body}</p>
+                        {renderActions(reply, false)}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
               </li>
             ))}
           </ul>

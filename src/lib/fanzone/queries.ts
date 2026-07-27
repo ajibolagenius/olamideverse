@@ -102,17 +102,32 @@ export type CommentRow = {
   body: string;
   created_at: string;
   fan_id: string;
+  parent_id: string | null;
   fan: { handle: string } | null;
+  replies: CommentRow[];
 };
 
 export async function getComments(threadId: string): Promise<CommentRow[]> {
   const supabase = await createClient();
   const { data } = await supabase
     .from("comments")
-    .select("id, body, created_at, fan_id, fan:fans(handle)")
+    .select("id, body, created_at, fan_id, parent_id, fan:fans(handle)")
     .eq("thread_id", threadId)
-    .order("created_at", { ascending: false });
-  return (data ?? []) as unknown as CommentRow[];
+    .order("created_at", { ascending: true });
+  const rows = (data ?? []) as unknown as Omit<CommentRow, "replies">[];
+
+  const byId = new Map<string, CommentRow>();
+  for (const row of rows) byId.set(row.id, { ...row, replies: [] });
+
+  const topLevel: CommentRow[] = [];
+  for (const row of rows) {
+    const comment = byId.get(row.id)!;
+    const parent = row.parent_id ? byId.get(row.parent_id) : undefined;
+    if (parent) parent.replies.push(comment);
+    else topLevel.push(comment);
+  }
+
+  return topLevel.reverse();
 }
 
 export type PlaylistRow = {
