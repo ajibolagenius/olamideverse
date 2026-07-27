@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Analytics from "@/components/Analytics";
+import AppUpdateNotice from "@/components/AppUpdateNotice";
 import MotionRoot from "@/components/MotionRoot";
 import PWARegister from "@/components/PWARegister";
 import PhosphorProvider from "@/components/ui/PhosphorProvider";
@@ -55,6 +56,7 @@ export default async function RootLayout({
         <PhosphorProvider>{children}</PhosphorProvider>
         <MotionRoot />
         <PWARegister />
+        <AppUpdateNotice />
         <Analytics id={analyticsId} />
       </body>
     </html>

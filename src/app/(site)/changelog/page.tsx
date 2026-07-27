@@ -3,9 +3,12 @@ import Link from "next/link";
 import Breadcrumb from "@/components/Breadcrumb";
 import PosterHero from "@/components/PosterHero";
 import Ticker from "@/components/chrome/Ticker";
+import Pagination from "@/components/ui/Pagination";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { CHANGELOG } from "@/lib/changelog";
 import { resolvePageMetadata } from "@/lib/site";
+
+const PAGE_SIZE = 3;
 
 export async function generateMetadata(): Promise<Metadata> {
   return resolvePageMetadata({
@@ -22,7 +25,17 @@ const TICKER = [
   "Curated from the last few days of work",
 ];
 
-export default function ChangelogPage() {
+export default async function ChangelogPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
+  const { page: pageParam } = await searchParams;
+  const totalPages = Math.max(1, Math.ceil(CHANGELOG.length / PAGE_SIZE));
+  const page = Math.min(Math.max(1, Number(pageParam) || 1), totalPages);
+  const start = (page - 1) * PAGE_SIZE;
+  const days = CHANGELOG.slice(start, start + PAGE_SIZE);
+
   return (
     <>
       <Breadcrumb
@@ -45,7 +58,7 @@ export default function ChangelogPage() {
         <SectionLabel>Recent days</SectionLabel>
 
         <ol className="mt-8 space-y-14">
-          {CHANGELOG.map((day) => (
+          {days.map((day) => (
             <li key={day.date}>
               <header className="mb-5 flex flex-wrap items-baseline justify-between gap-3 border-b-3 border-ink pb-3">
                 <h2 className="font-display text-3xl uppercase tracking-wide">
@@ -88,6 +101,8 @@ export default function ChangelogPage() {
             </li>
           ))}
         </ol>
+
+        <Pagination page={page} totalPages={totalPages} basePath="/changelog" />
 
         <p className="mt-14 max-w-2xl text-sm leading-relaxed text-ink-soft">
           This page is editorial, not exhaustive — internal refactors and
