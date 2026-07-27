@@ -177,6 +177,46 @@
 }
 
 /* ---------------------------------------------------------------------------
+   Border-width scale — Tailwind v4's border-width utilities (border,
+   border-2, border-4, border-8) aren't theme-extensible the way colors/
+   shadows are, so the two structural rule weights actually in use across the
+   identity (3px hairline rules, 6px heavy rules) get hand-authored utilities
+   here instead of scattering border-[3px]/border-[6px] arbitrary values.
+   4px already has a native `border-4`; 5px is a single PullQuote accent.
+   ------------------------------------------------------------------------- */
+@utility border-3 {
+  border-width: 3px;
+}
+@utility border-t-3 {
+  border-top-width: 3px;
+}
+@utility border-b-3 {
+  border-bottom-width: 3px;
+}
+@utility border-l-3 {
+  border-left-width: 3px;
+}
+@utility border-r-3 {
+  border-right-width: 3px;
+}
+@utility border-t-6 {
+  border-top-width: 6px;
+}
+@utility border-b-6 {
+  border-bottom-width: 6px;
+}
+@utility border-l-6 {
+  border-left-width: 6px;
+}
+@utility border-y-6 {
+  border-top-width: 6px;
+  border-bottom-width: 6px;
+}
+@utility border-l-5 {
+  border-left-width: 5px;
+}
+
+/* ---------------------------------------------------------------------------
    Motion vocabulary — CSS side.
    GSAP (src/lib/motion.ts) owns ink-reveal, paste-up, duotone-shift and
    pin-scroll; these rules define initial states and the reduced-motion

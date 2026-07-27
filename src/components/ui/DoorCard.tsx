@@ -20,7 +20,7 @@ export default function DoorCard({
   return (
     <Link
       href={href}
-      className={`ov-paste-up ov-lift block border-[3px] border-ink p-6 shadow-paste-sm transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 ${
+      className={`ov-paste-up ov-lift block border-3 border-ink p-6 shadow-paste-sm transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 ${
         dark ? "bg-ink text-paper" : "bg-white"
       }`}
       data-tilt={dark ? "0.5" : "-0.4"}

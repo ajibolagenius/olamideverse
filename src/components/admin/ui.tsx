@@ -11,7 +11,7 @@ export function AdminPageHeader({
   actions?: React.ReactNode;
 }) {
   return (
-    <div className="mb-6 flex flex-wrap items-end justify-between gap-3 border-b-[6px] border-ink pb-4">
+    <div className="mb-6 flex flex-wrap items-end justify-between gap-3 border-b-6 border-ink pb-4">
       <div>
         <h1 className="font-display text-3xl uppercase leading-none">{title}</h1>
         {description ? (
@@ -66,9 +66,9 @@ export function AdminTable({
   children: React.ReactNode;
 }) {
   return (
-    <div className="overflow-x-auto border-[3px] border-ink bg-white shadow-paste-sm">
+    <div className="overflow-x-auto border-3 border-ink bg-white shadow-paste-sm">
       <table className="w-full min-w-[640px] text-left text-sm">
-        <thead className="border-b-[3px] border-ink bg-ink text-paper">
+        <thead className="border-b-3 border-ink bg-ink text-paper">
           <tr>
             {headers.map((h) => (
               <th

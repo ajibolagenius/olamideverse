@@ -55,7 +55,7 @@ export default async function ErasPage() {
       </section>
 
       <section className="mx-auto max-w-3xl px-5 pb-20 sm:px-8">
-        <div className="ov-paste-up border-[3px] border-ink bg-white p-6 shadow-paste-sm">
+        <div className="ov-paste-up border-3 border-ink bg-white p-6 shadow-paste-sm">
           <SectionLabel className="mb-2">Also in the archive</SectionLabel>
           <p className="mb-5 text-[0.98rem] leading-relaxed text-ink-soft">
             Trace the people around these chapters, or the places they touched —

@@ -129,7 +129,7 @@ export default function InfluenceGraph({ graph }: { graph: InfluenceGraphData })
   return (
     <div className="flex flex-col gap-6">
       {/* Filters — one strip for both compositions */}
-      <div className="border-[3px] border-ink bg-white p-4 shadow-paste-sm sm:p-5">
+      <div className="border-3 border-ink bg-white p-4 shadow-paste-sm sm:p-5">
         <p className="mb-2.5 text-[0.7rem] font-bold tracking-[0.08em] uppercase text-ink-soft">
           Filter
         </p>
@@ -163,13 +163,13 @@ export default function InfluenceGraph({ graph }: { graph: InfluenceGraphData })
         {/* YBNL roster timeline — hero of the page */}
         <section
           aria-labelledby={`${reactId}-roster-title`}
-          className={`ov-paste-up order-1 border-[3px] border-ink bg-white shadow-paste lg:order-2 ${
+          className={`ov-paste-up order-1 border-3 border-ink bg-white shadow-paste lg:order-2 ${
             hubFocus ? "opacity-55" : ""
           }`}
           data-tilt="0.5"
           style={{ rotate: "0.5deg" }}
         >
-          <header className="border-b-[3px] border-ink bg-palm px-4 py-3 text-paper sm:px-5">
+          <header className="border-b-3 border-ink bg-palm px-4 py-3 text-paper sm:px-5">
             <p className="text-[0.68rem] font-bold tracking-[0.1em] uppercase opacity-90">
               Kingmaker lineage
             </p>
@@ -231,13 +231,13 @@ export default function InfluenceGraph({ graph }: { graph: InfluenceGraphData })
         {/* Compact hub — mentors, peers, collaborators, influences */}
         <section
           aria-labelledby={`${reactId}-hub-title`}
-          className={`ov-paste-up order-2 border-[3px] border-ink bg-paper-dim shadow-paste lg:order-1 ${
+          className={`ov-paste-up order-2 border-3 border-ink bg-paper-dim shadow-paste lg:order-1 ${
             rosterActive || roleFilter === "mentee" ? "opacity-55" : ""
           }`}
           data-tilt="-0.6"
           style={{ rotate: "-0.6deg" }}
         >
-          <header className="flex items-end justify-between gap-3 border-b-[3px] border-ink bg-paper px-4 py-3 sm:px-5">
+          <header className="flex items-end justify-between gap-3 border-b-3 border-ink bg-paper px-4 py-3 sm:px-5">
             <div>
               <p className="text-[0.68rem] font-bold tracking-[0.1em] uppercase text-ink-soft">
                 Orbit
@@ -353,7 +353,7 @@ export default function InfluenceGraph({ graph }: { graph: InfluenceGraphData })
 
       {/* Shared detail — one reading pane for either composition */}
       <aside
-        className="ov-paste-up border-[3px] border-ink bg-white p-5 shadow-paste-sm sm:p-6"
+        className="ov-paste-up border-3 border-ink bg-white p-5 shadow-paste-sm sm:p-6"
         data-tilt="-0.3"
         style={{ rotate: "-0.3deg" }}
         aria-live="polite"

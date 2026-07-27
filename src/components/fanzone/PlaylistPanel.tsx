@@ -91,7 +91,7 @@ export default function PlaylistPanel({ initialPlaylist }: { initialPlaylist: Pl
   return (
     <div>
       {shared ? (
-        <div className="mb-4 flex flex-wrap items-center justify-between gap-3 border-[3px] border-ink bg-adire-tint px-4 py-3">
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-3 border-3 border-ink bg-adire-tint px-4 py-3">
           <span className="text-sm">
             A shared playlist has {shared.length} track{shared.length === 1 ? "" : "s"} you don&apos;t
             have yet.
@@ -125,7 +125,7 @@ export default function PlaylistPanel({ initialPlaylist }: { initialPlaylist: Pl
           message="No playlist yet — add tracks from an album's tracklist to see them here."
         />
       ) : (
-        <div className="ov-paste-up border-[3px] border-ink bg-white shadow-paste">
+        <div className="ov-paste-up border-3 border-ink bg-white shadow-paste">
           {playlist.map((item) => (
             <div
               key={item.id}

@@ -41,7 +41,7 @@ export default function VisitorBadge() {
 
   return (
     <div
-      className="ov-visitor-badge inline-flex items-center gap-2 border-[3px] border-danfo bg-ink px-3 py-1.5 text-paper shadow-[3px_3px_0_#F5B301]"
+      className="ov-visitor-badge inline-flex items-center gap-2 border-3 border-danfo bg-ink px-3 py-1.5 text-paper shadow-[3px_3px_0_#F5B301]"
       title={label}
       aria-label={label}
       aria-live="polite"

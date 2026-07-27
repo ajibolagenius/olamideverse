@@ -95,7 +95,7 @@ export default async function SnippetPage({
             )}
           </div>
 
-          <div className="border-[3px] border-ink bg-white p-5 shadow-paste-sm">
+          <div className="border-3 border-ink bg-white p-5 shadow-paste-sm">
             <p className="mb-3 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
               In the archive
             </p>

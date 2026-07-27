@@ -43,7 +43,7 @@ export default function EmbedFrame({
   }
 
   return (
-    <div className="ov-tape border-[3px] border-ink bg-ink shadow-paste-sm">
+    <div className="ov-tape border-3 border-ink bg-ink shadow-paste-sm">
       <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-ink-soft/40 px-3.5 py-2 text-[0.7rem] font-bold tracking-[0.06em] uppercase text-ink-muted">
         <div className="flex items-center gap-2">
           <span className="inline-block size-2 rounded-full bg-danfo animate-pulse" aria-hidden />

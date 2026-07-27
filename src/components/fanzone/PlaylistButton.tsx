@@ -78,7 +78,7 @@ export default function PlaylistButton({
         aria-pressed={added}
         aria-label={added ? `Remove ${title} from playlist` : `Add ${title} to playlist`}
         title={error ?? undefined}
-        className={`grid size-9 place-items-center border-[3px] border-ink shadow-paste-sm disabled:opacity-60 ${
+        className={`grid size-9 place-items-center border-3 border-ink shadow-paste-sm disabled:opacity-60 ${
           added ? "bg-palm text-paper" : "bg-danfo text-ink"
         }`}
       >

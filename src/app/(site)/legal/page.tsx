@@ -29,7 +29,7 @@ export default async function LegalPage() {
       />
 
       <section className="mx-auto max-w-3xl px-5 py-14 sm:px-8">
-        <div className="ov-paste-up mb-10 border-[3px] border-ink bg-danfo-tint p-6 shadow-paste-sm">
+        <div className="ov-paste-up mb-10 border-3 border-ink bg-danfo-tint p-6 shadow-paste-sm">
           <h2 className="font-display mb-2.5 text-2xl">Not affiliated</h2>
           <p className="text-base leading-relaxed">
             OlamideVerse is an independent, non-commercial fan project. It is{" "}
@@ -114,7 +114,7 @@ export default async function LegalPage() {
           and want content corrected, credited, or removed, this project
           will comply promptly with any reasonable request.
         </p>
-        <div className="ov-paste-up inline-block border-[3px] border-ink bg-white px-6 py-5 shadow-paste-sm">
+        <div className="ov-paste-up inline-block border-3 border-ink bg-white px-6 py-5 shadow-paste-sm">
           <span className="mb-1 block text-[0.85rem] font-bold tracking-[0.06em] uppercase">
             Contact
           </span>

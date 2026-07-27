@@ -47,7 +47,7 @@ export default function ChangelogPage() {
         <ol className="mt-8 space-y-14">
           {CHANGELOG.map((day) => (
             <li key={day.date}>
-              <header className="mb-5 flex flex-wrap items-baseline justify-between gap-3 border-b-[3px] border-ink pb-3">
+              <header className="mb-5 flex flex-wrap items-baseline justify-between gap-3 border-b-3 border-ink pb-3">
                 <h2 className="font-display text-3xl uppercase tracking-wide">
                   {day.label}
                 </h2>
@@ -63,7 +63,7 @@ export default function ChangelogPage() {
                 {day.items.map((item) => (
                   <li
                     key={item.title}
-                    className="ov-paste-up border-[3px] border-ink bg-white p-5 shadow-paste-sm"
+                    className="ov-paste-up border-3 border-ink bg-white p-5 shadow-paste-sm"
                     data-tilt="-0.4"
                     style={{ rotate: "-0.4deg" }}
                   >

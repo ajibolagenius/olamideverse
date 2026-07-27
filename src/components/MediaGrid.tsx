@@ -56,13 +56,13 @@ function MediaThumb({
           ? `Play ${item.title}`
           : `${item.title} — no embed available`
       }
-      className={`group flex w-full flex-col border-[3px] border-ink bg-white text-left shadow-paste-sm transition-[transform,box-shadow,background-color] ${
+      className={`group flex w-full flex-col border-3 border-ink bg-white text-left shadow-paste-sm transition-[transform,box-shadow,background-color] ${
         active
           ? "bg-danfo shadow-paste"
           : "hover:-translate-y-0.5 hover:shadow-paste"
       }`}
     >
-      <div className="relative aspect-video overflow-hidden border-b-[3px] border-ink bg-ink">
+      <div className="relative aspect-video overflow-hidden border-b-3 border-ink bg-ink">
         {item.youtubeId ? (
           // eslint-disable-next-line @next/next/no-img-element -- remote YouTube thumbs; avoid next/image remotePatterns churn
           <img
@@ -134,8 +134,8 @@ function CinemaPlayer({
   onClose: () => void;
 }) {
   return (
-    <div className="border-[3px] border-ink bg-ink text-paper shadow-paste">
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b-[3px] border-danfo bg-danfo px-3 py-2 text-ink">
+    <div className="border-3 border-ink bg-ink text-paper shadow-paste">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b-3 border-danfo bg-danfo px-3 py-2 text-ink">
         <p className="text-[0.72rem] font-bold tracking-[0.08em] uppercase">
           Now screening · {TYPE_LABEL[item.type]} · {era.title}
         </p>
@@ -162,7 +162,7 @@ function CinemaPlayer({
           hosted here.
         </div>
       )}
-      <div className="border-t-[3px] border-danfo bg-paper px-4 py-4 text-ink sm:px-5">
+      <div className="border-t-3 border-danfo bg-paper px-4 py-4 text-ink sm:px-5">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <h2 className="font-display text-2xl leading-none sm:text-3xl">
             {item.title}
@@ -252,8 +252,8 @@ export default function MediaGrid({
 
   return (
     <div>
-      <div className="mb-8 border-[3px] border-ink bg-white shadow-paste-sm">
-        <div className="flex flex-wrap items-end justify-between gap-3 border-b-[3px] border-ink bg-ink px-4 py-3 text-paper">
+      <div className="mb-8 border-3 border-ink bg-white shadow-paste-sm">
+        <div className="flex flex-wrap items-end justify-between gap-3 border-b-3 border-ink bg-ink px-4 py-3 text-paper">
           <div>
             <p className="text-[0.65rem] font-bold tracking-[0.1em] uppercase text-danfo">
               Screening wall
@@ -277,7 +277,7 @@ export default function MediaGrid({
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Wo, Motigbana, Phyno, Clarence…"
-              className="border-[3px] border-ink bg-paper px-3 py-2.5 text-sm outline-none focus:bg-white"
+              className="border-3 border-ink bg-paper px-3 py-2.5 text-sm outline-none focus:bg-white"
             />
           </label>
 
@@ -321,7 +321,7 @@ export default function MediaGrid({
                   type="button"
                   aria-pressed={sort === option}
                   onClick={() => setSort(option)}
-                  className={`border-b-[3px] pb-0.5 ${
+                  className={`border-b-3 pb-0.5 ${
                     sort === option
                       ? "border-ink"
                       : "border-transparent text-ink-soft hover:border-danfo"

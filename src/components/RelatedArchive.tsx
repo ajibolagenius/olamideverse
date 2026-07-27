@@ -11,7 +11,7 @@ export default function RelatedArchive({
 }) {
   return (
     <section className="mx-auto max-w-6xl px-5 pb-14 sm:px-8">
-      <div className="border-[3px] border-ink bg-white p-6 shadow-paste-sm">
+      <div className="border-3 border-ink bg-white p-6 shadow-paste-sm">
         <p className="mb-2 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
           Keep following the fabric
         </p>

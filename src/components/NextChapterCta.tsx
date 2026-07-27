@@ -13,7 +13,7 @@ export default function NextChapterCta({ nextEra }: { nextEra: Era }) {
       <SectionLabel>Next chapter</SectionLabel>
       <Link
         href={`/eras/${nextEra.slug}`}
-        className="ov-paste-up group flex flex-wrap items-center justify-between gap-4 border-[3px] border-ink bg-(--tint) px-7 py-6 shadow-paste-sm transition-colors hover:bg-(--solid) hover:text-paper"
+        className="ov-paste-up group flex flex-wrap items-center justify-between gap-4 border-3 border-ink bg-(--tint) px-7 py-6 shadow-paste-sm transition-colors hover:bg-(--solid) hover:text-paper"
         style={
           {
             "--tint": accent.tint,

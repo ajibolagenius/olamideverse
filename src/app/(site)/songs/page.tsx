@@ -41,7 +41,7 @@ export default async function SongsPage() {
       />
       <Ticker items={TICKER} />
       <section className="mx-auto max-w-7xl px-5 py-10 sm:px-8">
-        <div className="mb-8 border-l-[6px] border-danfo bg-paper-dim/50 px-5 py-4">
+        <div className="mb-8 border-l-6 border-danfo bg-paper-dim/50 px-5 py-4">
           <p className="max-w-3xl text-sm leading-relaxed text-ink-soft">
             {songs.length} entries right now ({albumTrackCount} album tracks ·{" "}
             {catalogCount} researched). Status badges mark confidence:{" "}

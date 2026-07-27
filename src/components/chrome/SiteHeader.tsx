@@ -50,7 +50,7 @@ function NavItem({
     <Link
       href={href}
       aria-current={active ? "page" : undefined}
-      className={`ov-icon-inline border-b-[3px] pb-0.5 text-[0.9rem] font-semibold tracking-[0.07em] uppercase transition-colors ${
+      className={`ov-icon-inline border-b-3 pb-0.5 text-[0.9rem] font-semibold tracking-[0.07em] uppercase transition-colors ${
         active ? "border-ink" : "border-transparent hover:border-danfo"
       }`}
     >
@@ -73,7 +73,7 @@ function MoreMenuPanel({
     <div
       id={id}
       role="menu"
-      className="absolute top-full right-0 z-30 mt-2 min-w-[16rem] border-[3px] border-ink bg-paper p-4 shadow-paste"
+      className="absolute top-full right-0 z-30 mt-2 min-w-[16rem] border-3 border-ink bg-paper p-4 shadow-paste"
     >
       <div className="grid gap-4">
         {groups.map((group) => (
@@ -90,7 +90,7 @@ function MoreMenuPanel({
                       role="menuitem"
                       href={link.href}
                       aria-current={active ? "page" : undefined}
-                      className={`ov-icon-inline border-l-[3px] py-1 pl-2.5 text-sm font-semibold tracking-[0.05em] uppercase transition-colors ${
+                      className={`ov-icon-inline border-l-3 py-1 pl-2.5 text-sm font-semibold tracking-[0.05em] uppercase transition-colors ${
                         active
                           ? "border-oxide text-oxide"
                           : "border-transparent hover:border-danfo hover:text-ink"
@@ -126,11 +126,11 @@ function DrawerGroups({
           <p className="mb-2 text-[0.7rem] font-semibold tracking-[0.14em] uppercase text-ink-soft">
             {group.label}
           </p>
-          <ul className="grid gap-0 border-t-[3px] border-ink">
+          <ul className="grid gap-0 border-t-3 border-ink">
             {group.links.map((link) => {
               const active = isLinkActive(pathname, link.href);
               return (
-                <li key={link.href} className="border-b-[3px] border-ink">
+                <li key={link.href} className="border-b-3 border-ink">
                   <Link
                     href={link.href}
                     aria-current={active ? "page" : undefined}
@@ -219,7 +219,7 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
 
   return (
     <header
-      className={`sticky top-0 z-40 border-b-[6px] border-ink transition-[padding,box-shadow,background-color] duration-200 ${
+      className={`sticky top-0 z-40 border-b-6 border-ink transition-[padding,box-shadow,background-color] duration-200 ${
         scrolled ? "ov-header-scrolled bg-paper shadow-[0_4px_0_0_var(--color-ink)]" : "bg-paper"
       }`}
       style={eraAccent ? { backgroundColor: eraAccent } : undefined}
@@ -247,7 +247,7 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
               aria-haspopup="menu"
               aria-controls={moreMenuId}
               onClick={() => setMoreOpen((o) => !o)}
-              className={`ov-icon-inline border-b-[3px] pb-0.5 text-[0.9rem] font-semibold tracking-[0.07em] uppercase transition-colors ${
+              className={`ov-icon-inline border-b-3 pb-0.5 text-[0.9rem] font-semibold tracking-[0.07em] uppercase transition-colors ${
                 moreOpen || moreActive
                   ? "border-ink"
                   : "border-transparent hover:border-danfo"
@@ -281,7 +281,7 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
           aria-expanded={menuOpen}
           aria-controls="mobile-nav-drawer"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
-          className="grid size-10 flex-shrink-0 place-items-center border-[3px] border-ink bg-paper lg:hidden"
+          className="grid size-10 flex-shrink-0 place-items-center border-3 border-ink bg-paper lg:hidden"
         >
           {menuOpen ? (
             <X size={22} weight={OV_ICON_WEIGHT} aria-hidden />
@@ -299,7 +299,7 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
           aria-labelledby={drawerTitleId}
           className="fixed inset-0 z-50 flex flex-col bg-paper lg:hidden"
         >
-          <div className="flex items-center justify-between border-b-[6px] border-ink px-5 py-3.5">
+          <div className="flex items-center justify-between border-b-6 border-ink px-5 py-3.5">
             <p id={drawerTitleId} className="font-display text-2xl uppercase">
               Menu
             </p>
@@ -317,11 +317,11 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
             <p className="mb-2 text-[0.7rem] font-semibold tracking-[0.14em] uppercase text-ink-soft">
               Primary
             </p>
-            <ul className="mb-8 grid gap-0 border-t-[3px] border-ink">
+            <ul className="mb-8 grid gap-0 border-t-3 border-ink">
               {PRIMARY_NAV.map((link) => {
                 const active = isLinkActive(pathname, link.href);
                 return (
-                  <li key={link.href} className="border-b-[3px] border-ink">
+                  <li key={link.href} className="border-b-3 border-ink">
                     <Link
                       href={link.href}
                       aria-current={active ? "page" : undefined}
@@ -353,7 +353,7 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
               </Link>
             ) : null}
           </div>
-          <p className="border-t-[3px] border-ink px-5 py-3 text-[0.7rem] tracking-[0.08em] uppercase text-ink-soft">
+          <p className="border-t-3 border-ink px-5 py-3 text-[0.7rem] tracking-[0.08em] uppercase text-ink-soft">
             Fan archive · Not affiliated
           </p>
         </div>

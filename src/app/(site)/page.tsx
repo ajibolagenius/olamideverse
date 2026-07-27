@@ -70,7 +70,7 @@ export default async function Home() {
         }
         intro="The cultural context, the era-defining moments, the lineage from Coded Tunes to YBNL — told era by era, album by album."
       >
-        <div className="mt-9 flex flex-wrap items-end justify-between gap-4 border-t-[6px] border-danfo pt-5">
+        <div className="mt-9 flex flex-wrap items-end justify-between gap-4 border-t-6 border-danfo pt-5">
           <div className="flex flex-wrap gap-3">
             <Link href="/eras" className="ov-btn ov-btn-danfo ov-icon-inline px-5 py-3 text-sm">
               <Books className="ov-icon" size={18} weight={OV_ICON_WEIGHT} aria-hidden />
@@ -94,11 +94,11 @@ export default async function Home() {
       <section className="mx-auto max-w-6xl px-5 pt-20 pb-5 sm:px-8">
         <SectionLabel>Start at the beginning</SectionLabel>
         <div
-          className="ov-paste-up max-w-3xl border-[3px] border-ink bg-white shadow-paste"
+          className="ov-paste-up max-w-3xl border-3 border-ink bg-white shadow-paste"
           data-tilt="-0.6"
           style={{ rotate: "-0.6deg" }}
         >
-          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-b-[3px] border-ink bg-oxide px-5 py-2.5 text-paper">
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-b-3 border-ink bg-oxide px-5 py-2.5 text-paper">
             <span className="text-sm font-bold tracking-[0.06em] uppercase">
               Chapter One — live now
             </span>
@@ -120,7 +120,7 @@ export default async function Home() {
               accent={upstart.accent}
               label="Archival photo — Bariga, early days"
               photo={homePhoto}
-              className="min-h-[280px] border-t-[3px] border-ink sm:border-t-0 sm:border-l-[3px]"
+              className="min-h-[280px] border-t-3 border-ink sm:border-t-0 sm:border-l-3"
             />
           </div>
         </div>

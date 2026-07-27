@@ -54,7 +54,7 @@ export default function AlbumGrid({
               type="button"
               aria-pressed={sort === option}
               onClick={() => setSort(option)}
-              className={`border-b-[3px] pb-0.5 ${
+              className={`border-b-3 pb-0.5 ${
                 sort === option
                   ? "border-ink"
                   : "border-transparent text-ink-soft hover:border-danfo"

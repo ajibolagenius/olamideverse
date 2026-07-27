@@ -42,7 +42,7 @@ export default async function AlbumsPage() {
       />
       <Ticker items={TICKER} />
       <section className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
-        <div className="mb-10 flex flex-wrap items-center justify-between gap-4 border-b-[3px] border-ink pb-5">
+        <div className="mb-10 flex flex-wrap items-center justify-between gap-4 border-b-3 border-ink pb-5">
           <p className="max-w-2xl text-sm leading-relaxed text-ink-soft">
             Looking for a single cut, feature or freestyle across the whole run?
           </p>

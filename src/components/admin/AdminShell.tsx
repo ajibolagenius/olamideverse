@@ -14,7 +14,7 @@ export default function AdminShell({
 }) {
   return (
     <div className="flex h-dvh flex-col overflow-hidden bg-paper text-ink">
-      <header className="z-30 flex shrink-0 items-center justify-between border-b-[6px] border-ink bg-paper px-4 py-3 sm:px-6">
+      <header className="z-30 flex shrink-0 items-center justify-between border-b-6 border-ink bg-paper px-4 py-3 sm:px-6">
         <div className="flex items-center gap-4">
           <Link href="/admin" className="font-display text-xl uppercase tracking-wide">
             OV <span className="bg-danfo px-1 text-ink">Admin</span>
@@ -42,7 +42,7 @@ export default function AdminShell({
       </header>
 
       <div className="mx-auto flex min-h-0 w-full max-w-[1400px] flex-1 gap-0 md:gap-6">
-        <aside className="hidden min-h-0 w-56 shrink-0 overflow-y-auto overscroll-contain border-r-[3px] border-ink/20 bg-paper-dim/40 p-4 md:block">
+        <aside className="hidden min-h-0 w-56 shrink-0 overflow-y-auto overscroll-contain border-r-3 border-ink/20 bg-paper-dim/40 p-4 md:block">
           <AdminSidebarNav role={admin.role} />
         </aside>
 

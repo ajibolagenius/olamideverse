@@ -24,7 +24,7 @@ export default function EraMoments({ era }: { era: Era }) {
             <div
               key={m.year + i}
               id={momentAnchor(m.year, m.title)}
-              className="ov-paste-up flex scroll-mt-28 items-baseline gap-5 border-[3px] border-ink bg-white p-5 shadow-paste-sm"
+              className="ov-paste-up flex scroll-mt-28 items-baseline gap-5 border-3 border-ink bg-white p-5 shadow-paste-sm"
               data-tilt={(i % 2 === 0 ? -1 : 1) * 0.45}
               style={{ rotate: `${(i % 2 === 0 ? -1 : 1) * 0.45}deg` }}
             >
@@ -61,7 +61,7 @@ export default function EraMoments({ era }: { era: Era }) {
             <div
               key={m.year + i}
               id={momentAnchor(m.year, m.title)}
-              className="ov-paste-up scroll-mt-28 border-[3px] border-ink bg-white p-6 shadow-paste-sm"
+              className="ov-paste-up scroll-mt-28 border-3 border-ink bg-white p-6 shadow-paste-sm"
               data-tilt={tilt}
               style={{ rotate: `${tilt}deg` }}
             >

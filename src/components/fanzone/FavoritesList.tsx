@@ -30,7 +30,7 @@ export default function FavoritesList({ initialFavorites }: { initialFavorites: 
         return (
         <div
           key={fav.id}
-          className="ov-paste-up flex items-center justify-between gap-3 border-[3px] border-ink bg-white px-3.5 py-3 shadow-paste-sm"
+          className="ov-paste-up flex items-center justify-between gap-3 border-3 border-ink bg-white px-3.5 py-3 shadow-paste-sm"
         >
           {href ? (
             <Link href={href} className="ov-link-underline font-bold">

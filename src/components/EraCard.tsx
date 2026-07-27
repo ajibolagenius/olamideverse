@@ -21,12 +21,12 @@ export default function EraCard({
 
   return (
     <div
-      className="ov-paste-up group border-[3px] border-ink bg-white shadow-[7px_7px_0_var(--color-ink)]"
+      className="ov-paste-up group border-3 border-ink bg-white shadow-[7px_7px_0_var(--color-ink)]"
       data-tilt={tilt}
       style={{ rotate: `${tilt}deg` }}
     >
       <div
-        className="flex items-center justify-between border-b-[3px] border-ink px-4 py-2.5"
+        className="flex items-center justify-between border-b-3 border-ink px-4 py-2.5"
         style={{ background: chrome.bg, color: chrome.fg }}
       >
         <span className="font-display text-2xl">
@@ -58,7 +58,7 @@ export default function EraCard({
       </div>
       <Link
         href={`/eras/${era.slug}`}
-        className="ov-icon-inline block border-t-[3px] border-ink px-4 py-3 text-sm font-bold tracking-[0.08em] uppercase text-adire transition-colors hover:bg-ink hover:text-paper"
+        className="ov-icon-inline block border-t-3 border-ink px-4 py-3 text-sm font-bold tracking-[0.08em] uppercase text-adire transition-colors hover:bg-ink hover:text-paper"
       >
         Enter the era
         <ArrowRight className="ov-icon" size={14} weight={OV_ICON_WEIGHT} aria-hidden />

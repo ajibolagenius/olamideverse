@@ -61,7 +61,7 @@ export default function HandlePicker({
 
   if (fan && panel === "idle") {
     return (
-      <div className="border-[3px] border-ink bg-white px-5 py-3.5 shadow-paste-sm">
+      <div className="border-3 border-ink bg-white px-5 py-3.5 shadow-paste-sm">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <span className="ov-icon-inline text-[0.9rem]">
             <UserCircle
@@ -120,7 +120,7 @@ export default function HandlePicker({
 
   if (fan && panel === "rename") {
     return (
-      <div className="flex flex-wrap items-end gap-3 border-[3px] border-ink bg-adire-tint p-[18px] shadow-paste-sm">
+      <div className="flex flex-wrap items-end gap-3 border-3 border-ink bg-adire-tint p-[18px] shadow-paste-sm">
         <label className="grid min-w-[180px] flex-1 gap-1 text-xs font-bold tracking-[0.08em] uppercase">
           New handle
           <input
@@ -166,7 +166,7 @@ export default function HandlePicker({
 
   if (fan && panel === "password") {
     return (
-      <div className="flex flex-wrap items-end gap-3 border-[3px] border-ink bg-adire-tint p-[18px] shadow-paste-sm">
+      <div className="flex flex-wrap items-end gap-3 border-3 border-ink bg-adire-tint p-[18px] shadow-paste-sm">
         <label className="grid min-w-[160px] flex-1 gap-1 text-xs font-bold tracking-[0.08em] uppercase">
           New password
           <input
@@ -226,7 +226,7 @@ export default function HandlePicker({
   }
 
   return (
-    <div className="border-[3px] border-ink bg-adire-tint p-[18px] shadow-paste-sm">
+    <div className="border-3 border-ink bg-adire-tint p-[18px] shadow-paste-sm">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
         <p className="text-[0.9rem]">{prompt}</p>
         <div className="flex gap-1 border-2 border-ink bg-white p-0.5">

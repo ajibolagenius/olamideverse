@@ -35,8 +35,8 @@ export function AdminSidebarNav({ role }: { role: AdminRole }) {
                       aria-current={active ? "page" : undefined}
                       className={
                         active
-                          ? "block border-l-[3px] border-danfo bg-white px-2 py-1.5 text-sm font-bold text-ink shadow-paste-sm"
-                          : "block border-l-[3px] border-transparent px-2 py-1.5 text-sm font-medium text-ink hover:border-danfo hover:bg-white"
+                          ? "block border-l-3 border-danfo bg-white px-2 py-1.5 text-sm font-bold text-ink shadow-paste-sm"
+                          : "block border-l-3 border-transparent px-2 py-1.5 text-sm font-medium text-ink hover:border-danfo hover:bg-white"
                       }
                     >
                       {item.label}

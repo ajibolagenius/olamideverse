@@ -66,7 +66,7 @@ export default async function NotFound() {
         <section className="mx-auto max-w-3xl px-5 py-14 sm:px-8">
           <SectionLabel>Skip to</SectionLabel>
           <div
-            className="ov-paste-up border-[3px] border-ink bg-white shadow-paste"
+            className="ov-paste-up border-3 border-ink bg-white shadow-paste"
             data-tilt="-0.5"
             style={{ rotate: "-0.5deg" }}
           >

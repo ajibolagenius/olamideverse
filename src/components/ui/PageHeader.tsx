@@ -19,7 +19,7 @@ export default function PageHeader({
 }) {
   return (
     <header
-      className={`border-b-[6px] border-ink px-5 py-12 sm:px-8 sm:py-16 ${
+      className={`border-b-6 border-ink px-5 py-12 sm:px-8 sm:py-16 ${
         dark ? "grain bg-ink text-paper" : "bg-paper"
       }`}
     >

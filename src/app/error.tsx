@@ -20,7 +20,7 @@ export default function Error({
         <button
           type="button"
           onClick={reset}
-          className="border-[3px] border-ink bg-danfo px-5 py-3 text-sm font-bold tracking-[0.06em] uppercase text-ink shadow-paste-sm"
+          className="border-3 border-ink bg-danfo px-5 py-3 text-sm font-bold tracking-[0.06em] uppercase text-ink shadow-paste-sm"
         >
           Try again
         </button>

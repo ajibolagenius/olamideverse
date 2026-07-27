@@ -86,8 +86,8 @@ export default function CommentBox({
   };
 
   return (
-    <div className="ov-paste-up border-[3px] border-ink bg-white shadow-paste">
-      <div className="flex items-center justify-between border-b-[3px] border-ink bg-ink px-5 py-2.5 text-paper">
+    <div className="ov-paste-up border-3 border-ink bg-white shadow-paste">
+      <div className="flex items-center justify-between border-b-3 border-ink bg-ink px-5 py-2.5 text-paper">
         <h3 className="font-display text-lg">{threadLabel}</h3>
         <span className="text-xs tracking-[0.05em] uppercase text-ink-muted">
           {comments.length} {comments.length === 1 ? "comment" : "comments"}

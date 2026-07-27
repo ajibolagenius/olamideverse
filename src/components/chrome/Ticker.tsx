@@ -4,7 +4,7 @@
  */
 export default function Ticker({
   items,
-  className = "bg-danfo border-b-[3px] border-ink",
+  className = "bg-danfo border-b-3 border-ink",
 }: {
   items: string[];
   className?: string;

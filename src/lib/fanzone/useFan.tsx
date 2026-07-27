@@ -53,7 +53,22 @@ export function FanProvider({ children }: { children: ReactNode }) {
     const supabase = createClient();
     const {
       data: { user },
+      error,
     } = await supabase.auth.getUser();
+
+    // Stale refresh cookies (signed out elsewhere / rotated) — clear quietly.
+    if (
+      error &&
+      (error.code === "refresh_token_not_found" ||
+        error.code === "refresh_token_already_used" ||
+        /refresh token/i.test(error.message))
+    ) {
+      await supabase.auth.signOut({ scope: "local" });
+      setFan(null);
+      setLoading(false);
+      return;
+    }
+
     if (!user) {
       setFan(null);
       setLoading(false);

@@ -95,10 +95,10 @@ export default function Modal({
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="relative z-10 w-full max-w-lg border-[4px] border-ink bg-paper p-5 shadow-paste sm:p-6"
+        className="relative z-10 w-full max-w-lg border-4 border-ink bg-paper p-5 shadow-paste sm:p-6"
         style={{ rotate: "-0.4deg" }}
       >
-        <div className="mb-4 flex items-start justify-between gap-4 border-b-[3px] border-ink pb-3">
+        <div className="mb-4 flex items-start justify-between gap-4 border-b-3 border-ink pb-3">
           <h2 id={titleId} className="font-display text-2xl uppercase leading-none">
             {title}
           </h2>

@@ -73,7 +73,7 @@ function PlayerBody({
   if (active) {
     return (
       <div
-        className={`border-[3px] border-dashed border-ink-soft bg-paper-dim text-sm leading-relaxed text-ink-soft ${
+        className={`border-3 border-dashed border-ink-soft bg-paper-dim text-sm leading-relaxed text-ink-soft ${
           compact ? "p-3" : "p-5"
         }`}
       >
@@ -85,7 +85,7 @@ function PlayerBody({
   }
 
   return (
-    <div className="border-[3px] border-dashed border-ink-soft bg-paper-dim p-5 text-sm leading-relaxed text-ink-soft">
+    <div className="border-3 border-dashed border-ink-soft bg-paper-dim p-5 text-sm leading-relaxed text-ink-soft">
       Select a track with a play button to load its Spotify or YouTube embed
       here. This pane stays fixed while you scroll.
     </div>
@@ -186,7 +186,7 @@ export default function SongCatalog({
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Eni Duro, Konga, Otis…"
-              className="border-[3px] border-ink bg-white px-3 py-2 text-sm outline-none focus:bg-paper-dim"
+              className="border-3 border-ink bg-white px-3 py-2 text-sm outline-none focus:bg-paper-dim"
             />
           </label>
           <div
@@ -200,7 +200,7 @@ export default function SongCatalog({
                 type="button"
                 aria-pressed={sort === option}
                 onClick={() => setSort(option)}
-                className={`border-b-[3px] pb-0.5 ${
+                className={`border-b-3 pb-0.5 ${
                   sort === option
                     ? "border-ink"
                     : "border-transparent text-ink-soft hover:border-danfo"
@@ -223,7 +223,7 @@ export default function SongCatalog({
           {shown.length === 0 ? (
             <EmptyState message="Nothing matches those filters — try another era or clear search." />
           ) : (
-            <ol className="border-t-[3px] border-ink">
+            <ol className="border-t-3 border-ink">
               {shown.map((song) => {
                 const era = erasBySlug.get(song.era);
                 const activeRow = active?.id === song.id;
@@ -334,7 +334,7 @@ export default function SongCatalog({
         <div
           role="region"
           aria-label="Now playing"
-          className="fixed inset-x-0 bottom-0 z-30 border-t-[3px] border-ink bg-paper p-3 shadow-[0_-8px_0_0_rgba(24,20,16,0.08)] lg:hidden"
+          className="fixed inset-x-0 bottom-0 z-30 border-t-3 border-ink bg-paper p-3 shadow-[0_-8px_0_0_rgba(24,20,16,0.08)] lg:hidden"
         >
           <div className="mb-2 flex items-center justify-between gap-3">
             <p className="text-[0.72rem] font-bold tracking-[0.06em] uppercase text-ink-soft">

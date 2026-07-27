@@ -23,7 +23,7 @@ export default function PhotoPlaceholder({
   const a = ACCENTS[accent];
   return (
     <div
-      className={`ov-duotone relative border-[3px] border-ink bg-[#2A241D] ${className}`}
+      className={`ov-duotone relative border-3 border-ink bg-[#2A241D] ${className}`}
       style={{ "--ov-duotone-color": a.solid } as CSSProperties}
     >
       {photo ? (

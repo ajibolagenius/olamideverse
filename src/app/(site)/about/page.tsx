@@ -135,7 +135,7 @@ export default function AboutPage() {
       <section className="mx-auto max-w-3xl px-5 py-16 sm:px-8">
         <SectionLabel>Colophon</SectionLabel>
         <div
-          className="ov-paste-up grid gap-6 border-[3px] border-ink bg-white p-7 shadow-paste-sm sm:grid-cols-2"
+          className="ov-paste-up grid gap-6 border-3 border-ink bg-white p-7 shadow-paste-sm sm:grid-cols-2"
           data-tilt="-0.4"
           style={{ rotate: "-0.4deg" }}
         >

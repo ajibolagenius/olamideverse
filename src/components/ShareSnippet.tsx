@@ -62,7 +62,7 @@ export default function ShareSnippet({
 
   const btn = compact
     ? "border-2 border-ink px-2.5 py-1 text-[0.68rem] font-bold tracking-[0.05em] uppercase text-ink transition-transform hover:-translate-x-px hover:-translate-y-px"
-    : "border-[3px] border-ink px-4 py-2.5 text-xs font-bold tracking-[0.06em] uppercase text-ink shadow-paste-sm transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5";
+    : "border-3 border-ink px-4 py-2.5 text-xs font-bold tracking-[0.06em] uppercase text-ink shadow-paste-sm transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5";
 
   return (
     <div className={compact ? "flex flex-wrap items-center gap-1.5" : "flex flex-wrap items-center gap-2"}>

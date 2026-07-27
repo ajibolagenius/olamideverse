@@ -65,7 +65,7 @@ export default function PollCard({
   };
 
   return (
-    <div className="ov-paste-up border-[3px] border-ink bg-white p-4 shadow-paste-sm">
+    <div className="ov-paste-up border-3 border-ink bg-white p-4 shadow-paste-sm">
       <h3 className="font-display mb-2.5 text-lg">{poll.question}</h3>
       <div className="flex flex-col gap-1.5">
         {poll.options.map((option) => {

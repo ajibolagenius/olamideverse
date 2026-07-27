@@ -114,7 +114,7 @@ export default function ImpactMap({ places }: { places: ImpactPlace[] }) {
 
         <div
           ref={mapShellRef}
-          className="ov-paste-up overflow-hidden border-[3px] border-ink bg-paper shadow-paste"
+          className="ov-paste-up overflow-hidden border-3 border-ink bg-paper shadow-paste"
           data-tilt="0.5"
           style={{ rotate: "0.5deg" }}
         >
@@ -142,7 +142,7 @@ export default function ImpactMap({ places }: { places: ImpactPlace[] }) {
 
       <aside className="flex flex-col gap-4">
         {active ? (
-          <div className="border-[3px] border-ink bg-white p-6 shadow-paste-sm">
+          <div className="border-3 border-ink bg-white p-6 shadow-paste-sm">
             <p
               className="mb-3 inline-block px-2.5 py-1 text-[0.7rem] font-bold tracking-[0.08em] uppercase text-paper"
               style={{ background: KIND_COLOR[active.kind] }}

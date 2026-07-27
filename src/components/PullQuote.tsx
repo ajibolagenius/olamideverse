@@ -30,7 +30,7 @@ export default function PullQuote({
 }) {
   return (
     <figure
-      className="my-10 border-l-[5px] pl-5"
+      className="my-10 border-l-5 pl-5"
       style={{ borderColor: ACCENTS[accent].solid }}
     >
       <blockquote className="font-display text-display-md max-w-[26ch] leading-[1.05]">

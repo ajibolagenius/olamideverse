@@ -117,7 +117,7 @@ export default async function AlbumPage({
       <section className="mx-auto grid max-w-6xl items-start gap-11 px-5 pt-9 pb-5 sm:px-8 lg:grid-cols-[min(340px,100%)_1fr]">
         <div>
           <div
-            className="ov-paste-up w-full border-[3px] border-ink shadow-paste"
+            className="ov-paste-up w-full border-3 border-ink shadow-paste"
             data-tilt="-0.7"
             style={{ rotate: "-0.7deg" }}
           >
@@ -170,7 +170,7 @@ export default async function AlbumPage({
             ) : null}
           </div>
           {metaFacts.length > 0 ? (
-            <div className="mb-6 flex flex-wrap gap-7 border-y-[6px] border-ink bg-paper-dim/40 py-3.5 text-sm text-ink-soft">
+            <div className="mb-6 flex flex-wrap gap-7 border-y-6 border-ink bg-paper-dim/40 py-3.5 text-sm text-ink-soft">
               {metaFacts.map((fact) => (
                 <span key={fact.label}>
                   <b className="block text-[0.7rem] tracking-[0.1em] uppercase text-ink">
@@ -207,7 +207,7 @@ export default async function AlbumPage({
                   </p>
                 ) : null}
                 {album.keyBars.map((kb) => (
-                  <div key={kb.title} className="border-l-[6px] border-oxide pl-4">
+                  <div key={kb.title} className="border-l-6 border-oxide pl-4">
                     <h3 className="mb-1.5 text-sm font-bold tracking-[0.04em] uppercase">
                       {kb.title}
                     </h3>
@@ -215,7 +215,7 @@ export default async function AlbumPage({
                   </div>
                 ))}
                 {album.credits ? (
-                  <div className="ov-paste-up border-[3px] border-ink bg-white p-[18px] shadow-paste-sm">
+                  <div className="ov-paste-up border-3 border-ink bg-white p-[18px] shadow-paste-sm">
                     <h3 className="mb-2.5 text-xs font-bold tracking-[0.06em] uppercase">
                       Credits
                     </h3>

@@ -21,14 +21,14 @@ export default function AudiogramCard({
 
   return (
     <article
-      className={`ov-paste-up flex flex-col border-[3px] border-ink bg-ink text-paper shadow-paste ${
+      className={`ov-paste-up flex flex-col border-3 border-ink bg-ink text-paper shadow-paste ${
         featured ? "sm:min-h-[420px]" : ""
       }`}
       data-tilt={featured ? "-0.8" : "0.6"}
       style={{ rotate: featured ? "-0.8deg" : "0.6deg" }}
     >
       <div
-        className="flex items-center justify-between gap-3 border-b-[3px] border-ink px-4 py-2.5"
+        className="flex items-center justify-between gap-3 border-b-3 border-ink px-4 py-2.5"
         style={{ background: palette.solid, color: palette.onSolid }}
       >
         <span className="text-[0.72rem] font-bold tracking-[0.08em] uppercase">

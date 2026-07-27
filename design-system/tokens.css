@@ -38,6 +38,16 @@
   --tilt-2: 0.75deg;
   --radius: 0; /* sharp corners: poster, not app */
 
+  /* Border-width scale actually in use — 2px/4px/8px are native Tailwind
+     (border-2/border-4/border-8); 3px and 6px are the identity's own
+     hairline/heavy rule weights, hand-authored as @utility border-3/
+     border-t-3/etc. and border-t-6/border-b-6/etc. in globals.css since
+     Tailwind v4 doesn't expose a theme namespace for border-width. 5px is a
+     one-off PullQuote accent (border-l-5). */
+  --border-width-3: 3px;
+  --border-width-5: 5px;
+  --border-width-6: 6px;
+
   /* Motion — instant hover/press feedback (buttons, links, lift, paste-up
      hover). GSAP scroll behaviors (src/lib/motion.ts) have their own named
      durations/eases for ink-reveal/paste-up-in/duotone-shift/pin-scroll. */
