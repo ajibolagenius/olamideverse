@@ -18,10 +18,14 @@
 /snippets/[id]          Snippet detail — card, embed, share
 /influence              Influence graph — mentors, peers, mentees, collabs
 /impact                 Impact map — curated places (Lagos / Nigeria / world)
+/search                 Site-wide search (albums, eras, songs, snippets)
+/saved                  Offline reading list (pages saved via the PWA cache)
 /about                  What OlamideVerse is, who made it, colophon
 /changelog              What’s new — curated ship notes from recent work
 /legal                  Disclaimer, terms, copyright policy
 /fanzone                [P3] Favorites, polls, comments, playlists
+/fanzone/fans           [P3] Directory of fans who opted into a public profile
+/fanzone/fans/[handle]  [P3] Public fan profile (favorites + playlist)
 ```
 
 ## Page briefs

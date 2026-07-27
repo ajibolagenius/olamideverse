@@ -8,7 +8,8 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 A fan-made, static-first editorial archive of Olamide's career (Next.js + TS +
 Tailwind v4 + MDX). Phase docs are the source of truth: `docs/CONCEPT.md`,
-`docs/INFORMATION-ARCHITECTURE.md`, `docs/VISUAL-IDENTITY.md`.
+`docs/INFORMATION-ARCHITECTURE.md`, `docs/VISUAL-IDENTITY.md`. Human
+contributor guide: `CONTRIBUTING.md`.
 
 ## Ground rules
 
