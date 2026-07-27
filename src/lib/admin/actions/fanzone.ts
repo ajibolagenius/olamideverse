@@ -59,6 +59,8 @@ export async function savePoll(formData: FormData) {
     >;
     const active = formData.get("active") === "on";
     const sort_order = Number(formData.get("sort_order") ?? 0);
+    const scope_type = String(formData.get("scope_type") ?? "").trim() || null;
+    const scope_slug = String(formData.get("scope_slug") ?? "").trim() || null;
 
     const supabase = await createClient();
     await supabase.from("cms_polls").upsert({
@@ -68,6 +70,8 @@ export async function savePoll(formData: FormData) {
         base_votes,
         active,
         sort_order,
+        scope_type: scope_slug ? scope_type : null,
+        scope_slug: scope_type ? scope_slug : null,
         updated_at: new Date().toISOString(),
         updated_by: session.userId,
     });

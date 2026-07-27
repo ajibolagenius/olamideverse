@@ -40,12 +40,15 @@ export default async function AdminPollsPage({
           No CMS polls. Seed imports the static POLL_DEFS from the app.
         </EmptyState>
       ) : (
-        <AdminTable headers={["Poll", "Active", "Live votes", ""]}>
+        <AdminTable headers={["Poll", "Scope", "Active", "Live votes", ""]}>
           {polls.map((poll) => (
             <tr key={poll.id} className="align-top hover:bg-paper">
               <td className="px-3 py-2">
                 <p className="font-semibold">{poll.question}</p>
                 <p className="font-mono text-[0.65rem] text-ink-soft">{poll.id}</p>
+              </td>
+              <td className="px-3 py-2 text-xs">
+                {poll.scope_type ? `${poll.scope_type}: ${poll.scope_slug}` : "Fan Zone only"}
               </td>
               <td className="px-3 py-2 text-sm">{poll.active ? "Yes" : "No"}</td>
               <td className="px-3 py-2 text-xs">
@@ -114,6 +117,28 @@ export default async function AdminPollsPage({
           )}
           rows={4}
         />
+        <div className="grid gap-4 sm:grid-cols-2">
+          <label className="block space-y-1">
+            <span className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-ink-soft">
+              Scope (optional — shows results on that page too)
+            </span>
+            <select
+              name="scope_type"
+              defaultValue={polls?.[0]?.scope_type ?? ""}
+              className="w-full border-2 border-ink bg-paper px-3 py-2 text-sm outline-none focus:bg-white"
+            >
+              <option value="">Fan Zone only</option>
+              <option value="era">Era</option>
+              <option value="album">Album</option>
+            </select>
+          </label>
+          <Field
+            label="Scope slug (era or album slug)"
+            name="scope_slug"
+            defaultValue={polls?.[0]?.scope_slug ?? ""}
+            hint="e.g. elder-statesman, or uy-scuti"
+          />
+        </div>
         <label className="flex items-center gap-2 text-sm">
           <input type="checkbox" name="active" defaultChecked={polls?.[0]?.active ?? true} />
           Active

@@ -5,6 +5,7 @@ import AudiogramCard from "@/components/AudiogramCard";
 import Breadcrumb from "@/components/Breadcrumb";
 import CommentBox from "@/components/fanzone/CommentBox";
 import FavoriteButton from "@/components/fanzone/FavoriteButton";
+import PollCard from "@/components/fanzone/PollCard";
 import CoverArt from "@/components/CoverArt";
 import EmptyState from "@/components/EmptyState";
 import Prose from "@/components/Prose";
@@ -21,7 +22,8 @@ import {
   getEra,
   getSnippetsByAlbum,
 } from "@/lib/content";
-import { getComments } from "@/lib/fanzone/queries";
+import { getPollDefs, pollsForScope } from "@/lib/fanzone/polls";
+import { getComments, getPollResults } from "@/lib/fanzone/queries";
 import { getAlbumCover } from "@/lib/photos";
 import { getBlockedEmbeds, getFeatureFlags } from "@/lib/settings";
 import { resolvePageMetadata } from "@/lib/site";
@@ -71,6 +73,10 @@ export default async function AlbumPage({
   const comments = flags.comments
     ? await getComments(`album-${album.slug}`)
     : [];
+  const polls = flags.polls
+    ? pollsForScope(await getPollDefs(), "album", album.slug)
+    : [];
+  const pollResults = await Promise.all(polls.map((p) => getPollResults(p.id)));
   const blockedYoutube = blocks
     .filter((b) => b.provider === "youtube" || b.provider === "any")
     .map((b) => b.embed_id);
@@ -267,6 +273,22 @@ export default async function AlbumPage({
                 key={snippet.id}
                 snippet={snippet}
                 accent={era.accent}
+              />
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      {polls.length > 0 ? (
+        <section className="mx-auto max-w-6xl px-5 pb-16 sm:px-8">
+          <SectionLabel>The fans decided</SectionLabel>
+          <div className="grid gap-5 sm:grid-cols-2">
+            {polls.map((poll, i) => (
+              <PollCard
+                key={poll.id}
+                poll={poll}
+                initialCounts={pollResults[i].counts}
+                initialUserVote={pollResults[i].userVote}
               />
             ))}
           </div>

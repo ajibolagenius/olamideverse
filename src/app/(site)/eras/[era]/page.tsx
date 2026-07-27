@@ -7,6 +7,7 @@ import AudiogramCard from "@/components/AudiogramCard";
 import Breadcrumb from "@/components/Breadcrumb";
 import CommentBox from "@/components/fanzone/CommentBox";
 import FavoriteButton from "@/components/fanzone/FavoriteButton";
+import PollCard from "@/components/fanzone/PollCard";
 import EraMoments from "@/components/EraMoments";
 import InlineMarkdown from "@/components/InlineMarkdown";
 import NextChapterCta from "@/components/NextChapterCta";
@@ -25,7 +26,8 @@ import {
   getMediaItems,
   getSnippetsByEra,
 } from "@/lib/content";
-import { getComments } from "@/lib/fanzone/queries";
+import { getPollDefs, pollsForScope } from "@/lib/fanzone/polls";
+import { getComments, getPollResults } from "@/lib/fanzone/queries";
 import { getEraPhoto } from "@/lib/photos";
 import { getFeatureFlags } from "@/lib/settings";
 import { resolvePageMetadata } from "@/lib/site";
@@ -70,6 +72,10 @@ export default async function EraPage({
     getEraPhoto(era.slug),
   ]);
   const comments = flags.comments ? await getComments(`era-${era.slug}`) : [];
+  const polls = flags.polls
+    ? pollsForScope(await getPollDefs(), "era", era.slug)
+    : [];
+  const pollResults = await Promise.all(polls.map((p) => getPollResults(p.id)));
   const accent = ACCENTS[era.accent];
   const chrome = accentChrome(era.accent);
   const media = allMedia.filter((item) => item.era === era.slug);
@@ -257,6 +263,22 @@ export default async function EraPage({
             <Link href="/eras" className="ov-btn ov-btn-danfo inline-block px-5 py-3 text-sm">
               Back to all eras
             </Link>
+          </div>
+        </section>
+      ) : null}
+
+      {polls.length > 0 ? (
+        <section className="mx-auto max-w-6xl px-5 pb-20 sm:px-8">
+          <SectionLabel>The fans decided</SectionLabel>
+          <div className="grid gap-5 sm:grid-cols-2">
+            {polls.map((poll, i) => (
+              <PollCard
+                key={poll.id}
+                poll={poll}
+                initialCounts={pollResults[i].counts}
+                initialUserVote={pollResults[i].userVote}
+              />
+            ))}
           </div>
         </section>
       ) : null}
