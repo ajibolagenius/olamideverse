@@ -1,29 +1,31 @@
-<!-- @dsCard group="Components" name="Buttons" subtitle="Primary / secondary / ghost + hover" width="720" height="420" -->
+<!-- @dsCard group="Components" name="Buttons" subtitle="ov-btn: danfo / ink / ghost + hover + disabled" width="720" height="420" -->
 <meta charset="utf-8">
 <style>
   @import url('../fonts/fonts.css');
-  :root{--danfo:#F5B301;--adire:#1F2A63;--ink:#181410;--paper:#F4EFE6;--oxide:#C8451B;}
+  :root{--danfo:#F5B301;--danfo-tint:#FBE29A;--adire:#1F2A63;--ink:#181410;--paper:#F4EFE6;--oxide:#C8451B;}
   *{margin:0;padding:0;box-sizing:border-box}
   body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);padding:32px}
   h1{font-family:'Anton',Impact,sans-serif;font-size:2rem;text-transform:uppercase;margin-bottom:20px}
   .set{display:flex;gap:20px;flex-wrap:wrap;align-items:center;margin-bottom:26px}
-  .btn{font-family:'Archivo',sans-serif;font-weight:700;font-size:.95rem;text-transform:uppercase;letter-spacing:.06em;
-    padding:14px 26px;border:3px solid var(--ink);cursor:pointer;background:#fff;color:var(--ink);
-    box-shadow:4px 4px 0 var(--ink);transition:transform .12s ease,box-shadow .12s ease,background .12s ease}
-  .btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
-  .btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
-  .btn-primary{background:var(--danfo)}
-  .btn-primary:hover{background:#FFC71F}
-  .btn-dark{background:var(--ink);color:var(--paper)}
-  .btn-dark:hover{background:var(--adire)}
-  .btn-ghost{background:transparent;box-shadow:none;border-color:transparent;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:3px;text-decoration-color:var(--danfo)}
-  .btn-ghost:hover{transform:none;color:var(--oxide)}
-  .note{font-size:.85rem;color:#4A423A;max-width:56ch}
+  /* .ov-btn — mirrors globals.css exactly */
+  .ov-btn{display:inline-flex;align-items:center;justify-content:center;gap:.35rem;border:3px solid var(--ink);
+    font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:12px 24px;font-size:.9rem;cursor:pointer;
+    transition:transform .18s cubic-bezier(.16,1,.3,1),background-color .15s ease,box-shadow .18s ease}
+  .ov-btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+  .ov-btn:active{transform:translate(0,0);box-shadow:none}
+  .ov-btn:disabled{opacity:.5;pointer-events:none}
+  .ov-btn-danfo{background:var(--danfo);color:var(--ink)}
+  .ov-btn-ink{background:var(--ink);color:var(--paper)}
+  .ov-btn-ghost{background:var(--paper);color:var(--ink)}
+  .ov-btn-ghost:hover{background:var(--danfo-tint)}
+  .note{font-size:.85rem;color:#4A423A;max-width:60ch}
+  code{background:#fff;border:1px solid var(--ink);padding:0 4px;font-size:.85em}
 </style>
 <h1>Buttons</h1>
 <div class="set">
-  <button class="btn btn-primary">Explore the Eras</button>
-  <button class="btn btn-dark">Browse Discography</button>
-  <button class="btn btn-ghost">Watch the freestyles →</button>
+  <button class="ov-btn ov-btn-danfo">Explore the Eras</button>
+  <button class="ov-btn ov-btn-ink">Browse Discography</button>
+  <button class="ov-btn ov-btn-ghost">Watch the freestyles</button>
+  <button class="ov-btn ov-btn-danfo" disabled>Coming soon</button>
 </div>
-<p class="note">Hard shadows, sharp corners, uppercase Archivo. Hover lifts (shadow grows), press stamps (shadow collapses). One danfo-primary per viewport; everything else goes dark or ghost.</p>
+<p class="note">Real classes: <code>ov-btn</code> (shared shape) + one of <code>ov-btn-danfo</code> / <code>ov-btn-ink</code> / <code>ov-btn-ghost</code>, defined once in <code>globals.css</code> and reused verbatim everywhere &mdash; nav CTAs, modal close, admin actions. Hover lifts the whole button and grows the hard shadow; press stamps it flat; disabled just fades to 50% opacity, no shadow change. One danfo-primary per viewport, everything else goes ink or ghost.</p>

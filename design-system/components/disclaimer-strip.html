@@ -1,0 +1,13 @@
+<!-- @dsCard group="Components" name="Disclaimer strip" subtitle="Fan-project micro-bar, sits above the header on every page" width="820" height="140" -->
+<meta charset="utf-8">
+<style>
+  @import url('../fonts/fonts.css');
+  :root{--danfo:#F5B301;--ink:#181410;--paper:#F4EFE6;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);padding:32px}
+  .strip{background:var(--ink);color:#B8AFA2;text-align:center;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px}
+  .strip b{color:var(--danfo);font-weight:600}
+  .note{margin-top:16px;font-size:.85rem;color:#4A423A;max-width:60ch}
+</style>
+<div class="strip">Fan archive &middot; <b>Not affiliated</b> with Olamide or YBNL Nation</div>
+<p class="note">Renders once, above <code>SiteHeader</code>, on every page in <code>(site)/layout.tsx</code> &mdash; never optional, never dismissible. Text and the bolded phrase both come from settings so legal copy can change without a deploy.</p>

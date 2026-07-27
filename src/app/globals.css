@@ -123,6 +123,15 @@
   --rule-mid: 4px solid var(--color-ink);
   --tilt-1: -1deg;
   --tilt-2: 0.75deg;
+
+  /* Motion — CSS-side hover/press feedback. GSAP scroll behaviors
+     (src/lib/motion.ts) have their own named durations/eases; these cover
+     the instant, non-scroll-triggered transitions (buttons, links, lift). */
+  --ov-ease-snap: cubic-bezier(0.16, 1, 0.3, 1);
+  --ov-duration-quick: 0.15s;
+  --ov-duration-base: 0.18s;
+  --ov-duration-lift: 0.2s;
+  --ov-duration-settle: 0.25s;
 }
 
 @layer base {
@@ -285,7 +294,9 @@
 
 /* Enhanced paste-up interactive hover states */
 .ov-paste-up {
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    transform var(--ov-duration-settle) var(--ov-ease-snap),
+    box-shadow var(--ov-duration-settle) var(--ov-ease-snap);
 }
 .ov-paste-up:hover {
   transform: translateY(-3px) rotate(var(--hover-tilt, -0.2deg));
@@ -421,9 +432,9 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
   transition:
-    transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
-    background-color 0.15s ease,
-    box-shadow 0.18s ease;
+    transform var(--ov-duration-base) var(--ov-ease-snap),
+    background-color var(--ov-duration-quick) ease,
+    box-shadow var(--ov-duration-base) ease;
 }
 .ov-btn:hover {
   transform: translate(-2px, -2px);
@@ -459,7 +470,7 @@
   background-position: 0 100%;
   background-repeat: no-repeat;
   background-size: 0 2px;
-  transition: background-size 0.2s ease;
+  transition: background-size var(--ov-duration-lift) ease;
 }
 .ov-link-underline:hover,
 .ov-link-underline:focus-visible {
@@ -468,8 +479,8 @@
 
 .ov-lift {
   transition:
-    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.2s ease;
+    transform var(--ov-duration-lift) var(--ov-ease-snap),
+    box-shadow var(--ov-duration-lift) ease;
 }
 .ov-lift:hover {
   transform: translate(-2px, -2px);

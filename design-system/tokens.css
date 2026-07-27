@@ -38,6 +38,15 @@
   --tilt-2: 0.75deg;
   --radius: 0; /* sharp corners: poster, not app */
 
+  /* Motion — instant hover/press feedback (buttons, links, lift, paste-up
+     hover). GSAP scroll behaviors (src/lib/motion.ts) have their own named
+     durations/eases for ink-reveal/paste-up-in/duotone-shift/pin-scroll. */
+  --ov-ease-snap: cubic-bezier(0.16, 1, 0.3, 1);
+  --ov-duration-quick: 0.15s;
+  --ov-duration-base: 0.18s;
+  --ov-duration-lift: 0.2s;
+  --ov-duration-settle: 0.25s;
+
   /* Spacing rhythm */
   --space-1: 0.25rem;
   --space-2: 0.5rem;

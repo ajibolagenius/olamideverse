@@ -1,0 +1,35 @@
+<!-- @dsCard group="Components" name="Page header + section label" subtitle="Light/dark utility header for index pages, plus the section-label kicker" width="900" height="440" -->
+<meta charset="utf-8">
+<style>
+  @import url('../fonts/fonts.css');
+  :root{--danfo:#F5B301;--ink:#181410;--paper:#F4EFE6;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink)}
+  header{border-bottom:6px solid var(--ink);padding:38px 32px}
+  header.dark{background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
+  header.dark::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .kicker{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;color:#4A423A}
+  header.dark .kicker{color:#B8AFA2}
+  h1{font-family:'Anton',Impact,sans-serif;font-size:clamp(1.75rem,3.5vw,2.75rem);text-transform:uppercase;max-width:18ch;line-height:1.05}
+  header.dark h1 .accent{color:var(--danfo)}
+  .intro{margin-top:14px;max-width:62ch;font-size:1.05rem;line-height:1.55;color:#4A423A}
+  header.dark .intro{color:#CFC7BB}
+  .body{padding:26px 32px}
+  .section-label{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#4A423A;margin-bottom:10px}
+  .note{font-size:.85rem;color:#4A423A;max-width:64ch;margin-top:12px}
+</style>
+<header>
+  <p class="kicker">Discography · 20 releases</p>
+  <h1>Every album, in order</h1>
+  <p class="intro">Studio LPs, mixtapes, and joint projects — filterable by era below.</p>
+</header>
+<header class="dark">
+  <p class="kicker">Impact · influence beyond the charts</p>
+  <h1>Where the sound <span class="accent">travelled</span></h1>
+  <p class="intro">A map and a graph, not a highlight reel — the receipts for reach.</p>
+</header>
+<div class="body">
+  <p class="section-label">Section label</p>
+  <p class="note"><code>PageHeader</code> is the calmer sibling of <code>PosterHero</code> — same kicker / display-title / intro shape and the same <code>ov-ink-wipe</code> headline reveal, but sized for index and utility pages rather than era chapter opens. <code>dark</code> swaps to ink ground + grain, same as the poster. <code>SectionLabel</code> (shown above) is the small uppercase kicker reused ahead of any content block — track lists, related links, next-chapter CTAs.</p>
+</div>

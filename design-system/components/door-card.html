@@ -1,0 +1,39 @@
+<!-- @dsCard group="Components" name="Door card" subtitle="Light + dark entry-point cards (homepage doors)" width="820" height="320" -->
+<meta charset="utf-8">
+<style>
+  @import url('../fonts/fonts.css');
+  :root{--danfo:#F5B301;--adire:#1F2A63;--ink:#181410;--paper:#F4EFE6;--oxide:#C8451B;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);padding:32px;display:flex;gap:24px;flex-wrap:wrap}
+  .door{display:block;width:280px;border:3px solid var(--ink);padding:22px;box-shadow:3px 3px 0 var(--ink);text-decoration:none;color:inherit;transition:transform .15s ease}
+  .door:hover{transform:translate(-2px,-2px)}
+  .door.light{background:#fff;transform:rotate(-.4deg)}
+  .door.light:hover{transform:rotate(-.4deg) translate(-2px,-2px)}
+  .door.dark{background:var(--ink);color:var(--paper);transform:rotate(.5deg)}
+  .door.dark:hover{transform:rotate(.5deg) translate(-2px,-2px)}
+  .icon{font-size:1.6rem;margin-bottom:10px;display:block}
+  .door.light .icon{color:var(--oxide)}
+  .door.dark .icon{color:var(--danfo)}
+  .title{font-family:'Anton',Impact,sans-serif;font-size:1.4rem;text-transform:uppercase;display:block;margin-bottom:6px}
+  .door.dark .title{color:var(--danfo)}
+  .copy{font-size:.85rem;line-height:1.4}
+  .door.light .copy{color:#4A423A}
+  .door.dark .copy{color:#CFC7BB}
+  .enter{display:flex;align-items:center;gap:6px;margin-top:16px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+  .door.light .enter{color:var(--adire)}
+  .door.dark .enter{color:var(--danfo)}
+  .note{width:100%;font-size:.85rem;color:#4A423A;max-width:64ch}
+</style>
+<a class="door light" href="#">
+  <span class="icon">&#9679;</span>
+  <span class="title">The Eras</span>
+  <span class="copy">Six chapters, one throughline — start at the beginning or jump to a run.</span>
+  <span class="enter">Enter →</span>
+</a>
+<a class="door dark" href="#">
+  <span class="icon">&#9679;</span>
+  <span class="title">Discography</span>
+  <span class="copy">Every album, ranked chronologically, cover-forward.</span>
+  <span class="enter">Enter →</span>
+</a>
+<p class="note">Same card, two variants (<code>light</code> / <code>dark</code>) picked per destination for visual rhythm on the homepage. Both get <code>ov-paste-up</code> + <code>ov-lift</code> — settle-in on scroll, then lift on hover. Icon color flips oxide → danfo between variants to stay legible on each background.</p>

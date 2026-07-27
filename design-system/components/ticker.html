@@ -1,0 +1,21 @@
+<!-- @dsCard group="Components" name="Ticker (roll-by)" subtitle="The only looping motion on the site" width="820" height="220" -->
+<meta charset="utf-8">
+<style>
+  @import url('../fonts/fonts.css');
+  :root{--danfo:#F5B301;--ink:#181410;--paper:#F4EFE6;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);padding:32px}
+  .marquee{overflow:hidden;background:var(--danfo);border-bottom:3px solid var(--ink);padding:6px 0}
+  .track{display:inline-flex;white-space:nowrap;animation:roll 24s linear infinite}
+  .track span{margin-right:48px;font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.14em}
+  @keyframes roll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .note{margin-top:18px;font-size:.85rem;color:#4A423A;max-width:64ch}
+  @media (prefers-reduced-motion: reduce){.track{animation:none}}
+</style>
+<div class="marquee">
+  <div class="track">
+    <span>Rapsodi 2011</span><span>YBNL 2012</span><span>Baddest Guy Ever Liveth 2013</span><span>Street OT 2014</span><span>Eyan Mayweather 2015</span><span>The Glory 2016</span><span>Lagos Nawa 2017</span><span>Carpe Diem 2020</span><span>UY Scuti 2021</span><span>Unruly 2023</span>
+    <span aria-hidden="true">Rapsodi 2011</span><span aria-hidden="true">YBNL 2012</span><span aria-hidden="true">Baddest Guy Ever Liveth 2013</span><span aria-hidden="true">Street OT 2014</span><span aria-hidden="true">Eyan Mayweather 2015</span><span aria-hidden="true">The Glory 2016</span><span aria-hidden="true">Lagos Nawa 2017</span><span aria-hidden="true">Carpe Diem 2020</span><span aria-hidden="true">UY Scuti 2021</span><span aria-hidden="true">Unruly 2023</span>
+  </div>
+</div>
+<p class="note">Content renders twice (the second copy <code>aria-hidden</code>) so a pure CSS 0&nbsp;&rarr;&nbsp;-50% translate loops seamlessly &mdash; no JS, no GSAP. It's the one motion that keeps moving without scroll/intent, and the one exception to "nothing loops": <code>prefers-reduced-motion</code> pauses it outright rather than giving it a static end state. Reused across era, discography, media, songs, snippets, influence, and impact pages via <code>&lt;Ticker /&gt;</code>.</p>

@@ -1,0 +1,22 @@
+<!-- @dsCard group="Components" name="Filter chips" subtitle="Toggle group — active / inactive states" width="720" height="220" -->
+<meta charset="utf-8">
+<style>
+  @import url('../fonts/fonts.css');
+  :root{--danfo-tint:#FBE29A;--ink:#181410;--paper:#F4EFE6;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);padding:32px}
+  .group{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
+  .chip{border:2px solid var(--ink);padding:6px 10px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;background:#fff;cursor:pointer}
+  .chip:hover{background:var(--danfo-tint)}
+  .chip.active{background:var(--ink);color:var(--paper);box-shadow:3px 3px 0 var(--ink)}
+  .chip.active:hover{background:var(--ink)}
+  .note{font-size:.85rem;color:#4A423A;max-width:60ch}
+</style>
+<div class="group" role="group" aria-label="Filter by era">
+  <button class="chip active" aria-pressed="true">All</button>
+  <button class="chip">First of All</button>
+  <button class="chip">Street King Run</button>
+  <button class="chip">Carpe Diem</button>
+  <button class="chip">Unruly</button>
+</div>
+<p class="note">One active state at a time (<code>aria-pressed</code>), used to filter albums/songs/media by era or type. Active = solid ink + hard shadow; inactive hovers to a danfo tint. No color-only state — the shadow and fill both change so it reads without relying on hue alone.</p>

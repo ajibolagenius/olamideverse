@@ -14,7 +14,25 @@ gsap.registerPlugin(ScrollTrigger);
  *
  * `prefers-reduced-motion: reduce` gets the designed static end state
  * (globals.css) — no tweens, no pins.
+ *
+ * Timings live here (not as CSS custom properties) because GSAP tweens take
+ * plain numbers/eases, not `var(...)`. The CSS-side hover/press transitions
+ * (buttons, links, lift) have their own token set in globals.css/tokens.css
+ * (--ov-duration-*, --ov-ease-snap) — the two sets are named independently
+ * on purpose, one per runtime.
  */
+const DURATION = {
+  inkReveal: 0.9,
+  pasteUpIn: 0.55,
+};
+
+const EASE = {
+  inkReveal: "power3.inOut",
+  pasteUpIn: "back.out(1.6)",
+};
+
+const PASTE_UP_STAGGER = 0.07;
+
 export function initMotion(): () => void {
   const mm = gsap.matchMedia();
 
@@ -33,8 +51,8 @@ export function initMotion(): () => void {
         { scaleX: 1 },
         {
           scaleX: 0,
-          duration: 0.9,
-          ease: "power3.inOut",
+          duration: DURATION.inkReveal,
+          ease: EASE.inkReveal,
           scrollTrigger: { trigger: el, start: "top 80%", once: true },
         },
       );
@@ -50,9 +68,9 @@ export function initMotion(): () => void {
           opacity: 1,
           scale: 1,
           rotation: tilt,
-          duration: 0.55,
-          ease: "back.out(1.6)",
-          delay: (i % 4) * 0.07,
+          duration: DURATION.pasteUpIn,
+          ease: EASE.pasteUpIn,
+          delay: (i % 4) * PASTE_UP_STAGGER,
           scrollTrigger: { trigger: el, start: "top 90%", once: true },
         },
       );
