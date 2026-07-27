@@ -20,6 +20,10 @@ Current development line (package version `0.1.0`).
 
 ### 2026-07-27
 
+- **Biography** — new `/biography` narrative across six eras (quick facts,
+  chapter pull quotes, era deep-links); wired into nav, footer, and sitemap.
+- **Open Graph cards** — distinct editorial OG images per section (About,
+  Discography, Songs, Impact, Fan Zone, etc.) plus per-handle fan profile cards.
 - **Fan Zone: streaks & stamps** — return-visit streaks and paste-up stamps for
   favoriting, playlists, comments, and going public.
 - **Public fan profiles** — opt-in profiles and `/fanzone/fans` directory.

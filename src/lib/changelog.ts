@@ -22,6 +22,15 @@ export const CHANGELOG: ChangelogDay[] = [
     label: "27 July 2026",
     items: [
       {
+        title: "Biography — the story, start to now",
+        body: "A new narrative page walks Olamide’s career across six eras: quick facts, chapter pull quotes, and deep links into each era — so the throughline sits beside the discography instead of only on the timeline.",
+        href: "/biography",
+      },
+      {
+        title: "Open Graph cards, per section",
+        body: "Share links for About, Discography, Songs, Impact, Fan Zone, and more now get distinct editorial OG images instead of the same homepage wordmark — public fan profiles get their own card too.",
+      },
+      {
         title: "Fan Zone: streaks & stamps",
         body: "Signed-in fans build a return-visit streak and collect paste-up “stamps” for favoriting, stacking a playlist, commenting, and going public — tracked automatically, styled like archive ephemera instead of a gamified checklist.",
         href: "/fanzone",
