@@ -42,12 +42,11 @@ export default async function ErasPage() {
           className="pointer-events-none absolute top-16 bottom-16 left-[1.35rem] w-[3px] bg-ink/15 sm:left-[2.1rem]"
         />
         <div className="flex flex-col gap-14">
-          {albumsByEra.map(({ era, albums }, i) => (
+          {albumsByEra.map(({ era, albums }) => (
             <EraCard
               key={era.slug}
               era={era}
               albums={albums}
-              index={i}
               showFavorite={flags.fanzone}
             />
           ))}

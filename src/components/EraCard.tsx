@@ -1,49 +1,54 @@
 import { ArrowRight } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 import FavoriteButton from "@/components/fanzone/FavoriteButton";
-import { accentChrome } from "@/lib/accents";
+import { accentChrome, accentText } from "@/lib/accents";
 import type { Album, Era } from "@/lib/content";
 import { OV_ICON_WEIGHT } from "@/lib/icons";
 
+/**
+ * Editorial tier: the era's own poster header (PosterHero) carries the loud,
+ * Poster-tier chrome — this grid tile stays a notch quieter since several
+ * sit on `/eras` at once. Accent lives in the rule + label color, not a
+ * solid fill; shadow is soft at rest and only hardens on hover.
+ */
 export default function EraCard({
   era,
   albums,
-  index,
   showFavorite = false,
 }: {
   era: Era;
   albums: Album[];
-  index: number;
   showFavorite?: boolean;
 }) {
   const chrome = accentChrome(era.accent);
-  const tilt = index % 2 === 0 ? -0.6 : 0.5;
+  const labelColor = accentText(era.accent);
 
   return (
-    <div
-      className="ov-paste-up group border-3 border-ink bg-white shadow-[7px_7px_0_var(--color-ink)]"
-      data-tilt={tilt}
-      style={{ rotate: `${tilt}deg` }}
-    >
+    <div className="ov-paste-up group border-2 border-ink bg-white shadow-print">
       <div
-        className="flex items-center justify-between border-b-3 border-ink px-4 py-2.5"
-        style={{ background: chrome.bg, color: chrome.fg }}
+        className="flex items-center justify-between px-4 py-3 sm:px-5"
+        style={{ borderLeft: `6px solid ${chrome.bg}` }}
       >
-        <span className="font-display text-2xl">
+        <span className="font-display text-xl text-ink-muted">
           {String(era.order).padStart(2, "0")}
         </span>
-        <span className="font-bold tracking-[0.05em] tabular-nums">{era.years}</span>
+        <span
+          className="font-bold tracking-[0.03em] tabular-nums"
+          style={{ color: labelColor }}
+        >
+          {era.years}
+        </span>
       </div>
-      <div className="px-4 py-5 sm:px-5">
+      <div className="border-t border-ink/15 px-4 py-5 sm:px-5">
         <h2 className="font-display text-display-md">{era.title}</h2>
         <p className="mt-2.5 mb-4 max-w-[52ch] text-base text-ink-soft">{era.thesis}</p>
-        <div className={`flex flex-wrap gap-2 ${showFavorite ? "mb-4" : ""}`}>
+        <div className={`flex flex-wrap gap-x-4 gap-y-2 ${showFavorite ? "mb-4" : ""}`}>
           {albums.map((album) => (
             <span
               key={album.slug}
-              className="border-2 border-ink bg-paper px-2.5 py-1 text-xs font-semibold tracking-[0.06em] uppercase"
+              className="border-b border-adire-tint pb-0.5 text-sm text-ink-soft"
             >
-              {album.title} · {album.year}
+              <b className="font-semibold text-ink">{album.title}</b> · {album.year}
             </span>
           ))}
         </div>
@@ -56,13 +61,15 @@ export default function EraCard({
           />
         ) : null}
       </div>
-      <Link
-        href={`/eras/${era.slug}`}
-        className="ov-icon-inline block border-t-3 border-ink px-4 py-3 text-sm font-bold tracking-[0.08em] uppercase text-adire transition-colors hover:bg-ink hover:text-paper"
-      >
-        Enter the era
-        <ArrowRight className="ov-icon" size={14} weight={OV_ICON_WEIGHT} aria-hidden />
-      </Link>
+      <div className="border-t border-ink/15 px-4 py-3 sm:px-5">
+        <Link
+          href={`/eras/${era.slug}`}
+          className="ov-icon-inline inline-flex items-center gap-1.5 border-2 border-ink px-4 py-2 text-xs font-bold tracking-[0.06em] uppercase transition-colors hover:bg-ink hover:text-paper"
+        >
+          Enter the era
+          <ArrowRight className="ov-icon" size={14} weight={OV_ICON_WEIGHT} aria-hidden />
+        </Link>
+      </div>
     </div>
   );
 }

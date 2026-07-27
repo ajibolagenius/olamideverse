@@ -107,9 +107,14 @@
   --text-display-md: clamp(1.5rem, 3.5vw, 2.75rem);
   --text-display-md--line-height: 1;
 
-  /* Texture & edges — paste-up, not glassmorphism */
+  /* Texture & edges — paste-up, not glassmorphism.
+     shadow-paste(-sm) is Poster-tier only (heroes, era openers, album
+     covers, pull-quotes, CTAs) — not a default card style. shadow-print is
+     the Editorial-tier resting elevation: cards lift to shadow-paste on
+     hover, so the hard shadow still reads as the interactive cue. */
   --shadow-paste: 6px 6px 0 #181410;
   --shadow-paste-sm: 3px 3px 0 #181410;
+  --shadow-print: 2px 2px 0 rgba(24, 20, 16, 0.14), 0 6px 14px rgba(24, 20, 16, 0.06);
 
   /* Sharp corners: poster, not app */
   --radius: 0;

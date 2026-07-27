@@ -68,3 +68,11 @@ export function accentChrome(name: AccentName): { bg: string; fg: string } {
   }
   return { bg: a.solid, fg: a.onSolid };
 }
+
+/**
+ * Accent as a text color on paper/white grounds — danfo's brand solid fails
+ * AA as text-on-paper, so it swaps to its darkened gradient stop.
+ */
+export function accentText(name: AccentName): string {
+  return name === "danfo" ? ACCENTS.danfo.gradient[1] : ACCENTS[name].solid;
+}

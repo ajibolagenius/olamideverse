@@ -169,9 +169,9 @@ export default async function EraPage({
                 key={album.slug}
                 album={album}
                 era={era}
-                index={i}
                 priority={i === 0}
                 showFavorite={flags.fanzone}
+                flagship={i === 0}
               />
             ))}
           </div>
