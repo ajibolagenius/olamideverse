@@ -56,6 +56,10 @@ function MapViewSync({
   const placeKey = places.map((p) => p.id).join("|");
 
   // Region / filter change: reset bounds and fit to markers (or default center).
+  // `map` is the imperative Leaflet instance from useMap(), not React state —
+  // the calls below are the intended way to drive it, same as the
+  // maxBoundsViscosity write further down.
+  // eslint-disable-next-line react-hooks/immutability
   useEffect(() => {
     const view = IMPACT_MAP_VIEWS[mapKey];
     map.setMinZoom(view.minZoom);

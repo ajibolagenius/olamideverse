@@ -49,7 +49,9 @@ export default function ImpactMap({ places }: { places: ImpactPlace[] }) {
     const el = mapShellRef.current;
     if (!el || mapReady) return;
     if (typeof IntersectionObserver === "undefined") {
-      setMapReady(true);
+      // Deferred to a callback (not a direct call) so this matches the same
+      // "setState from a callback" shape as the observer branch below.
+      queueMicrotask(() => setMapReady(true));
       return;
     }
     const io = new IntersectionObserver(

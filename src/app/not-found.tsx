@@ -7,14 +7,15 @@ import DisclaimerStrip from "@/components/chrome/DisclaimerStrip";
 import SiteFooter from "@/components/chrome/SiteFooter";
 import SiteHeader from "@/components/chrome/SiteHeader";
 import SectionLabel from "@/components/ui/SectionLabel";
+import { FanProvider } from "@/lib/fanzone/useFan";
 import { OV_ICON_WEIGHT, renderIcon, renderNavIcon } from "@/lib/icons";
 import { getDisclaimer, getFeatureFlags, getFooter } from "@/lib/settings";
 
 // Lives at the app root (not inside the `(site)` route group) because
 // that's what Next.js actually renders for a fully unmatched URL. It
 // doesn't inherit `(site)/layout.tsx`, so the header/nav/disclaimer/footer
-// chrome is fetched and rendered here directly instead — the disclaimer
-// stays on every page, 404 included (AGENTS.md).
+// chrome — and FanProvider when Fan Zone flags are on — are wired here
+// directly. The disclaimer stays on every page, 404 included (AGENTS.md).
 
 export const metadata: Metadata = {
   title: "Page not found",
@@ -42,7 +43,13 @@ export default async function NotFound() {
     getFeatureFlags(),
   ]);
 
-  return (
+  // Mirror `(site)/layout.tsx`: SiteHeader's Fan Zone menu calls useFan(),
+  // and this page sits outside that layout so we must provide the context
+  // ourselves whenever Fan Zone flags are on (otherwise prerender of
+  // `/_not-found` throws Chunk/useFan errors in production builds).
+  const needsFanSession = flags.fanzone || flags.comments || flags.polls;
+
+  const shell = (
     <>
       <a href="#main-content" className="ov-skip-link">
         Skip to content
@@ -123,4 +130,6 @@ export default async function NotFound() {
       <SiteFooter blurb={footer.blurb} showFanZone={flags.fanzone} />
     </>
   );
+
+  return needsFanSession ? <FanProvider>{shell}</FanProvider> : shell;
 }
