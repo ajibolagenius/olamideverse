@@ -18,6 +18,30 @@ export type ChangelogDay = {
 
 export const CHANGELOG: ChangelogDay[] = [
   {
+    date: "2026-07-27",
+    label: "27 July 2026",
+    items: [
+      {
+        title: "Album & era cards, retiled",
+        body: "AlbumCard and EraCard move to a quieter flagship look — accent lives in a rule and label color instead of a solid fill, with a fix so danfo yellow stays readable as text on paper.",
+        href: "/eras",
+      },
+      {
+        title: "New chrome primitives",
+        body: "Disclaimer strip, door card, filter chips, page header, and ticker join the design system, plus refined button, modal, and track-row patterns and a tidy-up of border styles to numeric scale across the site.",
+      },
+      {
+        title: "Clearer delete actions",
+        body: "A dedicated danger button variant marks destructive admin actions — deleting albums, eras, and media — apart from routine ones.",
+      },
+      {
+        title: "Steadier Fan Zone sign-in",
+        body: "Stale or revoked Supabase refresh tokens are now cleared instead of surfacing repeated auth errors, so sessions recover cleanly.",
+        href: "/fanzone",
+      },
+    ],
+  },
+  {
     date: "2026-07-26",
     label: "26 July 2026",
     items: [
