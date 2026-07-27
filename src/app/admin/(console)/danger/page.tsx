@@ -52,7 +52,7 @@ export default async function AdminDangerPage({
           </p>
           <button
             type="submit"
-            className="border-2 border-ink bg-oxide px-4 py-2 text-xs font-bold uppercase text-paper"
+            className="ov-btn ov-btn-danger px-4 py-2 text-xs"
           >
             Wipe all drafts
           </button>

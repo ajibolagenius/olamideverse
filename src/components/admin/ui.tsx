@@ -51,7 +51,7 @@ export function AdminButton({
     variant === "primary"
       ? "ov-btn ov-btn-danfo"
       : variant === "danger"
-        ? "ov-btn border-ink bg-oxide text-paper"
+        ? "ov-btn ov-btn-danger"
         : "ov-btn ov-btn-ghost";
   const className = `inline-flex items-center px-3 py-2 text-[0.75rem] ${cls}`;
   if (href) return <Link href={href} className={className}>{children}</Link>;

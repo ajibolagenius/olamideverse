@@ -120,7 +120,7 @@ export default async function AdminMediaEditPage({
           <input type="hidden" name="id" value={id} />
           <button
             type="submit"
-            className="border-2 border-ink bg-oxide px-4 py-2 text-xs font-bold uppercase tracking-wide text-paper"
+            className="ov-btn ov-btn-danger px-4 py-2 text-xs tracking-wide"
           >
             Delete item
           </button>

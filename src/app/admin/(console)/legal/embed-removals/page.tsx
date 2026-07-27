@@ -73,7 +73,7 @@ export default async function AdminEmbedRemovalsPage({
         <Field label="Reason" name="reason" rows={2} />
         <button
           type="submit"
-          className="border-2 border-ink bg-oxide px-4 py-2 text-xs font-bold uppercase text-paper"
+          className="ov-btn ov-btn-danger px-4 py-2 text-xs"
         >
           Block now
         </button>

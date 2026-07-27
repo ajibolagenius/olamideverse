@@ -503,6 +503,10 @@
 .ov-btn-ghost:hover {
   background: var(--color-danfo-tint);
 }
+.ov-btn-danger {
+  background: var(--color-oxide);
+  color: var(--color-paper);
+}
 
 .ov-link-underline {
   text-decoration: none;

@@ -142,7 +142,7 @@ export default async function AdminEraEditPage({
           <input type="hidden" name="slug" value={slug} />
           <button
             type="submit"
-            className="border-2 border-ink bg-oxide px-4 py-2 text-xs font-bold uppercase tracking-wide text-paper"
+            className="ov-btn ov-btn-danger px-4 py-2 text-xs tracking-wide"
           >
             Delete era
           </button>

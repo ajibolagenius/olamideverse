@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components" name="Buttons" subtitle="ov-btn: danfo / ink / ghost + hover + disabled" width="720" height="420" -->
+<!-- @dsCard group="Components" name="Buttons" subtitle="ov-btn: danfo / ink / ghost / danger + hover + disabled" width="720" height="420" -->
 <meta charset="utf-8">
 <style>
   @import url('../fonts/fonts.css');
@@ -18,6 +18,7 @@
   .ov-btn-ink{background:var(--ink);color:var(--paper)}
   .ov-btn-ghost{background:var(--paper);color:var(--ink)}
   .ov-btn-ghost:hover{background:var(--danfo-tint)}
+  .ov-btn-danger{background:var(--oxide);color:var(--paper)}
   .note{font-size:.85rem;color:#4A423A;max-width:60ch}
   code{background:#fff;border:1px solid var(--ink);padding:0 4px;font-size:.85em}
 </style>
@@ -26,6 +27,7 @@
   <button class="ov-btn ov-btn-danfo">Explore the Eras</button>
   <button class="ov-btn ov-btn-ink">Browse Discography</button>
   <button class="ov-btn ov-btn-ghost">Watch the freestyles</button>
+  <button class="ov-btn ov-btn-danger">Delete era</button>
   <button class="ov-btn ov-btn-danfo" disabled>Coming soon</button>
 </div>
-<p class="note">Real classes: <code>ov-btn</code> (shared shape) + one of <code>ov-btn-danfo</code> / <code>ov-btn-ink</code> / <code>ov-btn-ghost</code>, defined once in <code>globals.css</code> and reused verbatim everywhere &mdash; nav CTAs, modal close, admin actions. Hover lifts the whole button and grows the hard shadow; press stamps it flat; disabled just fades to 50% opacity, no shadow change. One danfo-primary per viewport, everything else goes ink or ghost.</p>
+<p class="note">Real classes: <code>ov-btn</code> (shared shape) + one of <code>ov-btn-danfo</code> / <code>ov-btn-ink</code> / <code>ov-btn-ghost</code> / <code>ov-btn-danger</code>, defined once in <code>globals.css</code> and reused verbatim everywhere &mdash; nav CTAs, modal close, admin actions, admin destructive actions. Hover lifts the whole button and grows the hard shadow; press stamps it flat; disabled just fades to 50% opacity, no shadow change. One danfo-primary per viewport, everything else goes ink, ghost, or (destructive-only) danger.</p>
