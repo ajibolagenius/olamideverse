@@ -1,15 +1,23 @@
 import { ArrowRight, Books, Disc } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 import AlbumCard from "@/components/AlbumCard";
+import OnThisDay from "@/components/OnThisDay";
 import PhotoPlaceholder from "@/components/PhotoPlaceholder";
 import PosterHero from "@/components/PosterHero";
 import Ticker from "@/components/chrome/Ticker";
 import DoorCard from "@/components/ui/DoorCard";
 import SectionLabel from "@/components/ui/SectionLabel";
-import { getAlbumsByEra, getEra, getEras } from "@/lib/content";
+import { buildAnniversaries, getOnThisDay } from "@/lib/anniversaries";
+import { getAlbums, getAlbumsByEra, getEra, getEras } from "@/lib/content";
 import { OV_ICON_WEIGHT } from "@/lib/icons";
 import { getHomePhoto } from "@/lib/photos";
 import { getFeatureFlags } from "@/lib/settings";
+
+// `new Date()` alone doesn't opt this page into dynamic rendering — without
+// a revalidate window it would be baked in at build time and "On this day"
+// would never move between deploys. Hourly is more than enough precision
+// for a day-level anniversary check.
+export const revalidate = 3600;
 
 // The home ticker is a curated highlight reel, not the full catalog.
 const HOME_TICKER = [
@@ -46,11 +54,13 @@ const DOORS = [
 export default async function Home() {
   const eras = await getEras();
   const upstart = (await getEra("the-upstart"))!;
-  const [upstartAlbums, homePhoto, flags] = await Promise.all([
+  const [upstartAlbums, allAlbums, homePhoto, flags] = await Promise.all([
     getAlbumsByEra(upstart.slug),
+    getAlbums(),
     getHomePhoto(),
     getFeatureFlags(),
   ]);
+  const onThisDay = getOnThisDay(buildAnniversaries(allAlbums, eras), new Date());
 
   return (
     <>
@@ -90,6 +100,8 @@ export default async function Home() {
           </span>
         </div>
       </PosterHero>
+
+      <OnThisDay result={onThisDay} />
 
       <section className="mx-auto max-w-6xl px-5 pt-20 pb-5 sm:px-8">
         <SectionLabel>Start at the beginning</SectionLabel>
