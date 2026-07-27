@@ -4,6 +4,7 @@ import {
   CaretDown,
   CaretUp,
   List,
+  MagnifyingGlass,
   UsersThree,
   X,
 } from "@phosphor-icons/react";
@@ -275,20 +276,30 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
           ) : null}
         </nav>
 
-        <button
-          type="button"
-          onClick={() => setMenuOpen((open) => !open)}
-          aria-expanded={menuOpen}
-          aria-controls="mobile-nav-drawer"
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          className="grid size-10 flex-shrink-0 place-items-center border-3 border-ink bg-paper lg:hidden"
-        >
-          {menuOpen ? (
-            <X size={22} weight={OV_ICON_WEIGHT} aria-hidden />
-          ) : (
-            <List size={22} weight={OV_ICON_WEIGHT} aria-hidden />
-          )}
-        </button>
+        <div className="flex items-center gap-2">
+          <Link
+            href="/search"
+            aria-label="Search"
+            className="grid size-10 flex-shrink-0 place-items-center border-3 border-ink bg-paper hover:bg-danfo-tint"
+          >
+            <MagnifyingGlass size={20} weight={OV_ICON_WEIGHT} aria-hidden />
+          </Link>
+
+          <button
+            type="button"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav-drawer"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            className="grid size-10 flex-shrink-0 place-items-center border-3 border-ink bg-paper lg:hidden"
+          >
+            {menuOpen ? (
+              <X size={22} weight={OV_ICON_WEIGHT} aria-hidden />
+            ) : (
+              <List size={22} weight={OV_ICON_WEIGHT} aria-hidden />
+            )}
+          </button>
+        </div>
       </div>
 
       {menuOpen ? (

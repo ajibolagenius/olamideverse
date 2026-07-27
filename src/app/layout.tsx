@@ -4,6 +4,7 @@ import Analytics from "@/components/Analytics";
 import AppUpdateNotice from "@/components/AppUpdateNotice";
 import MotionRoot from "@/components/MotionRoot";
 import PWARegister from "@/components/PWARegister";
+import SearchShortcut from "@/components/SearchShortcut";
 import PhosphorProvider from "@/components/ui/PhosphorProvider";
 import { getAnalyticsId } from "@/lib/settings";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
@@ -57,6 +58,7 @@ export default async function RootLayout({
         <MotionRoot />
         <PWARegister />
         <AppUpdateNotice />
+        <SearchShortcut />
         <Analytics id={analyticsId} />
       </body>
     </html>
