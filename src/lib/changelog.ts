@@ -22,6 +22,55 @@ export const CHANGELOG: ChangelogDay[] = [
     label: "27 July 2026",
     items: [
       {
+        title: "Fan Zone: streaks & stamps",
+        body: "Signed-in fans build a return-visit streak and collect paste-up “stamps” for favoriting, stacking a playlist, commenting, and going public — tracked automatically, styled like archive ephemera instead of a gamified checklist.",
+        href: "/fanzone",
+      },
+      {
+        title: "Public fan profiles",
+        body: "Fans can opt in to a public profile so others can browse their favorited eras/albums and playlist. Off by default — one switch in the account panel, with a new directory to browse who's opted in.",
+        href: "/fanzone/fans",
+      },
+      {
+        title: "Poll results, on the page they're about",
+        body: "Polls can now be scoped to a specific era or album, so the results sit permanently on that page instead of living only in the Fan Zone hub.",
+        href: "/eras",
+      },
+      {
+        title: "Threaded comment replies",
+        body: "Comment threads support one level of replies, so a reaction to a specific comment reads as a reply instead of piling up at the bottom of the thread.",
+        href: "/fanzone",
+      },
+      {
+        title: "Save eras & albums for offline reading",
+        body: "A save button caches the page itself for offline viewing — everything you've saved shows up on the new Saved page, connection or not.",
+        href: "/saved",
+      },
+      {
+        title: "Three mobile-first upgrades",
+        body: "A bottom-sheet nav replaces the cramped mobile menu, swiping left or right moves between tracks while an embed is open, and snippets can share a downloadable vertical story image straight to Instagram/WhatsApp.",
+      },
+      {
+        title: "Related albums, by era & collaborator",
+        body: "Album pages now surface same-era albums and cross-era matches sharing a feature credit (parsed straight from tracklist notes), so digging deeper into the discography takes one click.",
+        href: "/albums",
+      },
+      {
+        title: "“On this day” on the homepage",
+        body: "The homepage now surfaces albums and era moments whose date matches today — including the rare day where more than one lands at once.",
+        href: "/",
+      },
+      {
+        title: "Site-wide search",
+        body: "A dependency-free search over albums, eras, songs, and snippets, wired to a header shortcut for finding anything in the archive fast.",
+        href: "/search",
+      },
+      {
+        title: "Changelog pagination & update notice",
+        body: "This page now paginates by day instead of scrolling forever, and a quiet banner tells returning visitors when a fresh build has landed and it's safe to refresh.",
+        href: "/changelog",
+      },
+      {
         title: "Album & era cards, retiled",
         body: "AlbumCard and EraCard move to a quieter flagship look — accent lives in a rule and label color instead of a solid fill, with a fix so danfo yellow stays readable as text on paper.",
         href: "/eras",

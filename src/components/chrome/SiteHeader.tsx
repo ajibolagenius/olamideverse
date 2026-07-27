@@ -3,8 +3,11 @@
 import {
   CaretDown,
   CaretUp,
+  Fire,
+  GlobeSimple,
   List,
   MagnifyingGlass,
+  SignOut,
   UsersThree,
   X,
 } from "@phosphor-icons/react";
@@ -12,6 +15,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState, type PointerEvent } from "react";
 import { OV_ICON_WEIGHT, renderNavIcon } from "@/lib/icons";
+import { useFan } from "@/lib/fanzone/useFan";
 import {
   FANZONE_LINK,
   MORE_GROUPS,
@@ -25,28 +29,12 @@ function NavItem({
   href,
   label,
   pathname,
-  cta = false,
 }: {
   href: string;
   label: string;
   pathname: string;
-  cta?: boolean;
 }) {
   const active = isLinkActive(pathname, href);
-  if (cta) {
-    return (
-      <Link
-        href={href}
-        aria-current={active ? "page" : undefined}
-        className={`ov-btn ov-btn-danfo ov-icon-inline px-3 py-1.5 text-[0.8rem] ${
-          active ? "ring-2 ring-ink ring-offset-2 ring-offset-paper" : ""
-        }`}
-      >
-        <UsersThree className="ov-icon" size={16} weight={OV_ICON_WEIGHT} aria-hidden />
-        {label}
-      </Link>
-    );
-  }
   return (
     <Link
       href={href}
@@ -149,6 +137,195 @@ function DrawerGroups({
           </ul>
         </div>
       ))}
+    </div>
+  );
+}
+
+/** Desktop Fan Zone CTA — a signed-in fan gets a streak chip + account menu instead of a bare link. */
+function FanZoneMenu({ pathname }: { pathname: string }) {
+  const { fan, signOut } = useFan();
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const btnRef = useRef<HTMLButtonElement>(null);
+  const menuId = useId();
+  const active = isLinkActive(pathname, FANZONE_LINK.href);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        btnRef.current?.focus();
+      }
+    };
+    const onPointer = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("mousedown", onPointer);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("mousedown", onPointer);
+    };
+  }, [open]);
+
+  return (
+    <div className="relative" ref={ref}>
+      <button
+        ref={btnRef}
+        type="button"
+        aria-expanded={open}
+        aria-haspopup="menu"
+        aria-controls={menuId}
+        onClick={() => setOpen((o) => !o)}
+        className={`ov-btn ov-btn-danfo ov-icon-inline px-3 py-1.5 text-[0.8rem] ${
+          active ? "ring-2 ring-ink ring-offset-2 ring-offset-paper" : ""
+        }`}
+      >
+        {fan ? (
+          <Fire
+            className="ov-icon"
+            size={16}
+            weight={fan.currentStreak > 0 ? "fill" : "regular"}
+            aria-hidden
+          />
+        ) : (
+          <UsersThree className="ov-icon" size={16} weight={OV_ICON_WEIGHT} aria-hidden />
+        )}
+        {fan ? `@${fan.handle}` : FANZONE_LINK.label}
+        {open ? (
+          <CaretUp className="ov-icon" size={12} weight={OV_ICON_WEIGHT} aria-hidden />
+        ) : (
+          <CaretDown className="ov-icon" size={12} weight={OV_ICON_WEIGHT} aria-hidden />
+        )}
+      </button>
+      {open ? (
+        <div
+          id={menuId}
+          role="menu"
+          className="absolute top-full right-0 z-30 mt-2 min-w-[14rem] border-3 border-ink bg-paper p-3 shadow-paste"
+        >
+          {fan ? (
+            <p className="ov-icon-inline mb-2 border-b-2 border-ink pb-2 text-xs text-ink-soft">
+              <Fire
+                className="ov-icon text-danfo"
+                size={14}
+                weight={fan.currentStreak > 0 ? "fill" : "regular"}
+                aria-hidden
+              />
+              <b className="text-ink">{fan.currentStreak}</b> day streak
+            </p>
+          ) : null}
+          <ul className="grid gap-1" role="none">
+            <li role="none">
+              <Link
+                role="menuitem"
+                href="/fanzone"
+                onClick={() => setOpen(false)}
+                className="ov-icon-inline border-l-3 border-transparent py-1 pl-2.5 text-sm font-semibold tracking-[0.05em] uppercase transition-colors hover:border-danfo hover:text-ink"
+              >
+                <UsersThree className="ov-icon" size={15} weight={OV_ICON_WEIGHT} aria-hidden />
+                Fan Zone
+              </Link>
+            </li>
+            <li role="none">
+              <Link
+                role="menuitem"
+                href={
+                  fan?.publicProfile
+                    ? `/fanzone/fans/${encodeURIComponent(fan.handle)}`
+                    : "/fanzone/fans"
+                }
+                onClick={() => setOpen(false)}
+                className="ov-icon-inline border-l-3 border-transparent py-1 pl-2.5 text-sm font-semibold tracking-[0.05em] uppercase transition-colors hover:border-danfo hover:text-ink"
+              >
+                <GlobeSimple className="ov-icon" size={15} weight={OV_ICON_WEIGHT} aria-hidden />
+                {fan?.publicProfile ? "My public profile" : "Browse fans"}
+              </Link>
+            </li>
+            {fan ? (
+              <li role="none">
+                <button
+                  role="menuitem"
+                  type="button"
+                  onClick={() => {
+                    setOpen(false);
+                    void signOut();
+                  }}
+                  className="ov-icon-inline w-full border-l-3 border-transparent py-1 pl-2.5 text-left text-sm font-semibold tracking-[0.05em] uppercase transition-colors hover:border-oxide hover:text-oxide"
+                >
+                  <SignOut className="ov-icon" size={15} weight={OV_ICON_WEIGHT} aria-hidden />
+                  Sign out
+                </button>
+              </li>
+            ) : null}
+          </ul>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+/** Mobile drawer equivalent of FanZoneMenu — a card when signed in, the plain CTA otherwise. */
+function MobileFanZoneAction({ onNavigate }: { onNavigate: () => void }) {
+  const { fan, signOut } = useFan();
+
+  if (!fan) {
+    return (
+      <Link
+        href={FANZONE_LINK.href}
+        onClick={onNavigate}
+        className="ov-btn ov-btn-danfo ov-icon-inline mt-8 w-full justify-center py-4 text-sm"
+      >
+        <UsersThree className="ov-icon" size={18} weight={OV_ICON_WEIGHT} aria-hidden />
+        {FANZONE_LINK.label}
+      </Link>
+    );
+  }
+
+  return (
+    <div className="mt-8 border-3 border-ink bg-danfo-tint p-4">
+      <p className="ov-icon-inline mb-3 text-sm">
+        <Fire
+          className="ov-icon text-danfo"
+          size={18}
+          weight={fan.currentStreak > 0 ? "fill" : "regular"}
+          aria-hidden
+        />
+        <b className="font-display text-xl tabular-nums">{fan.currentStreak}</b>
+        <span className="text-ink-soft normal-case">day streak · @{fan.handle}</span>
+      </p>
+      <div className="grid gap-2">
+        <Link
+          href="/fanzone"
+          onClick={onNavigate}
+          className="ov-btn ov-btn-danfo ov-icon-inline justify-center py-3 text-sm"
+        >
+          <UsersThree className="ov-icon" size={16} weight={OV_ICON_WEIGHT} aria-hidden />
+          Fan Zone
+        </Link>
+        <Link
+          href={
+            fan.publicProfile ? `/fanzone/fans/${encodeURIComponent(fan.handle)}` : "/fanzone/fans"
+          }
+          onClick={onNavigate}
+          className="ov-btn ov-btn-ghost ov-icon-inline justify-center py-3 text-sm"
+        >
+          <GlobeSimple className="ov-icon" size={16} weight={OV_ICON_WEIGHT} aria-hidden />
+          {fan.publicProfile ? "My public profile" : "Browse fans"}
+        </Link>
+        <button
+          type="button"
+          onClick={() => {
+            onNavigate();
+            void signOut();
+          }}
+          className="ov-icon-inline justify-center py-2 text-xs font-bold tracking-[0.08em] uppercase text-ink-soft hover:text-oxide"
+        >
+          <SignOut className="ov-icon" size={14} weight={OV_ICON_WEIGHT} aria-hidden />
+          Sign out
+        </button>
+      </div>
     </div>
   );
 }
@@ -291,14 +468,7 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
             ) : null}
           </div>
 
-          {showFanZone ? (
-            <NavItem
-              href={FANZONE_LINK.href}
-              label={FANZONE_LINK.label}
-              pathname={pathname}
-              cta
-            />
-          ) : null}
+          {showFanZone ? <FanZoneMenu pathname={pathname} /> : null}
         </nav>
 
         <div className="flex items-center gap-2">
@@ -396,14 +566,7 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
               onNavigate={() => setMenuOpen(false)}
             />
             {showFanZone ? (
-              <Link
-                href={FANZONE_LINK.href}
-                onClick={() => setMenuOpen(false)}
-                className="ov-btn ov-btn-danfo ov-icon-inline mt-8 w-full justify-center py-4 text-sm"
-              >
-                <UsersThree className="ov-icon" size={18} weight={OV_ICON_WEIGHT} aria-hidden />
-                {FANZONE_LINK.label}
-              </Link>
+              <MobileFanZoneAction onNavigate={() => setMenuOpen(false)} />
             ) : null}
           </div>
           <p className="border-t-3 border-ink px-5 py-3 text-[0.7rem] tracking-[0.08em] uppercase text-ink-soft">
