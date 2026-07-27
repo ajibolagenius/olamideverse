@@ -53,7 +53,12 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className="flex min-h-screen flex-col antialiased">
+      {/* suppressHydrationWarning: browser extensions (e.g. Grammarly) inject
+          attributes onto <body> before React hydrates. */}
+      <body
+        className="flex min-h-screen flex-col antialiased"
+        suppressHydrationWarning
+      >
         <PhosphorProvider>{children}</PhosphorProvider>
         <MotionRoot />
         <PWARegister />

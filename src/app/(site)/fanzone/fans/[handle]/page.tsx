@@ -1,13 +1,15 @@
-import { Heart, Playlist } from "@phosphor-icons/react/ssr";
+import { Heart, Playlist, Stamp } from "@phosphor-icons/react/ssr";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/Breadcrumb";
 import EmptyState from "@/components/EmptyState";
 import PosterHero from "@/components/PosterHero";
+import StampBoard from "@/components/fanzone/StampBoard";
 import SectionLabel from "@/components/ui/SectionLabel";
 import {
   getFanByHandle,
+  getFanStats,
   getPublicFavorites,
   getPublicPlaylist,
 } from "@/lib/fanzone/queries";
@@ -42,9 +44,10 @@ export default async function PublicFanProfilePage({
   const fan = await getFanByHandle(decodeURIComponent(handle));
   if (!fan) notFound();
 
-  const [favorites, playlist] = await Promise.all([
+  const [favorites, playlist, fanStats] = await Promise.all([
     getPublicFavorites(fan.id),
     getPublicPlaylist(fan.id),
+    getFanStats(fan.id),
   ]);
 
   return (
@@ -64,6 +67,15 @@ export default async function PublicFanProfilePage({
       />
 
       <section className="mx-auto max-w-4xl px-5 pt-12 sm:px-8">
+        <SectionLabel>Stamps</SectionLabel>
+        <h2 className="ov-icon-inline font-display text-display-md mb-5">
+          <Stamp className="ov-icon" size={32} aria-hidden />
+          {fan.handle}&apos;s stamps
+        </h2>
+        <StampBoard stats={fanStats} />
+      </section>
+
+      <section className="mx-auto max-w-4xl px-5 py-12 sm:px-8">
         <SectionLabel>Favorites</SectionLabel>
         <h2 className="ov-icon-inline font-display text-display-md mb-5">
           <Heart className="ov-icon" size={32} aria-hidden />

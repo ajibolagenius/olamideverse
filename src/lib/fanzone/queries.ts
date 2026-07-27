@@ -7,7 +7,14 @@ import { createClient } from "@/lib/supabase/server";
  * CustomEvent bus) more closely than a Server Action round-trip would.
  */
 
-export async function getCurrentFan(): Promise<{ id: string; handle: string } | null> {
+export type CurrentFan = {
+  id: string;
+  handle: string;
+  currentStreak: number;
+  longestStreak: number;
+};
+
+export async function getCurrentFan(): Promise<CurrentFan | null> {
   const supabase = await createClient();
   const {
     data: { user },
@@ -15,10 +22,16 @@ export async function getCurrentFan(): Promise<{ id: string; handle: string } | 
   if (!user) return null;
   const { data } = await supabase
     .from("fans")
-    .select("id, handle")
+    .select("id, handle, current_streak, longest_streak")
     .eq("id", user.id)
     .maybeSingle();
-  return data;
+  if (!data) return null;
+  return {
+    id: data.id,
+    handle: data.handle,
+    currentStreak: data.current_streak,
+    longestStreak: data.longest_streak,
+  };
 }
 
 export async function getFavoriteIds(): Promise<Set<string>> {
@@ -203,4 +216,41 @@ export async function getPublicPlaylist(fanId: string): Promise<PlaylistRow[]> {
     .eq("fan_id", fanId)
     .order("position", { ascending: true });
   return data ?? [];
+}
+
+/**
+ * Stats behind the "stamps" (badges) board. favorites/playlist counts rely
+ * on the same RLS as getPublicFavorites/getPublicPlaylist — for a fan who
+ * hasn't opted into a public profile, counting only works from that fan's
+ * own signed-in session (RLS returns 0 for a private fan's rows to anyone
+ * else, which is the right behavior here too).
+ */
+export type FanStats = {
+  favoritesCount: number;
+  playlistCount: number;
+  commentsCount: number;
+  publicProfile: boolean;
+  longestStreak: number;
+};
+
+export async function getFanStats(fanId: string): Promise<FanStats> {
+  const supabase = await createClient();
+  const [{ count: favoritesCount }, { count: playlistCount }, { count: commentsCount }, { data: fanRow }] =
+    await Promise.all([
+      supabase.from("favorites").select("id", { count: "exact", head: true }).eq("fan_id", fanId),
+      supabase
+        .from("playlist_items")
+        .select("id", { count: "exact", head: true })
+        .eq("fan_id", fanId),
+      supabase.from("comments").select("id", { count: "exact", head: true }).eq("fan_id", fanId),
+      supabase.from("fans").select("public_profile, longest_streak").eq("id", fanId).maybeSingle(),
+    ]);
+
+  return {
+    favoritesCount: favoritesCount ?? 0,
+    playlistCount: playlistCount ?? 0,
+    commentsCount: commentsCount ?? 0,
+    publicProfile: fanRow?.public_profile ?? false,
+    longestStreak: fanRow?.longest_streak ?? 0,
+  };
 }

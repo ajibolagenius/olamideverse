@@ -196,6 +196,17 @@ export async function addToPlaylist(
     return data;
 }
 
+/** Records a check-in for today — a no-op if already recorded (safe to call on every page load). */
+export async function recordActivity(): Promise<{
+    currentStreak: number;
+    longestStreak: number;
+} | null> {
+    const supabase = createClient();
+    const { data, error } = await supabase.rpc("record_fan_activity");
+    if (error || !data?.[0]) return null;
+    return { currentStreak: data[0].current_streak, longestStreak: data[0].longest_streak };
+}
+
 export async function setPublicProfile(enabled: boolean): Promise<void> {
     const supabase = createClient();
     const fanId = await requireFanId();

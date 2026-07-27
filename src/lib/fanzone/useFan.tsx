@@ -5,6 +5,7 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
@@ -16,9 +17,18 @@ import {
   validateHandle,
   validatePassword,
 } from "@/lib/fanzone/auth";
-import { setPublicProfile as setPublicProfileMutation } from "@/lib/fanzone/mutations";
+import {
+  recordActivity,
+  setPublicProfile as setPublicProfileMutation,
+} from "@/lib/fanzone/mutations";
 
-export type Fan = { id: string; handle: string; publicProfile: boolean };
+export type Fan = {
+  id: string;
+  handle: string;
+  publicProfile: boolean;
+  currentStreak: number;
+  longestStreak: number;
+};
 export type FanState = {
   fan: Fan | null;
   loading: boolean;
@@ -79,7 +89,7 @@ export function FanProvider({ children }: { children: ReactNode }) {
     }
     const { data } = await supabase
       .from("fans")
-      .select("id, handle, banned, public_profile")
+      .select("id, handle, banned, public_profile, current_streak, longest_streak")
       .eq("id", user.id)
       .maybeSingle();
     if (data?.banned) {
@@ -88,7 +98,13 @@ export function FanProvider({ children }: { children: ReactNode }) {
     } else {
       setFan(
         data
-          ? { id: data.id, handle: data.handle, publicProfile: data.public_profile }
+          ? {
+              id: data.id,
+              handle: data.handle,
+              publicProfile: data.public_profile,
+              currentStreak: data.current_streak,
+              longestStreak: data.longest_streak,
+            }
           : null,
       );
       // Don't clear a pending form error on session refresh unless we have a fan.
@@ -104,6 +120,26 @@ export function FanProvider({ children }: { children: ReactNode }) {
     } = supabase.auth.onAuthStateChange(() => loadFan());
     return () => subscription.unsubscribe();
   }, [loadFan]);
+
+  // Check in once per fan per browser session — a no-op on the server side
+  // if today's already recorded, so it's fine to re-run on every sign-in.
+  const checkedInFanId = useRef<string | null>(null);
+  useEffect(() => {
+    if (!fan || checkedInFanId.current === fan.id) return;
+    checkedInFanId.current = fan.id;
+    recordActivity().then((result) => {
+      if (!result) return;
+      setFan((prev) =>
+        prev
+          ? {
+              ...prev,
+              currentStreak: result.currentStreak,
+              longestStreak: result.longestStreak,
+            }
+          : prev,
+      );
+    });
+  }, [fan]);
 
   const signUp = useCallback(async (handle: string, password: string) => {
     setError(null);
@@ -130,7 +166,13 @@ export function FanProvider({ children }: { children: ReactNode }) {
       return false;
     }
 
-    setFan({ id: registered.id, handle: registered.handle, publicProfile: false });
+    setFan({
+      id: registered.id,
+      handle: registered.handle,
+      publicProfile: false,
+      currentStreak: 0,
+      longestStreak: 0,
+    });
     return true;
   }, []);
 
@@ -165,7 +207,7 @@ export function FanProvider({ children }: { children: ReactNode }) {
 
     const { data: row } = await supabase
       .from("fans")
-      .select("id, handle, banned, public_profile")
+      .select("id, handle, banned, public_profile, current_streak, longest_streak")
       .eq("id", data.user.id)
       .maybeSingle();
 
@@ -181,7 +223,13 @@ export function FanProvider({ children }: { children: ReactNode }) {
         setError("Couldn't load your fan profile — try again.");
         return false;
       }
-      setFan({ id: data.user.id, handle: display, publicProfile: false });
+      setFan({
+        id: data.user.id,
+        handle: display,
+        publicProfile: false,
+        currentStreak: 0,
+        longestStreak: 0,
+      });
       return true;
     }
 
@@ -192,7 +240,13 @@ export function FanProvider({ children }: { children: ReactNode }) {
       return false;
     }
 
-    setFan({ id: row.id, handle: row.handle, publicProfile: row.public_profile });
+    setFan({
+      id: row.id,
+      handle: row.handle,
+      publicProfile: row.public_profile,
+      currentStreak: row.current_streak,
+      longestStreak: row.longest_streak,
+    });
     return true;
   }, []);
 
@@ -207,6 +261,8 @@ export function FanProvider({ children }: { children: ReactNode }) {
       id: renamed.id,
       handle: renamed.handle,
       publicProfile: prev?.publicProfile ?? false,
+      currentStreak: prev?.currentStreak ?? 0,
+      longestStreak: prev?.longestStreak ?? 0,
     }));
     return true;
   }, []);
