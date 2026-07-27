@@ -6,6 +6,7 @@ const ERRORS: Record<string, string> = {
   missing: "Email and password are required.",
   invalid: "Invalid email or password.",
   unauthorized: "This account is not an admin.",
+  ratelimited: "Too many sign-in attempts — wait a moment and try again.",
 };
 
 export default async function AdminLoginPage({

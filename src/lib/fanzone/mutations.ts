@@ -95,11 +95,20 @@ export async function removeFavorite(id: string): Promise<void> {
     if (error) throw mutationError(error, "Couldn't remove favorite.");
 }
 
-/** Cast or change a vote. Returns previous option id when changing. */
+/**
+ * Cast or change a vote. Returns previous option id when changing.
+ * `validOptionIds` is the poll's own option list (from PollDef.options) —
+ * rejects a client sending an option that isn't actually on the poll, which
+ * would otherwise pollute get_poll_results() with a phantom option.
+ */
 export async function votePoll(
     pollId: string,
     optionId: string,
+    validOptionIds: string[],
 ): Promise<{ previousOptionId: string | null }> {
+    if (!validOptionIds.includes(optionId)) {
+        throw new Error("That's not a valid option for this poll.");
+    }
     const supabase = createClient();
     const fanId = await requireFanId();
 

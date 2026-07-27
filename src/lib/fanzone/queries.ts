@@ -124,10 +124,25 @@ export async function getComments(threadId: string): Promise<CommentRow[]> {
   const supabase = await createClient();
   const { data } = await supabase
     .from("comments")
-    .select("id, body, created_at, fan_id, parent_id, fan:fans(handle)")
+    .select("id, body, created_at, fan_id, parent_id")
     .eq("thread_id", threadId)
     .order("created_at", { ascending: true });
-  const rows = (data ?? []) as unknown as Omit<CommentRow, "replies">[];
+  const rawRows = data ?? [];
+
+  // Handles are public for every commenter regardless of their public_profile
+  // opt-in, but `fans` itself is no longer directly readable cross-fan — go
+  // through the comment_authors() security-definer function instead.
+  const fanIds = Array.from(new Set(rawRows.map((r) => r.fan_id)));
+  const handleById = new Map<string, string>();
+  if (fanIds.length) {
+    const { data: authors } = await supabase.rpc("comment_authors", { fan_ids: fanIds });
+    for (const author of authors ?? []) handleById.set(author.id, author.handle);
+  }
+
+  const rows: Omit<CommentRow, "replies">[] = rawRows.map((row) => ({
+    ...row,
+    fan: handleById.has(row.fan_id) ? { handle: handleById.get(row.fan_id)! } : null,
+  }));
 
   const byId = new Map<string, CommentRow>();
   for (const row of rows) byId.set(row.id, { ...row, replies: [] });
@@ -168,20 +183,28 @@ export async function getPlaylist(): Promise<PlaylistRow[]> {
  * Public browse — every read here relies on the "public favorites/playlists
  * are visible" RLS policies (only rows for fans with public_profile = true
  * and banned = false ever come back), so no extra filtering is needed here.
+ * The fan identity itself comes from public_fan_profiles(), a
+ * security-definer function that applies the same public_profile/banned
+ * filter internally — `fans` is no longer directly readable cross-fan.
  */
 
 export type PublicFan = { handle: string; createdAt: string };
 
+type PublicFanProfileRow = {
+  id: string;
+  handle: string;
+  created_at: string;
+  longest_streak: number;
+};
+
 export async function getPublicFans(): Promise<PublicFan[]> {
   const supabase = await createClient();
   const { data } = await supabase
-    .from("fans")
-    .select("handle, created_at")
-    .eq("public_profile", true)
-    .eq("banned", false)
+    .rpc("public_fan_profiles")
     .order("created_at", { ascending: false })
     .limit(100);
-  return (data ?? []).map((f) => ({ handle: f.handle, createdAt: f.created_at }));
+  const rows = (data ?? []) as PublicFanProfileRow[];
+  return rows.map((f) => ({ handle: f.handle, createdAt: f.created_at }));
 }
 
 export async function getFanByHandle(
@@ -189,13 +212,11 @@ export async function getFanByHandle(
 ): Promise<{ id: string; handle: string } | null> {
   const supabase = await createClient();
   const { data } = await supabase
-    .from("fans")
-    .select("id, handle")
+    .rpc("public_fan_profiles")
     .eq("handle", handle)
-    .eq("public_profile", true)
-    .eq("banned", false)
     .maybeSingle();
-  return data;
+  const row = data as PublicFanProfileRow | null;
+  return row ? { id: row.id, handle: row.handle } : null;
 }
 
 export async function getPublicFavorites(fanId: string): Promise<FavoriteRow[]> {
@@ -235,7 +256,7 @@ export type FanStats = {
 
 export async function getFanStats(fanId: string): Promise<FanStats> {
   const supabase = await createClient();
-  const [{ count: favoritesCount }, { count: playlistCount }, { count: commentsCount }, { data: fanRow }] =
+  const [{ count: favoritesCount }, { count: playlistCount }, { count: commentsCount }, { data: ownRow }] =
     await Promise.all([
       supabase.from("favorites").select("id", { count: "exact", head: true }).eq("fan_id", fanId),
       supabase
@@ -243,14 +264,31 @@ export async function getFanStats(fanId: string): Promise<FanStats> {
         .select("id", { count: "exact", head: true })
         .eq("fan_id", fanId),
       supabase.from("comments").select("id", { count: "exact", head: true }).eq("fan_id", fanId),
+      // Works when `fanId` is the signed-in caller (or an admin) — `fans`
+      // RLS otherwise hides other fans' rows here entirely.
       supabase.from("fans").select("public_profile, longest_streak").eq("id", fanId).maybeSingle(),
     ]);
+
+  let publicProfile = ownRow?.public_profile ?? null;
+  let longestStreak = ownRow?.longest_streak ?? null;
+
+  if (publicProfile === null) {
+    // Not our own row and not an admin — fall back to the security-definer
+    // function, which only ever returns opted-in, unbanned fans.
+    const { data: publicRow } = await supabase
+      .rpc("public_fan_profiles")
+      .eq("id", fanId)
+      .maybeSingle();
+    const row = publicRow as PublicFanProfileRow | null;
+    publicProfile = Boolean(row);
+    longestStreak = row?.longest_streak ?? 0;
+  }
 
   return {
     favoritesCount: favoritesCount ?? 0,
     playlistCount: playlistCount ?? 0,
     commentsCount: commentsCount ?? 0,
-    publicProfile: fanRow?.public_profile ?? false,
-    longestStreak: fanRow?.longest_streak ?? 0,
+    publicProfile: publicProfile ?? false,
+    longestStreak: longestStreak ?? 0,
   };
 }

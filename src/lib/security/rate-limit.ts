@@ -8,14 +8,26 @@ export function hashClientKey(raw: string, namespace: string): string {
 }
 
 export function clientIpFromHeaders(headers: Headers): string {
-  const forwarded = headers.get("x-forwarded-for");
-  if (forwarded) {
-    const first = forwarded.split(",")[0]?.trim();
+  // `x-vercel-forwarded-for` is appended by Vercel's edge network itself and
+  // can't be set by the client — prefer it over `x-forwarded-for`, whose
+  // leftmost (client-controlled) entry a direct HTTP caller can set to any
+  // value on every request, defeating IP-keyed rate limiting entirely.
+  const vercelForwarded = headers.get("x-vercel-forwarded-for");
+  if (vercelForwarded) {
+    const first = vercelForwarded.split(",")[0]?.trim();
     if (first) return first;
   }
+  const forwarded = headers.get("x-forwarded-for");
+  if (forwarded) {
+    const parts = forwarded.split(",").map((p) => p.trim()).filter(Boolean);
+    // Without a trusted platform header, the only hop a reverse proxy chain
+    // guarantees wasn't set by the client is the last one appended.
+    const last = parts[parts.length - 1];
+    if (last) return last;
+  }
   return (
-    headers.get("x-real-ip")?.trim() ||
     headers.get("cf-connecting-ip")?.trim() ||
+    headers.get("x-real-ip")?.trim() ||
     "unknown"
   );
 }

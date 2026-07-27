@@ -36,7 +36,11 @@ export default function PollCard({
     setPending(true);
     setError(null);
     try {
-      const { previousOptionId } = await votePoll(poll.id, optionId);
+      const { previousOptionId } = await votePoll(
+        poll.id,
+        optionId,
+        poll.options.map((o) => o.id),
+      );
       setVoteCounts((c) => {
         const next = { ...c };
         if (previousOptionId && previousOptionId !== optionId) {
