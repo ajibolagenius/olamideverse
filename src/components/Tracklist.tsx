@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState, type PointerEvent } from "react";
 import EmbedFrame from "./EmbedFrame";
 import PlaylistButton from "@/components/fanzone/PlaylistButton";
 import type { Track } from "@/lib/content-schema";
@@ -12,6 +12,8 @@ function slugifyTrack(title: string): string {
 function trackHasEmbed(track: Track): boolean {
   return Boolean(track.spotifyTrackId || track.youtubeId);
 }
+
+const SWIPE_THRESHOLD = 60;
 
 /**
  * Track rows + a shared "now playing" embed frame. Defaults to the album
@@ -38,9 +40,43 @@ export default function Tracklist({
   blockedSpotify?: string[];
 }) {
   const [nowPlaying, setNowPlaying] = useState<Track | null>(null);
+  const [dragging, setDragging] = useState(false);
+  const [dragX, setDragX] = useState(0);
+  const dragStartX = useRef(0);
   const albumBlocked =
     !!spotifyAlbumId && blockedSpotify.includes(spotifyAlbumId);
   const activeTrackEmbed = nowPlaying && trackHasEmbed(nowPlaying);
+  const embeddableTracks = tracks.filter(trackHasEmbed);
+  const canSwipe = Boolean(activeTrackEmbed) && embeddableTracks.length > 1;
+
+  function goToOffset(offset: number) {
+    if (!nowPlaying) return;
+    const index = embeddableTracks.findIndex((t) => t.num === nowPlaying.num);
+    if (index === -1) return;
+    const nextIndex =
+      (index + offset + embeddableTracks.length) % embeddableTracks.length;
+    setNowPlaying(embeddableTracks[nextIndex]);
+  }
+
+  function onPointerDown(e: PointerEvent<HTMLDivElement>) {
+    if (!canSwipe || e.pointerType === "mouse") return;
+    dragStartX.current = e.clientX;
+    setDragging(true);
+    e.currentTarget.setPointerCapture(e.pointerId);
+  }
+
+  function onPointerMove(e: PointerEvent<HTMLDivElement>) {
+    if (!dragging) return;
+    setDragX(e.clientX - dragStartX.current);
+  }
+
+  function onPointerEnd() {
+    if (!dragging) return;
+    setDragging(false);
+    if (dragX <= -SWIPE_THRESHOLD) goToOffset(1);
+    else if (dragX >= SWIPE_THRESHOLD) goToOffset(-1);
+    setDragX(0);
+  }
 
   return (
     <div>
@@ -98,36 +134,62 @@ export default function Tracklist({
         })}
       </ol>
       <div className="mt-5">
-        {activeTrackEmbed && nowPlaying ? (
-          <EmbedFrame
-            title={nowPlaying.title}
-            youtubeId={nowPlaying.youtubeId}
-            spotifyId={nowPlaying.spotifyTrackId}
-            removed={
-              (!!nowPlaying.spotifyTrackId &&
-                blockedSpotify.includes(nowPlaying.spotifyTrackId)) ||
-              (!!nowPlaying.youtubeId &&
-                blockedYoutube.includes(nowPlaying.youtubeId))
-            }
-          />
-        ) : spotifyAlbumId ? (
-          <EmbedFrame
-            title={
-              nowPlaying
-                ? `${albumTitle} · ${nowPlaying.title}`
-                : albumTitle
-            }
-            spotifyId={spotifyAlbumId}
-            spotifyType="album"
-            removed={albumBlocked}
-          />
-        ) : (
-          <div className="border-2 border-dashed border-ink-soft p-6 text-center text-sm text-ink-soft">
-            {nowPlaying
-              ? "Embed coming in the content pass — no audio is hosted here."
-              : "Select a track to load its player."}
-          </div>
-        )}
+        <div
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={onPointerEnd}
+          onPointerCancel={onPointerEnd}
+          className={
+            canSwipe
+              ? "touch-pan-y transition-[transform,opacity] duration-200 ease-out motion-reduce:transition-none"
+              : undefined
+          }
+          style={
+            dragging
+              ? {
+                  transform: `translateX(${dragX}px)`,
+                  opacity: 1 - Math.min(Math.abs(dragX) / 200, 0.5),
+                  transition: "none",
+                }
+              : undefined
+          }
+        >
+          {activeTrackEmbed && nowPlaying ? (
+            <EmbedFrame
+              title={nowPlaying.title}
+              youtubeId={nowPlaying.youtubeId}
+              spotifyId={nowPlaying.spotifyTrackId}
+              removed={
+                (!!nowPlaying.spotifyTrackId &&
+                  blockedSpotify.includes(nowPlaying.spotifyTrackId)) ||
+                (!!nowPlaying.youtubeId &&
+                  blockedYoutube.includes(nowPlaying.youtubeId))
+              }
+            />
+          ) : spotifyAlbumId ? (
+            <EmbedFrame
+              title={
+                nowPlaying
+                  ? `${albumTitle} · ${nowPlaying.title}`
+                  : albumTitle
+              }
+              spotifyId={spotifyAlbumId}
+              spotifyType="album"
+              removed={albumBlocked}
+            />
+          ) : (
+            <div className="border-2 border-dashed border-ink-soft p-6 text-center text-sm text-ink-soft">
+              {nowPlaying
+                ? "Embed coming in the content pass — no audio is hosted here."
+                : "Select a track to load its player."}
+            </div>
+          )}
+        </div>
+        {canSwipe ? (
+          <p className="mt-2 text-center text-[0.7rem] tracking-[0.06em] uppercase text-ink-soft sm:hidden">
+            Swipe for next track
+          </p>
+        ) : null}
       </div>
     </div>
   );

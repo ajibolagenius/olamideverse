@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ShareSnippet from "@/components/ShareSnippet";
+import ShareToStory from "@/components/ShareToStory";
 import { ACCENTS, type AccentName } from "@/lib/accents";
 import type { Snippet } from "@/lib/content-schema";
 import { SITE_URL } from "@/lib/site";
@@ -74,6 +75,11 @@ export default function AudiogramCard({
           </div>
           <div className="flex flex-wrap gap-2">
             <ShareSnippet url={absoluteUrl} title={snippet.track} compact />
+            <ShareToStory
+              storyUrl={`/snippets/${snippet.id}/story`}
+              title={snippet.track}
+              compact
+            />
             <Link
               href={href}
               className="border-2 border-paper px-2.5 py-1 text-[0.68rem] font-bold tracking-[0.05em] uppercase text-paper transition-colors hover:bg-paper hover:text-ink"

@@ -10,7 +10,7 @@ import {
 } from "@phosphor-icons/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useId, useRef, useState, type CSSProperties, type PointerEvent } from "react";
+import { useEffect, useId, useRef, useState, type PointerEvent } from "react";
 import { OV_ICON_WEIGHT, renderNavIcon } from "@/lib/icons";
 import {
   FANZONE_LINK,
@@ -333,9 +333,7 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
             type="button"
             aria-label="Close menu"
             onClick={() => setMenuOpen(false)}
-            className={`fixed inset-0 z-50 bg-ink/50 lg:hidden ${
-              dragging ? "" : "transition-opacity duration-300 motion-reduce:transition-none"
-            } ${sheetVisible ? "opacity-100" : "opacity-0"}`}
+            className="ov-backdrop-in fixed inset-0 z-50 bg-ink/50 lg:hidden"
           />
           <div
             id="mobile-nav-drawer"
