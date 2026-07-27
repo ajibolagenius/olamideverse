@@ -7,7 +7,7 @@ import {
 import { saveSeo } from "@/lib/admin/actions/ops";
 import { createClient } from "@/lib/supabase/server";
 
-const DEFAULT_PATHS = ["/", "/eras", "/albums", "/media", "/about", "/legal", "/fanzone"];
+const DEFAULT_PATHS = ["/", "/eras", "/albums", "/media", "/biography", "/about", "/legal", "/fanzone"];
 
 export default async function AdminSeoPage({
   searchParams,

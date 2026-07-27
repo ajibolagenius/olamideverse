@@ -269,8 +269,33 @@ export const IMPACT_KIND_LABEL: Record<
     international: "International",
 };
 
+const quickFactSchema = z.object({
+    label: z.string(),
+    value: z.string(),
+});
+
+const biographyChapterSchema = z.object({
+    heading: z.string(),
+    years: z.string(), // display form, matching the matching era's `years`
+    eraSlug: z.string().optional(), // cross-checked in getBiography() — links to the full era chapter
+    body: z.array(z.string()).min(1), // narrative paragraphs
+    pullQuote: z.string().optional(),
+    pullQuoteHighlight: z.string().optional(),
+});
+
+export const biographySchema = z.object({
+    heroBadge: z.string(),
+    heroIntro: z.string(),
+    quickFacts: z.array(quickFactSchema).default([]),
+    chapters: z.array(biographyChapterSchema).min(1),
+    closingHeading: z.string(),
+    closingBody: z.array(z.string()).default([]),
+});
+
 export type Era = z.infer<typeof eraSchema> & { slug: string; body: string };
 export type Album = z.infer<typeof albumSchema> & { slug: string; body: string };
+export type BiographyChapter = z.infer<typeof biographyChapterSchema>;
+export type Biography = z.infer<typeof biographySchema> & { slug: string; body: string };
 export type Track = z.infer<typeof trackSchema>;
 export type MediaItem = z.infer<typeof mediaItemSchema>;
 export type Snippet = z.infer<typeof snippetSchema>;

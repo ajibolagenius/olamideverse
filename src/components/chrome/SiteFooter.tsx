@@ -1,7 +1,16 @@
 import Link from "next/link";
 import VisitorBadge from "@/components/analytics/VisitorBadge";
+import Ticker from "@/components/chrome/Ticker";
 import { renderNavIcon } from "@/lib/icons";
 import { buildFooterColumns } from "@/lib/nav";
+
+const FOOTER_TICKER = [
+  "Bariga to the world",
+  "Six eras · one legacy",
+  "Embeds only — no hosted audio",
+  "Fan archive · not affiliated",
+  "Street-hop · editorial · Lagos",
+];
 
 function FooterColumn({
   title,
@@ -12,15 +21,15 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <p className="mb-3 text-[0.7rem] font-semibold tracking-[0.14em] uppercase text-ink-muted">
+      <p className="font-display mb-4 text-sm tracking-[0.08em] uppercase text-ink-muted">
         {title}
       </p>
-      <ul className="grid gap-2">
+      <ul className="grid gap-2.5">
         {links.map((link) => (
           <li key={`${link.href}-${link.label}`}>
             <Link
               href={link.href}
-              className="ov-icon-inline font-semibold tracking-[0.05em] uppercase text-paper transition-colors hover:text-danfo"
+              className="ov-icon-inline text-[0.8rem] font-semibold tracking-[0.06em] uppercase text-paper transition-colors hover:text-danfo"
             >
               {renderNavIcon(link.href, { className: "ov-icon", size: 14 })}
               {link.label}
@@ -42,26 +51,42 @@ export default function SiteFooter({
   const columns = buildFooterColumns({ showFanZone });
 
   return (
-    <footer className="bg-ink px-5 pt-12 pb-8 text-[0.8rem] text-ink-muted sm:px-8">
-      <div className="mx-auto grid max-w-6xl gap-10 border-b border-[#3A332B] pb-10 sm:grid-cols-[1.2fr_repeat(3,1fr)]">
-        <div>
-          <Link href="/" className="font-display text-2xl text-paper">
-            Olamide<span className="bg-danfo px-[0.12em] text-ink">Verse</span>
-          </Link>
-          <p className="mt-4 max-w-[28ch] text-[0.85rem] leading-relaxed tracking-normal text-ink-muted normal-case">
-            A fan-made editorial archive of Olamide&apos;s career — eras, albums,
-            and the culture around them.
+    <footer className="grain border-t-6 border-danfo bg-ink text-ink-muted">
+      <Ticker
+        items={FOOTER_TICKER}
+        className="border-b-3 border-ink bg-danfo text-ink"
+      />
+
+      <div className="mx-auto max-w-6xl px-5 pt-12 pb-10 sm:px-8">
+        <div className="grid gap-12 border-b-3 border-[#3A332B] pb-12 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-16">
+          <div>
+            <Link
+              href="/"
+              className="font-display block text-[clamp(2.5rem,6vw,4rem)] leading-[0.9] text-paper"
+            >
+              Olamide
+              <span className="bg-danfo px-[0.12em] text-ink">Verse</span>
+            </Link>
+            <p className="mt-5 max-w-[34ch] text-[0.95rem] leading-relaxed tracking-normal text-ink-muted normal-case">
+              A fan-made editorial archive of Olamide&apos;s career — eras, albums,
+              and the culture around them.
+            </p>
+            <p className="ov-stamp mt-6 text-danfo">Fan archive · Not affiliated</p>
+          </div>
+
+          <div className="grid gap-10 sm:grid-cols-3 sm:gap-8">
+            <FooterColumn title="Archive" links={columns.archive} />
+            <FooterColumn title="Explore" links={columns.explore} />
+            <FooterColumn title="Meta" links={columns.meta} />
+          </div>
+        </div>
+
+        <div className="flex flex-col items-center gap-5 pt-6 sm:flex-row sm:justify-between sm:gap-8">
+          <p className="max-w-xl text-center text-[0.72rem] tracking-[0.06em] uppercase sm:text-left">
+            {blurb}
           </p>
+          <VisitorBadge />
         </div>
-        <FooterColumn title="Archive" links={columns.archive} />
-        <FooterColumn title="Explore" links={columns.explore} />
-        <FooterColumn title="Meta" links={columns.meta} />
-      </div>
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 pt-5 sm:flex-row sm:justify-between">
-        <div className="text-center tracking-[0.04em] uppercase sm:text-left">
-          {blurb}
-        </div>
-        <VisitorBadge />
       </div>
     </footer>
   );

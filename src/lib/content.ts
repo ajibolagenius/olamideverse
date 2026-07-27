@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import { z } from "zod";
 import {
     albumSchema,
+    biographySchema,
     eraSchema,
     impactPlaceSchema,
     influenceGraphSchema,
@@ -11,6 +12,7 @@ import {
     snippetSchema,
     songCatalogFileSchema,
     type Album,
+    type Biography,
     type Era,
     type ImpactPlace,
     type InfluenceGraph,
@@ -67,6 +69,19 @@ function fileAlbums(eraSlugs: Set<string>): Album[] {
         }
     }
     return albums.sort((a, b) => a.year - b.year);
+}
+
+function fileBiography(eraSlugs: Set<string>): Biography | undefined {
+    const [entry] = readMdxCollection("biography", biographySchema);
+    if (!entry) return undefined;
+    for (const chapter of entry.chapters) {
+        if (chapter.eraSlug && !eraSlugs.has(chapter.eraSlug)) {
+            throw new Error(
+                `content/biography/${entry.slug}.mdx chapter "${chapter.heading}" references unknown era "${chapter.eraSlug}"`,
+            );
+        }
+    }
+    return entry;
 }
 
 function fileMedia(eraSlugs: Set<string>): MediaItem[] {
@@ -225,6 +240,11 @@ export async function getAlbum(
 
 export async function getAlbumsByEra(eraSlug: string): Promise<Album[]> {
     return (await getAlbums()).filter((a) => a.era === eraSlug);
+}
+
+export async function getBiography(): Promise<Biography | undefined> {
+    const eras = await getEras();
+    return fileBiography(new Set(eras.map((e) => e.slug)));
 }
 
 export async function getMediaItems(): Promise<MediaItem[]> {
