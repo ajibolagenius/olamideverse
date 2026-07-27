@@ -24,14 +24,12 @@ function resolveVersion() {
 
 const version = resolveVersion();
 const source = readFileSync(swPath, "utf8");
-const stamped = source.replace(
-  /^const VERSION = ".*";$/m,
-  `const VERSION = "${version}";`,
-);
+const versionLine = /^const VERSION = ".*";$/m;
 
-if (stamped === source) {
+if (!versionLine.test(source)) {
   throw new Error("stamp-sw-version: could not find `const VERSION = \"...\";` in public/sw.js");
 }
 
+const stamped = source.replace(versionLine, `const VERSION = "${version}";`);
 writeFileSync(swPath, stamped);
 console.log(`stamp-sw-version: public/sw.js -> ${version}`);

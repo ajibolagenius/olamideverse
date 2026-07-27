@@ -8,9 +8,11 @@ import FavoriteButton from "@/components/fanzone/FavoriteButton";
 import CoverArt from "@/components/CoverArt";
 import EmptyState from "@/components/EmptyState";
 import Prose from "@/components/Prose";
+import RelatedAlbums from "@/components/RelatedAlbums";
 import Tracklist from "@/components/Tracklist";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { ACCENTS, accentChrome } from "@/lib/accents";
+import { relatedByCollaborator } from "@/lib/collaborators";
 import {
   ALBUM_TYPE_LABEL,
   getAlbum,
@@ -80,6 +82,11 @@ export default async function AlbumPage({
   const nextAlbum =
     albumIndex >= 0 && albumIndex < albums.length - 1 ? albums[albumIndex + 1] : undefined;
   const cover = getAlbumCover(album.slug);
+
+  const sameEraAlbums = albums
+    .filter((a) => a.era === album.era && a.slug !== album.slug)
+    .slice(0, 4);
+  const collaboratorMatches = relatedByCollaborator(album, albums).slice(0, 4);
 
   const metaFacts = [
     album.released ? { label: "Released", value: album.released } : null,
@@ -229,6 +236,13 @@ export default async function AlbumPage({
           <EmptyState message="Tracklist coming with the content pass — check back as the archive grows." />
         )}
       </section>
+
+      <RelatedAlbums
+        sameEra={sameEraAlbums}
+        era={era}
+        collaboratorMatches={collaboratorMatches}
+        showFavorites={flags.fanzone}
+      />
 
       {snippets.length > 0 ? (
         <section className="mx-auto max-w-6xl px-5 pb-16 sm:px-8">
