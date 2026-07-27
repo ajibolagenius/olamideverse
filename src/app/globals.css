@@ -267,6 +267,32 @@
   }
 }
 
+/* Mobile nav bottom sheet — plain CSS entrance (runs on mount, no JS state
+   needed) plus a transition for the swipe-to-dismiss snap-back. */
+.ov-sheet-in {
+  animation: ov-sheet-in 300ms ease-out forwards;
+  transition: transform 200ms ease-out;
+}
+@keyframes ov-sheet-in {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.ov-backdrop-in {
+  animation: ov-backdrop-in 300ms ease-out forwards;
+}
+@keyframes ov-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* duotone-shift: era-accent overlay over every photo, scrubbed out by GSAP or hovered */
 .ov-duotone {
   position: relative;
@@ -567,5 +593,10 @@ button:focus-visible {
   .ov-btn:hover,
   .ov-lift:hover {
     transform: none;
+  }
+  .ov-sheet-in,
+  .ov-backdrop-in {
+    animation: none;
+    transition: none;
   }
 }

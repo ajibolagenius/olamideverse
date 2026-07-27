@@ -9,6 +9,7 @@ import CoverArt from "@/components/CoverArt";
 import EmptyState from "@/components/EmptyState";
 import Prose from "@/components/Prose";
 import RelatedAlbums from "@/components/RelatedAlbums";
+import SaveOfflineButton from "@/components/SaveOfflineButton";
 import Tracklist from "@/components/Tracklist";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { ACCENTS, accentChrome } from "@/lib/accents";
@@ -175,6 +176,12 @@ export default async function AlbumPage({
                 href={`/albums/${album.slug}`}
               />
             ) : null}
+            <SaveOfflineButton
+              href={`/albums/${album.slug}`}
+              title={album.title}
+              subtitle={`${ALBUM_TYPE_LABEL[album.type]} · ${album.year}`}
+              kind="album"
+            />
           </div>
           {metaFacts.length > 0 ? (
             <div className="mb-6 flex flex-wrap gap-7 border-y-6 border-ink bg-paper-dim/40 py-3.5 text-sm text-ink-soft">

@@ -14,6 +14,7 @@ import PhotoPlaceholder from "@/components/PhotoPlaceholder";
 import PosterHero from "@/components/PosterHero";
 import PullQuote from "@/components/PullQuote";
 import RelatedArchive from "@/components/RelatedArchive";
+import SaveOfflineButton from "@/components/SaveOfflineButton";
 import Ticker from "@/components/chrome/Ticker";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { ACCENTS, accentChrome } from "@/lib/accents";
@@ -110,17 +111,24 @@ export default async function EraPage({
           className="mt-8 flex flex-wrap items-end justify-between gap-4 border-t-4 pt-4"
           style={{ borderColor: accent.solid }}
         >
-          {flags.fanzone ? (
-            <FavoriteButton
-              id={`era:${era.slug}`}
-              label={era.title}
-              kind="era"
+          <div className="flex flex-wrap items-center gap-3">
+            {flags.fanzone ? (
+              <FavoriteButton
+                id={`era:${era.slug}`}
+                label={era.title}
+                kind="era"
+                href={`/eras/${era.slug}`}
+                tone="ink"
+              />
+            ) : null}
+            <SaveOfflineButton
               href={`/eras/${era.slug}`}
+              title={era.title}
+              subtitle={era.years}
+              kind="era"
               tone="ink"
             />
-          ) : (
-            <span />
-          )}
+          </div>
           <span className="font-display text-3xl tabular-nums text-paper">
             {era.years}
           </span>

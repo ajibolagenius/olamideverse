@@ -10,7 +10,7 @@ import {
 } from "@phosphor-icons/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, type CSSProperties, type PointerEvent } from "react";
 import { OV_ICON_WEIGHT, renderNavIcon } from "@/lib/icons";
 import {
   FANZONE_LINK,
@@ -158,10 +158,35 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
   const [menuOpen, setMenuOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [dragging, setDragging] = useState(false);
+  const [dragY, setDragY] = useState(0);
+  const dragStartY = useRef(0);
   const moreRef = useRef<HTMLDivElement>(null);
   const moreBtnRef = useRef<HTMLButtonElement>(null);
   const moreMenuId = useId();
   const drawerTitleId = useId();
+
+  const DRAG_DISMISS_THRESHOLD = 80;
+
+  function onDragStart(e: PointerEvent<HTMLDivElement>) {
+    dragStartY.current = e.clientY;
+    setDragging(true);
+    e.currentTarget.setPointerCapture(e.pointerId);
+  }
+
+  function onDragMove(e: PointerEvent<HTMLDivElement>) {
+    if (!dragging) return;
+    setDragY(Math.max(0, e.clientY - dragStartY.current));
+  }
+
+  function onDragEnd() {
+    if (!dragging) return;
+    setDragging(false);
+    setDragY(0);
+    if (dragY > DRAG_DISMISS_THRESHOLD) {
+      setMenuOpen(false);
+    }
+  }
 
   const [prevPathname, setPrevPathname] = useState(pathname);
   if (pathname !== prevPathname) {
@@ -303,28 +328,47 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
       </div>
 
       {menuOpen ? (
-        <div
-          id="mobile-nav-drawer"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby={drawerTitleId}
-          className="fixed inset-0 z-50 flex flex-col bg-paper lg:hidden"
-        >
-          <div className="flex items-center justify-between border-b-6 border-ink px-5 py-3.5">
-            <p id={drawerTitleId} className="font-display text-2xl uppercase">
-              Menu
-            </p>
-            <button
-              type="button"
-              onClick={() => setMenuOpen(false)}
-              className="ov-btn ov-btn-ghost ov-icon-inline px-3 py-2 text-xs"
-              aria-label="Close menu"
+        <>
+          <button
+            type="button"
+            aria-label="Close menu"
+            onClick={() => setMenuOpen(false)}
+            className={`fixed inset-0 z-50 bg-ink/50 lg:hidden ${
+              dragging ? "" : "transition-opacity duration-300 motion-reduce:transition-none"
+            } ${sheetVisible ? "opacity-100" : "opacity-0"}`}
+          />
+          <div
+            id="mobile-nav-drawer"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={drawerTitleId}
+            className="ov-sheet-in fixed inset-x-0 bottom-0 z-[51] flex max-h-[85vh] flex-col border-t-4 border-ink bg-paper shadow-[0_-8px_0_0_rgba(24,20,16,0.15)] lg:hidden"
+            style={dragging ? { transform: `translateY(${dragY}px)`, transition: "none" } : undefined}
+          >
+            <div
+              onPointerDown={onDragStart}
+              onPointerMove={onDragMove}
+              onPointerUp={onDragEnd}
+              onPointerCancel={onDragEnd}
+              className="shrink-0 touch-none"
             >
-              <X className="ov-icon" size={14} weight={OV_ICON_WEIGHT} aria-hidden />
-              Close
-            </button>
-          </div>
-          <div className="flex-1 overflow-y-auto px-5 py-6">
+              <div className="mx-auto mt-2.5 h-1.5 w-10 rounded-full bg-ink/25" aria-hidden />
+              <div className="flex items-center justify-between border-b-6 border-ink px-5 py-3.5">
+                <p id={drawerTitleId} className="font-display text-2xl uppercase">
+                  Menu
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setMenuOpen(false)}
+                  className="ov-btn ov-btn-ghost ov-icon-inline px-3 py-2 text-xs"
+                  aria-label="Close menu"
+                >
+                  <X className="ov-icon" size={14} weight={OV_ICON_WEIGHT} aria-hidden />
+                  Close
+                </button>
+              </div>
+            </div>
+            <div className="flex-1 overflow-y-auto px-5 py-6">
             <p className="mb-2 text-[0.7rem] font-semibold tracking-[0.14em] uppercase text-ink-soft">
               Primary
             </p>
@@ -367,7 +411,8 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
           <p className="border-t-3 border-ink px-5 py-3 text-[0.7rem] tracking-[0.08em] uppercase text-ink-soft">
             Fan archive · Not affiliated
           </p>
-        </div>
+          </div>
+        </>
       ) : null}
     </header>
   );

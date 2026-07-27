@@ -7,6 +7,9 @@
 const VERSION = "v1";
 const SHELL_CACHE = `ov-shell-${VERSION}`;
 const RUNTIME_CACHE = `ov-runtime-${VERSION}`;
+// Deliberately unversioned — pages a reader explicitly saved for offline
+// must survive deploys, unlike the shell/runtime caches above.
+const SAVED_CACHE = "ov-saved";
 
 const SHELL_URLS = [
   "/",
@@ -43,7 +46,7 @@ self.addEventListener("activate", (event) => {
       const keys = await caches.keys();
       await Promise.all(
         keys
-          .filter((key) => key !== SHELL_CACHE && key !== RUNTIME_CACHE)
+          .filter((key) => key !== SHELL_CACHE && key !== RUNTIME_CACHE && key !== SAVED_CACHE)
           .map((key) => caches.delete(key)),
       );
       await self.clients.claim();
