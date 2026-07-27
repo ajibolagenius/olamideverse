@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  GlobeSimple,
   Key,
   PencilSimple,
   SignIn,
@@ -8,6 +9,7 @@ import {
   UserCircle,
   UserPlus,
 } from "@phosphor-icons/react";
+import Link from "next/link";
 import { useState } from "react";
 import type { useFan } from "@/lib/fanzone/useFan";
 import { OV_ICON_WEIGHT } from "@/lib/icons";
@@ -48,6 +50,7 @@ export default function HandlePicker({
   const [saving, setSaving] = useState(false);
   const [localError, setLocalError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
+  const [profilePending, setProfilePending] = useState(false);
 
   const showError = localError || error;
 
@@ -114,6 +117,42 @@ export default function HandlePicker({
           </div>
         </div>
         {notice ? <p className="mt-2 text-xs text-palm">{notice}</p> : null}
+
+        <div className="mt-3 flex flex-wrap items-center justify-between gap-3 border-t-2 border-ink pt-3">
+          <label className="ov-icon-inline flex items-center gap-2 text-sm">
+            <input
+              type="checkbox"
+              checked={fan.publicProfile}
+              disabled={profilePending}
+              onChange={async (e) => {
+                setProfilePending(true);
+                await fanState.setPublicProfile(e.target.checked);
+                setProfilePending(false);
+              }}
+              className="size-4 border-2 border-ink"
+            />
+            <GlobeSimple className="ov-icon" size={16} weight={OV_ICON_WEIGHT} aria-hidden />
+            Public profile
+            <span className="font-normal normal-case text-ink-soft">
+              — lets other fans browse your favorites &amp; playlist
+            </span>
+          </label>
+          {fan.publicProfile ? (
+            <Link
+              href={`/fanzone/fans/${encodeURIComponent(fan.handle)}`}
+              className="ov-link-underline text-xs font-bold tracking-[0.05em] uppercase text-adire"
+            >
+              View your public profile →
+            </Link>
+          ) : (
+            <Link
+              href="/fanzone/fans"
+              className="ov-link-underline text-xs font-bold tracking-[0.05em] uppercase text-adire"
+            >
+              Browse public fans →
+            </Link>
+          )}
+        </div>
       </div>
     );
   }

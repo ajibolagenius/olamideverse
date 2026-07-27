@@ -16,8 +16,9 @@ import {
   validateHandle,
   validatePassword,
 } from "@/lib/fanzone/auth";
+import { setPublicProfile as setPublicProfileMutation } from "@/lib/fanzone/mutations";
 
-export type Fan = { id: string; handle: string };
+export type Fan = { id: string; handle: string; publicProfile: boolean };
 export type FanState = {
   fan: Fan | null;
   loading: boolean;
@@ -30,6 +31,8 @@ export type FanState = {
   changeHandle: (handle: string) => Promise<boolean>;
   /** Change password while signed in. */
   changePassword: (newPassword: string) => Promise<boolean>;
+  /** Opt in/out of a public profile — makes favorites + playlist browsable by other fans. */
+  setPublicProfile: (enabled: boolean) => Promise<boolean>;
   signOut: () => Promise<void>;
   clearError: () => void;
 };
@@ -76,14 +79,18 @@ export function FanProvider({ children }: { children: ReactNode }) {
     }
     const { data } = await supabase
       .from("fans")
-      .select("id, handle, banned")
+      .select("id, handle, banned, public_profile")
       .eq("id", user.id)
       .maybeSingle();
     if (data?.banned) {
       setFan(null);
       setError("This handle has been suspended.");
     } else {
-      setFan(data ? { id: data.id, handle: data.handle } : null);
+      setFan(
+        data
+          ? { id: data.id, handle: data.handle, publicProfile: data.public_profile }
+          : null,
+      );
       // Don't clear a pending form error on session refresh unless we have a fan.
       if (data) setError(null);
     }
@@ -123,7 +130,7 @@ export function FanProvider({ children }: { children: ReactNode }) {
       return false;
     }
 
-    setFan({ id: registered.id, handle: registered.handle });
+    setFan({ id: registered.id, handle: registered.handle, publicProfile: false });
     return true;
   }, []);
 
@@ -158,7 +165,7 @@ export function FanProvider({ children }: { children: ReactNode }) {
 
     const { data: row } = await supabase
       .from("fans")
-      .select("id, handle, banned")
+      .select("id, handle, banned, public_profile")
       .eq("id", data.user.id)
       .maybeSingle();
 
@@ -174,7 +181,7 @@ export function FanProvider({ children }: { children: ReactNode }) {
         setError("Couldn't load your fan profile — try again.");
         return false;
       }
-      setFan({ id: data.user.id, handle: display });
+      setFan({ id: data.user.id, handle: display, publicProfile: false });
       return true;
     }
 
@@ -185,7 +192,7 @@ export function FanProvider({ children }: { children: ReactNode }) {
       return false;
     }
 
-    setFan({ id: row.id, handle: row.handle });
+    setFan({ id: row.id, handle: row.handle, publicProfile: row.public_profile });
     return true;
   }, []);
 
@@ -196,7 +203,11 @@ export function FanProvider({ children }: { children: ReactNode }) {
       setError(renamed.error);
       return false;
     }
-    setFan({ id: renamed.id, handle: renamed.handle });
+    setFan((prev) => ({
+      id: renamed.id,
+      handle: renamed.handle,
+      publicProfile: prev?.publicProfile ?? false,
+    }));
     return true;
   }, []);
 
@@ -232,6 +243,20 @@ export function FanProvider({ children }: { children: ReactNode }) {
     setError(null);
   }, []);
 
+  const setPublicProfile = useCallback(async (enabled: boolean) => {
+    setError(null);
+    const previous = fan;
+    setFan((prev) => (prev ? { ...prev, publicProfile: enabled } : prev));
+    try {
+      await setPublicProfileMutation(enabled);
+      return true;
+    } catch (err) {
+      setFan(previous);
+      setError(err instanceof Error ? err.message : "Couldn't update profile visibility.");
+      return false;
+    }
+  }, [fan]);
+
   return (
     <FanContext.Provider
       value={{
@@ -242,6 +267,7 @@ export function FanProvider({ children }: { children: ReactNode }) {
         signIn,
         changeHandle,
         changePassword,
+        setPublicProfile,
         signOut,
         clearError,
       }}

@@ -150,3 +150,57 @@ export async function getPlaylist(): Promise<PlaylistRow[]> {
     .order("position", { ascending: true });
   return data ?? [];
 }
+
+/**
+ * Public browse — every read here relies on the "public favorites/playlists
+ * are visible" RLS policies (only rows for fans with public_profile = true
+ * and banned = false ever come back), so no extra filtering is needed here.
+ */
+
+export type PublicFan = { handle: string; createdAt: string };
+
+export async function getPublicFans(): Promise<PublicFan[]> {
+  const supabase = await createClient();
+  const { data } = await supabase
+    .from("fans")
+    .select("handle, created_at")
+    .eq("public_profile", true)
+    .eq("banned", false)
+    .order("created_at", { ascending: false })
+    .limit(100);
+  return (data ?? []).map((f) => ({ handle: f.handle, createdAt: f.created_at }));
+}
+
+export async function getFanByHandle(
+  handle: string,
+): Promise<{ id: string; handle: string } | null> {
+  const supabase = await createClient();
+  const { data } = await supabase
+    .from("fans")
+    .select("id, handle")
+    .eq("handle", handle)
+    .eq("public_profile", true)
+    .eq("banned", false)
+    .maybeSingle();
+  return data;
+}
+
+export async function getPublicFavorites(fanId: string): Promise<FavoriteRow[]> {
+  const supabase = await createClient();
+  const { data } = await supabase
+    .from("favorites")
+    .select("id, target_id, label, kind, href")
+    .eq("fan_id", fanId)
+    .order("created_at", { ascending: false });
+  return data ?? [];
+}
+
+export async function getPublicPlaylist(fanId: string): Promise<PlaylistRow[]> {
+  const supabase = await createClient();
+  const { data } = await supabase
+    .from("playlist_items")
+    .select("id, track_id, title, subtitle")
+    .eq("fan_id", fanId)
+    .order("position", { ascending: true });
+  return data ?? [];
+}

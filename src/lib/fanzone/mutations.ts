@@ -196,6 +196,16 @@ export async function addToPlaylist(
     return data;
 }
 
+export async function setPublicProfile(enabled: boolean): Promise<void> {
+    const supabase = createClient();
+    const fanId = await requireFanId();
+    const { error } = await supabase
+        .from("fans")
+        .update({ public_profile: enabled })
+        .eq("id", fanId);
+    if (error) throw mutationError(error, "Couldn't update profile visibility.");
+}
+
 export async function removeFromPlaylist(trackId: string): Promise<void> {
     const supabase = createClient();
     const fanId = await requireFanId();

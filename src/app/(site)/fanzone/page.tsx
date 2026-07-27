@@ -6,6 +6,7 @@ import {
   UserCircle,
 } from "@phosphor-icons/react/ssr";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import CommentBox from "@/components/fanzone/CommentBox";
 import FanZoneSignIn from "@/components/fanzone/FanZoneSignIn";
@@ -64,10 +65,15 @@ export default async function FanZonePage() {
 
       <section className="mx-auto max-w-4xl px-5 py-12 sm:px-8">
         <SectionLabel>Saved from the archive</SectionLabel>
-        <h2 className="ov-icon-inline font-display text-display-md mb-5">
-          <Heart className="ov-icon" size={32} weight={OV_ICON_WEIGHT} aria-hidden />
-          Your favorites
-        </h2>
+        <div className="mb-5 flex flex-wrap items-baseline justify-between gap-3">
+          <h2 className="ov-icon-inline font-display text-display-md">
+            <Heart className="ov-icon" size={32} weight={OV_ICON_WEIGHT} aria-hidden />
+            Your favorites
+          </h2>
+          <Link href="/fanzone/fans" className="ov-btn ov-btn-ghost px-3 py-1.5 text-xs">
+            Browse public fans →
+          </Link>
+        </div>
         <FavoritesList initialFavorites={favorites} />
       </section>
 
