@@ -3,6 +3,7 @@ import {
   SONG_TYPE_LABEL,
   type Album,
   type Era,
+  type SlangTerm,
   type Snippet,
   type Song,
 } from "./content-schema";
@@ -13,7 +14,7 @@ import {
  * call — no caching layer to slot into), so no search library is needed.
  */
 
-export type SearchDocType = "album" | "era" | "song" | "snippet";
+export type SearchDocType = "album" | "era" | "song" | "snippet" | "slang";
 
 export type SearchDoc = {
   id: string;
@@ -34,6 +35,7 @@ export function buildSearchIndex(data: {
   eras: Era[];
   songs: Song[];
   snippets: Snippet[];
+  slang: SlangTerm[];
 }): SearchDoc[] {
   const docs: SearchDoc[] = [];
 
@@ -102,6 +104,20 @@ export function buildSearchIndex(data: {
     });
   }
 
+  for (const term of data.slang) {
+    docs.push({
+      id: term.id,
+      type: "slang",
+      title: term.term,
+      subtitle: `Street lingo · ${term.year}`,
+      href: "/slang",
+      keywords: [term.term, term.literal, term.meaning, term.context, term.songTitle]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase(),
+    });
+  }
+
   return docs;
 }
 
@@ -110,6 +126,7 @@ const TYPE_PRIORITY: Record<SearchDocType, number> = {
   era: 1,
   song: 2,
   snippet: 3,
+  slang: 4,
 };
 
 function scoreDoc(doc: SearchDoc, tokens: string[], query: string): number | null {

@@ -1,6 +1,7 @@
 import type { Icon, IconProps } from "@phosphor-icons/react";
 import {
   BookmarkSimple,
+  BookOpen,
   Books,
   ChatCircle,
   Disc,
@@ -30,6 +31,7 @@ export const NAV_ICONS: Record<string, Icon> = {
   "/media": FilmStrip,
   "/songs": MusicNotes,
   "/snippets": Waveform,
+  "/slang": BookOpen,
   "/influence": ShareNetwork,
   "/impact": MapPin,
   "/biography": IdentificationCard,

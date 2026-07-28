@@ -223,6 +223,35 @@ export const songCatalogFileSchema = z.object({
     entries: z.array(catalogSongSchema).default([]),
 });
 
+/**
+ * Street-lingo entries for /slang — the Yoruba/Lagos terms Olamide put into
+ * national circulation. Each one points at the record that carried it: an
+ * album cut via `albumSlug`, or a non-album single/feature via `songId`
+ * (both cross-checked in getSlang()). `meaning`/`context` are editorial
+ * commentary in the house voice — never quoted lyrics, same rule as
+ * songSchema.note and snippetSchema.quote.
+ */
+export const slangTermSchema = z.object({
+    id: z.string().min(1),
+    /** Yoruba spelling with full diacritics — see AGENTS.md. */
+    term: z.string().min(1),
+    phonetic: z.string().min(1),
+    literal: z.string().min(1),
+    meaning: z.string().min(1),
+    context: z.string().min(1),
+    era: z.string(), // era slug — cross-checked in getSlang()
+    /** Year the term broke, which can precede the album that collected it. */
+    year: z.number().int(),
+    songTitle: z.string().min(1),
+    /** Album the track sits on; omit for non-album singles and features. */
+    albumSlug: z.string().optional(),
+    /** content/songs/catalog.json id — required when there's no albumSlug. */
+    songId: z.string().optional(),
+    status: z.enum(SONG_STATUSES),
+    source: z.string().optional(),
+    sourceUrl: z.string().url().optional(),
+});
+
 export const ALBUM_TYPE_LABEL: Record<z.infer<typeof albumSchema>["type"], string> = {
     album: "Album",
     mixtape: "Mixtape",
@@ -305,6 +334,7 @@ export type InfluenceGraph = z.infer<typeof influenceGraphSchema>;
 export type ImpactPlace = z.infer<typeof impactPlaceSchema>;
 export type Song = z.infer<typeof songSchema>;
 export type CatalogSong = z.infer<typeof catalogSongSchema>;
+export type SlangTerm = z.infer<typeof slangTermSchema>;
 export type SongCatalogFile = z.infer<typeof songCatalogFileSchema>;
 export type SongType = (typeof SONG_TYPES)[number];
 export type SongStatus = (typeof SONG_STATUSES)[number];

@@ -18,6 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         { url: `${SITE_URL}/songs`, changeFrequency: "weekly", priority: 0.85 },
         { url: `${SITE_URL}/media`, changeFrequency: "monthly", priority: 0.8 },
         { url: `${SITE_URL}/snippets`, changeFrequency: "monthly", priority: 0.75 },
+        { url: `${SITE_URL}/slang`, changeFrequency: "monthly", priority: 0.7 },
         { url: `${SITE_URL}/influence`, changeFrequency: "monthly", priority: 0.7 },
         { url: `${SITE_URL}/impact`, changeFrequency: "monthly", priority: 0.7 },
         { url: `${SITE_URL}/biography`, changeFrequency: "monthly", priority: 0.65 },

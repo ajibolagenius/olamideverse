@@ -2,14 +2,15 @@ import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
 import PosterHero from "@/components/PosterHero";
 import SearchView from "@/components/SearchView";
-import { getAlbums, getEras, getSnippets, getSongs } from "@/lib/content";
+import { getAlbums, getEras, getSlang, getSnippets, getSongs } from "@/lib/content";
 import { buildSearchIndex, searchDocs } from "@/lib/search";
 import { pageMetadata } from "@/lib/site";
 
 export function generateMetadata(): Metadata {
   return pageMetadata({
     title: "Search",
-    description: "Search OlamideVerse across eras, albums, songs, and snippets.",
+    description:
+      "Search OlamideVerse across eras, albums, songs, snippets, and street lingo.",
     path: "/search",
     noindex: true,
   });
@@ -23,14 +24,15 @@ export default async function SearchPage({
   const { q } = await searchParams;
   const query = q ?? "";
 
-  const [albums, eras, songs, snippets] = await Promise.all([
+  const [albums, eras, songs, snippets, slang] = await Promise.all([
     getAlbums(),
     getEras(),
     getSongs(),
     getSnippets(),
+    getSlang(),
   ]);
 
-  const docs = buildSearchIndex({ albums, eras, songs, snippets });
+  const docs = buildSearchIndex({ albums, eras, songs, snippets, slang });
   const initialResults = query ? searchDocs(docs, query) : [];
 
   return (

@@ -9,6 +9,7 @@ import {
     impactPlaceSchema,
     influenceGraphSchema,
     mediaItemSchema,
+    slangTermSchema,
     snippetSchema,
     songCatalogFileSchema,
     type Album,
@@ -17,6 +18,7 @@ import {
     type ImpactPlace,
     type InfluenceGraph,
     type MediaItem,
+    type SlangTerm,
     type Snippet,
     type Song,
 } from "./content-schema";
@@ -352,6 +354,45 @@ function fileImpactPlaces(eraSlugs: Set<string>): ImpactPlace[] {
         }
     }
     return places;
+}
+
+function fileSlang(
+    eraSlugs: Set<string>,
+    albumSlugs: Set<string>,
+    songIds: Set<string>,
+): SlangTerm[] {
+    const file = path.join(CONTENT_DIR, "slang", "slang.json");
+    if (!fs.existsSync(file)) return [];
+    const raw = JSON.parse(fs.readFileSync(file, "utf8"));
+    const items = z.array(slangTermSchema).parse(raw);
+    for (const item of items) {
+        if (!eraSlugs.has(item.era)) {
+            throw new Error(`slang.json "${item.id}" references unknown era "${item.era}"`);
+        }
+        if (item.albumSlug && !albumSlugs.has(item.albumSlug)) {
+            throw new Error(
+                `slang.json "${item.id}" references unknown album "${item.albumSlug}"`,
+            );
+        }
+        if (item.songId && !songIds.has(item.songId)) {
+            throw new Error(`slang.json "${item.id}" references unknown song "${item.songId}"`);
+        }
+        if (!item.albumSlug && !item.songId) {
+            throw new Error(
+                `slang.json "${item.id}" needs an albumSlug or a songId to link its record`,
+            );
+        }
+    }
+    return items.sort((a, b) => a.year - b.year);
+}
+
+export async function getSlang(): Promise<SlangTerm[]> {
+    const [eras, albums, songs] = await Promise.all([getEras(), getAlbums(), getSongs()]);
+    return fileSlang(
+        new Set(eras.map((e) => e.slug)),
+        new Set(albums.map((a) => a.slug)),
+        new Set(songs.map((s) => s.id)),
+    );
 }
 
 export async function getSnippets(): Promise<Snippet[]> {

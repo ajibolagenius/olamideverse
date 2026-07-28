@@ -1,7 +1,7 @@
 "use client";
 
 import type { Icon } from "@phosphor-icons/react";
-import { Books, Disc, MusicNotes, Waveform } from "@phosphor-icons/react";
+import { BookOpen, Books, Disc, MusicNotes, Waveform } from "@phosphor-icons/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
@@ -14,6 +14,7 @@ const TYPE_LABEL: Record<SearchDocType, string> = {
   era: "Eras",
   song: "Songs",
   snippet: "Snippets",
+  slang: "Street lingo",
 };
 
 const TYPE_ICON: Record<SearchDocType, Icon> = {
@@ -21,10 +22,11 @@ const TYPE_ICON: Record<SearchDocType, Icon> = {
   era: Books,
   song: MusicNotes,
   snippet: Waveform,
+  slang: BookOpen,
 };
 
 function groupByType(docs: SearchDoc[]): Array<{ type: SearchDocType; docs: SearchDoc[] }> {
-  const order: SearchDocType[] = ["album", "era", "song", "snippet"];
+  const order: SearchDocType[] = ["album", "era", "song", "snippet", "slang"];
   return order
     .map((type) => ({ type, docs: docs.filter((d) => d.type === type) }))
     .filter((group) => group.docs.length > 0);

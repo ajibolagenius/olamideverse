@@ -67,6 +67,31 @@ export default function InfluenceGraph({ graph }: { graph: InfluenceGraphData })
   const hub = useMemo(() => hubNodes(graph.nodes), [graph.nodes]);
   const hubPositions = useMemo(() => layoutHub(hub), [hub]);
 
+  /**
+   * Roster signings grouped by the year they were unveiled — derived from
+   * `signedYear` rather than a hand-kept list, so a new signing in the graph
+   * shows up here without touching this component.
+   */
+  const signingWaves = useMemo(() => {
+    const byYear = new Map<number, InfluenceNode[]>();
+    for (const node of roster) {
+      if (typeof node.signedYear !== "number") continue;
+      const bucket = byYear.get(node.signedYear);
+      if (bucket) bucket.push(node);
+      else byYear.set(node.signedYear, [node]);
+    }
+    return [...byYear.entries()]
+      .sort(([a], [b]) => a - b)
+      .map(([year, nodes]) => ({
+        year,
+        ids: nodes.map((n) => n.id),
+        names:
+          nodes.length > 2
+            ? `${nodes[0].name} +${nodes.length - 1}`
+            : nodes.map((n) => n.name).join(" & "),
+      }));
+  }, [roster]);
+
   const roleOptions = useMemo(() => {
     const present = new Set(graph.nodes.map((n) => n.role));
     return [
@@ -139,6 +164,36 @@ export default function InfluenceGraph({ graph }: { graph: InfluenceGraphData })
           value={roleFilter}
           onChange={applyFilter}
         />
+
+        {signingWaves.length > 0 ? (
+          <div className="mt-4 border-t border-ink/20 pt-3">
+            <p className="mb-2 text-[0.68rem] font-bold tracking-[0.08em] uppercase text-ink-soft">
+              Signing waves — jump to a year
+            </p>
+            <ul className="flex flex-wrap gap-1.5">
+              {signingWaves.map((wave) => {
+                const current = rosterActive && wave.ids.includes(activeId ?? "");
+                return (
+                  <li key={wave.year}>
+                    <button
+                      type="button"
+                      aria-pressed={current}
+                      onClick={() => {
+                        applyFilter(ROSTER_FILTER);
+                        setActiveId(wave.ids[0]);
+                      }}
+                      className={`border border-ink px-2.5 py-1 text-[0.7rem] font-bold tracking-[0.06em] uppercase transition-transform active:scale-95 ${
+                        current ? "bg-danfo text-ink" : "bg-paper text-ink hover:bg-danfo-tint"
+                      }`}
+                    >
+                      {wave.year} · {wave.names}
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ) : null}
         <ul className="mt-4 flex flex-wrap gap-2 border-t border-ink/20 pt-3">
           {(Object.keys(ROLE_FILL) as InfluenceNode["role"][])
             .filter((role) => role !== "center")

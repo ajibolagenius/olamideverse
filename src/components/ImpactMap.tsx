@@ -29,6 +29,19 @@ const MAPS = [
   { value: "world", label: "World" },
 ] as const;
 
+/**
+ * The narrative route through the map — one guided walk from the origin
+ * ward out to the first international stop. Place ids are resolved against
+ * the loaded places, so a renamed or dropped pin quietly leaves the route
+ * instead of wiring a dead button.
+ */
+const JOURNEY_STOPS: { id: string; label: string }[] = [
+  { id: "bariga", label: "Bariga (the roots)" },
+  { id: "yaba", label: "Mainland" },
+  { id: "olic-lagos", label: "OLIC (the takeover)" },
+  { id: "london", label: "Abroad" },
+];
+
 const KIND_COLOR: Record<ImpactPlace["kind"], string> = {
   origin: "#F5B301",
   venue: "#1F2A63",
@@ -78,6 +91,13 @@ export default function ImpactMap({ places }: { places: ImpactPlace[] }) {
   const active =
     (activeId && filtered.find((p) => p.id === activeId)) || filtered[0];
 
+  const journey = useMemo(() => {
+    return JOURNEY_STOPS.flatMap((stop) => {
+      const place = places.find((p) => p.id === stop.id);
+      return place ? [{ ...stop, map: place.map }] : [];
+    });
+  }, [places]);
+
   const kindOptions = useMemo(() => {
     const present = new Set(places.filter((p) => p.map === map).map((p) => p.kind));
     return [
@@ -92,6 +112,39 @@ export default function ImpactMap({ places }: { places: ImpactPlace[] }) {
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(280px,0.85fr)] lg:items-start">
       <div>
+        {journey.length > 0 ? (
+          <nav aria-label="Street geography journey" className="mb-5">
+            <p className="mb-2 text-[0.72rem] font-bold tracking-[0.08em] uppercase text-ink-soft">
+              Bariga to the world — walk the route
+            </p>
+            <ol className="flex flex-wrap gap-2">
+              {journey.map((stop, i) => {
+                const current = active?.id === stop.id;
+                return (
+                  <li key={stop.id}>
+                    <button
+                      type="button"
+                      aria-current={current ? "step" : undefined}
+                      onClick={() => {
+                        setMap(stop.map);
+                        setKind("all");
+                        setActiveId(stop.id);
+                      }}
+                      className={`border-2 border-ink px-3 py-1.5 text-[0.72rem] font-bold tracking-[0.06em] uppercase transition-transform active:scale-95 ${
+                        current
+                          ? "bg-danfo text-ink shadow-paste-sm"
+                          : "bg-white text-ink hover:bg-danfo-tint"
+                      }`}
+                    >
+                      {i + 1}. {stop.label}
+                    </button>
+                  </li>
+                );
+              })}
+            </ol>
+          </nav>
+        ) : null}
+
         <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <FilterChips
             label="Map region"

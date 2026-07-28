@@ -20,6 +20,7 @@ export const MORE_GROUPS: NavGroup[] = [
     links: [
       { href: "/songs", label: "Songs" },
       { href: "/snippets", label: "Snippets" },
+      { href: "/slang", label: "Street Lingo" },
       { href: "/saved", label: "Saved" },
     ],
   },

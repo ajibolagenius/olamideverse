@@ -32,6 +32,16 @@ export const CHANGELOG: ChangelogDay[] = [
         href: "/songs",
       },
       {
+        title: "Street Lingo — the words that travelled",
+        body: "A lexicon of the Yoruba and Mainland terms Olamide put into national circulation — Ẹni Dúró, Shoki, Ọmọ Wóbè, Wó! — with what each one means and the record that carried it. Filter by era, search by term, and jump straight to the album.",
+        href: "/slang",
+      },
+      {
+        title: "A guided route through the impact map",
+        body: "The map now offers a four-stop walk from Bariga out to the first international dates, and the influence graph lets you jump to a YBNL signing year. Both are built from the archive's own data, so they stay current as pins and signings are added.",
+        href: "/impact",
+      },
+      {
         title: "Accessibility pass across chrome & Fan Zone",
         body: "The mobile menu traps keyboard focus and returns it on close, desktop menus use proper disclosure semantics, and search results, now-playing players, impact pins, media cinema, and poll results announce changes to screen readers. Comment and poll controls get real labels; heading order and “opens in a new tab” cues are cleaned up site-wide.",
       },
