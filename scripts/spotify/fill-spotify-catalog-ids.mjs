@@ -85,12 +85,25 @@ function qualifierSet(title) {
   );
 }
 
-function qualifiersAgree(a, b) {
-  const qa = qualifierSet(a);
-  const qb = qualifierSet(b);
-  if (qa.size !== qb.size) return false;
-  for (const q of qa) if (!qb.has(q)) return false;
+/**
+ * Qualifiers in the catalogue title are REQUIRED on the Spotify side — a
+ * "(Remix)" row must not match the original. Qualifiers implied by the row's
+ * `type` are merely PERMITTED: `freestyle--bora-2014` is titled plain "Bora"
+ * but legitimately matches "Bora (Freestyle)", since the catalogue encodes
+ * that in `type` rather than the title.
+ */
+function qualifiersAgree(a, b, extraAllowed = []) {
+  const required = qualifierSet(a);
+  const found = qualifierSet(b);
+  for (const q of required) if (!found.has(q)) return false;
+  const allowed = new Set([...required, ...extraAllowed.map((x) => x.toLowerCase())]);
+  for (const q of found) if (!allowed.has(q)) return false;
   return true;
+}
+
+/** Version words a row's `type` legitimately implies in a Spotify title. */
+function typeQualifiers(type) {
+  return type === "freestyle" || type === "live" ? [type] : [];
 }
 
 /**
@@ -123,15 +136,19 @@ function scorePair(want, got) {
   return "none";
 }
 
-function titleConfidence(localTitle, spotifyTitle) {
+function titleConfidence(localTitle, spotifyTitle, extraAllowed = []) {
   // A remix is not its original, regardless of how similar the base titles are.
-  if (!qualifiersAgree(localTitle, spotifyTitle)) return "none";
+  if (!qualifiersAgree(localTitle, spotifyTitle, extraAllowed)) return "none";
+  const qualLocal = normalizeKeepingQualifiers(localTitle);
+  const qualRemote = normalizeKeepingQualifiers(spotifyTitle);
+  // Sources disagree on word spacing for the same title ("Greenlight" vs
+  // "Green Light", "Tesinapot" vs "Tesina Pot"). Compare spacing-removed —
+  // still an exact character match, not a fuzzy loosening.
+  const spaceless = (s) => s.replace(/ /g, "");
   const scores = [
     scorePair(normalizeTitle(localTitle), normalizeTitle(spotifyTitle)),
-    scorePair(
-      normalizeKeepingQualifiers(localTitle),
-      normalizeKeepingQualifiers(spotifyTitle),
-    ),
+    scorePair(qualLocal, qualRemote),
+    qualLocal && spaceless(qualLocal) === spaceless(qualRemote) ? "exact" : "none",
   ];
   if (scores.includes("exact")) return "exact";
   if (scores.includes("near")) return "near";
@@ -230,7 +247,7 @@ function pickMatch(entry, tracks) {
   const scored = withOlamide
     .map((t) => ({
       track: t,
-      conf: titleConfidence(entry.title, t.name),
+      conf: titleConfidence(entry.title, t.name, typeQualifiers(entry.type)),
     }))
     .filter((x) => x.conf === "exact" || x.conf === "near");
 

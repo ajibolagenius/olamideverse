@@ -86,16 +86,27 @@ function qualifierSet(title) {
   );
 }
 
-function qualifiersAgree(a, b) {
-  const qa = qualifierSet(a);
-  const qb = qualifierSet(b);
-  if (qa.size !== qb.size) return false;
-  for (const q of qa) if (!qb.has(q)) return false;
+/**
+ * Title qualifiers are REQUIRED on the Spotify side; qualifiers implied by the
+ * row's `type` are only PERMITTED. Mirrors fill-spotify-catalog-ids.mjs — a
+ * freestyle row titled plain "Bora" may match "Bora (Freestyle)", but a
+ * "(Remix)" row may never match the original.
+ */
+function qualifiersAgree(a, b, extraAllowed = []) {
+  const required = qualifierSet(a);
+  const found = qualifierSet(b);
+  for (const q of required) if (!found.has(q)) return false;
+  const allowed = new Set([...required, ...extraAllowed.map((x) => x.toLowerCase())]);
+  for (const q of found) if (!allowed.has(q)) return false;
   return true;
 }
 
-function titleConfidence(localTitle, spotifyTitle) {
-  if (!qualifiersAgree(localTitle, spotifyTitle)) return "none";
+function typeQualifiers(type) {
+  return type === "freestyle" || type === "live" ? [type] : [];
+}
+
+function titleConfidence(localTitle, spotifyTitle, extraAllowed = []) {
+  if (!qualifiersAgree(localTitle, spotifyTitle, extraAllowed)) return "none";
   const want = normalizeTitle(localTitle);
   const got = normalizeTitle(spotifyTitle);
   if (!want || !got) return "none";
@@ -254,6 +265,7 @@ for (let i = 0; i < checkable.length; i++) {
   // "My Baby Bad Ft. Olamide" vs catalogue "My Baby Bad": the trailing credit
   // drags similarity below threshold, so score the credit-stripped form too.
   const stripped = track.name.replace(/\b(feat\.?|ft\.?|featuring)?\s*olamide\b/gi, " ");
+  const allowedQuals = typeQualifiers(entry.type);
   const qualLocal = normalizeKeepingQualifiers(entry.title);
   const qualRemote = normalizeKeepingQualifiers(track.name);
   // Word-spacing differs between sources on the same title
@@ -261,13 +273,13 @@ for (let i = 0; i < checkable.length; i++) {
   // spacing removed. Still an exact character match — not a fuzzy loosening.
   const spaceless = (s) => s.replace(/ /g, "");
   const confs = [
-    titleConfidence(entry.title, track.name),
-    titleConfidence(entry.title, stripped),
+    titleConfidence(entry.title, track.name, allowedQuals),
+    titleConfidence(entry.title, stripped, allowedQuals),
     qualLocal && qualLocal === qualRemote ? "exact" : "none",
     qualLocal && spaceless(qualLocal) === spaceless(qualRemote) ? "exact" : "none",
     // "P.T.A (People Talk A Lot)" vs "People Talk A Lot" — the expansion lives
     // in the parenthetical, so score the qualifier-preserving forms too.
-    titleConfidence(qualLocal, qualRemote),
+    titleConfidence(qualLocal, qualRemote, allowedQuals),
   ];
   const conf = confs.includes("exact")
     ? "exact"
