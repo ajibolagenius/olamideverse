@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Analytics from "@/components/Analytics";
 import AppUpdateNotice from "@/components/AppUpdateNotice";
+import FeedbackProvider from "@/components/feedback/FeedbackProvider";
 import MotionRoot from "@/components/MotionRoot";
 import PWARegister from "@/components/PWARegister";
 import SearchShortcut from "@/components/SearchShortcut";
@@ -60,7 +61,9 @@ export default async function RootLayout({
         className="flex min-h-screen flex-col antialiased"
         suppressHydrationWarning
       >
-        <PhosphorProvider>{children}</PhosphorProvider>
+        <PhosphorProvider>
+          <FeedbackProvider>{children}</FeedbackProvider>
+        </PhosphorProvider>
         <MotionRoot />
         <PWARegister />
         <AppUpdateNotice />

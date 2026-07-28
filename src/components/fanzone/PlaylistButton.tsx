@@ -3,6 +3,7 @@
 import { Check, Plus } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
 import Modal from "@/components/ui/Modal";
+import { notify } from "@/lib/feedback";
 import { useFan } from "@/lib/fanzone/useFan";
 import { addToPlaylist, removeFromPlaylist } from "@/lib/fanzone/mutations";
 import { OV_ICON_WEIGHT } from "@/lib/icons";
@@ -26,7 +27,6 @@ export default function PlaylistButton({
   const fanState = useFan();
   const [added, setAdded] = useState(false);
   const [pending, setPending] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [showPicker, setShowPicker] = useState(false);
   const [trackedFanId, setTrackedFanId] = useState<string | null>(fanState.fan?.id ?? null);
 
@@ -54,17 +54,18 @@ export default function PlaylistButton({
 
   const doToggle = async () => {
     setPending(true);
-    setError(null);
     try {
       if (added) {
         await removeFromPlaylist(trackId);
         setAdded(false);
+        notify.success("Removed from playlist");
       } else {
         await addToPlaylist(trackId, title, subtitle);
         setAdded(true);
+        notify.success("Added to playlist");
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Couldn't update playlist.");
+      notify.error(err instanceof Error ? err.message : "Couldn't update playlist.");
     }
     setPending(false);
   };
@@ -77,7 +78,6 @@ export default function PlaylistButton({
         disabled={pending}
         aria-pressed={added}
         aria-label={added ? `Remove ${title} from playlist` : `Add ${title} to playlist`}
-        title={error ?? undefined}
         className={`grid size-9 place-items-center border-3 border-ink shadow-paste-sm disabled:opacity-60 ${
           added ? "bg-palm text-paper" : "bg-danfo text-ink"
         }`}

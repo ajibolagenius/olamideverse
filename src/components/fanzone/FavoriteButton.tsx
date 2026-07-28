@@ -3,6 +3,7 @@
 import { Heart } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
 import Modal from "@/components/ui/Modal";
+import { notify } from "@/lib/feedback";
 import { useFan } from "@/lib/fanzone/useFan";
 import { toggleFavorite } from "@/lib/fanzone/mutations";
 import { OV_ICON_WEIGHT } from "@/lib/icons";
@@ -26,7 +27,6 @@ export default function FavoriteButton({
   const fanState = useFan();
   const [favorited, setFavorited] = useState(false);
   const [pending, setPending] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [showPicker, setShowPicker] = useState(false);
   const [trackedFanId, setTrackedFanId] = useState<string | null>(fanState.fan?.id ?? null);
 
@@ -55,12 +55,12 @@ export default function FavoriteButton({
 
   const doToggle = async () => {
     setPending(true);
-    setError(null);
     try {
       const next = await toggleFavorite(id, label, kind, href);
       setFavorited(next);
+      notify.success(next ? "Favorited" : "Removed from favorites");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Couldn't update favorite.");
+      notify.error(err instanceof Error ? err.message : "Couldn't update favorite.");
     }
     setPending(false);
   };
@@ -96,7 +96,6 @@ export default function FavoriteButton({
         />
         {favorited ? "Favorited" : "Favorite"}
       </button>
-      {error ? <p className="mt-1 max-w-[14rem] text-[0.65rem] text-oxide">{error}</p> : null}
       <Modal
         open={showPicker && !fanState.fan}
         onClose={() => setShowPicker(false)}

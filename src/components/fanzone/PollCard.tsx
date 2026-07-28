@@ -2,6 +2,7 @@
 
 import { useId, useState } from "react";
 import Modal from "@/components/ui/Modal";
+import { notify } from "@/lib/feedback";
 import { useFan } from "@/lib/fanzone/useFan";
 import { votePoll } from "@/lib/fanzone/mutations";
 import type { PollDef } from "@/lib/fanzone/polls";
@@ -55,7 +56,9 @@ export default function PollCard({
       });
       setUserVote(optionId);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Couldn't cast vote.");
+      const message = err instanceof Error ? err.message : "Couldn't cast vote.";
+      setError(message);
+      notify.error(message);
     }
     setPending(false);
   };

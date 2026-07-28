@@ -14,6 +14,7 @@ import {
   reportComment,
 } from "@/lib/fanzone/mutations";
 import type { CommentRow } from "@/lib/fanzone/queries";
+import { notify } from "@/lib/feedback";
 import { OV_ICON_WEIGHT } from "@/lib/icons";
 import HandlePicker from "./HandlePicker";
 
@@ -81,7 +82,9 @@ export default function CommentBox({
       ]);
       setDraft("");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Couldn't post.");
+      const message = err instanceof Error ? err.message : "Couldn't post.";
+      setError(message);
+      notify.error(message);
     }
     setPosting(false);
   };
@@ -117,7 +120,9 @@ export default function CommentBox({
       setReplyDraft("");
       setReplyingTo(null);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Couldn't post reply.");
+      const message = err instanceof Error ? err.message : "Couldn't post reply.";
+      setError(message);
+      notify.error(message);
     }
     setReplyPosting(false);
   };
@@ -130,7 +135,9 @@ export default function CommentBox({
       await deleteComment(id);
     } catch (err) {
       setComments(previous);
-      setError(err instanceof Error ? err.message : "Couldn't delete.");
+      const message = err instanceof Error ? err.message : "Couldn't delete.";
+      setError(message);
+      notify.error(message);
     }
   };
 
@@ -140,8 +147,11 @@ export default function CommentBox({
     try {
       await reportComment(id, "Flagged from comment thread");
       setReported((r) => ({ ...r, [id]: true }));
+      notify.success("Comment reported");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Couldn't report.");
+      const message = err instanceof Error ? err.message : "Couldn't report.";
+      setError(message);
+      notify.error(message);
     }
   };
 

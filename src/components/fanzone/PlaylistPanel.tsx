@@ -1,9 +1,10 @@
 "use client";
 
 import { Check, LinkSimple, Playlist, X } from "@phosphor-icons/react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import EmptyState from "@/components/EmptyState";
 import Modal from "@/components/ui/Modal";
+import { banner, notify } from "@/lib/feedback";
 import { addToPlaylist, removeFromPlaylist } from "@/lib/fanzone/mutations";
 import type { PlaylistRow } from "@/lib/fanzone/queries";
 import { useFan } from "@/lib/fanzone/useFan";
@@ -11,6 +12,8 @@ import { OV_ICON_WEIGHT } from "@/lib/icons";
 import HandlePicker from "./HandlePicker";
 
 type SharedTrack = { track_id: string; title: string; subtitle?: string };
+
+const IMPORT_BANNER_ID = "playlist-import";
 
 /** Parses a shared-playlist link's ?playlist= param, dropping tracks already owned. */
 function readSharedTracks(known: Set<string>): SharedTrack[] | null {
@@ -31,8 +34,14 @@ export default function PlaylistPanel({ initialPlaylist }: { initialPlaylist: Pl
   const [copied, setCopied] = useState(false);
   const [shared, setShared] = useState<SharedTrack[] | null>(null);
   const [importing, setImporting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [showPicker, setShowPicker] = useState(false);
+  const sharedRef = useRef(shared);
+  const importingRef = useRef(importing);
+
+  useEffect(() => {
+    sharedRef.current = shared;
+    importingRef.current = importing;
+  }, [shared, importing]);
 
   useEffect(() => {
     // window.location is only available post-mount — SSR and the client's
@@ -43,26 +52,11 @@ export default function PlaylistPanel({ initialPlaylist }: { initialPlaylist: Pl
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const copyShareLink = async () => {
-    const payload: SharedTrack[] = playlist.map((p) => ({
-      track_id: p.track_id,
-      title: p.title,
-      subtitle: p.subtitle ?? undefined,
-    }));
-    const encoded = btoa(JSON.stringify(payload));
-    const url = `${window.location.origin}${window.location.pathname}?playlist=${encoded}`;
-    await navigator.clipboard.writeText(url);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const runImport = async () => {
-    if (!shared) return;
+  const runImport = useCallback(async (tracks: SharedTrack[]) => {
     setImporting(true);
-    setError(null);
     try {
       const added: PlaylistRow[] = [];
-      for (const track of shared) {
+      for (const track of tracks) {
         const row = await addToPlaylist(track.track_id, track.title, track.subtitle);
         added.push({
           id: row.id,
@@ -73,52 +67,75 @@ export default function PlaylistPanel({ initialPlaylist }: { initialPlaylist: Pl
       }
       setPlaylist((p) => [...p, ...added]);
       setShared(null);
+      banner.dismiss(IMPORT_BANNER_ID);
+      notify.success(
+        `Imported ${added.length} track${added.length === 1 ? "" : "s"}`,
+      );
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Couldn't import playlist.");
+      notify.error(err instanceof Error ? err.message : "Couldn't import playlist.");
     }
     setImporting(false);
-  };
+  }, []);
 
-  const importShared = async () => {
-    if (!shared) return;
+  const requestImport = useCallback(() => {
+    const tracks = sharedRef.current;
+    if (!tracks || importingRef.current) return;
     if (!fanState.fan) {
       setShowPicker(true);
       return;
     }
-    await runImport();
+    void runImport(tracks);
+  }, [fanState.fan, runImport]);
+
+  useEffect(() => {
+    if (!shared) {
+      banner.dismiss(IMPORT_BANNER_ID);
+      return;
+    }
+    const count = shared.length;
+    banner.show({
+      id: IMPORT_BANNER_ID,
+      variant: "info",
+      message: `A shared playlist has ${count} track${count === 1 ? "" : "s"} you don't have yet.${
+        fanState.fan ? "" : " Sign in to import."
+      }`,
+      action: {
+        label: fanState.fan
+          ? importing
+            ? "Importing…"
+            : "Add to my playlist"
+          : "Sign in to import",
+        onClick: requestImport,
+      },
+    });
+  }, [shared, fanState.fan, importing, requestImport]);
+
+  useEffect(() => {
+    return () => {
+      banner.dismiss(IMPORT_BANNER_ID);
+    };
+  }, []);
+
+  const copyShareLink = async () => {
+    const payload: SharedTrack[] = playlist.map((p) => ({
+      track_id: p.track_id,
+      title: p.title,
+      subtitle: p.subtitle ?? undefined,
+    }));
+    const encoded = btoa(JSON.stringify(payload));
+    const url = `${window.location.origin}${window.location.pathname}?playlist=${encoded}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      notify.info("Link copied");
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      notify.error("Couldn't copy — try again");
+    }
   };
 
   return (
     <div>
-      {shared ? (
-        <div className="mb-4 flex flex-wrap items-center justify-between gap-3 border-3 border-ink bg-adire-tint px-4 py-3">
-          <span className="text-sm">
-            A shared playlist has {shared.length} track{shared.length === 1 ? "" : "s"} you don&apos;t
-            have yet.
-            {!fanState.fan ? " Sign in to import." : ""}
-          </span>
-          <div className="flex gap-2">
-            <button
-              type="button"
-              onClick={importShared}
-              disabled={importing}
-              className="ov-btn ov-btn-danfo px-3 py-1.5 text-xs disabled:opacity-50"
-            >
-              {fanState.fan ? "Add to my playlist" : "Sign in to import"}
-            </button>
-            <button
-              type="button"
-              onClick={() => setShared(null)}
-              className="ov-btn ov-btn-ghost px-3 py-1.5 text-xs"
-            >
-              Dismiss
-            </button>
-          </div>
-        </div>
-      ) : null}
-
-      {error ? <p className="mb-3 text-sm text-oxide">{error}</p> : null}
-
       {playlist.length === 0 ? (
         <EmptyState
           icon={Playlist}
@@ -144,12 +161,12 @@ export default function PlaylistPanel({ initialPlaylist }: { initialPlaylist: Pl
                 onClick={async () => {
                   const previous = playlist;
                   setPlaylist((p) => p.filter((x) => x.id !== item.id));
-                  setError(null);
                   try {
                     await removeFromPlaylist(item.track_id);
+                    notify.success("Removed from playlist");
                   } catch (err) {
                     setPlaylist(previous);
-                    setError(
+                    notify.error(
                       err instanceof Error ? err.message : "Couldn't remove track.",
                     );
                   }
@@ -189,7 +206,7 @@ export default function PlaylistPanel({ initialPlaylist }: { initialPlaylist: Pl
           prompt="Sign in to import this shared playlist."
           onSaved={() => {
             setShowPicker(false);
-            void runImport();
+            if (shared) void runImport(shared);
           }}
         />
       </Modal>

@@ -4,6 +4,7 @@ import { Heart, X } from "@phosphor-icons/react";
 import Link from "next/link";
 import { useState } from "react";
 import EmptyState from "@/components/EmptyState";
+import { notify } from "@/lib/feedback";
 import { removeFavorite } from "@/lib/fanzone/mutations";
 import type { FavoriteRow } from "@/lib/fanzone/queries";
 import { OV_ICON_WEIGHT } from "@/lib/icons";
@@ -11,7 +12,6 @@ import { safeInternalHref } from "@/lib/security/urls";
 
 export default function FavoritesList({ initialFavorites }: { initialFavorites: FavoriteRow[] }) {
   const [favorites, setFavorites] = useState(initialFavorites);
-  const [error, setError] = useState<string | null>(null);
 
   if (favorites.length === 0) {
     return (
@@ -24,7 +24,6 @@ export default function FavoritesList({ initialFavorites }: { initialFavorites: 
 
   return (
     <div className="flex flex-col gap-2.5">
-      {error ? <p className="text-sm text-oxide">{error}</p> : null}
       {favorites.map((fav) => {
         const href = safeInternalHref(fav.href);
         return (
@@ -53,12 +52,14 @@ export default function FavoritesList({ initialFavorites }: { initialFavorites: 
             onClick={async () => {
               const previous = favorites;
               setFavorites((f) => f.filter((x) => x.id !== fav.id));
-              setError(null);
               try {
                 await removeFavorite(fav.target_id);
+                notify.success("Removed from favorites");
               } catch (err) {
                 setFavorites(previous);
-                setError(err instanceof Error ? err.message : "Couldn't remove favorite.");
+                notify.error(
+                  err instanceof Error ? err.message : "Couldn't remove favorite.",
+                );
               }
             }}
             className="grid size-6 place-items-center border-2 border-ink bg-paper"

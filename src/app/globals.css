@@ -662,6 +662,24 @@
   backdrop-filter: none;
 }
 
+/* Feedback toasts — paste-up slap-in (not a named GSAP scroll behavior). */
+@keyframes ov-feedback-in {
+  from {
+    opacity: 0;
+    transform: scale(1.02) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+.ov-feedback-toast {
+  animation: ov-feedback-in var(--ov-duration-settle) var(--ov-ease-snap) both;
+}
+.ov-feedback-banner {
+  animation: ov-feedback-in var(--ov-duration-settle) var(--ov-ease-snap) both;
+}
+
 /* Phosphor icons — sit on the text baseline; duotone inherits currentColor */
 .ov-icon {
   display: inline-block;
@@ -691,7 +709,9 @@ button:focus-visible {
     transform: none;
   }
   .ov-sheet-in,
-  .ov-backdrop-in {
+  .ov-backdrop-in,
+  .ov-feedback-toast,
+  .ov-feedback-banner {
     animation: none;
     transition: none;
   }

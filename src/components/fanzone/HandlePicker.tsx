@@ -11,6 +11,7 @@ import {
 } from "@phosphor-icons/react";
 import Link from "next/link";
 import { useState } from "react";
+import { notify } from "@/lib/feedback";
 import type { useFan } from "@/lib/fanzone/useFan";
 import { OV_ICON_WEIGHT } from "@/lib/icons";
 
@@ -126,8 +127,11 @@ export default function HandlePicker({
               disabled={profilePending}
               onChange={async (e) => {
                 setProfilePending(true);
-                await fanState.setPublicProfile(e.target.checked);
+                const ok = await fanState.setPublicProfile(e.target.checked);
                 setProfilePending(false);
+                if (!ok) {
+                  notify.error("Couldn't update profile visibility.");
+                }
               }}
               className="size-4 border-2 border-ink"
             />

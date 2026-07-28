@@ -163,29 +163,7 @@ export function SelectField({
   );
 }
 
-export function Flash({
-  saved,
-  error,
-}: {
-  saved?: string | string[] | undefined;
-  error?: string | string[] | undefined;
-}) {
-  if (saved) {
-    return (
-      <p className="mb-4 border-2 border-ink bg-palm px-3 py-2 text-sm font-semibold text-paper">
-        Saved.
-      </p>
-    );
-  }
-  if (error) {
-    return (
-      <p className="mb-4 border-2 border-ink bg-oxide px-3 py-2 text-sm font-semibold text-paper">
-        Something went wrong ({String(error)}).
-      </p>
-    );
-  }
-  return null;
-}
+export { default as Flash } from "@/components/feedback/AdminFlashBridge";
 
 export function EmptyState({ children }: { children: React.ReactNode }) {
   return (

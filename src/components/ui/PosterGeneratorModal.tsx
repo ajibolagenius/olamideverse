@@ -4,6 +4,7 @@ import { ClipboardText } from "@phosphor-icons/react";
 import { useEffect, useId, useRef, useState } from "react";
 import Modal from "@/components/ui/Modal";
 import { ACCENTS, type AccentName } from "@/lib/accents";
+import { notify } from "@/lib/feedback";
 import { OV_ICON_WEIGHT } from "@/lib/icons";
 import { SITE_URL } from "@/lib/site";
 
@@ -56,12 +57,14 @@ export default function PosterGeneratorModal({
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
+      notify.info("Poster text copied");
       if (copyTimer.current) clearTimeout(copyTimer.current);
       copyTimer.current = setTimeout(() => setCopied(false), 2000);
     } catch {
       // Clipboard blocked (insecure context or denied permission) — the
       // preview text stays on screen to copy by hand.
       setCopied(false);
+      notify.error("Couldn't copy — select the preview text instead");
     }
   }
 

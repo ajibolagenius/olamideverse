@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
+import { notify } from "@/lib/feedback";
 
 /**
  * Shares the generated vertical story image (a file, not a link) for a
@@ -39,6 +40,7 @@ export default function ShareToStory({
             text: "A snippet from the OlamideVerse archive",
           });
           setStatus("shared");
+          notify.success("Shared");
         } catch (err) {
           if (err instanceof DOMException && err.name === "AbortError") {
             setStatus("idle");
@@ -54,9 +56,11 @@ export default function ShareToStory({
         anchor.click();
         URL.revokeObjectURL(objectUrl);
         setStatus("downloaded");
+        notify.info("Image downloaded");
       }
     } catch {
       setStatus("failed");
+      notify.error("Couldn't share — try again");
     }
     window.setTimeout(() => setStatus("idle"), 2200);
   }

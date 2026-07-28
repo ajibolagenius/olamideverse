@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
+import { notify } from "@/lib/feedback";
 
 /**
  * Copy / native-share for audiogram snippet URLs.
@@ -29,8 +30,10 @@ export default function ShareSnippet({
     try {
       await navigator.clipboard.writeText(url);
       flash("copied");
+      notify.info("Link copied");
     } catch {
       flash("failed");
+      notify.error("Couldn't copy — try again");
     }
   }
 
@@ -43,6 +46,7 @@ export default function ShareSnippet({
           url,
         });
         flash("shared");
+        notify.success("Shared");
         return;
       } catch (err) {
         if (err instanceof DOMException && err.name === "AbortError") return;
