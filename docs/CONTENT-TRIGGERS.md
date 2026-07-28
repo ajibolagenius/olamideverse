@@ -25,7 +25,9 @@ no public routes. When one fires, update the named content surfaces and
       `documented` until an embed ID exists, then promote to `verified`.
 - [ ] **Catalogue embed fill** — prefer Spotify when the Search API is available
       (`npm run fill:spotify-catalog`); if rate-limited, use YouTube instead
-      (`npm run fill:youtube-catalog`). Both dry-run first, then `-- --apply`.
+      (`npm run fill:youtube-catalog`). YouTube Music matches also write to
+      `youtubeId` (same video ID as YouTube embeds; see
+      `scripts/apply-ytm-catalog-ids.mjs`). Both dry-run first, then `-- --apply`.
       High-confidence hits: `documented` → `verified`, `lore` → `documented`
       (never lore → verified). Reports under `scripts/out/`.
 - [ ] Keep IDs stable (`album-slug--track-title`, `feature--slug-year`, …).

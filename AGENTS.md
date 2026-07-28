@@ -15,7 +15,7 @@ contributor guide: `CONTRIBUTING.md`.
 
 - **Afro-street editorial identity** — paper/ink base, danfo yellow accent,
   paste-up texture. Never SaaS-generic, never neon/glassmorphism.
-- **Embeds only** (Spotify/YouTube/Audiomack) — no hosted audio or video, ever.
+- **Embeds only** (Spotify/YouTube/YouTube Music/Audiomack) — no hosted audio or video, ever.
 - **One motion library**: GSAP + ScrollTrigger, only the five named behaviors in
   `src/lib/motion.ts` (`ink-reveal`, `paste-up`, `roll-by`, `duotone-shift`,
   `pin-scroll`). Every behavior needs a designed `prefers-reduced-motion` state.

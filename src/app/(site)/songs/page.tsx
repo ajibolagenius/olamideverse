@@ -4,6 +4,11 @@ import PosterHero from "@/components/PosterHero";
 import SongCatalog from "@/components/SongCatalog";
 import Ticker from "@/components/chrome/Ticker";
 import { dedupeSongs, getEras, getSongs } from "@/lib/content";
+import {
+  blockedSpotifyIds,
+  blockedYoutubeIds,
+  getBlockedEmbeds,
+} from "@/lib/settings";
 import { resolvePageMetadata } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -24,7 +29,11 @@ const TICKER = [
 ];
 
 export default async function SongsPage() {
-  const [allSongs, eras] = await Promise.all([getSongs(), getEras()]);
+  const [allSongs, eras, blocks] = await Promise.all([
+    getSongs(),
+    getEras(),
+    getBlockedEmbeds(),
+  ]);
   // One row per record — an album cut absorbs its single/feature/snippet twins.
   const songs = dedupeSongs(allSongs);
   const catalogCount = songs.filter((s) => s.type !== "album-track").length;
@@ -62,7 +71,12 @@ export default async function SongsPage() {
             .
           </p>
         </div>
-        <SongCatalog songs={songs} eras={eras} />
+        <SongCatalog
+          songs={songs}
+          eras={eras}
+          blockedSpotify={blockedSpotifyIds(blocks)}
+          blockedYoutube={blockedYoutubeIds(blocks)}
+        />
       </section>
     </>
   );

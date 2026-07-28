@@ -25,7 +25,7 @@ export default async function AdminEmbedRemovalsPage({
     <>
       <AdminPageHeader
         title="Embed kill-switch"
-        description="Block Spotify/YouTube/Audiomack IDs instantly across the public site."
+        description="Block Spotify/YouTube/YouTube Music/Audiomack IDs instantly across the public site."
       />
       <Flash saved={flash.saved} />
 
@@ -63,6 +63,7 @@ export default async function AdminEmbedRemovalsPage({
             defaultValue="youtube"
             options={[
               { value: "youtube", label: "YouTube" },
+              { value: "youtubemusic", label: "YouTube Music" },
               { value: "spotify", label: "Spotify" },
               { value: "audiomack", label: "Audiomack" },
               { value: "any", label: "Any" },

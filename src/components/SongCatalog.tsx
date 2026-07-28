@@ -40,11 +40,26 @@ function statusClass(status: SongStatus): string {
 function PlayerBody({
   active,
   compact = false,
+  blockedSpotify = [],
+  blockedYoutube = [],
 }: {
   active: Song | null;
   compact?: boolean;
+  blockedSpotify?: string[];
+  blockedYoutube?: string[];
 }) {
   if (active && songHasEmbed(active)) {
+    const spotifyId =
+      active.spotifyTrackId &&
+      !blockedSpotify.includes(active.spotifyTrackId)
+        ? active.spotifyTrackId
+        : undefined;
+    const youtubeId =
+      active.youtubeId && !blockedYoutube.includes(active.youtubeId)
+        ? active.youtubeId
+        : undefined;
+    const removed = !spotifyId && !youtubeId;
+
     return (
       <div aria-live="polite" aria-atomic="true">
         {!compact ? (
@@ -63,8 +78,10 @@ function PlayerBody({
         )}
         <EmbedFrame
           title={active.title}
-          spotifyId={active.spotifyTrackId}
-          youtubeId={active.youtubeId}
+          spotifyId={spotifyId}
+          youtubeId={youtubeId}
+          provider="youtubemusic"
+          removed={removed}
         />
       </div>
     );
@@ -88,8 +105,8 @@ function PlayerBody({
 
   return (
     <div className="border-3 border-dashed border-ink-soft bg-paper-dim p-5 text-sm leading-relaxed text-ink-soft">
-      Select a track with a play button to load its Spotify or YouTube embed
-      here. This pane stays fixed while you scroll.
+      Select a track with a play button to load its Spotify or YouTube Music
+      embed here. This pane stays fixed while you scroll.
     </div>
   );
 }
@@ -97,9 +114,13 @@ function PlayerBody({
 export default function SongCatalog({
   songs,
   eras,
+  blockedSpotify = [],
+  blockedYoutube = [],
 }: {
   songs: Song[];
   eras: Era[];
+  blockedSpotify?: string[];
+  blockedYoutube?: string[];
 }) {
   const [typeFilter, setTypeFilter] = useState("all");
   const [eraFilter, setEraFilter] = useState("all");
@@ -326,7 +347,11 @@ export default function SongCatalog({
       <div className="pointer-events-none fixed inset-x-0 top-24 z-30 hidden lg:block">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className={`pointer-events-auto ml-auto ${PLAYER_COL}`}>
-            <PlayerBody active={active} />
+            <PlayerBody
+              active={active}
+              blockedSpotify={blockedSpotify}
+              blockedYoutube={blockedYoutube}
+            />
           </div>
         </div>
       </div>
@@ -350,7 +375,12 @@ export default function SongCatalog({
               Dismiss
             </button>
           </div>
-          <PlayerBody active={active} compact />
+          <PlayerBody
+            active={active}
+            compact
+            blockedSpotify={blockedSpotify}
+            blockedYoutube={blockedYoutube}
+          />
         </div>
       ) : null}
     </div>

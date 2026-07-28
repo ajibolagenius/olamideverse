@@ -119,8 +119,8 @@ function defaultFor(key: string) {
       };
     case "embeds":
       return {
-        providers: ["spotify", "youtube", "audiomack"],
-        priority: ["spotify", "youtube", "audiomack"],
+        providers: ["spotify", "youtube", "youtubemusic", "audiomack"],
+        priority: ["spotify", "youtubemusic", "youtube", "audiomack"],
       };
     case "general":
       return {

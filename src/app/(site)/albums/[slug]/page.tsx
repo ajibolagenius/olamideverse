@@ -25,7 +25,12 @@ import {
 import { getPollDefs, pollsForScope } from "@/lib/fanzone/polls";
 import { getComments, getPollResults } from "@/lib/fanzone/queries";
 import { getAlbumCover } from "@/lib/photos";
-import { getBlockedEmbeds, getFeatureFlags } from "@/lib/settings";
+import {
+  blockedSpotifyIds,
+  blockedYoutubeIds,
+  getBlockedEmbeds,
+  getFeatureFlags,
+} from "@/lib/settings";
 import { resolvePageMetadata } from "@/lib/site";
 
 export async function generateStaticParams() {
@@ -77,12 +82,8 @@ export default async function AlbumPage({
     ? pollsForScope(await getPollDefs(), "album", album.slug)
     : [];
   const pollResults = await Promise.all(polls.map((p) => getPollResults(p.id)));
-  const blockedYoutube = blocks
-    .filter((b) => b.provider === "youtube" || b.provider === "any")
-    .map((b) => b.embed_id);
-  const blockedSpotify = blocks
-    .filter((b) => b.provider === "spotify" || b.provider === "any")
-    .map((b) => b.embed_id);
+  const blockedYoutube = blockedYoutubeIds(blocks);
+  const blockedSpotify = blockedSpotifyIds(blocks);
 
   const albumIndex = albums.findIndex((a) => a.slug === album.slug);
   const prevAlbum = albumIndex > 0 ? albums[albumIndex - 1] : undefined;

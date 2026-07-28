@@ -198,13 +198,26 @@ export default function Tracklist({
             {activeTrackEmbed && nowPlaying ? (
               <EmbedFrame
                 title={nowPlaying.title}
-                youtubeId={nowPlaying.youtubeId}
-                spotifyId={nowPlaying.spotifyTrackId}
+                youtubeId={
+                  nowPlaying.youtubeId &&
+                  !blockedYoutube.includes(nowPlaying.youtubeId)
+                    ? nowPlaying.youtubeId
+                    : undefined
+                }
+                spotifyId={
+                  nowPlaying.spotifyTrackId &&
+                  !blockedSpotify.includes(nowPlaying.spotifyTrackId)
+                    ? nowPlaying.spotifyTrackId
+                    : undefined
+                }
+                provider="youtubemusic"
                 removed={
-                  (!!nowPlaying.spotifyTrackId &&
-                    blockedSpotify.includes(nowPlaying.spotifyTrackId)) ||
-                  (!!nowPlaying.youtubeId &&
-                    blockedYoutube.includes(nowPlaying.youtubeId))
+                  !(
+                    (nowPlaying.spotifyTrackId &&
+                      !blockedSpotify.includes(nowPlaying.spotifyTrackId)) ||
+                    (nowPlaying.youtubeId &&
+                      !blockedYoutube.includes(nowPlaying.youtubeId))
+                  )
                 }
               />
             ) : spotifyAlbumId ? (

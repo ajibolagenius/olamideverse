@@ -43,7 +43,7 @@ The flagship template. A scroll-driven chapter: opening statement → the contex
 Grid of all albums and mixtapes, filterable by era and year, sortable by release date. Cover-art forward.
 
 ### Album detail `/albums/[slug]`
-Cover, year, era link, credits, tracklist with per-track embeds (Spotify primary, YouTube/Audiomack fallback), and a short written story of the album — where it landed, what it changed. Lyrics *context* (commentary on key bars), not full lyric reproduction (licensing).
+Cover, year, era link, credits, tracklist with per-track embeds (Spotify primary, YouTube Music/YouTube/Audiomack fallback), and a short written story of the album — where it landed, what it changed. Lyrics *context* (commentary on key bars), not full lyric reproduction (licensing).
 
 ### Songs catalogue `/songs`
 Living index of documented songs from ~2010 to today: album tracks (derived from discography MDX), plus researched singles, features, freestyles, lives, snippets and other. Titles, years, credits, optional embeds — no full lyrics. Filter by type / era, search, sort by year. Verification tiers: verified · documented · lore. Not a claim of absolute completeness.
@@ -52,7 +52,7 @@ Living index of documented songs from ~2010 to today: album tracks (derived from
 Curated, era-tagged gallery of embedded videos: music videos, freestyles, interviews, live moments. Curation notes over completeness.
 
 ### Snippets `/snippets` · `/snippets/[id]`
-Shareable audiogram-style cards — decorative waveforms, key-bar context, era accent, and a link to the Spotify/YouTube embed. No hosted audio. Surfaced on matching album pages and the home “Deeper cuts” strip.
+Shareable audiogram-style cards — decorative waveforms, key-bar context, era accent, and a link to the Spotify/YouTube Music embed. No hosted audio. Surfaced on matching album pages and the home “Deeper cuts” strip.
 
 ### Influence `/influence`
 Split magazine layout: compact hub (mentors/peers/collaborators/influences) beside an always-visible **YBNL roster timeline**. Selecting either side opens a shared detail blurb with era/album links. Filters dim/highlight; they never hide the roster. YBNL signees carry `signedYear` / `departedYear` (or `alumni` when the exit year is soft).

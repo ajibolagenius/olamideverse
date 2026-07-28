@@ -15,7 +15,7 @@ Streaming platforms have the songs. Blogs have the news. Nobody has the **story*
 Three words that define v2: **Archive. Editorial. Street.**
 
 What v2 is *not*:
-- Not a streaming service (all audio via Spotify/YouTube/Audiomack embeds — the licensing-safe posture from v1 carries forward)
+- Not a streaming service (all audio via Spotify/YouTube/YouTube Music/Audiomack embeds — the licensing-safe posture from v1 carries forward)
 - Not a fan forum first (community features come only after the archive earns an audience)
 - Not a tech demo (motion and interactivity serve the story, never the other way around)
 

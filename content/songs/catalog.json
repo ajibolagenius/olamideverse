@@ -163,10 +163,11 @@
       "year": 2010,
       "era": "the-upstart",
       "type": "single",
-      "status": "documented",
+      "status": "verified",
       "note": "Coded Tunes–era tribute after DaGrin's passing (April 2010); circulated in contemporary blog press before / alongside the Eni Duro rollout. Distinct from the later 2012 collab with Seriki & Tupengo.",
       "source": "Contemporary blogs / Illuminaija",
-      "sourceUrl": "https://www.illuminaija.com/mp3-download-audio/download-olamide-tribute-to-dagrin-mp3/"
+      "sourceUrl": "https://www.illuminaija.com/mp3-download-audio/download-olamide-tribute-to-dagrin-mp3/",
+      "youtubeId": "oR9LeCFHWD0"
     },
     {
       "id": "single--waptrick--abeg-o-2011",
@@ -174,11 +175,12 @@
       "year": 2011,
       "era": "the-upstart",
       "type": "single",
-      "status": "lore",
+      "status": "documented",
       "artists": "Olamide ft Kidakudz 2kriss",
       "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting.",
       "source": "Waptrick webarchive",
-      "sourceUrl": "https://waptrick.com/en/download/Olamide-Kidakudz-2kriss/Abeg-O/?type=FT&id=183921"
+      "sourceUrl": "https://waptrick.com/en/download/Olamide-Kidakudz-2kriss/Abeg-O/?type=FT&id=183921",
+      "youtubeId": "DbFZcIptgLc"
     },
     {
       "id": "feature--apa-ti-jabo-2011",
@@ -199,11 +201,12 @@
       "year": 2011,
       "era": "the-upstart",
       "type": "single",
-      "status": "lore",
+      "status": "documented",
       "artists": "Olamide",
       "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting.",
       "source": "Waptrick webarchive",
-      "sourceUrl": "https://waptrick.com/en/download/Olamide/Choc-Boiz-Diss/?type=FT&id=190835"
+      "sourceUrl": "https://waptrick.com/en/download/Olamide/Choc-Boiz-Diss/?type=FT&id=190835",
+      "youtubeId": "OTzpk5_rtfk"
     },
     {
       "id": "feature--e-wo-won-2011",
@@ -224,9 +227,10 @@
       "year": 2011,
       "era": "the-upstart",
       "type": "freestyle",
-      "status": "documented",
+      "status": "verified",
       "note": "Late-2011 studio freestyle appearance during the Rapsodi push",
-      "source": "Factory78 / contemporary press"
+      "source": "Factory78 / contemporary press",
+      "youtubeId": "uZ6euKbhwR0"
     },
     {
       "id": "feature--gbabe-2011",
@@ -234,11 +238,12 @@
       "year": 2011,
       "era": "the-upstart",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Lace",
       "note": "Lace featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "XFe49qFZ23o"
     },
     {
       "id": "feature--i-m-in-love-2011",
@@ -270,11 +275,12 @@
       "year": 2011,
       "era": "the-upstart",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Kida Kudz",
       "note": "Kida Kudz featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "ppm7BGLxQC4"
     },
     {
       "id": "feature--mi-ole-beru-noni-remix-2011",
@@ -282,11 +288,12 @@
       "year": 2011,
       "era": "the-upstart",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Samklef",
       "note": "On Nonilizing",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "cXaWobWGdtU"
     },
     {
       "id": "feature--never-let-you-go-2011",
@@ -378,11 +385,12 @@
       "year": 2011,
       "era": "the-upstart",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Jaywon",
       "note": "Guest appearance · Meet Jaywon Reloaded",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "ByZppYX7Vf8"
     },
     {
       "id": "feature--young-erikina-2011",
@@ -390,9 +398,10 @@
       "year": 2011,
       "era": "the-upstart",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "crY5lQ88cJs"
     },
     {
       "id": "feature--arabambi-2012",
@@ -400,9 +409,10 @@
       "year": 2012,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "SFEt98TiD2k"
     },
     {
       "id": "single--waptrick--aranbambi-2012",
@@ -422,11 +432,12 @@
       "year": 2012,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Gentleman",
       "note": "Gentleman featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "59QmpeClpg8"
     },
     {
       "id": "feature--awa-lani-igboro-2012",
@@ -557,11 +568,12 @@
       "year": 2012,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Phyno",
       "note": "On No Guts No Glory",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "kTcnc2jre0g"
     },
     {
       "id": "feature--waptrick--happy-birthday-2012",
@@ -581,11 +593,12 @@
       "year": 2012,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Tipsy",
       "note": "Tipsy featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "VX-AIbjqOTk"
     },
     {
       "id": "feature--waptrick--illmota-2012",
@@ -605,11 +618,12 @@
       "year": 2012,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Chidinma",
       "note": "Guest appearance · Chidinma",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "lqM5D-lANL8"
     },
     {
       "id": "feature--konji-2012",
@@ -617,11 +631,12 @@
       "year": 2012,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Stringz",
       "note": "Stringz featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "cRqSZcUc6Jk"
     },
     {
       "id": "feature--monster-2012",
@@ -641,11 +656,12 @@
       "year": 2012,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "2Kriss",
       "note": "2Kriss featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "-W-B5ZlDR_s"
     },
     {
       "id": "feature--waptrick--oh-nah-2012",
@@ -750,11 +766,12 @@
       "year": 2012,
       "era": "first-of-all",
       "type": "feature",
-      "status": "lore",
+      "status": "documented",
       "artists": "K Kenny ft Olamide",
       "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting.",
       "source": "Waptrick webarchive",
-      "sourceUrl": "https://waptrick.com/en/download/K-Kenny-Ft-Olamide/Shey-Na-You/?type=FT&id=238133"
+      "sourceUrl": "https://waptrick.com/en/download/K-Kenny-Ft-Olamide/Shey-Na-You/?type=FT&id=238133",
+      "youtubeId": "85I4TW2ILng"
     },
     {
       "id": "feature--sinner-man-2012",
@@ -798,11 +815,12 @@
       "year": 2012,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Olamide, Seriki, Tupengo",
       "note": "April 2012 collaborative tribute (second anniversary of DaGrin's death) — separate from the 2010 Coded Tunes solo cut.",
       "source": "Tooxclusive",
-      "sourceUrl": "https://tooxclusive.com/songs/olamideseriki-n-tupengo-tribute-to-dagrin/"
+      "sourceUrl": "https://tooxclusive.com/songs/olamideseriki-n-tupengo-tribute-to-dagrin/",
+      "youtubeId": "oR9LeCFHWD0"
     },
     {
       "id": "feature--unite-2012",
@@ -810,11 +828,12 @@
       "year": 2012,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "featuring H-Code",
       "note": "featuring H-Code",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "EjSQNEk6CU8"
     },
     {
       "id": "snippet--voice-of-the-street",
@@ -859,11 +878,12 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "feature",
-      "status": "lore",
+      "status": "documented",
       "artists": "Ade Piper ft Olamide ft Jungle Boi",
       "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting.",
       "source": "Waptrick webarchive",
-      "sourceUrl": "https://waptrick.com/en/download/Ade-Piper-feat-Olamide-feat-Jungle-Boi/Bad-Guy/?type=FT&id=271998"
+      "sourceUrl": "https://waptrick.com/en/download/Ade-Piper-feat-Olamide-feat-Jungle-Boi/Bad-Guy/?type=FT&id=271998",
+      "youtubeId": "0zeOBwivaE0"
     },
     {
       "id": "feature--badderdandem-2013",
@@ -979,9 +999,10 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "bRvUPQcsbcs"
     },
     {
       "id": "feature--waptrick--disco-dancer-2013",
@@ -989,11 +1010,12 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "feature",
-      "status": "lore",
+      "status": "documented",
       "artists": "Starboi Jaap ft Olamide",
       "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting.",
       "source": "Waptrick webarchive",
-      "sourceUrl": "https://waptrick.com/en/download/Starboi-Jaap-Ft-Olamide/Disco-Dancer/?type=FT&id=253264"
+      "sourceUrl": "https://waptrick.com/en/download/Starboi-Jaap-Ft-Olamide/Disco-Dancer/?type=FT&id=253264",
+      "youtubeId": "8Wjoca-IBZc"
     },
     {
       "id": "feature--don-t-mess-with-my-doe-2013",
@@ -1001,11 +1023,12 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Sossick",
       "note": "Sossick featuring Olamide and Reminisce",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "O3ewwiaVFJA"
     },
     {
       "id": "feature--guest--don-t-run-2013",
@@ -1050,11 +1073,12 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "single",
-      "status": "lore",
+      "status": "documented",
       "artists": "Olamide",
       "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting.",
       "source": "Waptrick webarchive",
-      "sourceUrl": "https://waptrick.com/en/download/Olamide/Fine-Sound/?type=FT&id=278497"
+      "sourceUrl": "https://waptrick.com/en/download/Olamide/Fine-Sound/?type=FT&id=278497",
+      "youtubeId": "q0SeSu0LgK8"
     },
     {
       "id": "feature--first-of-all-remix-2013",
@@ -1075,11 +1099,12 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Kayswitch",
       "note": "Kayswitch featuring Wizkid and Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "lgSPRDUDW18"
     },
     {
       "id": "feature--gbaladun-2013",
@@ -1087,11 +1112,12 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Lamboginny",
       "note": "Lamboginny featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "vCi8_6bWK7Y"
     },
     {
       "id": "feature--gbo-yoruba-2013",
@@ -1125,11 +1151,12 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Ice Prince",
       "note": "Ice Prince featuring Wande Coal, Olamide, and Yung L",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "gYji43sgFpg"
     },
     {
       "id": "feature--going-to-heaven-2013",
@@ -1137,9 +1164,10 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "EnH0oaL1hDs"
     },
     {
       "id": "feature--government-2013",
@@ -1172,11 +1200,12 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "D'banj",
       "note": "On D'Kings Men",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "mw-SVxLzbhg"
     },
     {
       "id": "feature--ibebe-2013",
@@ -1209,11 +1238,12 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Shadow D'don",
       "note": "Shadow D'don featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "evcq_GxfAf0"
     },
     {
       "id": "feature--guest--ka-wo-soke-hands-up-2013",
@@ -1221,11 +1251,12 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "D'banj, Ikechukwu",
       "note": "Guest appearance · D'Kings Men",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "lkJj-Dd7IQ8"
     },
     {
       "id": "feature--guest--kigbe-2013",
@@ -1246,11 +1277,12 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "feature",
-      "status": "lore",
+      "status": "documented",
       "artists": "Oluwacoded ft Olamide",
       "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting.",
       "source": "Waptrick webarchive",
-      "sourceUrl": "https://waptrick.com/en/download/Oluwacoded-Ft-Olamide/Mawomi/?type=FT&id=262102"
+      "sourceUrl": "https://waptrick.com/en/download/Oluwacoded-Ft-Olamide/Mawomi/?type=FT&id=262102",
+      "youtubeId": "v3bpQlBtgD0"
     },
     {
       "id": "feature--monster-remix-2013",
@@ -1270,10 +1302,11 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "freestyle",
-      "status": "documented",
+      "status": "verified",
       "note": "Cover or freestyle",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "sN4SaZW-1Wc"
     },
     {
       "id": "feature--nawo-nawo-2013",
@@ -1281,11 +1314,12 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "YQ",
       "note": "YQ featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "k6UsC-_NUM8"
     },
     {
       "id": "feature--waptrick--on-my-mind-2013",
@@ -1365,11 +1399,12 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Pheelz",
       "note": "Pheelz featuring Olamide, Orezi, Phyno, and Terry Apala",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "hoSCQyJDEtE"
     },
     {
       "id": "feature--sexy-lady-2013",
@@ -1403,11 +1438,12 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Opzy Don",
       "note": "Opzy Don featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "3UG6wl7JsTA"
     },
     {
       "id": "feature--standing-ovation-2013",
@@ -1441,11 +1477,12 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "featuring Iyanya",
       "note": "featuring Iyanya",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "IITcus0rrf8"
     },
     {
       "id": "feature--the-game-2013",
@@ -1465,11 +1502,12 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Adasa Cookey",
       "note": "Guest appearance (non-single)",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "GDJkbJPGnrA"
     },
     {
       "id": "feature--tinini-2013",
@@ -1490,10 +1528,11 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "freestyle",
-      "status": "documented",
+      "status": "verified",
       "note": "Cover or freestyle",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "qWOFsEdqDpY"
     },
     {
       "id": "feature--touch-your-toes-remix-2013",
@@ -1501,11 +1540,12 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Burna Boy",
       "note": "Burna Boy featuring Dammy Krane, Olamide, and Vector",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "_9InYjpKatg"
     },
     {
       "id": "feature--what-s-your-flavour-2013",
@@ -1525,11 +1565,12 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Mr Solek",
       "note": "Mr Solek featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "7cJqlWuBTeE"
     },
     {
       "id": "feature--woni-were-2013",
@@ -1537,11 +1578,12 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "LKT",
       "note": "On The Journey",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "JWAbq-QDC7I"
     },
     {
       "id": "feature--36-kinihun-2014",
@@ -1601,11 +1643,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Zeez",
       "note": "Zeez featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "TUwQegIztGM"
     },
     {
       "id": "single--awon-goons-mi-2014",
@@ -1624,11 +1667,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Kida Kudz",
       "note": "Kida Kudz featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "iu5eszFykck"
     },
     {
       "id": "feature--black-commando-2014",
@@ -1636,11 +1680,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Fuse ODG",
       "note": "Fuse ODG featuring Olamide and Stanley Enow",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "mnR6hL7LzPA"
     },
     {
       "id": "freestyle--bora-2014",
@@ -1661,11 +1706,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "DJ Jimmy Jatt, Lil Kesh, Viktoh",
       "note": "Guest appearance (non-single)",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "Wr1uiEwX4zk"
     },
     {
       "id": "single--dansaki-2014",
@@ -1673,9 +1719,10 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "single",
-      "status": "documented",
+      "status": "verified",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "CpqTfVAjG-Q"
     },
     {
       "id": "feature--deaf-and-dumb-2014",
@@ -1683,11 +1730,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Eva Alordiah",
       "note": "On 1960",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "q-Y1bmZcHC0"
     },
     {
       "id": "feature--eyes-on-your-2014",
@@ -1744,11 +1792,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "DJ Kamol",
       "note": "DJ Kamol featuring Olamide, Lace, and Slyde",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "qfMXWsErhbg"
     },
     {
       "id": "feature--ibeere-remix-2014",
@@ -1756,11 +1805,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Kida Kudz",
       "note": "Kida Kudz featuring Olamide, Lil Kesh, and DJ Enimoney",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "etZcAdtvboE"
     },
     {
       "id": "feature--indomie-2014",
@@ -1781,11 +1831,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "single",
-      "status": "documented",
+      "status": "verified",
       "artists": "featuring Ajebutter22 and Lynxxx",
       "note": "Non-album single",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "NPcfOmaoCgM"
     },
     {
       "id": "feature--kilogbe-remix-2014",
@@ -1793,11 +1844,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Sean Tizzle",
       "note": "On The Journey",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "6dbPq3Einbc"
     },
     {
       "id": "feature--ko-duro-be-2014",
@@ -1817,11 +1869,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Lami Phillips",
       "note": "Lami Phillips featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "9R9vSWiiIXg"
     },
     {
       "id": "feature--lambebe-2014",
@@ -1829,11 +1882,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Major Bangz",
       "note": "Major Bangz featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "wbq_JDTeOXk"
     },
     {
       "id": "feature--lord-have-mercy-2014",
@@ -1841,11 +1895,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "K9",
       "note": "K9 featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "arbBZCxNEmY"
     },
     {
       "id": "feature--guest--lori-standing-2014",
@@ -1853,11 +1908,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "DJ Jimmy Jatt, D'Prince, Reekado Banks",
       "note": "Guest appearance · The Industry, Vol. 1",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "LqMYD6dMkW8"
     },
     {
       "id": "feature--guest--love-na-die-2014",
@@ -1878,11 +1934,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Jaywon",
       "note": "On Oba Orin",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "qPfUJqP71UI"
     },
     {
       "id": "single--make-us-proud-2014",
@@ -1902,11 +1959,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Sina Rambo",
       "note": "Sina Rambo featuring Olamide and Danagog",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "jqoOO_MwPtQ"
     },
     {
       "id": "feature--nicki-minaj-2014",
@@ -1914,11 +1972,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Teeblaq",
       "note": "Teeblaq featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "lh2pHVwA6cY"
     },
     {
       "id": "feature--no-more-2014",
@@ -1938,11 +1997,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Falz",
       "note": "Guest appearance · Wazup Guy: The Album",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "_mvkca8-Sks"
     },
     {
       "id": "feature--o-tin-load-2014",
@@ -1963,11 +2023,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Ikechukwu",
       "note": "Ikechukwu featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "ZncCR_sD3Sk"
     },
     {
       "id": "feature--our-lord-jesus-2014",
@@ -1975,11 +2036,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "YBNL Allstars",
       "note": "YBNL Allstars featuring Olamide, Lil Kesh, and Viktoh",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "271DJ6pgGnk"
     },
     {
       "id": "feature--guest--overflow-2014",
@@ -1987,11 +2049,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Timaya",
       "note": "Guest appearance · Epiphany",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "kfAh9QpLDf8"
     },
     {
       "id": "feature--guest--palongo-2014",
@@ -1999,11 +2062,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "9ice",
       "note": "Guest appearance · CNN",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "KQk7aPtbvOc"
     },
     {
       "id": "feature--peteru-2014",
@@ -2011,11 +2075,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Skuki",
       "note": "Skuki featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "UQCaIemhjpk"
     },
     {
       "id": "feature--waptrick--rock-the-party-2014",
@@ -2035,11 +2100,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Unlimited L.A",
       "note": "Guest appearance (non-single)",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "sx22nctKGsQ"
     },
     {
       "id": "feature--shoki-remix-2014",
@@ -2047,11 +2113,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Lil Kesh",
       "note": "Lil Kesh featuring Davido and Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "sx22nctKGsQ"
     },
     {
       "id": "feature--show-me-yuh-rozay-remix-2014",
@@ -2059,11 +2126,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Ketchup",
       "note": "Ketchup featuring Olamide and Phyno",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "gciybwRoOso"
     },
     {
       "id": "single--waptrick--skamma-2014",
@@ -2083,11 +2151,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Tipsy",
       "note": "Tipsy featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "W6GOOPJpDg4"
     },
     {
       "id": "feature--soke-2014",
@@ -2095,11 +2164,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Joshbeatz",
       "note": "Joshbeatz featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "pMxl9tTTM4s"
     },
     {
       "id": "feature--state-of-nation-2014",
@@ -2144,11 +2214,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "featuring Viktoh",
       "note": "On Street OT",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "1tLjlphEqGg"
     },
     {
       "id": "feature--wanbi-2014",
@@ -2156,11 +2227,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Dotstar",
       "note": "Dotstar featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "YZu7IY2y29Q"
     },
     {
       "id": "feature--wtf-remix-2014",
@@ -2205,11 +2277,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Jahbless",
       "note": "On I Am Me",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "DoYxYiWre5U"
     },
     {
       "id": "feature--adam-2015",
@@ -2230,11 +2303,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Wale",
       "note": "Wale featuring Olamide, Don Jazzy, and Reekado Banks",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "M7PdcQ3TuVU"
     },
     {
       "id": "feature--asiko-laiye-remix-2015",
@@ -2242,11 +2316,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Darey",
       "note": "On Naked",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "_L84L1ospGQ"
     },
     {
       "id": "feature--attendance-2015",
@@ -2254,11 +2329,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "DJ Spinall",
       "note": "On My Story: The Album",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "bEme1bOqe1o"
     },
     {
       "id": "feature--baba-oyoyo-2015",
@@ -2266,11 +2342,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Fly Boy",
       "note": "Fly Boy featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "0-Gg0msRrF4"
     },
     {
       "id": "feature--bad-2015",
@@ -2278,11 +2355,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Mo'Cheddah",
       "note": "Mo'Cheddah featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "XJGAYPTyF6Q"
     },
     {
       "id": "feature--baddest-2015",
@@ -2290,11 +2368,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "DJ Neptune",
       "note": "DJ Neptune featuring Olamide, BOJ, and Stonebwoy",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "vArQmSY3hvU"
     },
     {
       "id": "feature--waptrick--badt-girl-2015",
@@ -2338,11 +2417,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Dr Sid",
       "note": "Dr Sid featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "YSSb5KoftxU"
     },
     {
       "id": "snippet--confam-ni",
@@ -2386,11 +2466,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Bracket",
       "note": "Bracket featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "lMrNCX67nYQ"
     },
     {
       "id": "feature--emujo-2015",
@@ -2410,11 +2491,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "L.A.X",
       "note": "L.A.X featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "WXDhLzK8Lec"
     },
     {
       "id": "feature--fo-si-won-2015",
@@ -2422,11 +2504,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Ikechukwu",
       "note": "Ikechukwu featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "AF6-8jqfb3U"
     },
     {
       "id": "feature--follow-my-lead-2015",
@@ -2459,11 +2542,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Ice Prince",
       "note": "Ice Prince featuring Olamide and Phyno",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "kzA_Ug5FokA"
     },
     {
       "id": "feature--go-low-remix-2015",
@@ -2471,11 +2555,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Klever Jay",
       "note": "Klever Jay featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "JZqM4W0QrJk"
     },
     {
       "id": "feature--guest--gone-are-the-days-2015",
@@ -2495,11 +2580,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Jahbless",
       "note": "Guest appearance · I Am Me",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "jH0HzXV1nk4"
     },
     {
       "id": "feature--waptrick--ibeere-ybnl-remix-2015",
@@ -2519,11 +2605,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "DJ Kaywise",
       "note": "DJ Kaywise featuring Olamide and Vector",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "xXDlkL4cOHY"
     },
     {
       "id": "feature--ijo-ayo-2015",
@@ -2531,11 +2618,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Skales",
       "note": "On Man of the Year",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "jp6tzxbGTiI"
     },
     {
       "id": "feature--ijo-ayo-remix-2015",
@@ -2543,11 +2631,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Skales",
       "note": "Skales featuring Olamide and Pasuma",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "jp6tzxbGTiI"
     },
     {
       "id": "feature--illegal-2015",
@@ -2555,11 +2644,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Pepenazi",
       "note": "On My Coat of Many Colours",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "Pn_NMafA2rs"
     },
     {
       "id": "feature--indomie-remix-2015",
@@ -2567,11 +2657,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Masterkraft",
       "note": "On Unlimited: The Tape",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "JzZWw76TbHE"
     },
     {
       "id": "feature--instagram-police-2015",
@@ -2592,11 +2683,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Karma",
       "note": "Karma featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "X8xUbkp41lc"
     },
     {
       "id": "feature--jagaban-remix-2015",
@@ -2604,11 +2696,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Ycee",
       "note": "Ycee featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "xBh08NosE4w"
     },
     {
       "id": "feature--guest--kere-2015",
@@ -2629,11 +2722,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Samklef",
       "note": "Samklef featuring Olamide, DJ Xclusive, and Shaydee",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "i8HHQhE_cP4"
     },
     {
       "id": "feature--local-rappers-2015",
@@ -2641,11 +2735,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Reminisce",
       "note": "On Baba Hafusa",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "PNAI4yy9T_I"
     },
     {
       "id": "single--waptrick--me-lo-lara-e-2015",
@@ -2665,11 +2760,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Sound Sultan",
       "note": "On Out of the Box",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "0-7Py9JUR-A"
     },
     {
       "id": "feature--motiwa-2015",
@@ -2690,11 +2786,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "MC Galaxy",
       "note": "On Breakthrough",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "GpaWLQL6VhQ"
     },
     {
       "id": "feature--waptrick--no-surrender-2015",
@@ -2726,11 +2823,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Sunkanmi",
       "note": "Sunkanmi featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "_xHO9Fik5I0"
     },
     {
       "id": "feature--guest--pack-and-go-2015",
@@ -2738,11 +2836,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Seyi Shay",
       "note": "Guest appearance · Seyi or Shay",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "HaO1TPjfV7M"
     },
     {
       "id": "single--waptrick--rap-of-life-prod-2015",
@@ -2762,11 +2861,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Harrysong",
       "note": "Harrysong featuring Olamide, Iyanya, Kcee, and Orezi",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "mmMraN47MXQ"
     },
     {
       "id": "feature--renovation-2015",
@@ -2786,11 +2886,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Deekay",
       "note": "Deekay featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "aGIsRvsDLZY"
     },
     {
       "id": "feature--sebee-remix-2015",
@@ -2798,11 +2899,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Sossi",
       "note": "Sossi featuring Olamide and Oritse Femi",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "G_kXuKFWKos"
     },
     {
       "id": "single--waptrick--shakiti-bobo-2015",
@@ -2810,10 +2912,11 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "single",
-      "status": "lore",
+      "status": "documented",
       "note": "Listed on Waptrick beside Eyan Mayweather singles (distinct from Bobo) (titles only from user Waptrick screenshots/webarchive).",
       "source": "Waptrick screenshots / webarchive",
-      "sourceUrl": "https://waptrick.com/en/_common/search/search.jsp?c=olamide&type=full_mp3"
+      "sourceUrl": "https://waptrick.com/en/_common/search/search.jsp?c=olamide&type=full_mp3",
+      "youtubeId": "a8ON_j42EwM"
     },
     {
       "id": "feature--shoro-niyen-2015",
@@ -2821,11 +2924,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "YBNL Allstars",
       "note": "YBNL Allstars featuring Olamide, Lil Kesh, Viktoh, and Chinko Ekun",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "b0EIQGsG4V4"
     },
     {
       "id": "feature--son-of-abraham-2015",
@@ -2833,11 +2937,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Pheelz",
       "note": "Pheelz featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "50_e9fMtfD0"
     },
     {
       "id": "feature--standard-remix-2015",
@@ -2857,11 +2962,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "lore",
+      "status": "documented",
       "artists": "Efa ft Olamide",
       "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting.",
       "source": "Waptrick webarchive",
-      "sourceUrl": "https://waptrick.com/en/download/Efa-Ft-Olamide/Sunmobi-Remix/?type=FT&id=328649"
+      "sourceUrl": "https://waptrick.com/en/download/Efa-Ft-Olamide/Sunmobi-Remix/?type=FT&id=328649",
+      "youtubeId": "ID3cYccOVhE"
     },
     {
       "id": "feature--the-money-2015",
@@ -2894,11 +3000,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Iyanya",
       "note": "Guest appearance · Applaudise",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "wbtxvZpheaE"
     },
     {
       "id": "feature--walk-with-me-2015",
@@ -2906,11 +3013,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Stormrex",
       "note": "Stormrex featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "lemzujvL4SY"
     },
     {
       "id": "feature--werey-re-o-remix-2015",
@@ -2943,11 +3051,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Dotman",
       "note": "Dotman featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "uJs3DO1QVYw"
     },
     {
       "id": "feature--waptrick--you-are-on-your-own-yoyo-2015",
@@ -2967,11 +3076,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Small Doctor",
       "note": "On Omo Iya Teacher Reloaded",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "Yv7ZfeTJerw"
     },
     {
       "id": "single--abule-sowo-2016",
@@ -2979,9 +3089,10 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "single",
-      "status": "documented",
+      "status": "verified",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "zvBL-E8RhW0"
     },
     {
       "id": "feature--action-2016",
@@ -2989,11 +3100,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Pasuma",
       "note": "On My World",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "2ehIJP9YPeA"
     },
     {
       "id": "feature--waptrick--ada-2016",
@@ -3013,11 +3125,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Skiibii",
       "note": "Skiibii featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "SNQzmpLOOVI"
     },
     {
       "id": "single--waptrick--air-rulers-2016",
@@ -3037,11 +3150,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Kayswitch",
       "note": "Kayswitch featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "vbZuMTcKsNo"
     },
     {
       "id": "feature--bahd-baddo-baddest-2016",
@@ -3049,11 +3163,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Falz",
       "note": "On 27",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "vArQmSY3hvU"
     },
     {
       "id": "feature--carolina-2016",
@@ -3061,11 +3176,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Que Peller",
       "note": "Que Peller featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "mnV8p80gy4s"
     },
     {
       "id": "feature--ebelesua-2016",
@@ -3073,11 +3189,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Obesere",
       "note": "Obesere featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "uHGa_bSwI_w"
     },
     {
       "id": "feature--guest--eleniyan-2016",
@@ -3097,11 +3214,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "single",
-      "status": "lore",
+      "status": "documented",
       "artists": "Olamide",
       "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting.",
       "source": "Waptrick webarchive",
-      "sourceUrl": "https://waptrick.com/en/download/Olamide/Ese/?type=FT&id=363340"
+      "sourceUrl": "https://waptrick.com/en/download/Olamide/Ese/?type=FT&id=363340",
+      "youtubeId": "CMtal7fr3-w"
     },
     {
       "id": "feature--fada-fada-2016",
@@ -3109,11 +3227,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Phyno",
       "note": "On The Playmaker",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "Vljs7gX0AuA"
     },
     {
       "id": "feature--garawa-2016",
@@ -3121,11 +3240,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Sojay",
       "note": "On So Far",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "5yLkv5njqkA"
     },
     {
       "id": "single--i-love-lagos-2016",
@@ -3158,11 +3278,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "DKT Baba",
       "note": "DKT Baba featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "2SKzPtiQ0co"
     },
     {
       "id": "feature--kolewerk-remix-2016",
@@ -3170,11 +3291,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Koker",
       "note": "Koker featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "NCq6zl90lnE"
     },
     {
       "id": "feature--waptrick--komole-2016",
@@ -3194,10 +3316,11 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "single",
-      "status": "documented",
+      "status": "verified",
       "note": "Non-album single",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "gZamhhHmBrU"
     },
     {
       "id": "feature--lies-people-tell-2016",
@@ -3205,11 +3328,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "YBNL Allstars",
       "note": "YBNL Allstars featuring Olamide, Maupheen, and Delis",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "qGbz3UGEMzc"
     },
     {
       "id": "feature--guest--mama-aboyo-2016",
@@ -3217,11 +3341,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Patoranking",
       "note": "Guest appearance · God Over Everything",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "fYCsHzJxgxo"
     },
     {
       "id": "feature--mama-oyoyo-2016",
@@ -3229,11 +3354,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Premium Music",
       "note": "Premium Music featuring Yemi Alade, Iyanya, Olamide, Tekno, and Selebobo",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "wotEeGBXTXc"
     },
     {
       "id": "feature--waptrick--money-dey-2016",
@@ -3241,11 +3367,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "lore",
+      "status": "documented",
       "artists": "Edanos ft Olamide",
       "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting.",
       "source": "Waptrick webarchive",
-      "sourceUrl": "https://waptrick.com/en/download/Edanos-and-Olamide/Money-Dey/?type=FT&id=361366"
+      "sourceUrl": "https://waptrick.com/en/download/Edanos-and-Olamide/Money-Dey/?type=FT&id=361366",
+      "youtubeId": "K9f3-G0XpKY"
     },
     {
       "id": "single--waptrick--moti-pass-2016",
@@ -3265,11 +3392,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Samcole",
       "note": "Samcole featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "p-6g-lDiOog"
     },
     {
       "id": "feature--no-rush-2016",
@@ -3277,11 +3405,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Selecta Aff",
       "note": "Selecta Aff featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "eP5V29ZzsUw"
     },
     {
       "id": "feature--ojaju-2016",
@@ -3289,11 +3418,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "A.M",
       "note": "A.M featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "ylUPA6AA9Ac"
     },
     {
       "id": "single--waptrick--oku-anow-2016",
@@ -3336,11 +3466,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "DJ Enimoney",
       "note": "DJ Enimoney featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "RdCdYgeQXc4"
     },
     {
       "id": "feature--p-t-a-people-talk-a-lot-2016",
@@ -3348,11 +3479,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "DJ Enimoney",
       "note": "DJ Enimoney featuring Olamide and Pheelz",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "Yll6P568wIQ"
     },
     {
       "id": "feature--ponkriyon-2016",
@@ -3360,11 +3492,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Bolo J",
       "note": "Bolo J featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "MdnrczqVld0"
     },
     {
       "id": "feature--guest--problem-child-2016",
@@ -3372,11 +3505,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Lil Kesh",
       "note": "Guest appearance · Y.A.G.I",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "IjrLxPLY1C8"
     },
     {
       "id": "single--waptrick--say-baba-2016",
@@ -3396,10 +3530,11 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "single",
-      "status": "documented",
+      "status": "verified",
       "artists": "featuring Lil Kesh",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "V0wDdzobsHk"
     },
     {
       "id": "feature--seyi-shay-2016",
@@ -3407,11 +3542,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Ruggedman",
       "note": "Ruggedman featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "B-rXcEzhT5E"
     },
     {
       "id": "feature--sisi-remix-2016",
@@ -3419,11 +3555,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Sexy Steel",
       "note": "Sexy Steel featuring Olamide and Tekno",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "8N9KhMe9dAo"
     },
     {
       "id": "feature--solo-2016",
@@ -3431,11 +3568,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Dammy Krane",
       "note": "On Number 1",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "TrYS3Yd95JI"
     },
     {
       "id": "single--waptrick--swag-on-2016",
@@ -3455,11 +3593,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Reminisce",
       "note": "Guest appearance · El-Hadj",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "67vQSVCOIkE"
     },
     {
       "id": "single--waptrick--the-change-we-want-2016",
@@ -3479,11 +3618,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Orezi",
       "note": "Orezi featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "9BeH7BuSfwQ"
     },
     {
       "id": "single--who-you-epp-2016",
@@ -3541,11 +3681,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Major Bangz",
       "note": "Major Bangz featuring Olamide and Phyno",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "KjqvSBlmPyw"
     },
     {
       "id": "feature--4-20-2017",
@@ -3553,11 +3694,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Bbanks",
       "note": "Bbanks featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "b1hMpfH9oLw"
     },
     {
       "id": "feature--abakaliki-2-lasgidi-2017",
@@ -3565,11 +3707,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Humblesmith",
       "note": "On Osinachi",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "_Xtx1DkWI4c"
     },
     {
       "id": "feature--assignment-2017",
@@ -3577,11 +3720,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "DJ Consequence",
       "note": "DJ Consequence featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "Y7rC4rPrEtA"
     },
     {
       "id": "feature--augment-2017",
@@ -3589,11 +3733,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Phyno",
       "note": "Phyno featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "R0FKHwjD9BU"
     },
     {
       "id": "feature--awaa-2017",
@@ -3601,11 +3746,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Cabo Snoop",
       "note": "Cabo Snoop featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "MqmlhTvWIrA"
     },
     {
       "id": "feature--ayinde-wasiu-2017",
@@ -3638,11 +3784,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "LasGiiDi",
       "note": "LasGiiDi featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "w2_gEdR8kok"
     },
     {
       "id": "feature--carry-go-2017",
@@ -3675,11 +3822,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Ayo Jay",
       "note": "Ayo Jay featuring Davido and Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "5KUFcM5Nh6M"
     },
     {
       "id": "feature--waptrick--dance-to-the-beat-2017",
@@ -3723,11 +3871,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Galaktiq",
       "note": "Galaktiq featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "EIv9j1bqgOE"
     },
     {
       "id": "single--waptrick--fi-le-2017",
@@ -3760,11 +3909,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Emekus",
       "note": "Emekus featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "u8dCpoRq2ds"
     },
     {
       "id": "feature--gimmie-luv-2017",
@@ -3772,11 +3922,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "DJ Spinall",
       "note": "On Dreams",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "rs4yQgbv0Bw"
     },
     {
       "id": "feature--waptrick--go-down-2017",
@@ -3808,11 +3959,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Tipsy",
       "note": "Tipsy featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "d6zce5-Ns1Y"
     },
     {
       "id": "feature--waptrick--iyin-2017",
@@ -3832,11 +3984,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Yemi Alade",
       "note": "Guest appearance · Black Magic",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "tSEsrrlFvoc"
     },
     {
       "id": "single--waptrick--kolawole-2017",
@@ -3856,11 +4009,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Mr Eazi, Phyno",
       "note": "Guest appearance · Accra to Lagos",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "_Cextt7xWpk"
     },
     {
       "id": "single--waptrick--love-letter-2017",
@@ -3904,11 +4058,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Zlatan",
       "note": "Zlatan featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "cL0-TuLhNd4"
     },
     {
       "id": "feature--waptrick--my-lord-2017",
@@ -3928,11 +4083,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Dapo Tuburna",
       "note": "Dapo Tuburna featuring Olamide and Ycee",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "RfEYJF5a6-Q"
     },
     {
       "id": "feature--oja-2017",
@@ -3940,11 +4096,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Masterkraft",
       "note": "Masterkraft featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "L8yEmquGQ3Q"
     },
     {
       "id": "feature--waptrick--old-wound-2017",
@@ -3976,11 +4133,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Ice Prince",
       "note": "Ice Prince featuring Olamide and Mr. Jollof",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "QcSlskEPSlA"
     },
     {
       "id": "feature--oya-gbeff-2017",
@@ -3988,11 +4146,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Davolee",
       "note": "Davolee featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "aSWVQ_d1bRc"
     },
     {
       "id": "feature--waptrick--rap-mood-remix-2017",
@@ -4012,11 +4171,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Lamboginny",
       "note": "Lamboginny featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "rQMO4qTXQXk"
     },
     {
       "id": "feature--waptrick--repete-mix-2017",
@@ -4072,11 +4232,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Timaya",
       "note": "Timaya featuring Olamide and Phyno",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "T1yRj-9CQd4"
     },
     {
       "id": "single--waptrick--tobi-2017",
@@ -4096,11 +4257,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "BOJ",
       "note": "On Magic",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "PRNqRiyc83M"
     },
     {
       "id": "single--wavy-level-2017",
@@ -4108,9 +4270,10 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "single",
-      "status": "documented",
+      "status": "verified",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "82evv0cA8OI"
     },
     {
       "id": "feature--we-go-party-2017",
@@ -4118,11 +4281,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Kcee",
       "note": "On Attention to Detail",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "1uwW3NAZa0w"
     },
     {
       "id": "feature--waptrick--who-is-your-lover-2017",
@@ -4130,11 +4294,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "lore",
+      "status": "documented",
       "artists": "Opa6ix ft Olamide",
       "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting.",
       "source": "Waptrick webarchive",
-      "sourceUrl": "https://waptrick.com/en/download/Opa6ix-feat-Olamide/Who-Is-Your-Lover/?type=FT&id=404830"
+      "sourceUrl": "https://waptrick.com/en/download/Opa6ix-feat-Olamide/Who-Is-Your-Lover/?type=FT&id=404830",
+      "youtubeId": "3fHNIt0uR1g"
     },
     {
       "id": "snippet--wo",
@@ -4154,11 +4319,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Joe EL",
       "note": "Joe EL featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "VvXPOhdKRb8"
     },
     {
       "id": "feature--zero-suffer-2017",
@@ -4166,11 +4332,12 @@
       "year": 2017,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "featuring Shizzi and Wale Kwame",
       "note": "featuring Shizzi and Wale Kwame",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "HyETOA9VrMU"
     },
     {
       "id": "feature--40-ft-containers-2018",
@@ -4178,11 +4345,12 @@
       "year": 2018,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Illbliss",
       "note": "On Illy Chapo X",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "Ey-VgC1huaw"
     },
     {
       "id": "single--waptrick--7-10-2018",
@@ -4201,11 +4369,12 @@
       "year": 2018,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Kida Kudz",
       "note": "Kida Kudz featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "7ucg8sZq6_M"
     },
     {
       "id": "feature--aku-remix-2018",
@@ -4213,11 +4382,12 @@
       "year": 2018,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Slim Brown",
       "note": "Slim Brown featuring Olamide and Kcee",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "HhA9d8oqLFE"
     },
     {
       "id": "feature--baba-sina-rambo-2018",
@@ -4225,11 +4395,12 @@
       "year": 2018,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Sina Rambo",
       "note": "Sina Rambo featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "yNAlJ2acAtg"
     },
     {
       "id": "feature--waptrick--baby-boo-nwayo-remix-2018",
@@ -4237,11 +4408,12 @@
       "year": 2018,
       "era": "reinvention",
       "type": "feature",
-      "status": "lore",
+      "status": "documented",
       "artists": "Gbangucci ft Olamide",
       "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting.",
       "source": "Waptrick webarchive",
-      "sourceUrl": "https://waptrick.com/en/download/Gbangucci-feat-Olamide/Baby-Boo-Nwayo-Remix/?type=FT&id=428295"
+      "sourceUrl": "https://waptrick.com/en/download/Gbangucci-feat-Olamide/Baby-Boo-Nwayo-Remix/?type=FT&id=428295",
+      "youtubeId": "0BSDuKvBnZA"
     },
     {
       "id": "feature--balance-well-2018",
@@ -4249,11 +4421,12 @@
       "year": 2018,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Dammy Krane",
       "note": "Dammy Krane featuring Olamide, Pearl Thusi, and Medikal",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "2W1tfc46EvQ"
     },
     {
       "id": "feature--bam-bam-2018",
@@ -4261,11 +4434,12 @@
       "year": 2018,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Timaya",
       "note": "Timaya featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "nWkFU9aB0tM"
     },
     {
       "id": "feature--waptrick--beca-toka-2018",
@@ -4285,11 +4459,12 @@
       "year": 2018,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Ric Hassani",
       "note": "Ric Hassani featuring Falz and Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "0a_Na_Hb630"
     },
     {
       "id": "single--bugle-2018",
@@ -4308,9 +4483,10 @@
       "year": 2018,
       "era": "reinvention",
       "type": "single",
-      "status": "documented",
+      "status": "verified",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "Rrf5FO6DeqU"
     },
     {
       "id": "single--criteria-2018",
@@ -4330,11 +4506,12 @@
       "year": 2018,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Rudeboy",
       "note": "Rudeboy featuring Phyno and Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "hfvnP8b1FFo"
     },
     {
       "id": "feature--fine-fine-2018",
@@ -4366,11 +4543,12 @@
       "year": 2018,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Naira Marley",
       "note": "Naira Marley featuring Olamide and Lil Kesh",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "D-zdHo4LJJI"
     },
     {
       "id": "single--kana-2018",
@@ -4378,10 +4556,11 @@
       "year": 2018,
       "era": "reinvention",
       "type": "single",
-      "status": "documented",
+      "status": "verified",
       "artists": "with Wizkid",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "XV4tF434fNs"
     },
     {
       "id": "single--logba-logba-2018",
@@ -4400,11 +4579,12 @@
       "year": 2018,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "DopeNation",
       "note": "DopeNation featuring Olamide and DJ Enimoney",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "N9Y_ZWfbn60"
     },
     {
       "id": "feature--o-sure-2018",
@@ -4412,11 +4592,12 @@
       "year": 2018,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Oladips",
       "note": "Oladips featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "LqCI_hyTszo"
     },
     {
       "id": "freestyle--omo-ologo-2018",
@@ -4424,10 +4605,11 @@
       "year": 2018,
       "era": "reinvention",
       "type": "freestyle",
-      "status": "documented",
+      "status": "verified",
       "note": "Cover or freestyle",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "w01R2fVGWJI"
     },
     {
       "id": "feature--onyeoma-2018",
@@ -4435,11 +4617,12 @@
       "year": 2018,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "featuring Olamide",
       "note": "featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "vYHtUe9nw5o"
     },
     {
       "id": "single--owo-shayo-2018",
@@ -4447,9 +4630,10 @@
       "year": 2018,
       "era": "reinvention",
       "type": "single",
-      "status": "documented",
+      "status": "verified",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "8afUkZDyClM"
     },
     {
       "id": "feature--p-popping-2018",
@@ -4457,11 +4641,12 @@
       "year": 2018,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Viktoh",
       "note": "Viktoh featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "sna-8v37d8E"
     },
     {
       "id": "feature--pesin-2018",
@@ -4469,11 +4654,12 @@
       "year": 2018,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Limerick",
       "note": "Limerick featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "5MrzSXiOrGQ"
     },
     {
       "id": "freestyle--puna-2018",
@@ -4530,11 +4716,12 @@
       "year": 2018,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "DJ Neptune",
       "note": "On Greatness",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "ktYabzoEALE"
     },
     {
       "id": "feature--small-girl-big-god-2018",
@@ -4542,11 +4729,12 @@
       "year": 2018,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "DJ Jimmy Jatt",
       "note": "DJ Jimmy Jatt featuring Olamide and Reminisce",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "pyUmSr_aDI4"
     },
     {
       "id": "feature--time-2018",
@@ -4554,11 +4742,12 @@
       "year": 2018,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Lyta",
       "note": "Lyta featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "q2MNC5UnGqs"
     },
     {
       "id": "feature--titilailai-2018",
@@ -4566,11 +4755,12 @@
       "year": 2018,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "D'Tunes",
       "note": "D'Tunes featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "-_IbBcTfiDo"
     },
     {
       "id": "single--waptrick--update-2018",
@@ -4578,10 +4768,11 @@
       "year": 2018,
       "era": "reinvention",
       "type": "single",
-      "status": "lore",
+      "status": "documented",
       "note": "Non-album single — listed on Waptrick Olamide screenshots (titles only from user Waptrick screenshots/webarchive).",
       "source": "Waptrick screenshots / webarchive",
-      "sourceUrl": "https://waptrick.com/en/_common/search/search.jsp?c=olamide&type=full_mp3"
+      "sourceUrl": "https://waptrick.com/en/_common/search/search.jsp?c=olamide&type=full_mp3",
+      "youtubeId": "XLVGZY314BI"
     },
     {
       "id": "feature--waptrick--40-feet-container-2019",
@@ -4601,11 +4792,12 @@
       "year": 2019,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Minister Ladi",
       "note": "Minister Ladi featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "k_kkBaiEiLs"
     },
     {
       "id": "feature--bosi-2019",
@@ -4613,11 +4805,12 @@
       "year": 2019,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Wale Turner",
       "note": "Wale Turner featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "kfgqCJ-fDTI"
     },
     {
       "id": "freestyle--buga-small-small-2019",
@@ -4625,10 +4818,11 @@
       "year": 2019,
       "era": "reinvention",
       "type": "freestyle",
-      "status": "documented",
+      "status": "verified",
       "note": "Cover or freestyle",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "D-eSvS6jK3Y"
     },
     {
       "id": "single--choko-milo-2019",
@@ -4647,11 +4841,12 @@
       "year": 2019,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Fuse ODG",
       "note": "Fuse ODG featuring Olamide, Joey B, Kwamz & Flava",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "ROeDST6oQdA"
     },
     {
       "id": "feature--gobe-2019",
@@ -4659,11 +4854,12 @@
       "year": 2019,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Pheelz",
       "note": "Pheelz featuring Olamide and Naira Marley",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "En79C-61iD8"
     },
     {
       "id": "feature--instagram-2019",
@@ -4671,11 +4867,12 @@
       "year": 2019,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Reminisce",
       "note": "Reminisce featuring Olamide, Naira Marley, and Sarz",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "aflDm3C1qhw"
     },
     {
       "id": "single--oil-and-gas-2019",
@@ -4718,11 +4915,12 @@
       "year": 2019,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Praiz",
       "note": "Guest appearance · King",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "y7D5fsKKRJg"
     },
     {
       "id": "feature--guest--scammers-2019",
@@ -4730,11 +4928,12 @@
       "year": 2019,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Akon",
       "note": "Guest appearance · Akonda",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "S7GoFCqh52I"
     },
     {
       "id": "single--waptrick--sheevita-juice-2019",
@@ -4755,11 +4954,12 @@
       "year": 2019,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "DRB LasGidi",
       "note": "On Pioneers",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "ilu59xWLNvw"
     },
     {
       "id": "single--spirit-2019",
@@ -4767,9 +4967,10 @@
       "year": 2019,
       "era": "reinvention",
       "type": "single",
-      "status": "documented",
+      "status": "verified",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "Axu_kTVC6Kw"
     },
     {
       "id": "feature--waptrick--timbalowo-2-0-2019",
@@ -4777,11 +4978,12 @@
       "year": 2019,
       "era": "reinvention",
       "type": "feature",
-      "status": "lore",
+      "status": "documented",
       "artists": "Baddy Oosha ft Olamide ft 9ice",
       "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting.",
       "source": "Waptrick webarchive",
-      "sourceUrl": "https://waptrick.com/en/download/Baddy-Oosha-feat-Olamide-feat-9ice/Timbalowo-2-0/?type=FT&id=437730"
+      "sourceUrl": "https://waptrick.com/en/download/Baddy-Oosha-feat-Olamide-feat-9ice/Timbalowo-2-0/?type=FT&id=437730",
+      "youtubeId": "1Vc2NVDAEEM"
     },
     {
       "id": "single--totori-2019",
@@ -4789,22 +4991,24 @@
       "year": 2019,
       "era": "reinvention",
       "type": "single",
-      "status": "documented",
+      "status": "verified",
       "artists": "featuring Wizkid and ID Cabasa",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "quBmrV1GXZE"
     },
     {
       "id": "feature--vision-2020-2019",
       "title": "Vision 2020",
       "year": 2019,
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Bella Shmurda",
       "note": "Original Vision 2020 (Bella) that led to the Olamide remix already catalogued — Waptrick lists the Olamide collab under this title",
       "source": "Waptrick listing / press cross-check",
       "sourceUrl": "https://waptrick.com/en/free/mp3/Olamide/",
-      "era": "reinvention"
+      "era": "reinvention",
+      "youtubeId": "uhgNmbb07_4"
     },
     {
       "id": "feature--vision-2020-remix-2019",
@@ -4812,11 +5016,12 @@
       "year": 2019,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Bella Shmurda",
       "note": "Bella Shmurda featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "nuOF-yyJgtE"
     },
     {
       "id": "feature--waka-jeje-2019",
@@ -4824,11 +5029,12 @@
       "year": 2019,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Danny S",
       "note": "Danny S featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "lRqfFrnQRNg"
     },
     {
       "id": "single--waptrick--welcome-2019",
@@ -4836,10 +5042,11 @@
       "year": 2019,
       "era": "reinvention",
       "type": "single",
-      "status": "lore",
+      "status": "documented",
       "note": "Non-album single — listed on Waptrick Olamide screenshots (titles only from user Waptrick screenshots/webarchive).",
       "source": "Waptrick screenshots / webarchive",
-      "sourceUrl": "https://waptrick.com/en/_common/search/search.jsp?c=olamide&type=full_mp3"
+      "sourceUrl": "https://waptrick.com/en/_common/search/search.jsp?c=olamide&type=full_mp3",
+      "youtubeId": "sXLdqMf_dWM"
     },
     {
       "id": "single--woske-2019",
@@ -4859,11 +5066,12 @@
       "year": 2020,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Bbanks",
       "note": "Bbanks featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "tKNgdrcKBWQ"
     },
     {
       "id": "feature--guest--afar-2020",
@@ -4871,11 +5079,12 @@
       "year": 2020,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Fireboy DML",
       "note": "Guest appearance · Apollo",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "CleiyQbShPg"
     },
     {
       "id": "single--greenlight-2020",
@@ -4918,11 +5127,12 @@
       "year": 2020,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "9ice",
       "note": "On Tip of the Iceberg Episode 1",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "9hh2S2kZsD8"
     },
     {
       "id": "feature--guest--palanshe-2020",
@@ -4930,11 +5140,12 @@
       "year": 2020,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Cracker Mallo",
       "note": "Guest appearance · A Friendly Introduction to Saund",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "-rzxgBAMZgI"
     },
     {
       "id": "feature--pim-pim-2020",
@@ -4942,11 +5153,12 @@
       "year": 2020,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Dice Ailes",
       "note": "Dice Ailes featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "fzta2ycIjRE"
     },
     {
       "id": "snippet--plenty",
@@ -4966,11 +5178,12 @@
       "year": 2020,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "DJ Tunez",
       "note": "DJ Tunez featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "acrHIxttktU"
     },
     {
       "id": "feature--take-2020",
@@ -4978,11 +5191,12 @@
       "year": 2020,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Timi Dakolo",
       "note": "Timi Dakolo featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "tuVdfZ4MktQ"
     },
     {
       "id": "feature--tesinapot-2020",
@@ -4990,11 +5204,12 @@
       "year": 2020,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Jaido P",
       "note": "Jaido P featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "cIjkFCCLdcA"
     },
     {
       "id": "snippet--warlords",
@@ -5014,11 +5229,12 @@
       "year": 2021,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Kizz Daniel",
       "note": "Kizz Daniel featuring Olamide, Falz, and LK Kuddy",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "TeKhUpDU8BY"
     },
     {
       "id": "feature--do-you-wrong-2021",
@@ -5026,11 +5242,12 @@
       "year": 2021,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Phyno",
       "note": "On Something to Live For",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "i5fmk34hIRU"
     },
     {
       "id": "feature--entertainer-2021",
@@ -5038,11 +5255,12 @@
       "year": 2021,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "DJ Xclusive",
       "note": "DJ Xclusive featuring Olamide and Jamopyper",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "28YQhUILIHg"
     },
     {
       "id": "feature--loml-2021",
@@ -5050,11 +5268,12 @@
       "year": 2021,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Cheque",
       "note": "On Bravo",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "ljphlW-bo9M"
     },
     {
       "id": "single--loose-it-2021",
@@ -5062,11 +5281,12 @@
       "year": 2021,
       "era": "elder-statesman",
       "type": "single",
-      "status": "documented",
+      "status": "verified",
       "artists": "featuring Eskeez",
       "note": "Non-album single",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "uWlb4lcFYRE"
     },
     {
       "id": "feature--omo-x-100-2021",
@@ -5074,11 +5294,12 @@
       "year": 2021,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Reminisce",
       "note": "Reminisce featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "pvmDapi9G8E"
     },
     {
       "id": "feature--ponpon-2021",
@@ -5086,11 +5307,12 @@
       "year": 2021,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "featuring Fave",
       "note": "On UY Scuti",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "VrqpsImxWyI"
     },
     {
       "id": "snippet--rock",
@@ -5110,11 +5332,12 @@
       "year": 2021,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "BackRoad Gee",
       "note": "On Reporting Live (From the Back of the Roads)",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "yki5VqhxGDA"
     },
     {
       "id": "feature--shamanya-2021",
@@ -5135,11 +5358,12 @@
       "year": 2021,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Harrysong",
       "note": "On God Amongst Men",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "1fc8GoMGD2U"
     },
     {
       "id": "feature--shey-you-fit-go-2021",
@@ -5147,11 +5371,12 @@
       "year": 2021,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Trod",
       "note": "Trod featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "qCES4mJ4QKk"
     },
     {
       "id": "feature--skelele-2021",
@@ -5159,11 +5384,12 @@
       "year": 2021,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Bad Boy Timz",
       "note": "Bad Boy Timz featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "_L_g3S1_dKM"
     },
     {
       "id": "feature--sugar-daddy-2021",
@@ -5171,11 +5397,12 @@
       "year": 2021,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "DJ Enimoney",
       "note": "DJ Enimoney featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "07fRvsWNv6g"
     },
     {
       "id": "feature--survive-2021",
@@ -5183,11 +5410,12 @@
       "year": 2021,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Jaido P",
       "note": "Jaido P featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "hB7ZrFvdzDs"
     },
     {
       "id": "feature--turn-me-on-2021",
@@ -5195,11 +5423,12 @@
       "year": 2021,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "WellKid",
       "note": "WellKid featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "XbnPdAJZdtM"
     },
     {
       "id": "feature--zazoo-zehh-2021",
@@ -5207,11 +5436,12 @@
       "year": 2021,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Portable and Poco Lee",
       "note": "Portable and Poco Lee featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "1D-zSE2cfgQ"
     },
     {
       "id": "feature--guest--bigger-2022",
@@ -5219,11 +5449,12 @@
       "year": 2022,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "M.I, Nas",
       "note": "Guest appearance · The Guy",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "n93z1hUQkBM"
     },
     {
       "id": "feature--waptrick--free-of-charge-2022",
@@ -5231,11 +5462,12 @@
       "year": 2022,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "lore",
+      "status": "documented",
       "artists": "Joeboy ft Olamide",
       "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting.",
       "source": "Waptrick webarchive",
-      "sourceUrl": "https://waptrick.com/en/download/Joeboy-feat-Olamide/Free-of-Charge/?type=FT&id=451969"
+      "sourceUrl": "https://waptrick.com/en/download/Joeboy-feat-Olamide/Free-of-Charge/?type=FT&id=451969",
+      "youtubeId": "shrDPAH27Bo"
     },
     {
       "id": "single--hate-me-2022",
@@ -5243,10 +5475,11 @@
       "year": 2022,
       "era": "elder-statesman",
       "type": "single",
-      "status": "documented",
+      "status": "verified",
       "artists": "featuring Wande Coal",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "ny4XxmAWIig"
     },
     {
       "id": "feature--guest--modupe-2022",
@@ -5254,11 +5487,12 @@
       "year": 2022,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Bnxn",
       "note": "Guest appearance · Bad Since '97",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "sk2dlI4JEDo"
     },
     {
       "id": "feature--omo-ope-2022",
@@ -5266,11 +5500,12 @@
       "year": 2022,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Asake",
       "note": "On Ololade",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "IGUXFzIzWMo"
     },
     {
       "id": "feature--sometimes-remix-2022",
@@ -5278,11 +5513,12 @@
       "year": 2022,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "T.I Blaze",
       "note": "On The Fresh Prince of Lagos",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "o6QhQnykn-o"
     },
     {
       "id": "feature--guest--trabaye-2022",
@@ -5290,11 +5526,12 @@
       "year": 2022,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Asake",
       "note": "Guest appearance · Ololade",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "q5lnahdmz4k"
     },
     {
       "id": "feature--waptrick--vanity-2022",
@@ -5302,11 +5539,12 @@
       "year": 2022,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "lore",
+      "status": "documented",
       "artists": "Ckay ft Olamide",
       "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting.",
       "source": "Waptrick webarchive",
-      "sourceUrl": "https://waptrick.com/en/download/Ckay-feat-Olamide/Vanity/?type=FT&id=450712"
+      "sourceUrl": "https://waptrick.com/en/download/Ckay-feat-Olamide/Vanity/?type=FT&id=450712",
+      "youtubeId": "uTyetw23adA"
     },
     {
       "id": "single--we-outside-2022",
@@ -5351,11 +5589,12 @@
       "year": 2023,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Lojay",
       "note": "Lojay featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "UEl7gYwUHOM"
     },
     {
       "id": "feature--bunda-2023",
@@ -5363,11 +5602,12 @@
       "year": 2023,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Spinall",
       "note": "On Top Boy",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "EOtgpiUqVV4"
     },
     {
       "id": "feature--canada-remix-2023",
@@ -5375,11 +5615,12 @@
       "year": 2023,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Magnito",
       "note": "Magnito featuring Olamide and Wizzy Flon",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "QDLmg4d6lhY"
     },
     {
       "id": "feature--currency-2023",
@@ -5387,11 +5628,12 @@
       "year": 2023,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Young Jonn",
       "note": "Young Jonn featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "uWF4Y9gXS8w"
     },
     {
       "id": "feature--entertain-me-2023",
@@ -5399,11 +5641,12 @@
       "year": 2023,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Magicsticks",
       "note": "Magicsticks featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "rqFc80oQWJU"
     },
     {
       "id": "feature--joy-2023",
@@ -5411,11 +5654,12 @@
       "year": 2023,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Pheelz",
       "note": "On Pheelz Good (Triibe Tape)",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "0_L3hewiFwk"
     },
     {
       "id": "feature--kpe-paso-2023",
@@ -5423,11 +5667,12 @@
       "year": 2023,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Wande Coal",
       "note": "On Legend or No Legend",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "BevOvggKJ0w"
     },
     {
       "id": "snippet--new-religion",
@@ -5447,11 +5692,12 @@
       "year": 2023,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Phyno",
       "note": "Phyno featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "eATCSq_L2B0"
     },
     {
       "id": "feature--guest--orin-2023",
@@ -5459,11 +5705,12 @@
       "year": 2023,
       "era": "elder-statesman",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Reminisce",
       "note": "Guest appearance · ATSG, Vol. 1",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "Ci3STKPyhRQ"
     },
     {
       "id": "freestyle--5am-in-ojo-2024",
@@ -5471,11 +5718,12 @@
       "year": 2024,
       "era": "legacy",
       "type": "freestyle",
-      "status": "documented",
+      "status": "verified",
       "artists": "(freestyle)(Pheelz featuring Olamide, Poco Lee, and DJ YK Mule)",
       "note": "Cover or freestyle",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "KxVQrOda-gk"
     },
     {
       "id": "feature--guest--commona-2024",
@@ -5483,11 +5731,12 @@
       "year": 2024,
       "era": "legacy",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Tiwa Savage, Mystro",
       "note": "Guest appearance · Water & Garri (Original Motion Picture Soundtrack)",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "d--l-PySSJ4"
     },
     {
       "id": "feature--gimme-your-love-2024",
@@ -5495,11 +5744,12 @@
       "year": 2024,
       "era": "legacy",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Zlatan",
       "note": "Zlatan featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "6pDdVWWHBUU"
     },
     {
       "id": "feature--jah-love-2024",
@@ -5507,11 +5757,12 @@
       "year": 2024,
       "era": "legacy",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Peruzzi",
       "note": "Peruzzi featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "HMVYA5lPk6Y"
     },
     {
       "id": "feature--guest--jegede-2024",
@@ -5519,11 +5770,12 @@
       "year": 2024,
       "era": "legacy",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Anti World Gangstars, Odumodublvck, Fatboy E",
       "note": "Guest appearance · Nothing Changed",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "0phmKx-_fOs"
     },
     {
       "id": "feature--waptrick--nati-2024",
@@ -5531,11 +5783,12 @@
       "year": 2024,
       "era": "legacy",
       "type": "feature",
-      "status": "lore",
+      "status": "documented",
       "artists": "Blaqbonez ft Olamide",
       "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting.",
       "source": "Waptrick webarchive",
-      "sourceUrl": "https://waptrick.com/en/download/Blaqbonez-feat-Olamide/Nati/?type=FT&id=454372"
+      "sourceUrl": "https://waptrick.com/en/download/Blaqbonez-feat-Olamide/Nati/?type=FT&id=454372",
+      "youtubeId": "WZgWcnYcO3k"
     },
     {
       "id": "feature--waptrick--ok-2024",
@@ -5556,11 +5809,12 @@
       "year": 2024,
       "era": "legacy",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Chike, Amaeya",
       "note": "Guest appearance · Son of Chike",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "vYMj1COPpYI"
     },
     {
       "id": "feature--order-2024",
@@ -5568,11 +5822,12 @@
       "year": 2024,
       "era": "legacy",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Shallipopi",
       "note": "Shallipopi featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "6XyGf4iTK_A"
     },
     {
       "id": "feature--guest--treasure-2024",
@@ -5580,11 +5835,12 @@
       "year": 2024,
       "era": "legacy",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Timaya, Phyno, Alpha P",
       "note": "Guest appearance · Gladiator",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "J0LoRLN31Hk"
     },
     {
       "id": "snippet--uptown-disco",
@@ -5604,11 +5860,12 @@
       "year": 2024,
       "era": "legacy",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Liya",
       "note": "On Don't Hold Me Back",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "Szg-YLDSwl0"
     },
     {
       "id": "feature--w-2024",
@@ -5616,11 +5873,12 @@
       "year": 2024,
       "era": "legacy",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Alpha P",
       "note": "Alpha P featuring Olamide and Thisizlondon",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "M9HSi7vc-aY"
     },
     {
       "id": "feature--wahala-2024",
@@ -5641,23 +5899,25 @@
       "year": 2024,
       "era": "legacy",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Khaid",
       "note": "Guest appearance · 444",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "g6kLaAdPT0A"
     },
     {
       "id": "feature--ara-600m-2025",
       "title": "Ara (600M)",
       "year": 2025,
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Bella Shmurda",
       "note": "Bella Shmurda lead with Olamide — listed on Waptrick Olamide mp3 index as Ara 600 M",
       "source": "Waptrick listing / press cross-check",
       "sourceUrl": "https://waptrick.com/en/free/mp3/Olamide/",
-      "era": "legacy"
+      "era": "legacy",
+      "youtubeId": "q5Q6hsmDVoU"
     },
     {
       "id": "feature--belinda-2025",
@@ -5665,35 +5925,38 @@
       "year": 2025,
       "era": "legacy",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "L.A.X",
       "note": "L.A.X featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "P3Z298lR6EY"
     },
     {
       "id": "feature--come-on-2025",
       "title": "Come On",
       "year": 2025,
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Larry Gaaga, Mavo, Kidd Carder",
       "note": "Larry Gaaga lead featuring Olamide — indexed beside Waptrick/Waploaded Olamide pages",
       "source": "Waploaded / press",
       "sourceUrl": "https://audios.waploaded.com/music/artiste/Olamide/",
-      "era": "legacy"
+      "era": "legacy",
+      "youtubeId": "HYpRUJdbGvA"
     },
     {
       "id": "feature--fuji-party-2025",
       "title": "Fuji Party",
       "year": 2025,
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Seyi Vibez",
       "note": "From Seyi Vibez Fuji Moto (Nov 2025) — on Waptrick Olamide listing",
       "source": "Waptrick listing / press cross-check",
       "sourceUrl": "https://naijatunez.com/seyi-vibez-and-olamide-link-up-for-new-single-fuji-party/",
-      "era": "legacy"
+      "era": "legacy",
+      "youtubeId": "2pyVboXNfgU"
     },
     {
       "id": "feature--girl-on-fya-2025",
@@ -5701,11 +5964,12 @@
       "year": 2025,
       "era": "legacy",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Ashidapo",
       "note": "Ashidapo featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "iZ0sh5LrDTs"
     },
     {
       "id": "freestyle--idan-buruku-2025",
@@ -5737,11 +6001,12 @@
       "year": 2025,
       "era": "legacy",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Paul Play Dairo",
       "note": "Paul Play Dairo featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "QqKNJIwWaTU"
     },
     {
       "id": "feature--guest--miami-2025",
@@ -5749,11 +6014,12 @@
       "year": 2025,
       "era": "legacy",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Spinall, T.I.",
       "note": "Guest appearance · Eko Groove",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "PzlQ43Z0Nr0"
     },
     {
       "id": "feature--motivate-2025",
@@ -5761,11 +6027,12 @@
       "year": 2025,
       "era": "legacy",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Nissi",
       "note": "Nissi featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "1PGQGuNZ5Ck"
     },
     {
       "id": "feature--skido-2025",
@@ -5773,23 +6040,25 @@
       "year": 2025,
       "era": "legacy",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Victony",
       "note": "Victony featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "N7QGg0YTcr8"
     },
     {
       "id": "feature--come-kulosa-2026",
       "title": "Come Kulosa",
       "year": 2026,
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Shoday, Billionboi",
       "note": "Feature on Shoday × Billionboi single — on Waptrick Olamide listing",
       "source": "Waptrick listing / press cross-check",
       "sourceUrl": "https://open.spotify.com/track/2OJtdCzSnQ1G9rMJ6eD1Wt",
-      "era": "legacy"
+      "era": "legacy",
+      "youtubeId": "XSsBa-4swco"
     },
     {
       "id": "feature--formation-2026",
@@ -5797,11 +6066,12 @@
       "year": 2026,
       "era": "legacy",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Adekunle Gold",
       "note": "Adekunle Gold featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "oiqHsOvCmMo"
     },
     {
       "id": "feature--idi-bad-2026",
@@ -5809,11 +6079,12 @@
       "year": 2026,
       "era": "legacy",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "KCee",
       "note": "KCee featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "-HSRg6siA84"
     },
     {
       "id": "single--omo-naija-2026",
@@ -5844,11 +6115,12 @@
       "year": 2026,
       "era": "legacy",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Teni",
       "note": "Teni featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "youtubeId": "-myk3e0wXsk"
     }
   ]
 }

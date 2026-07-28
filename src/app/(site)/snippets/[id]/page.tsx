@@ -87,6 +87,7 @@ export default async function SnippetPage({
                 title={snippet.track}
                 spotifyId={snippet.spotifyTrackId}
                 youtubeId={snippet.youtubeId}
+                provider="youtubemusic"
               />
             ) : (
               <div className="border-2 border-dashed border-ink-soft p-6 text-sm text-ink-soft">

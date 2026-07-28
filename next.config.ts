@@ -4,7 +4,7 @@ const isDev = process.env.NODE_ENV === "development";
 
 // Static (no-nonce) CSP so pages can stay statically generated — this site
 // is static-first (AGENTS.md), and nonce-based CSP forces dynamic rendering
-// on every page. Embeds only: Spotify/YouTube/Audiomack, per the same doc.
+// on every page. Embeds only: Spotify/YouTube/YouTube Music/Audiomack, per the same doc.
 // Google Tag hosts are allowlisted for optional GA4/GTM (validated IDs only).
 const csp = [
   "default-src 'self'",

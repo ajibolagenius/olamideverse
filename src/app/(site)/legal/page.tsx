@@ -51,9 +51,9 @@ export default async function LegalPage() {
         <p className="mb-8 text-lg leading-relaxed">
           No audio or video is hosted on this site. Every track and clip
           appears as an embed from its official third-party source (Spotify,
-          YouTube, Audiomack, or similar), styled to sit inside this site&apos;s
-          visual identity. Removing a rights holder&apos;s embed or link from its
-          original platform will remove it here too.
+          YouTube, YouTube Music, Audiomack, or similar), styled to sit inside
+          this site&apos;s visual identity. Removing a rights holder&apos;s embed
+          or link from its original platform will remove it here too.
         </p>
 
         <h2 className="font-display mb-3 text-2xl">Lyrics</h2>
