@@ -66,8 +66,8 @@ function hostArtistHint(artists) {
 }
 
 function artistsIncludeOlamide(track) {
-  const names = (track.artists || []).map((a) => a.name.toLowerCase());
-  return names.some((n) => n.includes("olamide"));
+  // Exact artist credit only — "Yusuf Olamide Olotu" / "Kolade Olamide" must not match.
+  return (track.artists || []).some((a) => /^olamide$/i.test(String(a.name || "").trim()));
 }
 
 function titleConfidence(localTitle, spotifyTitle) {

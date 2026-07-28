@@ -571,10 +571,9 @@
       "type": "feature",
       "status": "documented",
       "artists": "Hulwayz ft Olamide",
-      "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting.",
+      "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting. Spotify ID removed — prior match was Yusuf Olamide Olotu, not Olamide.",
       "source": "Waptrick webarchive",
-      "sourceUrl": "https://waptrick.com/en/download/Hulwayz-Ft-Olamide/Happy-Birthday/?type=FT&id=211456",
-      "spotifyTrackId": "5sxqkwXGSf4DDs1KOe46NU"
+      "sourceUrl": "https://waptrick.com/en/download/Hulwayz-Ft-Olamide/Happy-Birthday/?type=FT&id=211456"
     },
     {
       "id": "feature--ile-eru-2012",
@@ -630,12 +629,11 @@
       "year": 2012,
       "era": "first-of-all",
       "type": "feature",
-      "status": "verified",
+      "status": "documented",
       "artists": "HCode",
-      "note": "HCode featuring Olamide",
+      "note": "HCode featuring Olamide. Spotify ID removed — prior match was Kolade Olamide, not Olamide.",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "spotifyTrackId": "1guDARs9HQD7WYVUpVfk7x"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
     },
     {
       "id": "feature--no-more-tuale-2012",
@@ -1697,12 +1695,11 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "verified",
+      "status": "documented",
       "artists": "Skales",
-      "note": "Skales featuring Olamide",
+      "note": "Skales featuring Olamide. Spotify ID removed — prior match was Kolade Olamide Ayodeji, not Olamide.",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "spotifyTrackId": "16kIgWZJqtsMDHKk1AhoAR"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
     },
     {
       "id": "feature--frosh-2014",
