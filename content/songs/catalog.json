@@ -585,7 +585,8 @@
       "artists": "Hulwayz ft Olamide",
       "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting. Spotify ID removed — prior match was Yusuf Olamide Olotu, not Olamide.",
       "source": "Waptrick webarchive",
-      "sourceUrl": "https://waptrick.com/en/download/Hulwayz-Ft-Olamide/Happy-Birthday/?type=FT&id=211456"
+      "sourceUrl": "https://waptrick.com/en/download/Hulwayz-Ft-Olamide/Happy-Birthday/?type=FT&id=211456",
+      "spotifyTrackId": "5sxqkwXGSf4DDs1KOe46NU"
     },
     {
       "id": "feature--ile-eru-2012",
@@ -644,11 +645,12 @@
       "year": 2012,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "HCode",
       "note": "HCode featuring Olamide. Spotify ID removed — prior match was Kolade Olamide, not Olamide.",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "spotifyTrackId": "1guDARs9HQD7WYVUpVfk7x"
     },
     {
       "id": "feature--no-more-tuale-2012",
@@ -1086,12 +1088,11 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "feature",
-      "status": "verified",
+      "status": "documented",
       "artists": "featuring D'banj",
       "note": "On D'Kings Men",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "spotifyTrackId": "6aWJGYvtifenSm5hYVYqii"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
     },
     {
       "id": "feature--for-example-remix-2013",
@@ -1743,11 +1744,12 @@
       "year": 2014,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Skales",
       "note": "Skales featuring Olamide. Spotify ID removed — prior match was Kolade Olamide Ayodeji, not Olamide.",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "spotifyTrackId": "16kIgWZJqtsMDHKk1AhoAR"
     },
     {
       "id": "feature--frosh-2014",
@@ -2282,7 +2284,8 @@
       "note": "On I Am Me",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "DoYxYiWre5U"
+      "youtubeId": "DoYxYiWre5U",
+      "spotifyTrackId": "7JOBdoL1eMrYTlNzd6irPE"
     },
     {
       "id": "feature--adam-2015",
@@ -2334,7 +2337,8 @@
       "note": "On My Story: The Album",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "bEme1bOqe1o"
+      "youtubeId": "bEme1bOqe1o",
+      "spotifyTrackId": "3GaFJhDCjNtAyk1ugC9aKx"
     },
     {
       "id": "feature--baba-oyoyo-2015",
@@ -2373,7 +2377,8 @@
       "note": "DJ Neptune featuring Olamide, BOJ, and Stonebwoy",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "vArQmSY3hvU"
+      "youtubeId": "vArQmSY3hvU",
+      "spotifyTrackId": "32SyBsGARsePFsCRYd8mPr"
     },
     {
       "id": "feature--waptrick--badt-girl-2015",
@@ -2405,11 +2410,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Damz",
       "note": "Damz featuring Olamide and Niniola",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "spotifyTrackId": "0O0UUHPNtOwtKNiseyQ2Q7"
     },
     {
       "id": "feature--chop-ogbono-remix-2015",
@@ -2496,7 +2502,8 @@
       "note": "L.A.X featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "WXDhLzK8Lec"
+      "youtubeId": "WXDhLzK8Lec",
+      "spotifyTrackId": "1htUoqZhI1sS3J95mAchml"
     },
     {
       "id": "feature--fo-si-won-2015",
@@ -2560,7 +2567,8 @@
       "note": "Klever Jay featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "JZqM4W0QrJk"
+      "youtubeId": "JZqM4W0QrJk",
+      "spotifyTrackId": "7ks7nqfIYJ2tlgOEyncXrj"
     },
     {
       "id": "feature--guest--gone-are-the-days-2015",
@@ -2568,11 +2576,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "DJ Xclusive, Pepenazi",
       "note": "Guest appearance · According to X",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "spotifyTrackId": "3ziomuEN0hoD6TfqGi2Dyk"
     },
     {
       "id": "feature--guest--i-am-me-2015",
@@ -2585,7 +2594,8 @@
       "note": "Guest appearance · I Am Me",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "jH0HzXV1nk4"
+      "youtubeId": "jH0HzXV1nk4",
+      "spotifyTrackId": "6gY81Q8EPKShmaWOMuA26k"
     },
     {
       "id": "feature--waptrick--ibeere-ybnl-remix-2015",
@@ -2610,7 +2620,8 @@
       "note": "DJ Kaywise featuring Olamide and Vector",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "xXDlkL4cOHY"
+      "youtubeId": "xXDlkL4cOHY",
+      "spotifyTrackId": "3nC87EW8cxmq592GpQg4BT"
     },
     {
       "id": "feature--ijo-ayo-2015",
@@ -2623,7 +2634,8 @@
       "note": "On Man of the Year",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "jp6tzxbGTiI"
+      "youtubeId": "jp6tzxbGTiI",
+      "spotifyTrackId": "4d0zKmKIGHugaVIu21FkgZ"
     },
     {
       "id": "feature--ijo-ayo-remix-2015",
@@ -2636,7 +2648,8 @@
       "note": "Skales featuring Olamide and Pasuma",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "jp6tzxbGTiI"
+      "youtubeId": "jp6tzxbGTiI",
+      "spotifyTrackId": "0nTRSC94wzIAVO9gBSDYFu"
     },
     {
       "id": "feature--illegal-2015",
@@ -2649,7 +2662,8 @@
       "note": "On My Coat of Many Colours",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "Pn_NMafA2rs"
+      "youtubeId": "Pn_NMafA2rs",
+      "spotifyTrackId": "7ESFpNYEQMtNvtSCr52SDY"
     },
     {
       "id": "feature--indomie-remix-2015",
@@ -2662,7 +2676,8 @@
       "note": "On Unlimited: The Tape",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "JzZWw76TbHE"
+      "youtubeId": "JzZWw76TbHE",
+      "spotifyTrackId": "3URGyUHNVnT1ARrvd62Km2"
     },
     {
       "id": "feature--instagram-police-2015",
@@ -2701,7 +2716,8 @@
       "note": "Ycee featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "xBh08NosE4w"
+      "youtubeId": "xBh08NosE4w",
+      "spotifyTrackId": "0JEVqU7ORE1sRg8a7kcGFI"
     },
     {
       "id": "feature--guest--kere-2015",
@@ -2765,7 +2781,8 @@
       "note": "On Out of the Box",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "0-7Py9JUR-A"
+      "youtubeId": "0-7Py9JUR-A",
+      "spotifyTrackId": "4OLrf8xtcb47SnaPZs7J8O"
     },
     {
       "id": "feature--motiwa-2015",
@@ -2841,7 +2858,8 @@
       "note": "Guest appearance · Seyi or Shay",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "HaO1TPjfV7M"
+      "youtubeId": "HaO1TPjfV7M",
+      "spotifyTrackId": "1sjd2X8UC82zUCRgE6SH6u"
     },
     {
       "id": "single--waptrick--rap-of-life-prod-2015",
@@ -2866,7 +2884,8 @@
       "note": "Harrysong featuring Olamide, Iyanya, Kcee, and Orezi",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "mmMraN47MXQ"
+      "youtubeId": "mmMraN47MXQ",
+      "spotifyTrackId": "1ms4BYgJtafw2ZMajZUrqF"
     },
     {
       "id": "feature--renovation-2015",
@@ -2874,11 +2893,12 @@
       "year": 2015,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Rayce",
       "note": "Rayce featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "spotifyTrackId": "1jX8GvGKF68lwbzqxdWF0Q"
     },
     {
       "id": "feature--repete-remix-2015",
@@ -2891,7 +2911,8 @@
       "note": "Deekay featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "aGIsRvsDLZY"
+      "youtubeId": "aGIsRvsDLZY",
+      "spotifyTrackId": "5GI2tiiVJQkmmAxMSjwGKI"
     },
     {
       "id": "feature--sebee-remix-2015",
@@ -2904,7 +2925,8 @@
       "note": "Sossi featuring Olamide and Oritse Femi",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "G_kXuKFWKos"
+      "youtubeId": "G_kXuKFWKos",
+      "spotifyTrackId": "1eFcgFWq6jwPgUvD7ZN8iI"
     },
     {
       "id": "single--waptrick--shakiti-bobo-2015",
@@ -2929,7 +2951,8 @@
       "note": "YBNL Allstars featuring Olamide, Lil Kesh, Viktoh, and Chinko Ekun",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "b0EIQGsG4V4"
+      "youtubeId": "b0EIQGsG4V4",
+      "spotifyTrackId": "5LaXuxittCqT7lOWwWECrf"
     },
     {
       "id": "feature--son-of-abraham-2015",
@@ -2942,7 +2965,8 @@
       "note": "Pheelz featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "50_e9fMtfD0"
+      "youtubeId": "50_e9fMtfD0",
+      "spotifyTrackId": "7M2sY0AbbTJMZn0caU6gJ5"
     },
     {
       "id": "feature--standard-remix-2015",
@@ -3092,7 +3116,8 @@
       "status": "verified",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "zvBL-E8RhW0"
+      "youtubeId": "zvBL-E8RhW0",
+      "spotifyTrackId": "5bGELkDS61x3Zx796TzEGF"
     },
     {
       "id": "feature--action-2016",
@@ -3130,7 +3155,8 @@
       "note": "Skiibii featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "SNQzmpLOOVI"
+      "youtubeId": "SNQzmpLOOVI",
+      "spotifyTrackId": "7w4c7OCpi7FI5pSwbkT9In"
     },
     {
       "id": "single--waptrick--air-rulers-2016",
@@ -3194,7 +3220,8 @@
       "note": "Obesere featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "uHGa_bSwI_w"
+      "youtubeId": "uHGa_bSwI_w",
+      "spotifyTrackId": "5PlX7XNYXdhJyIIxOixXLn"
     },
     {
       "id": "feature--guest--eleniyan-2016",
@@ -3296,7 +3323,8 @@
       "note": "Koker featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "NCq6zl90lnE"
+      "youtubeId": "NCq6zl90lnE",
+      "spotifyTrackId": "1AvQUlKdnexoPbIzRqafqL"
     },
     {
       "id": "feature--waptrick--komole-2016",
@@ -3320,7 +3348,8 @@
       "note": "Non-album single",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "gZamhhHmBrU"
+      "youtubeId": "gZamhhHmBrU",
+      "spotifyTrackId": "2eBRpGCtokxdA0wrohC45k"
     },
     {
       "id": "feature--lies-people-tell-2016",
@@ -3397,7 +3426,8 @@
       "note": "Samcole featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "p-6g-lDiOog"
+      "youtubeId": "p-6g-lDiOog",
+      "spotifyTrackId": "1KmwmmWIpBm4y4acxWgYFF"
     },
     {
       "id": "feature--no-rush-2016",
@@ -3423,7 +3453,8 @@
       "note": "A.M featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "ylUPA6AA9Ac"
+      "youtubeId": "ylUPA6AA9Ac",
+      "spotifyTrackId": "3BAptf8XeAIk1cqJDHZ9Zr"
     },
     {
       "id": "single--waptrick--oku-anow-2016",
@@ -3471,7 +3502,8 @@
       "note": "DJ Enimoney featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "RdCdYgeQXc4"
+      "youtubeId": "RdCdYgeQXc4",
+      "spotifyTrackId": "3y7LNVXCzQAPM5Av9gan4D"
     },
     {
       "id": "feature--p-t-a-people-talk-a-lot-2016",
@@ -3484,7 +3516,8 @@
       "note": "DJ Enimoney featuring Olamide and Pheelz",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "Yll6P568wIQ"
+      "youtubeId": "Yll6P568wIQ",
+      "spotifyTrackId": "0cPRQrH0eJuoJOfx5QBwdX"
     },
     {
       "id": "feature--ponkriyon-2016",
@@ -3497,7 +3530,8 @@
       "note": "Bolo J featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "MdnrczqVld0"
+      "youtubeId": "MdnrczqVld0",
+      "spotifyTrackId": "1tboWdOD8ch56LUx0C9OWz"
     },
     {
       "id": "feature--guest--problem-child-2016",
@@ -3547,7 +3581,8 @@
       "note": "Ruggedman featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "B-rXcEzhT5E"
+      "youtubeId": "B-rXcEzhT5E",
+      "spotifyTrackId": "6tGekRTklgg17E8IApqvyJ"
     },
     {
       "id": "feature--sisi-remix-2016",
@@ -3560,7 +3595,8 @@
       "note": "Sexy Steel featuring Olamide and Tekno",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "8N9KhMe9dAo"
+      "youtubeId": "8N9KhMe9dAo",
+      "spotifyTrackId": "78qgGVIwy0dxw8FM3Ie40b"
     },
     {
       "id": "feature--solo-2016",
@@ -3623,7 +3659,8 @@
       "note": "Orezi featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "9BeH7BuSfwQ"
+      "youtubeId": "9BeH7BuSfwQ",
+      "spotifyTrackId": "0yzbLGwbL9ZhZr0o47HtOz"
     },
     {
       "id": "single--who-you-epp-2016",
@@ -3686,7 +3723,8 @@
       "note": "Major Bangz featuring Olamide and Phyno",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "KjqvSBlmPyw"
+      "youtubeId": "KjqvSBlmPyw",
+      "spotifyTrackId": "3rkMoozh9uXUqIAMsdMKtK"
     },
     {
       "id": "feature--4-20-2017",
@@ -3725,7 +3763,8 @@
       "note": "DJ Consequence featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "Y7rC4rPrEtA"
+      "youtubeId": "Y7rC4rPrEtA",
+      "spotifyTrackId": "7bvJ6gzXyZTVz28SSiqy8j"
     },
     {
       "id": "feature--augment-2017",
@@ -3751,7 +3790,8 @@
       "note": "Cabo Snoop featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "MqmlhTvWIrA"
+      "youtubeId": "MqmlhTvWIrA",
+      "spotifyTrackId": "20Nl0qLlEaavdseiedrAJj"
     },
     {
       "id": "feature--ayinde-wasiu-2017",
@@ -3789,7 +3829,8 @@
       "note": "LasGiiDi featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "w2_gEdR8kok"
+      "youtubeId": "w2_gEdR8kok",
+      "spotifyTrackId": "3O1QTg84Zm1AMZKCtuqRnw"
     },
     {
       "id": "feature--carry-go-2017",
@@ -3827,7 +3868,8 @@
       "note": "Ayo Jay featuring Davido and Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "5KUFcM5Nh6M"
+      "youtubeId": "5KUFcM5Nh6M",
+      "spotifyTrackId": "1y3zfikVAnvXAEOqmM44ML"
     },
     {
       "id": "feature--waptrick--dance-to-the-beat-2017",
@@ -3964,7 +4006,8 @@
       "note": "Tipsy featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "d6zce5-Ns1Y"
+      "youtubeId": "d6zce5-Ns1Y",
+      "spotifyTrackId": "2T35wZ0wD8pZSGmd8FOERD"
     },
     {
       "id": "feature--waptrick--iyin-2017",
@@ -4063,7 +4106,8 @@
       "note": "Zlatan featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "cL0-TuLhNd4"
+      "youtubeId": "cL0-TuLhNd4",
+      "spotifyTrackId": "2vBDj5OIMy0bm1AL5Kiwv4"
     },
     {
       "id": "feature--waptrick--my-lord-2017",
@@ -4101,7 +4145,8 @@
       "note": "Masterkraft featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "L8yEmquGQ3Q"
+      "youtubeId": "L8yEmquGQ3Q",
+      "spotifyTrackId": "3pardE3n2r0uR98bM6krkU"
     },
     {
       "id": "feature--waptrick--old-wound-2017",
@@ -4138,7 +4183,8 @@
       "note": "Ice Prince featuring Olamide and Mr. Jollof",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "QcSlskEPSlA"
+      "youtubeId": "QcSlskEPSlA",
+      "spotifyTrackId": "2plY03ePI9sJfniHsGm5Fq"
     },
     {
       "id": "feature--oya-gbeff-2017",
@@ -4151,7 +4197,8 @@
       "note": "Davolee featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "aSWVQ_d1bRc"
+      "youtubeId": "aSWVQ_d1bRc",
+      "spotifyTrackId": "3rorvao0mcgZrogWwWMtAx"
     },
     {
       "id": "feature--waptrick--rap-mood-remix-2017",
@@ -4237,7 +4284,8 @@
       "note": "Timaya featuring Olamide and Phyno",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "T1yRj-9CQd4"
+      "youtubeId": "T1yRj-9CQd4",
+      "spotifyTrackId": "6om5CMv1ESOp4czrO5Ckke"
     },
     {
       "id": "single--waptrick--tobi-2017",
@@ -4273,7 +4321,8 @@
       "status": "verified",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "82evv0cA8OI"
+      "youtubeId": "82evv0cA8OI",
+      "spotifyTrackId": "4g2iN593AoYr2L7zWN6TVl"
     },
     {
       "id": "feature--we-go-party-2017",
@@ -4324,7 +4373,8 @@
       "note": "Joe EL featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "VvXPOhdKRb8"
+      "youtubeId": "VvXPOhdKRb8",
+      "spotifyTrackId": "26yJUGcbai1qjqZ39KDWRQ"
     },
     {
       "id": "feature--zero-suffer-2017",
@@ -4400,7 +4450,8 @@
       "note": "Sina Rambo featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "yNAlJ2acAtg"
+      "youtubeId": "yNAlJ2acAtg",
+      "spotifyTrackId": "5gEGWlNx6lA8xkl8sBq0RA"
     },
     {
       "id": "feature--waptrick--baby-boo-nwayo-remix-2018",
@@ -4439,7 +4490,8 @@
       "note": "Timaya featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "nWkFU9aB0tM"
+      "youtubeId": "nWkFU9aB0tM",
+      "spotifyTrackId": "3YCnOVM2c0Crpz6pOfXbwx"
     },
     {
       "id": "feature--waptrick--beca-toka-2018",
@@ -4464,7 +4516,8 @@
       "note": "Ric Hassani featuring Falz and Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "0a_Na_Hb630"
+      "youtubeId": "0a_Na_Hb630",
+      "spotifyTrackId": "6pY3UdKvI9eSl0mSaTGjYI"
     },
     {
       "id": "single--bugle-2018",
@@ -4486,7 +4539,8 @@
       "status": "verified",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "Rrf5FO6DeqU"
+      "youtubeId": "Rrf5FO6DeqU",
+      "spotifyTrackId": "0uhu7BaZLPfDYHaTE5LEva"
     },
     {
       "id": "single--criteria-2018",
@@ -4519,11 +4573,12 @@
       "year": 2018,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "M.anifest",
       "note": "M.anifest featuring Olamide",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "spotifyTrackId": "10nX55Zqm8wFrcB4kBri3n"
     },
     {
       "id": "feature--waptrick--hail-me-2018",
@@ -4548,7 +4603,8 @@
       "note": "Naira Marley featuring Olamide and Lil Kesh",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "D-zdHo4LJJI"
+      "youtubeId": "D-zdHo4LJJI",
+      "spotifyTrackId": "6PeDYFqR0COrg3IeHajh4F"
     },
     {
       "id": "single--kana-2018",
@@ -4560,7 +4616,8 @@
       "artists": "with Wizkid",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "XV4tF434fNs"
+      "youtubeId": "XV4tF434fNs",
+      "spotifyTrackId": "3uTe5oVxtAO1cnsJm4uFCJ"
     },
     {
       "id": "single--logba-logba-2018",
@@ -4597,7 +4654,8 @@
       "note": "Oladips featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "LqCI_hyTszo"
+      "youtubeId": "LqCI_hyTszo",
+      "spotifyTrackId": "5B1yObfkeQxNrGXiJTN2AK"
     },
     {
       "id": "freestyle--omo-ologo-2018",
@@ -4609,7 +4667,8 @@
       "note": "Cover or freestyle",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "w01R2fVGWJI"
+      "youtubeId": "w01R2fVGWJI",
+      "spotifyTrackId": "4ZD5GDaDfCxnDegrSYLpDB"
     },
     {
       "id": "feature--onyeoma-2018",
@@ -4622,7 +4681,8 @@
       "note": "featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "vYHtUe9nw5o"
+      "youtubeId": "vYHtUe9nw5o",
+      "spotifyTrackId": "3SDI6cQIsczTqztGifR8rG"
     },
     {
       "id": "single--owo-shayo-2018",
@@ -4646,7 +4706,8 @@
       "note": "Viktoh featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "sna-8v37d8E"
+      "youtubeId": "sna-8v37d8E",
+      "spotifyTrackId": "2Jb1bLVsttu6SKQx2d815e"
     },
     {
       "id": "feature--pesin-2018",
@@ -4659,7 +4720,8 @@
       "note": "Limerick featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "5MrzSXiOrGQ"
+      "youtubeId": "5MrzSXiOrGQ",
+      "spotifyTrackId": "2RGmmz3us0xIuz0g5hRLXn"
     },
     {
       "id": "freestyle--puna-2018",
@@ -4734,7 +4796,8 @@
       "note": "DJ Jimmy Jatt featuring Olamide and Reminisce",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "pyUmSr_aDI4"
+      "youtubeId": "pyUmSr_aDI4",
+      "spotifyTrackId": "5VBL8sOR5a9FZcm77zGUFG"
     },
     {
       "id": "feature--time-2018",
@@ -4760,7 +4823,8 @@
       "note": "D'Tunes featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "-_IbBcTfiDo"
+      "youtubeId": "-_IbBcTfiDo",
+      "spotifyTrackId": "14bjy6QOnjsBFYoVn7990L"
     },
     {
       "id": "single--waptrick--update-2018",
@@ -4797,7 +4861,8 @@
       "note": "Minister Ladi featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "k_kkBaiEiLs"
+      "youtubeId": "k_kkBaiEiLs",
+      "spotifyTrackId": "6l0NWvNL2wS6S6IMxuksrm"
     },
     {
       "id": "feature--bosi-2019",
@@ -4810,7 +4875,8 @@
       "note": "Wale Turner featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "kfgqCJ-fDTI"
+      "youtubeId": "kfgqCJ-fDTI",
+      "spotifyTrackId": "2GHRKYDbVbaeUOPlKO5XFs"
     },
     {
       "id": "freestyle--buga-small-small-2019",
@@ -4846,7 +4912,8 @@
       "note": "Fuse ODG featuring Olamide, Joey B, Kwamz & Flava",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "ROeDST6oQdA"
+      "youtubeId": "ROeDST6oQdA",
+      "spotifyTrackId": "3YBAXkQvbQh35tpnOy5Laf"
     },
     {
       "id": "feature--gobe-2019",
@@ -4859,7 +4926,8 @@
       "note": "Pheelz featuring Olamide and Naira Marley",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "En79C-61iD8"
+      "youtubeId": "En79C-61iD8",
+      "spotifyTrackId": "3OyIQ0YnHGfBQBKA3m02MR"
     },
     {
       "id": "feature--instagram-2019",
@@ -4872,7 +4940,8 @@
       "note": "Reminisce featuring Olamide, Naira Marley, and Sarz",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "aflDm3C1qhw"
+      "youtubeId": "aflDm3C1qhw",
+      "spotifyTrackId": "12eQ5caMTUuzU7JIYB272D"
     },
     {
       "id": "single--oil-and-gas-2019",
@@ -4970,7 +5039,8 @@
       "status": "verified",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "Axu_kTVC6Kw"
+      "youtubeId": "Axu_kTVC6Kw",
+      "spotifyTrackId": "0MKSWifUuisE0kf27uJOQz"
     },
     {
       "id": "feature--waptrick--timbalowo-2-0-2019",
@@ -4995,7 +5065,8 @@
       "artists": "featuring Wizkid and ID Cabasa",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "quBmrV1GXZE"
+      "youtubeId": "quBmrV1GXZE",
+      "spotifyTrackId": "1yTWPSRe64KqojEYHRjxnc"
     },
     {
       "id": "feature--vision-2020-2019",
@@ -5008,7 +5079,8 @@
       "source": "Waptrick listing / press cross-check",
       "sourceUrl": "https://waptrick.com/en/free/mp3/Olamide/",
       "era": "reinvention",
-      "youtubeId": "uhgNmbb07_4"
+      "youtubeId": "uhgNmbb07_4",
+      "spotifyTrackId": "3YPwsrdTzdnDOBCTl4d71e"
     },
     {
       "id": "feature--vision-2020-remix-2019",
@@ -5034,7 +5106,8 @@
       "note": "Danny S featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "lRqfFrnQRNg"
+      "youtubeId": "lRqfFrnQRNg",
+      "spotifyTrackId": "07AhpVypstDyPh13VEZB4c"
     },
     {
       "id": "single--waptrick--welcome-2019",
@@ -5092,9 +5165,10 @@
       "year": 2020,
       "era": "reinvention",
       "type": "single",
-      "status": "documented",
+      "status": "verified",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "spotifyTrackId": "5KFNlqNaoXZ9n0yg0vD41l"
     },
     {
       "id": "feature--guest--i-dey-hear-everything-2020",
@@ -5183,7 +5257,8 @@
       "note": "DJ Tunez featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "acrHIxttktU"
+      "youtubeId": "acrHIxttktU",
+      "spotifyTrackId": "7n194jHXt3EXVe2Kd42deD"
     },
     {
       "id": "feature--take-2020",
@@ -5196,7 +5271,8 @@
       "note": "Timi Dakolo featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "tuVdfZ4MktQ"
+      "youtubeId": "tuVdfZ4MktQ",
+      "spotifyTrackId": "0xqjBS1vMCDaE2hCIxVjbd"
     },
     {
       "id": "feature--tesinapot-2020",
@@ -5209,7 +5285,8 @@
       "note": "Jaido P featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "cIjkFCCLdcA"
+      "youtubeId": "cIjkFCCLdcA",
+      "spotifyTrackId": "1r60dcDJdwC7zSqESUL2MH"
     },
     {
       "id": "snippet--warlords",
@@ -5260,7 +5337,8 @@
       "note": "DJ Xclusive featuring Olamide and Jamopyper",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "28YQhUILIHg"
+      "youtubeId": "28YQhUILIHg",
+      "spotifyTrackId": "3ZPNzCtdjFdhnG7hjVi9al"
     },
     {
       "id": "feature--loml-2021",
@@ -5286,7 +5364,8 @@
       "note": "Non-album single",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "uWlb4lcFYRE"
+      "youtubeId": "uWlb4lcFYRE",
+      "spotifyTrackId": "06YKmpmyZcKlHOS8GuzHyO"
     },
     {
       "id": "feature--omo-x-100-2021",
@@ -5299,7 +5378,8 @@
       "note": "Reminisce featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "pvmDapi9G8E"
+      "youtubeId": "pvmDapi9G8E",
+      "spotifyTrackId": "1QsW0pGtO2t6egswtRAHa8"
     },
     {
       "id": "feature--ponpon-2021",
@@ -5389,7 +5469,8 @@
       "note": "Bad Boy Timz featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "_L_g3S1_dKM"
+      "youtubeId": "_L_g3S1_dKM",
+      "spotifyTrackId": "35hG3IPm2uVFg1B6EaiSRY"
     },
     {
       "id": "feature--sugar-daddy-2021",
@@ -5402,7 +5483,8 @@
       "note": "DJ Enimoney featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "07fRvsWNv6g"
+      "youtubeId": "07fRvsWNv6g",
+      "spotifyTrackId": "5BYCsDKV8ulLKdEYXsoHur"
     },
     {
       "id": "feature--survive-2021",
@@ -5415,7 +5497,8 @@
       "note": "Jaido P featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "hB7ZrFvdzDs"
+      "youtubeId": "hB7ZrFvdzDs",
+      "spotifyTrackId": "4vnlaHPJ496yrrXnjhBFVV"
     },
     {
       "id": "feature--turn-me-on-2021",
@@ -5441,7 +5524,8 @@
       "note": "Portable and Poco Lee featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "1D-zSE2cfgQ"
+      "youtubeId": "1D-zSE2cfgQ",
+      "spotifyTrackId": "5CfdJYNGyd9ri674WxZIMt"
     },
     {
       "id": "feature--guest--bigger-2022",
@@ -5479,7 +5563,8 @@
       "artists": "featuring Wande Coal",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "ny4XxmAWIig"
+      "youtubeId": "ny4XxmAWIig",
+      "spotifyTrackId": "1tDf8B65kTrz87w5RJmgXG"
     },
     {
       "id": "feature--guest--modupe-2022",
@@ -5594,7 +5679,8 @@
       "note": "Lojay featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "UEl7gYwUHOM"
+      "youtubeId": "UEl7gYwUHOM",
+      "spotifyTrackId": "3SA6Rfor4ghxWbyxxdpV3c"
     },
     {
       "id": "feature--bunda-2023",
@@ -5633,7 +5719,8 @@
       "note": "Young Jonn featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "uWF4Y9gXS8w"
+      "youtubeId": "uWF4Y9gXS8w",
+      "spotifyTrackId": "59VpttBOjuFDpOOdqeTDiI"
     },
     {
       "id": "feature--entertain-me-2023",
@@ -5646,7 +5733,8 @@
       "note": "Magicsticks featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "rqFc80oQWJU"
+      "youtubeId": "rqFc80oQWJU",
+      "spotifyTrackId": "5oeeieoioYAyaKrNnzM5jT"
     },
     {
       "id": "feature--joy-2023",
@@ -5697,7 +5785,8 @@
       "note": "Phyno featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "eATCSq_L2B0"
+      "youtubeId": "eATCSq_L2B0",
+      "spotifyTrackId": "4zqWVvzrPDFQmTH8lkeU5p"
     },
     {
       "id": "feature--guest--orin-2023",
@@ -5749,7 +5838,8 @@
       "note": "Zlatan featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "6pDdVWWHBUU"
+      "youtubeId": "6pDdVWWHBUU",
+      "spotifyTrackId": "7EzWkg2eZjwXwHEEhVcnxJ"
     },
     {
       "id": "feature--jah-love-2024",
@@ -5762,7 +5852,8 @@
       "note": "Peruzzi featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "HMVYA5lPk6Y"
+      "youtubeId": "HMVYA5lPk6Y",
+      "spotifyTrackId": "215MhQ9rQyT6eeswIDTgKU"
     },
     {
       "id": "feature--guest--jegede-2024",
@@ -5796,12 +5887,13 @@
       "year": 2024,
       "era": "legacy",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Id Cabasa ft Olamide ft Ayanfe",
       "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting.",
       "source": "Waptrick webarchive",
       "sourceUrl": "https://waptrick.com/en/download/Id-Cabasa-feat-Olamide-feat-Ayanfe/Ok/?type=FT&id=455703",
-      "youtubeId": "M0gSuddbu-E"
+      "youtubeId": "M0gSuddbu-E",
+      "spotifyTrackId": "5V5psOq4X9OYGEeMoyjigp"
     },
     {
       "id": "feature--guest--one-day-2024",
@@ -5878,7 +5970,8 @@
       "note": "Alpha P featuring Olamide and Thisizlondon",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "M9HSi7vc-aY"
+      "youtubeId": "M9HSi7vc-aY",
+      "spotifyTrackId": "59AFh7GmSfoUZgxH3tG75O"
     },
     {
       "id": "feature--wahala-2024",
@@ -5917,7 +6010,8 @@
       "source": "Waptrick listing / press cross-check",
       "sourceUrl": "https://waptrick.com/en/free/mp3/Olamide/",
       "era": "legacy",
-      "youtubeId": "q5Q6hsmDVoU"
+      "youtubeId": "q5Q6hsmDVoU",
+      "spotifyTrackId": "7oHYgZelWF1QOTCtR75rnj"
     },
     {
       "id": "feature--belinda-2025",
@@ -5930,7 +6024,8 @@
       "note": "L.A.X featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "P3Z298lR6EY"
+      "youtubeId": "P3Z298lR6EY",
+      "spotifyTrackId": "03pv8d28pqb7edfT6JvwzD"
     },
     {
       "id": "feature--come-on-2025",
@@ -5969,7 +6064,8 @@
       "note": "Ashidapo featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "iZ0sh5LrDTs"
+      "youtubeId": "iZ0sh5LrDTs",
+      "spotifyTrackId": "2pZvgr0hnj3724N21VvlQo"
     },
     {
       "id": "freestyle--idan-buruku-2025",
@@ -6006,7 +6102,8 @@
       "note": "Paul Play Dairo featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "QqKNJIwWaTU"
+      "youtubeId": "QqKNJIwWaTU",
+      "spotifyTrackId": "4b02vlhHJMHnHJCoBMZlmw"
     },
     {
       "id": "feature--guest--miami-2025",
@@ -6032,7 +6129,8 @@
       "note": "Nissi featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "1PGQGuNZ5Ck"
+      "youtubeId": "1PGQGuNZ5Ck",
+      "spotifyTrackId": "6a0MFMtkaQKYUOnTQrwgBc"
     },
     {
       "id": "feature--skido-2025",
@@ -6058,7 +6156,8 @@
       "source": "Waptrick listing / press cross-check",
       "sourceUrl": "https://open.spotify.com/track/2OJtdCzSnQ1G9rMJ6eD1Wt",
       "era": "legacy",
-      "youtubeId": "XSsBa-4swco"
+      "youtubeId": "XSsBa-4swco",
+      "spotifyTrackId": "2OJtdCzSnQ1G9rMJ6eD1Wt"
     },
     {
       "id": "feature--formation-2026",
@@ -6071,7 +6170,8 @@
       "note": "Adekunle Gold featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "oiqHsOvCmMo"
+      "youtubeId": "oiqHsOvCmMo",
+      "spotifyTrackId": "687RJSOAS8xDed1hoFxum1"
     },
     {
       "id": "feature--idi-bad-2026",
@@ -6084,7 +6184,8 @@
       "note": "KCee featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "-HSRg6siA84"
+      "youtubeId": "-HSRg6siA84",
+      "spotifyTrackId": "1YXpZ72vUMlT27CIMj9CAd"
     },
     {
       "id": "single--omo-naija-2026",
@@ -6120,7 +6221,8 @@
       "note": "Teni featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "-myk3e0wXsk"
+      "youtubeId": "-myk3e0wXsk",
+      "spotifyTrackId": "00NCm17kFsopwWhGgr78Rn"
     }
   ]
 }

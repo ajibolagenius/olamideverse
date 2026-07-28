@@ -13,6 +13,7 @@
     "sync:mafia-family-cms": "node --env-file=.env.local scripts/sync-mafia-family-cms.mjs",
     "fill:spotify-tracks": "node scripts/spotify/fill-spotify-track-ids.mjs",
     "fill:spotify-catalog": "node --env-file=.env.local scripts/spotify/fill-spotify-catalog-ids.mjs",
+    "verify:spotify-ids": "node --env-file=.env.local scripts/spotify/verify-spotify-ids.mjs",
     "fill:youtube-catalog": "node scripts/fill-youtube-catalog-ids.mjs",
     "apply:ytm-catalog": "node scripts/apply-ytm-catalog-ids.mjs"
   },

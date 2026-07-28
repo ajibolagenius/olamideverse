@@ -70,9 +70,48 @@ function artistsIncludeOlamide(track) {
   return (track.artists || []).some((a) => /^olamide$/i.test(String(a.name || "").trim()));
 }
 
-function titleConfidence(localTitle, spotifyTitle) {
-  const want = normalizeTitle(localTitle);
-  const got = normalizeTitle(spotifyTitle);
+/**
+ * Version qualifiers that make a track a *different recording*. normalizeTitle
+ * strips parentheticals, so "First of All (Remix)" and "First of All" collapse
+ * to the same string and the remix wrongly matches the original. Compare the
+ * qualifier sets before trusting a title match.
+ */
+const VERSION_QUALIFIERS =
+  /\b(remix|refix|rmx|live|acoustic|instrumental|freestyle|cover|edit|version|reloaded|extended)\b/gi;
+
+function qualifierSet(title) {
+  return new Set(
+    (String(title || "").match(VERSION_QUALIFIERS) || []).map((q) => q.toLowerCase()),
+  );
+}
+
+function qualifiersAgree(a, b) {
+  const qa = qualifierSet(a);
+  const qb = qualifierSet(b);
+  if (qa.size !== qb.size) return false;
+  for (const q of qa) if (!qb.has(q)) return false;
+  return true;
+}
+
+/**
+ * Variant normalisation that keeps qualifiers like "Remix". The catalogue
+ * writes "Ijo Ayo (Remix)" while Spotify writes "Ijo Ayo Remix" or
+ * "Indomie - Remix"; stripping every parenthetical drops the word from one
+ * side only, so identical recordings score as mismatches. Only credit groups
+ * (feat./with) are removed here.
+ */
+function normalizeKeepingQualifiers(s) {
+  return String(s || "")
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/[([{][^)\]}]*\b(feat|ft|featuring|with)\b[^)\]}]*[)\]}]/g, " ")
+    .replace(/\b(feat|ft|featuring)\b\.?.*$/g, " ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function scorePair(want, got) {
   if (!want || !got) return "none";
   if (want === got) return "exact";
   const shorter = want.length <= got.length ? want : got;
@@ -81,6 +120,21 @@ function titleConfidence(localTitle, spotifyTitle) {
     const ratio = shorter.length / longer.length;
     if (ratio >= 0.7) return "near";
   }
+  return "none";
+}
+
+function titleConfidence(localTitle, spotifyTitle) {
+  // A remix is not its original, regardless of how similar the base titles are.
+  if (!qualifiersAgree(localTitle, spotifyTitle)) return "none";
+  const scores = [
+    scorePair(normalizeTitle(localTitle), normalizeTitle(spotifyTitle)),
+    scorePair(
+      normalizeKeepingQualifiers(localTitle),
+      normalizeKeepingQualifiers(spotifyTitle),
+    ),
+  ];
+  if (scores.includes("exact")) return "exact";
+  if (scores.includes("near")) return "near";
   return "none";
 }
 
@@ -410,17 +464,37 @@ console.log(`Report: ${path.relative(root, reportPath)}`);
 // discard the matches already confirmed, or a 24h Retry-After strands them.
 if (apply && progress.accepted.length > 0) {
   const byId = new Map(progress.accepted.map((a) => [a.id, a]));
+  // Track IDs already held by another row. Two entries sharing one track is
+  // usually a bad match (a remix pointed at its original), so refuse the write
+  // and print it rather than silently duplicating an embed.
+  const claimed = new Map(
+    entries
+      .filter((e) => e.spotifyTrackId && !byId.has(e.id))
+      .map((e) => [e.spotifyTrackId, e.id]),
+  );
   let written = 0;
+  const collisions = [];
   for (const entry of entries) {
     const hit = byId.get(entry.id);
     if (!hit || entry.spotifyTrackId) continue;
+    if (claimed.has(hit.spotifyTrackId)) {
+      collisions.push(
+        `${entry.id} → ${hit.spotifyTrackId} (held by ${claimed.get(hit.spotifyTrackId)})`,
+      );
+      continue;
+    }
     entry.spotifyTrackId = hit.spotifyTrackId;
     entry.status = hit.statusTo;
+    claimed.set(hit.spotifyTrackId, entry.id);
     written++;
   }
   catalog.entries = entries;
   fs.writeFileSync(catalogPath, `${JSON.stringify(catalog, null, 2)}\n`);
   console.log(`Wrote ${written} accepted match(es) to content/songs/catalog.json`);
+  if (collisions.length > 0) {
+    console.log(`Skipped ${collisions.length} colliding ID(s) — review these:`);
+    for (const c of collisions) console.log(`  ${c}`);
+  }
 } else if (apply) {
   console.log("Nothing to apply.");
 } else {
