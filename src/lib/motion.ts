@@ -71,6 +71,7 @@ export function initMotion(): () => void {
           duration: DURATION.pasteUpIn,
           ease: EASE.pasteUpIn,
           delay: (i % 4) * PASTE_UP_STAGGER,
+          clearProps: "scale,opacity",
           scrollTrigger: { trigger: el, start: "top 90%", once: true },
         },
       );
@@ -85,12 +86,12 @@ export function initMotion(): () => void {
         { opacity: 1 },
         {
           opacity: 0,
-          ease: "none",
+          ease: "power1.out",
           scrollTrigger: {
             trigger: el,
-            start: "top 92%",
-            end: "center center",
-            scrub: true,
+            start: "top 90%",
+            end: "center 45%",
+            scrub: 0.5,
           },
         },
       );
