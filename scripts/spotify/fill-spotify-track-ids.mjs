@@ -1,7 +1,7 @@
 /**
  * Fill spotifyTrackId on every album tracklist row from Spotify embed metadata.
  *
- * Usage: node scripts/fill-spotify-track-ids.mjs
+ * Usage: node scripts/spotify/fill-spotify-track-ids.mjs
  */
 import fs from "node:fs";
 import path from "node:path";

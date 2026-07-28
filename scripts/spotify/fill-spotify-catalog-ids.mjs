@@ -6,7 +6,7 @@
  *   lore       → documented  (never jump lore straight to verified)
  *
  * Default is dry-run. Pass --apply to write content/songs/catalog.json.
- * Resumes from scripts/out/spotify-catalog-progress.json if present.
+ * Resumes from scripts/spotify/out/spotify-catalog-progress.json if present.
  *
  * Env: SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET
  * Usage:
@@ -19,7 +19,7 @@ import path from "node:path";
 
 const root = process.cwd();
 const catalogPath = path.join(root, "content", "songs", "catalog.json");
-const outDir = path.join(root, "scripts", "out");
+const outDir = path.join(root, "scripts", "spotify", "out");
 const reportPath = path.join(outDir, "spotify-catalog-candidates.json");
 const progressPath = path.join(outDir, "spotify-catalog-progress.json");
 const apply = process.argv.includes("--apply");

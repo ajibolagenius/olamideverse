@@ -8,9 +8,9 @@
  * Env: SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET (from .env.local)
  *
  * Usage:
- *   node --env-file=.env.local scripts/create-spotify-playlist.mjs
- *   node --env-file=.env.local scripts/create-spotify-playlist.mjs --private
- *   node --env-file=.env.local scripts/create-spotify-playlist.mjs --playlist-id=ID --replace
+ *   node --env-file=.env.local scripts/spotify/create-spotify-playlist.mjs
+ *   node --env-file=.env.local scripts/spotify/create-spotify-playlist.mjs --private
+ *   node --env-file=.env.local scripts/spotify/create-spotify-playlist.mjs --playlist-id=ID --replace
  *
  * Note (Feb 2026 Web API): add items via POST /playlists/{id}/items (not /tracks).
  */
@@ -251,9 +251,9 @@ async function main() {
     userId: me.id,
     createdAt: new Date().toISOString(),
   };
-  fs.mkdirSync(path.join(root, "scripts/out"), { recursive: true });
+  fs.mkdirSync(path.join(root, "scripts/spotify/out"), { recursive: true });
   fs.writeFileSync(
-    path.join(root, "scripts/out/spotify-playlist-result.json"),
+    path.join(root, "scripts/spotify/out/spotify-playlist-result.json"),
     JSON.stringify(out, null, 2),
   );
 

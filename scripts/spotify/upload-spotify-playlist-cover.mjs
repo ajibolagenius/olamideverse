@@ -1,12 +1,12 @@
 /**
- * Upload scripts/out/playlist-cover.jpg as the cover for a Spotify playlist.
+ * Upload scripts/spotify/out/playlist-cover.jpg as the cover for a Spotify playlist.
  *
  * Needs scopes: ugc-image-upload, playlist-modify-public, playlist-modify-private
  * Redirect URI: http://127.0.0.1:8888/callback
  *
  * Usage:
- *   node --env-file=.env.local scripts/upload-spotify-playlist-cover.mjs
- *   node --env-file=.env.local scripts/upload-spotify-playlist-cover.mjs --playlist-id=ID
+ *   node --env-file=.env.local scripts/spotify/upload-spotify-playlist-cover.mjs
+ *   node --env-file=.env.local scripts/spotify/upload-spotify-playlist-cover.mjs --playlist-id=ID
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -29,7 +29,7 @@ const playlistId =
   process.argv.find((a) => a.startsWith("--playlist-id="))?.slice(
     "--playlist-id=".length,
   ) || DEFAULT_PLAYLIST_ID;
-const coverPath = path.join(root, "scripts/out/playlist-cover.jpg");
+const coverPath = path.join(root, "scripts/spotify/out/playlist-cover.jpg");
 
 if (!CLIENT_ID || !CLIENT_SECRET) {
   console.error("Missing SPOTIFY_CLIENT_ID / SPOTIFY_CLIENT_SECRET");
