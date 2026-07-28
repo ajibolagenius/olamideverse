@@ -137,6 +137,36 @@ async function searchTracks(token, query) {
   return json.tracks?.items ?? [];
 }
 
+/**
+ * Identity of a *recording*, not of a Spotify release. Spotify routinely
+ * carries the same track under several IDs (host's single, album, later
+ * compilation), which is not genuine ambiguity — see `pickMatch`.
+ */
+function recordingKey(track) {
+  const artists = (track.artists || [])
+    .map((a) => normalizeTitle(a.name))
+    .sort()
+    .join("|");
+  return `${normalizeTitle(track.name)}::${artists}`;
+}
+
+/** Earliest release wins — that's the original drop rather than a reissue. */
+function releaseSortKey(track) {
+  const date = String(track.album?.release_date || "9999");
+  // Normalize "2014" / "2014-03" / "2014-03-01" to a comparable form.
+  const [y = "9999", m = "12", d = "31"] = date.split("-");
+  return `${y.padStart(4, "0")}-${m.padStart(2, "0")}-${d.padStart(2, "0")}`;
+}
+
+function pickCanonical(pool) {
+  return [...pool].sort((a, b) => {
+    const byDate = releaseSortKey(a.track).localeCompare(releaseSortKey(b.track));
+    if (byDate !== 0) return byDate;
+    // Deterministic tie-break so re-runs pick the same ID.
+    return a.track.id.localeCompare(b.track.id);
+  })[0];
+}
+
 function pickMatch(entry, tracks) {
   const withOlamide = tracks.filter(artistsIncludeOlamide);
   if (withOlamide.length === 0) {
@@ -160,8 +190,17 @@ function pickMatch(entry, tracks) {
 
   const exact = scored.filter((x) => x.conf === "exact");
   const pool = exact.length > 0 ? exact : scored;
-  const uniqueIds = new Set(pool.map((x) => x.track.id));
-  if (uniqueIds.size > 1) {
+
+  // Collapse duplicate releases of one recording; only distinct recordings
+  // are true ambiguity (e.g. an original and a separate remix both matching).
+  const groups = new Map();
+  for (const x of pool) {
+    const key = recordingKey(x.track);
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(x);
+  }
+
+  if (groups.size > 1) {
     return {
       accept: false,
       reason: "ambiguous",
@@ -169,11 +208,15 @@ function pickMatch(entry, tracks) {
     };
   }
 
-  const best = pool[0];
+  const group = [...groups.values()][0];
+  const best = pickCanonical(group);
+  const duplicates = new Set(group.map((x) => x.track.id)).size;
   return {
     accept: true,
     confidence: best.conf,
     track: best.track,
+    // Recorded in the report so a reviewer can see a dedupe happened.
+    ...(duplicates > 1 ? { duplicateReleases: duplicates } : {}),
   };
 }
 
@@ -183,6 +226,7 @@ function summarizeCandidate(track) {
     name: track.name,
     artists: (track.artists || []).map((a) => a.name).join(", "),
     album: track.album?.name,
+    releaseDate: track.album?.release_date,
     url: track.external_urls?.spotify,
   };
 }
@@ -310,8 +354,14 @@ try {
         query: usedQuery,
         spotifyTrackId: decision.track.id,
         spotify: summarizeCandidate(decision.track),
+        ...(decision.duplicateReleases
+          ? { duplicateReleases: decision.duplicateReleases }
+          : {}),
       });
-      console.log(`OK → ${statusTo} (${decision.confidence})`);
+      const dupNote = decision.duplicateReleases
+        ? `, ${decision.duplicateReleases} releases → earliest`
+        : "";
+      console.log(`OK → ${statusTo} (${decision.confidence}${dupNote})`);
     } else {
       progress.rejected.push({
         id: entry.id,
@@ -356,23 +406,28 @@ console.log(`  documented→verified: ${report.counts.documentedToVerified}`);
 console.log(`  lore→documented: ${report.counts.loreToDocumented}`);
 console.log(`Report: ${path.relative(root, reportPath)}`);
 
-if (aborted) {
-  process.exit(2);
-}
-
+// Apply before honouring an abort — a rate-limit partway through must not
+// discard the matches already confirmed, or a 24h Retry-After strands them.
 if (apply && progress.accepted.length > 0) {
   const byId = new Map(progress.accepted.map((a) => [a.id, a]));
+  let written = 0;
   for (const entry of entries) {
     const hit = byId.get(entry.id);
     if (!hit || entry.spotifyTrackId) continue;
     entry.spotifyTrackId = hit.spotifyTrackId;
     entry.status = hit.statusTo;
+    written++;
   }
   catalog.entries = entries;
   fs.writeFileSync(catalogPath, `${JSON.stringify(catalog, null, 2)}\n`);
-  console.log(`Wrote accepted matches to content/songs/catalog.json`);
+  console.log(`Wrote ${written} accepted match(es) to content/songs/catalog.json`);
 } else if (apply) {
   console.log("Nothing to apply.");
-} else if (!aborted) {
+} else {
   console.log("Re-run with --apply to write accepted matches.");
+}
+
+if (aborted) {
+  console.log("Resume the remaining entries with the same command once the window clears.");
+  process.exit(2);
 }
