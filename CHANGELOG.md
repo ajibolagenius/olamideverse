@@ -12,7 +12,19 @@ Dates are UTC calendar days of the ship window.
 
 ## [Unreleased]
 
-—
+### 2026-07-28
+
+- **Discography — *YBNL MaFia Family* (2018)** — added the label's only group
+  album (13 tracks, 14 December 2018, credited to "YBNL MaFia Family" rather
+  than Olamide) with verified Spotify track IDs, cover art, credits and key
+  bars. Filed under the Reinvention era; discography counts bumped 14 → 15.
+- **Reinvention era** — context copy and moments now acknowledge the December
+  2018 group album instead of reading as an album-free stretch.
+- **Influence graph** — Picazo Rhap, Yomi Blaze, Limerick and Temmie Ovwasa
+  now deep-link to the album they actually appear on.
+- **Fix: songs catalogue** — "Motigbana" and "Poverty Die" (2018) were
+  attributed to the 2012 *YBNL* album; they're now album tracks on *YBNL
+  MaFia Family*, retained as singles via `alsoSingles`.
 
 ## [0.1.0] — 2026-07-27
 

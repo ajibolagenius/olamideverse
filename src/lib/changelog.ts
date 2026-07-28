@@ -18,6 +18,22 @@ export type ChangelogDay = {
 
 export const CHANGELOG: ChangelogDay[] = [
   {
+    date: "2026-07-28",
+    label: "28 July 2026",
+    items: [
+      {
+        title: "YBNL MaFia Family joins the discography",
+        body: "The label's only group album — thirteen tracks, 14 December 2018, credited to “YBNL MaFia Family” rather than to Olamide — now has its own page. It's where Fireboy DML's “Jealous” first appeared, two months after he signed. The Reinvention chapter and the roster graph link into it.",
+        href: "/albums/ybnl-mafia-family",
+      },
+      {
+        title: "“Motigbana” and “Poverty Die” filed correctly",
+        body: "Both 2018 singles were listed against the 2012 YBNL album in the songs catalogue. They now sit on YBNL MaFia Family, where they were actually released, still flagged as singles.",
+        href: "/songs",
+      },
+    ],
+  },
+  {
     date: "2026-07-27",
     label: "27 July 2026",
     items: [

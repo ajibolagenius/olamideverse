@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const TICKER = [
-  "14 releases · 2011 — 2025",
+  "15 releases · 2011 — 2025",
   "Cover art forward",
   "Filter by era",
   "Embeds only — no hosted audio",
@@ -38,7 +38,7 @@ export default async function AlbumsPage() {
             The <span className="text-danfo">Discography</span>
           </>
         }
-        intro="Fourteen studio albums, mixtapes and EPs from 2011 to 2025. Filter by era, sort by release — every cover links back to its chapter of the archive."
+        intro="Fifteen studio albums, mixtapes, EPs and collaborative records from 2011 to 2025. Filter by era, sort by release — every cover links back to its chapter of the archive."
       />
       <Ticker items={TICKER} />
       <section className="mx-auto max-w-6xl px-5 py-14 sm:px-8">

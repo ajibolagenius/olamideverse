@@ -2,7 +2,7 @@
   "generatedAt": "2026-07-18T22:30:26.954Z",
   "note": "Album covers sourced from Deezer public CDN for editorial/archival placeholders in the UI design — OPEN ITEM before any rights-holder pitch (see Legal → Images). Era/home photos from Wikimedia Commons under their stated Creative Commons licenses, credited on-page. Cover art remains copyright of the rights holders and will be replaced or removed on request.",
   "directories": {
-    "albums": "Discography + album detail covers (14 releases from the UI Discography page)",
+    "albums": "Discography + album detail covers (15 releases from the UI Discography page)",
     "eras": "Era chapter context photos (image-slot placeholders on each Era page)",
     "home": "Home page chapter card photo (home-upstart-photo slot)"
   },
@@ -86,6 +86,16 @@
       "file": "albums/lagos-nawa.jpg",
       "bytes": 90637,
       "sourceUrl": "https://www.deezer.com/album/61745052"
+    },
+    {
+      "slug": "ybnl-mafia-family",
+      "year": 2018,
+      "title": "YBNL MaFia Family",
+      "era": "reinvention",
+      "type": "joint",
+      "file": "albums/ybnl-mafia-family.jpg",
+      "bytes": 45910,
+      "sourceUrl": "https://www.deezer.com/album/81791702"
     },
     {
       "slug": "999",

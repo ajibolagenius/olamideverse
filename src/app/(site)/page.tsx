@@ -42,7 +42,7 @@ const DOORS = [
   {
     href: "/albums",
     title: "Browse the Discography",
-    copy: "Fourteen releases, filterable by era",
+    copy: "Fifteen releases, filterable by era",
   },
   {
     href: "/media",

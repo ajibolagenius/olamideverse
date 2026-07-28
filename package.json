@@ -10,6 +10,7 @@
     "lint": "eslint",
     "seed:cms": "node --env-file=.env.local scripts/seed-cms.mjs",
     "sync:research-cms": "node --env-file=.env.local scripts/sync-research-content-cms.mjs",
+    "sync:mafia-family-cms": "node --env-file=.env.local scripts/sync-mafia-family-cms.mjs",
     "fill:spotify-tracks": "node scripts/fill-spotify-track-ids.mjs",
     "fill:spotify-catalog": "node --env-file=.env.local scripts/fill-spotify-catalog-ids.mjs",
     "fill:youtube-catalog": "node scripts/fill-youtube-catalog-ids.mjs"

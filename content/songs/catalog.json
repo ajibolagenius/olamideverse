@@ -100,6 +100,12 @@
     },
     {
       "id": "ybnl--voice-of-the-street"
+    },
+    {
+      "id": "ybnl-mafia-family--motigbana"
+    },
+    {
+      "id": "ybnl-mafia-family--poverty-die"
     }
   ],
   "entries": [
@@ -4364,18 +4370,6 @@
       "youtubeId": "pGU6mSi22AE"
     },
     {
-      "id": "single--motigbana-2018",
-      "title": "Motigbana",
-      "year": 2018,
-      "era": "reinvention",
-      "type": "single",
-      "status": "documented",
-      "note": "YBNL Mafia Family",
-      "albumSlug": "ybnl",
-      "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
-    },
-    {
       "id": "feature--naami-2018",
       "title": "Naami",
       "year": 2018,
@@ -4453,18 +4447,6 @@
       "status": "documented",
       "artists": "Limerick",
       "note": "Limerick featuring Olamide",
-      "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
-    },
-    {
-      "id": "single--poverty-die-2018",
-      "title": "Poverty Die",
-      "year": 2018,
-      "era": "reinvention",
-      "type": "single",
-      "status": "documented",
-      "note": "YBNL Mafia Family",
-      "albumSlug": "ybnl",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
     },
