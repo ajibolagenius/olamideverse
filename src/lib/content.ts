@@ -21,6 +21,8 @@ import {
     type SlangTerm,
     type Snippet,
     type Song,
+    type SongStatus,
+    type SongType,
 } from "./content-schema";
 import { createPublicClient } from "@/lib/supabase/public";
 
@@ -450,6 +452,104 @@ export function eraSlugForYear(year: number): string {
 
 export function albumTrackSongId(albumSlug: string, title: string): string {
     return `${albumSlug}--${slugifySongPart(title)}`;
+}
+
+/**
+ * Which row survives when the same record shows up twice: album tracks
+ * (derived from the discography) beat catalogue singles, which beat the
+ * researched long tail. Snippets sit last — they're audiogram pointers to a
+ * record documented elsewhere, never the primary listing for it.
+ */
+const SONG_TYPE_PRIORITY: Record<SongType, number> = {
+    "album-track": 0,
+    single: 1,
+    feature: 2,
+    freestyle: 3,
+    live: 4,
+    other: 5,
+    snippet: 6,
+};
+
+/** Confidence tiebreaker — a cited release outranks fan memory. */
+const SONG_STATUS_PRIORITY: Record<SongStatus, number> = {
+    verified: 0,
+    documented: 1,
+    lore: 2,
+};
+
+/**
+ * Two rows are the same record when their titles normalise alike AND they
+ * either share an embed ID or land within a year of each other. The year
+ * window keeps genuinely distinct cuts that reuse a title apart — the 2010
+ * "Tribute to Dagrin" single and the 2012 posse-cut feature stay two entries.
+ */
+function isSameRecord(a: Song, b: Song): boolean {
+    if (a.spotifyTrackId && a.spotifyTrackId === b.spotifyTrackId) return true;
+    if (a.youtubeId && a.youtubeId === b.youtubeId) return true;
+    return Math.abs(a.year - b.year) <= 1;
+}
+
+/** Fold a losing row's evidence into the winner without overwriting it. */
+function absorbSong(winner: Song, loser: Song): void {
+    winner.spotifyTrackId ??= loser.spotifyTrackId;
+    winner.youtubeId ??= loser.youtubeId;
+    winner.artists ??= loser.artists;
+    winner.note ??= loser.note;
+    winner.source ??= loser.source;
+    winner.sourceUrl ??= loser.sourceUrl;
+    // Confidence is a property of the record, not the row it arrived on.
+    if (SONG_STATUS_PRIORITY[loser.status] < SONG_STATUS_PRIORITY[winner.status]) {
+        winner.status = loser.status;
+    }
+    if (loser.type === "single" && winner.type === "album-track") {
+        winner.alsoSingle = true;
+        winner.singleYear ??= loser.year;
+    }
+}
+
+/**
+ * Collapse the catalogue to one row per record. The same cut can legitimately
+ * arrive from three directions — an album tracklist, a researched
+ * single/feature row, and a snippet pointer — so the catalogue page runs this
+ * before rendering. `getSongs()` itself stays un-deduped: content
+ * cross-references (slang.json `songId`) resolve against the full set.
+ */
+export function dedupeSongs(songs: Song[]): Song[] {
+    const inputOrder = new Map(songs.map((song, index) => [song, index] as const));
+    const byPriority = [...songs].sort((a, b) => {
+        const type = SONG_TYPE_PRIORITY[a.type] - SONG_TYPE_PRIORITY[b.type];
+        if (type !== 0) return type;
+        const status =
+            SONG_STATUS_PRIORITY[a.status] - SONG_STATUS_PRIORITY[b.status];
+        if (status !== 0) return status;
+        const embed =
+            Number(Boolean(b.spotifyTrackId || b.youtubeId)) -
+            Number(Boolean(a.spotifyTrackId || a.youtubeId));
+        if (embed !== 0) return embed;
+        return (inputOrder.get(a) ?? 0) - (inputOrder.get(b) ?? 0);
+    });
+
+    const buckets = new Map<string, Song[]>();
+    const kept: Array<{ song: Song; order: number }> = [];
+
+    for (const song of byPriority) {
+        const key = slugifySongPart(song.title);
+        const bucket = buckets.get(key);
+        const winner = bucket?.find((candidate) => isSameRecord(candidate, song));
+        if (winner) {
+            absorbSong(winner, song);
+            continue;
+        }
+        const entry = { ...song };
+        if (bucket) {
+            bucket.push(entry);
+        } else {
+            buckets.set(key, [entry]);
+        }
+        kept.push({ song: entry, order: inputOrder.get(song) ?? 0 });
+    }
+
+    return kept.sort((a, b) => a.order - b.order).map((row) => row.song);
 }
 
 function deriveAlbumTracks(

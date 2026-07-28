@@ -3,7 +3,7 @@ import Link from "next/link";
 import PosterHero from "@/components/PosterHero";
 import SongCatalog from "@/components/SongCatalog";
 import Ticker from "@/components/chrome/Ticker";
-import { getEras, getSongs } from "@/lib/content";
+import { dedupeSongs, getEras, getSongs } from "@/lib/content";
 import { resolvePageMetadata } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -24,7 +24,9 @@ const TICKER = [
 ];
 
 export default async function SongsPage() {
-  const [songs, eras] = await Promise.all([getSongs(), getEras()]);
+  const [allSongs, eras] = await Promise.all([getSongs(), getEras()]);
+  // One row per record — an album cut absorbs its single/feature/snippet twins.
+  const songs = dedupeSongs(allSongs);
   const catalogCount = songs.filter((s) => s.type !== "album-track").length;
   const albumTrackCount = songs.length - catalogCount;
 
@@ -47,7 +49,9 @@ export default async function SongsPage() {
             {catalogCount} researched). Status badges mark confidence:{" "}
             <b className="text-ink">Verified</b> has a working embed,{" "}
             <b className="text-ink">Documented</b> has a cited release,{" "}
-            <b className="text-ink">Lore</b> is fan-memory / soft evidence. Album
+            <b className="text-ink">Lore</b> is fan-memory / soft evidence. Each
+            record appears once — where a cut reached us as both an album track
+            and a single, feature or snippet, the album row carries it. Album
             cuts stay linked to the{" "}
             <Link
               href="/albums"

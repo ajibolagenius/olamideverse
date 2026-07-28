@@ -23,23 +23,27 @@ export const CHANGELOG: ChangelogDay[] = [
     items: [
       {
         title: "YBNL MaFia Family joins the discography",
-        body: "The label's only group album — thirteen tracks, 14 December 2018, credited to “YBNL MaFia Family” rather than to Olamide — now has its own page. It's where Fireboy DML's “Jealous” first appeared, two months after he signed. The Reinvention chapter and the roster graph link into it.",
+        body: "The label's only group album — thirteen tracks, 14 December 2018 — now has its own page, with Reinvention-era context and roster deep-links into it. “Motigbana” and “Poverty Die” sit on this release instead of the 2012 YBNL album, still flagged as singles. It's also where Fireboy DML's “Jealous” first appeared.",
         href: "/albums/ybnl-mafia-family",
       },
       {
-        title: "“Motigbana” and “Poverty Die” filed correctly",
-        body: "Both 2018 singles were listed against the 2012 YBNL album in the songs catalogue. They now sit on YBNL MaFia Family, where they were actually released, still flagged as singles.",
-        href: "/songs",
-      },
-      {
         title: "Street Lingo — the words that travelled",
-        body: "A lexicon of the Yoruba and Mainland terms Olamide put into national circulation — Ẹni Dúró, Shoki, Ọmọ Wóbè, Wó! — with what each one means and the record that carried it. Filter by era, search by term, and jump straight to the album.",
+        body: "A lexicon of the Yoruba and Mainland terms Olamide put into national circulation — Ẹni Dúró, Shoki, Ọmọ Wóbè, Wó! — with what each means, the record that carried it, era filters, search, and a paste-up poster you can compose from any entry.",
         href: "/slang",
       },
       {
+        title: "Album pages: key bars ride with the player",
+        body: "Tracklists now keep key bars and credits in a sticky side rail beside the embed. Skip a track and the matching bar lights up where it already sits — no jumping layout.",
+        href: "/albums",
+      },
+      {
         title: "A guided route through the impact map",
-        body: "The map now offers a four-stop walk from Bariga out to the first international dates, and the influence graph lets you jump to a YBNL signing year. Both are built from the archive's own data, so they stay current as pins and signings are added.",
+        body: "The map offers a four-stop walk from Bariga out to the first international dates, and the influence graph lets you jump to a YBNL signing year. Both stay current as pins and signings are added.",
         href: "/impact",
+      },
+      {
+        title: "Editorial texture across the archive",
+        body: "Adire patterning on heroes and the footer, drop-cap chapter prose, and Yoruba proverb callouts in long-form pages — small Afro-street cues that keep the reading surface from going flat.",
       },
       {
         title: "Accessibility pass across chrome & Fan Zone",

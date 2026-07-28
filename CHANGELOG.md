@@ -14,34 +14,24 @@ Dates are UTC calendar days of the ship window.
 
 ### 2026-07-28
 
-- **Discography — *YBNL MaFia Family* (2018)** — added the label's only group
-  album (13 tracks, 14 December 2018, credited to "YBNL MaFia Family" rather
-  than Olamide) with verified Spotify track IDs, cover art, credits and key
-  bars. Filed under the Reinvention era; discography counts bumped 14 → 15.
-- **Reinvention era** — context copy and moments now acknowledge the December
-  2018 group album instead of reading as an album-free stretch.
-- **Influence graph** — Picazo Rhap, Yomi Blaze, Limerick and Temmie Ovwasa
-  now deep-link to the album they actually appear on.
-- **Fix: songs catalogue** — "Motigbana" and "Poverty Die" (2018) were
-  attributed to the 2012 *YBNL* album; they're now album tracks on *YBNL
-  MaFia Family*, retained as singles via `alsoSingles`.
-- **Street Lingo (`/slang`)** — a lexicon of the Yoruba and Mainland terms
-  Olamide put into national circulation, each linked to the record that
-  carried it. Era filter, free-text find, section OG card; wired into the
-  More menu, sitemap and site search.
-- **Slang content pipeline** — `slangTermSchema` + `getSlang()` join the
-  Zod-validated loader in `src/lib/content.ts`, cross-checking every entry's
-  era, `albumSlug` and `songId` against the archive at build time.
-- **Poster generator** — paste-up flyer composer on the Street Lingo page,
-  built on the shared focus-trapped `ui/Modal` and the era accent palette.
-- **Impact map & influence graph** — a guided "Bariga to the world" route on
-  the map, and roster signing-wave shortcuts on the graph. Both derive from
-  the content files, so new pins and signings appear without a code change.
-- **Accessibility pass** — mobile nav is focus-trapped with focus restore;
-  More / Fan Zone menus use disclosure semantics; search, players, impact
-  detail, cinema, and polls announce via live regions; comment/poll controls
-  get proper labels and group roles; heading hierarchy and external-link cues
-  cleaned up; admin shell gains skip link + `<main>` landmarks.
+- **Discography — *YBNL MaFia Family* (2018)** — label group album (13 tracks,
+  14 December 2018) with Spotify IDs, cover, credits and key bars; Reinvention
+  era copy and moments updated; roster graph deep-links Picazo Rhap, Yomi Blaze,
+  Limerick and Temmie Ovwasa to the album; “Motigbana” / “Poverty Die” moved
+  from the 2012 *YBNL* listing onto this release (still flagged as singles).
+- **Street Lingo (`/slang`)** — Yoruba / Mainland lexicon with era filter,
+  search, OG card, nav/sitemap wiring, Zod-validated content loader, and a
+  paste-up poster composer on the page.
+- **Impact map & influence graph** — guided “Bariga to the world” route on the
+  map; roster signing-wave shortcuts on the graph (both driven from content).
+- **Album tracklists** — sticky side rail for key bars + credits beside the
+  player; the bar naming the playing track lights up as you skip.
+- **Editorial chrome** — adire motif on heroes and footer; drop-cap prose and
+  Yoruba proverb callouts in MDX; steadier GSAP lifecycle around reduced-motion.
+- **Accessibility pass** — focus-trapped mobile nav with restore; disclosure
+  menus; live regions for search, players, impact, cinema and polls; labeled
+  comment/poll controls; heading and external-link cues; admin skip link +
+  `<main>`.
 
 ## [0.1.0] — 2026-07-27
 
