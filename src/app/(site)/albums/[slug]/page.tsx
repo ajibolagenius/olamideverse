@@ -209,27 +209,18 @@ export default async function AlbumPage({
       <section className="mx-auto max-w-6xl px-5 pt-8 pb-16 sm:px-8">
         <SectionLabel>Tracklist</SectionLabel>
         {album.tracklist.length > 0 ? (
-          <div className="grid gap-11 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
-            <Tracklist
-              tracks={album.tracklist}
-              albumSlug={album.slug}
-              albumTitle={album.title}
-              albumYear={album.year}
-              spotifyAlbumId={album.embeds.spotifyAlbumId}
-              keyBars={album.keyBars}
-              showPlaylist={flags.fanzone}
-              blockedYoutube={blockedYoutube}
-              blockedSpotify={blockedSpotify}
-            />
-            {album.credits ? (
-              <div className="ov-paste-up border-3 border-ink bg-white p-[18px] shadow-paste-sm">
-                <h3 className="mb-2.5 text-xs font-bold tracking-[0.06em] uppercase">
-                  Credits
-                </h3>
-                <p className="text-[0.9rem] leading-relaxed text-ink-soft">{album.credits}</p>
-              </div>
-            ) : null}
-          </div>
+          <Tracklist
+            tracks={album.tracklist}
+            albumSlug={album.slug}
+            albumTitle={album.title}
+            albumYear={album.year}
+            spotifyAlbumId={album.embeds.spotifyAlbumId}
+            keyBars={album.keyBars}
+            credits={album.credits}
+            showPlaylist={flags.fanzone}
+            blockedYoutube={blockedYoutube}
+            blockedSpotify={blockedSpotify}
+          />
         ) : (
           <EmptyState message="Tracklist coming with the content pass — check back as the archive grows." />
         )}
