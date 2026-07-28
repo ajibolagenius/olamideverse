@@ -501,7 +501,13 @@ function absorbSong(winner: Song, loser: Song): void {
     if (SONG_STATUS_PRIORITY[loser.status] < SONG_STATUS_PRIORITY[winner.status]) {
         winner.status = loser.status;
     }
-    if (loser.type === "single" && winner.type === "album-track") {
+    // Only a cited single earns the "also single" badge — lore-tier evidence
+    // shouldn't put a promo claim on a verified album cut.
+    if (
+        loser.type === "single" &&
+        winner.type === "album-track" &&
+        loser.status !== "lore"
+    ) {
         winner.alsoSingle = true;
         winner.singleYear ??= loser.year;
     }
