@@ -4,7 +4,7 @@
  * and fall back to offline.html for uncached navigations. No push/background
  * sync — this project doesn't need them.
  */
-const VERSION = "2efb3caeff";
+const VERSION = "ddc99f5144";
 const SHELL_CACHE = `ov-shell-${VERSION}`;
 const RUNTIME_CACHE = `ov-runtime-${VERSION}`;
 // Deliberately unversioned — pages a reader explicitly saved for offline

@@ -216,35 +216,19 @@ export default async function AlbumPage({
               albumTitle={album.title}
               albumYear={album.year}
               spotifyAlbumId={album.embeds.spotifyAlbumId}
+              keyBars={album.keyBars}
               showPlaylist={flags.fanzone}
               blockedYoutube={blockedYoutube}
               blockedSpotify={blockedSpotify}
             />
-            {(album.keyBars.length > 0 || album.credits) && (
-              <div className="flex flex-col gap-5">
-                {album.keyBars.length > 0 ? (
-                  <p className="-mb-1.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
-                    Key bars
-                  </p>
-                ) : null}
-                {album.keyBars.map((kb) => (
-                  <div key={kb.title} className="border-l-6 border-oxide pl-4">
-                    <h3 className="mb-1.5 text-sm font-bold tracking-[0.04em] uppercase">
-                      {kb.title}
-                    </h3>
-                    <p className="text-[0.95rem] leading-relaxed text-ink-soft">{kb.body}</p>
-                  </div>
-                ))}
-                {album.credits ? (
-                  <div className="ov-paste-up border-3 border-ink bg-white p-[18px] shadow-paste-sm">
-                    <h3 className="mb-2.5 text-xs font-bold tracking-[0.06em] uppercase">
-                      Credits
-                    </h3>
-                    <p className="text-[0.9rem] leading-relaxed text-ink-soft">{album.credits}</p>
-                  </div>
-                ) : null}
+            {album.credits ? (
+              <div className="ov-paste-up border-3 border-ink bg-white p-[18px] shadow-paste-sm">
+                <h3 className="mb-2.5 text-xs font-bold tracking-[0.06em] uppercase">
+                  Credits
+                </h3>
+                <p className="text-[0.9rem] leading-relaxed text-ink-soft">{album.credits}</p>
               </div>
-            )}
+            ) : null}
           </div>
         ) : (
           <EmptyState message="Tracklist coming with the content pass — check back as the archive grows." />

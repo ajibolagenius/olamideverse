@@ -59,7 +59,10 @@ export function initMotion(): () => void {
     });
 
     // paste-up
-    document.querySelectorAll<HTMLElement>(".ov-paste-up").forEach((el, i) => {
+    let pasteUpIndex = 0;
+    const pasteUp = (el: HTMLElement) => {
+      if (el.dataset.ovMotion) return; // already has a tween
+      el.dataset.ovMotion = "paste-up";
       const tilt = parseFloat(el.dataset.tilt ?? "0");
       gsap.fromTo(
         el,
@@ -70,12 +73,17 @@ export function initMotion(): () => void {
           rotation: tilt,
           duration: DURATION.pasteUpIn,
           ease: EASE.pasteUpIn,
-          delay: (i % 4) * PASTE_UP_STAGGER,
-          clearProps: "scale,opacity",
+          delay: (pasteUpIndex++ % 4) * PASTE_UP_STAGGER,
+          // Deliberately NOT clearing opacity: the `.js .ov-paste-up` rule in
+          // globals.css sets opacity 0, so dropping the inline opacity GSAP
+          // wrote hands the card straight back to that rule and it vanishes
+          // the instant it finishes animating in.
+          clearProps: "scale",
           scrollTrigger: { trigger: el, start: "top 90%", once: true },
         },
       );
-    });
+    };
+    document.querySelectorAll<HTMLElement>(".ov-paste-up").forEach(pasteUp);
 
     // duotone-shift
     document.querySelectorAll<HTMLElement>(".ov-duotone").forEach((el) => {
@@ -109,7 +117,44 @@ export function initMotion(): () => void {
         pinSpacing: false,
       });
     });
+
+    /**
+     * Filterable grids re-render their cards, and modals mount on demand —
+     * those nodes arrive after the pass above, so nothing would ever animate
+     * them and the `.js .ov-paste-up` rule would keep them at opacity 0
+     * permanently. Catch them as they land.
+     */
+    const observer = new MutationObserver((records) => {
+      for (const record of records) {
+        for (const node of record.addedNodes) {
+          if (!(node instanceof HTMLElement)) continue;
+          if (node.classList.contains("ov-paste-up")) pasteUp(node);
+          node.querySelectorAll<HTMLElement>(".ov-paste-up").forEach(pasteUp);
+        }
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Trigger positions are measured before cover art and the subset fonts
+    // land; without a recalc, a card whose start point moved offscreen never
+    // fires and stays hidden.
+    const remeasure = () => ScrollTrigger.refresh();
+    window.addEventListener("load", remeasure);
+    document.fonts?.ready.then(remeasure).catch(() => {});
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("load", remeasure);
+    };
   });
 
-  return () => mm.revert();
+  return () => {
+    mm.revert();
+    // revert() strips the inline opacity GSAP wrote, handing every card back
+    // to the CSS rule that hides it. Drop the markers so the next pass treats
+    // anything that survived the navigation as fresh and reveals it again.
+    document
+      .querySelectorAll<HTMLElement>("[data-ov-motion]")
+      .forEach((el) => delete el.dataset.ovMotion);
+  };
 }

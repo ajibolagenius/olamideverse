@@ -42,8 +42,13 @@ export const trackSchema = z.object({
     spotifyTrackId: z.string().optional(),
 });
 
-const keyBarSchema = z.object({
-    title: z.string(), // track name, e.g. `"Eni Duro"`
+export const keyBarSchema = z.object({
+    /**
+     * Track name in quotes, optionally with a credit tail — `"Eni Duro"` or
+     * `"Confam Ni" (ft. Wizkid)`. Tracklist reads the quoted part to pair a
+     * bar with the track that's playing, so keep the quotes.
+     */
+    title: z.string(),
     body: z.string(),
 });
 
@@ -326,6 +331,7 @@ export type Album = z.infer<typeof albumSchema> & { slug: string; body: string }
 export type BiographyChapter = z.infer<typeof biographyChapterSchema>;
 export type Biography = z.infer<typeof biographySchema> & { slug: string; body: string };
 export type Track = z.infer<typeof trackSchema>;
+export type KeyBar = z.infer<typeof keyBarSchema>;
 export type MediaItem = z.infer<typeof mediaItemSchema>;
 export type Snippet = z.infer<typeof snippetSchema>;
 export type InfluenceNode = z.infer<typeof influenceNodeSchema>;

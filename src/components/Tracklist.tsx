@@ -1,12 +1,23 @@
 "use client";
 
-import { useRef, useState, type PointerEvent } from "react";
+import { useMemo, useRef, useState, type PointerEvent } from "react";
 import EmbedFrame from "./EmbedFrame";
 import PlaylistButton from "@/components/fanzone/PlaylistButton";
-import type { Track } from "@/lib/content-schema";
+import type { KeyBar, Track } from "@/lib/content-schema";
 
 function slugifyTrack(title: string): string {
   return title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
+/**
+ * Key bar titles carry the track in quotes, sometimes with a credit tail —
+ * `"Confam Ni" (ft. Wizkid)`. Pull the quoted part so a bar can be paired
+ * with the track that's playing; bars that don't name a track just stay in
+ * the list below.
+ */
+function keyBarTrackSlug(title: string): string | null {
+  const quoted = title.match(/"([^"]+)"/);
+  return quoted ? slugifyTrack(quoted[1]) : null;
 }
 
 function trackHasEmbed(track: Track): boolean {
@@ -26,6 +37,7 @@ export default function Tracklist({
   albumTitle,
   albumYear,
   spotifyAlbumId,
+  keyBars = [],
   showPlaylist = false,
   blockedYoutube = [],
   blockedSpotify = [],
@@ -35,6 +47,8 @@ export default function Tracklist({
   albumTitle: string;
   albumYear: number;
   spotifyAlbumId?: string;
+  /** Album key bars — the one naming the playing track pins under the player. */
+  keyBars?: KeyBar[];
   showPlaylist?: boolean;
   blockedYoutube?: string[];
   blockedSpotify?: string[];
@@ -48,6 +62,15 @@ export default function Tracklist({
   const activeTrackEmbed = nowPlaying && trackHasEmbed(nowPlaying);
   const embeddableTracks = tracks.filter(trackHasEmbed);
   const canSwipe = Boolean(activeTrackEmbed) && embeddableTracks.length > 1;
+
+  // The bar for the playing track is pulled out under the player; the rest
+  // stay in the list, so a bar is never on screen twice.
+  const activeKeyBar = useMemo(() => {
+    if (!nowPlaying) return undefined;
+    const slug = slugifyTrack(nowPlaying.title);
+    return keyBars.find((kb) => keyBarTrackSlug(kb.title) === slug);
+  }, [keyBars, nowPlaying]);
+  const restKeyBars = keyBars.filter((kb) => kb !== activeKeyBar);
 
   function goToOffset(offset: number) {
     if (!nowPlaying) return;
@@ -193,7 +216,34 @@ export default function Tracklist({
             Swipe for next track
           </p>
         ) : null}
+
+        {activeKeyBar ? (
+          <div className="ov-paste-up mt-5 border-l-6 border-danfo bg-paper-dim p-4">
+            <h3 className="mb-1.5 text-sm font-bold tracking-[0.04em] uppercase">
+              {activeKeyBar.title}
+            </h3>
+            <p className="text-[0.95rem] leading-relaxed text-ink-soft">
+              {activeKeyBar.body}
+            </p>
+          </div>
+        ) : null}
       </div>
+
+      {restKeyBars.length > 0 ? (
+        <div className="mt-9 flex flex-col gap-5">
+          <p className="-mb-1.5 text-[0.8rem] tracking-[0.14em] uppercase text-ink-soft">
+            Key bars
+          </p>
+          {restKeyBars.map((kb) => (
+            <div key={kb.title} className="border-l-6 border-oxide pl-4">
+              <h3 className="mb-1.5 text-sm font-bold tracking-[0.04em] uppercase">
+                {kb.title}
+              </h3>
+              <p className="text-[0.95rem] leading-relaxed text-ink-soft">{kb.body}</p>
+            </div>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }
