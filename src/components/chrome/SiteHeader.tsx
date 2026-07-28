@@ -14,6 +14,9 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState, type PointerEvent } from "react";
+
+const FOCUSABLE =
+  'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
 import { OV_ICON_WEIGHT, renderNavIcon } from "@/lib/icons";
 import { useFan } from "@/lib/fanzone/useFan";
 import {
@@ -61,7 +64,6 @@ function MoreMenuPanel({
   return (
     <div
       id={id}
-      role="menu"
       className="absolute top-full right-0 z-30 mt-2 min-w-[16rem] border-3 border-ink bg-paper p-4 shadow-paste"
     >
       <div className="grid gap-4">
@@ -74,9 +76,8 @@ function MoreMenuPanel({
               {group.links.map((link) => {
                 const active = isLinkActive(pathname, link.href);
                 return (
-                  <li key={link.href} role="none">
+                  <li key={link.href}>
                     <Link
-                      role="menuitem"
                       href={link.href}
                       aria-current={active ? "page" : undefined}
                       className={`ov-icon-inline border-l-3 py-1 pl-2.5 text-sm font-semibold tracking-[0.05em] uppercase transition-colors ${
@@ -152,6 +153,9 @@ function FanZoneMenu({ pathname }: { pathname: string }) {
 
   useEffect(() => {
     if (!open) return;
+    requestAnimationFrame(() => {
+      ref.current?.querySelector<HTMLElement>(FOCUSABLE)?.focus();
+    });
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setOpen(false);
@@ -175,7 +179,7 @@ function FanZoneMenu({ pathname }: { pathname: string }) {
         ref={btnRef}
         type="button"
         aria-expanded={open}
-        aria-haspopup="menu"
+        aria-haspopup="true"
         aria-controls={menuId}
         onClick={() => setOpen((o) => !o)}
         className={`ov-btn ov-btn-danfo ov-icon-inline px-3 py-1.5 text-[0.8rem] ${
@@ -202,7 +206,6 @@ function FanZoneMenu({ pathname }: { pathname: string }) {
       {open ? (
         <div
           id={menuId}
-          role="menu"
           className="absolute top-full right-0 z-30 mt-2 min-w-[14rem] border-3 border-ink bg-paper p-3 shadow-paste"
         >
           {fan ? (
@@ -216,10 +219,9 @@ function FanZoneMenu({ pathname }: { pathname: string }) {
               <b className="text-ink">{fan.currentStreak}</b> day streak
             </p>
           ) : null}
-          <ul className="grid gap-1" role="none">
-            <li role="none">
+          <ul className="grid gap-1">
+            <li>
               <Link
-                role="menuitem"
                 href="/fanzone"
                 onClick={() => setOpen(false)}
                 className="ov-icon-inline border-l-3 border-transparent py-1 pl-2.5 text-sm font-semibold tracking-[0.05em] uppercase transition-colors hover:border-danfo hover:text-ink"
@@ -228,9 +230,8 @@ function FanZoneMenu({ pathname }: { pathname: string }) {
                 Fan Zone
               </Link>
             </li>
-            <li role="none">
+            <li>
               <Link
-                role="menuitem"
                 href={
                   fan?.publicProfile
                     ? `/fanzone/fans/${encodeURIComponent(fan.handle)}`
@@ -244,9 +245,8 @@ function FanZoneMenu({ pathname }: { pathname: string }) {
               </Link>
             </li>
             {fan ? (
-              <li role="none">
+              <li>
                 <button
-                  role="menuitem"
                   type="button"
                   onClick={() => {
                     setOpen(false);
@@ -340,6 +340,8 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
   const dragStartY = useRef(0);
   const moreRef = useRef<HTMLDivElement>(null);
   const moreBtnRef = useRef<HTMLButtonElement>(null);
+  const menuBtnRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
   const moreMenuId = useId();
   const drawerTitleId = useId();
 
@@ -381,6 +383,9 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
 
   useEffect(() => {
     if (!moreOpen) return;
+    requestAnimationFrame(() => {
+      moreRef.current?.querySelector<HTMLElement>(FOCUSABLE)?.focus();
+    });
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setMoreOpen(false);
@@ -402,15 +407,41 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
 
   useEffect(() => {
     if (!menuOpen) return;
-    const prev = document.body.style.overflow;
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    const menuToggle = menuBtnRef.current;
+    const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMenuOpen(false);
+      if (e.key === "Escape") {
+        setMenuOpen(false);
+        return;
+      }
+      if (e.key !== "Tab" || !drawerRef.current) return;
+      const focusable = drawerRef.current.querySelectorAll<HTMLElement>(FOCUSABLE);
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
     document.addEventListener("keydown", onKey);
+
+    requestAnimationFrame(() => {
+      drawerRef.current
+        ?.querySelector<HTMLElement>('button[aria-label="Close menu"]')
+        ?.focus();
+    });
+
     return () => {
-      document.body.style.overflow = prev;
+      document.body.style.overflow = prevOverflow;
       document.removeEventListener("keydown", onKey);
+      (previouslyFocused ?? menuToggle)?.focus?.();
     };
   }, [menuOpen]);
 
@@ -447,7 +478,7 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
               ref={moreBtnRef}
               type="button"
               aria-expanded={moreOpen}
-              aria-haspopup="menu"
+              aria-haspopup="true"
               aria-controls={moreMenuId}
               onClick={() => setMoreOpen((o) => !o)}
               className={`ov-icon-inline border-b-3 pb-0.5 text-[0.9rem] font-semibold tracking-[0.07em] uppercase transition-colors ${
@@ -481,6 +512,7 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
           </Link>
 
           <button
+            ref={menuBtnRef}
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
             aria-expanded={menuOpen}
@@ -506,6 +538,7 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
             className="ov-backdrop-in fixed inset-0 z-50 bg-ink/50 lg:hidden"
           />
           <div
+            ref={drawerRef}
             id="mobile-nav-drawer"
             role="dialog"
             aria-modal="true"

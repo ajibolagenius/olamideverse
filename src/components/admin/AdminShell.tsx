@@ -14,6 +14,9 @@ export default function AdminShell({
 }) {
   return (
     <div className="flex h-dvh flex-col overflow-hidden bg-paper text-ink">
+      <a href="#admin-main" className="ov-skip-link">
+        Skip to content
+      </a>
       <header className="z-30 flex shrink-0 items-center justify-between border-b-6 border-ink bg-paper px-4 py-3 sm:px-6">
         <div className="flex items-center gap-4">
           <Link href="/admin" className="font-display text-xl uppercase tracking-wide">
@@ -46,10 +49,14 @@ export default function AdminShell({
           <AdminSidebarNav role={admin.role} />
         </aside>
 
-        <div className="min-h-0 min-w-0 flex-1 overflow-y-auto overscroll-contain px-4 py-6 sm:px-6">
+        <main
+          id="admin-main"
+          tabIndex={-1}
+          className="min-h-0 min-w-0 flex-1 overflow-y-auto overscroll-contain px-4 py-6 sm:px-6"
+        >
           <AdminMobileNav role={admin.role} />
           {children}
-        </div>
+        </main>
       </div>
     </div>
   );

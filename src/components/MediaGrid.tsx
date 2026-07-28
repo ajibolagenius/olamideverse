@@ -113,9 +113,9 @@ function MediaThumb({
             {era.title}
           </span>
         </div>
-        <h2 className="font-display text-[1.05rem] leading-tight text-ink">
+        <span className="font-display text-[1.05rem] leading-tight text-ink">
           {item.title}
-        </h2>
+        </span>
         <p className="line-clamp-2 text-[0.78rem] leading-snug text-ink-soft">
           {item.note}
         </p>
@@ -133,13 +133,23 @@ function CinemaPlayer({
   era: Era;
   onClose: () => void;
 }) {
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    closeRef.current?.focus();
+  }, [item.id]);
+
   return (
     <div className="border-3 border-ink bg-ink text-paper shadow-paste">
+      <p className="sr-only" aria-live="polite" aria-atomic="true">
+        Now screening {item.title}
+      </p>
       <div className="flex flex-wrap items-center justify-between gap-2 border-b-3 border-danfo bg-danfo px-3 py-2 text-ink">
         <p className="text-[0.72rem] font-bold tracking-[0.08em] uppercase">
           Now screening · {TYPE_LABEL[item.type]} · {era.title}
         </p>
         <button
+          ref={closeRef}
           type="button"
           onClick={onClose}
           className="border-2 border-ink bg-ink px-2.5 py-1 text-[0.65rem] font-bold tracking-[0.06em] uppercase text-danfo hover:bg-paper hover:text-ink"

@@ -78,6 +78,14 @@ export default function SearchView({
         />
       </label>
 
+      <p className="sr-only" aria-live="polite" aria-atomic="true">
+        {!hasQuery
+          ? "Enter a search term to explore the archive."
+          : groups.length === 0
+            ? "Nothing matches that search."
+            : `${results.length} ${results.length === 1 ? "result" : "results"}`}
+      </p>
+
       <div className="mt-8">
         {!hasQuery ? (
           <EmptyState message="Type an era, album, song, or a name like Davido to get started." />

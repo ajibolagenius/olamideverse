@@ -192,7 +192,11 @@ export default function CommentBox({
       </div>
 
       <div className="p-5">
-        {error ? <p className="mb-3 text-sm text-oxide">{error}</p> : null}
+        {error ? (
+          <p role="alert" className="mb-3 text-sm text-oxide">
+            {error}
+          </p>
+        ) : null}
 
         {fanState.fan ? (
           <div className="mb-5 flex gap-2.5">
@@ -202,6 +206,7 @@ export default function CommentBox({
               onKeyDown={(e) => {
                 if (e.key === "Enter") submit();
               }}
+              aria-label={`Comment on ${threadLabel} as ${fanState.fan.handle}`}
               placeholder={`Comment as ${fanState.fan.handle}…`}
               maxLength={2000}
               className="flex-1 border-2 border-ink px-3 py-2 text-sm"
@@ -245,6 +250,7 @@ export default function CommentBox({
                       onKeyDown={(e) => {
                         if (e.key === "Enter") submitReply(comment.id);
                       }}
+                      aria-label={`Reply to ${comment.fan?.handle ?? "a fan"}`}
                       placeholder={`Reply as ${fanState.fan?.handle ?? ""}…`}
                       maxLength={2000}
                       className="flex-1 border-2 border-ink px-3 py-1.5 text-sm"

@@ -37,8 +37,14 @@ export default function PhotoPlaceholder({
           />
           <span className="absolute right-1.5 bottom-1.5 z-10 bg-ink/80 px-1.5 py-0.5 text-[0.62rem] text-ink-muted">
             Photo: {photo.credit},{" "}
-            <a href={photo.licenseUrl} className="underline hover:text-danfo">
+            <a
+              href={photo.licenseUrl}
+              className="underline hover:text-danfo"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {photo.license}
+              <span className="sr-only"> (opens in a new tab)</span>
             </a>
           </span>
         </>

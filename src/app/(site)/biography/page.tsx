@@ -47,9 +47,9 @@ export default async function BiographyPage() {
           >
             {biography.quickFacts.map((fact) => (
               <div key={fact.label}>
-                <h4 className="mb-1 text-[0.75rem] font-bold tracking-[0.06em] uppercase text-ink-soft">
+                <p className="mb-1 text-[0.75rem] font-bold tracking-[0.06em] uppercase text-ink-soft">
                   {fact.label}
-                </h4>
+                </p>
                 <p className="text-[0.95rem] font-semibold leading-snug">{fact.value}</p>
               </div>
             ))}

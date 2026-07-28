@@ -155,6 +155,7 @@ export default async function AlbumPage({
                   rel="noopener noreferrer"
                 >
                   via Deezer
+                  <span className="sr-only"> (opens in a new tab)</span>
                 </a>
               </>
             ) : null}

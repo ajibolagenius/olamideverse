@@ -37,10 +37,11 @@ export default function StampBoard({
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         {BADGES.map((badge) => {
           const earned = badge.earned(stats);
+          const descId = `badge-desc-${badge.id}`;
           return (
             <div
               key={badge.id}
-              title={badge.description}
+              aria-describedby={descId}
               className={`-rotate-1 border-2 px-3 py-3 text-center transition-colors even:rotate-1 ${
                 earned
                   ? "border-ink bg-danfo-tint shadow-paste-sm"
@@ -55,6 +56,12 @@ export default function StampBoard({
               />
               <p className="text-[0.68rem] font-bold tracking-[0.04em] uppercase">
                 {badge.label}
+                {!earned ? (
+                  <span className="sr-only"> (locked)</span>
+                ) : null}
+              </p>
+              <p id={descId} className="sr-only">
+                {badge.description}
               </p>
             </div>
           );

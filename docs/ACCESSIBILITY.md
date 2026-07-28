@@ -54,6 +54,16 @@ as visually — this is why the subset font swap warned about in `AGENTS.md`
 (`*-vietnamese.woff2`, no `next/font/local`) matters for accessibility, not
 just typography.
 
+## Interactive chrome
+
+- Mobile nav drawer (`SiteHeader`) is a focus-trapped `aria-modal` dialog —
+  Escape / backdrop / Close restore focus to the menu toggle.
+- Desktop More / Fan Zone use disclosure popovers (`aria-expanded` +
+  `aria-haspopup="true"`), not APG `role="menu"` (nav links don't need arrow
+  keys).
+- Dynamic filters/players announce via `aria-live="polite"` (search results,
+  impact place detail, track/song now-playing, media cinema, poll results).
+
 ## Manual testing checklist
 
 - [x] Keyboard-only pass through Eras scrollytelling, Discography grid, and

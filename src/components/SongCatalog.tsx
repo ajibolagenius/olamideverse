@@ -46,7 +46,7 @@ function PlayerBody({
 }) {
   if (active && songHasEmbed(active)) {
     return (
-      <div>
+      <div aria-live="polite" aria-atomic="true">
         {!compact ? (
           <>
             <p className="mb-2 text-[0.72rem] font-bold tracking-[0.06em] uppercase text-ink-soft">
@@ -73,6 +73,8 @@ function PlayerBody({
   if (active) {
     return (
       <div
+        aria-live="polite"
+        aria-atomic="true"
         className={`border-3 border-dashed border-ink-soft bg-paper-dim text-sm leading-relaxed text-ink-soft ${
           compact ? "p-3" : "p-5"
         }`}

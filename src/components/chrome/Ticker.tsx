@@ -1,6 +1,7 @@
 /**
  * roll-by — the only looping motion on the site. Content is rendered twice
- * (second copy aria-hidden) so the CSS 0 → -50% translate loops seamlessly.
+ * so the CSS 0 → -50% translate loops seamlessly. The animated strip is
+ * decorative; a static copy is exposed to assistive tech.
  */
 export default function Ticker({
   items,
@@ -9,10 +10,10 @@ export default function Ticker({
   items: string[];
   className?: string;
 }) {
-  const strip = (hidden: boolean) => (
-    <span aria-hidden={hidden || undefined}>
+  const strip = (prefix: string) => (
+    <span>
       {items.map((item) => (
-        <span key={item} className="mr-12">
+        <span key={`${prefix}-${item}`} className="mr-12">
           {item}
         </span>
       ))}
@@ -21,9 +22,10 @@ export default function Ticker({
 
   return (
     <div className={`ov-marquee py-1.5 text-[0.8rem] font-bold tracking-[0.14em] uppercase ${className}`}>
-      <div className="ov-marquee-track">
-        {strip(false)}
-        {strip(true)}
+      <p className="sr-only">{items.join(" · ")}</p>
+      <div className="ov-marquee-track" aria-hidden="true">
+        {strip("a")}
+        {strip("b")}
       </div>
     </div>
   );

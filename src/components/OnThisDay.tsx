@@ -31,7 +31,7 @@ export default function OnThisDay({ result }: { result: OnThisDayResult }) {
                   </span>
                 </div>
                 <div className="p-5">
-                  <h3 className="font-display text-2xl leading-tight">{item.title}</h3>
+                  <p className="font-display text-2xl leading-tight">{item.title}</p>
                   {item.body ? (
                     <p className="mt-2 text-sm leading-relaxed text-ink-soft">{item.body}</p>
                   ) : null}
@@ -61,7 +61,7 @@ export default function OnThisDay({ result }: { result: OnThisDayResult }) {
           </span>
         </div>
         <div className="p-5">
-          <h3 className="font-display text-2xl leading-tight">{item.title}</h3>
+          <p className="font-display text-2xl leading-tight">{item.title}</p>
           {item.body ? (
             <p className="mt-2 text-sm leading-relaxed text-ink-soft">{item.body}</p>
           ) : null}

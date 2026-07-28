@@ -271,6 +271,7 @@ export default function HandlePicker({
         <div className="flex gap-1 border-2 border-ink bg-white p-0.5">
           <button
             type="button"
+            aria-pressed={mode === "signup"}
             onClick={() => {
               setMode("signup");
               setLocalError(null);
@@ -285,6 +286,7 @@ export default function HandlePicker({
           </button>
           <button
             type="button"
+            aria-pressed={mode === "signin"}
             onClick={() => {
               setMode("signin");
               setLocalError(null);

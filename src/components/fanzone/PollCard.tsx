@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import Modal from "@/components/ui/Modal";
 import { useFan } from "@/lib/fanzone/useFan";
 import { votePoll } from "@/lib/fanzone/mutations";
@@ -29,8 +29,10 @@ export default function PollCard({
   const [showPicker, setShowPicker] = useState(false);
   const [pendingOption, setPendingOption] = useState<string | null>(null);
 
+  const questionId = useId();
   const voted = Boolean(userVote);
   const total = Object.values(voteCounts).reduce((a, b) => a + b, 0);
+  const votedLabel = poll.options.find((o) => o.id === userVote)?.label;
 
   const castVote = async (optionId: string) => {
     setPending(true);
@@ -70,15 +72,24 @@ export default function PollCard({
 
   return (
     <div className="ov-paste-up border-3 border-ink bg-white p-4 shadow-paste-sm">
-      <h3 className="font-display mb-2.5 text-lg">{poll.question}</h3>
-      <div className="flex flex-col gap-1.5">
+      <h3 id={questionId} className="font-display mb-2.5 text-lg">
+        {poll.question}
+      </h3>
+      <div
+        role="radiogroup"
+        aria-labelledby={questionId}
+        className="flex flex-col gap-1.5"
+      >
         {poll.options.map((option) => {
           const pct = voted && total > 0 ? Math.round((voteCounts[option.id] / total) * 100) : 0;
+          const selected = option.id === userVote;
           return (
             <button
               key={option.id}
               type="button"
-              disabled={pending || option.id === userVote}
+              role="radio"
+              aria-checked={selected}
+              disabled={pending || selected}
               onClick={() => handleVote(option.id)}
               className="relative overflow-hidden border-2 border-ink px-2.5 py-2 text-left text-sm font-semibold transition-colors hover:bg-danfo-tint disabled:cursor-default disabled:hover:bg-transparent"
             >
@@ -86,7 +97,7 @@ export default function PollCard({
                 <span
                   aria-hidden
                   className={`absolute inset-0 ${
-                    option.id === userVote ? "bg-danfo-tint" : "bg-paper-dim"
+                    selected ? "bg-danfo-tint" : "bg-paper-dim"
                   }`}
                   style={{ width: `${pct}%` }}
                 />
@@ -94,7 +105,7 @@ export default function PollCard({
               <span className="relative flex justify-between">
                 <span>
                   {option.label}
-                  {option.id === userVote ? " — your pick" : ""}
+                  {selected ? " — your pick" : ""}
                 </span>
                 {voted ? <span>{pct}%</span> : null}
               </span>
@@ -102,12 +113,19 @@ export default function PollCard({
           );
         })}
       </div>
-      <p className="mt-2 text-[0.62rem] tracking-[0.04em] uppercase text-ink-soft">
+      <p
+        className="mt-2 text-[0.62rem] tracking-[0.04em] uppercase text-ink-soft"
+        aria-live="polite"
+      >
         {voted
-          ? `${total} votes total · tap another option to change`
+          ? `You voted for ${votedLabel ?? "an option"} · ${total} votes total · tap another option to change`
           : "Vote to see the results"}
       </p>
-      {error ? <p className="mt-2 text-xs text-oxide">{error}</p> : null}
+      {error ? (
+        <p role="alert" className="mt-2 text-xs text-oxide">
+          {error}
+        </p>
+      ) : null}
       <Modal
         open={showPicker && !fanState.fan}
         onClose={() => {

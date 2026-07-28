@@ -14,7 +14,7 @@ export function AdminSidebarNav({ role }: { role: AdminRole }) {
   const pathname = usePathname();
 
   return (
-    <nav className="space-y-6">
+    <nav aria-label="Admin" className="space-y-6">
       {ADMIN_NAV.map((section) => {
         const items = section.items.filter(
           (item) => !item.roles || item.roles.includes(role),
@@ -56,7 +56,7 @@ export function AdminMobileNav({ role }: { role: AdminRole }) {
   const pathname = usePathname();
 
   return (
-    <nav className="mb-6 flex gap-2 overflow-x-auto md:hidden">
+    <nav aria-label="Admin" className="mb-6 flex gap-2 overflow-x-auto md:hidden">
       {ADMIN_NAV.flatMap((s) => s.items)
         .filter((item) => !item.roles || item.roles.includes(role))
         .map((item) => {

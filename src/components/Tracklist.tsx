@@ -125,7 +125,7 @@ export default function Tracklist({
                 }
                 className="grid size-8 flex-shrink-0 place-items-center border-2 border-ink bg-danfo"
               >
-                <svg viewBox="0 0 16 16" className="size-2.5 fill-ink">
+                <svg viewBox="0 0 16 16" className="size-2.5 fill-ink" aria-hidden>
                   <path d="M3 1l11 7-11 7z" />
                 </svg>
               </button>
@@ -134,6 +134,9 @@ export default function Tracklist({
         })}
       </ol>
       <div className="mt-5">
+        <p className="sr-only" aria-live="polite" aria-atomic="true">
+          {nowPlaying ? `Now playing ${nowPlaying.title}` : "Select a track to load its player."}
+        </p>
         <div
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
