@@ -1,8 +1,9 @@
 import type { CSSProperties, ReactNode } from "react";
+import AdirePattern from "@/components/ui/AdirePattern";
 
 /**
  * The full-bleed poster hero used at the top of every page: ink ground,
- * grain texture, rotated eyebrow badge, ink-reveal headline.
+ * grain texture, rotated eyebrow badge, ink-reveal headline, and Adire motif background.
  */
 export default function PosterHero({
   kickerLeft,
@@ -28,7 +29,8 @@ export default function PosterHero({
   size?: "xl" | "lg";
 }) {
   return (
-    <section className="grain bg-ink px-5 py-14 text-paper sm:px-8 sm:py-20">
+    <section className="grain relative bg-ink px-5 py-14 text-paper sm:px-8 sm:py-20">
+      <AdirePattern opacity={0.06} />
       <div className="relative mx-auto max-w-6xl">
         {kickerLeft || kickerRight ? (
           <div className="mb-9 flex flex-col gap-1 border-b border-[#3A332B] pb-4 text-[0.8rem] tracking-[0.12em] uppercase text-ink-muted sm:flex-row sm:justify-between sm:gap-4">
@@ -38,13 +40,16 @@ export default function PosterHero({
         ) : null}
         <div className="mb-5 flex flex-wrap items-center gap-3">
           <span
-            className="inline-block -rotate-1 px-3 py-1.5 text-[0.8rem] font-bold tracking-[0.1em] uppercase"
+            className="inline-block -rotate-1 border border-ink px-3 py-1.5 text-[0.8rem] font-bold tracking-[0.1em] uppercase shadow-paste-sm"
             style={{ background: accent, color: onAccent }}
           >
             {eyebrow}
           </span>
-          <span className="ov-stamp text-danfo border-danfo/60">
+          <span className="ov-stamp border-danfo/60 text-danfo">
             Editorial Dossier
+          </span>
+          <span className="hidden text-[0.7rem] font-semibold tracking-wider text-ink-muted sm:inline-block">
+            ROUTE · BARIGA → MAINLAND → WORLD
           </span>
         </div>
         <h1

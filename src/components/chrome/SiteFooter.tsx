@@ -1,6 +1,7 @@
 import Link from "next/link";
 import VisitorBadge from "@/components/analytics/VisitorBadge";
 import Ticker from "@/components/chrome/Ticker";
+import AdirePattern from "@/components/ui/AdirePattern";
 import { renderNavIcon } from "@/lib/icons";
 import { buildFooterColumns } from "@/lib/nav";
 
@@ -51,7 +52,8 @@ export default function SiteFooter({
   const columns = buildFooterColumns({ showFanZone });
 
   return (
-    <footer className="grain border-t-6 border-danfo bg-ink text-ink-muted">
+    <footer className="grain relative border-t-6 border-danfo bg-ink text-ink-muted">
+      <AdirePattern opacity={0.05} />
       <Ticker
         items={FOOTER_TICKER}
         className="border-b-3 border-ink bg-danfo text-ink"

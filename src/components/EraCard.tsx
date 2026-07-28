@@ -26,12 +26,17 @@ export default function EraCard({
   return (
     <div className="ov-paste-up group border-2 border-ink bg-white shadow-print">
       <div
-        className="flex items-center justify-between px-4 py-3 sm:px-5"
+        className="ov-ticket-punch flex items-center justify-between px-4 py-3 sm:px-5"
         style={{ borderLeft: `6px solid ${chrome.bg}` }}
       >
-        <span className="font-display text-xl text-ink-muted">
-          {String(era.order).padStart(2, "0")}
-        </span>
+        <div className="flex items-center gap-2">
+          <span className="font-display text-xl text-ink-muted">
+            {String(era.order).padStart(2, "0")}
+          </span>
+          <span className="text-[0.65rem] font-bold tracking-[0.1em] uppercase text-ink-muted">
+            · ERA TICKET
+          </span>
+        </div>
         <span
           className="font-bold tracking-[0.03em] tabular-nums"
           style={{ color: labelColor }}

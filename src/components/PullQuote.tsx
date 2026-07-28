@@ -9,7 +9,7 @@ function withHighlight(text: string, highlight?: string): ReactNode {
   return (
     <>
       {text.slice(0, i)}
-      <span className="bg-ink px-[0.1em] text-danfo">{highlight}</span>
+      <span className="ov-marker-double px-[0.1em] text-ink">{highlight}</span>
       {text.slice(i + highlight.length)}
     </>
   );
