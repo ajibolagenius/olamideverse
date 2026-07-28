@@ -31,6 +31,10 @@ export const CHANGELOG: ChangelogDay[] = [
         body: "Both 2018 singles were listed against the 2012 YBNL album in the songs catalogue. They now sit on YBNL MaFia Family, where they were actually released, still flagged as singles.",
         href: "/songs",
       },
+      {
+        title: "Accessibility pass across chrome & Fan Zone",
+        body: "The mobile menu traps keyboard focus and returns it on close, desktop menus use proper disclosure semantics, and search results, now-playing players, impact pins, media cinema, and poll results announce changes to screen readers. Comment and poll controls get real labels; heading order and “opens in a new tab” cues are cleaned up site-wide.",
+      },
     ],
   },
   {

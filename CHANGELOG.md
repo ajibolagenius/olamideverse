@@ -25,6 +25,11 @@ Dates are UTC calendar days of the ship window.
 - **Fix: songs catalogue** — "Motigbana" and "Poverty Die" (2018) were
   attributed to the 2012 *YBNL* album; they're now album tracks on *YBNL
   MaFia Family*, retained as singles via `alsoSingles`.
+- **Accessibility pass** — mobile nav is focus-trapped with focus restore;
+  More / Fan Zone menus use disclosure semantics; search, players, impact
+  detail, cinema, and polls announce via live regions; comment/poll controls
+  get proper labels and group roles; heading hierarchy and external-link cues
+  cleaned up; admin shell gains skip link + `<main>` landmarks.
 
 ## [0.1.0] — 2026-07-27
 
