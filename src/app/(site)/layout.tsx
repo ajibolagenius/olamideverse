@@ -3,18 +3,28 @@ import PageViewTracker from "@/components/analytics/PageViewTracker";
 import DisclaimerStrip from "@/components/chrome/DisclaimerStrip";
 import SiteFooter from "@/components/chrome/SiteFooter";
 import SiteHeader from "@/components/chrome/SiteHeader";
+import InstallPrompt from "@/components/InstallPrompt";
+import PlayerProvider from "@/components/player/PlayerDock";
 import { FanProvider } from "@/lib/fanzone/useFan";
-import { getDisclaimer, getFeatureFlags, getFooter } from "@/lib/settings";
+import {
+  getBlockedEmbeds,
+  getDisclaimer,
+  getFeatureFlags,
+  getFooter,
+} from "@/lib/settings";
 
 export default async function SiteLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [disclaimer, footer, flags] = await Promise.all([
+  const [disclaimer, footer, flags, blocks] = await Promise.all([
     getDisclaimer(),
     getFooter(),
     getFeatureFlags(),
+    // Resolved once, here: the dock outlives every route, so a route that
+    // forgot to pass the kill-switch down would be a takedown bypass.
+    getBlockedEmbeds(),
   ]);
 
   if (flags.maintenance) {
@@ -32,7 +42,7 @@ export default async function SiteLayout({
 
   const needsFanSession = flags.fanzone || flags.comments || flags.polls;
   const shell = (
-    <>
+    <PlayerProvider blocks={blocks}>
       <a href="#main-content" className="ov-skip-link">
         Skip to content
       </a>
@@ -41,11 +51,12 @@ export default async function SiteLayout({
       <main id="main-content" className="flex-1" tabIndex={-1}>
         {children}
       </main>
+      <InstallPrompt />
       <SiteFooter blurb={footer.blurb} showFanZone={flags.fanzone} />
       <Suspense fallback={null}>
         <PageViewTracker />
       </Suspense>
-    </>
+    </PlayerProvider>
   );
 
   return needsFanSession ? <FanProvider>{shell}</FanProvider> : shell;

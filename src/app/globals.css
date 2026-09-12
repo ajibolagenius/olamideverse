@@ -680,6 +680,26 @@
   animation: ov-feedback-in var(--ov-duration-settle) var(--ov-ease-snap) both;
 }
 
+/* Persistent player dock — same slap-in as the toasts, same fixed-element
+   reasoning: it appears on an action, not on scroll, so it is not one of the
+   five named GSAP behaviors. */
+.ov-player-dock {
+  animation: ov-feedback-in var(--ov-duration-settle) var(--ov-ease-snap) both;
+}
+/* The dock is fixed over the bottom of the page; give the footer room to
+   clear it so its links stay reachable while something is playing. */
+body.ov-dock-open {
+  padding-bottom: min(50vh, 22rem);
+}
+@media (min-width: 640px) {
+  /* ponytail: fixed clearance sized for the tallest embed (YouTube at 22rem
+     wide) rather than measuring the dock — swap for a measured CSS var if the
+     dock ever grows a variable-height body. */
+  body.ov-dock-open {
+    padding-bottom: 22rem;
+  }
+}
+
 /* Phosphor icons — sit on the text baseline; duotone inherits currentColor */
 .ov-icon {
   display: inline-block;
@@ -711,7 +731,8 @@ button:focus-visible {
   .ov-sheet-in,
   .ov-backdrop-in,
   .ov-feedback-toast,
-  .ov-feedback-banner {
+  .ov-feedback-banner,
+  .ov-player-dock {
     animation: none;
     transition: none;
   }

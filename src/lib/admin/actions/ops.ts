@@ -122,16 +122,25 @@ export async function saveTakedown(formData: FormData) {
 export async function blockEmbed(formData: FormData) {
     const session = await assertEditor();
     const supabase = await createClient();
-    await supabase.from("embed_blocks").upsert({
+    const embedId = String(formData.get("embed_id") ?? "").trim();
+    if (!embedId) {
+        redirect("/admin/legal/embed-removals?error=validation");
+    }
+    // A takedown that silently fails is worse than one that errors: the
+    // editor walks away believing the embed is dead. Surface the failure.
+    const { error } = await supabase.from("embed_blocks").upsert({
         provider: String(formData.get("provider") ?? "any"),
-        embed_id: String(formData.get("embed_id") ?? "").trim(),
+        embed_id: embedId,
         reason: String(formData.get("reason") ?? ""),
         created_by: session.userId,
     });
+    if (error) {
+        redirect("/admin/legal/embed-removals?error=block-failed");
+    }
     await writeAudit({
         action: "block",
         entityType: "embed",
-        entityId: String(formData.get("embed_id") ?? ""),
+        entityId: embedId,
         summary: "Embed kill-switch added",
     });
     revalidatePath("/");

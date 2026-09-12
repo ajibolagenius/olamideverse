@@ -12,7 +12,7 @@ import { createClient } from "@/lib/supabase/server";
 export default async function AdminEmbedRemovalsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ saved?: string }>;
+  searchParams: Promise<{ saved?: string; error?: string }>;
 }) {
   const flash = await searchParams;
   const supabase = await createClient();
@@ -25,9 +25,9 @@ export default async function AdminEmbedRemovalsPage({
     <>
       <AdminPageHeader
         title="Embed kill-switch"
-        description="Block Spotify/YouTube/YouTube Music/Audiomack IDs instantly across the public site."
+        description="Block Spotify/Apple Music/YouTube/YouTube Music/Audiomack IDs instantly across the public site."
       />
-      <Flash saved={flash.saved} />
+      <Flash saved={flash.saved} error={flash.error} />
 
       {!data?.length ? (
         <EmptyState>No blocked embeds.</EmptyState>
@@ -65,6 +65,7 @@ export default async function AdminEmbedRemovalsPage({
               { value: "youtube", label: "YouTube" },
               { value: "youtubemusic", label: "YouTube Music" },
               { value: "spotify", label: "Spotify" },
+              { value: "applemusic", label: "Apple Music" },
               { value: "audiomack", label: "Audiomack" },
               { value: "any", label: "Any" },
             ]}

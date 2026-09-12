@@ -26,8 +26,6 @@ import { getPollDefs, pollsForScope } from "@/lib/fanzone/polls";
 import { getComments, getPollResults } from "@/lib/fanzone/queries";
 import { getAlbumCover } from "@/lib/photos";
 import {
-  blockedSpotifyIds,
-  blockedYoutubeIds,
   getBlockedEmbeds,
   getFeatureFlags,
 } from "@/lib/settings";
@@ -82,8 +80,6 @@ export default async function AlbumPage({
     ? pollsForScope(await getPollDefs(), "album", album.slug)
     : [];
   const pollResults = await Promise.all(polls.map((p) => getPollResults(p.id)));
-  const blockedYoutube = blockedYoutubeIds(blocks);
-  const blockedSpotify = blockedSpotifyIds(blocks);
 
   const albumIndex = albums.findIndex((a) => a.slug === album.slug);
   const prevAlbum = albumIndex > 0 ? albums[albumIndex - 1] : undefined;
@@ -219,8 +215,7 @@ export default async function AlbumPage({
             keyBars={album.keyBars}
             credits={album.credits}
             showPlaylist={flags.fanzone}
-            blockedYoutube={blockedYoutube}
-            blockedSpotify={blockedSpotify}
+            blocks={blocks}
           />
         ) : (
           <EmptyState message="Tracklist coming with the content pass — check back as the archive grows." />

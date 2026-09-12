@@ -172,9 +172,6 @@ export async function getAnalyticsId(): Promise<string> {
     return (await getPublicGeneral()).analyticsId;
 }
 
-/** YouTube Music uses the same video IDs as YouTube — treat as one family for kill-switch. */
-const YOUTUBE_FAMILY = new Set(["youtube", "youtubemusic"]);
-
 export async function getEmbedsPolicy() {
     return getSetting("embeds", {
         providers: ["spotify", "youtube", "youtubemusic", "audiomack"],
@@ -192,40 +189,6 @@ export async function getBlockedEmbeds(): Promise<
     } catch {
         return [];
     }
-}
-
-function providersMatch(blockProvider: string, requested: string): boolean {
-    if (blockProvider === "any" || blockProvider === requested) return true;
-    return YOUTUBE_FAMILY.has(blockProvider) && YOUTUBE_FAMILY.has(requested);
-}
-
-export function isEmbedBlocked(
-    blocks: Array<{ provider: string; embed_id: string }>,
-    provider: string,
-    id: string | null | undefined,
-) {
-    if (!id) return false;
-    return blocks.some(
-        (b) => providersMatch(b.provider, provider) && b.embed_id === id,
-    );
-}
-
-/** IDs blocked for Spotify embeds (includes provider `any`). */
-export function blockedSpotifyIds(
-    blocks: Array<{ provider: string; embed_id: string }>,
-): string[] {
-    return blocks
-        .filter((b) => b.provider === "spotify" || b.provider === "any")
-        .map((b) => b.embed_id);
-}
-
-/** IDs blocked for YouTube / YouTube Music embeds (includes provider `any`). */
-export function blockedYoutubeIds(
-    blocks: Array<{ provider: string; embed_id: string }>,
-): string[] {
-    return blocks
-        .filter((b) => b.provider === "any" || YOUTUBE_FAMILY.has(b.provider))
-        .map((b) => b.embed_id);
 }
 
 export type SeoRow = {

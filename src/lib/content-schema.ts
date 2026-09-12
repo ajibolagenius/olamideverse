@@ -40,6 +40,10 @@ export const trackSchema = z.object({
     note: z.string().optional(),
     youtubeId: z.string().optional(),
     spotifyTrackId: z.string().optional(),
+    /** Numeric Apple Music track ID — storefront `ng`, see EmbedFrame. */
+    appleMusicId: z.string().optional(),
+    /** Canonical audiomack.com page URL; Audiomack has no stable ID. */
+    audiomackUrl: z.string().optional(),
 });
 
 export const keyBarSchema = z.object({
@@ -209,6 +213,10 @@ export const songSchema = z.object({
     singleYear: z.number().int().optional(),
     spotifyTrackId: z.string().optional(),
     youtubeId: z.string().optional(),
+    /** Numeric Apple Music track ID — storefront `ng`, see EmbedFrame. */
+    appleMusicId: z.string().optional(),
+    /** Canonical audiomack.com page URL; Audiomack has no stable ID. */
+    audiomackUrl: z.string().optional(),
     source: z.string().optional(),
     sourceUrl: z.string().url().optional(),
 });

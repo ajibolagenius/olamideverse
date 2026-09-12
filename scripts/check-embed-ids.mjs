@@ -11,6 +11,7 @@ import assert from "node:assert/strict";
 import {
   safeAppleMusicId,
   safeAudiomackEmbedSrc,
+  safeAudiomackPageUrl,
   safeSpotifyId,
   safeYoutubeId,
 } from "../src/lib/security/urls.ts";
@@ -31,27 +32,38 @@ assert.equal(safeAppleMusicId("1440857781"), "1440857781");
 assert.equal(safeAppleMusicId("12"), undefined);
 assert.equal(safeAppleMusicId("144085778a"), undefined);
 
+// Canonical page URL is /<artist>/song/<slug>; the EMBED path reverses the
+// first two segments. Getting this backwards silently kills every embed.
 assert.equal(
-  safeAudiomackEmbedSrc("https://audiomack.com/song/olamide/eni-duro"),
+  safeAudiomackEmbedSrc("https://audiomack.com/olamide/song/eni-duro"),
   "https://audiomack.com/embed/song/olamide/eni-duro",
 );
-// Already-embed form is idempotent, and www is accepted.
+assert.equal(
+  safeAudiomackPageUrl("https://audiomack.com/olamide/song/eni-duro"),
+  "https://audiomack.com/olamide/song/eni-duro",
+);
+// Already-embed form is idempotent, and round-trips back to the page URL.
 assert.equal(
   safeAudiomackEmbedSrc("https://audiomack.com/embed/album/olamide/rapsodi"),
   "https://audiomack.com/embed/album/olamide/rapsodi",
 );
 assert.equal(
-  safeAudiomackEmbedSrc("https://www.audiomack.com/song/olamide/eni-duro"),
+  safeAudiomackPageUrl("https://audiomack.com/embed/album/olamide/rapsodi"),
+  "https://audiomack.com/olamide/album/rapsodi",
+);
+// www is accepted and normalised away.
+assert.equal(
+  safeAudiomackEmbedSrc("https://www.audiomack.com/olamide/song/eni-duro"),
   "https://audiomack.com/embed/song/olamide/eni-duro",
 );
 // Anything that could steer the frame elsewhere.
-assert.equal(safeAudiomackEmbedSrc("https://evil.com/song/a/b"), undefined);
-assert.equal(safeAudiomackEmbedSrc("https://audiomack.com.evil.com/song/a/b"), undefined);
-assert.equal(safeAudiomackEmbedSrc("http://audiomack.com/song/a/b"), undefined);
+assert.equal(safeAudiomackEmbedSrc("https://evil.com/a/song/b"), undefined);
+assert.equal(safeAudiomackEmbedSrc("https://audiomack.com.evil.com/a/song/b"), undefined);
+assert.equal(safeAudiomackEmbedSrc("http://audiomack.com/a/song/b"), undefined);
 assert.equal(safeAudiomackEmbedSrc("javascript:alert(1)"), undefined);
-assert.equal(safeAudiomackEmbedSrc("https://audiomack.com/playlist/a/b"), undefined);
-assert.equal(safeAudiomackEmbedSrc("https://audiomack.com/song/a"), undefined);
-assert.equal(safeAudiomackEmbedSrc("https://audiomack.com/song/../../x/y"), undefined);
+assert.equal(safeAudiomackEmbedSrc("https://audiomack.com/olamide/playlist/x"), undefined);
+assert.equal(safeAudiomackEmbedSrc("https://audiomack.com/olamide/song"), undefined);
+assert.equal(safeAudiomackEmbedSrc("https://audiomack.com/a/song/../../x/y"), undefined);
 
 // --- resolveEmbed: the takedown kill-switch ---------------------------------
 

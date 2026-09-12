@@ -1,8 +1,10 @@
 "use client";
 
-import { useMemo, useRef, useState, type PointerEvent } from "react";
+import { useMemo } from "react";
 import EmbedFrame from "./EmbedFrame";
 import PlaylistButton from "@/components/fanzone/PlaylistButton";
+import { usePlayer } from "@/components/player/PlayerDock";
+import { hasAnyEmbed, resolveEmbed, type EmbedBlock } from "@/lib/embeds";
 import type { KeyBar, Track } from "@/lib/content-schema";
 
 function slugifyTrack(title: string): string {
@@ -23,12 +25,6 @@ function keyBarTrackSlug(title: string): string | null {
   return quoted ? slugifyTrack(quoted[1]) : null;
 }
 
-function trackHasEmbed(track: Track): boolean {
-  return Boolean(track.spotifyTrackId || track.youtubeId);
-}
-
-const SWIPE_THRESHOLD = 60;
-
 /**
  * The whole tracklist section: track rows and a shared "now playing" embed
  * frame on the left, a sticky rail of key bars + credits on the right.
@@ -46,8 +42,7 @@ export default function Tracklist({
   keyBars = [],
   credits,
   showPlaylist = false,
-  blockedYoutube = [],
-  blockedSpotify = [],
+  blocks = [],
 }: {
   tracks: Track[];
   albumSlug: string;
@@ -59,18 +54,34 @@ export default function Tracklist({
   /** Credits paragraph, pinned under the key bars in the same rail. */
   credits?: string;
   showPlaylist?: boolean;
-  blockedYoutube?: string[];
-  blockedSpotify?: string[];
+  blocks?: EmbedBlock[];
 }) {
-  const [nowPlaying, setNowPlaying] = useState<Track | null>(null);
-  const [dragging, setDragging] = useState(false);
-  const [dragX, setDragX] = useState(0);
-  const dragStartX = useRef(0);
+  const player = usePlayer();
   const albumBlocked =
-    !!spotifyAlbumId && blockedSpotify.includes(spotifyAlbumId);
-  const activeTrackEmbed = nowPlaying && trackHasEmbed(nowPlaying);
-  const embeddableTracks = tracks.filter(trackHasEmbed);
-  const canSwipe = Boolean(activeTrackEmbed) && embeddableTracks.length > 1;
+    !!spotifyAlbumId &&
+    resolveEmbed({ spotifyTrackId: spotifyAlbumId }, blocks).removed;
+
+  /** Stable id for the shared dock — trackSchema has no id of its own. */
+  const trackId = (track: Track) =>
+    `${albumSlug}--${slugifyTrack(track.title)}`;
+
+  // The dock is the player now, so "now playing" is whatever it holds — but
+  // only if that track belongs to this album, or every album page would
+  // light up a row for a song playing from somewhere else.
+  const nowPlaying =
+    tracks.find((t) => player.track?.id === trackId(t)) ?? null;
+
+  const playTrack = (track: Track) =>
+    player.toggle({
+      id: trackId(track),
+      title: track.title,
+      subtitle: albumTitle,
+      spotifyTrackId: track.spotifyTrackId,
+      youtubeId: track.youtubeId,
+      appleMusicId: track.appleMusicId,
+      audiomackUrl: track.audiomackUrl,
+    });
+
 
   // The bar naming the playing track lights up where it already sits — moving
   // it next to the player instead would make bars jump around on every skip.
@@ -79,35 +90,6 @@ export default function Tracklist({
     const slug = slugifyTrack(nowPlaying.title);
     return keyBars.find((kb) => keyBarTrackSlug(kb.title) === slug);
   }, [keyBars, nowPlaying]);
-
-  function goToOffset(offset: number) {
-    if (!nowPlaying) return;
-    const index = embeddableTracks.findIndex((t) => t.num === nowPlaying.num);
-    if (index === -1) return;
-    const nextIndex =
-      (index + offset + embeddableTracks.length) % embeddableTracks.length;
-    setNowPlaying(embeddableTracks[nextIndex]);
-  }
-
-  function onPointerDown(e: PointerEvent<HTMLDivElement>) {
-    if (!canSwipe || e.pointerType === "mouse") return;
-    dragStartX.current = e.clientX;
-    setDragging(true);
-    e.currentTarget.setPointerCapture(e.pointerId);
-  }
-
-  function onPointerMove(e: PointerEvent<HTMLDivElement>) {
-    if (!dragging) return;
-    setDragX(e.clientX - dragStartX.current);
-  }
-
-  function onPointerEnd() {
-    if (!dragging) return;
-    setDragging(false);
-    if (dragX <= -SWIPE_THRESHOLD) goToOffset(1);
-    else if (dragX >= SWIPE_THRESHOLD) goToOffset(-1);
-    setDragX(0);
-  }
 
   return (
     <div className="grid gap-11 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
@@ -124,7 +106,7 @@ export default function Tracklist({
               >
                 <button
                   type="button"
-                  onClick={() => setNowPlaying(track)}
+                  onClick={() => playTrack(track)}
                   aria-pressed={active}
                   className="flex flex-1 items-center gap-4 py-1 text-left"
                 >
@@ -149,9 +131,9 @@ export default function Tracklist({
                 ) : null}
                 <button
                   type="button"
-                  onClick={() => setNowPlaying(track)}
+                  onClick={() => playTrack(track)}
                   aria-label={
-                    trackHasEmbed(track) || spotifyAlbumId
+                    hasAnyEmbed(track) || spotifyAlbumId
                       ? `Play ${track.title}`
                       : `${track.title} — player not available yet`
                   }
@@ -175,58 +157,15 @@ export default function Tracklist({
               ? `Now playing ${nowPlaying.title}`
               : "Select a track to load its player."}
           </p>
-          <div
-            onPointerDown={onPointerDown}
-            onPointerMove={onPointerMove}
-            onPointerUp={onPointerEnd}
-            onPointerCancel={onPointerEnd}
-            className={
-              canSwipe
-                ? "touch-pan-y transition-[transform,opacity] duration-200 ease-out motion-reduce:transition-none"
-                : undefined
-            }
-            style={
-              dragging
-                ? {
-                    transform: `translateX(${dragX}px)`,
-                    opacity: 1 - Math.min(Math.abs(dragX) / 200, 0.5),
-                    transition: "none",
-                  }
-                : undefined
-            }
-          >
-            {activeTrackEmbed && nowPlaying ? (
+          <div>
+            {/* Track playback lives in the site-wide dock so it survives
+                navigation; this pane keeps the album player, which is the
+                album's own record rather than a single track. It yields to
+                the dock while a track is loaded — two mounted players would
+                mean two things playing at once. */}
+            {spotifyAlbumId && !nowPlaying ? (
               <EmbedFrame
-                title={nowPlaying.title}
-                youtubeId={
-                  nowPlaying.youtubeId &&
-                  !blockedYoutube.includes(nowPlaying.youtubeId)
-                    ? nowPlaying.youtubeId
-                    : undefined
-                }
-                spotifyId={
-                  nowPlaying.spotifyTrackId &&
-                  !blockedSpotify.includes(nowPlaying.spotifyTrackId)
-                    ? nowPlaying.spotifyTrackId
-                    : undefined
-                }
-                provider="youtubemusic"
-                removed={
-                  !(
-                    (nowPlaying.spotifyTrackId &&
-                      !blockedSpotify.includes(nowPlaying.spotifyTrackId)) ||
-                    (nowPlaying.youtubeId &&
-                      !blockedYoutube.includes(nowPlaying.youtubeId))
-                  )
-                }
-              />
-            ) : spotifyAlbumId ? (
-              <EmbedFrame
-                title={
-                  nowPlaying
-                    ? `${albumTitle} · ${nowPlaying.title}`
-                    : albumTitle
-                }
+                title={albumTitle}
                 spotifyId={spotifyAlbumId}
                 spotifyType="album"
                 removed={albumBlocked}
@@ -234,16 +173,11 @@ export default function Tracklist({
             ) : (
               <div className="border-2 border-dashed border-ink-soft p-6 text-center text-sm text-ink-soft">
                 {nowPlaying
-                  ? "Embed coming in the content pass — no audio is hosted here."
+                  ? `"${nowPlaying.title}" is playing in the dock — it keeps going as you read on.`
                   : "Select a track to load its player."}
               </div>
             )}
           </div>
-          {canSwipe ? (
-            <p className="mt-2 text-center text-[0.7rem] tracking-[0.06em] uppercase text-ink-soft sm:hidden">
-              Swipe for next track
-            </p>
-          ) : null}
         </div>
       </div>
 

@@ -2,9 +2,10 @@
 
 import { useDeferredValue, useMemo, useState } from "react";
 import Link from "next/link";
-import EmbedFrame from "./EmbedFrame";
 import EmptyState from "./EmptyState";
 import FilterChips from "./FilterChips";
+import { usePlayer } from "@/components/player/PlayerDock";
+import { hasAnyEmbed } from "@/lib/embeds";
 import {
   CATALOG_SONG_TYPES,
   SONG_STATUS_LABEL,
@@ -24,111 +25,25 @@ const TYPE_FILTER_OPTIONS = [
   })),
 ];
 
-/** Matches the right column width in the catalogue grid. */
-const PLAYER_COL = "w-[min(22rem,calc(100vw-2.5rem))]";
-
-function songHasEmbed(song: Song): boolean {
-  return Boolean(song.spotifyTrackId || song.youtubeId);
-}
-
 function statusClass(status: SongStatus): string {
   if (status === "verified") return "border-ink bg-danfo text-ink";
   if (status === "documented") return "border-ink bg-white text-ink";
   return "border-ink-soft bg-paper-dim text-ink-soft";
 }
 
-function PlayerBody({
-  active,
-  compact = false,
-  blockedSpotify = [],
-  blockedYoutube = [],
-}: {
-  active: Song | null;
-  compact?: boolean;
-  blockedSpotify?: string[];
-  blockedYoutube?: string[];
-}) {
-  if (active && songHasEmbed(active)) {
-    const spotifyId =
-      active.spotifyTrackId &&
-      !blockedSpotify.includes(active.spotifyTrackId)
-        ? active.spotifyTrackId
-        : undefined;
-    const youtubeId =
-      active.youtubeId && !blockedYoutube.includes(active.youtubeId)
-        ? active.youtubeId
-        : undefined;
-    const removed = !spotifyId && !youtubeId;
-
-    return (
-      <div aria-live="polite" aria-atomic="true">
-        {!compact ? (
-          <>
-            <p className="mb-2 text-[0.72rem] font-bold tracking-[0.06em] uppercase text-ink-soft">
-              Now playing
-            </p>
-            <p className="mb-3 font-display text-xl leading-tight">
-              {active.title}
-            </p>
-          </>
-        ) : (
-          <p className="mb-2 truncate font-display text-lg leading-tight">
-            {active.title}
-          </p>
-        )}
-        <EmbedFrame
-          title={active.title}
-          spotifyId={spotifyId}
-          youtubeId={youtubeId}
-          provider="youtubemusic"
-          removed={removed}
-        />
-      </div>
-    );
-  }
-
-  if (active) {
-    return (
-      <div
-        aria-live="polite"
-        aria-atomic="true"
-        className={`border-3 border-dashed border-ink-soft bg-paper-dim text-sm leading-relaxed text-ink-soft ${
-          compact ? "p-3" : "p-5"
-        }`}
-      >
-        <p className="mb-1 font-display text-lg text-ink">{active.title}</p>
-        Documented in the catalogue — no stable embed ID yet. Nothing is hosted
-        here.
-      </div>
-    );
-  }
-
-  return (
-    <div className="border-3 border-dashed border-ink-soft bg-paper-dim p-5 text-sm leading-relaxed text-ink-soft">
-      Select a track with a play button to load its Spotify or YouTube Music
-      embed here. This pane stays fixed while you scroll.
-    </div>
-  );
-}
-
 export default function SongCatalog({
   songs,
   eras,
-  blockedSpotify = [],
-  blockedYoutube = [],
 }: {
   songs: Song[];
   eras: Era[];
-  blockedSpotify?: string[];
-  blockedYoutube?: string[];
 }) {
+  const player = usePlayer();
   const [typeFilter, setTypeFilter] = useState("all");
   const [eraFilter, setEraFilter] = useState("all");
   const [sort, setSort] = useState<"oldest" | "newest">("oldest");
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query);
-  const [activeId, setActiveId] = useState<string | null>(null);
-  const [mobileDismissed, setMobileDismissed] = useState(false);
 
   const erasBySlug = useMemo(
     () => new Map(eras.map((era) => [era.slug, era])),
@@ -155,34 +70,28 @@ export default function SongCatalog({
     });
   }, [songs, typeFilter, eraFilter, deferredQuery, sort]);
 
-  const active = activeId
-    ? (shown.find((s) => s.id === activeId) ??
-      songs.find((s) => s.id === activeId) ??
-      null)
-    : null;
+  const activeId = player.track?.id ?? null;
 
-  const showMobileDock = Boolean(active) && !mobileDismissed;
-
+  /**
+   * Hands the row to the site-wide dock rather than an embed of our own, so
+   * the track keeps playing when the reader leaves /songs.
+   */
   function selectSong(id: string) {
-    setActiveId(id);
-    setMobileDismissed(false);
-  }
-
-  function toggleSong(id: string) {
-    if (activeId === id) {
-      setActiveId(null);
-      return;
-    }
-    setActiveId(id);
-    setMobileDismissed(false);
-  }
-
-  function dismissMobile() {
-    setMobileDismissed(true);
+    const song = songs.find((s) => s.id === id);
+    if (!song) return;
+    player.toggle({
+      id: song.id,
+      title: song.title,
+      subtitle: song.artists ?? undefined,
+      spotifyTrackId: song.spotifyTrackId,
+      youtubeId: song.youtubeId,
+      appleMusicId: song.appleMusicId,
+      audiomackUrl: song.audiomackUrl,
+    });
   }
 
   return (
-    <div className={showMobileDock ? "pb-[min(50vh,22rem)] lg:pb-0" : undefined}>
+    <div>
       <div className="mb-6 flex flex-col gap-5">
         <FilterChips
           label="Filter by type"
@@ -240,16 +149,14 @@ export default function SongCatalog({
         {shown.length} {shown.length === 1 ? "entry" : "entries"}
       </p>
 
-      {/* Spacer column on desktop so the list never runs under the fixed player */}
-      <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(17.5rem,22rem)] lg:gap-8">
-        <div className="min-w-0">
+      <div className="min-w-0">
           {shown.length === 0 ? (
             <EmptyState message="Nothing matches those filters — try another era or clear search." />
           ) : (
             <ol className="border-t-3 border-ink">
               {shown.map((song) => {
                 const era = erasBySlug.get(song.era);
-                const activeRow = active?.id === song.id;
+                const activeRow = activeId === song.id;
                 const typeLabel = SONG_TYPE_LABEL[song.type as SongType];
                 return (
                   <li
@@ -261,7 +168,7 @@ export default function SongCatalog({
                     <div className="flex flex-wrap items-start gap-3 sm:flex-nowrap sm:items-center">
                       <button
                         type="button"
-                        onClick={() => toggleSong(song.id)}
+                        onClick={() => selectSong(song.id)}
                         aria-pressed={activeRow}
                         className="flex min-w-0 flex-1 flex-col gap-1 py-0.5 text-left sm:flex-row sm:items-baseline sm:gap-4"
                       >
@@ -306,7 +213,7 @@ export default function SongCatalog({
                         </Link>
                       ) : null}
 
-                      {songHasEmbed(song) ? (
+                      {hasAnyEmbed(song) ? (
                         <button
                           type="button"
                           onClick={() => selectSong(song.id)}
@@ -335,54 +242,7 @@ export default function SongCatalog({
               })}
             </ol>
           )}
-        </div>
-
-        <div className="hidden lg:block" aria-hidden />
       </div>
-
-      {/*
-        Fixed to the viewport — sticky fails under html { overflow-x: hidden }.
-        Aligned to the max-w-7xl content column’s right edge.
-      */}
-      <div className="pointer-events-none fixed inset-x-0 top-24 z-30 hidden lg:block">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className={`pointer-events-auto ml-auto ${PLAYER_COL}`}>
-            <PlayerBody
-              active={active}
-              blockedSpotify={blockedSpotify}
-              blockedYoutube={blockedYoutube}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile: fixed bottom dock, dismissible */}
-      {showMobileDock ? (
-        <div
-          role="region"
-          aria-label="Now playing"
-          className="fixed inset-x-0 bottom-0 z-30 border-t-3 border-ink bg-paper p-3 shadow-[0_-8px_0_0_rgba(24,20,16,0.08)] lg:hidden"
-        >
-          <div className="mb-2 flex items-center justify-between gap-3">
-            <p className="text-[0.72rem] font-bold tracking-[0.06em] uppercase text-ink-soft">
-              Now playing
-            </p>
-            <button
-              type="button"
-              onClick={dismissMobile}
-              className="border-2 border-ink bg-white px-2.5 py-1 text-[0.7rem] font-bold tracking-[0.04em] uppercase hover:bg-danfo"
-            >
-              Dismiss
-            </button>
-          </div>
-          <PlayerBody
-            active={active}
-            compact
-            blockedSpotify={blockedSpotify}
-            blockedYoutube={blockedYoutube}
-          />
-        </div>
-      ) : null}
     </div>
   );
 }
