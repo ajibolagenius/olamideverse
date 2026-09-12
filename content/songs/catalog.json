@@ -1088,11 +1088,12 @@
       "year": 2013,
       "era": "first-of-all",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "featuring D'banj",
       "note": "On D'Kings Men",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "spotifyTrackId": "6XgJm7rblgVSJo63Jfk82Y"
     },
     {
       "id": "feature--for-example-remix-2013",
@@ -2428,7 +2429,8 @@
       "note": "Dr Sid featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "YSSb5KoftxU"
+      "youtubeId": "YSSb5KoftxU",
+      "spotifyTrackId": "4tJjkemD5mOKcNO07hsgJZ"
     },
     {
       "id": "snippet--confam-ni",
@@ -3047,14 +3049,15 @@
     {
       "id": "feature--werey-re-o-remix-2015",
       "title": "Werey Re O (Remix)",
-      "year": 2015,
+      "year": 2016,
       "era": "street-king-run",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Base One",
-      "note": "Base One featuring Olamide and Phyno",
+      "note": "Base One featuring Olamide and Phyno. Year confirmed Spotify single 'Werey Re O (Remix)' (2016-01-15).",
       "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "spotifyTrackId": "6GUiEii3u2eJmFEbSB01NK"
     },
     {
       "id": "freestyle--woss-wobi-2015",
@@ -3485,11 +3488,12 @@
       "year": 2016,
       "era": "street-king-run",
       "type": "single",
-      "status": "documented",
+      "status": "verified",
       "note": "Listed on Waptrick near The Glory / Street King singles (titles only from user Waptrick screenshots/webarchive).",
       "source": "Waptrick screenshots / webarchive",
       "sourceUrl": "https://waptrick.com/en/_common/search/search.jsp?c=olamide&type=full_mp3",
-      "youtubeId": "HG0reCbRGdU"
+      "youtubeId": "HG0reCbRGdU",
+      "spotifyTrackId": "7dA6EMX8MnyKia610jClWw"
     },
     {
       "id": "feature--oya-dab-2016",
@@ -4424,7 +4428,8 @@
       "note": "Kida Kudz featuring Olamide",
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
-      "youtubeId": "7ucg8sZq6_M"
+      "youtubeId": "7ucg8sZq6_M",
+      "spotifyTrackId": "6LqDCaIHQ0xqn1nAcy22Gh"
     },
     {
       "id": "feature--aku-remix-2018",
@@ -4829,14 +4834,15 @@
     {
       "id": "single--waptrick--update-2018",
       "title": "Update",
-      "year": 2018,
-      "era": "reinvention",
+      "year": 2017,
+      "era": "street-king-run",
       "type": "single",
-      "status": "documented",
-      "note": "Non-album single — listed on Waptrick Olamide screenshots (titles only from user Waptrick screenshots/webarchive).",
+      "status": "verified",
+      "note": "Non-album single — Waptrick listing. Year confirmed Spotify single 'Update' (2017-08-31).",
       "source": "Waptrick screenshots / webarchive",
       "sourceUrl": "https://waptrick.com/en/_common/search/search.jsp?c=olamide&type=full_mp3",
-      "youtubeId": "XLVGZY314BI"
+      "youtubeId": "XLVGZY314BI",
+      "spotifyTrackId": "4i5MWne8U40GojzJ4Z4huR"
     },
     {
       "id": "feature--waptrick--40-feet-container-2019",
@@ -5007,15 +5013,16 @@
     {
       "id": "single--waptrick--sheevita-juice-2019",
       "title": "Sheevita Juice",
-      "year": 2019,
+      "year": 2018,
       "era": "reinvention",
       "type": "single",
-      "status": "documented",
+      "status": "verified",
       "artists": "Olamide ft Skepta",
-      "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting.",
+      "note": "Waptrick listing. Year confirmed Spotify single 'Sheevita Juice' (2018-02-13).",
       "source": "Waptrick webarchive",
       "sourceUrl": "https://waptrick.com/en/download/Olamide-feat-Skepta/Sheevita-Juice/?type=FT&id=437822",
-      "youtubeId": "DHXXJZa7UEQ"
+      "youtubeId": "DHXXJZa7UEQ",
+      "spotifyTrackId": "3gejeEUwghbERenXwoTGta"
     },
     {
       "id": "feature--shomo-2019",
@@ -5045,15 +5052,16 @@
     {
       "id": "feature--waptrick--timbalowo-2-0-2019",
       "title": "Timbalowo 2 0",
-      "year": 2019,
+      "year": 2018,
       "era": "reinvention",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Baddy Oosha ft Olamide ft 9ice",
-      "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting.",
+      "note": "Waptrick listing. Year confirmed Spotify single 'Timbalowo 2.0' (2018-06-15).",
       "source": "Waptrick webarchive",
       "sourceUrl": "https://waptrick.com/en/download/Baddy-Oosha-feat-Olamide-feat-9ice/Timbalowo-2-0/?type=FT&id=437730",
-      "youtubeId": "1Vc2NVDAEEM"
+      "youtubeId": "1Vc2NVDAEEM",
+      "spotifyTrackId": "3t7la0WvphteNOOJnHYJQt"
     },
     {
       "id": "single--totori-2019",
@@ -5112,14 +5120,15 @@
     {
       "id": "single--waptrick--welcome-2019",
       "title": "Welcome",
-      "year": 2019,
+      "year": 2018,
       "era": "reinvention",
       "type": "single",
-      "status": "documented",
-      "note": "Non-album single — listed on Waptrick Olamide screenshots (titles only from user Waptrick screenshots/webarchive).",
+      "status": "verified",
+      "note": "Non-album single — Waptrick listing. Year confirmed on YBNL MaFia Family, 14 December 2018.",
       "source": "Waptrick screenshots / webarchive",
       "sourceUrl": "https://waptrick.com/en/_common/search/search.jsp?c=olamide&type=full_mp3",
-      "youtubeId": "sXLdqMf_dWM"
+      "youtubeId": "sXLdqMf_dWM",
+      "spotifyTrackId": "7iVfoC4Y7RF1MOiJ8evC4W"
     },
     {
       "id": "single--woske-2019",
@@ -5543,15 +5552,16 @@
     {
       "id": "feature--waptrick--free-of-charge-2022",
       "title": "Free of Charge",
-      "year": 2022,
-      "era": "elder-statesman",
+      "year": 2025,
+      "era": "legacy",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Joeboy ft Olamide",
-      "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting.",
+      "note": "Waptrick listing. Year confirmed on Joeboy, Viva Lavida (2025-03-27).",
       "source": "Waptrick webarchive",
       "sourceUrl": "https://waptrick.com/en/download/Joeboy-feat-Olamide/Free-of-Charge/?type=FT&id=451969",
-      "youtubeId": "shrDPAH27Bo"
+      "youtubeId": "shrDPAH27Bo",
+      "spotifyTrackId": "5yyVAz3WD6L6143oGfQ3AT"
     },
     {
       "id": "single--hate-me-2022",
@@ -5621,15 +5631,16 @@
     {
       "id": "feature--waptrick--vanity-2022",
       "title": "Vanity",
-      "year": 2022,
-      "era": "elder-statesman",
+      "year": 2024,
+      "era": "legacy",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Ckay ft Olamide",
-      "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting.",
+      "note": "Waptrick listing. Year confirmed on CKay, EMOTIONS (2024-10-18).",
       "source": "Waptrick webarchive",
       "sourceUrl": "https://waptrick.com/en/download/Ckay-feat-Olamide/Vanity/?type=FT&id=450712",
-      "youtubeId": "uTyetw23adA"
+      "youtubeId": "uTyetw23adA",
+      "spotifyTrackId": "1kE0EBcPWWrYuA3uv4E8p8"
     },
     {
       "id": "single--we-outside-2022",
@@ -5871,15 +5882,16 @@
     {
       "id": "feature--waptrick--nati-2024",
       "title": "Nati",
-      "year": 2024,
+      "year": 2025,
       "era": "legacy",
       "type": "feature",
-      "status": "documented",
+      "status": "verified",
       "artists": "Blaqbonez ft Olamide",
-      "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting.",
+      "note": "Waptrick listing. Year confirmed on Blaqbonez, No Excuses (2025-10-17).",
       "source": "Waptrick webarchive",
       "sourceUrl": "https://waptrick.com/en/download/Blaqbonez-feat-Olamide/Nati/?type=FT&id=454372",
-      "youtubeId": "WZgWcnYcO3k"
+      "youtubeId": "WZgWcnYcO3k",
+      "spotifyTrackId": "1Zq9JpMFVaKzQdgkcltijZ"
     },
     {
       "id": "feature--waptrick--ok-2024",

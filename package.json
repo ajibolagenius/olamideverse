@@ -15,7 +15,9 @@
     "fill:spotify-catalog": "node --env-file=.env.local scripts/spotify/fill-spotify-catalog-ids.mjs",
     "verify:spotify-ids": "node --env-file=.env.local scripts/spotify/verify-spotify-ids.mjs",
     "fill:youtube-catalog": "node scripts/fill-youtube-catalog-ids.mjs",
-    "apply:ytm-catalog": "node scripts/apply-ytm-catalog-ids.mjs"
+    "apply:ytm-catalog": "node scripts/apply-ytm-catalog-ids.mjs",
+    "check:embed-ids": "node --experimental-strip-types scripts/check-embed-ids.mjs",
+    "report:coverage": "node scripts/report-catalog-coverage.mjs"
   },
   "dependencies": {
     "@mdx-js/react": "^3.1.1",
