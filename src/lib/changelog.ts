@@ -18,6 +18,41 @@ export type ChangelogDay = {
 
 export const CHANGELOG: ChangelogDay[] = [
   {
+    date: "2026-09-12",
+    label: "12 September 2026",
+    items: [
+      {
+        title: "The player follows you around the archive",
+        body: "Playback used to stop the moment you opened another page. Now a single dock sits at the edge of the screen and keeps going — start a track on Songs and it plays on while you read an era, a sleeve note, the legal page. One player at a time, and it stops when you say so. Nothing is hosted here; it is still the provider’s own embed, moved somewhere it can survive a click.",
+        href: "/songs",
+      },
+      {
+        title: "Apple Music and Audiomack join the embeds",
+        body: "Spotify and YouTube Music are no longer the only ways in. Where the archive holds more than one source for a record, the compact player takes the first slot and the rest become “open in” links — so you can finish the song wherever your subscription actually lives.",
+        href: "/songs",
+      },
+      {
+        title: "Twelve more records found their embed",
+        body: "Another pass over the catalogue matched twelve entries to verified Spotify tracks, including “Orobo,” “Sheevita Juice,” Base One’s “Werey Re O (Remix)” and the CKay and Blaqbonez features. Every ID is checked against the real track’s title and credits before it ships — a wrong guess would quietly play you the wrong song.",
+        href: "/songs",
+      },
+      {
+        title: "Eight dates corrected, three records moved era",
+        body: "Some catalogue years were estimated from an old Waptrick listing and said so. Checked against the release each track actually sits on, eight were wrong: “Update” moves back into The Street King Run, while “Vanity” and “Free of Charge” move forward into Legacy. The rest shifted by a year within their chapter.",
+        href: "/songs",
+      },
+      {
+        title: "Install it like an app",
+        body: "The install prompt now shows real screenshots of the archive instead of a bare icon, long-pressing the installed icon jumps straight to Songs, Eras or Discography, and the Songs catalogue reads offline once you have opened it. A quiet strip offers the install once and never nags again.",
+      },
+      {
+        title: "Swipe-between-tracks retired on album pages",
+        body: "With the player moved to the dock, swiping the album pane would have animated one thing while changing another — so the gesture is gone rather than left lying. Tapping a track still loads it; skip controls will come back in the dock if they are missed.",
+        href: "/albums",
+      },
+    ],
+  },
+  {
     date: "2026-07-28",
     label: "28 July 2026",
     items: [

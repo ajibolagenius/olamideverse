@@ -12,6 +12,61 @@ Dates are UTC calendar days of the ship window.
 
 ## [Unreleased]
 
+### 2026-09-12
+
+- **Persistent player dock** — one `EmbedFrame` mounted in `(site)/layout.tsx`
+  via a new `PlayerProvider`, so the iframe is never unmounted on soft
+  navigation and playback survives route changes. Fixed bottom-right on
+  desktop, bottom bar on mobile, with `body.ov-dock-open` clearance so footer
+  links stay reachable. Reuses the toast slap-in keyframes (not one of the five
+  named GSAP behaviors) and honours `prefers-reduced-motion`. No autoplay, no
+  Spotify iFrame API — deliberately deferred.
+- **Apple Music + Audiomack embeds** — `appleMusicId` / `audiomackUrl` on
+  `songSchema` and `trackSchema`; `EmbedFrame` precedence is now Spotify →
+  Apple Music → YouTube/YTM → Audiomack, with everything else as a link-out.
+  Admin kill-switch gained an Apple Music option, plus a migration widening
+  `embed_blocks.provider` to include `applemusic` and `youtubemusic`.
+- **`src/lib/embeds.ts`** — single, pure, client-safe resolver for the embed
+  kill-switch (`resolveEmbed` / `hasAnyEmbed`). Blocks are now resolved once in
+  the site layout instead of threaded per route, closing the gap where a route
+  that forgot the prop would bypass a takedown. Removed the superseded
+  `blockedSpotifyIds` / `blockedYoutubeIds` / `isEmbedBlocked` from
+  `settings.ts`.
+- **Embed ID validation** — `safeSpotifyId`, `safeYoutubeId`,
+  `safeAppleMusicId`, `safeAudiomackEmbedSrc` and `safeAudiomackPageUrl` in
+  `src/lib/security/urls.ts` shape-check every value before it reaches an
+  iframe `src`. Audiomack pins the origin and accepts both the page shape
+  (`/<artist>/song/<slug>`) and the embed shape
+  (`/embed/song/<artist>/<slug>`). Covered by `npm run check:embed-ids`.
+- **Catalogue** — +12 verified Spotify IDs (144 → 156); 375 of 478 entries now
+  carry a playable embed. Eight rows whose notes flagged the year as estimated
+  had year and era corrected against the track's parent release (never a
+  compilation re-upload); `update-2018` → street-king-run, `vanity-2022` and
+  `free-of-charge-2022` → legacy. Both automated fill passes are now exhausted:
+  the remaining 103 blanks (38 documented, 65 lore) need per-row research.
+- **`npm run report:coverage`** — cross-references the catalogue against both
+  fill-progress files so "not matched" and "not yet attempted" stop looking
+  alike.
+- **PWA** — manifest gains `screenshots` (wide + narrow, captured from a
+  production build by `npm run shots:pwa`) and `shortcuts` for Songs / Eras /
+  Discography; `/songs`, `/snippets` and `/slang` added to the service-worker
+  shell cache; new `InstallPrompt` shows a quiet, session-dismissible install
+  strip only once the browser fires `beforeinstallprompt`.
+
+#### Fixed
+
+- `blockEmbed` ignored the Supabase insert error and redirected `?saved=1`
+  regardless — an editor could believe a takedown had landed when the write had
+  failed. Now surfaces `?error=block-failed` and validates a non-empty ID.
+- The admin embed kill-switch offered a "YouTube Music" provider that the
+  `embed_blocks` check constraint rejected, so selecting it always failed.
+
+#### Removed
+
+- Swipe-between-tracks on album tracklists. With playback moved to the dock the
+  gesture animated the album player while changing a different track; skip
+  controls belong in the dock if they are wanted back.
+
 ### 2026-07-28
 
 - **Discography — *YBNL MaFia Family* (2018)** — label group album (13 tracks,
