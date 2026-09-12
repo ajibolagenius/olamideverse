@@ -71,7 +71,7 @@ const song = {
   spotifyTrackId: "7KhrNUSPwhxBsuOXVAKgg4",
   youtubeId: "dQw4w9WgXcQ",
   appleMusicId: "1440857781",
-  audiomackUrl: "https://audiomack.com/song/olamide/eni-duro",
+  audiomackUrl: "https://audiomack.com/olamide/song/eni-duro",
 };
 
 assert.equal(resolveEmbed(song).removed, false);

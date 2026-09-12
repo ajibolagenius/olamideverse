@@ -29,7 +29,8 @@ export default function InstallPrompt() {
     try {
       if (sessionStorage.getItem(DISMISSED_KEY)) return;
     } catch {
-      // Private mode or blocked storage: fall through and just show it.
+      // Private mode or blocked storage cannot preserve dismissal state.
+      return;
     }
 
     const onPrompt = (e: Event) => {

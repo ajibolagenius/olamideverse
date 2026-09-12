@@ -19,10 +19,17 @@ const read = (p) => {
     return null;
   }
 };
+const readProgress = (p) => {
+  const progress = read(p);
+  if (progress === null) {
+    throw new Error(`Unable to read progress file: ${p}`);
+  }
+  return progress;
+};
 
 const { entries } = read("content/songs/catalog.json");
-const spotifyProgress = read("scripts/spotify/out/spotify-catalog-progress.json");
-const youtubeProgress = read("scripts/out/youtube-catalog-progress.json");
+const spotifyProgress = readProgress("scripts/spotify/out/spotify-catalog-progress.json");
+const youtubeProgress = readProgress("scripts/out/youtube-catalog-progress.json");
 
 const spotifyDone = new Set(spotifyProgress?.doneIds ?? []);
 const youtubeDone = new Set(youtubeProgress?.doneIds ?? []);

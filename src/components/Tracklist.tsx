@@ -63,7 +63,7 @@ export default function Tracklist({
 
   /** Stable id for the shared dock — trackSchema has no id of its own. */
   const trackId = (track: Track) =>
-    `${albumSlug}--${slugifyTrack(track.title)}`;
+    `${albumSlug}--${track.num}--${slugifyTrack(track.title)}`;
 
   // The dock is the player now, so "now playing" is whatever it holds — but
   // only if that track belongs to this album, or every album page would
@@ -71,7 +71,9 @@ export default function Tracklist({
   const nowPlaying =
     tracks.find((t) => player.track?.id === trackId(t)) ?? null;
 
-  const playTrack = (track: Track) =>
+  const playTrack = (track: Track) => {
+    if (!hasAnyEmbed(track)) return;
+
     player.toggle({
       id: trackId(track),
       title: track.title,
@@ -81,6 +83,7 @@ export default function Tracklist({
       appleMusicId: track.appleMusicId,
       audiomackUrl: track.audiomackUrl,
     });
+  };
 
 
   // The bar naming the playing track lights up where it already sits — moving

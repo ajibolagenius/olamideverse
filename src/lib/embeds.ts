@@ -20,18 +20,45 @@ export type EmbedBlock = { provider: string; embed_id: string };
 /** YouTube Music serves the same video IDs as YouTube — one kill-switch covers both. */
 const YOUTUBE_FAMILY = new Set(["youtube", "youtubemusic"]);
 
+function canonicalizeAudiomackUrl(value: string): string {
+    try {
+        const url = new URL(value);
+        if (url.hostname.toLowerCase().replace(/^www\./, "") !== "audiomack.com") {
+            return value;
+        }
+
+        const parts = url.pathname.split("/").filter(Boolean);
+        if (parts[0] === "embed" && parts.length >= 4) {
+            parts.splice(0, 3, parts[2], parts[1]);
+        }
+
+        return `audiomack.com/${parts.slice(0, 3).join("/")}`;
+    } catch {
+        return value;
+    }
+}
+
 function isBlocked(
     blocks: EmbedBlock[],
     provider: string,
     id: string | null | undefined,
 ): boolean {
     if (!id) return false;
+    const normalizedId =
+        provider === "audiomack" ? canonicalizeAudiomackUrl(id) : id;
     return blocks.some(
-        (b) =>
-            b.embed_id === id &&
+        (b) => {
+            const normalizedBlockId =
+                provider === "audiomack" &&
+                (b.provider === "any" || b.provider === "audiomack")
+                    ? canonicalizeAudiomackUrl(b.embed_id)
+                    : b.embed_id;
+
+            return normalizedBlockId === normalizedId &&
             (b.provider === "any" ||
                 b.provider === provider ||
-                (YOUTUBE_FAMILY.has(b.provider) && YOUTUBE_FAMILY.has(provider))),
+                (YOUTUBE_FAMILY.has(b.provider) && YOUTUBE_FAMILY.has(provider)));
+        },
     );
 }
 
