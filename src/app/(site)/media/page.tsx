@@ -24,6 +24,22 @@ export default async function MediaPage() {
   const [items, eras] = await Promise.all([getMediaItems(), getEras()]);
   return (
     <>
+      {/* Archival Folio Strip */}
+      <div className="border-b-2 border-ink bg-paper px-5 py-2 sm:px-8">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 font-mono text-[0.68rem] font-bold uppercase tracking-[0.14em] text-ink-soft">
+          <div className="flex items-center gap-3">
+            <span className="border border-ink bg-danfo px-1.5 py-0.5 text-ink shadow-print">
+              BARIGA OUTDOOR CINEMA
+            </span>
+            <span>VISUAL PRESSINGS & BROADCAST ARCHIVE</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <span>2010 — PRESENT</span>
+            <span className="hidden sm:inline-block">EMBEDS ONLY · NO RIPPED MEDIA</span>
+          </div>
+        </div>
+      </div>
+
       <PosterHero
         eyebrow="Screening wall"
         title="Watch"

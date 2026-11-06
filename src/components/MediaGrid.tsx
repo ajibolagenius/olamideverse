@@ -10,8 +10,10 @@ import {
 import type { CSSProperties } from "react";
 import EmptyState from "./EmptyState";
 import FilterChips from "./FilterChips";
-import { ACCENTS } from "@/lib/accents";
+import { ACCENTS, accentChrome, type AccentName } from "@/lib/accents";
 import type { Era, MediaItem } from "@/lib/content-schema";
+import { FilmSlate, ListDashes } from "@phosphor-icons/react/ssr";
+import { OV_ICON_WEIGHT } from "@/lib/icons";
 
 const TYPE_LABEL: Record<MediaItem["type"], string> = {
   "music-video": "Music video",
@@ -44,6 +46,7 @@ function MediaThumb({
   onSelect: () => void;
 }) {
   const accent = ACCENTS[era.accent];
+  const chrome = accentChrome(era.accent as AccentName);
   const playable = Boolean(item.youtubeId);
 
   return (
@@ -56,10 +59,10 @@ function MediaThumb({
           ? `Play ${item.title}`
           : `${item.title} — no embed available`
       }
-      className={`group flex w-full flex-col border-3 border-ink bg-white text-left shadow-paste-sm transition-[transform,box-shadow,background-color] ${
+      className={`group flex w-full flex-col border-3 border-ink bg-white text-left shadow-paste-sm transition-all ${
         active
-          ? "bg-danfo shadow-paste"
-          : "hover:-translate-y-0.5 hover:shadow-paste"
+          ? "ring-3 ring-danfo bg-white shadow-paste"
+          : "hover:-translate-y-1 hover:shadow-paste"
       }`}
     >
       <div className="relative aspect-video overflow-hidden border-b-3 border-ink bg-ink">
@@ -90,9 +93,11 @@ function MediaThumb({
             </span>
           </div>
         )}
+
+        {/* Play icon badge */}
         <span
           aria-hidden
-          className={`absolute bottom-2 left-2 grid size-9 place-items-center border-2 border-ink transition-colors ${
+          className={`absolute bottom-2 left-2 grid size-9 place-items-center border-2 border-ink shadow-print transition-colors ${
             active
               ? "bg-ink text-danfo"
               : "bg-danfo text-ink group-hover:bg-ink group-hover:text-danfo"
@@ -100,23 +105,37 @@ function MediaThumb({
         >
           <PlayGlyph className="size-3" />
         </span>
-        <span className="absolute top-2 right-2 border-2 border-ink bg-paper px-1.5 py-0.5 text-[0.62rem] font-bold tracking-[0.06em] uppercase text-ink">
-          {item.year}
-        </span>
-      </div>
-      <div className="flex flex-1 flex-col gap-1.5 px-3 py-3">
-        <div className="flex items-center justify-between gap-2 text-[0.62rem] font-bold tracking-[0.06em] uppercase">
-          <span className={active ? "text-ink" : "text-ink-soft"}>
-            {TYPE_LABEL[item.type]}
-          </span>
-          <span className={active ? "text-ink" : "text-oxide"}>
-            {era.title}
+
+        {/* Top-Right Year & Admission Badge */}
+        <div className="absolute top-2 right-2 flex items-center gap-1.5">
+          <span className="border border-ink bg-paper px-1.5 py-0.5 font-mono text-[0.62rem] font-bold tracking-[0.06em] uppercase text-ink shadow-print">
+            {item.year}
           </span>
         </div>
-        <span className="font-display text-[1.05rem] leading-tight text-ink">
+
+        {/* Top-Left Era Tag */}
+        <div
+          className="absolute top-2 left-2 border border-ink px-1.5 py-0.5 font-mono text-[0.58rem] font-bold uppercase tracking-wider text-ink shadow-print"
+          style={{ backgroundColor: chrome.bg, color: chrome.fg }}
+        >
+          CH. 0{era.order}
+        </div>
+      </div>
+
+      {/* Lobby Card Metadata */}
+      <div className="flex flex-1 flex-col gap-1.5 p-3.5 bg-paper-dim/30">
+        <div className="flex items-center justify-between gap-2 text-[0.62rem] font-bold tracking-[0.06em] uppercase">
+          <span className="border border-ink/30 bg-white px-1 py-0.2 text-ink-soft">
+            {TYPE_LABEL[item.type]}
+          </span>
+          <span className="text-ink-muted font-mono truncate">
+            via {item.source}
+          </span>
+        </div>
+        <span className="font-display text-[1.1rem] leading-tight text-ink group-hover:text-danfo">
           {item.title}
         </span>
-        <p className="line-clamp-2 text-[0.78rem] leading-snug text-ink-soft">
+        <p className="line-clamp-2 text-[0.78rem] leading-snug text-ink-soft mt-0.5">
           {item.note}
         </p>
       </div>
@@ -134,6 +153,7 @@ function CinemaPlayer({
   onClose: () => void;
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
+  const chrome = accentChrome(era.accent as AccentName);
 
   useEffect(() => {
     closeRef.current?.focus();
@@ -144,46 +164,71 @@ function CinemaPlayer({
       <p className="sr-only" aria-live="polite" aria-atomic="true">
         Now screening {item.title}
       </p>
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b-3 border-danfo bg-danfo px-3 py-2 text-ink">
-        <p className="text-[0.72rem] font-bold tracking-[0.08em] uppercase">
-          Now screening · {TYPE_LABEL[item.type]} · {era.title}
-        </p>
-        <button
-          ref={closeRef}
-          type="button"
-          onClick={onClose}
-          className="border-2 border-ink bg-ink px-2.5 py-1 text-[0.65rem] font-bold tracking-[0.06em] uppercase text-danfo hover:bg-paper hover:text-ink"
-        >
-          Close
-        </button>
+
+      {/* Cinema Marquee Header */}
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b-3 border-danfo bg-danfo px-4 py-2.5 text-ink">
+        <div className="flex items-center gap-2">
+          <span className="h-2 w-2 rounded-full bg-ink animate-ping" />
+          <p className="font-mono text-[0.72rem] font-bold tracking-[0.12em] uppercase">
+            LAGOS OUTDOOR CINEMA · PROJECTION BOOTH
+          </p>
+        </div>
+        <div className="flex items-center gap-3">
+          <span
+            className="border border-ink px-1.5 py-0.5 font-mono text-[0.65rem] font-bold uppercase tracking-wider"
+            style={{ backgroundColor: chrome.bg, color: chrome.fg }}
+          >
+            {era.title}
+          </span>
+          <button
+            ref={closeRef}
+            type="button"
+            onClick={onClose}
+            className="border-2 border-ink bg-ink px-3 py-1 font-mono text-[0.68rem] font-bold tracking-[0.08em] uppercase text-danfo hover:bg-paper hover:text-ink shadow-print transition-colors"
+          >
+            Close Booth ✕
+          </button>
+        </div>
       </div>
+
+      {/* Screen Viewport */}
       {item.youtubeId ? (
-        <iframe
-          key={item.youtubeId}
-          title={`${item.title} — YouTube player`}
-          src={`https://www.youtube-nocookie.com/embed/${item.youtubeId}?autoplay=1`}
-          className="aspect-video w-full"
-          allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
-          allowFullScreen
-        />
+        <div className="relative aspect-video w-full bg-black">
+          <iframe
+            key={item.youtubeId}
+            title={`${item.title} — YouTube player`}
+            src={`https://www.youtube-nocookie.com/embed/${item.youtubeId}?autoplay=1`}
+            className="aspect-video w-full border-none"
+            allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
       ) : (
         <div className="grid aspect-video place-items-center bg-paper-dim px-6 text-center text-sm text-ink-soft">
           Documented in the archive — no stable YouTube embed yet. Nothing is
           hosted here.
         </div>
       )}
-      <div className="border-t-3 border-danfo bg-paper px-4 py-4 text-ink sm:px-5">
-        <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <h2 className="font-display text-2xl leading-none sm:text-3xl">
+
+      {/* Cinema Lobby Film Specs */}
+      <div className="border-t-3 border-danfo bg-paper px-4 py-5 text-ink sm:px-6">
+        <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-ink/20 pb-3">
+          <h2 className="font-display text-2xl uppercase leading-none sm:text-3xl text-ink">
             {item.title}
           </h2>
-          <p className="text-[0.72rem] font-bold tracking-[0.06em] uppercase text-ink-soft">
-            {item.year} · via {item.source}
-          </p>
+          <div className="flex items-center gap-3 font-mono text-[0.72rem] font-bold tracking-[0.06em] uppercase text-ink-soft">
+            <span>RELEASE YEAR: {item.year}</span>
+            <span>·</span>
+            <span>SOURCE: {item.source}</span>
+          </div>
         </div>
-        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-ink-soft">
+        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-ink-soft">
           {item.note}
         </p>
+        <div className="mt-4 flex items-center justify-between font-mono text-[0.65rem] uppercase tracking-wider text-ink-muted">
+          <span>THIRD-PARTY EMBED · YOUTUBE-NOCOOKIE</span>
+          <span className="hidden sm:inline-block">NO ARCHIVE HOSTING · LICENSED VIA PROVIDER</span>
+        </div>
       </div>
     </div>
   );
@@ -199,6 +244,7 @@ export default function MediaGrid({
   const [eraFilter, setEraFilter] = useState("all");
   const [typeFilter, setTypeFilter] = useState("all");
   const [sort, setSort] = useState<"newest" | "oldest">("newest");
+  const [viewMode, setViewMode] = useState<"wall" | "ledger">("wall");
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query);
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -265,15 +311,15 @@ export default function MediaGrid({
       <div className="mb-8 border-3 border-ink bg-white shadow-paste-sm">
         <div className="flex flex-wrap items-end justify-between gap-3 border-b-3 border-ink bg-ink px-4 py-3 text-paper">
           <div>
-            <p className="text-[0.65rem] font-bold tracking-[0.1em] uppercase text-danfo">
-              Screening wall
+            <p className="font-mono text-[0.65rem] font-bold tracking-[0.14em] uppercase text-danfo">
+              BARIGA CINEMA ARCHIVE · 2010 — PRESENT
             </p>
-            <p className="font-display text-2xl leading-none sm:text-3xl">
-              Find a clip
+            <p className="font-display text-2xl uppercase leading-none sm:text-3xl text-paper">
+              Screening Catalog
             </p>
           </div>
-          <p className="text-[0.72rem] tracking-[0.08em] uppercase text-ink-muted">
-            {items.length} in the archive · embeds only
+          <p className="font-mono text-[0.72rem] tracking-[0.08em] uppercase text-ink-muted">
+            {items.length} clips documented · embeds only
           </p>
         </div>
 
@@ -287,7 +333,7 @@ export default function MediaGrid({
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Wo, Motigbana, Phyno, Clarence…"
-              className="border-3 border-ink bg-paper px-3 py-2.5 text-sm outline-none focus:bg-white"
+              className="border-3 border-ink bg-paper px-3 py-2.5 text-sm outline-none focus:bg-white shadow-print"
             />
           </label>
 
@@ -314,32 +360,70 @@ export default function MediaGrid({
             ]}
           />
 
-          <div className="flex flex-wrap items-center justify-between gap-3 border-t-2 border-ink pt-4">
-            <p className="text-[0.8rem] tracking-[0.1em] uppercase text-ink-soft">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-t-2 border-ink pt-4">
+            <p className="text-[0.8rem] font-mono tracking-[0.1em] uppercase text-ink-soft">
               Showing {shown.length}{" "}
               {shown.length === 1 ? "clip" : "clips"}
               {query.trim() ? ` for “${query.trim()}”` : null}
             </p>
-            <div
-              role="group"
-              aria-label="Sort order"
-              className="flex gap-4 text-[0.72rem] font-bold tracking-[0.04em] uppercase"
-            >
-              {(["newest", "oldest"] as const).map((option) => (
+
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+              {/* View Switcher */}
+              <div
+                role="group"
+                aria-label="Screening view format"
+                className="flex items-center border-2 border-ink bg-white p-0.5 shadow-print"
+              >
                 <button
-                  key={option}
                   type="button"
-                  aria-pressed={sort === option}
-                  onClick={() => setSort(option)}
-                  className={`border-b-3 pb-0.5 ${
-                    sort === option
-                      ? "border-ink"
-                      : "border-transparent text-ink-soft hover:border-danfo"
+                  aria-pressed={viewMode === "wall"}
+                  onClick={() => setViewMode("wall")}
+                  className={`flex items-center gap-1.5 px-3 py-1 text-xs font-bold uppercase tracking-wider transition-colors ${
+                    viewMode === "wall"
+                      ? "bg-danfo text-ink shadow-print"
+                      : "text-ink-soft hover:text-ink"
                   }`}
                 >
-                  {option} first
+                  <FilmSlate size={15} weight={OV_ICON_WEIGHT} />
+                  <span>Wall</span>
                 </button>
-              ))}
+                <button
+                  type="button"
+                  aria-pressed={viewMode === "ledger"}
+                  onClick={() => setViewMode("ledger")}
+                  className={`flex items-center gap-1.5 px-3 py-1 text-xs font-bold uppercase tracking-wider transition-colors ${
+                    viewMode === "ledger"
+                      ? "bg-ink text-paper shadow-print"
+                      : "text-ink-soft hover:text-ink"
+                  }`}
+                >
+                  <ListDashes size={15} weight={OV_ICON_WEIGHT} />
+                  <span>Ledger</span>
+                </button>
+              </div>
+
+              {/* Sort Order */}
+              <div
+                role="group"
+                aria-label="Sort order"
+                className="flex gap-4 text-[0.72rem] font-bold tracking-[0.04em] uppercase"
+              >
+                {(["newest", "oldest"] as const).map((option) => (
+                  <button
+                    key={option}
+                    type="button"
+                    aria-pressed={sort === option}
+                    onClick={() => setSort(option)}
+                    className={`border-b-3 pb-0.5 ${
+                      sort === option
+                        ? "border-ink text-ink"
+                        : "border-transparent text-ink-soft hover:border-danfo"
+                    }`}
+                  >
+                    {option} first
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -357,7 +441,7 @@ export default function MediaGrid({
 
       {shown.length === 0 ? (
         <EmptyState message="Nothing matches those filters — try another era or clear search." />
-      ) : (
+      ) : viewMode === "wall" ? (
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {shown.map((item) => {
             const era = erasBySlug.get(item.era);
@@ -372,6 +456,59 @@ export default function MediaGrid({
               />
             );
           })}
+        </div>
+      ) : (
+        /* Broadcast Ledger Table */
+        <div className="border-3 border-ink bg-white shadow-paste-sm">
+          <div className="grid grid-cols-12 border-b-2 border-ink bg-paper-dim px-4 py-2.5 font-mono text-[0.68rem] font-bold uppercase tracking-wider text-ink-muted">
+            <span className="col-span-2">Year</span>
+            <span className="col-span-5">Title & Context</span>
+            <span className="col-span-2">Type</span>
+            <span className="col-span-2">Source</span>
+            <span className="col-span-1 text-right">Action</span>
+          </div>
+          <div className="divide-y border-ink/15">
+            {shown.map((item) => {
+              const isSelected = active?.id === item.id;
+              return (
+                <div
+                  key={item.id}
+                  className={`grid grid-cols-12 items-center px-4 py-3 text-sm transition-colors ${
+                    isSelected ? "bg-[#FFF9E6]" : "hover:bg-paper-dim/40"
+                  }`}
+                >
+                  <span className="col-span-2 font-mono text-xs font-bold text-ink-soft">
+                    {item.year}
+                  </span>
+                  <div className="col-span-5 pr-4">
+                    <span className="font-display text-base text-ink block leading-snug">
+                      {item.title}
+                    </span>
+                    <span className="text-xs text-ink-muted line-clamp-1">{item.note}</span>
+                  </div>
+                  <span className="col-span-2 text-xs font-semibold text-ink-soft">
+                    {TYPE_LABEL[item.type]}
+                  </span>
+                  <span className="col-span-2 font-mono text-xs text-ink-muted">
+                    {item.source}
+                  </span>
+                  <div className="col-span-1 text-right">
+                    <button
+                      type="button"
+                      onClick={() => selectItem(item.id)}
+                      className={`border-2 border-ink px-2.5 py-1 text-xs font-bold uppercase tracking-wider shadow-print ${
+                        isSelected
+                          ? "bg-ink text-danfo"
+                          : "bg-danfo text-ink hover:bg-ink hover:text-danfo"
+                      }`}
+                    >
+                      {isSelected ? "Active" : "Screen"}
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       )}
     </div>

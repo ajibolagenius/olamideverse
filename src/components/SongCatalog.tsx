@@ -6,6 +6,7 @@ import EmptyState from "./EmptyState";
 import FilterChips from "./FilterChips";
 import { usePlayer } from "@/components/player/PlayerDock";
 import { hasAnyEmbed } from "@/lib/embeds";
+import { accentChrome, type AccentName } from "@/lib/accents";
 import {
   CATALOG_SONG_TYPES,
   SONG_STATUS_LABEL,
@@ -15,6 +16,8 @@ import {
   type SongStatus,
   type SongType,
 } from "@/lib/content-schema";
+import { Folder, ListDashes, Play } from "@phosphor-icons/react/ssr";
+import { OV_ICON_WEIGHT } from "@/lib/icons";
 
 const TYPE_FILTER_OPTIONS = [
   { value: "all", label: "All types" },
@@ -26,7 +29,7 @@ const TYPE_FILTER_OPTIONS = [
 ];
 
 function statusClass(status: SongStatus): string {
-  if (status === "verified") return "border-ink bg-danfo text-ink";
+  if (status === "verified") return "border-ink bg-danfo text-ink shadow-print";
   if (status === "documented") return "border-ink bg-white text-ink";
   return "border-ink-soft bg-paper-dim text-ink-soft";
 }
@@ -42,6 +45,7 @@ export default function SongCatalog({
   const [typeFilter, setTypeFilter] = useState("all");
   const [eraFilter, setEraFilter] = useState("all");
   const [sort, setSort] = useState<"oldest" | "newest">("oldest");
+  const [viewMode, setViewMode] = useState<"dossier" | "table">("dossier");
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query);
 
@@ -92,7 +96,7 @@ export default function SongCatalog({
 
   return (
     <div>
-      <div className="mb-6 flex flex-col gap-5">
+      <div className="mb-6 flex flex-col gap-5 border-b-2 border-ink/20 pb-6">
         <FilterChips
           label="Filter by type"
           value={typeFilter}
@@ -118,88 +122,158 @@ export default function SongCatalog({
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Eni Duro, Konga, Otis…"
-              className="border-3 border-ink bg-white px-3 py-2 text-sm outline-none focus:bg-paper-dim"
+              className="border-3 border-ink bg-white px-3 py-2 text-sm outline-none focus:bg-paper-dim shadow-print"
             />
           </label>
-          <div
-            role="group"
-            aria-label="Sort order"
-            className="flex gap-4 text-[0.72rem] font-bold tracking-[0.04em] uppercase"
-          >
-            {(["oldest", "newest"] as const).map((option) => (
+
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+            {/* View Mode Switcher */}
+            <div
+              role="group"
+              aria-label="Catalogue view format"
+              className="flex items-center border-2 border-ink bg-white p-0.5 shadow-print"
+            >
               <button
-                key={option}
                 type="button"
-                aria-pressed={sort === option}
-                onClick={() => setSort(option)}
-                className={`border-b-3 pb-0.5 ${
-                  sort === option
-                    ? "border-ink"
-                    : "border-transparent text-ink-soft hover:border-danfo"
+                aria-pressed={viewMode === "dossier"}
+                onClick={() => setViewMode("dossier")}
+                className={`flex items-center gap-1.5 px-3 py-1 text-xs font-bold uppercase tracking-wider transition-colors ${
+                  viewMode === "dossier"
+                    ? "bg-danfo text-ink shadow-print"
+                    : "text-ink-soft hover:text-ink"
                 }`}
               >
-                {option} first
+                <Folder size={15} weight={OV_ICON_WEIGHT} />
+                <span>Dossiers</span>
               </button>
-            ))}
+              <button
+                type="button"
+                aria-pressed={viewMode === "table"}
+                onClick={() => setViewMode("table")}
+                className={`flex items-center gap-1.5 px-3 py-1 text-xs font-bold uppercase tracking-wider transition-colors ${
+                  viewMode === "table"
+                    ? "bg-ink text-paper shadow-print"
+                    : "text-ink-soft hover:text-ink"
+                }`}
+              >
+                <ListDashes size={15} weight={OV_ICON_WEIGHT} />
+                <span>Table</span>
+              </button>
+            </div>
+
+            {/* Sort order toggle */}
+            <div
+              role="group"
+              aria-label="Sort order"
+              className="flex gap-3 text-[0.72rem] font-bold tracking-[0.04em] uppercase"
+            >
+              {(["oldest", "newest"] as const).map((option) => (
+                <button
+                  key={option}
+                  type="button"
+                  aria-pressed={sort === option}
+                  onClick={() => setSort(option)}
+                  className={`border-b-3 pb-0.5 ${
+                    sort === option
+                      ? "border-ink text-ink"
+                      : "border-transparent text-ink-soft hover:border-danfo"
+                  }`}
+                >
+                  {option} first
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
-      <p className="mb-5 text-[0.8rem] tracking-[0.1em] uppercase text-ink-soft">
-        {shown.length} {shown.length === 1 ? "entry" : "entries"}
-      </p>
+      <div className="mb-5 flex items-center justify-between font-mono text-[0.78rem] uppercase tracking-wider text-ink-soft">
+        <span>
+          Showing {shown.length} {shown.length === 1 ? "entry" : "entries"}
+        </span>
+        <span className="hidden sm:inline-block">
+          {viewMode === "dossier" ? "Manila Dossier Folder View" : "Ledger Table View"}
+        </span>
+      </div>
 
       <div className="min-w-0">
-          {shown.length === 0 ? (
-            <EmptyState message="Nothing matches those filters — try another era or clear search." />
-          ) : (
-            <ol className="border-t-3 border-ink">
-              {shown.map((song) => {
-                const era = erasBySlug.get(song.era);
-                const activeRow = activeId === song.id;
-                const typeLabel = SONG_TYPE_LABEL[song.type as SongType];
-                return (
-                  <li
-                    key={song.id}
-                    className={`border-b-2 border-ink px-2 py-2.5 transition-colors sm:px-3 ${
-                      activeRow ? "bg-white" : "hover:bg-paper-dim"
-                    }`}
-                  >
-                    <div className="flex flex-wrap items-start gap-3 sm:flex-nowrap sm:items-center">
-                      <button
-                        type="button"
-                        onClick={() => selectSong(song.id)}
-                        aria-pressed={activeRow}
-                        className="flex min-w-0 flex-1 flex-col gap-1 py-0.5 text-left sm:flex-row sm:items-baseline sm:gap-4"
-                      >
-                        <span className="w-12 shrink-0 font-display text-lg text-ink-soft tabular-nums">
-                          {song.year}
-                        </span>
-                        <span className="min-w-0 flex-1">
-                          <span className="block font-semibold leading-snug">
-                            {song.title}
-                            {song.alsoSingle ? (
-                              <span className="ml-2 text-[0.65rem] font-bold tracking-[0.06em] uppercase text-danfo">
-                                also single
-                              </span>
-                            ) : null}
-                          </span>
-                          <span className="mt-0.5 block text-xs tracking-[0.04em] uppercase text-ink-soft">
-                            {[
-                              typeLabel,
-                              song.artists,
-                              song.note,
-                              era?.title,
-                              song.albumSlug ? `→ ${song.albumSlug}` : null,
-                            ]
-                              .filter(Boolean)
-                              .join(" · ")}
-                          </span>
-                        </span>
-                      </button>
+        {shown.length === 0 ? (
+          <EmptyState message="Nothing matches those filters — try another era or clear search." />
+        ) : viewMode === "dossier" ? (
+          /* Manila Archival Folder Dossier Grid */
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {shown.map((song, idx) => {
+              const era = erasBySlug.get(song.era);
+              const activeRow = activeId === song.id;
+              const typeLabel = SONG_TYPE_LABEL[song.type as SongType];
+              const chrome = era
+                ? accentChrome(era.accent as AccentName)
+                : { bg: "#F5B301", fg: "#181410" };
 
+              return (
+                <div
+                  key={song.id}
+                  className={`ov-paste-up group relative flex flex-col border-3 border-ink bg-[#FAF8F2] p-4.5 transition-all ${
+                    activeRow
+                      ? "bg-white ring-3 ring-danfo shadow-paste"
+                      : "hover:-translate-y-1 hover:shadow-paste-sm"
+                  }`}
+                >
+                  {/* Top Manila Folder Tab */}
+                  <div className="mb-3 flex items-center justify-between border-b-2 border-ink/20 pb-2.5">
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono text-[0.62rem] font-bold uppercase tracking-wider text-ink-muted">
+                        REC · #{song.year}-{String(idx + 1).padStart(3, "0")}
+                      </span>
+                      <span className="border border-ink/20 bg-white px-1 py-0.2 font-mono text-[0.58rem] font-bold uppercase text-ink-soft">
+                        {typeLabel}
+                      </span>
+                    </div>
+                    <span
+                      className="border border-ink/40 px-1.5 py-0.5 text-[0.62rem] font-bold uppercase tracking-wider"
+                      style={{ backgroundColor: chrome.bg, color: chrome.fg }}
+                    >
+                      {era?.title}
+                    </span>
+                  </div>
+
+                  {/* Main Song Heading & Details */}
+                  <div className="flex-1">
+                    <div className="flex items-start justify-between gap-2">
+                      <h3 className="font-display text-lg uppercase tracking-tight text-ink group-hover:text-danfo">
+                        {song.title}
+                      </h3>
+                      <span className="font-mono text-xs font-bold text-ink-soft shrink-0">
+                        {song.year}
+                      </span>
+                    </div>
+
+                    {song.alsoSingle ? (
+                      <span className="mt-1 inline-block border border-danfo bg-[#FFF9E6] px-1.5 py-0.2 text-[0.6rem] font-bold uppercase tracking-wider text-ink">
+                        Also Single Cut
+                      </span>
+                    ) : null}
+
+                    {song.artists ? (
+                      <p className="mt-1.5 text-xs font-semibold text-ink-soft">
+                        Featuring: <span className="text-ink">{song.artists}</span>
+                      </p>
+                    ) : null}
+
+                    {song.note ? (
+                      <p className="mt-2 text-xs leading-relaxed text-ink-soft line-clamp-3">
+                        {song.note}
+                      </p>
+                    ) : null}
+                  </div>
+
+                  {/* Footer Bar: Confidence Seal & Actions */}
+                  <div className="mt-4 flex items-center justify-between border-t-2 border-ink/15 pt-3">
+                    <div className="flex items-center gap-2">
                       <span
-                        className={`shrink-0 border-2 px-1.5 py-0.5 text-[0.65rem] font-bold tracking-[0.05em] uppercase ${statusClass(song.status)}`}
+                        className={`border-2 px-1.5 py-0.5 text-[0.62rem] font-bold uppercase tracking-wider ${statusClass(
+                          song.status,
+                        )}`}
                       >
                         {SONG_STATUS_LABEL[song.status]}
                       </span>
@@ -207,41 +281,128 @@ export default function SongCatalog({
                       {song.albumSlug ? (
                         <Link
                           href={`/albums/${song.albumSlug}`}
-                          className="shrink-0 text-[0.7rem] font-bold tracking-[0.04em] uppercase underline decoration-2 underline-offset-2 hover:text-oxide"
+                          className="text-[0.65rem] font-bold uppercase tracking-wider underline hover:text-oxide"
                         >
-                          Album
+                          View Album →
                         </Link>
                       ) : null}
-
-                      {hasAnyEmbed(song) ? (
-                        <button
-                          type="button"
-                          onClick={() => selectSong(song.id)}
-                          aria-label={`Play embed for ${song.title}`}
-                          className="grid size-8 shrink-0 place-items-center border-2 border-ink bg-danfo"
-                        >
-                          <svg
-                            viewBox="0 0 16 16"
-                            className="size-2.5 fill-ink"
-                          >
-                            <path d="M3 1l11 7-11 7z" />
-                          </svg>
-                        </button>
-                      ) : (
-                        <span
-                          aria-hidden
-                          className="grid size-8 shrink-0 place-items-center border-2 border-dashed border-ink-soft text-[0.6rem] font-bold uppercase text-ink-soft"
-                          title="No embed yet"
-                        >
-                          —
-                        </span>
-                      )}
                     </div>
-                  </li>
-                );
-              })}
-            </ol>
-          )}
+
+                    {hasAnyEmbed(song) ? (
+                      <button
+                        type="button"
+                        onClick={() => selectSong(song.id)}
+                        aria-label={`Play embed for ${song.title}`}
+                        className={`flex items-center gap-1.5 border-2 border-ink px-2.5 py-1 text-xs font-bold uppercase tracking-wider transition-colors ${
+                          activeRow
+                            ? "bg-ink text-danfo shadow-print"
+                            : "bg-danfo text-ink hover:bg-ink hover:text-danfo shadow-print"
+                        }`}
+                      >
+                        <Play size={12} weight="fill" />
+                        <span>{activeRow ? "Playing" : "Play"}</span>
+                      </button>
+                    ) : (
+                      <span
+                        className="border border-dashed border-ink/30 px-2 py-0.5 font-mono text-[0.62rem] text-ink-muted uppercase"
+                        title="Archival record without active embed"
+                      >
+                        No Embed
+                      </span>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          /* Ledger Table View */
+          <ol className="border-t-3 border-ink">
+            {shown.map((song) => {
+              const era = erasBySlug.get(song.era);
+              const activeRow = activeId === song.id;
+              const typeLabel = SONG_TYPE_LABEL[song.type as SongType];
+              return (
+                <li
+                  key={song.id}
+                  className={`border-b-2 border-ink px-2 py-2.5 transition-colors sm:px-3 ${
+                    activeRow ? "bg-white" : "hover:bg-paper-dim"
+                  }`}
+                >
+                  <div className="flex flex-wrap items-start gap-3 sm:flex-nowrap sm:items-center">
+                    <button
+                      type="button"
+                      onClick={() => selectSong(song.id)}
+                      aria-pressed={activeRow}
+                      className="flex min-w-0 flex-1 flex-col gap-1 py-0.5 text-left sm:flex-row sm:items-baseline sm:gap-4"
+                    >
+                      <span className="w-12 shrink-0 font-display text-lg text-ink-soft tabular-nums">
+                        {song.year}
+                      </span>
+                      <span className="min-w-0 flex-1">
+                        <span className="block font-semibold leading-snug">
+                          {song.title}
+                          {song.alsoSingle ? (
+                            <span className="ml-2 text-[0.65rem] font-bold tracking-[0.06em] uppercase text-danfo">
+                              also single
+                            </span>
+                          ) : null}
+                        </span>
+                        <span className="mt-0.5 block text-xs tracking-[0.04em] uppercase text-ink-soft">
+                          {[
+                            typeLabel,
+                            song.artists,
+                            song.note,
+                            era?.title,
+                            song.albumSlug ? `→ ${song.albumSlug}` : null,
+                          ]
+                            .filter(Boolean)
+                            .join(" · ")}
+                        </span>
+                      </span>
+                    </button>
+
+                    <span
+                      className={`shrink-0 border-2 px-1.5 py-0.5 text-[0.65rem] font-bold tracking-[0.05em] uppercase ${statusClass(
+                        song.status,
+                      )}`}
+                    >
+                      {SONG_STATUS_LABEL[song.status]}
+                    </span>
+
+                    {song.albumSlug ? (
+                      <Link
+                        href={`/albums/${song.albumSlug}`}
+                        className="shrink-0 text-[0.7rem] font-bold tracking-[0.04em] uppercase underline decoration-2 underline-offset-2 hover:text-oxide"
+                      >
+                        Album
+                      </Link>
+                    ) : null}
+
+                    {hasAnyEmbed(song) ? (
+                      <button
+                        type="button"
+                        onClick={() => selectSong(song.id)}
+                        aria-label={`Play embed for ${song.title}`}
+                        className="grid size-8 shrink-0 place-items-center border-2 border-ink bg-danfo hover:bg-ink hover:text-danfo transition-colors shadow-print"
+                      >
+                        <Play size={12} weight="fill" />
+                      </button>
+                    ) : (
+                      <span
+                        aria-hidden
+                        className="grid size-8 shrink-0 place-items-center border-2 border-dashed border-ink-soft text-[0.6rem] font-bold uppercase text-ink-soft"
+                        title="No embed yet"
+                      >
+                        —
+                      </span>
+                    )}
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+        )}
       </div>
     </div>
   );
