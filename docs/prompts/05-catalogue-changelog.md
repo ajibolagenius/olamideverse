@@ -1,6 +1,6 @@
 # 05 — Catalogue update changelog
 
-Status: awaiting approval. Prepared 6 November 2026 (Africa/Lagos).
+Status: approved and implemented locally. Completed 6 November 2026 (Africa/Lagos).
 
 ## Goal
 
@@ -87,4 +87,15 @@ not the combined, deduplicated count readers see on `/songs`.
 
 ## Execution record
 
-- Prompt prepared; changelog files have not yet been edited.
+- User approved this prompt on 6 November 2026.
+- Added `date: "2026-11-06"` (`label: "6 November 2026"`) entry to `src/lib/changelog.ts` with the two planned items:
+  1. “Burukutu and Goosebumps join the catalogue” (deep link to `/songs`).
+  2. “Clearer dates and sources for recent releases” (deep link to `/songs`).
+- Mirrored both items in `CHANGELOG.md` under `### 2026-11-06` directly beneath `## [Unreleased]`.
+- Committed in git commit `6b51f35` alongside the catalogue update from prompt 04.
+- Verification checks:
+  - `npx tsc --noEmit`: passed (exit 0).
+  - `npm run lint`: passed (exit 0, single existing unused `accent` warning in `albums/[slug]/page.tsx:66`).
+  - `npm run check:embed-ids`: passed (exit 0).
+  - `npm run build`: passed (exit 0, all pages generated).
+  - `git diff --check`: passed.
