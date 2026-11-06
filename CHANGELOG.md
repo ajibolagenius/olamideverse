@@ -22,6 +22,30 @@ Dates are UTC calendar days of the ship window.
   and ID Cabasa’s “Ok” with Olamide and Ayanfe moves to 2025. Formation,
   Idi Bad, Zion, Come Kulosa and Rock Me Gentle also gain direct release
   citations, making the recent catalogue easier to trace.
+- **Afro-street magazine cover & discography vinyl crate** — The Homepage
+  transforms into a full-scale Afro-street music magazine front cover with
+  masthead volume folios, Bariga datelines, and an interactive 6-chapter
+  Quick-Spine dock. In addition, Discography (`/albums`) introduces a tactile
+  Vinyl Crate view simulating physical record spine browsing with ring-wear
+  patina, catalog stickers, and gatefold studio master logs.
+- **Catalogue archival dossiers & media screening wall** — Songs Catalogue
+  (`/songs`) now features Manila Dossier Cards with tab folders, status
+  confidence stamps (Verified, Documented, Lore), and direct player dock
+  integration. Meanwhile, Media (`/media`) transforms into a vintage Lagos
+  Outdoor Cinema screening wall with lobby cards, marquee showtimes, and an
+  analog projection booth player.
+- **Biography marginalia & hand-painted street lingo signboards** — The
+  Biography (`/biography`) adopts a two-column editorial magazine spread
+  featuring timeline marginalia notes, an archival identity dossier, and
+  chapter ribbons. Street Lingo (`/slang`) introduces hand-painted Lagos Danfo
+  bus signboards with authentic Yoruba diacritics (underdots and tonal
+  markings) alongside a structured lexicographical ledger.
+- **Snippets broadcast studio & cassette voice-notes** — Snippets (`/snippets`)
+  elevates into an archival broadcast studio with session folio tags and an
+  accessible View Switcher: physical Cassette J-Cards with tape spool windows
+  and liner notes versus typographic Broadcast Soundcards with live waveform
+  equalizers. Individual snippet decks (`/snippets/[id]`) now feature analog
+  tape monitor frames and session dispatch notes.
 - **Career Spine wayfinding across Eras** — A persistent, scroll-aware timeline
   rail on desktop and a tactile chapter dock on mobile now anchor the Eras section
   (`/eras`). As you explore Olamide’s 16-year journey, the spine highlights your
