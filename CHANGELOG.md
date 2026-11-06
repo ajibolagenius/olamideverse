@@ -12,6 +12,17 @@ Dates are UTC calendar days of the ship window.
 
 ## [Unreleased]
 
+### 2026-11-06
+
+- **Burukutu and Goosebumps join the catalogue** — “Burukutu” and DaniLeigh’s
+  collaboration with Olamide, “Goosebumps,” now have catalogue entries with
+  release dates, artist credits and verified Audiomack embeds. Find both
+  under the Legacy era on Songs.
+- **Clearer dates and sources for recent releases** — “Come On” moves to 2026,
+  and ID Cabasa’s “Ok” with Olamide and Ayanfe moves to 2025. Formation,
+  Idi Bad, Zion, Come Kulosa and Rock Me Gentle also gain direct release
+  citations, making the recent catalogue easier to trace.
+
 ### 2026-09-12
 
 - **Persistent player dock** — one `EmbedFrame` mounted in `(site)/layout.tsx`

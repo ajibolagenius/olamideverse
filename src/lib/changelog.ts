@@ -18,6 +18,22 @@ export type ChangelogDay = {
 
 export const CHANGELOG: ChangelogDay[] = [
   {
+    date: "2026-11-06",
+    label: "6 November 2026",
+    items: [
+      {
+        title: "Burukutu and Goosebumps join the catalogue",
+        body: "“Burukutu” and DaniLeigh’s collaboration with Olamide, “Goosebumps,” now have catalogue entries with release dates, artist credits and verified Audiomack embeds. Find both under the Legacy era on Songs.",
+        href: "/songs",
+      },
+      {
+        title: "Clearer dates and sources for recent releases",
+        body: "“Come On” moves to 2026, and ID Cabasa’s “Ok” with Olamide and Ayanfe moves to 2025. Formation, Idi Bad, Zion, Come Kulosa and Rock Me Gentle also gain direct release citations, making the recent catalogue easier to trace.",
+        href: "/songs",
+      },
+    ],
+  },
+  {
     date: "2026-09-12",
     label: "12 September 2026",
     items: [

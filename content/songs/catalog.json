@@ -5894,20 +5894,6 @@
       "spotifyTrackId": "1Zq9JpMFVaKzQdgkcltijZ"
     },
     {
-      "id": "feature--waptrick--ok-2024",
-      "title": "Ok",
-      "year": 2024,
-      "era": "legacy",
-      "type": "feature",
-      "status": "verified",
-      "artists": "Id Cabasa ft Olamide ft Ayanfe",
-      "note": "Indexed on Waptrick Olamide search archive (titles only; year estimated from listing id). Verify before promoting.",
-      "source": "Waptrick webarchive",
-      "sourceUrl": "https://waptrick.com/en/download/Id-Cabasa-feat-Olamide-feat-Ayanfe/Ok/?type=FT&id=455703",
-      "youtubeId": "M0gSuddbu-E",
-      "spotifyTrackId": "5V5psOq4X9OYGEeMoyjigp"
-    },
-    {
       "id": "feature--guest--one-day-2024",
       "title": "One Day",
       "year": 2024,
@@ -6040,19 +6026,6 @@
       "spotifyTrackId": "03pv8d28pqb7edfT6JvwzD"
     },
     {
-      "id": "feature--come-on-2025",
-      "title": "Come On",
-      "year": 2025,
-      "type": "feature",
-      "status": "verified",
-      "artists": "Larry Gaaga, Mavo, Kidd Carder",
-      "note": "Larry Gaaga lead featuring Olamide — indexed beside Waptrick/Waploaded Olamide pages",
-      "source": "Waploaded / press",
-      "sourceUrl": "https://audios.waploaded.com/music/artiste/Olamide/",
-      "era": "legacy",
-      "youtubeId": "HYpRUJdbGvA"
-    },
-    {
       "id": "feature--fuji-party-2025",
       "title": "Fuji Party",
       "year": 2025,
@@ -6145,6 +6118,20 @@
       "spotifyTrackId": "6a0MFMtkaQKYUOnTQrwgBc"
     },
     {
+      "id": "feature--waptrick--ok-2024",
+      "title": "Ok",
+      "year": 2025,
+      "era": "legacy",
+      "type": "feature",
+      "status": "verified",
+      "artists": "ID Cabasa, Ayanfe",
+      "note": "ID Cabasa featuring Olamide & Ayanfe — released 5 December 2025 on Unfinished Business.",
+      "source": "Spotify",
+      "sourceUrl": "https://open.spotify.com/track/5V5psOq4X9OYGEeMoyjigp",
+      "youtubeId": "M0gSuddbu-E",
+      "spotifyTrackId": "5V5psOq4X9OYGEeMoyjigp"
+    },
+    {
       "id": "feature--skido-2025",
       "title": "Skido",
       "year": 2025,
@@ -6158,18 +6145,44 @@
       "youtubeId": "N7QGg0YTcr8"
     },
     {
+      "id": "single--burukutu-2026",
+      "title": "Burukutu",
+      "year": 2026,
+      "era": "legacy",
+      "type": "single",
+      "status": "verified",
+      "artists": "Olamide",
+      "note": "Released 20 October 2026 via YBNL Nation / EMPIRE, ahead of Time and Space. Produced by BlaiseBeatz.",
+      "source": "Audiomack — Olamide",
+      "sourceUrl": "https://audiomack.com/olamide/song/burukutu-3302156",
+      "audiomackUrl": "https://audiomack.com/olamide/song/burukutu-3302156"
+    },
+    {
       "id": "feature--come-kulosa-2026",
       "title": "Come Kulosa",
       "year": 2026,
       "type": "feature",
       "status": "verified",
       "artists": "Shoday, Billionboi",
-      "note": "Feature on Shoday × Billionboi single — on Waptrick Olamide listing",
-      "source": "Waptrick listing / press cross-check",
-      "sourceUrl": "https://open.spotify.com/track/2OJtdCzSnQ1G9rMJ6eD1Wt",
+      "note": "Billionboi, Shoday & Olamide — single released 30 April 2026.",
+      "source": "Apple Music",
+      "sourceUrl": "https://music.apple.com/ng/album/come-kulosa-single/1894852635",
       "era": "legacy",
       "youtubeId": "XSsBa-4swco",
       "spotifyTrackId": "2OJtdCzSnQ1G9rMJ6eD1Wt"
+    },
+    {
+      "id": "feature--come-on-2025",
+      "title": "Come On",
+      "year": 2026,
+      "type": "feature",
+      "status": "verified",
+      "artists": "Larry Gaaga, Mavo, Kidd Carder",
+      "note": "Larry Gaaga, Olamide, Mavo & Kidd Carder — released 22 May 2026 via Gaaga Muzik / gamma. Africa.",
+      "source": "Apple Music",
+      "sourceUrl": "https://music.apple.com/ng/album/come-on-single/6769870683",
+      "era": "legacy",
+      "youtubeId": "HYpRUJdbGvA"
     },
     {
       "id": "feature--formation-2026",
@@ -6179,11 +6192,24 @@
       "type": "feature",
       "status": "verified",
       "artists": "Adekunle Gold",
-      "note": "Adekunle Gold featuring Olamide",
-      "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "note": "Adekunle Gold & Olamide — single released 9 April 2026.",
+      "source": "Apple Music",
+      "sourceUrl": "https://music.apple.com/ng/album/formation-single/1882714060",
       "youtubeId": "oiqHsOvCmMo",
       "spotifyTrackId": "687RJSOAS8xDed1hoFxum1"
+    },
+    {
+      "id": "feature--goosebumps-2026",
+      "title": "Goosebumps",
+      "year": 2026,
+      "era": "legacy",
+      "type": "feature",
+      "status": "verified",
+      "artists": "DaniLeigh",
+      "note": "DaniLeigh & Olamide — released 18 September 2026 via DaniLeigh / Rebellion Records.",
+      "source": "Audiomack — DaniLeigh",
+      "sourceUrl": "https://audiomack.com/danileigh/song/goosebumps",
+      "audiomackUrl": "https://audiomack.com/danileigh/song/goosebumps"
     },
     {
       "id": "feature--idi-bad-2026",
@@ -6193,9 +6219,9 @@
       "type": "feature",
       "status": "verified",
       "artists": "KCee",
-      "note": "KCee featuring Olamide",
-      "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "note": "KCee featuring Olamide — released 16 April 2026 via Five Star Music / ONErpm.",
+      "source": "Apple Music",
+      "sourceUrl": "https://music.apple.com/ng/album/idi-bad-feat-olamide-single/1886264796",
       "youtubeId": "-HSRg6siA84",
       "spotifyTrackId": "1YXpZ72vUMlT27CIMj9CAd"
     },
@@ -6216,9 +6242,9 @@
       "year": 2026,
       "type": "single",
       "status": "verified",
-      "note": "2026 YBNL Nation / Empire single — surfaced on Waptrick/Waploaded artist indexes",
-      "source": "Waptrick listing / press cross-check",
-      "sourceUrl": "https://open.spotify.com/track/6E55BUeTgdzkQqXsPD5LGh",
+      "note": "Released May 2026 via YBNL Nation / EMPIRE.",
+      "source": "Apple Music",
+      "sourceUrl": "https://music.apple.com/ng/album/rock-me-gentle-single/1895671465",
       "era": "legacy",
       "youtubeId": "zpNm_Qm9aA4"
     },
@@ -6230,9 +6256,9 @@
       "type": "feature",
       "status": "verified",
       "artists": "Teni",
-      "note": "Teni featuring Olamide",
-      "source": "Wikipedia",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
+      "note": "Teni & Olamide — released 24 April 2026 via gamma. Africa.",
+      "source": "Apple Music",
+      "sourceUrl": "https://music.apple.com/ng/album/zion-single/1894906613",
       "youtubeId": "-myk3e0wXsk",
       "spotifyTrackId": "00NCm17kFsopwWhGgr78Rn"
     }
