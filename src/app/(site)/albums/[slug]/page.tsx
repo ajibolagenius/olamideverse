@@ -127,11 +127,17 @@ export default async function AlbumPage({
 
       <section className="mx-auto grid max-w-6xl items-start gap-11 px-5 pt-9 pb-5 sm:px-8 lg:grid-cols-[min(340px,100%)_1fr]">
         <div>
+          {/* Physical Gatefold Sleeve Chassis */}
           <div
-            className="ov-paste-up w-full border-3 border-ink shadow-paste"
+            className="ov-paste-up relative w-full border-3 border-ink bg-white shadow-paste"
             data-tilt="-0.7"
             style={{ rotate: "-0.7deg" }}
           >
+            {/* Top Tape Archive Sticker */}
+            <div className="ov-tape absolute -top-3 left-4 border border-ink/40 bg-[#FFF0A0] px-2.5 py-0.5 font-mono text-[0.62rem] font-bold uppercase tracking-wider text-ink shadow-print z-10">
+              ARCHIVE PRESSING · {album.year}
+            </div>
+
             <CoverArt
               title={album.title}
               slug={album.slug}
@@ -139,6 +145,12 @@ export default async function AlbumPage({
               className="aspect-square"
               priority
             />
+
+            {/* Bottom Cardboard Sleeve Tab */}
+            <div className="flex items-center justify-between border-t-2 border-ink bg-paper-dim px-3 py-1.5 font-mono text-[0.65rem] text-ink-muted">
+              <span>CAT. NO. {album.year}-0{era.order}</span>
+              <span className="font-bold text-ink uppercase">{ALBUM_TYPE_LABEL[album.type]}</span>
+            </div>
           </div>
           <p className="mt-2.5 text-[0.7rem] tracking-[0.06em] uppercase text-ink-soft">
             Cover art
@@ -165,7 +177,7 @@ export default async function AlbumPage({
         <div>
           <Link
             href={`/eras/${era.slug}`}
-            className="mb-4 inline-block -rotate-1 px-3 py-1.5 text-xs font-bold tracking-[0.08em] uppercase"
+            className="mb-4 inline-block -rotate-1 px-3 py-1.5 text-xs font-bold tracking-[0.08em] uppercase shadow-paste-sm border border-ink"
             style={{ background: badgeBg, color: badgeFg }}
           >
             Part of Era {String(era.order).padStart(2, "0")} — {era.title} →
@@ -188,15 +200,20 @@ export default async function AlbumPage({
             />
           </div>
           {metaFacts.length > 0 ? (
-            <div className="mb-6 flex flex-wrap gap-7 border-y-6 border-ink bg-paper-dim/40 py-3.5 text-sm text-ink-soft">
-              {metaFacts.map((fact) => (
-                <span key={fact.label}>
-                  <b className="block text-[0.7rem] tracking-[0.1em] uppercase text-ink">
-                    {fact.label}
-                  </b>
-                  {fact.value}
-                </span>
-              ))}
+            <div className="mb-6 border-y-6 border-ink bg-paper-dim/40 py-3.5 px-4 text-sm text-ink-soft shadow-inner">
+              <div className="mb-2 font-mono text-[0.65rem] font-bold uppercase tracking-[0.14em] text-ink-muted">
+                STUDIO MASTER RECORDING LOG · SPECIFICATION
+              </div>
+              <div className="flex flex-wrap gap-7">
+                {metaFacts.map((fact) => (
+                  <span key={fact.label}>
+                    <b className="block text-[0.7rem] tracking-[0.1em] uppercase text-ink">
+                      {fact.label}
+                    </b>
+                    {fact.value}
+                  </span>
+                ))}
+              </div>
             </div>
           ) : null}
           <Prose source={album.body} accent={era.accent} />
