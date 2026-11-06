@@ -22,6 +22,26 @@ Dates are UTC calendar days of the ship window.
   and ID Cabasa’s “Ok” with Olamide and Ayanfe moves to 2025. Formation,
   Idi Bad, Zion, Come Kulosa and Rock Me Gentle also gain direct release
   citations, making the recent catalogue easier to trace.
+- **Career Spine wayfinding across Eras** — A persistent, scroll-aware timeline
+  rail on desktop and a tactile chapter dock on mobile now anchor the Eras section
+  (`/eras`). As you explore Olamide’s 16-year journey, the spine highlights your
+  active chapter and lets you jump seamlessly between all six eras.
+- **Danfo Route Map on Impact** — A new cartographic view (`/impact`) reimagines
+  the impact archive as an authentic Lagos Danfo transit network. Explore the
+  corridor from Bariga (Origin 01) to Surulere, London, and US tour stages with
+  landmark schedules and ticket punch cards.
+- **YBNL Dynasty Lineage on Influence** — An architectural lineage matrix now
+  accompanies the influence graph (`/influence`), mapping mentors from Coded
+  Tunes, foundational YBNL signees, and second-generation stars with interactive
+  archival dossiers.
+- **Tactile cassette boombox dock & Display P3 color** — The persistent audio
+  player dock adopts authentic cassette boombox styling with animated
+  dual-rotating tape spools during playback. In addition, the site palette now
+  leverages Display P3 wide-gamut enhancements for richer Danfo Yellow radiance
+  on modern OLED screens.
+- **Archive Design Lab** — A dedicated presentational prototyping space opens at
+  `/lab`, housing active explorations testing cartographic schematics, physical
+  music packaging, and Afro-street editorial materiality.
 
 ### 2026-09-12
 

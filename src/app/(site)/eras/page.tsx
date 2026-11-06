@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import CareerSpine from "@/components/CareerSpine";
 import PosterHero from "@/components/PosterHero";
 import EraCard from "@/components/EraCard";
 import SectionLabel from "@/components/ui/SectionLabel";
@@ -27,6 +28,7 @@ export default async function ErasPage() {
 
   return (
     <>
+      <CareerSpine eras={eras} />
       <PosterHero
         eyebrow="The elevator pitch of the whole site"
         title={
@@ -43,12 +45,13 @@ export default async function ErasPage() {
         />
         <div className="flex flex-col gap-14">
           {albumsByEra.map(({ era, albums }) => (
-            <EraCard
-              key={era.slug}
-              era={era}
-              albums={albums}
-              showFavorite={flags.fanzone}
-            />
+            <div key={era.slug} id={`era-${era.slug}`} className="scroll-mt-24">
+              <EraCard
+                era={era}
+                albums={albums}
+                showFavorite={flags.fanzone}
+              />
+            </div>
           ))}
         </div>
       </section>

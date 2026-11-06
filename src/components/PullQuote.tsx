@@ -36,6 +36,21 @@ export default function PullQuote({
       <blockquote className="font-display text-display-md max-w-[26ch] leading-[1.05]">
         {text ? withHighlight(text, highlight) : children}
       </blockquote>
+      <svg
+        className="mt-2.5 h-2 w-28 max-w-full opacity-85"
+        style={{ color: ACCENTS[accent].solid }}
+        viewBox="0 0 200 12"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <path
+          d="M2 8C50 2 150 10 198 4"
+          stroke="currentColor"
+          strokeWidth="4"
+          strokeLinecap="round"
+        />
+      </svg>
       {cite ? (
         <figcaption className="mt-2 text-xs tracking-[0.05em] uppercase text-ink-soft">
           {cite}

@@ -139,6 +139,15 @@
   --ov-duration-settle: 0.25s;
 }
 
+/* Display P3 Wide Color Gamut enhancement for modern OLED displays */
+@supports (color: color(display-p3 1 1 1)) {
+  :root {
+    --color-danfo: color(display-p3 0.96 0.7 0.05);
+    --color-adire: color(display-p3 0.12 0.16 0.39);
+    --color-oxide: color(display-p3 0.78 0.27 0.11);
+  }
+}
+
 @layer base {
   html {
     /* .ov-paste-up cards carry a slight inline `rotate()` — at edge-to-edge
@@ -410,6 +419,26 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill='%23F4EFE6' fill-rule='evenodd'%3E%3Cpath d='M0 20L20 0l20 20-20 20zM20 5l15 15-15 15L5 20z'/%3E%3Ccircle cx='20' cy='20' r='3'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 40px 40px;
+}
+
+/* Screen-print misregistration offset on card hover */
+.ov-misregistration {
+  position: relative;
+}
+.ov-misregistration::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--color-danfo);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(0, 0);
+  transition: transform var(--ov-duration-lift) var(--ov-ease-snap), opacity var(--ov-duration-lift) var(--ov-ease-snap);
+  mix-blend-mode: multiply;
+}
+.ov-misregistration:hover::after {
+  opacity: 0.85;
+  transform: translate(2px, 2px);
 }
 
 /* Danfo route ticket stub details */

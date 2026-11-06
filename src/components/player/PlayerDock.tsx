@@ -103,38 +103,62 @@ export default function PlayerProvider({
         <div
           role="region"
           aria-label="Now playing"
-          className="ov-player-dock fixed inset-x-0 bottom-0 z-30 border-t-3 border-ink bg-paper p-3 shadow-[0_-8px_0_0_rgba(24,20,16,0.08)] sm:inset-x-auto sm:right-4 sm:bottom-4 sm:w-[min(22rem,calc(100vw-2.5rem))] sm:border-3 sm:shadow-paste-sm"
+          className="ov-player-dock fixed inset-x-0 bottom-0 z-30 border-t-3 border-ink bg-paper shadow-[0_-8px_0_0_rgba(24,20,16,0.08)] sm:inset-x-auto sm:right-4 sm:bottom-4 sm:w-[min(22rem,calc(100vw-2.5rem))] sm:border-3 sm:shadow-paste-sm"
         >
-          <div className="mb-2 flex items-center justify-between gap-3">
-            <p className="text-[0.72rem] font-bold tracking-[0.06em] uppercase text-ink-soft">
-              Now playing
-            </p>
-            <button
-              type="button"
-              onClick={stop}
-              className="border-2 border-ink bg-white px-2.5 py-1 text-[0.7rem] font-bold tracking-[0.04em] uppercase hover:bg-danfo"
-            >
-              Stop
-            </button>
+          {/* Cassette Boombox Top Accent Strip */}
+          <div className="flex items-center justify-between border-b-2 border-ink bg-danfo px-3 py-1 text-ink">
+            <div className="flex items-center gap-1.5" aria-hidden="true">
+              <div
+                className="h-3 w-3 rounded-full border border-dashed border-ink flex items-center justify-center animate-spin"
+                style={{ animationDuration: "3s" }}
+              >
+                <div className="h-1 w-1 rounded-full bg-ink" />
+              </div>
+              <div
+                className="h-3 w-3 rounded-full border border-dashed border-ink flex items-center justify-center animate-spin"
+                style={{ animationDuration: "3s" }}
+              >
+                <div className="h-1 w-1 rounded-full bg-ink" />
+              </div>
+              <span className="font-mono text-[0.6rem] font-bold tracking-wider">
+                OLAMIDEVERSE SOUND SYSTEM
+              </span>
+            </div>
+            <span className="font-mono text-[0.6rem] font-bold">STEREO DOCK</span>
           </div>
 
-          <div aria-live="polite" aria-atomic="true">
-            <p className="mb-1 truncate font-display text-lg leading-tight">
-              {track.title}
-            </p>
-            {track.subtitle ? (
-              <p className="mb-3 truncate text-[0.72rem] tracking-[0.04em] uppercase text-ink-soft">
-                {track.subtitle}
+          <div className="p-3">
+            <div className="mb-2 flex items-center justify-between gap-3">
+              <p className="text-[0.72rem] font-bold tracking-[0.06em] uppercase text-ink-soft">
+                Now playing
               </p>
-            ) : null}
-            {hasAnyEmbed(track) ? (
-              <EmbedFrame title={track.title} {...embed} provider="youtubemusic" />
-            ) : (
-              <div className="border-3 border-dashed border-ink-soft bg-paper-dim p-4 text-sm leading-relaxed text-ink-soft">
-                Documented in the catalogue — no stable embed ID yet. Nothing is
-                hosted here.
-              </div>
-            )}
+              <button
+                type="button"
+                onClick={stop}
+                className="border-2 border-ink bg-white px-2.5 py-1 text-[0.7rem] font-bold tracking-[0.04em] uppercase hover:bg-danfo transition-colors"
+              >
+                Stop
+              </button>
+            </div>
+
+            <div aria-live="polite" aria-atomic="true">
+              <p className="mb-1 truncate font-display text-lg leading-tight">
+                {track.title}
+              </p>
+              {track.subtitle ? (
+                <p className="mb-3 truncate text-[0.72rem] tracking-[0.04em] uppercase text-ink-soft">
+                  {track.subtitle}
+                </p>
+              ) : null}
+              {hasAnyEmbed(track) ? (
+                <EmbedFrame title={track.title} {...embed} provider="youtubemusic" />
+              ) : (
+                <div className="border-3 border-dashed border-ink-soft bg-paper-dim p-4 text-sm leading-relaxed text-ink-soft">
+                  Documented in the catalogue — no stable embed ID yet. Nothing is
+                  hosted here.
+                </div>
+              )}
+            </div>
           </div>
         </div>
       ) : null}

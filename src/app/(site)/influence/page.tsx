@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumb from "@/components/Breadcrumb";
-import InfluenceGraph from "@/components/InfluenceGraph";
+import InfluenceViewSwitcher from "@/components/InfluenceViewSwitcher";
 import PosterHero from "@/components/PosterHero";
 import Ticker from "@/components/chrome/Ticker";
 import { getInfluenceGraph } from "@/lib/content";
@@ -44,7 +44,7 @@ export default async function InfluencePage() {
       />
       <Ticker items={TICKER} />
       <section className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
-        <InfluenceGraph graph={graph} />
+        <InfluenceViewSwitcher graph={graph} />
         <p className="mt-10 max-w-2xl text-sm leading-relaxed text-ink-soft">
           This is editorial curation, not an AI similarity model. The roster is
           always visible — filters only dim or highlight. High-confidence exits

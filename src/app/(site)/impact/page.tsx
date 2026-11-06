@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumb from "@/components/Breadcrumb";
-import ImpactMap from "@/components/ImpactMap";
+import ImpactViewSwitcher from "@/components/ImpactViewSwitcher";
 import PosterHero from "@/components/PosterHero";
 import Ticker from "@/components/chrome/Ticker";
 import { getImpactPlaces } from "@/lib/content";
@@ -43,7 +43,7 @@ export default async function ImpactPage() {
       />
       <Ticker items={TICKER} />
       <section className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
-        <ImpactMap places={places} />
+        <ImpactViewSwitcher places={places} />
         <p className="mt-10 max-w-2xl text-sm leading-relaxed text-ink-soft">
           For the people around the music, open the{" "}
           <Link
