@@ -47,9 +47,8 @@ export const IMPACT_MAP_VIEWS: Record<
   },
 };
 
-/** Carto Positron — light basemap that reads closer to paper than default OSM. */
-export const IMPACT_TILE_URL =
-  "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
+/** OpenStreetMap standard tiles — keyless. CARTO's free raster basemaps now require an API key. */
+export const IMPACT_TILE_URL = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
 
 export const IMPACT_TILE_ATTRIBUTION =
-  '&copy; <a href="https://www.openstreetmap.org/copyright" rel="noopener noreferrer">OpenStreetMap</a> · &copy; <a href="https://carto.com/attributions" rel="noopener noreferrer">CARTO</a>';
+  '&copy; <a href="https://www.openstreetmap.org/copyright" rel="noopener noreferrer">OpenStreetMap</a> contributors';

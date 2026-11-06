@@ -521,7 +521,7 @@
   z-index: 0;
 }
 .ov-impact-leaflet .leaflet-tile-pane {
-  filter: sepia(0.18) contrast(1.04) saturate(0.85);
+  filter: grayscale(1) sepia(0.18) contrast(1.04);
 }
 .ov-impact-leaflet .leaflet-control-attribution {
   background: color-mix(in srgb, var(--color-paper) 92%, transparent);
