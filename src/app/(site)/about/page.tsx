@@ -91,14 +91,88 @@ export default function AboutPage() {
       <section className="mx-auto max-w-3xl px-5 pt-12 sm:px-8">
         <SectionLabel>Who made it</SectionLabel>
         <h2 className="font-display mb-5 text-3xl">A fan project, built in the open</h2>
-        <p className="mb-4 text-lg leading-relaxed">
+        <p className="mb-6 text-lg leading-relaxed">
           OlamideVerse is an independent, unofficial archive made by a fan of
           the music, not by Olamide or YBNL Nation. There is no affiliation,
           sponsorship or endorsement between this project and the artist, his
           label, or his estate — that stays true on every page, not just this
           one.
         </p>
-        <p className="text-lg leading-relaxed text-ink-soft">
+
+        {/* Creator & Curator Profile Card */}
+        <div
+          className="ov-paste-up border-3 border-ink bg-white p-6 shadow-print"
+          data-tilt="0.3"
+          style={{ rotate: "0.3deg" }}
+        >
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-ink pb-3">
+            <div>
+              <span className="font-mono text-[0.68rem] font-bold uppercase tracking-wider text-oxide">
+                CURATOR & LEAD ENGINEER
+              </span>
+              <h3 className="font-display text-2xl uppercase tracking-tight text-ink">
+                Ajibola Akelebe
+              </h3>
+            </div>
+            <span className="border border-ink bg-danfo px-2.5 py-1 font-mono text-[0.68rem] font-bold uppercase tracking-wider text-ink shadow-paste-sm">
+              Lagos, Nigeria
+            </span>
+          </div>
+
+          <div className="mt-4 space-y-3">
+            <p className="text-sm leading-relaxed text-ink-soft">
+              Full-Stack Software Engineer and Visual Designer based in Lagos,
+              creating for a global audience. OlamideVerse was researched,
+              architected, typeset, and engineered from scratch as a living tribute
+              to 16 years of Nigerian street-hop cultural heritage and Olamide&apos;s
+              indelible impact on contemporary African music.
+            </p>
+            <p className="font-mono text-xs text-ink/80">
+              Stack: Next.js 16 · React 19 · Tailwind v4 · GSAP Motion · Driver.js · Supabase
+            </p>
+          </div>
+
+          <div className="mt-5 flex flex-wrap items-center gap-3 border-t-2 border-ink/15 pt-4 font-mono text-xs font-bold uppercase">
+            <a
+              href="https://ajibolagenius.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 border-2 border-ink bg-danfo px-3 py-1.5 text-ink shadow-paste-sm transition-transform hover:-translate-y-0.5"
+            >
+              <span>Portfolio</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a
+              href="https://github.com/ajibolagenius"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 border-2 border-ink bg-white px-3 py-1.5 text-ink shadow-paste-sm transition-transform hover:-translate-y-0.5 hover:bg-paper-dim"
+            >
+              <span>GitHub</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a
+              href="https://linkedin.com/in/ajibolaakelebe"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 border-2 border-ink bg-white px-3 py-1.5 text-ink shadow-paste-sm transition-transform hover:-translate-y-0.5 hover:bg-paper-dim"
+            >
+              <span>LinkedIn</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a
+              href="https://twitter.com/ajibolagenius"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 border-2 border-ink bg-white px-3 py-1.5 text-ink shadow-paste-sm transition-transform hover:-translate-y-0.5 hover:bg-paper-dim"
+            >
+              <span>Twitter / X</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <p className="mt-6 text-sm leading-relaxed text-ink-soft">
           If anything here is inaccurate, out of date, or should be removed
           at the rights holder&apos;s request, see the{" "}
           <Link href="/legal" className="ov-link-underline font-semibold text-adire hover:text-oxide">

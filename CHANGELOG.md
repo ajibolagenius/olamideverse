@@ -14,6 +14,16 @@ Dates are UTC calendar days of the ship window.
 
 ### 2026-11-06
 
+- **Archive Expedition & Driver.js Storytelling Tours** — Introduced an
+  interactive Driver.js-powered storytelling onboarding expedition docked in the
+  corner. Readers can embark on 6 documentary narrative acts detailing Olamide's
+  16-year journey, complete with live progress bars, pause/resume state
+  (“Paused at Step X of Y”), compact and full checklist modes, and pulsing
+  contextual field note beacons across Discography, Songs Catalogue, Danfo
+  Transit, Street Lingo, and Snippets.
+- **Author & Curator Attribution** — Formally attributed project curation,
+  editorial design, and full-stack software architecture to Ajibola Akelebe
+  across the site colophon, footer, and repository documentation.
 - **Burukutu and Goosebumps join the catalogue** — “Burukutu” and DaniLeigh’s
   collaboration with Olamide, “Goosebumps,” now have catalogue entries with
   release dates, artist credits and verified Audiomack embeds. Find both

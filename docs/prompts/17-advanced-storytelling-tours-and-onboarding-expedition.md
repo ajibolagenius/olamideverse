@@ -1,6 +1,6 @@
 # 17 — Advanced Storytelling Tours, Driver.js Onboarding Checklist & Contextual Beacons
 
-Status: approved. Executing 6 November 2026 (Africa/Lagos).
+Status: implemented and verified. 6 November 2026 (Africa/Lagos).
 
 ## Goal and scope
 

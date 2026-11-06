@@ -131,6 +131,16 @@ Editorial watch list: `docs/CONTENT-TRIGGERS.md`.
 - [CHANGELOG.md](./CHANGELOG.md) — repo release notes (mirrors `/changelog`)
 - [LICENSE](./LICENSE) — code license; third-party rights stay with their owners
 
+## Author & Curator
+
+**Ajibola Akelebe**  
+Full-Stack Software Engineer & Visual Designer based in Lagos, Nigeria.
+- Portfolio: [ajibolagenius.vercel.app](https://ajibolagenius.vercel.app)
+- Projects: [ajibolagenius.vercel.app/projects](https://ajibolagenius.vercel.app/projects)
+- GitHub: [@ajibolagenius](https://github.com/ajibolagenius)
+- LinkedIn: [in/ajibolaakelebe](https://linkedin.com/in/ajibolaakelebe)
+- Twitter / X: [@ajibolagenius](https://twitter.com/ajibolagenius)
+
 ## Disclaimer
 
 OlamideVerse is an independent fan archive for educational and cultural

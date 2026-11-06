@@ -19,6 +19,8 @@ export const metadata: Metadata = {
     template: `%s · ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
+  authors: [{ name: "Ajibola Akelebe", url: "https://ajibolagenius.vercel.app" }],
+  creator: "Ajibola Akelebe",
   alternates: { canonical: "/" },
   openGraph: {
     title: DEFAULT_TITLE,

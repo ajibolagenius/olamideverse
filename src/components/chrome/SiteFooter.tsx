@@ -84,9 +84,23 @@ export default function SiteFooter({
         </div>
 
         <div className="flex flex-col items-center gap-5 pt-6 sm:flex-row sm:justify-between sm:gap-8">
-          <p className="max-w-xl text-center text-[0.72rem] tracking-[0.06em] uppercase sm:text-left">
-            {blurb}
-          </p>
+          <div className="flex flex-col gap-1.5 text-center sm:text-left">
+            <p className="max-w-xl text-[0.72rem] tracking-[0.06em] uppercase">
+              {blurb}
+            </p>
+            <p className="text-[0.7rem] text-ink-muted">
+              Curated & Engineered by{" "}
+              <a
+                href="https://ajibolagenius.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-paper font-semibold underline decoration-danfo underline-offset-2 transition-colors hover:text-danfo"
+              >
+                Ajibola Akelebe
+              </a>{" "}
+              · Lagos, Nigeria
+            </p>
+          </div>
           <VisitorBadge />
         </div>
       </div>

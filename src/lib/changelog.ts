@@ -22,6 +22,16 @@ export const CHANGELOG: ChangelogDay[] = [
     label: "6 November 2026",
     items: [
       {
+        title: "Archive Expedition & Driver.js Storytelling Tours",
+        body: "Introduced an interactive Driver.js-powered storytelling onboarding expedition docked in the corner. Readers can embark on 6 documentary narrative acts detailing Olamide's 16-year journey, complete with live progress bars, pause/resume state (“Paused at Step X of Y”), compact and full checklist modes, and pulsing contextual field note beacons across Discography, Songs Catalogue, Danfo Transit, Street Lingo, and Snippets.",
+        href: "/",
+      },
+      {
+        title: "Author & Curator Attribution",
+        body: "Formally attributed project curation, editorial design, and full-stack software architecture to Ajibola Akelebe across the site colophon, footer, and repository documentation.",
+        href: "/about",
+      },
+      {
         title: "Burukutu and Goosebumps join the catalogue",
         body: "“Burukutu” and DaniLeigh’s collaboration with Olamide, “Goosebumps,” now have catalogue entries with release dates, artist credits and verified Audiomack embeds. Find both under the Legacy era on Songs.",
         href: "/songs",
