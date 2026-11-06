@@ -26,7 +26,7 @@ const HOME_TICKER = [
   "YBNL · 2012",
   "Baddest Guy Ever Liveth · 2013",
   "Street OT · 2014",
-  "Eyan Mayweather · 2015",
+  "Eyán Mayweather · 2015",
   "The Glory · 2016",
   "Lagos Nawa · 2017",
   "Carpe Diem · 2020",

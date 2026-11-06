@@ -1,7 +1,8 @@
 "use client";
 
-import { useDeferredValue, useMemo, useState } from "react";
+import { Suspense, useDeferredValue, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import EmptyState from "./EmptyState";
 import FilterChips from "./FilterChips";
 import { usePlayer } from "@/components/player/PlayerDock";
@@ -32,6 +33,32 @@ function statusClass(status: SongStatus): string {
   if (status === "verified") return "border-ink bg-danfo text-ink shadow-print";
   if (status === "documented") return "border-ink bg-white text-ink";
   return "border-ink-soft bg-paper-dim text-ink-soft";
+}
+
+/** Only the URL reader suspends; the catalogue still prerenders. */
+function SongQuerySync({ onQuery }: { onQuery: (query: string) => void }) {
+  const params = useSearchParams();
+  const query = params.get("q") ?? "";
+  useEffect(() => { onQuery(query); }, [query, onQuery]);
+  return null;
+}
+
+function ChartPositions({ positions }: { positions: Song["chartPositions"] }) {
+  if (!positions?.length) return null;
+  return (
+    <ul className="mt-2 space-y-1 text-xs leading-relaxed text-ink-soft">
+      {positions.map((entry, index) => (
+        <li key={`${entry.chart}-${entry.asOf}-${index}`}>
+          <a href={entry.sourceUrl} target="_blank" rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-oxide">
+            {entry.kind === "peak" ? "Peak" : entry.kind === "debut" ? "Debut" : "Weekly position"}
+            {` #${entry.position} · ${entry.chart} · ${entry.territory}`}
+          </a>
+          {" · as of "}<time dateTime={entry.asOf}>{entry.asOf}</time>
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 export default function SongCatalog({
@@ -104,6 +131,9 @@ export default function SongCatalog({
 
   return (
     <div>
+      <Suspense fallback={null}>
+        <SongQuerySync onQuery={setQuery} />
+      </Suspense>
       <div className="mb-6 flex flex-col gap-5 border-b-2 border-ink/20 pb-6">
         <FilterChips
           label="Filter by type"
@@ -276,6 +306,7 @@ export default function SongCatalog({
                         {song.note}
                       </p>
                     ) : null}
+                    <ChartPositions positions={song.chartPositions} />
                   </div>
 
                   {/* Footer Bar: Confidence Seal & Actions */}
@@ -409,6 +440,7 @@ export default function SongCatalog({
                       </span>
                     )}
                   </div>
+                  <ChartPositions positions={song.chartPositions} />
                 </li>
               );
             })}

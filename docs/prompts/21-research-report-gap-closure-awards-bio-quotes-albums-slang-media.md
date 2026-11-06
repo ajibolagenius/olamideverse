@@ -78,3 +78,71 @@ Close the report lines that prompt 20 left out — the ones its own "optional / 
 5. `/slang` — "Who You Epp?" and "Shọ́rọ́ Níyẹn" render with diacritics and link to their carrier records.
 6. `/media` — open a newly added live/interview item and a `Dir.`-credited video (Reggae Blues) and confirm the embed plays and the note shows the credit.
 7. `/albums/time-and-space` → 404.
+
+## Resumption notes — 6 November 2026
+
+The user confirmed this file is the scope and asked to continue its partially
+implemented work. The three existing era edits are being completed, not discarded.
+
+Skills read in this continuation: `supabase`, `secure-me`, `playwright-cli`.
+Also read the installed Next.js MDX and caching guides, the content loaders and
+schemas, `anchors.ts`, era moment rendering, album rendering, both CMS scripts,
+and the existing changelog/content files listed above. No new UI is proposed.
+
+Source verification takes precedence over a claim in the initial research:
+
+- BET's [official 2020 nominations](https://www.paramountpressexpress.com/bet/shows/the-bet-awards-2020/releases/?view=102500-bet-announces-official-nominations-for-the-bet-awards-2020)
+  do not include Olamide. Do not add the proposed BET moment.
+- The “Shoki” remix is credited to **Unlimited L.A**, not TG Omori, by
+  [contemporary coverage](https://notjustok.com/songs/videos/video-lil-kesh-shoki-remix-ft-davido-olamide/).
+- Preserve existing moment fragments when correcting the Eyán title. A narrow
+  compatibility alias in `src/lib/anchors.ts` is necessary: the existing slugger
+  removes accented letters and would break three graph/map links and saved URLs.
+  Do not normalize every old fragment or introduce a schema field.
+- A family sentence can name DJ Enimoney and TemmyGold and acknowledge marriage
+  and children. Identify the credited son only as **Milly**; the report conflates
+  the sons' names. No additional identifying details about minors are needed.
+- Attribute the two short Dami Ajayi quotations separately, rather than splicing
+  them into a single quotation. Use the working [NATIVE review URL](https://thenativemag.com/featured/review-olamides-olamide/).
+- Use a month-level Cîroc date: contemporary reporting already appeared on
+  12 July 2013, conflicting with the report's exact 17 July date.
+- Vinyl sources disagree on the January 2025 day. State January 2025 and cite the
+  release listing; do not turn a retailer date into a universal US release date.
+- “Who You Epp?” popularized a variant of an existing Pidgin phrase. Do not claim
+  that Olamide invented the underlying expression.
+- Only verifiable media may be added. `egO4I2-BB6E` returned HTTP 401 from YouTube
+  oEmbed. Record failed candidates and unresolved project claims in the report.
+- `scripts/seed-cms.mjs` currently prints an admin password on completion. Remove
+  that log before executing the authorized seed. Check the existing admin first;
+  never create an account with an ephemeral throwaway password as a side effect.
+
+These are accuracy, link-compatibility and credential-handling corrections within
+the approved task. Chart/schema/UI additions, Korty/Sotayo narrative additions,
+unverified performances and the general caching redesign remain outside prompt 21.
+
+The era timeline heading also hardcoded “Four beats.” `EraMoments.tsx` now reads
+the existing moments array length so the extra awards do not leave a false count.
+The heading's layout and styles are unchanged.
+
+## Execution closeout — 6 November 2026
+
+Implemented the verified content batches and synced/read back 5 era rows, 7 album
+rows and 122 media rows. Slang is 23 terms; 26 media items have explicit director
+notes. The two new embeds passed oEmbed and actual Chromium playback. Family,
+quote and album-story changes were inspected in the running app. Typecheck,
+lint, content-schema/reference checks and the production build (182 pages) pass.
+The existing moment URL and the Time & Space draft/404 gate remain intact.
+
+The [research report, section 11](../research/2026-11-06-content-research-report.md#11-prompt-21-continuation--implementation-and-verification)
+records source corrections, all disposition decisions, CMS evidence and manual
+results. Flytime 2025 and The AfroBeats Interviews remain unseeded because their
+candidate IDs failed oEmbed verification. Backstory is represented by a clearly
+labelled official excerpt, not a guessed full-documentary embed.
+
+**Acceptance limitation:** manual step 5 uncovered an existing navigation bug:
+`SongCatalog.tsx` ignores `/songs?q=...`. Both records exist and are searchable,
+but the new glossary links do not prefilter the catalogue. This is recorded as a
+failed interaction check and left for a separately scoped rendering fix; it is
+not hidden by the passing compiler/build checks. No hosting deployment was made.
+
+The build also updated `public/sw.js`'s generated version stamp as expected.

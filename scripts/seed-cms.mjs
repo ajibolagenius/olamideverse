@@ -357,7 +357,7 @@ async function main() {
     await seedPolls();
     await seedAssets();
     console.log("\nDone.");
-    console.log(`Admin login: ${adminEmail} / ${adminPassword}`);
+    console.log("Admin account ready; credentials are never printed.");
     console.log("Open http://localhost:3000/admin/login");
 }
 

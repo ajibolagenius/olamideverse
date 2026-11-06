@@ -49,7 +49,7 @@ export default function EraMoments({ era }: { era: Era }) {
           The moments
         </p>
         <h2 className="font-display text-display-lg mb-4 leading-[0.95]">
-          Four beats,
+          {era.moments.length} beats,
           <br />
           {era.momentsSpan ?? ""}
         </h2>

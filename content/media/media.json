@@ -87,7 +87,7 @@
     "type": "music-video",
     "source": "Reminisce",
     "youtubeId": "y64Ezeruyk0",
-    "note": "YouTube: Reminisce - Local Rappers feat. Olamide & Phyno (Official Video). Sourced via the Waptrick music-clips checklist — embed only."
+    "note": "YouTube: Reminisce - Local Rappers feat. Olamide & Phyno (Official Video). Sourced via the Waptrick music-clips checklist — embed only. Dir. Mex."
   },
   {
     "id": "mawomi-video",
@@ -357,7 +357,7 @@
     "type": "music-video",
     "source": "Lil Kesh",
     "youtubeId": "ctCcb48gYS4",
-    "note": "YouTube: Lil Kesh - Shoki Rmx [Official Video] ft. Davido, Olamide. Sourced via the Waptrick music-clips checklist — embed only."
+    "note": "YouTube: Lil Kesh - Shoki Rmx [Official Video] ft. Davido, Olamide. Sourced via the Waptrick music-clips checklist — embed only. Dir. Unlimited L.A."
   },
   {
     "id": "story-for-the-gods-video",
@@ -507,7 +507,7 @@
     "type": "music-video",
     "source": "HarrySongVEVO",
     "youtubeId": "C4nT3Od5cxI",
-    "note": "YouTube: Harrysong - Reggae Blues (Official Video) ft. Olamide, Iyanya, Kcee, Orezi. Sourced via the Waptrick music-clips checklist — embed only."
+    "note": "YouTube: Harrysong - Reggae Blues (Official Video) ft. Olamide, Iyanya, Kcee, Orezi. Sourced via the Waptrick music-clips checklist — embed only. Dir. Adasa Cookey."
   },
   {
     "id": "standing-ovation-video",
@@ -587,7 +587,7 @@
     "type": "music-video",
     "source": "PhynoFino",
     "youtubeId": "9F53UQ_2L_I",
-    "note": "YouTube: Phyno - Fada Fada [Official Video] ft. Olamide. Sourced via the Waptrick music-clips checklist — embed only."
+    "note": "YouTube: Phyno - Fada Fada [Official Video] ft. Olamide. Sourced via the Waptrick music-clips checklist — embed only. Dir. Clarence Peters."
   },
   {
     "id": "formation-video",
@@ -660,6 +660,16 @@
     "note": "Accra–Lagos flag-waving, performed live at BF Suma's anniversary the same year."
   },
   {
+    "id": "headies-2015-next-rated-clash",
+    "title": "The Headies 2015 — Next Rated dispute",
+    "era": "street-king-run",
+    "year": 2016,
+    "type": "live",
+    "source": "Pulse Nigeria / YouTube",
+    "youtubeId": "rqb_DX6PYHo",
+    "note": "Pulse TV footage of Olamide and Don Jazzy reacting to the Next Rated result at The Headies 2015, held on 1 January 2016 at Landmark Events Centre, Lagos. Award-show footage, not a concert performance."
+  },
+  {
     "id": "fine-girl-video",
     "title": "Fine Girl (Wale ft. Davido & Olamide)",
     "era": "street-king-run",
@@ -717,7 +727,7 @@
     "type": "music-video",
     "source": "OlamideVEVO",
     "youtubeId": "IZV4O1Yjik8",
-    "note": "Loose-single era at full speed — Unlimited L.A directed the video, 12 September 2018."
+    "note": "Loose-single era at full speed — Unlimited L.A directed the video, 12 September 2018. Dir. Unlimited L.A."
   },
   {
     "id": "motigbana-video",
@@ -727,7 +737,7 @@
     "type": "music-video",
     "source": "Olamide",
     "youtubeId": "DR5dPcoIjOQ",
-    "note": "YouTube: Olamide - Motigbana (Official Video). Sourced via the Waptrick music-clips checklist — embed only."
+    "note": "YouTube: Olamide - Motigbana (Official Video). Sourced via the Waptrick music-clips checklist — embed only. Dir. Unlimited L.A."
   },
   {
     "id": "onyeoma-video",
@@ -747,7 +757,7 @@
     "type": "music-video",
     "source": "OlamideVEVO",
     "youtubeId": "NwV1VX7cCZc",
-    "note": "The anti-hustle-hymn of the 2018 run, filmed by Unlimited L.A."
+    "note": "The anti-hustle-hymn of the 2018 run, filmed by Unlimited L.A. Dir. Unlimited L.A."
   },
   {
     "id": "science-student-video",
@@ -757,7 +767,7 @@
     "type": "music-video",
     "source": "OlamideVEVO",
     "youtubeId": "3nVkhp2xtHg",
-    "note": "The 2018 shaku-shaku-era anthem — video by Unlimited L.A with choreography by Kaffy; the year of the NBC/FVCB ban petitions."
+    "note": "The 2018 shaku-shaku-era anthem — video by Unlimited L.A with choreography by Kaffy; the year of the NBC/FVCB ban petitions. Dir. Unlimited L.A."
   },
   {
     "id": "summer-body-video",
@@ -787,7 +797,7 @@
     "type": "music-video",
     "source": "Reminisce",
     "youtubeId": "6dvkXeHWpuM",
-    "note": "The 2019 street-triangle cypher — TG Omori directed, and the internet did the rest."
+    "note": "The 2019 street-triangle cypher — TG Omori directed, and the internet did the rest. Dir. TG Omori."
   },
   {
     "id": "oil-and-gas-video",
@@ -797,7 +807,7 @@
     "type": "music-video",
     "source": "OlamideVEVO",
     "youtubeId": "kkmmyvpR9fo",
-    "note": "Niger-delta swagger for the 2019 run; TG Omori directed the 5 June 2019 video."
+    "note": "Niger-delta swagger for the 2019 run; TG Omori directed the 5 June 2019 video. Dir. TG Omori."
   },
   {
     "id": "pawon-video",
@@ -807,7 +817,7 @@
     "type": "music-video",
     "source": "OlamideVEVO",
     "youtubeId": "91yBKtMYwUQ",
-    "note": "The defiance track that became a ladies' dance trend; TG Omori directed."
+    "note": "The defiance track that became a ladies' dance trend; TG Omori directed. Dir. TG Omori."
   },
   {
     "id": "wonma-video",
@@ -827,7 +837,7 @@
     "type": "music-video",
     "source": "OlamideVEVO",
     "youtubeId": "DOCrMPxgWqo",
-    "note": "2019's street anthem — a no-nonsense declaration produced by Killertunes, video by Unlimited L.A."
+    "note": "2019's street anthem — a no-nonsense declaration produced by Killertunes, video by Unlimited L.A. Dir. Unlimited L.A."
   },
   {
     "id": "bunda-video",
@@ -847,7 +857,7 @@
     "type": "music-video",
     "source": "Olamide",
     "youtubeId": "h6KWkycPh4g",
-    "note": "Carpe Diem's lead single, with Bella Shmurda and Phyno — Clarence Peters directed, 8 September 2020."
+    "note": "Carpe Diem's lead single — Clarence Peters directed, 8 September 2020. Dir. Clarence Peters."
   },
   {
     "id": "green-light-video",
@@ -877,7 +887,7 @@
     "type": "music-video",
     "source": "Olamide",
     "youtubeId": "YgzrVs2eilU",
-    "note": "YouTube: Olamide, Wizkid, Id Cabasa - Totori (Official Video). Sourced via the Waptrick music-clips checklist — embed only."
+    "note": "YouTube: Olamide, Wizkid, Id Cabasa - Totori (Official Video). Sourced via the Waptrick music-clips checklist — embed only. Dir. TG Omori."
   },
   {
     "id": "apple-music-uy-scuti-2021",
@@ -927,7 +937,7 @@
     "type": "music-video",
     "source": "OlamideVEVO",
     "youtubeId": "Y3Im3vI0rXA",
-    "note": "Clarence Peters-directed video, 16 September 2021 — note the press lists Jaywillz on the video while the single credits run to Bad Boy Timz."
+    "note": "Clarence Peters-directed video, 16 September 2021, featuring Jaywillz. Dir. Clarence Peters."
   },
   {
     "id": "julie-video",
@@ -937,7 +947,7 @@
     "type": "music-video",
     "source": "OlamideVEVO",
     "youtubeId": "0BQxuWujwiw",
-    "note": "The UY Scuti-era single; Patrick Elis directed, 17 July 2021."
+    "note": "The UY Scuti-era single; Patrick Elis directed, 17 July 2021. Dir. Patrick Elis."
   },
   {
     "id": "ojemba-video",
@@ -977,7 +987,7 @@
     "type": "music-video",
     "source": "Olamide",
     "youtubeId": "s4Ghxkl1oXQ",
-    "note": "Single of Mar 2022 with Wande Coal, re-forging the Street King-run alliance; video directed by TG Omori."
+    "note": "Single of Mar 2022 with Wande Coal, re-forging the Street King-run alliance; video directed by TG Omori. Dir. TG Omori."
   },
   {
     "id": "joy-video",
@@ -997,7 +1007,7 @@
     "type": "music-video",
     "source": "AsakeVEVO",
     "youtubeId": "l_-v1fNdSHs",
-    "note": "Asake lead with Olamide's guest verse — helped carry amapiano to a global audience, then earned a 2024 Grammy nomination for Best African Music Performance. Official video via AsakeVEVO."
+    "note": "Asake lead with Olamide's guest verse — helped carry amapiano to a global audience, then earned a 2024 Grammy nomination for Best African Music Performance. Official video via AsakeVEVO. Dir. Jyde Ajala."
   },
   {
     "id": "free-video",
@@ -1017,7 +1027,7 @@
     "type": "music-video",
     "source": "Olamide",
     "youtubeId": "5FYvvWl1Frw",
-    "note": "YouTube: Olamide - Jinja (Official Video). Sourced via the Waptrick music-clips checklist — embed only."
+    "note": "YouTube: Olamide - Jinja (Official Video). Sourced via the Waptrick music-clips checklist — embed only. Dir. Jyde Ajala."
   },
   {
     "id": "kpe-paso-video",
@@ -1037,7 +1047,7 @@
     "type": "music-video",
     "source": "Olamide",
     "youtubeId": "KCep7O2YcOc",
-    "note": "YouTube: Olamide, Asake - New Religion (Official Video). Sourced via the Waptrick music-clips checklist — embed only."
+    "note": "YouTube: Olamide, Asake - New Religion (Official Video). Sourced via the Waptrick music-clips checklist — embed only. Dir. Jyde Ajala."
   },
   {
     "id": "problem-video",
@@ -1067,7 +1077,7 @@
     "type": "music-video",
     "source": "Olamide",
     "youtubeId": "FcjOlcWaaU8",
-    "note": "YouTube: Olamide, CKay - Trumpet (Official Video). Sourced via the Waptrick music-clips checklist — embed only."
+    "note": "YouTube: Olamide, CKay - Trumpet (Official Video). Sourced via the Waptrick music-clips checklist — embed only. Dir. Jyde Ajala."
   },
   {
     "id": "wave-video",
@@ -1097,7 +1107,7 @@
     "type": "music-video",
     "source": "OlamideVEVO",
     "youtubeId": "aMHlGKRfv3Q",
-    "note": "Ikigai's lead visual — Jyde Ajala directed, 27 June 2024; a Headies Music Video of the Year nominee for 2025."
+    "note": "Ikigai's lead visual — Jyde Ajala directed, 27 June 2024; a Headies Music Video of the Year nominee for 2025. Dir. Jyde Ajala."
   },
   {
     "id": "uptown-disco-video",
@@ -1107,7 +1117,7 @@
     "type": "music-video",
     "source": "OlamideVEVO",
     "youtubeId": "sg6HiPSREc8",
-    "note": "The label's three heads on one chase-video, directed by Jyde Ajala."
+    "note": "The label's three heads on one chase-video, directed by Jyde Ajala. Dir. Jyde Ajala."
   },
   {
     "id": "wahala-video",
@@ -1127,7 +1137,7 @@
     "type": "music-video",
     "source": "OlamideVEVO",
     "youtubeId": "Uc8MCfbjcnE",
-    "note": "Olamidé's second Wizkid collision; Jyde Ajala directed, 19 August 2025."
+    "note": "Olamidé's second Wizkid collision; Jyde Ajala directed, 14 August 2025. Dir. Jyde Ajala."
   },
   {
     "id": "kai-video",
@@ -1147,7 +1157,7 @@
     "type": "music-video",
     "source": "OlamideVEVO",
     "youtubeId": "GTi9JxHM_iA",
-    "note": "Jyde Ajala co-directed with Jamila for the Olamidé run, 12 September 2025."
+    "note": "Jyde Ajala co-directed with Jamila for the Olamidé run, 11 September 2025. Dir. Jyde Ajala and Jamila."
   },
   {
     "id": "order-video",
@@ -1170,6 +1180,16 @@
     "note": "23 November 2025 — reported as the first Nigerian rapper to sell out the 12,000-capacity London arena."
   },
   {
+    "id": "afrobeats-backstory-olamide-wizkid-excerpt",
+    "title": "Afrobeats: The Backstory — Olamide & Wizkid excerpt",
+    "era": "legacy",
+    "year": 2025,
+    "type": "interview",
+    "source": "R70 Television / YouTube",
+    "youtubeId": "k8UYqdoFULk",
+    "note": "Ayo Shonaiya recalls appearing in the video for Olamide and Wizkid's first collaboration. Official R70 documentary excerpt uploaded in October 2025; the series premiered in 2021 and reached Netflix in 2022. This is an excerpt, not the full series or the dropout-story interview."
+  },
+  {
     "id": "burukutu-video",
     "title": "Burukutu",
     "era": "legacy",
@@ -1177,7 +1197,7 @@
     "type": "music-video",
     "source": "OlamideVEVO",
     "youtubeId": "oL_g56WroqE",
-    "note": "The surprise single that opened Time & Space season — TG Omori directed, 20 October 2026."
+    "note": "The surprise single that opened Time & Space season — TG Omori directed, 20 October 2026. Dir. TG Omori."
   },
   {
     "id": "mission-26k-ikeja-live",
@@ -1198,5 +1218,25 @@
     "source": "Teni",
     "youtubeId": "w-Bbuvgeb20",
     "note": "Gamma Africa's 2026 meeting of two Lagos heavyweights, April 2026."
+  },
+  {
+    "id": "flytime-2025-phyno-live",
+    "title": "Flytime Fest 2025 — Olamide & Phyno",
+    "era": "legacy",
+    "year": 2025,
+    "type": "live",
+    "source": "The Vagabond Creator / YouTube",
+    "youtubeId": "SeJ5y_a3HDk",
+    "note": "Audience footage of Ghost Mode and Fada Fada from Olamide’s 23 December 2025 Flytime Fest headline show in Lagos. This excerpt features Phyno; it is not the full set or footage of Reminisce."
+  },
+  {
+    "id": "flow-with-korty-olamide-2025",
+    "title": "Flow with Korty — I met Olamide, he’s a gangster",
+    "era": "legacy",
+    "year": 2025,
+    "type": "interview",
+    "source": "korty eo / YouTube",
+    "youtubeId": "wbKkReO-qwI",
+    "note": "Official Flow with Korty episode, published 3 August 2025: creativity, family loss, the music business and nerves before performing. His account of stage anxiety was reported again in April 2026; that later coverage is not the interview’s release date."
   }
 ]

@@ -22,6 +22,16 @@ export const CHANGELOG: ChangelogDay[] = [
     label: "6 November 2026",
     items: [
       {
+        title: "Chart sources, working song links and two more reels",
+        body: "Street Lingo’s Song Dossier links now open a filtered catalogue. New Religion, Jinja, Gaza and Kai! carry dated chart positions with source links in both catalogue views, including Kai!’s corrected Nigerian peak of #3 at the cited date. The biography adds Olamide’s account of stage nerves and his defence of Yoruba heritage. Media adds the official Korty interview and audience footage of Flytime 2025 with Phyno.",
+        href: "/songs?q=Kai!",
+      },
+      {
+        title: "More of the story behind the records",
+        body: "Award wins and nominations now carry clearer results across the eras. Album stories add the feature-free Eyán Mayweather, Carpe Diem's reported Spotify milestone and Ikigai's vinyl chapter. Family connections and attributed commentary join the biography and archive; Who You Epp? and Shọ́rọ́ Níyẹn bring Street Lingo to 23 entries. Media gains the Headies dispute, an official Backstory excerpt and director credits, including Adasa Cookey for Reggae Blues.",
+        href: "/media",
+      },
+      {
         title: "The research audit: corrections across the map, the reels and the lexicon",
         body: "A six-agent content audit against press, Wikipedia, TurnTable and video archives reshaped the data: the Street Lingo ledger doubles to 21 entries (Dúróṣọ̀kẹ́, Wobey, Pẹ́pà Dem, Kọ́nkọ́bilítì and more, with coined-vs-amplified attribution done honestly), the media wall gains ~25 verified videos and live clips from the 2018–2020 loose-single run through Burukutu and the OVO Wembley sell-out, and the influence graph adds Dagrin — the stated lineage the archive was missing — alongside Naira Marley, Zlatan, CKay, Rema and Eskeez.",
         href: "/slang",

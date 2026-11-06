@@ -265,7 +265,7 @@ export function startStoryAct(actId: string, startIndex = 0): void {
           popover: {
             title: "Act III · Street King Coronation (2014–2017)",
             description:
-              "An album every single year: Street OT, 2 Kings, Eyan Mayweather, The Glory, Lagos Nawa. OLIC concerts sold out stadiums and proved street-hop could headline nationwide arenas.",
+              "An album every single year: Street OT, 2 Kings, Eyán Mayweather, The Glory, Lagos Nawa. OLIC concerts sold out stadiums and proved street-hop could headline nationwide arenas.",
             side: "bottom",
             align: "center",
           },

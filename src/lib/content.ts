@@ -497,6 +497,20 @@ function absorbSong(winner: Song, loser: Song): void {
     winner.note ??= loser.note;
     winner.source ??= loser.source;
     winner.sourceUrl ??= loser.sourceUrl;
+    if (loser.chartPositions?.length) {
+        const positions = [...(winner.chartPositions ?? [])];
+        for (const entry of loser.chartPositions) {
+            if (!positions.some((existing) =>
+                existing.chart === entry.chart &&
+                existing.territory === entry.territory &&
+                existing.position === entry.position &&
+                existing.kind === entry.kind &&
+                existing.asOf === entry.asOf &&
+                existing.sourceUrl === entry.sourceUrl
+            )) positions.push(entry);
+        }
+        winner.chartPositions = positions;
+    }
     // Confidence is a property of the record, not the row it arrived on.
     if (SONG_STATUS_PRIORITY[loser.status] < SONG_STATUS_PRIORITY[winner.status]) {
         winner.status = loser.status;
@@ -576,6 +590,7 @@ function deriveAlbumTracks(
                 type: "album-track",
                 status: track.spotifyTrackId || track.youtubeId ? "verified" : "documented",
                 note: track.note,
+                chartPositions: track.chartPositions,
                 albumSlug: album.slug,
                 trackNum: track.num,
                 alsoSingle: alsoSingle || undefined,

@@ -28,8 +28,8 @@ const supabase = createClient(url, service, {
     auth: { persistSession: false, autoRefreshToken: false },
 });
 
-const ERA_SLUGS = ["legacy", "reinvention"];
-const ALBUM_SLUGS = ["999", "time-and-space"];
+const ERA_SLUGS = ["first-of-all", "street-king-run", "reinvention", "elder-statesman", "legacy"];
+const ALBUM_SLUGS = ["2-kings", "eyan-mayweather", "999", "carpe-diem", "unruly", "ikigai", "olamide", "time-and-space"];
 
 function readMdx(relDir, slug) {
     const file = path.join(root, "content", relDir, `${slug}.mdx`);

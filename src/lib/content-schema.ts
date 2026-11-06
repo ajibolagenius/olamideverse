@@ -34,10 +34,21 @@ export const eraSchema = z.object({
     open: z.boolean().default(false), // Legacy stays open-ended: no pin-scroll, no next-chapter CTA
 });
 
+export const chartPositionSchema = z.object({
+    chart: z.string().min(1),
+    territory: z.string().min(1),
+    position: z.number().int().positive(),
+    kind: z.enum(["peak", "debut", "weekly"]),
+    /** Date of the chart or source observation, not the song's release. */
+    asOf: z.iso.date(),
+    sourceUrl: z.url({ protocol: /^https?$/ }),
+});
+
 export const trackSchema = z.object({
     num: z.number().int().min(1),
     title: z.string(),
     note: z.string().optional(),
+    chartPositions: z.array(chartPositionSchema).optional(),
     youtubeId: z.string().optional(),
     spotifyTrackId: z.string().optional(),
     /** Numeric Apple Music track ID — storefront `ng`, see EmbedFrame. */
@@ -206,6 +217,7 @@ export const songSchema = z.object({
     artists: z.string().optional(),
     /** Short credit / context — never full lyrics. */
     note: z.string().optional(),
+    chartPositions: z.array(chartPositionSchema).optional(),
     albumSlug: z.string().optional(),
     trackNum: z.number().int().min(1).optional(),
     alsoSingle: z.boolean().optional(),

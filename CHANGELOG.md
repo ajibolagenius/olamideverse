@@ -14,6 +14,17 @@ Dates are UTC calendar days of the ship window.
 
 ### 2026-11-06
 
+- **Chart sources, working song links and two more reels** — Street Lingo’s
+  Song Dossier links now open a filtered catalogue. New Religion, Jinja, Gaza
+  and Kai! carry dated chart positions and source links in both catalogue views,
+  including Kai!’s corrected Nigerian peak of #3 at the cited date. Biography
+  adds stage nerves and Yoruba heritage; Media adds the official Korty interview
+  and audience footage of Flytime 2025 with Phyno (124 media items total).
+- **More of the story behind the records** — Clearer award results, family
+  connections and attributed commentary; Eyán Mayweather display spelling with
+  existing links preserved; album streaming/vinyl context; two slang additions
+  (23 total); two verified media additions (122 total) and 26 director notes.
+  Unsupported claims are tracked in the research report instead of published.
 - **Research audit — slang, media, influence, impact** — A six-agent
   content audit corrected the OLIC venue record, the Port Harcourt/Enugu
   attribution and the 999 release date; expanded Street Lingo from 7 to 21

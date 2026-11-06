@@ -48,7 +48,7 @@
     "phonetic": "bah-doh sneh",
     "literal": "The bad one",
     "meaning": "His self-crowned tag and the crowd's call-back — an alias that became a greeting the streets used on his behalf.",
-    "context": "Born with Baddest Guy Ever Liveth (2013), when the centre of gravity in Nigerian hip-hop moved from Victoria Island boardrooms to the Mainland. \"Day 1 Baddo\" is the fan-era shorthand; the \"Sneh\" tail is community usage with no documented source, so the archive files it under the canonical tag.",
+    "context": "Born with Baddest Guy Ever Liveth (2013), when the centre of gravity in Nigerian hip-hop moved from Victoria Island boardrooms to the Mainland. \"Day 1 Baddo\" is the fan-era shorthand; the \"Sneh\" tail is community usage with no documented source, so the archive files it under the canonical tag. In a Naija FM interview reported by The Nation on 14 November 2024, Shallipopi called him the “father and king of Nigerian street music” while discussing their collaboration “Order.”",
     "era": "first-of-all",
     "year": 2013,
     "songTitle": "Durosoke",
@@ -124,9 +124,24 @@
     "context": "The title cut of Eyán Mayweather (23 Nov 2015) — an album with no guest features at all, so the persona carried it alone. \"Eyan\" entered Naija vocabulary for street toughs and echoed into Nollywood dialogue and sketch comedy; the record is credited with cementing the agbero-to-rapper pipeline.",
     "era": "street-king-run",
     "year": 2015,
-    "songTitle": "Eyan Mayweather",
+    "songTitle": "Eyán Mayweather",
     "albumSlug": "eyan-mayweather",
     "status": "verified"
+  },
+  {
+    "id": "shoro-niyen",
+    "term": "Shọ́rọ́ Níyẹn",
+    "phonetic": "shoh-roh nee-yen",
+    "literal": "Is that meaningful talk?",
+    "meaning": "A skeptical question: does that claim, excuse or action make sense?",
+    "context": "The YBNL Allstars record carried the phrase in 2015, with Olamide alongside Lil Kesh, Viktoh and Chinko Ekun. The Cable later listed it among expressions his music made widely used; this is amplification of a Yoruba expression, not a claim of invention.",
+    "era": "street-king-run",
+    "year": 2015,
+    "songTitle": "Shọ́rọ́ Níyẹn",
+    "songId": "feature--shoro-niyen-2015",
+    "status": "documented",
+    "source": "The Cable — pop-culture sayings, 25 July 2017",
+    "sourceUrl": "https://lifestyle.thecable.ng/pop-culture-slangs-olamide/"
   },
   {
     "id": "konkobility",
@@ -185,6 +200,21 @@
     "status": "documented",
     "source": "The Native / mp3bullet",
     "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography"
+  },
+  {
+    "id": "who-you-epp",
+    "term": "Who You Epp?",
+    "phonetic": "hoo yoo ep",
+    "literal": "Who have you helped?",
+    "meaning": "A Pidgin challenge to empty status: what have you actually done for anyone?",
+    "context": "Olamide made this variant of “who you don epp” a national catchphrase through his 2016 freestyle and its open-verse challenge. The record gave an existing Pidgin expression fresh reach; the archive does not claim he invented the underlying phrase.",
+    "era": "street-king-run",
+    "year": 2016,
+    "songTitle": "Who You Epp?",
+    "songId": "single--who-you-epp-2016",
+    "status": "documented",
+    "source": "Pulse — Who You Epp, 12 April 2016",
+    "sourceUrl": "https://www.pulse.ng/story/olamide-rappers-who-you-epp-is-nigerias-current-viral-drug-2024080517361124600"
   },
   {
     "id": "shaku-shaku",
