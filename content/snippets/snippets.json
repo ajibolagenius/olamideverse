@@ -202,5 +202,29 @@
     "era": "legacy",
     "spotifyTrackId": "0C3zMmE4yo1qBq6MGfkwX0",
     "waveformSeed": 99
+  },
+  {
+    "id": "metaverse",
+    "quote": "The Ikigai opener that put a virtual-lagos word in a Yoruba sentence — reflective era, still street grammar.",
+    "note": "From the seven-track Ikigai EP (26 Jun 2024) — the Headies-nominated video followed in June.",
+    "track": "Metaverse",
+    "albumSlug": "ikigai",
+    "albumTitle": "Ikigai",
+    "year": 2024,
+    "era": "legacy",
+    "spotifyTrackId": "0WeU5EfNFu1wmlmCdMNDEJ",
+    "waveformSeed": 24
+  },
+  {
+    "id": "99",
+    "quote": "The label's second generation all on one Olamidé chorus — Asake, Seyi Vibez, Young Jonn, Daecolm — as a family photo that still insisted on being a flex.",
+    "note": "From Olamidé (19 Jun 2025); released as a single 9 June 2025 with a Liam S. Gleesen video.",
+    "track": "99",
+    "albumSlug": "olamide",
+    "albumTitle": "Olamidé",
+    "year": 2025,
+    "era": "legacy",
+    "spotifyTrackId": "5GkkuEEPtYguzhTdCpS8Ab",
+    "waveformSeed": 99
   }
 ]

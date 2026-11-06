@@ -22,6 +22,21 @@ export const CHANGELOG: ChangelogDay[] = [
     label: "6 November 2026",
     items: [
       {
+        title: "The research audit: corrections across the map, the reels and the lexicon",
+        body: "A six-agent content audit against press, Wikipedia, TurnTable and video archives reshaped the data: the Street Lingo ledger doubles to 21 entries (Dúróṣọ̀kẹ́, Wobey, Pẹ́pà Dem, Kọ́nkọ́bilítì and more, with coined-vs-amplified attribution done honestly), the media wall gains ~25 verified videos and live clips from the 2018–2020 loose-single run through Burukutu and the OVO Wembley sell-out, and the influence graph adds Dagrin — the stated lineage the archive was missing — alongside Naira Marley, Zlatan, CKay, Rema and Eskeez.",
+        href: "/slang",
+      },
+      {
+        title: "The impact map tells truer stories",
+        body: "Bariga now carries the July 2025 street renaming, Ikeja is the Mission 26K Police College show, OLIC is corrected to Eko Hotel and Teslim Balogun Stadium, London logs the Wembley sell-out and the announced 2027 O2 headline, and new pins mark Ijebu-Ode (TASUED) and Accra. The Port Harcourt pin went where the evidence didn't.",
+        href: "/impact",
+      },
+      {
+        title: "Time & Space enters the archive",
+        body: "The album announced for 16 November 2026 now has a seeded draft record and a Legacy-era moment — Burukutu (TG Omori video) and all — held in draft until release day so the archive doesn't guess.",
+        href: "/eras/legacy",
+      },
+      {
         title: "Archive Expedition & Driver.js Storytelling Tours",
         body: "Introduced an interactive Driver.js-powered storytelling onboarding expedition docked in the corner. Readers can embark on 6 documentary narrative acts detailing Olamide's 16-year journey, complete with live progress bars, pause/resume state (“Paused at Step X of Y”), compact and full checklist modes, and pulsing contextual field note beacons across Discography, Songs Catalogue, Danfo Transit, Street Lingo, and Snippets.",
         href: "/",

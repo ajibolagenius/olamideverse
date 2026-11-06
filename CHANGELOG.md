@@ -14,6 +14,16 @@ Dates are UTC calendar days of the ship window.
 
 ### 2026-11-06
 
+- **Research audit — slang, media, influence, impact** — A six-agent
+  content audit corrected the OLIC venue record, the Port Harcourt/Enugu
+  attribution and the 999 release date; expanded Street Lingo from 7 to 21
+  entries with coined-vs-amplified sourcing; backfilled ~25 verified videos
+  and live clips (2018–2026) into Media; and added Dagrin, Naira Marley,
+  Zlatan, CKay, Rema and Eskeez to the influence graph.
+- **Time & Space seeded as draft** — the announced 16 November 2026 album
+  now has a draft record and a Legacy-era moment, held in draft until
+  release.
+
 - **Archive Expedition & Driver.js Storytelling Tours** — Introduced an
   interactive Driver.js-powered storytelling onboarding expedition docked in the
   corner. Readers can embark on 6 documentary narrative acts detailing Olamide's

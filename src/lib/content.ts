@@ -72,7 +72,7 @@ function fileAlbums(eraSlugs: Set<string>): Album[] {
             );
         }
     }
-    return albums.sort((a, b) => a.year - b.year);
+    return albums.filter((album) => !album.draft).sort((a, b) => a.year - b.year);
 }
 
 function fileBiography(eraSlugs: Set<string>): Biography | undefined {

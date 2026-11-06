@@ -13,7 +13,7 @@
       "id": "id-cabasa",
       "name": "ID Cabasa",
       "role": "mentor",
-      "blurb": "Coded Tunes founder and early producer — signed a young Yoruba rapper when the industry still said English.",
+      "blurb": "Coded Tunes founder and early producer — signed a young Yoruba rapper when the industry still said English. He said he cried the day Olamide left to build YBNL; fifteen years later, Cabasa's Unfinished Business (Dec 2025) brought him back on \"OK.\" The circle closed.",
       "eraSlug": "the-upstart",
       "albumSlug": "rapsodi",
       "momentAnchor": "moment-debut-single-eni-duro",
@@ -196,13 +196,13 @@
       "id": "temmie-ovwasa",
       "name": "Temmie Ovwasa",
       "role": "mentee",
-      "blurb": "YBNL's first female signing (April 2016), days after Lil Kesh's exit — discovered via Instagram covers. Closed the label's group album on \"Finally.\" Exact departure year is soft; listed among former acts.",
+      "blurb": "YBNL's first female signing (August 2015), discovered via Instagram covers. Closed the label's group album on \"Finally.\" Departed in 2020 after a public dispute over her growth — then reconciled; the archive files the argument as part of the family story, not against it.",
       "eraSlug": "street-king-run",
       "albumSlug": "ybnl-mafia-family",
-      "signedYear": 2016,
-      "alumni": true,
+      "signedYear": 2015,
       "x": 58,
-      "y": 30
+      "y": 30,
+      "departedYear": 2020
     },
     {
       "id": "davolee",
@@ -270,7 +270,7 @@
       "id": "fireboy",
       "name": "Fireboy DML",
       "role": "mentee",
-      "blurb": "Signed October 2018 — still current. Jealous on YBNL Mafia Family, then Empire-era global reach; the label's longest-running breakout after the founder.",
+      "blurb": "Reported into the label's orbit in October 2018 — still current. Jealous on YBNL Mafia Family, then Empire-era global reach; the label's longest-running breakout after the founder.",
       "eraSlug": "reinvention",
       "albumSlug": "carpe-diem",
       "signedYear": 2018,
@@ -290,34 +290,227 @@
       "momentAnchor": "moment-amapiano-goes-global",
       "x": 52,
       "y": 86
+    },
+    {
+      "id": "dagrin",
+      "name": "Dagrin",
+      "role": "influence",
+      "blurb": "The late Ibadan rapper whose indigenous-rap template Olamide called a direct inspiration — \"I listen to Dagrin's album for inspiration.\" The street-hop line of succession, stated by the heir.",
+      "eraSlug": "the-upstart",
+      "x": 34,
+      "y": 4
+    },
+    {
+      "id": "naira-marley",
+      "name": "Naira Marley",
+      "role": "mentee",
+      "blurb": "Signed to YBNL in 2018, gone by May 2019 after a falling-out — then founded Marlian and the next street wave. The most consequential exit of the reinvention roster.",
+      "eraSlug": "reinvention",
+      "albumSlug": "999",
+      "signedYear": 2018,
+      "departedYear": 2019,
+      "x": 90,
+      "y": 44
+    },
+    {
+      "id": "zlatan",
+      "name": "Zlatan",
+      "role": "influence",
+      "blurb": "The street-hop wave after him credits the door he opened — \"How Olamide changed my life,\" in Zlatan's words, \"like our own Jay-Z.\" Influence running outward, not just inward.",
+      "x": 38,
+      "y": 94
+    },
+    {
+      "id": "ckay",
+      "name": "CKay",
+      "role": "collaborator",
+      "blurb": "Trumpet on Unruly and Wahala in 2024 — the Afrobeats-ballad generation meeting the street king on his own tracks.",
+      "eraSlug": "elder-statesman",
+      "albumSlug": "unruly",
+      "x": 80,
+      "y": 64
+    },
+    {
+      "id": "rema",
+      "name": "Rema",
+      "role": "collaborator",
+      "blurb": "Mukulu on Unruly — the Konko-blessed wave guesting on the elder's record, direction reversed from the 2010s.",
+      "eraSlug": "elder-statesman",
+      "albumSlug": "unruly",
+      "x": 96,
+      "y": 70
+    },
+    {
+      "id": "eskeez",
+      "name": "Eskeez",
+      "role": "collaborator",
+      "blurb": "The producer behind Kai! and much of the Olamidé run — plus Loose It with the man himself. In-house-adjacent, not signed; the sound of the elder-statesman era.",
+      "eraSlug": "legacy",
+      "albumSlug": "olamide",
+      "x": 66,
+      "y": 40
     }
   ],
   "edges": [
-    { "from": "id-cabasa", "to": "olamide", "label": "signed" },
-    { "from": "yoruba-street", "to": "olamide", "label": "shaped" },
-    { "from": "empire", "to": "olamide", "label": "distribution" },
-    { "from": "olamide", "to": "phyno", "label": "peer" },
-    { "from": "olamide", "to": "wizkid", "label": "collab" },
-    { "from": "olamide", "to": "reminisce", "label": "peer" },
-    { "from": "olamide", "to": "pheelz", "label": "sessions" },
-    { "from": "olamide", "to": "young-jonn", "label": "beats" },
-    { "from": "olamide", "to": "burna", "label": "collab" },
-    { "from": "olamide", "to": "omah-lay", "label": "collab" },
-    { "from": "olamide", "to": "wande-coal", "label": "collab" },
-    { "from": "olamide", "to": "bnxn", "label": "collab" },
-    { "from": "olamide", "to": "lil-kesh", "label": "signed" },
-    { "from": "olamide", "to": "viktoh", "label": "signed" },
-    { "from": "olamide", "to": "chinko-ekun", "label": "signed" },
-    { "from": "olamide", "to": "adekunle-gold", "label": "signed" },
-    { "from": "olamide", "to": "xino", "label": "signed" },
-    { "from": "olamide", "to": "temmie-ovwasa", "label": "signed" },
-    { "from": "olamide", "to": "davolee", "label": "signed" },
-    { "from": "olamide", "to": "lyta", "label": "signed" },
-    { "from": "olamide", "to": "limerick", "label": "signed" },
-    { "from": "olamide", "to": "picazo", "label": "signed" },
-    { "from": "olamide", "to": "yomi-blaze", "label": "signed" },
-    { "from": "olamide", "to": "fireboy", "label": "signed" },
-    { "from": "olamide", "to": "asake", "label": "signed" },
-    { "from": "empire", "to": "fireboy", "label": "reach" }
+    {
+      "from": "id-cabasa",
+      "to": "olamide",
+      "label": "signed"
+    },
+    {
+      "from": "yoruba-street",
+      "to": "olamide",
+      "label": "shaped"
+    },
+    {
+      "from": "empire",
+      "to": "olamide",
+      "label": "distribution"
+    },
+    {
+      "from": "olamide",
+      "to": "phyno",
+      "label": "peer"
+    },
+    {
+      "from": "olamide",
+      "to": "wizkid",
+      "label": "collab"
+    },
+    {
+      "from": "olamide",
+      "to": "reminisce",
+      "label": "peer"
+    },
+    {
+      "from": "olamide",
+      "to": "pheelz",
+      "label": "sessions"
+    },
+    {
+      "from": "olamide",
+      "to": "young-jonn",
+      "label": "beats"
+    },
+    {
+      "from": "olamide",
+      "to": "burna",
+      "label": "collab"
+    },
+    {
+      "from": "olamide",
+      "to": "omah-lay",
+      "label": "collab"
+    },
+    {
+      "from": "olamide",
+      "to": "wande-coal",
+      "label": "collab"
+    },
+    {
+      "from": "olamide",
+      "to": "bnxn",
+      "label": "collab"
+    },
+    {
+      "from": "olamide",
+      "to": "lil-kesh",
+      "label": "signed"
+    },
+    {
+      "from": "olamide",
+      "to": "viktoh",
+      "label": "signed"
+    },
+    {
+      "from": "olamide",
+      "to": "chinko-ekun",
+      "label": "signed"
+    },
+    {
+      "from": "olamide",
+      "to": "adekunle-gold",
+      "label": "signed"
+    },
+    {
+      "from": "olamide",
+      "to": "xino",
+      "label": "signed"
+    },
+    {
+      "from": "olamide",
+      "to": "temmie-ovwasa",
+      "label": "signed"
+    },
+    {
+      "from": "olamide",
+      "to": "davolee",
+      "label": "signed"
+    },
+    {
+      "from": "olamide",
+      "to": "lyta",
+      "label": "signed"
+    },
+    {
+      "from": "olamide",
+      "to": "limerick",
+      "label": "signed"
+    },
+    {
+      "from": "olamide",
+      "to": "picazo",
+      "label": "signed"
+    },
+    {
+      "from": "olamide",
+      "to": "yomi-blaze",
+      "label": "signed"
+    },
+    {
+      "from": "olamide",
+      "to": "fireboy",
+      "label": "signed"
+    },
+    {
+      "from": "olamide",
+      "to": "asake",
+      "label": "signed"
+    },
+    {
+      "from": "empire",
+      "to": "fireboy",
+      "label": "reach"
+    },
+    {
+      "from": "dagrin",
+      "to": "olamide",
+      "label": "inspired"
+    },
+    {
+      "from": "olamide",
+      "to": "naira-marley",
+      "label": "signed — then lost"
+    },
+    {
+      "from": "olamide",
+      "to": "zlatan",
+      "label": "paved the way"
+    },
+    {
+      "from": "olamide",
+      "to": "ckay",
+      "label": "collab"
+    },
+    {
+      "from": "olamide",
+      "to": "rema",
+      "label": "collab"
+    },
+    {
+      "from": "eskeez",
+      "to": "olamide",
+      "label": "produced"
+    }
   ]
 }

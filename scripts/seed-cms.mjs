@@ -134,9 +134,11 @@ async function seedAlbums() {
 
     const rows = albums.map((album) => ({
         slug: album.slug,
-        data: { ...album.data, draft: false },
+        data: album.data,
         body: album.body,
-        status: "published",
+        // An unreleased album must not be seeded as published: getAlbums() only
+        // reads status "published", so the draft flag decides the row's status.
+        status: album.data.draft === true ? "draft" : "published",
         cover_path: coverBySlug[album.slug] ?? null,
         updated_at: new Date().toISOString(),
     }));
