@@ -23,6 +23,8 @@ export default function ImpactViewSwitcher({ places }: ImpactViewSwitcherProps) 
         </span>
         <div
           role="group"
+          data-tour="transit-switcher"
+          id="ov-transit-switcher"
           aria-label="Impact map view"
           className="flex items-center gap-2 border border-ink bg-white p-1 shadow-paste-sm"
         >

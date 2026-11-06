@@ -38,9 +38,12 @@ function NavItem({
   pathname: string;
 }) {
   const active = isLinkActive(pathname, href);
+  const tourKey = href.replace(/^\//, "");
   return (
     <Link
       href={href}
+      data-tour={tourKey}
+      id={`nav-${tourKey}`}
       aria-current={active ? "page" : undefined}
       className={`ov-icon-inline border-b-3 pb-0.5 text-[0.9rem] font-semibold tracking-[0.07em] uppercase transition-colors ${
         active ? "border-ink" : "border-transparent hover:border-danfo"
@@ -463,7 +466,12 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
           scrolled ? "py-2.5" : "py-3.5"
         }`}
       >
-        <Link href="/" className="font-display text-2xl leading-none sm:text-[1.7rem]">
+        <Link
+          href="/"
+          data-tour="brand"
+          id="nav-brand"
+          className="font-display text-2xl leading-none sm:text-[1.7rem]"
+        >
           Olamide
           <span className="bg-danfo px-[0.12em]">Verse</span>
         </Link>
@@ -477,6 +485,8 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
             <button
               ref={moreBtnRef}
               type="button"
+              data-tour="more"
+              id="nav-more"
               aria-expanded={moreOpen}
               aria-haspopup="true"
               aria-controls={moreMenuId}
@@ -505,6 +515,8 @@ export default function SiteHeader({ showFanZone = false }: { showFanZone?: bool
         <div className="flex items-center gap-2">
           <Link
             href="/search"
+            data-tour="search"
+            id="nav-search"
             aria-label="Search"
             className="grid size-10 flex-shrink-0 place-items-center border-3 border-ink bg-paper hover:bg-danfo-tint"
           >

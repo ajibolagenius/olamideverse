@@ -4,6 +4,8 @@ import DisclaimerStrip from "@/components/chrome/DisclaimerStrip";
 import SiteFooter from "@/components/chrome/SiteFooter";
 import SiteHeader from "@/components/chrome/SiteHeader";
 import InstallPrompt from "@/components/InstallPrompt";
+import ArchiveExpeditionWidget from "@/components/tours/ArchiveExpeditionWidget";
+import ContextualHints from "@/components/tours/ContextualHints";
 import PlayerProvider from "@/components/player/PlayerDock";
 import { FanProvider } from "@/lib/fanzone/useFan";
 import {
@@ -52,6 +54,8 @@ export default async function SiteLayout({
         {children}
       </main>
       <InstallPrompt />
+      <ArchiveExpeditionWidget />
+      <ContextualHints />
       <SiteFooter blurb={footer.blurb} showFanZone={flags.fanzone} />
       <Suspense fallback={null}>
         <PageViewTracker />

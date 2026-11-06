@@ -53,6 +53,8 @@ export default function AlbumGrid({
           {/* View Mode Switcher */}
           <div
             role="group"
+            data-tour="crate-switcher"
+            id="ov-crate-switcher"
             aria-label="View format"
             className="flex items-center border-2 border-ink bg-white p-0.5 shadow-print"
           >

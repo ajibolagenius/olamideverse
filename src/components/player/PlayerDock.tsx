@@ -102,6 +102,8 @@ export default function PlayerProvider({
       {track ? (
         <div
           role="region"
+          data-tour="player-dock"
+          id="ov-player-dock"
           aria-label="Now playing"
           className="ov-player-dock fixed inset-x-0 bottom-0 z-30 border-t-3 border-ink bg-paper shadow-[0_-8px_0_0_rgba(24,20,16,0.08)] sm:inset-x-auto sm:right-4 sm:bottom-4 sm:w-[min(22rem,calc(100vw-2.5rem))] sm:border-3 sm:shadow-paste-sm"
         >

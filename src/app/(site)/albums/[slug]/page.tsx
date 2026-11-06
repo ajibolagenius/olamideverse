@@ -13,7 +13,7 @@ import RelatedAlbums from "@/components/RelatedAlbums";
 import SaveOfflineButton from "@/components/SaveOfflineButton";
 import Tracklist from "@/components/Tracklist";
 import SectionLabel from "@/components/ui/SectionLabel";
-import { ACCENTS, accentChrome } from "@/lib/accents";
+import { accentChrome } from "@/lib/accents";
 import { relatedByCollaborator } from "@/lib/collaborators";
 import {
   ALBUM_TYPE_LABEL,
@@ -63,7 +63,6 @@ export default async function AlbumPage({
   if (!album) notFound();
 
   const era = (await getEra(album.era))!;
-  const accent = ACCENTS[era.accent];
   const chromeAccent =
     era.accent === "ink" ? "danfo" : era.accent;
   const { bg: badgeBg, fg: badgeFg } = accentChrome(chromeAccent);

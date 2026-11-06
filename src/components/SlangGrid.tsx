@@ -161,6 +161,8 @@ export default function SlangGrid({
           {/* Accessible View Mode Switcher */}
           <div
             role="group"
+            id="ov-slang-switcher"
+            data-tour="slang-switcher"
             aria-label="Street lingo presentation view"
             className="flex items-center gap-2 border border-ink bg-paper-dim p-1 shadow-paste-sm"
           >

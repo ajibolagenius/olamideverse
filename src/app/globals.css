@@ -766,3 +766,122 @@ button:focus-visible {
     transition: none;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Driver.js — Afro-Street Editorial Theme
+   Overriding driver.js popover and backdrop styles with paper/ink tokens
+   ------------------------------------------------------------------------- */
+@import "driver.js/dist/driver.css";
+@import "driver.js/dist/hints.css";
+
+.driver-popover.ov-driver-popover {
+  background-color: var(--color-paper, #f4efe6);
+  color: var(--color-ink, #181410);
+  border: 3px solid var(--color-ink, #181410);
+  border-radius: 0px;
+  box-shadow: 4px 4px 0px var(--color-ink, #181410);
+  padding: 1.25rem 1.35rem;
+  max-width: 24rem;
+  font-family: var(--font-body, system-ui, sans-serif);
+}
+
+.driver-popover.ov-driver-popover .driver-popover-title {
+  font-family: var(--font-display, "Anton", sans-serif);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 1.25rem;
+  line-height: 1.15;
+  color: var(--color-ink, #181410);
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid var(--color-ink, #181410);
+  padding-bottom: 0.35rem;
+}
+
+.driver-popover.ov-driver-popover .driver-popover-description {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--color-ink-soft, #5a5249);
+  margin-bottom: 1rem;
+}
+
+.driver-popover.ov-driver-popover .driver-popover-progress-text {
+  font-family: ui-monospace, monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-oxide, #c8451b);
+}
+
+.driver-popover.ov-driver-popover .driver-popover-footer {
+  margin-top: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed rgba(24, 20, 16, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.driver-popover.ov-driver-popover .driver-popover-next-btn,
+.driver-popover.ov-driver-popover .driver-popover-done-btn {
+  background-color: var(--color-danfo, #f5b301);
+  color: var(--color-ink, #181410);
+  border: 2px solid var(--color-ink, #181410);
+  border-radius: 0px;
+  font-family: ui-monospace, monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  padding: 0.35rem 0.75rem;
+  box-shadow: 2px 2px 0px var(--color-ink, #181410);
+  text-shadow: none;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.driver-popover.ov-driver-popover .driver-popover-next-btn:hover,
+.driver-popover.ov-driver-popover .driver-popover-done-btn:hover {
+  background-color: var(--color-danfo-tint, #fbe29a);
+}
+
+.driver-popover.ov-driver-popover .driver-popover-prev-btn {
+  background-color: #ffffff;
+  color: var(--color-ink, #181410);
+  border: 2px solid var(--color-ink, #181410);
+  border-radius: 0px;
+  font-family: ui-monospace, monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  padding: 0.35rem 0.75rem;
+  box-shadow: 2px 2px 0px var(--color-ink, #181410);
+  text-shadow: none;
+  cursor: pointer;
+}
+
+.driver-popover.ov-driver-popover .driver-popover-close-btn {
+  color: var(--color-ink, #181410);
+  font-size: 1.15rem;
+  top: 0.75rem;
+  right: 0.75rem;
+}
+
+.driver-popover.ov-driver-popover .driver-popover-arrow {
+  border-color: var(--color-ink, #181410);
+}
+
+.driver-hint-beacon {
+  background-color: var(--color-danfo, #f5b301) !important;
+  border: 2px solid var(--color-ink, #181410) !important;
+}
+
+.driver-hint-dot {
+  background-color: var(--color-danfo, #f5b301) !important;
+  border: 2px solid var(--color-ink, #181410) !important;
+}
+
+.driver-hint-pulse {
+  background-color: var(--color-danfo, #f5b301) !important;
+}

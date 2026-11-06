@@ -138,6 +138,8 @@ export default function SongCatalog({
             {/* View Mode Switcher */}
             <div
               role="group"
+              data-tour="dossier-switcher"
+              id="ov-dossier-switcher"
               aria-label="Catalogue view format"
               className="flex items-center border-2 border-ink bg-white p-0.5 shadow-print"
             >

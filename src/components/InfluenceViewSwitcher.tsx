@@ -23,6 +23,8 @@ export default function InfluenceViewSwitcher({ graph }: InfluenceViewSwitcherPr
         </span>
         <div
           role="group"
+          id="ov-influence-switcher"
+          data-tour="influence-switcher"
           aria-label="Influence graph view"
           className="flex items-center gap-2 border border-ink bg-white p-1 shadow-paste-sm"
         >
