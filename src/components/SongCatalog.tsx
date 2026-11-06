@@ -54,6 +54,14 @@ export default function SongCatalog({
     [eras],
   );
 
+  const songSequenceMap = useMemo(() => {
+    const map = new Map<string, number>();
+    songs.forEach((song, i) => {
+      map.set(song.id, i + 1);
+    });
+    return map;
+  }, [songs]);
+
   const shown = useMemo(() => {
     const q = deferredQuery.trim().toLowerCase();
     const filtered = songs.filter((song) => {
@@ -202,10 +210,11 @@ export default function SongCatalog({
         ) : viewMode === "dossier" ? (
           /* Manila Archival Folder Dossier Grid */
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {shown.map((song, idx) => {
+            {shown.map((song) => {
               const era = erasBySlug.get(song.era);
               const activeRow = activeId === song.id;
               const typeLabel = SONG_TYPE_LABEL[song.type as SongType];
+              const seq = songSequenceMap.get(song.id) ?? 1;
               const chrome = era
                 ? accentChrome(era.accent as AccentName)
                 : { bg: "#F5B301", fg: "#181410" };
@@ -223,7 +232,7 @@ export default function SongCatalog({
                   <div className="mb-3 flex items-center justify-between border-b-2 border-ink/20 pb-2.5">
                     <div className="flex items-center gap-2">
                       <span className="font-mono text-[0.62rem] font-bold uppercase tracking-wider text-ink-muted">
-                        REC · #{song.year}-{String(idx + 1).padStart(3, "0")}
+                        REC · #{song.year}-{String(seq).padStart(3, "0")}
                       </span>
                       <span className="border border-ink/20 bg-white px-1 py-0.2 font-mono text-[0.58rem] font-bold uppercase text-ink-soft">
                         {typeLabel}
@@ -240,7 +249,7 @@ export default function SongCatalog({
                   {/* Main Song Heading & Details */}
                   <div className="flex-1">
                     <div className="flex items-start justify-between gap-2">
-                      <h3 className="font-display text-lg uppercase tracking-tight text-ink group-hover:text-danfo">
+                      <h3 className="font-display text-lg uppercase tracking-tight text-ink group-hover:underline group-hover:decoration-danfo group-hover:decoration-2 group-hover:underline-offset-2">
                         {song.title}
                       </h3>
                       <span className="font-mono text-xs font-bold text-ink-soft shrink-0">

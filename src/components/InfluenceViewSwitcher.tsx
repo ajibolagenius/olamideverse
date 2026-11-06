@@ -21,9 +21,14 @@ export default function InfluenceViewSwitcher({ graph }: InfluenceViewSwitcherPr
         <span className="font-mono text-xs font-bold uppercase tracking-wider text-ink-soft">
           GRAPH PERSPECTIVE
         </span>
-        <div className="flex items-center gap-2 border border-ink bg-white p-1 shadow-paste-sm">
+        <div
+          role="group"
+          aria-label="Influence graph view"
+          className="flex items-center gap-2 border border-ink bg-white p-1 shadow-paste-sm"
+        >
           <button
             type="button"
+            aria-pressed={view === "blueprint"}
             onClick={() => setView("blueprint")}
             className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold uppercase tracking-wider transition-all ${
               view === "blueprint"
@@ -36,6 +41,7 @@ export default function InfluenceViewSwitcher({ graph }: InfluenceViewSwitcherPr
           </button>
           <button
             type="button"
+            aria-pressed={view === "orbit"}
             onClick={() => setView("orbit")}
             className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold uppercase tracking-wider transition-all ${
               view === "orbit"

@@ -34,8 +34,8 @@ Scope covers:
 
 1. **Embeds Only Posture Strictly Preserved**: All media and audio are third-party embeds (YouTube, Spotify, Audiomack); nothing is hosted or proxied.
 2. **Seamless Player Integration**: Clicking play on any song dossier continues to route into `PlayerProvider` so playback persists across navigation.
-3. **Responsive and Accessible**: Manila dossiers and cinema lobby cards stack cleanly on mobile viewports with minimum 44px tap targets, high contrast, and keyboard navigation.
-4. **Motion Integrity**: Strictly respects `prefers-reduced-motion` using only Tailwind v4 and existing GSAP behaviors.
+3. **Responsive and Accessible**: Manila dossiers and cinema lobby cards stack cleanly on mobile viewports with high contrast, focus indicators, and keyboard navigation.
+4. **Motion Integrity**: Animations respect `prefers-reduced-motion` using Tailwind `motion-safe` utilities and standard CSS transitions.
 
 ## Files to touch
 

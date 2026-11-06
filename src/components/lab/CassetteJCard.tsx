@@ -23,7 +23,7 @@ export default function CassetteJCard({
   const sideB: Track[] = tracks.slice(midPoint);
 
   return (
-    <div className="group relative border-2 border-ink bg-white shadow-print transition-all hover:shadow-paste">
+    <div className="group relative isolate border-2 border-ink bg-white shadow-print transition-all hover:shadow-paste">
       {/* Misregistration accent edge */}
       <div
         className="pointer-events-none absolute -bottom-1 -right-1 -z-10 h-full w-full border-2 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5"

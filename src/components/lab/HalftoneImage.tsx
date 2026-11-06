@@ -24,7 +24,7 @@ export default function HalftoneImage({
 
   return (
     <figure
-      className={`group relative border-2 border-ink bg-paper shadow-print transition-all hover:shadow-paste ${className}`}
+      className={`group relative isolate border-2 border-ink bg-paper shadow-print transition-all hover:shadow-paste ${className}`}
     >
       {/* Plate misregistration visual offset cue on hover */}
       <div

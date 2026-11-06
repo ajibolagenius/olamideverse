@@ -109,13 +109,13 @@ export default function PlayerProvider({
           <div className="flex items-center justify-between border-b-2 border-ink bg-danfo px-3 py-1 text-ink">
             <div className="flex items-center gap-1.5" aria-hidden="true">
               <div
-                className="h-3 w-3 rounded-full border border-dashed border-ink flex items-center justify-center animate-spin"
+                className="h-3 w-3 rounded-full border border-dashed border-ink flex items-center justify-center motion-safe:animate-spin"
                 style={{ animationDuration: "3s" }}
               >
                 <div className="h-1 w-1 rounded-full bg-ink" />
               </div>
               <div
-                className="h-3 w-3 rounded-full border border-dashed border-ink flex items-center justify-center animate-spin"
+                className="h-3 w-3 rounded-full border border-dashed border-ink flex items-center justify-center motion-safe:animate-spin"
                 style={{ animationDuration: "3s" }}
               >
                 <div className="h-1 w-1 rounded-full bg-ink" />

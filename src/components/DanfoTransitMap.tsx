@@ -17,9 +17,12 @@ export default function DanfoTransitMap({ places }: DanfoTransitMapProps) {
 
   const selectedPlace = places.find((p) => p.id === selectedPlaceId) ?? places[0];
 
+  const isLagosPlace = (p: (typeof places)[0]) =>
+    p.map === "lagos" || p.city.toLowerCase().includes("lagos");
+
   const filteredPlaces = places.filter((p) => {
-    if (selectedLine === "lagos") return p.map === "lagos" || p.city.toLowerCase().includes("lagos");
-    if (selectedLine === "world") return p.map === "world" || !p.city.toLowerCase().includes("lagos");
+    if (selectedLine === "lagos") return isLagosPlace(p);
+    if (selectedLine === "world") return !isLagosPlace(p);
     return true;
   });
 
@@ -277,7 +280,7 @@ export default function DanfoTransitMap({ places }: DanfoTransitMapProps) {
               <div className="border-t-2 border-dashed border-ink/30 pt-4 flex items-center justify-between font-mono text-[0.65rem] uppercase text-ink-soft">
                 <span>RECORD: CULTURAL GEOGRAPHY</span>
                 <span className="border border-ink bg-danfo px-1.5 py-0.5 font-bold text-ink">
-                  STATUS: VERIFIED
+                  ARCHIVE NOTE
                 </span>
               </div>
             </div>

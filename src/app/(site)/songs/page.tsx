@@ -41,7 +41,7 @@ export default async function SongsPage() {
             <span className="border border-ink bg-danfo px-1.5 py-0.5 text-ink shadow-print">
               CATALOGUE DOSSIER
             </span>
-            <span>BARIGA → YBNL NATION VERIFIED DATABASE</span>
+            <span>BARIGA → YBNL NATION RESEARCHED DATABASE</span>
           </div>
           <div className="flex items-center gap-4">
             <span>2010 — PRESENT</span>
@@ -74,7 +74,7 @@ export default async function SongsPage() {
               <span className="border border-ink bg-danfo px-1.5 py-0.2 font-bold text-ink shadow-print">
                 VERIFIED
               </span>
-              <span className="text-ink-soft">Confirmed third-party audio embed available</span>
+              <span className="text-ink-soft">Working third-party embed available</span>
             </span>
             <span className="flex items-center gap-1.5">
               <span className="border border-ink bg-white px-1.5 py-0.2 font-bold text-ink shadow-print">

@@ -195,7 +195,7 @@ export default function LineageBlueprint({ graph }: LineageBlueprintProps) {
               <div className="border-t-2 border-ink pt-3 flex items-center justify-between font-mono text-[0.65rem] uppercase text-ink-soft">
                 <span>RECORD: CULTURAL LINEAGE</span>
                 <span className="border border-ink bg-danfo px-1.5 py-0.5 font-bold text-ink">
-                  STATUS: VERIFIED
+                  ARCHIVE NOTE
                 </span>
               </div>
             </div>

@@ -132,7 +132,7 @@ function MediaThumb({
             via {item.source}
           </span>
         </div>
-        <span className="font-display text-[1.1rem] leading-tight text-ink group-hover:text-danfo">
+        <span className="font-display text-[1.1rem] leading-tight text-ink group-hover:underline group-hover:decoration-danfo group-hover:decoration-2 group-hover:underline-offset-2">
           {item.title}
         </span>
         <p className="line-clamp-2 text-[0.78rem] leading-snug text-ink-soft mt-0.5">
@@ -168,7 +168,7 @@ function CinemaPlayer({
       {/* Cinema Marquee Header */}
       <div className="flex flex-wrap items-center justify-between gap-3 border-b-3 border-danfo bg-danfo px-4 py-2.5 text-ink">
         <div className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-ink animate-ping" />
+          <span className="h-2 w-2 rounded-full bg-ink motion-safe:animate-ping" />
           <p className="font-mono text-[0.72rem] font-bold tracking-[0.12em] uppercase">
             LAGOS OUTDOOR CINEMA · PROJECTION BOOTH
           </p>
@@ -227,7 +227,7 @@ function CinemaPlayer({
         </p>
         <div className="mt-4 flex items-center justify-between font-mono text-[0.65rem] uppercase tracking-wider text-ink-muted">
           <span>THIRD-PARTY EMBED · YOUTUBE-NOCOOKIE</span>
-          <span className="hidden sm:inline-block">NO ARCHIVE HOSTING · LICENSED VIA PROVIDER</span>
+          <span className="hidden sm:inline-block">Screened via YouTube · Not hosted here</span>
         </div>
       </div>
     </div>
@@ -459,55 +459,59 @@ export default function MediaGrid({
         </div>
       ) : (
         /* Broadcast Ledger Table */
-        <div className="border-3 border-ink bg-white shadow-paste-sm">
-          <div className="grid grid-cols-12 border-b-2 border-ink bg-paper-dim px-4 py-2.5 font-mono text-[0.68rem] font-bold uppercase tracking-wider text-ink-muted">
-            <span className="col-span-2">Year</span>
-            <span className="col-span-5">Title & Context</span>
-            <span className="col-span-2">Type</span>
-            <span className="col-span-2">Source</span>
-            <span className="col-span-1 text-right">Action</span>
-          </div>
-          <div className="divide-y border-ink/15">
-            {shown.map((item) => {
-              const isSelected = active?.id === item.id;
-              return (
-                <div
-                  key={item.id}
-                  className={`grid grid-cols-12 items-center px-4 py-3 text-sm transition-colors ${
-                    isSelected ? "bg-[#FFF9E6]" : "hover:bg-paper-dim/40"
-                  }`}
-                >
-                  <span className="col-span-2 font-mono text-xs font-bold text-ink-soft">
-                    {item.year}
-                  </span>
-                  <div className="col-span-5 pr-4">
-                    <span className="font-display text-base text-ink block leading-snug">
-                      {item.title}
+        <div className="overflow-x-auto border-3 border-ink bg-white shadow-paste-sm">
+          <div className="min-w-[640px]">
+            <div className="grid grid-cols-12 border-b-2 border-ink bg-paper-dim px-4 py-2.5 font-mono text-[0.68rem] font-bold uppercase tracking-wider text-ink-muted">
+              <span className="col-span-2">Year</span>
+              <span className="col-span-5">Title & Context</span>
+              <span className="col-span-2">Type</span>
+              <span className="col-span-2">Source</span>
+              <span className="col-span-1 text-right">Action</span>
+            </div>
+            <div className="divide-y border-ink/15">
+              {shown.map((item) => {
+                const isSelected = active?.id === item.id;
+                return (
+                  <div
+                    key={item.id}
+                    className={`grid grid-cols-12 items-center px-4 py-3 text-sm transition-colors ${
+                      isSelected ? "bg-[#FFF9E6]" : "hover:bg-paper-dim/40"
+                    }`}
+                  >
+                    <span className="col-span-2 font-mono text-xs font-bold text-ink-soft">
+                      {item.year}
                     </span>
-                    <span className="text-xs text-ink-muted line-clamp-1">{item.note}</span>
+                    <div className="col-span-5 pr-4">
+                      <span className="font-display text-base text-ink block leading-snug">
+                        {item.title}
+                      </span>
+                      <span className="text-xs text-ink-muted line-clamp-1">{item.note}</span>
+                    </div>
+                    <span className="col-span-2 text-xs font-semibold text-ink-soft">
+                      {TYPE_LABEL[item.type]}
+                    </span>
+                    <span className="col-span-2 font-mono text-xs text-ink-muted">
+                      {item.source}
+                    </span>
+                    <div className="col-span-1 text-right">
+                      <button
+                        type="button"
+                        onClick={() => selectItem(item.id)}
+                        aria-pressed={isSelected}
+                        aria-label={`${isSelected ? "Close screening for" : "Screen"} ${item.title}`}
+                        className={`border-2 border-ink px-2.5 py-1 text-xs font-bold uppercase tracking-wider shadow-print ${
+                          isSelected
+                            ? "bg-ink text-danfo"
+                            : "bg-danfo text-ink hover:bg-ink hover:text-danfo"
+                        }`}
+                      >
+                        {isSelected ? "Active" : "Screen"}
+                      </button>
+                    </div>
                   </div>
-                  <span className="col-span-2 text-xs font-semibold text-ink-soft">
-                    {TYPE_LABEL[item.type]}
-                  </span>
-                  <span className="col-span-2 font-mono text-xs text-ink-muted">
-                    {item.source}
-                  </span>
-                  <div className="col-span-1 text-right">
-                    <button
-                      type="button"
-                      onClick={() => selectItem(item.id)}
-                      className={`border-2 border-ink px-2.5 py-1 text-xs font-bold uppercase tracking-wider shadow-print ${
-                        isSelected
-                          ? "bg-ink text-danfo"
-                          : "bg-danfo text-ink hover:bg-ink hover:text-danfo"
-                      }`}
-                    >
-                      {isSelected ? "Active" : "Screen"}
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       )}

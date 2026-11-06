@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { SpeakerHigh, SpeakerSlash, Monitor, Sparkle } from "@phosphor-icons/react";
 import { OV_ICON_WEIGHT } from "@/lib/icons";
 
@@ -24,13 +24,36 @@ export default function P3SensoryLab() {
   const hasP3 = useSyncExternalStore(subscribeP3, getP3Snapshot, getServerP3Snapshot);
   const [audioFeedback, setAudioFeedback] = useState(false);
   const [activeSwatch, setActiveSwatch] = useState<"danfo" | "adire" | "oxide">("danfo");
+  const audioCtxRef = useRef<AudioContext | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (audioCtxRef.current) {
+        audioCtxRef.current.close().catch(() => {});
+        audioCtxRef.current = null;
+      }
+    };
+  }, []);
 
   // Synthetic Web Audio API analog tape-click sound (zero external asset, pure synthesis)
-  const playAnalogClick = () => {
-    if (!audioFeedback || typeof window === "undefined") return;
+  const playAnalogClick = (force?: boolean) => {
+    const shouldPlay = force === true || audioFeedback;
+    if (!shouldPlay || typeof window === "undefined") return;
+
     try {
-      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      const ctx = new AudioCtx();
+      if (!audioCtxRef.current) {
+        const AudioCtx =
+          window.AudioContext ||
+          (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+        if (!AudioCtx) return;
+        audioCtxRef.current = new AudioCtx();
+      }
+
+      const ctx = audioCtxRef.current;
+      if (ctx.state === "suspended") {
+        ctx.resume().catch(() => {});
+      }
+
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
 
@@ -219,7 +242,7 @@ export default function P3SensoryLab() {
               const nextState = !audioFeedback;
               setAudioFeedback(nextState);
               if (nextState) {
-                setTimeout(playAnalogClick, 50);
+                playAnalogClick(true);
               }
             }}
             className={`flex items-center gap-2 border-2 border-ink px-4 py-2 font-display text-xs uppercase tracking-wider transition-all shadow-paste-sm active:translate-y-0.5 ${
@@ -244,7 +267,7 @@ export default function P3SensoryLab() {
         <div className="mt-4 flex items-center gap-3">
           <button
             type="button"
-            onClick={playAnalogClick}
+            onClick={() => playAnalogClick()}
             disabled={!audioFeedback}
             className={`border-2 border-ink px-4 py-2 font-display text-xs uppercase tracking-wider transition-all ${
               audioFeedback

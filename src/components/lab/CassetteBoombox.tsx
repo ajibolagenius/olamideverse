@@ -119,7 +119,7 @@ export default function CassetteBoombox() {
                   {/* Left Spool */}
                   <div
                     className={`h-12 w-12 rounded-full border-2 border-dashed border-paper flex items-center justify-center transition-transform ${
-                      isPlaying ? "animate-spin" : ""
+                      isPlaying ? "motion-safe:animate-spin" : ""
                     }`}
                     style={{ animationDuration: "3s" }}
                   >
@@ -137,7 +137,7 @@ export default function CassetteBoombox() {
                   {/* Right Spool */}
                   <div
                     className={`h-12 w-12 rounded-full border-2 border-dashed border-paper flex items-center justify-center transition-transform ${
-                      isPlaying ? "animate-spin" : ""
+                      isPlaying ? "motion-safe:animate-spin" : ""
                     }`}
                     style={{ animationDuration: "3s" }}
                   >
@@ -194,7 +194,7 @@ export default function CassetteBoombox() {
               {/* Rotating Vinyl Record */}
               <div
                 className={`relative h-48 w-48 rounded-full border-4 border-black bg-[#151515] shadow-2xl flex items-center justify-center transition-transform ${
-                  isPlaying ? "animate-spin" : ""
+                  isPlaying ? "motion-safe:animate-spin" : ""
                 }`}
                 style={{ animationDuration: "2.5s" }}
               >

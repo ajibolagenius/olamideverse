@@ -5,8 +5,8 @@ Status: approved and implemented locally. Completed 6 November 2026 (Africa/Lago
 ## Goal and scope
 
 Document the newly graduated visual, cartographic, tactile, and wayfinding features
-in the public reader-facing changelog ([`src/lib/changelog.ts`](file:///Users/ajibolagenius/Documents/Node/ajibolagenius/olamideverse/src/lib/changelog.ts))
-and mirror them in the root [`CHANGELOG.md`](file:///Users/ajibolagenius/Documents/Node/ajibolagenius/olamideverse/CHANGELOG.md).
+in the public reader-facing changelog ([`src/lib/changelog.ts`](src/lib/changelog.ts))
+and mirror them in the root [`CHANGELOG.md`](CHANGELOG.md).
 
 Features to document under the 6 November 2026 update:
 1. **Interactive Career Spine wayfinding on Eras**:

@@ -17,10 +17,13 @@ export default function DanfoTransitMap({ places }: DanfoTransitMapProps) {
 
   const selectedPlace = places.find((p) => p.id === selectedPlaceId) ?? places[0];
 
+  const isLagosPlace = (p: (typeof places)[0]) =>
+    p.map === "lagos" || p.city.toLowerCase().includes("lagos");
+
   // Group places for transit schedule board
   const filteredPlaces = places.filter((p) => {
-    if (selectedLine === "lagos") return p.map === "lagos" || p.city.toLowerCase().includes("lagos");
-    if (selectedLine === "world") return p.map === "world" || !p.city.toLowerCase().includes("lagos");
+    if (selectedLine === "lagos") return isLagosPlace(p);
+    if (selectedLine === "world") return !isLagosPlace(p);
     return true;
   });
 
