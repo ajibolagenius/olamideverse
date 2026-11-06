@@ -5,6 +5,8 @@ import { ACCENTS, type AccentName } from "@/lib/accents";
 import type { Snippet } from "@/lib/content-schema";
 import { SITE_URL } from "@/lib/site";
 import { waveformBars } from "@/lib/waveform";
+import { ArrowRight, CassetteTape } from "@phosphor-icons/react/ssr";
+import { OV_ICON_WEIGHT } from "@/lib/icons";
 
 export default function AudiogramCard({
   snippet,
@@ -19,61 +21,86 @@ export default function AudiogramCard({
   const bars = waveformBars(snippet.waveformSeed, featured ? 56 : 40);
   const href = `/snippets/${snippet.id}`;
   const absoluteUrl = `${SITE_URL}${href}`;
+  const catalogCode = `MC-${snippet.year}-${snippet.id.slice(0, 4).toUpperCase()}`;
 
   return (
     <article
-      className={`ov-paste-up flex flex-col border-3 border-ink bg-ink text-paper shadow-paste ${
-        featured ? "sm:min-h-[420px]" : ""
+      className={`group relative isolate flex flex-col border-3 border-ink bg-ink text-paper shadow-paste transition-all hover:shadow-print ${
+        featured ? "sm:min-h-[440px]" : ""
       }`}
-      data-tilt={featured ? "-0.8" : "0.6"}
-      style={{ rotate: featured ? "-0.8deg" : "0.6deg" }}
+      data-tilt={featured ? "-0.6" : "0.5"}
+      style={{ rotate: featured ? "-0.6deg" : "0.5deg" }}
     >
+      {/* Misregistration colored accent edge */}
+      <div
+        className="pointer-events-none absolute -bottom-1.5 -right-1.5 -z-10 h-full w-full border-2 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5"
+        style={{ borderColor: palette.solid }}
+        aria-hidden="true"
+      />
+
+      {/* Cassette Spine & Broadcast Header Bar */}
       <div
         className="flex items-center justify-between gap-3 border-b-3 border-ink px-4 py-2.5"
         style={{ background: palette.solid, color: palette.onSolid }}
       >
-        <span className="text-[0.72rem] font-bold tracking-[0.08em] uppercase">
-          Audiogram · {snippet.year}
+        <div className="flex items-center gap-2">
+          <CassetteTape weight={OV_ICON_WEIGHT} className="h-4 w-4 shrink-0" />
+          <span className="font-mono text-[0.68rem] font-bold tracking-widest uppercase">
+            {catalogCode}
+          </span>
+        </div>
+        <span className="font-display text-lg uppercase tracking-tight leading-none truncate">
+          {snippet.track}
         </span>
-        <span className="font-display text-lg leading-none">{snippet.track}</span>
       </div>
 
       <div className="flex flex-1 flex-col gap-5 p-5 sm:p-6">
+        {/* Dynamic Waveform Visualizer */}
         <div
-          className="flex h-16 items-end gap-[3px] sm:h-20"
+          className="flex h-16 items-end gap-[3px] border-b border-paper/15 pb-2 sm:h-20"
           aria-hidden
           role="presentation"
         >
-          {bars.map((h, i) => (
-            <span
-              key={i}
-              className="min-w-[3px] flex-1 rounded-sm"
-              style={{
-                height: `${Math.round(h * 100)}%`,
-                background: i % 5 === 0 ? palette.solid : "#F4EFE6",
-                opacity: i % 5 === 0 ? 1 : 0.55,
-              }}
-            />
-          ))}
+          {bars.map((h, i) => {
+            const isPeak = i % 4 === 0;
+            return (
+              <span
+                key={i}
+                className="min-w-[3px] flex-1 rounded-xs transition-all"
+                style={{
+                  height: `${Math.round(h * 100)}%`,
+                  background: isPeak ? palette.solid : "#F4EFE6",
+                  opacity: isPeak ? 1 : 0.6,
+                }}
+              />
+            );
+          })}
         </div>
 
-        <blockquote className="font-display text-[1.55rem] leading-[1.15] sm:text-[1.75rem]">
+        {/* Lyrical Quote */}
+        <blockquote className="font-display text-[1.5rem] leading-[1.15] tracking-tight sm:text-[1.75rem]">
           “{snippet.quote}”
         </blockquote>
-        <p className="text-sm leading-relaxed text-ink-muted">{snippet.note}</p>
 
-        <div className="mt-auto flex flex-wrap items-end justify-between gap-3 border-t border-[#3A332B] pt-4">
-          <div className="text-[0.75rem] tracking-[0.05em] uppercase text-ink-muted">
+        {/* Contextual Note */}
+        <p className="text-xs font-mono leading-relaxed text-ink-muted">
+          {snippet.note}
+        </p>
+
+        {/* Card Footer with Provenance & Actions */}
+        <div className="mt-auto flex flex-wrap items-center justify-between gap-3 border-t border-paper/20 pt-4">
+          <div className="text-[0.72rem] font-mono tracking-wider uppercase text-ink-muted">
             <Link
               href={`/albums/${snippet.albumSlug}`}
-              className="font-semibold text-paper underline decoration-danfo underline-offset-2 hover:text-danfo"
+              className="font-bold text-paper underline decoration-danfo underline-offset-2 hover:text-danfo"
             >
               {snippet.albumTitle}
             </Link>
             <span className="mx-1.5">·</span>
-            <span>{snippet.track}</span>
+            <span>{snippet.year}</span>
           </div>
-          <div className="flex flex-wrap gap-2">
+
+          <div className="flex flex-wrap items-center gap-2">
             <ShareSnippet url={absoluteUrl} title={snippet.track} compact />
             <ShareToStory
               storyUrl={`/snippets/${snippet.id}/story`}
@@ -82,9 +109,10 @@ export default function AudiogramCard({
             />
             <Link
               href={href}
-              className="border-2 border-paper px-2.5 py-1 text-[0.68rem] font-bold tracking-[0.05em] uppercase text-paper transition-colors hover:bg-paper hover:text-ink"
+              className="inline-flex items-center gap-1 border-2 border-paper px-2.5 py-1 text-[0.68rem] font-bold tracking-wider uppercase text-paper transition-colors hover:bg-paper hover:text-ink"
             >
-              Open
+              <span>Deck</span>
+              <ArrowRight weight="bold" className="h-3 w-3" />
             </Link>
           </div>
         </div>
