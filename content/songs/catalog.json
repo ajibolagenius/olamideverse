@@ -109,6 +109,9 @@
     },
     {
       "id": "ybnl-mafia-family--welcome"
+    },
+    {
+      "id": "time-and-space--burukutu"
     }
   ],
   "entries": [
@@ -6156,19 +6159,6 @@
       "source": "Wikipedia",
       "sourceUrl": "https://en.wikipedia.org/wiki/Olamide_discography",
       "youtubeId": "N7QGg0YTcr8"
-    },
-    {
-      "id": "single--burukutu-2026",
-      "title": "Burukutu",
-      "year": 2026,
-      "era": "legacy",
-      "type": "single",
-      "status": "verified",
-      "artists": "Olamide",
-      "note": "Released 20 October 2026 via YBNL Nation / EMPIRE, ahead of Time and Space. Produced by BlaiseBeatz.",
-      "source": "Audiomack — Olamide",
-      "sourceUrl": "https://audiomack.com/olamide/song/burukutu-3302156",
-      "audiomackUrl": "https://audiomack.com/olamide/song/burukutu-3302156"
     },
     {
       "id": "feature--come-kulosa-2026",

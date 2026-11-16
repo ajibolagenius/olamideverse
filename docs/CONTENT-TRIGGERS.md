@@ -10,6 +10,8 @@ no public routes. When one fires, update the named content surfaces and
 - [ ] **12th studio album** (Olamide has publicly hinted at stepping back after
       his 12th). Update `content/albums/[slug].mdx`, Legacy era moments, albums
       index copy, and any home featured-era framing.
+      _Fired 16 Nov 2026: *Time and Space* published (prompt 23). Left unticked —
+      the archive does not assert a studio-album count; press sources conflict._
 - [ ] **Major chart / streaming records** for new releases — prefer TurnTable
       Charts and platform first-party figures; put numbers on the album page
       and the matching era moments (not a standalone charts page).

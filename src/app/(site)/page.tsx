@@ -43,7 +43,7 @@ const DOORS = [
   {
     href: "/albums",
     title: "Browse the Discography",
-    copy: "Fifteen releases, filterable by era in Cards or Vinyl Crate",
+    copy: "Sixteen releases, filterable by era in Cards or Vinyl Crate",
   },
   {
     href: "/media",

@@ -18,6 +18,22 @@ export type ChangelogDay = {
 
 export const CHANGELOG: ChangelogDay[] = [
   {
+    date: "2026-11-16",
+    label: "16 November 2026",
+    items: [
+      {
+        title: "Time and Space is out",
+        body: "Olamide’s new album arrived today and its page is live: all ten tracks with Spotify embeds, Fola on “Jaiye” as the only guest, and the cover he painted himself. Burukutu moves from a standalone single to track four, and the Legacy era gains its release-day moment. Production credits and numbers follow as they are verified.",
+        href: "/albums/time-and-space",
+      },
+      {
+        title: "Sixteen releases on the shelf",
+        body: "The Discography now counts sixteen releases from 2011 to 2026, with the new cover in Cards and Vinyl Crate. All ten Time and Space songs are searchable in the catalogue under the Legacy era, and the biography’s closing beat is in past tense: the album is no longer “due”.",
+        href: "/albums",
+      },
+    ],
+  },
+  {
     date: "2026-11-06",
     label: "6 November 2026",
     items: [

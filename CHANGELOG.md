@@ -12,6 +12,22 @@ Dates are UTC calendar days of the ship window.
 
 ## [Unreleased]
 
+### 2026-11-16
+
+- **Time and Space is out** — the seeded draft is now a published album page:
+  ten tracks with Spotify embeds, Fola on “Jaiye” as the only guest, cover
+  art added. Burukutu becomes track four (also-single) instead of a
+  standalone catalogue row; Legacy era ticker, context and moments updated.
+  Title follows the published DSP spelling, “Time and Space”.
+- **Sixteen releases on the shelf** — Discography ticker/intro and the home
+  card now read sixteen releases, 2011–2026; cover added to
+  `public/media/albums/` with its manifest row (Deezer placeholder, as the
+  others); biography closing beat moved to past tense.
+- **CMS** — `cms_albums:time-and-space` published and `cms_eras:legacy` /
+  `cms_media_items:burukutu-video` refreshed by a targeted three-row update
+  (`scripts/out/prompt-23/publish-cms.mjs`, previous rows saved alongside).
+  Static pages need a build with a fresh data cache to pick the album up.
+
 ### 2026-11-06
 
 - **Chart sources, working song links and two more reels** — Street Lingo’s
